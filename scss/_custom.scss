@@ -1,1 +1,18 @@
 // Here you can add other styles
+/***** GLOBAL ******/
+.app-header.navbar { padding-right: 30px; }
+
+
+/***** LOGIN *****/
+.login-box  { border-radius: 30px;}
+
+/***** DASHBOARD *****/
+.dashboard-container .at-a-glance-card > .card-body { padding: 0; }
+.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; }
+.dashboard-container .recent-activity-card,
+.dashboard-container .your-characters-card { height: 400px;}
+
+.dashboard-container .random-thread-generator-card,
+.dashboard-container .patreon-card { height: 185px;}
+.dashboard-container .random-thread-generator-card .card-body,
+.dashboard-container .patreon-card .card-body {  text-align: center; }

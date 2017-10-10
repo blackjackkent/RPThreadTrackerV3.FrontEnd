@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 // Styles
@@ -13,14 +13,16 @@ import '../scss/style.scss'
 
 // Containers
 import Full from './containers/Full/'
+import Login from './views/Login/';
 
 const history = createBrowserHistory();
 
 ReactDOM.render((
-	<HashRouter history={history}>
+	<BrowserRouter history={history}>
 		<Switch>
+			<Route exact path="/login" name="Login Page" component={Login} />
 			<Route path="/" name="Home" component={Full} />
 			<Route path="/threads" name="Threads" component={Full} />
 		</Switch>
-	</HashRouter>
+	</BrowserRouter>
 ), document.getElementById('root'));
