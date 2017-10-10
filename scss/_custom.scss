@@ -6,6 +6,9 @@
 /***** LOGIN *****/
 .login-box  { border-radius: 30px;}
 
+/***** ASIDE *****/
+.aside-menu .callout .badge {position: absolute; right: 30px; bottom: 15px;}
+
 /***** DASHBOARD *****/
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
 .dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; }

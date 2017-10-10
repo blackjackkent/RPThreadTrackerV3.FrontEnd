@@ -35,6 +35,11 @@ class Header extends Component {
 		document.body.classList.toggle('sidebar-hidden');
 	}
 
+	asideToggle(e) {
+		e.preventDefault();
+		document.body.classList.toggle('aside-menu-hidden');
+	}
+
 	messagesToggle() {
 		this.setState({
 			messagesDropdownOpen: !this.state.messagesDropdownOpen
@@ -64,14 +69,10 @@ class Header extends Component {
 				<NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>&#9776;</NavbarToggler>
 				<Nav className="ml-auto" navbar>
 					<NavItem className="d-md-down-none">
-						<Dropdown isOpen={this.state.messagesDropdownOpen} toggle={this.messagesToggle}>
-							<DropdownToggle className="nav-link">
-								<NavLink href="#"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
-							</DropdownToggle>
-							<DropdownMenu right className={this.state.messagesDropdownOpen ? 'show' : ''}>
-								<DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
-							</DropdownMenu>
-						</Dropdown>
+						<NavLink href="#" onClick={this.asideToggle}>
+							<i className="icon-bell"></i>
+							<Badge pill color="danger">5</Badge>
+						</NavLink>
 					</NavItem>
 					<NavItem>
 						<Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>

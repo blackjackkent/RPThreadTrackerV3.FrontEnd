@@ -15,10 +15,8 @@ import '../scss/style.scss'
 import Full from './containers/Full/'
 import Login from './views/Login/';
 
-const history = createBrowserHistory();
-
 ReactDOM.render((
-	<BrowserRouter history={history}>
+	<BrowserRouter>
 		<Switch>
 			<Route exact path="/login" name="Login Page" component={Login} />
 			<Route path="/" name="Home" component={Full} />
