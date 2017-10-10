@@ -1,1 +1,44 @@
 // core overrides
+$base-blue: 			#418ce4;
+$light-blue:			#75c6f3;
+$dark-blue: 			#185aa7;
+
+$navbar-bg:				$base-blue;
+$navbar-border: (
+	bottom: (
+		size:			1px,
+		style:			solid,
+		color:			$dark-blue
+	)
+);
+$navbar-brand-bg:		$base-blue;
+$navbar-brand-border: (
+	bottom: (
+	  	color:			transparent
+	)
+);
+$navbar-brand-logo:		url('../img/logo.png');
+$navbar-color:			$gray-100;
+$navbar-active-color:	$white;
+$navbar-hover-color:	$light-blue;
+$navbar-disabled-color:	$white;
+
+$sidebar-color:                       $gray-400;
+$sidebar-bg:                          $white;
+$sidebar-borders: (
+	right: (
+		size:			1px,
+		style:			solid,
+		color:			$gray-200
+	)
+);
+$sidebar-nav-color:                   $gray-600;
+$sidebar-nav-title-color:             $gray-600;
+$sidebar-nav-link-color:              $gray-600;
+$sidebar-nav-link-icon-color:         $gray-600;
+$sidebar-nav-link-hover-color:        $white;
+$sidebar-nav-link-hover-bg:           $dark-blue;
+$sidebar-nav-link-hover-icon-color:   $white;
+$sidebar-nav-link-active-color:       $gray-600;
+$sidebar-nav-link-active-bg:          darken($sidebar-bg, 5%) !default;
+$sidebar-nav-link-active-icon-color:  $light-blue;
