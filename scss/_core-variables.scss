@@ -40,7 +40,18 @@ $sidebar-nav-link-hover-color:        $white;
 $sidebar-nav-link-hover-bg:           $dark-blue;
 $sidebar-nav-link-hover-icon-color:   $white;
 $sidebar-nav-link-active-color:       $gray-600;
-$sidebar-nav-link-active-bg:          darken($sidebar-bg, 5%) !default;
+$sidebar-nav-link-active-bg:          darken($sidebar-bg, 5%);
 $sidebar-nav-link-active-icon-color:  $light-blue;
-$aside-menu-color:                    $gray-200 !default;
-$aside-menu-bg:                       $gray-800 !default;
+$aside-menu-color:                    $gray-100;
+$aside-menu-bg:                       $gray-800;
+$footer-bg:                           $black;
+$footer-color:                        $gray-100;
+$footer-borders: (
+	top: (
+	  size:                             1px,
+	  style:                            solid,
+	  color:                            $gray-600
+	)
+  ) !default;
+
+$card-body-color: $gray-100;

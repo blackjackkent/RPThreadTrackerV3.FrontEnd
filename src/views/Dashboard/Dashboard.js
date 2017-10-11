@@ -61,7 +61,7 @@ class Dashboard extends Component {
 										<tr>
 											<td>
 												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small text-muted">
+												<div className="small ">
 													Last Post by <a href="#">theshadowoflavellan</a>
 												</div>
 											</td>
@@ -73,7 +73,7 @@ class Dashboard extends Component {
 										<tr>
 											<td>
 												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small text-muted">
+												<div className="small ">
 													Last Post by <a href="#">theshadowoflavellan</a>
 												</div>
 											</td>
@@ -85,7 +85,7 @@ class Dashboard extends Component {
 										<tr>
 											<td>
 												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small text-muted">
+												<div className="small ">
 													Last Post by <a href="#">theshadowoflavellan</a>
 												</div>
 											</td>
@@ -97,7 +97,7 @@ class Dashboard extends Component {
 										<tr>
 											<td>
 												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small text-muted">
+												<div className="small ">
 													Last Post by <a href="#">theshadowoflavellan</a>
 												</div>
 											</td>
@@ -109,7 +109,7 @@ class Dashboard extends Component {
 										<tr>
 											<td>
 												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small text-muted">
+												<div className="small ">
 													Last Post by <a href="#">theshadowoflavellan</a>
 												</div>
 											</td>

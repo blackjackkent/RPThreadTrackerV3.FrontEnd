@@ -5,15 +5,15 @@
 //
 
 $white:                           #fff;
-$gray-100:                        #f0f3f5;
-$gray-200:                        #c2cfd6;
-$gray-300:                        #a4b7c1;
-$gray-400:                        #869fac;
-$gray-500:                        #678898;
-$gray-600:                        #536c79;
-$gray-700:                        #3e515b;
-$gray-800:                        #29363d;
-$gray-900:                        #151b1e;
+$gray-100:                        #ddd;
+$gray-200:                        #bbb;
+$gray-300:                        #999;
+$gray-400:                        #777;
+$gray-500:                        #666;
+$gray-600:                        #555;
+$gray-700:                        #444;
+$gray-800:                        #333;
+$gray-900:                        #111;
 $black:                           #000 !default;
 
 $blue:                            #418ce4;
@@ -65,8 +65,7 @@ $enable-rounded:                  false;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                         #e4e5e6;
-
+$body-bg:                         $gray-700;
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -75,12 +74,22 @@ $font-size-base:                  0.875rem;
 
 // Breadcrumbs
 
-$breadcrumb-bg:                   #fff;
+$breadcrumb-bg:                   $black;
+$breadcrumb-divider-color:      $gray-100;
+$breadcrumb-active-color:       $gray-100;
+$breadcrumb-borders: (
+	bottom: (
+	  size:                             1px,
+	  style:                            solid,
+	  color:                            $gray-600
+	)
+  ) !default;
 
 // Cards
 
-$card-border-color:               $gray-200;
-$card-cap-bg:                     $gray-100;
+$card-bg: 							$gray-800;
+$card-border-color:               $gray-600;
+$card-cap-bg:                     $gray-900;
 
 // Dropdowns
 

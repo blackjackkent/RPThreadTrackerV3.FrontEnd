@@ -43,11 +43,11 @@ class DashboardSummaryWidget extends Component {
 		return (
 			<Card className={classes} {...attributes}>
 				<CardBlock className="card-body">
-					<div className="h1 text-muted text-right mb-2">
+					<div className="h1  text-right mb-2">
 						<i className={card.icon}></i>
 					</div>
 					<div className="h4 mb-0">{header}</div>
-					<small className="text-muted text-uppercase font-weight-bold">{children}</small>
+					<small className=" text-uppercase font-weight-bold">{children}</small>
 					<Progress className={progress.style} color={progress.color} value={progress.value} />
 				</CardBlock>
 			</Card>
