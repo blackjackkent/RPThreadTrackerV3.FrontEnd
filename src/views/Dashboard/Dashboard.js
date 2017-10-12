@@ -6,6 +6,7 @@ import {
 import classnames from "classnames";
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
+import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
 
 class Dashboard extends Component {
 
@@ -40,25 +41,7 @@ class Dashboard extends Component {
 						<RecentActivityCard />
 					</Col>
 					<Col md="6" sm="12">
-						<Card className="your-characters-card">
-							<CardHeader>
-								<i className="fa fa-users"></i> Your Characters
-							</CardHeader>
-							<CardBlock className="card-body">
-								<Table>
-									<tbody>
-										<tr>
-											<td>
-												Unnamed Character
-											</td>
-											<td>
-												<a href="#">Edit</a>
-											</td>
-										</tr>
-									</tbody>
-								</Table>
-							</CardBlock>
-						</Card>
+						<YourCharactersCard />
 					</Col>
 				</Row>
 				<Row>
