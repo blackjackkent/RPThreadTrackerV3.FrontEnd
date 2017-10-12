@@ -24,18 +24,12 @@ class Header extends Component {
 		};
 	}
 
-	toggle() {
-		this.setState({
-			dropdownOpen: !this.state.dropdownOpen
-		});
-	}
-
-	sidebarToggle(e) {
+	static sidebarToggle(e) {
 		e.preventDefault();
 		document.body.classList.toggle('sidebar-hidden');
 	}
 
-	asideToggle(e) {
+	static asideToggle(e) {
 		e.preventDefault();
 		document.body.classList.toggle('aside-menu-hidden');
 	}
@@ -46,27 +40,32 @@ class Header extends Component {
 		});
 	}
 
-	sidebarMinimize(e) {
+	static sidebarMinimize(e) {
 		e.preventDefault();
 		document.body.classList.toggle('sidebar-minimized');
 	}
 
-	mobileSidebarToggle(e) {
+	static mobileSidebarToggle(e) {
 		e.preventDefault();
 		document.body.classList.toggle('sidebar-mobile-show');
 	}
 
-	asideToggle(e) {
-		e.preventDefault();
-		document.body.classList.toggle('aside-menu-hidden');
+	toggle() {
+		this.setState({
+			dropdownOpen: !this.state.dropdownOpen
+		});
 	}
 
 	render() {
 		return (
 			<header className="app-header navbar">
-				<NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>&#9776;</NavbarToggler>
+				<NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>
+					&#9776;
+				</NavbarToggler>
 				<NavbarBrand href="#"></NavbarBrand>
-				<NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>&#9776;</NavbarToggler>
+				<NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>
+					&#9776;
+				</NavbarToggler>
 				<Nav className="ml-auto" navbar>
 					<NavItem className="d-md-down-none">
 						<NavLink href="#" onClick={this.asideToggle}>
