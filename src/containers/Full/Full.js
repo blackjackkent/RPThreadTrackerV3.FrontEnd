@@ -8,7 +8,7 @@ import Aside from '../../components/shared/Aside';
 import Footer from '../../components/shared/Footer';
 
 import Dashboard from '../../views/Dashboard/';
-import Threads from '../../views/Threads/';
+import Threads from '../../views/Threads/Threads';
 
 class Full extends Component {
 	render() {
