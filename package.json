@@ -36,6 +36,7 @@
 		"webpack-dev-server": "^2.7.1"
 	},
 	"dependencies": {
+		"axios": "^0.16.2",
 		"bootstrap": "^4.0.0-beta",
 		"chart.js": "2.6.0",
 		"font-awesome": "^4.7.0",
@@ -48,6 +49,7 @@
 		"react-transition-group": "^1.2.0",
 		"reactstrap": "^4.8.0",
 		"redux": "^3.7.2",
+		"redux-thunk": "^2.2.0",
 		"simple-line-icons": "^2.4.1"
 	},
 	"scripts": {

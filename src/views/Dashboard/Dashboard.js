@@ -6,7 +6,7 @@ import {
 import classnames from "classnames";
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
-import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
+import YourCharactersCard from '../../characters/components/YourCharactersCard';
 
 class Dashboard extends Component {
 
