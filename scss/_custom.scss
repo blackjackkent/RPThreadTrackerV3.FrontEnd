@@ -7,21 +7,37 @@
 .aside-menu .callout .badge {position: absolute; right: 30px; bottom: 15px;}
 .card {	color: $card-body-color;}
 .card a { color: $base-blue; }
+.switch-info > .switch-input:checked ~ .switch-label { background: $base-blue !important; border-color: $dark-blue;}
 
-/***** DASHBOARD *****/
+// /***** DASHBOARD *****/
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
-.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border-top: none; }
-.dashboard-container .at-a-glance-card > .card-body .card:first-child { border-left: none;}
-.dashboard-container .at-a-glance-card > .card-body .card:last-child { border-right: none;}
-.dashboard-container .recent-activity-card,
-.dashboard-container .your-characters-card { height: 400px;}
-.dashboard-container .recent-activity-card .table tr:first-child td,
-.dashboard-container .your-characters-card .table tr:first-child td { border-top: none;}
+.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; }
+// .dashboard-container .recent-activity-card,
+// .dashboard-container .your-characters-card { height: 400px;}
+.dashboard-container .recent-activity-card .row { padding: 12px 0;}
 
-.dashboard-container .random-thread-generator-card,
-.dashboard-container .patreon-card { height: 185px;}
+// .dashboard-container .random-thread-generator-card,
+// .dashboard-container .patreon-card { height: 185px;}
 .dashboard-container .random-thread-generator-card .card-body,
 .dashboard-container .patreon-card .card-body {  text-align: center; }
 .dashboard-container .patreon-card a {color: $white}
 
-.switch-info > .switch-input:checked ~ .switch-label { background: $base-blue !important; border-color: $dark-blue;}
+
+@include media-breakpoint-up(xs) {
+	// above 576px
+}
+@include media-breakpoint-up(sm) {
+	// above 768px
+	.dashboard-container .at-a-glance-card > .card-body .card { border-left: 1px solid $gray-800;}
+	.dashboard-container .at-a-glance-card > .card-body .card:first-child { border-left: none;}
+	.dashboard-container .at-a-glance-card > .card-body .card:last-child { border-right: none;}
+}
+@include media-breakpoint-up(md) { 
+	// above 992px
+}
+@include media-breakpoint-up(lg) { 
+	// above 1200px
+}
+@include media-breakpoint-up(xl) { 
+	// 1200px and over
+}

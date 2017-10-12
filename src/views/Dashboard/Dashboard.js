@@ -4,7 +4,8 @@ import {
 	Table, Badge, Label, Input
 } from "reactstrap";
 import classnames from "classnames";
-import AtAGlanceCard from '../../components/dashboard/AtAGlanceCard';
+import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
+import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 
 class Dashboard extends Component {
 
@@ -28,80 +29,15 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div className="animated fadeIn dashboard-container">
-				<AtAGlanceCard />
 				<Row>
-					<Col md="6">
-						<Card className="recent-activity-card">
-							<CardHeader>
-								<i className="fa fa-align-justify"></i> Recent Activity
-							</CardHeader>
-							<CardBlock className="card-body">
-								<Table responsive>
-									<tbody>
-										<tr>
-											<td>
-												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small ">
-													Last Post by <a href="#">theshadowoflavellan</a>
-												</div>
-											</td>
-											<td>
-												<div>Apr 22, 2017 1:22:11 PM </div>
-												<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small ">
-													Last Post by <a href="#">theshadowoflavellan</a>
-												</div>
-											</td>
-											<td>
-												<div>Apr 22, 2017 1:22:11 PM </div>
-												<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small ">
-													Last Post by <a href="#">theshadowoflavellan</a>
-												</div>
-											</td>
-											<td>
-												<div>Apr 22, 2017 1:22:11 PM </div>
-												<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small ">
-													Last Post by <a href="#">theshadowoflavellan</a>
-												</div>
-											</td>
-											<td>
-												<div>Apr 22, 2017 1:22:11 PM </div>
-												<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
-												<div className="small ">
-													Last Post by <a href="#">theshadowoflavellan</a>
-												</div>
-											</td>
-											<td>
-												<div>Apr 22, 2017 1:22:11 PM </div>
-												<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
-											</td>
-										</tr>
-									</tbody>
-								</Table>
-							</CardBlock>
-						</Card>
+					<Col>
+						<AtAGlanceCard />
+
+					</Col>
+				</Row>
+				<Row>
+					<Col md="6" sm="12" >
+						<RecentActivityCard />
 					</Col>
 					<Col md="6">
 						<Card className="your-characters-card">

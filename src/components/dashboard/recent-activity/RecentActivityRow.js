@@ -1,0 +1,40 @@
+import React, { Component } from "react";
+import PropTypes from 'prop-types';
+import { Row, Col } from 'reactstrap';
+
+const propTypes = {
+};
+
+const defaultProps = {
+};
+
+class RecentActivityRow extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {};
+	}
+
+	render() {
+		return (
+			<Row>
+				<Col xs="12" lg="6">
+					<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
+					<div className="small ">
+						Last Post by <a href="#">theshadowoflavellan</a>
+					</div>
+				</Col>
+				<Col lg="3" xs="12">
+					<div>Apr 22, 2017 1:22:11 PM </div>
+				</Col>
+				<Col lg="3" xs="12">
+					<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
+				</Col>
+			</Row>
+		)
+	}
+}
+
+RecentActivityRow.propTypes = propTypes;
+RecentActivityRow.defaultProps = defaultProps;
+
+export default RecentActivityRow;
