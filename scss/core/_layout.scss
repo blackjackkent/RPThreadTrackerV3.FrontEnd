@@ -195,14 +195,8 @@ app-root {
   }
 
   .main, .app-footer {
-    margin-right: $aside-menu-width;
-  }
 
-  &.aside-menu-hidden {
-
-    .main, .app-footer {
       margin-right: 0;
-    }
   }
 }
 

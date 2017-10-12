@@ -17,16 +17,14 @@ class RecentActivityRow extends Component {
 	render() {
 		return (
 			<Row>
-				<Col xs="12" lg="6">
+				<Col xs="12" sm="6">
 					<div><a href="#">Dom and Senkata (theshadowoflavellan)</a></div>
 					<div className="small ">
 						Last Post by <a href="#">theshadowoflavellan</a>
 					</div>
 				</Col>
-				<Col lg="3" xs="12">
+				<Col sm="6" xs="12">
 					<div>Apr 22, 2017 1:22:11 PM </div>
-				</Col>
-				<Col lg="3" xs="12">
 					<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
 				</Col>
 			</Row>
