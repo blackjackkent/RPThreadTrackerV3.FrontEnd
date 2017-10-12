@@ -10,8 +10,8 @@ import 'simple-line-icons/css/simple-line-icons.css';
 import '../scss/style.scss';
 
 // Containers
-import Full from './containers/Full/';
-import Login from './views/Login/';
+import Full from './containers/Full/Full';
+import Login from './views/Login/Login';
 
 class App extends Component {
 	render() {

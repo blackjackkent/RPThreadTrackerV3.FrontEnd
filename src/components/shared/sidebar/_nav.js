@@ -7,11 +7,11 @@ export default {
 		}, {
 			title: true,
 			name: 'Threads',
-			wrapper: {            // optional wrapper object
-				element: 'span',        // required valid HTML5 element tag
-				attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
+			wrapper: {
+				element: 'span',
+				attributes: {}
 			},
-			class: ''             // optional class names space delimited list for title item ex: "text-center"
+			class: ''
 		},
 		{
 			name: 'All Threads',
@@ -40,11 +40,11 @@ export default {
 		}, {
 			title: true,
 			name: 'Manage',
-			wrapper: {            // optional wrapper object
-				element: 'span',        // required valid HTML5 element tag
-				attributes: {}        // optional valid JS object with JS API naming ex: { className: "my-class", style: { fontFamily: "Verdana" }, id: "my-id"}
+			wrapper: {
+				element: 'span',
+				attributes: {}
 			},
-			class: ''             // optional class names space delimited list for title item ex: "text-center"
+			class: ''
 		}, {
 			name: 'Characters',
 			url: '/manage-characters',
