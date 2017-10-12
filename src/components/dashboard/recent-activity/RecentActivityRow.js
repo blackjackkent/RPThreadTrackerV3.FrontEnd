@@ -23,7 +23,7 @@ class RecentActivityRow extends Component {
 						Last Post by <a href="#">theshadowoflavellan</a>
 					</div>
 				</Col>
-				<Col sm="6" xs="12">
+				<Col sm="6" xs="12" className="text-right">
 					<div>Apr 22, 2017 1:22:11 PM </div>
 					<div className="small"><a href="#">Untrack</a> &bull; <a href="#">Archive</a> &bull; <a href="#">Mark Queued</a></div>
 				</Col>

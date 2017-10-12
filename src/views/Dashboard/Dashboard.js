@@ -39,7 +39,7 @@ class Dashboard extends Component {
 					<Col md="6" sm="12" >
 						<RecentActivityCard />
 					</Col>
-					<Col md="6">
+					<Col md="6" sm="12">
 						<Card className="your-characters-card">
 							<CardHeader>
 								<i className="fa fa-users"></i> Your Characters

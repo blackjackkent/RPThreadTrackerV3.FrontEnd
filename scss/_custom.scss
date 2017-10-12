@@ -12,8 +12,9 @@
 // /***** DASHBOARD *****/
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
 .dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; }
-.dashboard-container .recent-activity-card .row { padding: 12px 0;}
+.dashboard-container .recent-activity-card .row { padding: 12px 0; border-bottom: 1px solid $gray-800; }
 .dashboard-container .recent-activity-card .row:first-child { padding-top: 0 }
+.dashboard-container .recent-activity-card .row:last-child { border-bottom: none;}
 
 // .dashboard-container .random-thread-generator-card,
 // .dashboard-container .patreon-card { height: 185px;}
@@ -33,6 +34,9 @@
 }
 @include media-breakpoint-up(md) { 
 	// above 992px
+	
+	.dashboard-container .recent-activity-card,
+	.dashboard-container .your-characters-card { height: 400px; overflow: auto;}
 }
 @include media-breakpoint-up(lg) { 
 	// above 1200px
