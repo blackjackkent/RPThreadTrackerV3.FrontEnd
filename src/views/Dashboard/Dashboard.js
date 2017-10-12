@@ -4,7 +4,7 @@ import {
 	Table, Badge, Label, Input
 } from "reactstrap";
 import classnames from "classnames";
-import DashboardSummaryWidget from '../../components/DashboardSummaryWidget/DashboardSummaryWidget';
+import AtAGlanceCard from '../../components/dashboard/AtAGlanceCard';
 
 class Dashboard extends Component {
 
@@ -28,27 +28,7 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div className="animated fadeIn dashboard-container">
-				<Row><Col>
-					<Card className="at-a-glance-card">
-						<CardHeader>
-							At a Glance
-                			<Label className="switch switch-sm switch-text switch-info float-right mb-0">
-								<Input type="checkbox" className="switch-input" />
-								<span className="switch-label" data-on="On" data-off="Off"></span>
-								<span className="switch-handle"></span>
-							</Label>
-						</CardHeader>
-						<CardBlock className="card-body">
-							<CardGroup>
-								<DashboardSummaryWidget icon="icon-pencil" color="info" header="35">Your Turn</DashboardSummaryWidget>
-								<DashboardSummaryWidget icon="icon-check" color="success" header="15">Their Turn</DashboardSummaryWidget>
-								<DashboardSummaryWidget icon="icon-list" color="warning" header="53">All Threads</DashboardSummaryWidget>
-								<DashboardSummaryWidget icon="icon-drawer" color="primary" header="135">Archived</DashboardSummaryWidget>
-								<DashboardSummaryWidget icon="icon-calendar" color="danger" header="3">Queued</DashboardSummaryWidget>
-							</CardGroup>
-						</CardBlock>
-					</Card>
-				</Col></Row>
+				<AtAGlanceCard />
 				<Row>
 					<Col md="6">
 						<Card className="recent-activity-card">
@@ -123,7 +103,7 @@ class Dashboard extends Component {
 							</CardBlock>
 						</Card>
 					</Col>
-					<Col md="3">
+					<Col md="6">
 						<Card className="your-characters-card">
 							<CardHeader>
 								<i className="fa fa-users"></i> Your Characters
@@ -144,8 +124,9 @@ class Dashboard extends Component {
 							</CardBlock>
 						</Card>
 					</Col>
-
-					<Col md="3">
+				</Row>
+				<Row>
+					<Col md="6">
 						<Card className="random-thread-generator-card">
 							<CardHeader>
 								<i className="fa fa-random"></i> Random Thread Generator
@@ -155,6 +136,8 @@ class Dashboard extends Component {
 								<button className="btn btn-primary">Generate</button>
 							</CardBlock>
 						</Card>
+					</Col>
+					<Col md="6">
 						<Card className="patreon-card">
 							<CardHeader>
 								<i className="fa fa-dollar"></i> Support Tracker Development
@@ -173,7 +156,7 @@ class Dashboard extends Component {
 						</Card>
 					</Col>
 				</Row>
-			</div>
+			</div >
 		)
 	}
 }

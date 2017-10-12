@@ -3,13 +3,16 @@
 .app-header.navbar { padding-right: 30px; }
 .breadcrumb a { color: $light-blue}
 .footer a { color: $light-blue}
+.aside-menu a { color: $light-blue; }
 .aside-menu .callout .badge {position: absolute; right: 30px; bottom: 15px;}
 .card {	color: $card-body-color;}
-.card a { color: $light-blue; }
+.card a { color: $base-blue; }
 
 /***** DASHBOARD *****/
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
 .dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border-top: none; }
+.dashboard-container .at-a-glance-card > .card-body .card:first-child { border-left: none;}
+.dashboard-container .at-a-glance-card > .card-body .card:last-child { border-right: none;}
 .dashboard-container .recent-activity-card,
 .dashboard-container .your-characters-card { height: 400px;}
 .dashboard-container .recent-activity-card .table tr:first-child td,

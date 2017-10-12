@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import Header from '../../components/Header/';
-import Sidebar from '../../components/Sidebar/';
-import Breadcrumb from '../../components/Breadcrumb/';
-import Aside from '../../components/Aside/';
-import Footer from '../../components/Footer/';
+import Header from '../../components/shared/Header';
+import Sidebar from '../../components/shared/sidebar/Sidebar';
+import Breadcrumb from '../../components/shared/Breadcrumb';
+import Aside from '../../components/shared/Aside';
+import Footer from '../../components/shared/Footer';
 
 import Dashboard from '../../views/Dashboard/';
 import Threads from '../../views/Threads/';
