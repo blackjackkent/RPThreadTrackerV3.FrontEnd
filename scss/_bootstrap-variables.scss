@@ -65,7 +65,7 @@ $enable-rounded:                  false;
 //
 // Settings for the `<body>` element.
 
-$body-bg:                         $gray-700;
+$body-bg:                         $gray-800;
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
@@ -74,7 +74,7 @@ $font-size-base:                  0.875rem;
 
 // Breadcrumbs
 
-$breadcrumb-bg:                   $black;
+$breadcrumb-bg:                   $gray-900;
 $breadcrumb-divider-color:      $gray-100;
 $breadcrumb-active-color:       $gray-100;
 $breadcrumb-borders: (
@@ -87,9 +87,9 @@ $breadcrumb-borders: (
 
 // Cards
 
-$card-bg: 							$gray-800;
-$card-border-color:               $gray-600;
-$card-cap-bg:                     $gray-900;
+$card-bg: 							$gray-900;
+$card-border-color:               $gray-800;
+$card-cap-bg:                     $black;
 
 // Dropdowns
 

@@ -1,7 +1,7 @@
 // core overrides
 $base-blue: 			#418ce4;
-$light-blue:			#75c6f3;
-$dark-blue: 			#185aa7;
+$light-blue:			#95C6FF;
+$dark-blue: 			#3A7DCC;
 
 $navbar-bg:				$base-blue;
 $navbar-border: (
@@ -43,8 +43,8 @@ $sidebar-nav-link-active-color:       $gray-600;
 $sidebar-nav-link-active-bg:          darken($sidebar-bg, 5%);
 $sidebar-nav-link-active-icon-color:  $light-blue;
 $aside-menu-color:                    $gray-100;
-$aside-menu-bg:                       $gray-800;
-$footer-bg:                           $black;
+$aside-menu-bg:                       $gray-900;
+$footer-bg:                           $gray-900;
 $footer-color:                        $gray-100;
 $footer-borders: (
 	top: (

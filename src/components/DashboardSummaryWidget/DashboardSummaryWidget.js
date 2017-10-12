@@ -48,7 +48,7 @@ class DashboardSummaryWidget extends Component {
 					</div>
 					<div className="h4 mb-0">{header}</div>
 					<small className=" text-uppercase font-weight-bold">{children}</small>
-					<Progress className={progress.style} color={progress.color} value={progress.value} />
+					<Progress className={progress.style} color="#95C6FF" value={progress.value} />
 				</CardBlock>
 			</Card>
 		)
