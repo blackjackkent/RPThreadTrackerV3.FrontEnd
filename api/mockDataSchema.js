@@ -46,7 +46,7 @@ export const schema = {
 					},
 					"lastPostDate": {
 						"type": "Date",
-						"faker": "date.recent"
+						"faker": "date.past"
 					},
 					"lastPostUrl": {
 						"type": "string",

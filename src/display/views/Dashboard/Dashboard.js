@@ -8,36 +8,50 @@ import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard'
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
 import { fetchCharactersIfNeeded } from '../../../state/characters/actions';
+import { toggleHasDashboardAtAGlanceHidden, fetchUserIfNeeded } from '../../../state/user/actions';
 
 const propTypes = {
-	characters: PropTypes.shape({
-		items: PropTypes.arrayOf(PropTypes.shape({
-			characterName: PropTypes.string,
-			urlIdentifier: PropTypes.string.isRequired,
-			isOnHiatus: PropTypes.bool.isRequired
-		}))
+	characters: PropTypes.shape({}).isRequired,
+	user: PropTypes.shape({
+		settings: PropTypes.shape({
+			hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired
+		})
 	}).isRequired,
 	dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-	const { characters } = state;
-	return { characters };
+	const { characters, user } = state;
+	return { characters, user };
 }
 
 class Dashboard extends Component {
+	constructor(props) {
+		super(props);
+		this.hasDashboardAtAGlanceHiddenToggle = this.hasDashboardAtAGlanceHiddenToggle.bind(this);
+	}
+
 	componentDidMount() {
 		const { dispatch } = this.props;
 		dispatch(fetchCharactersIfNeeded());
+		dispatch(fetchUserIfNeeded());
+	}
+
+	hasDashboardAtAGlanceHiddenToggle() {
+		const { dispatch } = this.props;
+		dispatch(toggleHasDashboardAtAGlanceHidden());
 	}
 
 	render() {
-		const { characters } = this.props;
+		const { characters, user } = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
 				<Row>
 					<Col>
-						<AtAGlanceCard />
+						<AtAGlanceCard
+							hasDashboardAtAGlanceHidden={user.settings.hasDashboardAtAGlanceHidden}
+							hasDashboardAtAGlanceHiddenToggle={this.hasDashboardAtAGlanceHiddenToggle}
+						/>
 					</Col>
 				</Row>
 				<Row>

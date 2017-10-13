@@ -11,7 +11,7 @@ const propTypes = {
 	item: PropTypes.shape({
 		id: PropTypes.number,
 		userTitle: PropTypes.string.isRequired,
-		lastPostDate: PropTypes.instanceOf(Date).isRequired
+		lastPostDate: PropTypes.string.isRequired
 	}).isRequired
 };
 

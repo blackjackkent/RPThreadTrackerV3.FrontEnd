@@ -9,7 +9,7 @@ const propTypes = {
 		items: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.number,
 			userTitle: PropTypes.string.isRequired,
-			lastPostDate: PropTypes.instanceOf(Date).isRequired
+			lastPostDate: PropTypes.string.isRequired
 		}))
 	}).isRequired,
 	dispatch: PropTypes.func.isRequired
