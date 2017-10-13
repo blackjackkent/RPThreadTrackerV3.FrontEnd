@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
-import YourCharactersCard from '../../characters/components/YourCharactersCard';
+import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
 
 const Dashboard = () => (
 	<div className="animated fadeIn dashboard-container">

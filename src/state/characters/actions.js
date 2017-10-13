@@ -37,7 +37,7 @@ function fetchCharacters() {
 	return (dispatch) => {
 		dispatch(requestCharacters());
 		return axios.get('http://localhost:3001/characters')
-			.then(response => response.json())
+			.then(response => response.data)
 			.then(json => dispatch(receiveCharacters(json)));
 	};
 }

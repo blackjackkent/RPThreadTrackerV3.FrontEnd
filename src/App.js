@@ -10,8 +10,8 @@ import 'simple-line-icons/css/simple-line-icons.css';
 import '../scss/style.scss';
 
 // Containers
-import Full from './containers/Full/Full';
-import Login from './views/Login/Login';
+import Full from './display/containers/Full/Full';
+import Login from './display/views/Login/Login';
 
 const App = () => (
 	<BrowserRouter>

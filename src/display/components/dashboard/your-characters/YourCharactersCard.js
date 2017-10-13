@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, CardHeader, CardBlock, Table } from 'reactstrap';
 
-import { fetchCharactersIfNeeded } from '../actions';
+import { fetchCharactersIfNeeded } from '../../../../state/characters/actions';
 
 const propTypes = {
 	items: PropTypes.arrayOf(PropTypes.shape({
@@ -16,12 +16,8 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const { characters } = state;
-	const {
-		items
-	} = characters || { items: [] };
-	return {
-		items
-	};
+	const { items } = characters || { items: [] };
+	return { items };
 }
 
 class YourCharactersCard extends Component {

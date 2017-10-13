@@ -67,7 +67,7 @@
 		"build": "webpack -p --progress --env.prod",
 		"clean": "rimraf ./build",
 		"lint": "eslint src/",
-		"lint:watch": "esw src/ -w --cache",
+		"lint:watch": "esw src/ -w",
 		"generate-mock-data": "babel-node ./api/generateMockData.js",
 		"prestart-mockapi": "npm run generate-mock-data",
 		"start-mockapi": "json-server --watch api/db.json --port 3001"
