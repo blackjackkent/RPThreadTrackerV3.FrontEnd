@@ -45,7 +45,7 @@ class Dashboard extends Component {
 						<RecentActivityCard />
 					</Col>
 					<Col md="6" sm="12">
-						<YourCharactersCard characters={characters} />
+						<YourCharactersCard characters={characters.items} />
 					</Col>
 				</Row>
 				<Row>

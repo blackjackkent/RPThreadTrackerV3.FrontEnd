@@ -47,8 +47,16 @@ export const schema = {
 					"lastPostDate": {
 						"type": "Date",
 						"faker": "date.recent"
+					},
+					"lastPostUrl": {
+						"type": "string",
+						"faker": "internet.url"
+					},
+					"isNew": {
+						"type": "boolean"
 					}
-				}
+				},
+				"required": ["id", "userTitle", "lastPostDate", "lastPostUrl", "isNew"]
 			}
 		}
 	},

@@ -4,19 +4,16 @@ import { Card, CardHeader, CardBlock, Table } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
 
 const propTypes = {
-	characters: PropTypes.shape({
-		items: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.number.isRequired,
-			characterName: PropTypes.string,
-			urlIdentifier: PropTypes.string.isRequired,
-			isOnHiatus: PropTypes.bool.isRequired
-		}))
-	}).isRequired
+	characters: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		characterName: PropTypes.string,
+		urlIdentifier: PropTypes.string.isRequired,
+		isOnHiatus: PropTypes.bool.isRequired
+	})).isRequired
 };
 
 const YourCharactersCard = (props) => {
 	const { characters } = props;
-	const { items } = characters;
 	return (
 		<Card className="your-characters-card">
 			<CardHeader>
@@ -25,7 +22,7 @@ const YourCharactersCard = (props) => {
 			<CardBlock className="card-body">
 				<Table>
 					<tbody>
-						{items.map(item => <YourCharactersCardRow item={item} key={item.id} />)}
+						{characters.map(item => <YourCharactersCardRow item={item} key={item.id} />)}
 					</tbody>
 				</Table>
 			</CardBlock>

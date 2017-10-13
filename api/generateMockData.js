@@ -3,11 +3,17 @@ import { schema } from './mockDataSchema';
 import fs from 'fs';
 import chalk from 'chalk';
 
+import loggedInUser from './loggedInUser';
+
 jsf.extend('faker', function () {
 	return require('faker');
 });
 jsf.resolve(schema).then(function (result) {
-	fs.writeFile("./api/db.json", JSON.stringify(result), function (err) {
+	var destructured = {
+		...result,
+		...loggedInUser
+	};
+	fs.writeFile("./api/db.json", JSON.stringify(destructured), function (err) {
 		if (err) {
 			return console.log(chalk.red(err));
 		} else {

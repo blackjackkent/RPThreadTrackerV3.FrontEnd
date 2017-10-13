@@ -4,7 +4,7 @@ import { Container } from 'reactstrap';
 import HeaderContainer from '../../components/shared/header/HeaderContainer';
 import Sidebar from '../../components/shared/sidebar/Sidebar';
 import Breadcrumb from '../../components/shared/Breadcrumb';
-import Aside from '../../components/shared/Aside';
+import AsideContainer from '../../components/shared/aside/AsideContainer';
 import Footer from '../../components/shared/Footer';
 
 import Dashboard from '../../views/Dashboard/Dashboard';
@@ -25,7 +25,7 @@ const Full = props => (
 					</Switch>
 				</Container>
 			</main>
-			<Aside />
+			<AsideContainer />
 		</div>
 		<Footer />
 	</div>
