@@ -17,7 +17,6 @@ $navbar-brand-border: (
 	  	color:			transparent
 	)
 );
-$navbar-brand-logo:		url('../img/logo.png');
 $navbar-color:			$gray-100;
 $navbar-active-color:	$white;
 $navbar-hover-color:	$light-blue;
@@ -55,3 +54,4 @@ $footer-borders: (
   ) !default;
 
 $card-body-color: $gray-100;
+$progress-bar-color:            $base-blue;

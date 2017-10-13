@@ -31,7 +31,7 @@ const Header = (props) => {
 			<NavbarToggler className="d-lg-none" onClick={mobileSidebarToggle}>
 				&#9776;
 			</NavbarToggler>
-			<NavbarBrand href="#" />
+			<NavbarBrand href="/">RPTHREADTRACKER</NavbarBrand>
 			<NavbarToggler className="d-md-down-none mr-auto" onClick={sidebarToggle}>
 				&#9776;
 			</NavbarToggler>
