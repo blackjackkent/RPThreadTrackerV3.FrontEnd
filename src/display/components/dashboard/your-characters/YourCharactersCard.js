@@ -16,7 +16,10 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const { characters } = state;
-	const { items } = characters || { items: [] };
+	let { items } = characters;
+	if (!items || !items.length) {
+		items = [];
+	}
 	return { items };
 }
 

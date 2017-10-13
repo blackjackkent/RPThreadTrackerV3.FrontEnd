@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import Header from '../../components/shared/Header';
+import Header from '../../components/shared/header/Header';
 import Sidebar from '../../components/shared/sidebar/Sidebar';
 import Breadcrumb from '../../components/shared/Breadcrumb';
 import Aside from '../../components/shared/Aside';

@@ -5,11 +5,9 @@ import {
 } from './actions';
 
 function characters(state = {
-	characters: {
-		isFetching: false,
-		didInvalidate: false,
-		items: []
-	}
+	isFetching: false,
+	didInvalidate: false,
+	items: []
 }, action) {
 	switch (action.type) {
 		case INVALIDATE_CHARACTERS:
@@ -20,19 +18,15 @@ function characters(state = {
 			});
 		case REQUEST_CHARACTERS:
 			return Object.assign({}, state, {
-				characters: {
-					isFetching: true,
-					didInvalidate: false,
-					items: []
-				}
+				isFetching: true,
+				didInvalidate: false,
+				items: []
 			});
 		case RECEIVE_CHARACTERS:
 			return Object.assign({}, state, {
-				characters: {
-					isFetching: false,
-					didInvalidate: false,
-					items: action.data
-				}
+				isFetching: false,
+				didInvalidate: false,
+				items: action.data
 			});
 		default:
 			return state;
