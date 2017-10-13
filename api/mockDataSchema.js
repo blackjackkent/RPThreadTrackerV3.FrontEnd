@@ -27,7 +27,30 @@ export const schema = {
 				},
 				"required": ["id", "urlIdentifier", "isOnHiatus"]
 			}
+		},
+		"news": {
+			"type": "array",
+			"minItems": 5,
+			"maxItems": 5,
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "number",
+						"unique": true,
+						"minimum": 1
+					},
+					"userTitle": {
+						"type": "string",
+						"faker": "lorem.sentence"
+					},
+					"lastPostDate": {
+						"type": "Date",
+						"faker": "date.recent"
+					}
+				}
+			}
 		}
 	},
-	"required": ["characters"]
+	"required": ["characters", "news"],
 };

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Badge, Nav, NavItem } from 'reactstrap';
+import { Nav, NavItem } from 'reactstrap';
 import classNames from 'classnames';
 import nav from './_nav';
 
@@ -21,15 +21,6 @@ class Sidebar extends Component {
 	}
 
 	render() {
-		// badge addon to NavItem
-		const badge = (badgeData) => {
-			if (badgeData) {
-				const classes = classNames(badgeData.class);
-				return (<Badge className={classes} color={badgeData.variant}>{badgeData.text}</Badge>);
-			}
-			return null;
-		};
-
 		// simple wrapper for nav-title item
 		const wrapper = (item) => {
 			if (!item.wrapper) {
@@ -53,7 +44,7 @@ class Sidebar extends Component {
 			return (
 				<NavItem key={key}>
 					<NavLink to={item.url} className={classes} activeClassName="active">
-						<i className={item.icon} />{item.name}{badge(item.badge)}
+						<i className={item.icon} />{item.name}
 					</NavLink>
 				</NavItem>
 			);
