@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 // Styles
@@ -13,18 +13,14 @@ import '../scss/style.scss';
 import Full from './containers/Full/Full';
 import Login from './views/Login/Login';
 
-class App extends Component {
-	render() {
-		return (
-			<BrowserRouter>
-				<Switch>
-					<Route exact path="/login" name="Login Page" component={Login} />
-					<Route path="/" name="Home" component={Full} />
-					<Route path="/threads" name="Threads" component={Full} />
-				</Switch>
-			</BrowserRouter>
-		);
-	}
-}
+const App = () => (
+	<BrowserRouter>
+		<Switch>
+			<Route exact path="/login" name="Login Page" component={Login} />
+			<Route path="/" name="Home" component={Full} />
+			<Route path="/threads" name="Threads" component={Full} />
+		</Switch>
+	</BrowserRouter>
+);
 
 export default App;

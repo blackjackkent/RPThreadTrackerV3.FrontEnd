@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Card, CardHeader, CardBlock, Table } from 'reactstrap';
@@ -6,48 +6,43 @@ import { Card, CardHeader, CardBlock, Table } from 'reactstrap';
 import { fetchCharactersIfNeeded } from '../actions';
 
 const propTypes = {
-	items: PropTypes.array.isRequired,
-	isFetching: PropTypes.bool.isRequired,
-	lastUpdated: PropTypes.number,
+	items: PropTypes.arrayOf(PropTypes.shape({
+		characterName: PropTypes.string,
+		urlIdentifier: PropTypes.string.isRequired,
+		isOnHiatus: PropTypes.bool.isRequired
+	})).isRequired,
 	dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
 	const { characters } = state;
 	const {
-		isFetching,
-		lastUpdated,
 		items
-	} = characters || {
-			isFetching: true,
-			items: []
-		};
+	} = characters || { items: [] };
 	return {
-		items,
-		isFetching,
-		lastUpdated
-	}
+		items
+	};
 }
 
 class YourCharactersCard extends Component {
-	constructor(props) {
-		super(props);
-	}
-
 	componentDidMount() {
-		const { dispatch } = this.props
-		dispatch(fetchCharactersIfNeeded())
+		const { dispatch } = this.props;
+		dispatch(fetchCharactersIfNeeded());
 	}
 
 	render() {
-		const { items, isFetching, lastUpdated } = this.props;
-		const rows = items.map((item) =>
-			<tr key={item.id}><td>{item.characterName || "Unnamed Character"} (<a href="#">{item.urlIdentifier}</a>)</td><td><a href="#">Edit</a></td></tr>
-		);
+		const { items } = this.props;
+		const rows = items.map(item =>
+			(
+				<tr key={item.id}>
+					<td>{item.characterName || 'Unnamed Character'} (<a href="/url">{item.urlIdentifier}</a>)</td>
+					<td><a href="/edit">Edit</a></td>
+				</tr>
+			));
 		return (
 			<Card className="your-characters-card">
 				<CardHeader>
-					<i className="fa fa-users"></i> Your Characters
+					<i className="fa fa-users" /> Your Characters
 				</CardHeader>
 				<CardBlock className="card-body">
 					<Table>
@@ -57,7 +52,7 @@ class YourCharactersCard extends Component {
 					</Table>
 				</CardBlock>
 			</Card>
-		)
+		);
 	}
 }
 

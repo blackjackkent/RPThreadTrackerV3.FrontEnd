@@ -62,14 +62,14 @@ class Header extends Component {
 				<NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>
 					&#9776;
 				</NavbarToggler>
-				<NavbarBrand href="#"></NavbarBrand>
+				<NavbarBrand href="#" />
 				<NavbarToggler className="d-md-down-none mr-auto" onClick={this.sidebarToggle}>
 					&#9776;
 				</NavbarToggler>
 				<Nav className="ml-auto" navbar>
 					<NavItem className="d-md-down-none">
 						<NavLink href="#" onClick={this.asideToggle}>
-							<i className="icon-bell"></i>
+							<i className="icon-bell" />
 							<Badge pill color="danger">5</Badge>
 						</NavLink>
 					</NavItem>
@@ -79,13 +79,13 @@ class Header extends Component {
 								<span className="d-md-down-none">blackjackkent</span>
 							</DropdownToggle>
 							<DropdownMenu right className={this.state.dropdownOpen ? 'show' : ''}>
-								<DropdownItem><i className="fa fa-lock"></i> Logout</DropdownItem>
+								<DropdownItem><i className="fa fa-lock" /> Logout</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
 					</NavItem>
 				</Nav >
 			</header >
-		)
+		);
 	}
 }
 

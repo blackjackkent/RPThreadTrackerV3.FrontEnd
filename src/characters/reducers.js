@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import {
 	INVALIDATE_CHARACTERS,
 	REQUEST_CHARACTERS,
@@ -32,8 +31,7 @@ function characters(state = {
 				characters: {
 					isFetching: false,
 					didInvalidate: false,
-					items: action.data,
-					lastUpdated: action.receivedAt
+					items: action.data
 				}
 			});
 		default:

@@ -21,8 +21,6 @@ class Sidebar extends Component {
 	}
 
 	render() {
-		const { props, activeRoute, handleClick } = this;
-
 		// badge addon to NavItem
 		const badge = (badgeData) => {
 			if (badgeData) {
@@ -61,22 +59,6 @@ class Sidebar extends Component {
 			);
 		};
 
-		// nav list
-		// eslint-disable-next-line no-use-before-define
-		const navList = items => items.map((item, index) => navLink(item, index));
-
-		// nav dropdown
-		const navDropdown = (item, key) => (
-			<li key={key} className={activeRoute(item.url, props)}>
-				<a className="nav-link nav-dropdown-toggle" href="#" onClick={handleClick}>
-					<i className={item.icon} /> {item.name}
-				</a>
-				<ul className="nav-dropdown-items">
-					{navList(item.children)}
-				</ul>
-			</li>
-		);
-
 		// nav link
 		const navLink = (item, idx) => {
 			if (item.title) {
@@ -85,11 +67,12 @@ class Sidebar extends Component {
 			if (item.divider) {
 				return divider(item, idx);
 			}
-			if (item.children) {
-				return navDropdown(item, idx);
-			}
 			return navItem(item, idx);
 		};
+
+		// nav list
+		// eslint-disable-next-line no-use-before-define
+		const navList = items => items.map((item, index) => navLink(item, index));
 
 		// sidebar-nav root
 		return (
