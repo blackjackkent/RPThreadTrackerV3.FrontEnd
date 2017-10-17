@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 export const REQUEST_CHARACTERS = 'REQUEST_CHARACTERS';
-export const RECEIVE_CHARACTERS = 'RECEIVE_CHARACTERS';
+export const RECEIVE_CHARACTERS_SUCCESS = 'RECEIVE_CHARACTERS_SUCCESS';
+export const RECEIVE_CHARACTERS_FAILURE = 'RECEIVE_CHARACTERS_FAILURE';
 export const INVALIDATE_CHARACTERS = 'INVALIDATE_CHARACTERS';
 
 export function invalidateCharacters() {
@@ -10,9 +11,16 @@ export function invalidateCharacters() {
 	};
 }
 
-function receiveCharacters(json) {
+function receiveCharactersSuccess(json) {
 	return {
-		type: RECEIVE_CHARACTERS,
+		type: RECEIVE_CHARACTERS_SUCCESS,
+		data: json
+	};
+}
+
+function receiveCharactersSuccess(json) {
+	return {
+		type: RECEIVE_CHARACTERS_FAILURE,
 		data: json
 	};
 }
@@ -38,7 +46,7 @@ function fetchCharacters() {
 		dispatch(requestCharacters());
 		return axios.get('http://localhost:3001/characters')
 			.then(response => response.data)
-			.then(json => dispatch(receiveCharacters(json)));
+			.then(json => dispatch(receiveCharactersSuccess(json)));
 	};
 }
 

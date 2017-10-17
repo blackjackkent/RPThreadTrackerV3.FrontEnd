@@ -33,8 +33,8 @@ class Dashboard extends Component {
 
 	componentDidMount() {
 		const { dispatch } = this.props;
-		dispatch(fetchCharactersIfNeeded());
-		dispatch(fetchUserIfNeeded());
+		//dispatch(fetchCharactersIfNeeded());
+		//dispatch(fetchUserIfNeeded());
 	}
 
 	hasDashboardAtAGlanceHiddenToggle() {
@@ -59,7 +59,7 @@ class Dashboard extends Component {
 						<RecentActivityCard />
 					</Col>
 					<Col md="6" sm="12">
-						<YourCharactersCard characters={characters.items} />
+						{/* <YourCharactersCard characters={characters.items} /> */}
 					</Col>
 				</Row>
 				<Row>

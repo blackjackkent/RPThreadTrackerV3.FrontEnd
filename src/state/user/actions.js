@@ -51,7 +51,10 @@ export function fetchUserIfNeeded() {
 }
 
 export function toggleHasDashboardAtAGlanceHidden() {
-	return {
-		type: TOGGLE_HAS_DASHBOARD_AT_A_GLANCE_HIDDEN
+	return (dispatch, getState) => {
+		if (shouldFetchUser(getState())) {
+			return dispatch(fetchUser());
+		}
+		return null;
 	};
 }

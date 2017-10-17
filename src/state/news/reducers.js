@@ -1,5 +1,6 @@
 import {
-	RECEIVE_NEWS,
+	NEWS_FETCH_SUCCEEDED,
+	NEWS_FETCH_FAILED,
 	REQUEST_NEWS
 } from './actions';
 
@@ -8,15 +9,15 @@ function news(state = {
 	items: []
 }, action) {
 	switch (action.type) {
-		case REQUEST_NEWS:
-			return Object.assign({}, state, {
-				isFetching: true,
-				items: []
-			});
-		case RECEIVE_NEWS:
+		case NEWS_FETCH_SUCCEEDED:
 			return Object.assign({}, state, {
 				isFetching: false,
-				items: action.data
+				items: action.news
+			});
+		case NEWS_FETCH_FAILED:
+			return Object.assign({}, state, {
+				isFetching: false,
+				items: []
 			});
 		default:
 			return state;

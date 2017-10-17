@@ -1,7 +1,8 @@
 import {
 	INVALIDATE_CHARACTERS,
 	REQUEST_CHARACTERS,
-	RECEIVE_CHARACTERS
+	RECEIVE_CHARACTERS_SUCCESS,
+	RECEIVE_CHARACTERS_FAILURE
 } from './actions';
 
 function characters(state = {
@@ -22,11 +23,18 @@ function characters(state = {
 				didInvalidate: false,
 				items: []
 			});
-		case RECEIVE_CHARACTERS:
+		case RECEIVE_CHARACTERS_SUCCESS:
 			return Object.assign({}, state, {
 				isFetching: false,
 				didInvalidate: false,
 				items: action.data
+			});
+
+		case RECEIVE_CHARACTERS_FAILURE:
+			return Object.assign({}, state, {
+				isFetching: false,
+				didInvalidate: false,
+				items: []
 			});
 		default:
 			return state;

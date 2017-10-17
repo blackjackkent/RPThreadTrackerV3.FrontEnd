@@ -1,45 +1,25 @@
 import axios from 'axios';
 
-export const REQUEST_NEWS = 'REQUEST_NEWS';
-export const RECEIVE_NEWS = 'RECEIVE_NEWS';
+export const NEWS_FETCH_REQUESTED = 'NEWS_FETCH_REQUESTED';
+export const NEWS_FETCH_SUCCEEDED = 'NEWS_FETCH_SUCCEEDED';
+export const NEWS_FETCH_FAILED = 'NEWS_FETCH_FAILED';
 
-export function requestNews() {
+export function fetchNews() {
 	return {
-		type: REQUEST_NEWS
+		type: NEWS_FETCH_REQUESTED
 	};
 }
 
-function receiveNews(json) {
+function newsFetchSucceeded(json) {
 	return {
-		type: RECEIVE_NEWS,
+		type: NEWS_FETCH_SUCCEEDED,
 		data: json
 	};
 }
 
-function shouldFetchNews(state) {
-	const news = state.news.items;
-	if (!news || !news.length) {
-		return true;
-	} else if (news.isFetching) {
-		return false;
-	}
-	return false;
-}
-
-function fetchNews() {
-	return (dispatch) => {
-		dispatch(requestNews());
-		return axios.get('http://localhost:3001/news')
-			.then(response => response.data)
-			.then(json => dispatch(receiveNews(json)));
-	};
-}
-
-export function fetchNewsIfNeeded() {
-	return (dispatch, getState) => {
-		if (shouldFetchNews(getState())) {
-			return dispatch(fetchNews());
-		}
-		return null;
+function newsFetchFailed(message) {
+	return {
+		type: NEWS_FETCH_FAILED,
+		message: message
 	};
 }

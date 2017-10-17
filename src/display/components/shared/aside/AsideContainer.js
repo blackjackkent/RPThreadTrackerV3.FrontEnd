@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchNewsIfNeeded } from '../../../../state/news/actions';
+import { fetchNews } from '../../../../state/news/actions';
 import Aside from './Aside';
 
 const propTypes = {
@@ -23,7 +23,9 @@ function mapStateToProps(state) {
 class AsideContainer extends Component {
 	componentDidMount() {
 		const { dispatch } = this.props;
-		dispatch(fetchNewsIfNeeded());
+		if (!this.props.news.items || !this.props.news.items.length) {
+			dispatch(fetchNews());
+		}
 	}
 
 	render() {
