@@ -23,7 +23,7 @@ const propTypes = {
 
 const Header = (props) => {
 	const {
-		mobileSidebarToggle, sidebarToggle, asideToggle, headerDropdownToggle, isHeaderDropdownOpen, user
+		mobileSidebarToggle, sidebarToggle, asideToggle, headerDropdownToggle, isHeaderDropdownOpen, user, news
 	} = props;
 
 	return (
@@ -39,7 +39,7 @@ const Header = (props) => {
 				<NavItem>
 					<NavLink href="#" onClick={asideToggle}>
 						<i className="icon-bell" />
-						<Badge pill color="danger">5</Badge>
+						<Badge pill color="danger">{news.length}</Badge>
 					</NavLink>
 				</NavItem>
 				<NavItem>

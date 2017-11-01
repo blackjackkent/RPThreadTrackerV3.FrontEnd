@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, fetchUser } from '../../../../infrastructure/actions'
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown } from '../../../../infrastructure/actions'
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -13,12 +13,12 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const { ui, user } = state;
+	const { ui, user, news } = state;
 	const {
 		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
 	} = ui;
 	return {
-		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen, user
+		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen, user, news
 	};
 }
 
@@ -32,19 +32,11 @@ class HeaderContainer extends Component {
 	}
 
 	componentDidMount() {
-		const { dispatch } = this.props;
 		this.loadBodyClasses(this.props);
-		if (!this.props.user || !this.props.user.id) {
-			dispatch(fetchUser());
-		}
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const { dispatch } = nextProps;
 		this.loadBodyClasses(nextProps);
-		if (!nextProps.user || !nextProps.user.id) {
-			dispatch(fetchUser());
-		}
 	}
 
 	loadBodyClasses(props) {

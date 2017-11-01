@@ -4,7 +4,7 @@ function ui(state = {
 	isNewsAsideOpen: false,
 	isSidebarOpen: true,
 	isHeaderDropdownOpen: false,
-	isMobileSidebarOpen: true
+	isMobileSidebarOpen: false
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
