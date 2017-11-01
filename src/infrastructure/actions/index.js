@@ -7,3 +7,8 @@ export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSid
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';
 export { fetchedUserSuccess, FETCHED_USER_SUCCESS } from './user/fetchedUserSuccess';
+
+// News
+
+export { fetchNews, FETCH_NEWS } from './news/fetchNews';
+export { fetchedNewsSuccess, FETCHED_NEWS_SUCCESS } from './news/fetchedNewsSuccess';

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Aside from './Aside';
+import { fetchNews } from '../../../../infrastructure/actions';
 
 const propTypes = {
 	news: PropTypes.arrayOf(PropTypes.shape({
@@ -22,7 +23,7 @@ class AsideContainer extends Component {
 	componentDidMount() {
 		const { dispatch } = this.props;
 		if (!this.props.news || !this.props.news.length) {
-			//dispatch(fetchNews());
+			dispatch(fetchNews());
 		}
 	}
 

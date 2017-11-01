@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import {
 	FETCH_USER,
-	fetchUser,
 	fetchedUserSuccess
 } from '../../actions'
 
