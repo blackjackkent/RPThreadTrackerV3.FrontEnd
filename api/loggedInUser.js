@@ -4,7 +4,7 @@ export default {
 		userName: "blackjackkent",
 		email: "blackjacksoftwaredev@gmail.com",
 		settings: {
-			hasDashboardAtAGlanceHidden: true,
+			hasDashboardAtAGlanceHidden: false,
 		}
 	}
 }

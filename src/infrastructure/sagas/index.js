@@ -1,2 +1,2 @@
 
-export { placeholderSaga } from './placeholderSaga'
+export { fetchUserSaga } from './user/fetchUserSaga'

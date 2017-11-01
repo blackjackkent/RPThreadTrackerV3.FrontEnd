@@ -1,11 +1,11 @@
 import { FETCHED_USER_SUCCESS } from '../actions';
-function user(state = {}, action) {
+function userSettings(state = {}, action) {
 	switch (action.type) {
 		case FETCHED_USER_SUCCESS:
-			return Object.assign({}, state, action.data);
+			return Object.assign({}, state, action.data.settings);
 		default:
 			return state;
 	}
 }
 
-export default user;
+export default userSettings;

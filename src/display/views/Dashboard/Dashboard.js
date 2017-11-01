@@ -14,13 +14,13 @@ const propTypes = {
 		settings: PropTypes.shape({
 			hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired
 		})
-	}).isRequired,
+	}),
 	dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-	const { characters, user } = state;
-	return { characters, user };
+	const { characters, user, userSettings } = state;
+	return { characters, user, userSettings };
 }
 
 class Dashboard extends Component {
@@ -41,13 +41,13 @@ class Dashboard extends Component {
 	}
 
 	render() {
-		const { characters, user } = this.props;
+		const { characters, user, userSettings } = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
 				<Row>
 					<Col>
 						<AtAGlanceCard
-							hasDashboardAtAGlanceHidden={user.settings.hasDashboardAtAGlanceHidden}
+							hasDashboardAtAGlanceHidden={userSettings.hasDashboardAtAGlanceHidden}
 							hasDashboardAtAGlanceHiddenToggle={this.hasDashboardAtAGlanceHiddenToggle}
 						/>
 					</Col>

@@ -23,7 +23,7 @@ const propTypes = {
 
 const Header = (props) => {
 	const {
-		mobileSidebarToggle, sidebarToggle, asideToggle, headerDropdownToggle, isHeaderDropdownOpen
+		mobileSidebarToggle, sidebarToggle, asideToggle, headerDropdownToggle, isHeaderDropdownOpen, user
 	} = props;
 
 	return (
@@ -45,7 +45,7 @@ const Header = (props) => {
 				<NavItem>
 					<Dropdown isOpen={isHeaderDropdownOpen} toggle={headerDropdownToggle}>
 						<DropdownToggle className="nav-link dropdown-toggle">
-							<span className="d-md-down-none">blackjackkent</span>
+							<span className="d-md-down-none">{user ? user.userName : ''}</span>
 						</DropdownToggle>
 						<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
 							<DropdownItem><i className="fa fa-lock" /> Logout</DropdownItem>
