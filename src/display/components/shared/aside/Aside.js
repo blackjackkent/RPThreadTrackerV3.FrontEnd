@@ -15,7 +15,7 @@ const Aside = (props) => {
 			</div>
 			<hr className="mx-3 my-0" />
 			{
-				news.map(item => <AsideNewsRow item={item} key={item.id} />)
+				news.length ? news.map(item => <AsideNewsRow item={item} key={item.id} />) : ''
 			}
 		</aside>
 	);

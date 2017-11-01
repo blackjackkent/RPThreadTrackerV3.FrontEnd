@@ -4,20 +4,12 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 
-import reducers from './state/reducers';
-import newsSagas from './state/news/sagas';
+import { getStore } from './infrastructure/getStore';
 import App from './App';
 
-// create the saga middleware
-const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware();
 // mount it on the Store
-const store = createStore(
-	reducers,
-	applyMiddleware(sagaMiddleware)
-)
-
-// then run the saga
-sagaMiddleware.run(newsSagas)
+const store = getStore();
 
 render(
 	<Provider store={store}>

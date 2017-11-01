@@ -7,8 +7,6 @@ import { connect } from 'react-redux';
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
-import { fetchCharactersIfNeeded } from '../../../state/characters/actions';
-import { toggleHasDashboardAtAGlanceHidden, fetchUserIfNeeded } from '../../../state/user/actions';
 
 const propTypes = {
 	characters: PropTypes.shape({}).isRequired,

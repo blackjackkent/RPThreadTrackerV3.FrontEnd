@@ -1,15 +1,10 @@
-import {
-	TOGGLE_SIDEBAR,
-	TOGGLE_NEWS_ASIDE,
-	TOGGLE_HEADER_DROPDOWN,
-	TOGGLE_MOBILE_SIDEBAR
-} from './actions';
+import { TOGGLE_SIDEBAR, TOGGLE_MOBILE_SIDEBAR, TOGGLE_NEWS_ASIDE, TOGGLE_HEADER_DROPDOWN } from '../actions';
 
 function ui(state = {
-	isHeaderDropdownOpen: false,
 	isNewsAsideOpen: false,
 	isSidebarOpen: true,
-	isMobileSidebarOpen: false
+	isHeaderDropdownOpen: false,
+	isMobileSidebarOpen: true
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
