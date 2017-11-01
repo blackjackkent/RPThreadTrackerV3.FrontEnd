@@ -1,4 +1,5 @@
 import { FETCHED_USER_SUCCESS } from '../actions';
+
 function user(state = {}, action) {
 	switch (action.type) {
 		case FETCHED_USER_SUCCESS:

@@ -12,16 +12,32 @@ import { fetchUser, fetchNews } from '../../../infrastructure/actions';
 const propTypes = {
 	characters: PropTypes.shape({}).isRequired,
 	user: PropTypes.shape({
+		id: PropTypes.string,
 		settings: PropTypes.shape({
 			hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired
 		})
-	}),
+	}).isRequired,
+	news: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number,
+		userTitle: PropTypes.string.isRequired,
+		lastPostDate: PropTypes.string.isRequired
+	})).isRequired,
 	dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-	const { news, characters, user, userSettings } = state;
-	return { news, characters, user, userSettings };
+	const {
+		news,
+		characters,
+		user,
+		userSettings
+	} = state;
+	return {
+		news,
+		characters,
+		user,
+		userSettings
+	};
 }
 
 class Dashboard extends Component {
@@ -41,8 +57,8 @@ class Dashboard extends Component {
 	}
 
 	hasDashboardAtAGlanceHiddenToggle() {
-		const { dispatch } = this.props;
-		dispatch(toggleHasDashboardAtAGlanceHidden());
+		// const { dispatch } = this.props;
+		// dispatch(toggleHasDashboardAtAGlanceHidden());
 	}
 
 	render() {

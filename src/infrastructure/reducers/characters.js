@@ -1,5 +1,5 @@
-function news(state = [], action) {
+function characters(state = [], action) {
 	return state;
 }
 
-export default news;
+export default characters;

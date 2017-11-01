@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown } from '../../../../infrastructure/actions'
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown } from '../../../../infrastructure/actions';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,

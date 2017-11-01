@@ -8,9 +8,7 @@ const propTypes = {
 		id: PropTypes.number,
 		userTitle: PropTypes.string.isRequired,
 		lastPostDate: PropTypes.string.isRequired
-	})
-	).isRequired,
-	dispatch: PropTypes.func.isRequired
+	})).isRequired
 };
 
 function mapStateToProps(state) {

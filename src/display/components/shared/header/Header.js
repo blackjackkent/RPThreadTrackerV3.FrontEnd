@@ -14,6 +14,17 @@ import {
 } from 'reactstrap';
 
 const propTypes = {
+	user: PropTypes.shape({
+		id: PropTypes.string,
+		settings: PropTypes.shape({
+			hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired
+		})
+	}).isRequired,
+	news: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.number,
+		userTitle: PropTypes.string.isRequired,
+		lastPostDate: PropTypes.string.isRequired
+	})).isRequired,
 	mobileSidebarToggle: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
 	asideToggle: PropTypes.func.isRequired,
@@ -23,7 +34,13 @@ const propTypes = {
 
 const Header = (props) => {
 	const {
-		mobileSidebarToggle, sidebarToggle, asideToggle, headerDropdownToggle, isHeaderDropdownOpen, user, news
+		mobileSidebarToggle,
+		sidebarToggle,
+		asideToggle,
+		headerDropdownToggle,
+		isHeaderDropdownOpen,
+		user,
+		news
 	} = props;
 
 	return (

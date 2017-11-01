@@ -1,13 +1,13 @@
-import { take, put, call, apply } from 'redux-saga/effects'
+import { take, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
 	FETCH_USER,
 	fetchedUserSuccess
-} from '../../actions'
+} from '../../actions';
 
-export function* fetchUserSaga() {
-	const { id } = yield take(FETCH_USER);
-	const response = yield call(axios.get, `http://localhost:3001/user`);
+export default function* fetchUserSaga() {
+	yield take(FETCH_USER);
+	const response = yield call(axios.get, 'http://localhost:3001/user');
 	yield put(fetchedUserSuccess(response.data));
 }

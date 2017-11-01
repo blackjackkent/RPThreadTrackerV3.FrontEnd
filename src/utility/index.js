@@ -1,2 +1,1 @@
-export { getQuery } from './getQuery';
-export { makeActionCreator } from './makeActionCreator';
+export { default as getQuery } from './getQuery'; // eslint-disable-line import/prefer-default-export
