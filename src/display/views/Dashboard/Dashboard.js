@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
-import { fetchUser, fetchNews, fetchUserSettings } from '../../../infrastructure/actions';
+import { fetchUser, fetchNews, fetchUserSettings, setHasDashboardAtAGlanceHidden } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -57,8 +57,8 @@ class Dashboard extends Component {
 	}
 
 	hasDashboardAtAGlanceHiddenToggle() {
-		// const { dispatch } = this.props;
-		// dispatch(toggleHasDashboardAtAGlanceHidden());
+		const { dispatch, userSettings } = this.props;
+		dispatch(setHasDashboardAtAGlanceHidden(!userSettings.hasDashboardAtAGlanceHidden));
 	}
 
 	render() {

@@ -1,1 +1,73 @@
-{"characters":[{"id":10337670.664858839,"urlIdentifier":"voluptas","isOnHiatus":true},{"id":48439866.72353928,"urlIdentifier":"eaque","isOnHiatus":false,"characterName":"Dr. Hermina Douglas"},{"id":80162069.59059355,"urlIdentifier":"fugiat","isOnHiatus":true},{"id":75477548.21610484,"urlIdentifier":"qui","isOnHiatus":false,"characterName":"Ludie Medhurst DDS"},{"id":27507606.871627826,"urlIdentifier":"vel","isOnHiatus":true}],"news":[{"id":57390037.258104466,"userTitle":"Non repellendus ut et corporis a dolor autem.","lastPostDate":"2017-02-01T10:20:40.771Z","lastPostUrl":"https://maxwell.biz","isUnread":false},{"id":90459258.7333652,"userTitle":"Nostrum expedita sapiente enim.","lastPostDate":"2017-10-12T18:21:50.474Z","lastPostUrl":"https://gilbert.info","isUnread":true},{"id":8045585.684916424,"userTitle":"Aut excepturi veritatis.","lastPostDate":"2017-11-02T21:06:38.841Z","lastPostUrl":"https://grace.info","isUnread":true},{"id":61186534.16741767,"userTitle":"Omnis blanditiis numquam alias quasi commodi totam aut sed voluptas.","lastPostDate":"2017-10-14T07:17:31.186Z","lastPostUrl":"https://haskell.info","isUnread":true},{"id":21186389.586790975,"userTitle":"Facere voluptatum rerum officia.","lastPostDate":"2017-09-24T05:05:46.635Z","lastPostUrl":"https://aletha.com","isUnread":true}],"user":{"id":"1234567","userName":"blackjackkent","email":"blackjacksoftwaredev@gmail.com"},"settings":{"id":"1234567","hasDashboardAtAGlanceHidden":true}}
+{
+  "characters": [
+    {
+      "id": 49098642.42050796,
+      "urlIdentifier": "et",
+      "isOnHiatus": false,
+      "characterName": "Maegan Bartell"
+    },
+    {
+      "id": 13733526.014950445,
+      "urlIdentifier": "perspiciatis",
+      "isOnHiatus": false
+    },
+    {
+      "id": 37888573.81987658,
+      "urlIdentifier": "a",
+      "isOnHiatus": false,
+      "characterName": "Lucius Barton"
+    },
+    {
+      "id": 78333365.12955609,
+      "urlIdentifier": "consequatur",
+      "isOnHiatus": false,
+      "characterName": "Gina Barrows"
+    }
+  ],
+  "news": [
+    {
+      "id": 89634017.08840197,
+      "userTitle": "Debitis qui quia.",
+      "lastPostDate": "2017-06-20T19:44:05.199Z",
+      "lastPostUrl": "https://katelynn.info",
+      "isUnread": false
+    },
+    {
+      "id": 38335932.71906904,
+      "userTitle": "Quasi quis culpa dignissimos a fugiat voluptatibus est et.",
+      "lastPostDate": "2017-05-01T07:52:45.962Z",
+      "lastPostUrl": "http://audreanne.com",
+      "isUnread": false
+    },
+    {
+      "id": 67784724.52319816,
+      "userTitle": "Sunt dolorem optio excepturi earum unde sed doloremque consequuntur similique.",
+      "lastPostDate": "2017-08-01T11:19:50.921Z",
+      "lastPostUrl": "http://clarissa.name",
+      "isUnread": true
+    },
+    {
+      "id": 56016294.72736758,
+      "userTitle": "Laudantium possimus quas qui tempora.",
+      "lastPostDate": "2017-10-20T12:17:45.027Z",
+      "lastPostUrl": "https://kayla.info",
+      "isUnread": true
+    },
+    {
+      "id": 24847480.95013165,
+      "userTitle": "Tempora sed in natus quasi et quo.",
+      "lastPostDate": "2017-09-04T01:55:30.421Z",
+      "lastPostUrl": "http://wilma.name",
+      "isUnread": false
+    }
+  ],
+  "user": {
+    "id": "1234567",
+    "userName": "blackjackkent",
+    "email": "blackjacksoftwaredev@gmail.com"
+  },
+  "settings": {
+    "id": "1234567",
+    "hasDashboardAtAGlanceHidden": true
+  }
+}
