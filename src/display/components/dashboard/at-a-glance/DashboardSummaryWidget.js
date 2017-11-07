@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Card, CardBlock, Progress } from 'reactstrap';
 
 const propTypes = {
-	header: PropTypes.string.isRequired,
+	header: PropTypes.number.isRequired,
 	icon: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired
 };

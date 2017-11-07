@@ -7,7 +7,8 @@ import { connect } from 'react-redux';
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
-import { fetchUser, fetchNews, fetchUserSettings, setHasDashboardAtAGlanceHidden } from '../../../infrastructure/actions';
+import { fetchUser, fetchNews, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads } from '../../../infrastructure/actions';
+import { getMyTurnThreadsCount, getTheirTurnThreadsCount, getAllThreadsCount, getArchivedThreadsCount, getQueuedThreadsCount } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -19,6 +20,7 @@ const propTypes = {
 		userTitle: PropTypes.string.isRequired,
 		lastPostDate: PropTypes.string.isRequired
 	})).isRequired,
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	dispatch: PropTypes.func.isRequired
 };
 
@@ -27,13 +29,25 @@ function mapStateToProps(state) {
 		news,
 		characters,
 		user,
-		userSettings
+		userSettings,
+		threads
 	} = state;
+	const myTurnThreadsCount = getMyTurnThreadsCount(state);
+	const theirTurnThreadsCount = getTheirTurnThreadsCount(state);
+	const allThreadsCount = getAllThreadsCount(state);
+	const archivedThreadsCount = getArchivedThreadsCount(state);
+	const queuedThreadsCount = getQueuedThreadsCount(state);
 	return {
 		news,
 		characters,
 		user,
-		userSettings
+		userSettings,
+		threads,
+		myTurnThreadsCount,
+		theirTurnThreadsCount,
+		allThreadsCount,
+		archivedThreadsCount,
+		queuedThreadsCount
 	};
 }
 
@@ -54,6 +68,9 @@ class Dashboard extends Component {
 		if (!this.props.news || !this.props.news.length) {
 			dispatch(fetchNews());
 		}
+		if (!this.props.threads || !this.props.threads.length) {
+			dispatch(fetchThreads());
+		}
 	}
 
 	hasDashboardAtAGlanceHiddenToggle() {
@@ -62,7 +79,7 @@ class Dashboard extends Component {
 	}
 
 	render() {
-		const { characters, user, userSettings } = this.props;
+		const { characters, user, userSettings, myTurnThreadsCount, theirTurnThreadsCount, allThreadsCount, archivedThreadsCount, queuedThreadsCount } = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
 				<Row>
@@ -70,6 +87,11 @@ class Dashboard extends Component {
 						<AtAGlanceCard
 							hasDashboardAtAGlanceHidden={userSettings.hasDashboardAtAGlanceHidden}
 							hasDashboardAtAGlanceHiddenToggle={this.hasDashboardAtAGlanceHiddenToggle}
+							myTurnThreadsCount={myTurnThreadsCount}
+							theirTurnThreadsCount={theirTurnThreadsCount}
+							allThreadsCount={allThreadsCount}
+							archivedThreadsCount={archivedThreadsCount}
+							queuedThreadsCount={queuedThreadsCount}
 						/>
 					</Col>
 				</Row>

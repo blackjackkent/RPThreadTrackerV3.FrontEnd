@@ -4,6 +4,10 @@ export { toggleNewsAside, TOGGLE_NEWS_ASIDE } from './ui/toggleNewsAside';
 export { toggleHeaderDropdown, TOGGLE_HEADER_DROPDOWN } from './ui/toggleHeaderDropdown';
 export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSidebar';
 
+// Threads
+export { fetchThreads, FETCH_THREADS } from './threads/fetchThreads';
+export { fetchedThreadsSuccess, FETCHED_THREADS_SUCCESS } from './threads/fetchedThreadsSuccess';
+
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';
 export { fetchedUserSuccess, FETCHED_USER_SUCCESS } from './user/fetchedUserSuccess';

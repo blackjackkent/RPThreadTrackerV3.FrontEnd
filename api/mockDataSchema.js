@@ -28,6 +28,32 @@ export const schema = {
 				"required": ["id", "urlIdentifier", "isOnHiatus"]
 			}
 		},
+		"threads": {
+			"type": "array",
+			"minItems": 30,
+			"maxItems": 60,
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "number",
+						"unique": true,
+						"minimum": 1
+					},
+					"isMyTurn": {
+						"type": "boolean",
+					},
+					"isArchived": {
+						"type": "boolean"
+					},
+					"markedQueued": {
+						"type": "Date",
+						"faker": "date.recent"
+					},
+				},
+				"required": ["id", "isMyTurn", "isArchived"]
+			}
+		},
 		"news": {
 			"type": "array",
 			"minItems": 5,

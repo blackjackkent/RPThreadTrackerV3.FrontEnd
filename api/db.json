@@ -1,64 +1,358 @@
 {
   "characters": [
     {
-      "id": 49098642.42050796,
-      "urlIdentifier": "et",
+      "id": 49138178.69805859,
+      "urlIdentifier": "voluptas",
       "isOnHiatus": false,
-      "characterName": "Maegan Bartell"
+      "characterName": "Hunter Rogahn"
     },
     {
-      "id": 13733526.014950445,
-      "urlIdentifier": "perspiciatis",
-      "isOnHiatus": false
+      "id": 40056896.079104796,
+      "urlIdentifier": "autem",
+      "isOnHiatus": true
     },
     {
-      "id": 37888573.81987658,
-      "urlIdentifier": "a",
-      "isOnHiatus": false,
-      "characterName": "Lucius Barton"
+      "id": 81778428.33302568,
+      "urlIdentifier": "tenetur",
+      "isOnHiatus": true
     },
     {
-      "id": 78333365.12955609,
-      "urlIdentifier": "consequatur",
-      "isOnHiatus": false,
-      "characterName": "Gina Barrows"
+      "id": 5481650.044721009,
+      "urlIdentifier": "aperiam",
+      "isOnHiatus": true
     }
   ],
   "news": [
     {
-      "id": 89634017.08840197,
-      "userTitle": "Debitis qui quia.",
-      "lastPostDate": "2017-06-20T19:44:05.199Z",
-      "lastPostUrl": "https://katelynn.info",
-      "isUnread": false
-    },
-    {
-      "id": 38335932.71906904,
-      "userTitle": "Quasi quis culpa dignissimos a fugiat voluptatibus est et.",
-      "lastPostDate": "2017-05-01T07:52:45.962Z",
-      "lastPostUrl": "http://audreanne.com",
-      "isUnread": false
-    },
-    {
-      "id": 67784724.52319816,
-      "userTitle": "Sunt dolorem optio excepturi earum unde sed doloremque consequuntur similique.",
-      "lastPostDate": "2017-08-01T11:19:50.921Z",
-      "lastPostUrl": "http://clarissa.name",
+      "id": 51275014.78218629,
+      "userTitle": "Et a et ut voluptas ratione vitae.",
+      "lastPostDate": "2017-01-08T23:37:28.061Z",
+      "lastPostUrl": "http://elinor.net",
       "isUnread": true
     },
     {
-      "id": 56016294.72736758,
-      "userTitle": "Laudantium possimus quas qui tempora.",
-      "lastPostDate": "2017-10-20T12:17:45.027Z",
-      "lastPostUrl": "https://kayla.info",
+      "id": 26841321.624182224,
+      "userTitle": "Et possimus cumque repellat maiores.",
+      "lastPostDate": "2017-06-01T14:37:13.824Z",
+      "lastPostUrl": "http://margaretta.biz",
       "isUnread": true
     },
     {
-      "id": 24847480.95013165,
-      "userTitle": "Tempora sed in natus quasi et quo.",
-      "lastPostDate": "2017-09-04T01:55:30.421Z",
-      "lastPostUrl": "http://wilma.name",
+      "id": 14634627.218865182,
+      "userTitle": "Tenetur voluptatem odit quia dolor cupiditate omnis doloremque.",
+      "lastPostDate": "2017-01-18T01:27:37.503Z",
+      "lastPostUrl": "https://alexys.name",
+      "isUnread": true
+    },
+    {
+      "id": 34516916.388008855,
+      "userTitle": "Eaque praesentium molestias nam laboriosam ipsam ut eum est.",
+      "lastPostDate": "2017-08-02T13:51:16.040Z",
+      "lastPostUrl": "https://jammie.net",
       "isUnread": false
+    },
+    {
+      "id": 20606957.84463879,
+      "userTitle": "Voluptatum occaecati nisi.",
+      "lastPostDate": "2017-05-28T00:25:19.788Z",
+      "lastPostUrl": "http://daija.name",
+      "isUnread": true
+    }
+  ],
+  "threads": [
+    {
+      "id": 24365399.206308123,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-07T00:58:11.016Z"
+    },
+    {
+      "id": 64869497.75981361,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T22:27:18.894Z"
+    },
+    {
+      "id": 22341297.705988575,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T16:14:49.989Z"
+    },
+    {
+      "id": 74067414.96176815,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T06:34:26.427Z"
+    },
+    {
+      "id": 72054861.16651638,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T09:56:08.300Z"
+    },
+    {
+      "id": 22301103.96140966,
+      "isMyTurn": false,
+      "isArchived": false
+    },
+    {
+      "id": 15226578.705438603,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-07T00:36:54.351Z"
+    },
+    {
+      "id": 68185136.35209621,
+      "isMyTurn": true,
+      "isArchived": true
+    },
+    {
+      "id": 58098526.6829259,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T17:14:50.221Z"
+    },
+    {
+      "id": 91632175.56349617,
+      "isMyTurn": true,
+      "isArchived": false
+    },
+    {
+      "id": 16174952.484407315,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T10:47:20.644Z"
+    },
+    {
+      "id": 62020800.71394666,
+      "isMyTurn": false,
+      "isArchived": false
+    },
+    {
+      "id": 40851800.998530805,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-07T02:06:20.546Z"
+    },
+    {
+      "id": 25568155.083034765,
+      "isMyTurn": false,
+      "isArchived": true
+    },
+    {
+      "id": 24906594.931529768,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T16:49:41.189Z"
+    },
+    {
+      "id": 9140392.913861232,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T07:15:37.221Z"
+    },
+    {
+      "id": 84937647.47789076,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-07T03:31:45.425Z"
+    },
+    {
+      "id": 21174052.145752482,
+      "isMyTurn": false,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T23:15:55.144Z"
+    },
+    {
+      "id": 90528602.95284295,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T22:21:41.973Z"
+    },
+    {
+      "id": 88492146.64024477,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T16:16:30.431Z"
+    },
+    {
+      "id": 4970187.278349844,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T18:18:09.722Z"
+    },
+    {
+      "id": 30752811.358945355,
+      "isMyTurn": false,
+      "isArchived": true
+    },
+    {
+      "id": 61116408.22922587,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T11:32:50.322Z"
+    },
+    {
+      "id": 94635510.63279875,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T11:59:51.856Z"
+    },
+    {
+      "id": 4222955.787958138,
+      "isMyTurn": true,
+      "isArchived": true
+    },
+    {
+      "id": 65884863.01588288,
+      "isMyTurn": false,
+      "isArchived": true
+    },
+    {
+      "id": 63309764.61138942,
+      "isMyTurn": false,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T16:45:36.462Z"
+    },
+    {
+      "id": 47574929.761144966,
+      "isMyTurn": true,
+      "isArchived": true
+    },
+    {
+      "id": 52229561.15547095,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-07T04:50:56.915Z"
+    },
+    {
+      "id": 10118611.833031533,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-07T01:02:21.412Z"
+    },
+    {
+      "id": 99174184.04027458,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-07T00:55:57.347Z"
+    },
+    {
+      "id": 33042747.73990101,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T19:22:06.663Z"
+    },
+    {
+      "id": 5348597.448265248,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T16:07:05.407Z"
+    },
+    {
+      "id": 35300704.18131212,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-07T05:30:55.699Z"
+    },
+    {
+      "id": 73824326.50893672,
+      "isMyTurn": false,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T21:04:50.465Z"
+    },
+    {
+      "id": 79811470.68699862,
+      "isMyTurn": false,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T13:03:45.382Z"
+    },
+    {
+      "id": 99311829.76958019,
+      "isMyTurn": false,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T13:00:35.468Z"
+    },
+    {
+      "id": 50639836.62131774,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T20:26:57.664Z"
+    },
+    {
+      "id": 27051377.554609094,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T09:18:50.384Z"
+    },
+    {
+      "id": 99474745.26363018,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-07T04:50:54.360Z"
+    },
+    {
+      "id": 7951809.66618334,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T13:29:14.054Z"
+    },
+    {
+      "id": 82905288.31773695,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-07T00:24:35.913Z"
+    },
+    {
+      "id": 46598684.0515562,
+      "isMyTurn": true,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T17:50:31.845Z"
+    },
+    {
+      "id": 57210963.88526401,
+      "isMyTurn": false,
+      "isArchived": true
+    },
+    {
+      "id": 81592400.55968776,
+      "isMyTurn": false,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T15:39:40.115Z"
+    },
+    {
+      "id": 70306709.43829352,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T13:32:51.278Z"
+    },
+    {
+      "id": 10804138.543809643,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T20:48:24.434Z"
+    },
+    {
+      "id": 66385233.81594072,
+      "isMyTurn": false,
+      "isArchived": false,
+      "markedQueued": "2017-11-06T07:49:20.059Z"
+    },
+    {
+      "id": 74620116.1420555,
+      "isMyTurn": true,
+      "isArchived": true
+    },
+    {
+      "id": 52861750.44436826,
+      "isMyTurn": true,
+      "isArchived": false
+    },
+    {
+      "id": 98980292.40407263,
+      "isMyTurn": true,
+      "isArchived": true,
+      "markedQueued": "2017-11-06T14:12:44.230Z"
     }
   ],
   "user": {
@@ -68,6 +362,6 @@
   },
   "settings": {
     "id": "1234567",
-    "hasDashboardAtAGlanceHidden": true
+    "hasDashboardAtAGlanceHidden": false
   }
 }

@@ -5,11 +5,16 @@ import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {
 	hasDashboardAtAGlanceHidden: PropTypes.bool,
-	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired
+	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired,
+	myTurnThreadsCount: PropTypes.number,
+	theirTurnThreadsCount: PropTypes.number,
+	allThreadsCount: PropTypes.number,
+	archivedThreadsCount: PropTypes.number,
+	queuedThreadsCount: PropTypes.number
 };
 
 const AtAGlanceCard = (props) => {
-	const { hasDashboardAtAGlanceHidden, hasDashboardAtAGlanceHiddenToggle } = props;
+	const { hasDashboardAtAGlanceHidden, hasDashboardAtAGlanceHiddenToggle, myTurnThreadsCount, theirTurnThreadsCount, allThreadsCount, archivedThreadsCount, queuedThreadsCount } = props;
 	return (
 		<Card className="at-a-glance-card">
 			<CardHeader>
@@ -27,19 +32,19 @@ const AtAGlanceCard = (props) => {
 			</CardHeader>
 			<CardBlock className={!hasDashboardAtAGlanceHidden ? 'card-body' : 'd-none'}>
 				<CardGroup>
-					<DashboardSummaryWidget icon="icon-pencil" color="info" header="35">
+					<DashboardSummaryWidget icon="icon-pencil" color="info" header={myTurnThreadsCount}>
 						Your Turn
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-check" color="success" header="15">
+					<DashboardSummaryWidget icon="icon-check" color="success" header={theirTurnThreadsCount}>
 						Their Turn
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-list" color="warning" header="53">
+					<DashboardSummaryWidget icon="icon-list" color="warning" header={allThreadsCount}>
 						All Threads
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-drawer" color="primary" header="135">
+					<DashboardSummaryWidget icon="icon-drawer" color="primary" header={archivedThreadsCount}>
 						Archived
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-calendar" color="danger" header="3">
+					<DashboardSummaryWidget icon="icon-calendar" color="danger" header={queuedThreadsCount}>
 						Queued
 					</DashboardSummaryWidget>
 				</CardGroup>
