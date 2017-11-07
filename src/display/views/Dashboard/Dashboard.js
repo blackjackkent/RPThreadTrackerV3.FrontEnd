@@ -7,15 +7,12 @@ import { connect } from 'react-redux';
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
-import { fetchUser, fetchNews } from '../../../infrastructure/actions';
+import { fetchUser, fetchNews, fetchUserSettings } from '../../../infrastructure/actions';
 
 const propTypes = {
-	characters: PropTypes.shape({}).isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	user: PropTypes.shape({
-		id: PropTypes.string,
-		settings: PropTypes.shape({
-			hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired
-		})
+		id: PropTypes.string
 	}).isRequired,
 	news: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.number,
@@ -50,6 +47,9 @@ class Dashboard extends Component {
 		const { dispatch } = this.props;
 		if (!this.props.user || !this.props.user.id) {
 			dispatch(fetchUser());
+		}
+		if (!this.props.userSettings || !this.props.userSettings.id) {
+			dispatch(fetchUserSettings());
 		}
 		if (!this.props.news || !this.props.news.length) {
 			dispatch(fetchNews());

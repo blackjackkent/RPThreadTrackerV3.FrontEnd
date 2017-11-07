@@ -4,6 +4,7 @@ import fs from 'fs';
 import chalk from 'chalk';
 
 import loggedInUser from './loggedInUser';
+import loggedInUserSettings from './loggedInUserSettings';
 
 jsf.extend('faker', function () {
 	return require('faker');
@@ -11,7 +12,8 @@ jsf.extend('faker', function () {
 jsf.resolve(schema).then(function (result) {
 	var destructured = {
 		...result,
-		...loggedInUser
+		...loggedInUser,
+		...loggedInUserSettings
 	};
 	fs.writeFile("./api/db.json", JSON.stringify(destructured), function (err) {
 		if (err) {

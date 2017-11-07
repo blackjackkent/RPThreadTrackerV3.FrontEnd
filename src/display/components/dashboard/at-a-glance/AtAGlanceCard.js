@@ -4,7 +4,7 @@ import { Card, CardHeader, Label, Input, CardBlock, CardGroup } from 'reactstrap
 import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {
-	hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired,
+	hasDashboardAtAGlanceHidden: PropTypes.bool,
 	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired
 };
 

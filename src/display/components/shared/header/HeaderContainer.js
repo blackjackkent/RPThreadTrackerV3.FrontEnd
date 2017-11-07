@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown } from '../../../../infrastructure/actions';
+import { getNewsUnreadCount } from '../../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -17,8 +18,9 @@ function mapStateToProps(state) {
 	const {
 		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
 	} = ui;
+	const newsUnreadCount = getNewsUnreadCount(state);
 	return {
-		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen, user, news
+		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen, user, news, newsUnreadCount
 	};
 }
 

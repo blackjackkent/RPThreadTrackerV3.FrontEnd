@@ -15,16 +15,14 @@ import {
 
 const propTypes = {
 	user: PropTypes.shape({
-		id: PropTypes.string,
-		settings: PropTypes.shape({
-			hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired
-		})
+		id: PropTypes.string
 	}).isRequired,
 	news: PropTypes.arrayOf(PropTypes.shape({
 		id: PropTypes.number,
 		userTitle: PropTypes.string.isRequired,
 		lastPostDate: PropTypes.string.isRequired
 	})).isRequired,
+	newsUnreadCount: PropTypes.number,
 	mobileSidebarToggle: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
 	asideToggle: PropTypes.func.isRequired,
@@ -40,7 +38,8 @@ const Header = (props) => {
 		headerDropdownToggle,
 		isHeaderDropdownOpen,
 		user,
-		news
+		news,
+		newsUnreadCount
 	} = props;
 
 	return (
@@ -56,7 +55,7 @@ const Header = (props) => {
 				<NavItem>
 					<NavLink href="#" onClick={asideToggle}>
 						<i className="icon-bell" />
-						<Badge pill color="danger">{news.length}</Badge>
+						<Badge pill color="danger">{newsUnreadCount}</Badge>
 					</NavLink>
 				</NavItem>
 				<NavItem>

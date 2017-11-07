@@ -3,9 +3,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import HeaderContainer from '../../components/shared/header/HeaderContainer';
 import Sidebar from '../../components/shared/sidebar/Sidebar';
-import Breadcrumb from '../../components/shared/Breadcrumb';
+import Breadcrumb from '../../components/shared/breadcrumb/Breadcrumb';
 import AsideContainer from '../../components/shared/aside/AsideContainer';
-import Footer from '../../components/shared/Footer';
+import Footer from '../../components/shared/footer/Footer';
 
 import Dashboard from '../../views/Dashboard/Dashboard';
 import Threads from '../../views/Threads/Threads';

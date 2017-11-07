@@ -52,11 +52,11 @@ export const schema = {
 						"type": "string",
 						"faker": "internet.url"
 					},
-					"isNew": {
+					"isUnread": {
 						"type": "boolean"
 					}
 				},
-				"required": ["id", "userTitle", "lastPostDate", "lastPostUrl", "isNew"]
+				"required": ["id", "userTitle", "lastPostDate", "lastPostUrl", "isUnread"]
 			}
 		}
 	},
