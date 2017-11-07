@@ -15,11 +15,7 @@ const YourCharactersCard = (props) => {
 				<i className="fa fa-users" /> Your Characters
 			</CardHeader>
 			<CardBlock className="card-body">
-				<Table>
-					<tbody>
-						{characters.map(character => <YourCharactersCardRow character={character} key={character.id} />)}
-					</tbody>
-				</Table>
+				{characters.map(character => <YourCharactersCardRow character={character} key={character.id} />)}
 			</CardBlock>
 		</Card>
 	);

@@ -13,12 +13,16 @@
 // /***** DASHBOARD *****/
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
 .dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; }
-.dashboard-container .recent-activity-card .row { padding: 12px 0; border-bottom: 1px solid $gray-800; }
-.dashboard-container .recent-activity-card .row:first-child { padding-top: 0 }
-.dashboard-container .recent-activity-card .row:last-child { border-bottom: none;}
+.dashboard-container .recent-activity-card .row,
+.dashboard-container .your-characters-card .row { padding: 12px 0; border-bottom: 1px solid $gray-800; }
+.dashboard-container .recent-activity-card .row:first-child,
+.dashboard-container .your-characters-card .row:first-child { padding-top: 0 }
+.dashboard-container .recent-activity-card .row:last-child,
+.dashboard-container .your-characters-card .row:last-child { border-bottom: none;}
+.dashboard-container .your-characters-card .row { text-align: center;}
 
-// .dashboard-container .random-thread-generator-card,
-// .dashboard-container .patreon-card { height: 185px;}
+.dashboard-container .random-thread-generator-card,
+.dashboard-container .patreon-card { height: 185px;}
 .dashboard-container .random-thread-generator-card .card-body,
 .dashboard-container .patreon-card .card-body {  text-align: center; }
 .dashboard-container .patreon-card a {color: $white}

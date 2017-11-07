@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Row, Col } from 'reactstrap';
 
 const propTypes = {
 	character: PropTypes.shape({
@@ -14,10 +15,14 @@ const propTypes = {
 const YourCharactersCard = (props) => {
 	const { character } = props;
 	return (
-		<tr key={character.id}>
-			<td>{character.characterName || 'Unnamed Character'} (<a href={character.homeUrl}>{character.urlIdentifier}</a>)</td>
-			<td><a href="/edit">Edit</a></td>
-		</tr>
+		<Row className="your-characters-card-row">
+			<Col xs="6">
+				{character.characterName || 'Unnamed Character'} (<a href={character.homeUrl}>{character.urlIdentifier}</a>)
+			</Col>
+			<Col xs="6">
+				<a href={'characters/edit/' + character.id}>Edit</a>
+			</Col>
+		</Row>
 	);
 };
 
