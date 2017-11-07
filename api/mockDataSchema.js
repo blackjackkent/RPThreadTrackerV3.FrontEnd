@@ -50,8 +50,24 @@ export const schema = {
 						"type": "Date",
 						"faker": "date.recent"
 					},
+					"lastPostDate": {
+						"type": "Date",
+						"faker": "date.past"
+					},
+					"lastPostUrl": {
+						"type": "string",
+						"faker": "internet.url"
+					},
+					"userTitle": {
+						"type": "string",
+						"faker": "lorem.sentence"
+					},
+					"lastPosterUrlIdentifier": {
+						"type": "string",
+						"faker": "lorem.word"
+					}
 				},
-				"required": ["id", "isMyTurn", "isArchived"]
+				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier"]
 			}
 		},
 		"news": {
@@ -86,5 +102,5 @@ export const schema = {
 			}
 		}
 	},
-	"required": ["characters", "news"],
+	"required": ["characters", "news", "threads",],
 };

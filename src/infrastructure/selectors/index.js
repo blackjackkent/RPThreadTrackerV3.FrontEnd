@@ -7,3 +7,4 @@ export { default as getTheirTurnThreadsCount } from './threads/getTheirTurnThrea
 export { default as getAllThreadsCount } from './threads/getAllThreadsCount';
 export { default as getArchivedThreadsCount } from './threads/getArchivedThreadsCount';
 export { default as getQueuedThreadsCount } from './threads/getQueuedThreadsCount';
+export { default as getRecentActivity } from './threads/getRecentActivity';

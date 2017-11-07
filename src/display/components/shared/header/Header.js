@@ -55,7 +55,9 @@ const Header = (props) => {
 				<NavItem>
 					<NavLink href="#" onClick={asideToggle}>
 						<i className="icon-bell" />
-						<Badge pill color="danger">{newsUnreadCount}</Badge>
+						{newsUnreadCount > 0 &&
+							<Badge pill color="danger">{newsUnreadCount}</Badge>
+						}
 					</NavLink>
 				</NavItem>
 				<NavItem>
