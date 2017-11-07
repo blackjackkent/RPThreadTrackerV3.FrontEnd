@@ -20,7 +20,7 @@ const YourCharactersCard = (props) => {
 				{character.characterName || 'Unnamed Character'} (<a href={character.homeUrl}>{character.urlIdentifier}</a>)
 			</Col>
 			<Col xs="6">
-				<a href={'characters/edit/' + character.id}>Edit</a>
+				<a href={`characters/edit/${character.id}`}>Edit</a>
 			</Col>
 		</Row>
 	);

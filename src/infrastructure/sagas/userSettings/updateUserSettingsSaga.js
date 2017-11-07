@@ -5,7 +5,8 @@ import {
 	UPDATE_USER_SETTINGS,
 	SET_HAS_DASHBOARD_AT_A_GLANCE_HIDDEN,
 	updateUserSettings,
-	updatedUserSettingsSuccess
+	updatedUserSettingsSuccess,
+	updatedUserSettingsFailure
 } from '../../actions';
 
 export function* setHasDashboardAtAGlanceHiddenSaga() {
@@ -13,7 +14,7 @@ export function* setHasDashboardAtAGlanceHiddenSaga() {
 	yield put(updateUserSettings({ hasDashboardAtAGlanceHidden: action.data }));
 }
 
-export default function* updateUserSettingsSaga(data) {
+export default function* updateUserSettingsSaga() {
 	const action = yield take(UPDATE_USER_SETTINGS);
 	try {
 		const current = yield call(axios.get, 'http://localhost:3001/settings');

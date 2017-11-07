@@ -20,7 +20,13 @@ function mapStateToProps(state) {
 	} = ui;
 	const newsUnreadCount = getNewsUnreadCount(state);
 	return {
-		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen, user, news, newsUnreadCount
+		isNewsAsideOpen,
+		isSidebarOpen,
+		isHeaderDropdownOpen,
+		isMobileSidebarOpen,
+		user,
+		news,
+		newsUnreadCount
 	};
 }
 

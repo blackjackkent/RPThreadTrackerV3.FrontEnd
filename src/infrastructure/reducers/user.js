@@ -1,6 +1,6 @@
 import { FETCHED_USER_SUCCESS } from '../actions';
 
-function user(state = {}, action) {
+function user(state = { id: '' }, action) {
 	switch (action.type) {
 		case FETCHED_USER_SUCCESS:
 			return Object.assign({}, state, action.data);

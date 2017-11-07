@@ -20,5 +20,5 @@ const RecentActivityCard = (props) => {
 		</Card>
 	);
 };
-
+RecentActivityCard.propTypes = propTypes;
 export default RecentActivityCard;

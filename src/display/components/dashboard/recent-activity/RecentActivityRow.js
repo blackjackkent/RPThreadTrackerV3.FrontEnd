@@ -25,12 +25,13 @@ const RecentActivityRow = (props) => {
 				</div>
 				<div className="small">
 					<a href="/untrack">Untrack</a> &bull;
-				<a href="/archive">Archive</a> &bull;
-				<a href="/queue">Mark Queued</a>
+					<a href="/archive">Archive</a> &bull;
+					<a href="/queue">Mark Queued</a>
 				</div>
 			</Col>
 		</Row>
 	);
 };
 
+RecentActivityRow.propTypes = propTypes;
 export default RecentActivityRow;

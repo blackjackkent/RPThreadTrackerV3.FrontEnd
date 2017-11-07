@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardBlock, Table } from 'reactstrap';
+import { Card, CardHeader, CardBlock } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
 
 const propTypes = {
@@ -15,7 +15,10 @@ const YourCharactersCard = (props) => {
 				<i className="fa fa-users" /> Your Characters
 			</CardHeader>
 			<CardBlock className="card-body">
-				{characters.map(character => <YourCharactersCardRow character={character} key={character.id} />)}
+				{
+					characters.map(character =>
+						<YourCharactersCardRow character={character} key={character.id} />)
+				}
 			</CardBlock>
 		</Card>
 	);

@@ -17,12 +17,7 @@ const propTypes = {
 	user: PropTypes.shape({
 		id: PropTypes.string
 	}).isRequired,
-	news: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.number,
-		userTitle: PropTypes.string.isRequired,
-		lastPostDate: PropTypes.string.isRequired
-	})).isRequired,
-	newsUnreadCount: PropTypes.number,
+	newsUnreadCount: PropTypes.number.isRequired,
 	mobileSidebarToggle: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
 	asideToggle: PropTypes.func.isRequired,
@@ -38,7 +33,6 @@ const Header = (props) => {
 		headerDropdownToggle,
 		isHeaderDropdownOpen,
 		user,
-		news,
 		newsUnreadCount
 	} = props;
 

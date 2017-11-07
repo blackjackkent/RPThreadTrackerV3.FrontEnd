@@ -1,10 +1,8 @@
-import { createSelector } from 'reselect'
+import { createSelector } from 'reselect';
 
-const getThreads = state => state.threads
+const getThreads = state => state.threads;
 const getArchivedThreadsCount = createSelector(
 	[getThreads],
-	(threads) => {
-		return threads.filter(t => t.isArchived).length;
-	}
+	threads => threads.filter(t => t.isArchived).length
 );
 export default getArchivedThreadsCount;

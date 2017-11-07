@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Aside from './Aside';
@@ -16,13 +16,7 @@ function mapStateToProps(state) {
 	return { news };
 }
 
-class AsideContainer extends Component {
-	render() {
-		return (
-			<Aside news={this.props.news} />
-		);
-	}
-}
+const AsideContainer = props => <Aside news={props.news} />;
 
 AsideContainer.propTypes = propTypes;
 

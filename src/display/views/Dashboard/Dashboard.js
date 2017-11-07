@@ -8,28 +8,27 @@ import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard'
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
 import TrackerSupportCard from '../../components/dashboard/tracker-support/TrackerSupportCard';
-import { fetchUser, fetchNews, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
+import { fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
 import { getMyTurnThreadsCount, getTheirTurnThreadsCount, getAllThreadsCount, getArchivedThreadsCount, getQueuedThreadsCount, getRecentActivity } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	user: PropTypes.shape({
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	userSettings: PropTypes.shape({
 		id: PropTypes.string
 	}).isRequired,
-	news: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.number,
-		userTitle: PropTypes.string.isRequired,
-		lastPostDate: PropTypes.string.isRequired
-	})).isRequired,
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
+	myTurnThreadsCount: PropTypes.number.isRequired,
+	theirTurnThreadsCount: PropTypes.number.isRequired,
+	allThreadsCount: PropTypes.number.isRequired,
+	archivedThreadsCount: PropTypes.number.isRequired,
+	queuedThreadsCount: PropTypes.number.isRequired,
+	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
-		news,
 		characters,
-		user,
 		userSettings,
 		threads
 	} = state;
@@ -40,9 +39,7 @@ function mapStateToProps(state) {
 	const queuedThreadsCount = getQueuedThreadsCount(state);
 	const recentActivityThreads = getRecentActivity(state);
 	return {
-		news,
 		characters,
-		user,
 		userSettings,
 		threads,
 		myTurnThreadsCount,
@@ -62,14 +59,8 @@ class Dashboard extends Component {
 
 	componentDidMount() {
 		const { dispatch } = this.props;
-		if (!this.props.user || !this.props.user.id) {
-			dispatch(fetchUser());
-		}
 		if (!this.props.userSettings || !this.props.userSettings.id) {
 			dispatch(fetchUserSettings());
-		}
-		if (!this.props.news || !this.props.news.length) {
-			dispatch(fetchNews());
 		}
 		if (!this.props.threads || !this.props.threads.length) {
 			dispatch(fetchThreads());
@@ -85,7 +76,16 @@ class Dashboard extends Component {
 	}
 
 	render() {
-		const { characters, user, userSettings, myTurnThreadsCount, theirTurnThreadsCount, allThreadsCount, archivedThreadsCount, queuedThreadsCount, recentActivityThreads } = this.props;
+		const {
+			characters,
+			userSettings,
+			myTurnThreadsCount,
+			theirTurnThreadsCount,
+			allThreadsCount,
+			archivedThreadsCount,
+			queuedThreadsCount,
+			recentActivityThreads
+		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
 				<Row>

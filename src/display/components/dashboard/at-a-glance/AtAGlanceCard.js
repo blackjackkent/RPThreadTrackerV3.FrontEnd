@@ -4,17 +4,25 @@ import { Card, CardHeader, Label, Input, CardBlock, CardGroup } from 'reactstrap
 import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {
-	hasDashboardAtAGlanceHidden: PropTypes.bool,
+	hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired,
 	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired,
-	myTurnThreadsCount: PropTypes.number,
-	theirTurnThreadsCount: PropTypes.number,
-	allThreadsCount: PropTypes.number,
-	archivedThreadsCount: PropTypes.number,
-	queuedThreadsCount: PropTypes.number
+	myTurnThreadsCount: PropTypes.number.isRequired,
+	theirTurnThreadsCount: PropTypes.number.isRequired,
+	allThreadsCount: PropTypes.number.isRequired,
+	archivedThreadsCount: PropTypes.number.isRequired,
+	queuedThreadsCount: PropTypes.number.isRequired
 };
 
 const AtAGlanceCard = (props) => {
-	const { hasDashboardAtAGlanceHidden, hasDashboardAtAGlanceHiddenToggle, myTurnThreadsCount, theirTurnThreadsCount, allThreadsCount, archivedThreadsCount, queuedThreadsCount } = props;
+	const {
+		hasDashboardAtAGlanceHidden,
+		hasDashboardAtAGlanceHiddenToggle,
+		myTurnThreadsCount,
+		theirTurnThreadsCount,
+		allThreadsCount,
+		archivedThreadsCount,
+		queuedThreadsCount
+	} = props;
 	return (
 		<Card className="at-a-glance-card">
 			<CardHeader>
