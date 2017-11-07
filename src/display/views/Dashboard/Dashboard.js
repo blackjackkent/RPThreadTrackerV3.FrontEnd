@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
-import { fetchUser, fetchNews, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads } from '../../../infrastructure/actions';
+import { fetchUser, fetchNews, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
 import { getMyTurnThreadsCount, getTheirTurnThreadsCount, getAllThreadsCount, getArchivedThreadsCount, getQueuedThreadsCount, getRecentActivity } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -73,6 +73,9 @@ class Dashboard extends Component {
 		if (!this.props.threads || !this.props.threads.length) {
 			dispatch(fetchThreads());
 		}
+		if (!this.props.characters || !this.props.characters.length) {
+			dispatch(fetchCharacters());
+		}
 	}
 
 	hasDashboardAtAGlanceHiddenToggle() {
@@ -102,7 +105,7 @@ class Dashboard extends Component {
 						<RecentActivityCard threads={recentActivityThreads} />
 					</Col>
 					<Col xs="12" md="6">
-						{/* <YourCharactersCard characters={characters.items} /> */}
+						<YourCharactersCard characters={characters} />
 					</Col>
 				</Row>
 				<Row>

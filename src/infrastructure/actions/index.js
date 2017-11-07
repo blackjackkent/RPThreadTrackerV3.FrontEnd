@@ -22,3 +22,7 @@ export { setHasDashboardAtAGlanceHidden, SET_HAS_DASHBOARD_AT_A_GLANCE_HIDDEN } 
 // News
 export { fetchNews, FETCH_NEWS } from './news/fetchNews';
 export { fetchedNewsSuccess, FETCHED_NEWS_SUCCESS } from './news/fetchedNewsSuccess';
+
+// Characters
+export { fetchCharacters, FETCH_CHARACTERS } from './characters/fetchCharacters';
+export { fetchedCharactersSuccess, FETCHED_CHARACTERS_SUCCESS } from './characters/fetchedCharactersSuccess';

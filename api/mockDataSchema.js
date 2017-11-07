@@ -21,11 +21,15 @@ export const schema = {
 						"type": "string",
 						"faker": "lorem.word"
 					},
+					"homeUrl": {
+						"type": "string",
+						"faker": "internet.url"
+					},
 					"isOnHiatus": {
 						"type": "boolean",
 					}
 				},
-				"required": ["id", "urlIdentifier", "isOnHiatus"]
+				"required": ["id", "urlIdentifier", "isOnHiatus", "homeUrl"]
 			}
 		},
 		"threads": {
