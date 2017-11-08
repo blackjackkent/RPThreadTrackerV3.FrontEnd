@@ -9,7 +9,7 @@ import RecentActivityCard from '../../components/dashboard/recent-activity/Recen
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
 import TrackerSupportCard from '../../components/dashboard/tracker-support/TrackerSupportCard';
 import { fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
-import { getMyTurnThreadsCount, getTheirTurnThreadsCount, getAllThreadsCount, getArchivedThreadsCount, getQueuedThreadsCount, getRecentActivity } from '../../../infrastructure/selectors';
+import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -18,11 +18,11 @@ const propTypes = {
 		id: PropTypes.string
 	}).isRequired,
 	dispatch: PropTypes.func.isRequired,
-	myTurnThreadsCount: PropTypes.number.isRequired,
-	theirTurnThreadsCount: PropTypes.number.isRequired,
-	allThreadsCount: PropTypes.number.isRequired,
-	archivedThreadsCount: PropTypes.number.isRequired,
-	queuedThreadsCount: PropTypes.number.isRequired,
+	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	allActiveThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
@@ -32,21 +32,21 @@ function mapStateToProps(state) {
 		userSettings,
 		threads
 	} = state;
-	const myTurnThreadsCount = getMyTurnThreadsCount(state);
-	const theirTurnThreadsCount = getTheirTurnThreadsCount(state);
-	const allThreadsCount = getAllThreadsCount(state);
-	const archivedThreadsCount = getArchivedThreadsCount(state);
-	const queuedThreadsCount = getQueuedThreadsCount(state);
+	const myTurnThreads = getMyTurnThreads(state);
+	const theirTurnThreads = getTheirTurnThreads(state);
+	const allActiveThreads = getAllActiveThreads(state);
+	const archivedThreads = getArchivedThreads(state);
+	const queuedThreads = getQueuedThreads(state);
 	const recentActivityThreads = getRecentActivity(state);
 	return {
 		characters,
 		userSettings,
 		threads,
-		myTurnThreadsCount,
-		theirTurnThreadsCount,
-		allThreadsCount,
-		archivedThreadsCount,
-		queuedThreadsCount,
+		myTurnThreads,
+		theirTurnThreads,
+		allActiveThreads,
+		archivedThreads,
+		queuedThreads,
 		recentActivityThreads
 	};
 }
@@ -79,11 +79,11 @@ class Dashboard extends Component {
 		const {
 			characters,
 			userSettings,
-			myTurnThreadsCount,
-			theirTurnThreadsCount,
-			allThreadsCount,
-			archivedThreadsCount,
-			queuedThreadsCount,
+			myTurnThreads,
+			theirTurnThreads,
+			allActiveThreads,
+			archivedThreads,
+			queuedThreads,
 			recentActivityThreads
 		} = this.props;
 		return (
@@ -93,11 +93,11 @@ class Dashboard extends Component {
 						<AtAGlanceCard
 							hasDashboardAtAGlanceHidden={userSettings.hasDashboardAtAGlanceHidden}
 							hasDashboardAtAGlanceHiddenToggle={this.hasDashboardAtAGlanceHiddenToggle}
-							myTurnThreadsCount={myTurnThreadsCount}
-							theirTurnThreadsCount={theirTurnThreadsCount}
-							allThreadsCount={allThreadsCount}
-							archivedThreadsCount={archivedThreadsCount}
-							queuedThreadsCount={queuedThreadsCount}
+							myTurnThreads={myTurnThreads}
+							theirTurnThreads={theirTurnThreads}
+							allActiveThreads={allActiveThreads}
+							archivedThreads={archivedThreads}
+							queuedThreads={queuedThreads}
 						/>
 					</Col>
 				</Row>

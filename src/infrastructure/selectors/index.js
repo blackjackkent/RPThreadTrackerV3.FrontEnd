@@ -2,9 +2,9 @@
 export { default as getNewsUnreadCount } from './news/getNewsUnreadCount';
 
 // Threads
-export { default as getMyTurnThreadsCount } from './threads/getMyTurnThreadsCount';
-export { default as getTheirTurnThreadsCount } from './threads/getTheirTurnThreadsCount';
-export { default as getAllThreadsCount } from './threads/getAllThreadsCount';
-export { default as getArchivedThreadsCount } from './threads/getArchivedThreadsCount';
-export { default as getQueuedThreadsCount } from './threads/getQueuedThreadsCount';
+export { default as getMyTurnThreads } from './threads/getMyTurnThreads';
+export { default as getTheirTurnThreads } from './threads/getTheirTurnThreads';
+export { default as getAllActiveThreads } from './threads/getAllActiveThreads';
+export { default as getArchivedThreads } from './threads/getArchivedThreads';
+export { default as getQueuedThreads } from './threads/getQueuedThreads';
 export { default as getRecentActivity } from './threads/getRecentActivity';

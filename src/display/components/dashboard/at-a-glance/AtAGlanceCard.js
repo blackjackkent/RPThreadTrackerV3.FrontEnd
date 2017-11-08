@@ -6,22 +6,22 @@ import DashboardSummaryWidget from './DashboardSummaryWidget';
 const propTypes = {
 	hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired,
 	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired,
-	myTurnThreadsCount: PropTypes.number.isRequired,
-	theirTurnThreadsCount: PropTypes.number.isRequired,
-	allThreadsCount: PropTypes.number.isRequired,
-	archivedThreadsCount: PropTypes.number.isRequired,
-	queuedThreadsCount: PropTypes.number.isRequired
+	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	allActiveThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 const AtAGlanceCard = (props) => {
 	const {
 		hasDashboardAtAGlanceHidden,
 		hasDashboardAtAGlanceHiddenToggle,
-		myTurnThreadsCount,
-		theirTurnThreadsCount,
-		allThreadsCount,
-		archivedThreadsCount,
-		queuedThreadsCount
+		myTurnThreads,
+		theirTurnThreads,
+		allActiveThreads,
+		archivedThreads,
+		queuedThreads
 	} = props;
 	return (
 		<Card className="at-a-glance-card">
@@ -40,19 +40,19 @@ const AtAGlanceCard = (props) => {
 			</CardHeader>
 			<CardBlock className={!hasDashboardAtAGlanceHidden ? 'card-body' : 'd-none'}>
 				<CardGroup>
-					<DashboardSummaryWidget icon="icon-pencil" color="info" header={myTurnThreadsCount}>
+					<DashboardSummaryWidget icon="icon-pencil" color="info" header={myTurnThreads.length}>
 						Your Turn
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-check" color="success" header={theirTurnThreadsCount}>
+					<DashboardSummaryWidget icon="icon-check" color="success" header={theirTurnThreads.length}>
 						Their Turn
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-list" color="warning" header={allThreadsCount}>
+					<DashboardSummaryWidget icon="icon-list" color="warning" header={allActiveThreads.length}>
 						All Threads
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-drawer" color="primary" header={archivedThreadsCount}>
+					<DashboardSummaryWidget icon="icon-drawer" color="primary" header={archivedThreads.length}>
 						Archived
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-calendar" color="danger" header={queuedThreadsCount}>
+					<DashboardSummaryWidget icon="icon-calendar" color="danger" header={queuedThreads.length}>
 						Queued
 					</DashboardSummaryWidget>
 				</CardGroup>
