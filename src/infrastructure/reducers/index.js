@@ -5,6 +5,7 @@ import user from './user';
 import userSettings from './userSettings';
 import characters from './characters';
 import threads from './threads';
+import randomThread from './randomThread';
 
 export default combineReducers({
 	news,
@@ -12,5 +13,6 @@ export default combineReducers({
 	user,
 	userSettings,
 	characters,
-	threads
+	threads,
+	randomThread
 });

@@ -7,6 +7,8 @@ export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSid
 // Threads
 export { fetchThreads, FETCH_THREADS } from './threads/fetchThreads';
 export { fetchedThreadsSuccess, FETCHED_THREADS_SUCCESS } from './threads/fetchedThreadsSuccess';
+export { generateRandomThread, GENERATE_RANDOM_THREAD } from './threads/generateRandomThread';
+export { generatedRandomThreadSuccess, GENERATED_RANDOM_THREAD_SUCCESS } from './threads/generatedRandomThreadSuccess';
 
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';

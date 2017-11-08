@@ -35,7 +35,7 @@ export const schema = {
 		"threads": {
 			"type": "array",
 			"minItems": 30,
-			"maxItems": 60,
+			"maxItems": 150,
 			"items": {
 				"type": "object",
 				"properties": {

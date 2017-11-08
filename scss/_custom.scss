@@ -22,10 +22,13 @@
 .dashboard-container .your-characters-card .row { text-align: center;}
 
 .dashboard-container .random-thread-generator-card,
-.dashboard-container .patreon-card { height: 185px;}
+.dashboard-container .patreon-card { height: 230px;}
 .dashboard-container .random-thread-generator-card .card-body,
 .dashboard-container .patreon-card .card-body {  text-align: center; }
 .dashboard-container .patreon-card a {color: $white}
+.dashboard-container .patreon-card .patreon-button-wrapper { margin: 30px;}
+
+.dashboard-container .random-thread-result { padding: 10px; margin: 10px; background: rgba(50, 50, 50, 0.5)}
 
 
 @include media-breakpoint-up(xs) {
@@ -37,15 +40,15 @@
 	.dashboard-container .at-a-glance-card > .card-body .card:first-child { border-left: none;}
 	.dashboard-container .at-a-glance-card > .card-body .card:last-child { border-right: none;}
 }
-@include media-breakpoint-up(md) { 
+@include media-breakpoint-up(md) {
 	// above 992px
-	
+
 	.dashboard-container .recent-activity-card,
 	.dashboard-container .your-characters-card { height: 400px; overflow: auto;}
 }
-@include media-breakpoint-up(lg) { 
+@include media-breakpoint-up(lg) {
 	// above 1200px
 }
-@include media-breakpoint-up(xl) { 
+@include media-breakpoint-up(xl) {
 	// 1200px and over
 }

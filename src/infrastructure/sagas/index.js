@@ -8,5 +8,6 @@ export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettin
 export { default as updateUserSettingsSaga, setHasDashboardAtAGlanceHiddenSaga } from './userSettings/updateUserSettingsSaga';
 // Threads
 export { default as fetchThreadsSaga } from './threads/fetchThreadsSaga';
+export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
 // Characters
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';

@@ -8,7 +8,8 @@ import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard'
 import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
 import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
 import TrackerSupportCard from '../../components/dashboard/tracker-support/TrackerSupportCard';
-import { fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
+import RandomThreadCard from '../../components/dashboard/random-thread/RandomThreadCard';
+import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -23,14 +24,16 @@ const propTypes = {
 	allActiveThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	randomThread: PropTypes.shape({})
 };
 
 function mapStateToProps(state) {
 	const {
 		characters,
 		userSettings,
-		threads
+		threads,
+		randomThread
 	} = state;
 	const myTurnThreads = getMyTurnThreads(state);
 	const theirTurnThreads = getTheirTurnThreads(state);
@@ -42,6 +45,7 @@ function mapStateToProps(state) {
 		characters,
 		userSettings,
 		threads,
+		randomThread,
 		myTurnThreads,
 		theirTurnThreads,
 		allActiveThreads,
@@ -55,6 +59,7 @@ class Dashboard extends Component {
 	constructor(props) {
 		super(props);
 		this.hasDashboardAtAGlanceHiddenToggle = this.hasDashboardAtAGlanceHiddenToggle.bind(this);
+		this.generateRandomThread = this.generateRandomThread.bind(this);
 	}
 
 	componentDidMount() {
@@ -75,6 +80,11 @@ class Dashboard extends Component {
 		dispatch(setHasDashboardAtAGlanceHidden(!userSettings.hasDashboardAtAGlanceHidden));
 	}
 
+	generateRandomThread() {
+		const { dispatch } = this.props;
+		dispatch(generateRandomThread());
+	}
+
 	render() {
 		const {
 			characters,
@@ -84,7 +94,8 @@ class Dashboard extends Component {
 			allActiveThreads,
 			archivedThreads,
 			queuedThreads,
-			recentActivityThreads
+			recentActivityThreads,
+			randomThread
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -111,15 +122,7 @@ class Dashboard extends Component {
 				</Row>
 				<Row>
 					<Col md="6">
-						<Card className="random-thread-generator-card">
-							<CardHeader>
-								<i className="fa fa-random" /> Random Thread Generator
-							</CardHeader>
-							<CardBlock className="card-body">
-								<p>Pick a random thread to respond to!</p>
-								<button className="btn btn-primary">Generate</button>
-							</CardBlock>
-						</Card>
+						<RandomThreadCard generateRandomThread={this.generateRandomThread} randomThread={randomThread} />
 					</Col>
 					<Col md="6">
 						<TrackerSupportCard />
