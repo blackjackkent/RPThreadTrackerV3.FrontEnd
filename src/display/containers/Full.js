@@ -4,16 +4,16 @@ import { connect } from 'react-redux';
 import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import { fetchUser, fetchNews } from '../../../infrastructure/actions';
+import { fetchUser, fetchNews } from '../../infrastructure/actions';
 
-import HeaderContainer from '../../components/shared/header/HeaderContainer';
-import Sidebar from '../../components/shared/sidebar/Sidebar';
-import Breadcrumb from '../../components/shared/breadcrumb/Breadcrumb';
-import AsideContainer from '../../components/shared/aside/AsideContainer';
-import Footer from '../../components/shared/footer/Footer';
+import HeaderContainer from '../components/shared/header/HeaderContainer';
+import Sidebar from '../components/shared/sidebar/Sidebar';
+import Breadcrumb from '../components/shared/breadcrumb/Breadcrumb';
+import AsideContainer from '../components/shared/aside/AsideContainer';
+import Footer from '../components/shared/footer/Footer';
 
-import Dashboard from '../../views/Dashboard/Dashboard';
-import Threads from '../../views/Threads/Threads';
+import Dashboard from '../views/Dashboard/Dashboard';
+import Threads from '../views/Threads/Threads';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,

@@ -9,7 +9,7 @@ const Login = () => (
 					<Card className="login-box p-4">
 						<CardBlock className="card-body">
 							<h1>Login</h1>
-							<p className="text-muted">Sign In to your account</p>
+							<p className="text-muted">Sign in to RPThreadTracker</p>
 							<InputGroup className="mb-3">
 								<Input type="text" placeholder="Username" />
 							</InputGroup>

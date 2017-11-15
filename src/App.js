@@ -10,12 +10,14 @@ import 'simple-line-icons/css/simple-line-icons.css';
 import '../scss/style.scss';
 
 // Containers
-import Full from './display/containers/Full/Full';
-import Login from './display/views/Login/Login';
+import Full from './display/containers/Full';
+import Login from './display/containers/Login';
+import Maintenance from './display/containers/Maintenance';
 
 const App = () => (
 	<BrowserRouter>
 		<Switch>
+			<Route path="/maintenance" name="Maintenance" component={Maintenance} />
 			<Route exact path="/login" name="Login Page" component={Login} />
 			<Route path="/" name="Home" component={Full} />
 			<Route path="/threads" name="Threads" component={Full} />

@@ -22,13 +22,13 @@
 .dashboard-container .your-characters-card .row { text-align: center;}
 
 .dashboard-container .random-thread-generator-card,
-.dashboard-container .patreon-card { height: 230px;}
+.dashboard-container .patreon-card { height: 180px;}
 .dashboard-container .random-thread-generator-card .card-body,
 .dashboard-container .patreon-card .card-body {  text-align: center; }
 .dashboard-container .patreon-card a {color: $white}
-.dashboard-container .patreon-card .patreon-button-wrapper { margin: 30px;}
 
 .dashboard-container .random-thread-result { padding: 10px; margin: 10px; background: rgba(50, 50, 50, 0.5)}
+.dashboard-container .random-thread-result p { margin: 0; }
 
 
 @include media-breakpoint-up(xs) {
