@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-	Row, Col, Card, CardHeader, CardBlock
+	Row, Col
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -25,7 +25,7 @@ const propTypes = {
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	randomThread: PropTypes.shape({})
+	randomThread: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -122,7 +122,10 @@ class Dashboard extends Component {
 				</Row>
 				<Row>
 					<Col md="6">
-						<RandomThreadCard generateRandomThread={this.generateRandomThread} randomThread={randomThread} />
+						<RandomThreadCard
+							generateRandomThread={this.generateRandomThread}
+							randomThread={randomThread}
+						/>
 					</Col>
 					<Col md="6">
 						<TrackerSupportCard />
@@ -134,5 +137,4 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = propTypes;
-
 export default connect(mapStateToProps)(Dashboard);

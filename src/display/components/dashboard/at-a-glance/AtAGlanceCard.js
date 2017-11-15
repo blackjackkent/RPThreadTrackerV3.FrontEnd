@@ -40,19 +40,39 @@ const AtAGlanceCard = (props) => {
 			</CardHeader>
 			<CardBlock className={!hasDashboardAtAGlanceHidden ? 'card-body' : 'd-none'}>
 				<CardGroup>
-					<DashboardSummaryWidget icon="icon-pencil" color="info" header={myTurnThreads.length}>
+					<DashboardSummaryWidget
+						icon="icon-pencil"
+						color="info"
+						header={myTurnThreads.length}
+					>
 						Your Turn
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-check" color="success" header={theirTurnThreads.length}>
+					<DashboardSummaryWidget
+						icon="icon-check"
+						color="success"
+						header={theirTurnThreads.length}
+					>
 						Their Turn
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-list" color="warning" header={allActiveThreads.length}>
+					<DashboardSummaryWidget
+						icon="icon-list"
+						color="warning"
+						header={allActiveThreads.length}
+					>
 						All Threads
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-drawer" color="primary" header={archivedThreads.length}>
+					<DashboardSummaryWidget
+						icon="icon-drawer"
+						color="primary"
+						header={archivedThreads.length}
+					>
 						Archived
 					</DashboardSummaryWidget>
-					<DashboardSummaryWidget icon="icon-calendar" color="danger" header={queuedThreads.length}>
+					<DashboardSummaryWidget
+						icon="icon-calendar"
+						color="danger"
+						header={queuedThreads.length}
+					>
 						Queued
 					</DashboardSummaryWidget>
 				</CardGroup>

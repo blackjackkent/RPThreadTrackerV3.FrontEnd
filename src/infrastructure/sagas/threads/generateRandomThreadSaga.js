@@ -1,5 +1,4 @@
-import { take, put, call, select, takeEvery } from 'redux-saga/effects';
-import axios from 'axios';
+import { put, select, takeEvery } from 'redux-saga/effects';
 import { getMyTurnThreads } from '../../selectors';
 
 import {
@@ -9,7 +8,7 @@ import {
 
 function* generateRandomThread() {
 	const validThreads = yield select(getMyTurnThreads);
-	const thread = validThreads[Math.floor(Math.random() * validThreads.length)]
+	const thread = validThreads[Math.floor(Math.random() * validThreads.length)];
 	yield put(generatedRandomThreadSuccess(thread));
 }
 
