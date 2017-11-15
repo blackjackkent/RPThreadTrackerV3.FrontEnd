@@ -5,6 +5,7 @@ const routes = {
 	'/threads/your-turn': 'Your Turn',
 	'/threads/their-turn': 'Their Turn',
 	'/threads/archived': 'Archived',
-	'/threads/queued': 'Queued'
+	'/threads/queued': 'Queued',
+	'/help': 'Help'
 };
 export default routes;

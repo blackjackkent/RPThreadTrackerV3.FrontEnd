@@ -91,7 +91,7 @@ module.exports = (env = {}) => {
 		},
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),
-			new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
+			//new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
 			new webpack.NamedModulesPlugin(),
 			extractCSS,
 			extractSCSS,

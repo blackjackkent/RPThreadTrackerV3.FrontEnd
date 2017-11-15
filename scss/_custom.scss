@@ -30,6 +30,8 @@
 .dashboard-container .random-thread-result { padding: 10px; margin: 10px; background: rgba(50, 50, 50, 0.5)}
 .dashboard-container .random-thread-result p { margin: 0; }
 
+/********** STATIC *********/
+.help-container .support-topics .support-button {text-align: center; }
 
 @include media-breakpoint-up(xs) {
 	// above 576px

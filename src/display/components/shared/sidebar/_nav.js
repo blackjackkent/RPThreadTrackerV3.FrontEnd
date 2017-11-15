@@ -57,6 +57,10 @@ export default {
 			name: 'Settings',
 			url: '/settings',
 			icon: 'icon-settings'
+		}, {
+			name: 'Help',
+			url: '/help',
+			icon: 'icon-info'
 		}
 	]
 };

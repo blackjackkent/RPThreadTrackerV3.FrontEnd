@@ -4,13 +4,13 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import AtAGlanceCard from '../../components/dashboard/at-a-glance/AtAGlanceCard';
-import RecentActivityCard from '../../components/dashboard/recent-activity/RecentActivityCard';
-import YourCharactersCard from '../../components/dashboard/your-characters/YourCharactersCard';
-import TrackerSupportCard from '../../components/dashboard/tracker-support/TrackerSupportCard';
-import RandomThreadCard from '../../components/dashboard/random-thread/RandomThreadCard';
-import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../../infrastructure/actions';
-import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity } from '../../../infrastructure/selectors';
+import AtAGlanceCard from '../components/dashboard/at-a-glance/AtAGlanceCard';
+import RecentActivityCard from '../components/dashboard/recent-activity/RecentActivityCard';
+import YourCharactersCard from '../components/dashboard/your-characters/YourCharactersCard';
+import TrackerSupportCard from '../components/dashboard/tracker-support/TrackerSupportCard';
+import RandomThreadCard from '../components/dashboard/random-thread/RandomThreadCard';
+import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../infrastructure/actions';
+import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity } from '../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

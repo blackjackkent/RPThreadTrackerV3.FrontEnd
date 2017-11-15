@@ -12,8 +12,9 @@ import Breadcrumb from '../components/shared/breadcrumb/Breadcrumb';
 import AsideContainer from '../components/shared/aside/AsideContainer';
 import Footer from '../components/shared/footer/Footer';
 
-import Dashboard from '../views/Dashboard/Dashboard';
-import Threads from '../views/Threads/Threads';
+import Dashboard from '../views/Dashboard';
+import Threads from '../views/Threads';
+import Help from '../views/Help';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -54,6 +55,7 @@ class Full extends Component {
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
 								<Route path="/threads" name="Threads" component={Threads} />
+								<Route path="/help" name="Help" component={Help} />
 								<Redirect from="/" to="/dashboard" />
 							</Switch>
 						</Container>
