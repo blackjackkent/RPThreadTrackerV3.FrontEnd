@@ -5,6 +5,9 @@ export default [
 		Header: 'Thread Title',
 		accessor: 'userTitle', // String-based value accessors!,
 	}, {
+		Header: 'Character ID',
+		accessor: 'characterId', // String-based value accessors!,
+	}, {
 		Header: 'Last Poster',
 		accessor: 'lastPosterUrlIdentifier',
 		Cell: row => <a href={row.original.lastPostUrl}> {row.value} </a>,

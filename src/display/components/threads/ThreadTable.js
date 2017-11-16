@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const ThreadTable = (props) => {
-	let { threads, isThreadFilterCardHidden, threadFilterHiddenToggle } = props;
+	let { threads, threadFilter, isThreadFilterCardHidden, threadFilterHiddenToggle, setFilteredCharacterId } = props;
 	return (
 		<div>
 			<Card className="at-a-glance-card">
@@ -32,19 +32,20 @@ const ThreadTable = (props) => {
 						<Col xs="4">
 							<FormGroup>
 								<Label htmlFor="ccmonth">Month</Label>
-								<Input type="select" name="ccmonth" id="ccmonth">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-									<option value="7">7</option>
-									<option value="8">8</option>
-									<option value="9">9</option>
-									<option value="10">10</option>
-									<option value="11">11</option>
-									<option value="12">12</option>
+								<Input type="select" name="characterId" id="character-id" value={threadFilter.filteredCharacterId} onChange={setFilteredCharacterId}>
+									<option value={null}>All</option>
+									<option value={1}>1</option>
+									<option value={2}>2</option>
+									<option value={3}>3</option>
+									<option value={4}>4</option>
+									<option value={5}>5</option>
+									<option value={6}>6</option>
+									<option value={7}>7</option>
+									<option value={8}>8</option>
+									<option value={9}>9</option>
+									<option value={10}>10</option>
+									<option value={11}>11</option>
+									<option value={12}>12</option>
 								</Input>
 							</FormGroup>
 						</Col>
@@ -61,6 +62,12 @@ const ThreadTable = (props) => {
 					}
 				]}
 				showPaginationTop
+				filtered={[
+					{
+						"id": "characterId",
+						"value": threadFilter.filteredCharacterId
+					}
+				]}
 				SubComponent={row => <ThreadTableSubComponent thread={row.original} />}
 			/>
 		</div>

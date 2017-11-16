@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from '../components/threads/ThreadTable';
-import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters } from '../../infrastructure/actions';
+import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters, setFilteredCharacterId } from '../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity } from '../../infrastructure/selectors';
 
 const propTypes = {
@@ -14,18 +14,21 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const {
-		threads
+		threads,
+		threadFilter
 	} = state;
 	const allActiveThreads = getAllActiveThreads(state);
 	return {
 		threads,
-		allActiveThreads
+		allActiveThreads,
+		threadFilter
 	};
 }
 
 class Threads extends Component {
 	constructor(props) {
 		super(props);
+		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 	}
 
 	componentDidMount() {
@@ -35,16 +38,21 @@ class Threads extends Component {
 		}
 	}
 
+	setFilteredCharacterId(e) {
+		const { dispatch } = this.props;
+		dispatch(setFilteredCharacterId(e.target.value));
+	}
+
 	render() {
 		const {
-			allActiveThreads
+			allActiveThreads, threadFilter
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
 				<Row>
 					<Col>
 						<ThreadTable
-							threads={allActiveThreads}
+							threads={allActiveThreads} threadFilter={threadFilter} setFilteredCharacterId={this.setFilteredCharacterId}
 						/>
 					</Col>
 				</Row>

@@ -44,6 +44,11 @@ export const schema = {
 						"unique": true,
 						"minimum": 1
 					},
+					"characterId": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10
+					},
 					"isMyTurn": {
 						"type": "boolean",
 					},
@@ -82,14 +87,9 @@ export const schema = {
 							"type": "string",
 							"faker": "lorem.sentence"
 						}
-					},
-					"testField": {
-						"type": "integer",
-						"minimum": 1,
-						"maximum": 10
 					}
 				},
-				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier", "testField"]
+				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier", "characterId"]
 			}
 		},
 		"news": {

@@ -9,6 +9,7 @@ export { fetchThreads, FETCH_THREADS } from './threads/fetchThreads';
 export { fetchedThreadsSuccess, FETCHED_THREADS_SUCCESS } from './threads/fetchedThreadsSuccess';
 export { generateRandomThread, GENERATE_RANDOM_THREAD } from './threads/generateRandomThread';
 export { generatedRandomThreadSuccess, GENERATED_RANDOM_THREAD_SUCCESS } from './threads/generatedRandomThreadSuccess';
+export { setFilteredCharacterId, SET_FILTERED_CHARACTER_ID } from './threads/setFilteredCharacterId';
 
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';
