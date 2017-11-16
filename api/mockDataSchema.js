@@ -69,6 +69,19 @@ export const schema = {
 					"lastPosterUrlIdentifier": {
 						"type": "string",
 						"faker": "lorem.word"
+					},
+					"trackedUserUrlIdentifier": {
+						"type": "string",
+						"faker": "lorem.word"
+					},
+					"tags": {
+						"type": "array",
+						"minItems": 0,
+						"maxItems": 5,
+						"items": {
+							"type": "string",
+							"faker": "lorem.sentence"
+						}
 					}
 				},
 				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier"]

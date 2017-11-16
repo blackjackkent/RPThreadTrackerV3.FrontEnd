@@ -1,15 +1,12 @@
-.ReactTable {
-  border: 1px solid $gray-500
-}
-
 .ReactTable .rt-thead.-filters {
   border-bottom: 1px solid $gray-500;
+  background: $gray-500;
 }
 
 .ReactTable .rt-thead.-filters input,
 .ReactTable .rt-thead.-filters select {
   border: 1px solid $gray-300;
-  background: $gray-300;
+  background: #ccc;
 }
 
 .ReactTable .rt-thead.-filters .rt-th {
@@ -72,14 +69,18 @@
 }
 
 .ReactTable .-pagination {
-  box-shadow: 0 0 15px 0 $gray-500;
-  border-top: 2px solid $gray-500;
+  border: none;
+  margin: 20px;
 }
 
 .ReactTable .-pagination .-btn {
   color: $light-blue;
-  background: $gray-700;
+  background: $gray-600;
 }
+
+.ReactTable .rt-table{
+	border: 1px solid $gray-500
+  }
 
 .ReactTable .rt-noData {
   display: block;
