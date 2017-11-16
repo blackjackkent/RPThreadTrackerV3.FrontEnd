@@ -70,7 +70,14 @@
 
 .ReactTable .-pagination {
   border: none;
-  margin: 20px;
+}
+
+.ReactTable .pagination-top {
+	margin-bottom: 20px;
+}
+
+.ReactTable .pagination-bottom {
+	margin-top: 20px;
 }
 
 .ReactTable .-pagination .-btn {

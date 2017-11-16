@@ -82,9 +82,14 @@ export const schema = {
 							"type": "string",
 							"faker": "lorem.sentence"
 						}
+					},
+					"testField": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10
 					}
 				},
-				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier"]
+				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier", "testField"]
 			}
 		},
 		"news": {

@@ -18,6 +18,12 @@ const ThreadTable = (props) => {
 			<span className="control-button">
 				<a className="btn btn-primary" href={`/thread/edit/${thread.id}`}>Edit <i className="fa fa-pencil" /></a>
 			</span>
+			<span className="control-button">
+				<a className="btn btn-primary" href={`/thread/archive/${thread.id}`}>Archive <i className="fa fa-archive" /></a>
+			</span>
+			<span className="control-button">
+				<a className="btn btn-danger" href={`/thread/archive/${thread.id}`}>Delete <i className="fa fa-archive" /></a>
+			</span>
 		</div>
 	);
 };
