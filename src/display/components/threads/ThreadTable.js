@@ -10,7 +10,7 @@ const propTypes = {
 };
 
 const ThreadTable = (props) => {
-	let { threads, threadFilter, isThreadFilterCardHidden, threadFilterHiddenToggle, setFilteredCharacterId } = props;
+	let { threads, tableFilter, rawFilterData, isThreadFilterCardHidden, threadFilterHiddenToggle, setFilteredCharacterId } = props;
 	return (
 		<div>
 			<Card className="at-a-glance-card">
@@ -31,8 +31,8 @@ const ThreadTable = (props) => {
 					<Row>
 						<Col xs="4">
 							<FormGroup>
-								<Label htmlFor="ccmonth">Month</Label>
-								<Input type="select" name="characterId" id="character-id" value={threadFilter.filteredCharacterId} onChange={setFilteredCharacterId}>
+								<Label htmlFor="ccmonth">Character</Label>
+								<Input type="select" name="characterId" id="character-id" value={rawFilterData.filteredCharacterId} onChange={setFilteredCharacterId}>
 									<option value={null}>All</option>
 									<option value={1}>1</option>
 									<option value={2}>2</option>
@@ -52,7 +52,8 @@ const ThreadTable = (props) => {
 					</Row>
 				</CardBlock>
 			</Card>
-			<ReactTable className="-striped"
+			<ReactTable
+				className="-striped"
 				data={threads}
 				columns={columns}
 				defaultSorted={[
@@ -62,12 +63,6 @@ const ThreadTable = (props) => {
 					}
 				]}
 				showPaginationTop
-				filtered={[
-					{
-						"id": "characterId",
-						"value": threadFilter.filteredCharacterId
-					}
-				]}
 				SubComponent={row => <ThreadTableSubComponent thread={row.original} />}
 			/>
 		</div>

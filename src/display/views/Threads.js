@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from '../components/threads/ThreadTable';
 import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchThreads, fetchCharacters, setFilteredCharacterId } from '../../infrastructure/actions';
-import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity } from '../../infrastructure/selectors';
+import { getMyTurnThreads, getTheirTurnThreads, getAllActiveThreads, getArchivedThreads, getQueuedThreads, getRecentActivity, getActiveFilteredThreads } from '../../infrastructure/selectors';
 
 const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
@@ -17,10 +17,10 @@ function mapStateToProps(state) {
 		threads,
 		threadFilter
 	} = state;
-	const allActiveThreads = getAllActiveThreads(state);
+	const filteredThreads = getActiveFilteredThreads(state);
 	return {
 		threads,
-		allActiveThreads,
+		filteredThreads,
 		threadFilter
 	};
 }
@@ -45,14 +45,14 @@ class Threads extends Component {
 
 	render() {
 		const {
-			allActiveThreads, threadFilter
+			filteredThreads, threadFilter
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
 				<Row>
 					<Col>
 						<ThreadTable
-							threads={allActiveThreads} threadFilter={threadFilter} setFilteredCharacterId={this.setFilteredCharacterId}
+							threads={filteredThreads} rawFilterData={threadFilter} setFilteredCharacterId={this.setFilteredCharacterId}
 						/>
 					</Col>
 				</Row>

@@ -4,7 +4,7 @@ function ui(state = {}, action) {
 	switch (action.type) {
 		case SET_FILTERED_CHARACTER_ID:
 			return Object.assign({}, state, {
-				filteredCharacterId: action.data
+				filteredCharacterId: parseInt(action.data)
 			});
 		default:
 			return state;
