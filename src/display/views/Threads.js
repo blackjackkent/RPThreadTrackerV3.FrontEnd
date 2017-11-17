@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from '../components/threads/ThreadTable';
-import { setFilteredCharacterId } from '../../infrastructure/actions';
+import { setFilteredCharacterId, toggleIsThreadFilterCardHidden } from '../../infrastructure/actions';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -15,10 +15,12 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const {
-		threadFilter
+		threadFilter,
+		ui
 	} = state;
 	return {
-		threadFilter
+		threadFilter,
+		isThreadFilterCardHidden: ui.isThreadFilterCardHidden
 	};
 }
 
@@ -26,14 +28,19 @@ class Threads extends Component {
 	constructor(props) {
 		super(props);
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
+		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
 	}
 	setFilteredCharacterId(e) {
 		const { dispatch } = this.props;
 		dispatch(setFilteredCharacterId(e.target.value));
 	}
+	isThreadFilterCardHiddenToggle() {
+		const { dispatch, isThreadFilterCardHidden } = this.props;
+		dispatch(toggleIsThreadFilterCardHidden(isThreadFilterCardHidden));
+	}
 	render() {
 		const {
-			filteredThreads, threadFilter
+			filteredThreads, threadFilter, isThreadFilterCardHidden
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
@@ -43,6 +50,8 @@ class Threads extends Component {
 							threads={filteredThreads}
 							rawFilterData={threadFilter}
 							setFilteredCharacterId={this.setFilteredCharacterId}
+							isThreadFilterCardHidden={isThreadFilterCardHidden}
+							threadFilterHiddenToggle={this.isThreadFilterCardHiddenToggle}
 						/>
 					</Col>
 				</Row>

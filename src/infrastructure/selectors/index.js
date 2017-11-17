@@ -10,4 +10,5 @@ export { default as getTheirTurnFilteredThreads } from './threads/getTheirTurnFi
 export { default as getArchivedThreads } from './threads/getArchivedThreads';
 export { default as getArchivedFilteredThreads } from './threads/getArchivedFilteredThreads';
 export { default as getQueuedThreads } from './threads/getQueuedThreads';
+export { default as getQueuedFilteredThreads } from './threads/getQueuedFilteredThreads';
 export { default as getRecentActivity } from './threads/getRecentActivity';

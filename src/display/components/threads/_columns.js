@@ -21,7 +21,7 @@ export default [
 		Header: 'Watched Shortname',
 		accessor: 'trackedUserUrlIdentifier',
 		Cell: row => <a href={row.original.lastPostUrl}> {row.value} </a>,
-		width: 150,
+		width: 200,
 		filterable: false
 	}, {
 		expander: true,

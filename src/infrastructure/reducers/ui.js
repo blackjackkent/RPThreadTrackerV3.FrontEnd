@@ -1,11 +1,12 @@
-import { TOGGLE_SIDEBAR, TOGGLE_MOBILE_SIDEBAR, TOGGLE_NEWS_ASIDE, TOGGLE_HEADER_DROPDOWN } from '../actions';
+import { TOGGLE_SIDEBAR, TOGGLE_MOBILE_SIDEBAR, TOGGLE_NEWS_ASIDE, TOGGLE_HEADER_DROPDOWN, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from '../actions';
 
 function ui(state = {
 	isNewsAsideOpen: false,
 	isSidebarOpen: true,
 	isHeaderDropdownOpen: false,
 	isMobileSidebarOpen: false,
-	isMaintenanceMode: false
+	isMaintenanceMode: false,
+	isThreadFilterCardHidden: true
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
@@ -23,6 +24,10 @@ function ui(state = {
 		case TOGGLE_HEADER_DROPDOWN:
 			return Object.assign({}, state, {
 				isHeaderDropdownOpen: !state.isHeaderDropdownOpen
+			});
+		case TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN:
+			return Object.assign({}, state, {
+				isThreadFilterCardHidden: !state.isThreadFilterCardHidden
 			});
 		default:
 			return state;

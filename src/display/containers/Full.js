@@ -16,6 +16,7 @@ import Dashboard from '../views/Dashboard';
 import MyTurnThreads from '../views/MyTurnThreads';
 import TheirTurnThreads from '../views/TheirTurnThreads';
 import ArchivedThreads from '../views/ArchivedThreads';
+import QueuedThreads from '../views/QueuedThreads';
 import Help from '../views/Help';
 
 const propTypes = {
@@ -59,6 +60,7 @@ class Full extends Component {
 								<Route path="/threads/your-turn" name="Threads" component={MyTurnThreads} />
 								<Route path="/threads/their-turn" name="Threads" component={TheirTurnThreads} />
 								<Route path="/threads/archived" name="Threads" component={ArchivedThreads} />
+								<Route path="/threads/queued" name="Threads" component={QueuedThreads} />
 								<Route path="/help" name="Help" component={Help} />
 								<Redirect from="/" to="/dashboard" />
 							</Switch>
