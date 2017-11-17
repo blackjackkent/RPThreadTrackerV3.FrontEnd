@@ -4,7 +4,8 @@ import ui from './ui';
 import user from './user';
 import userSettings from './userSettings';
 import characters from './characters';
-import threads from './threads';
+import activeThreads from './activeThreads';
+import archivedThreads from './archivedThreads';
 import randomThread from './randomThread';
 import threadFilter from './threadFilter';
 
@@ -14,7 +15,8 @@ export default combineReducers({
 	user,
 	userSettings,
 	characters,
-	threads,
+	activeThreads,
+	archivedThreads,
 	randomThread,
 	threadFilter
 });

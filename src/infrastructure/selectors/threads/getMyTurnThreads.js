@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 
-const getThreads = state => state.threads;
+const getAllActiveThreads = state => state.activeThreads;
 const getMyTurnThreads = createSelector(
-	[getThreads],
-	threads => threads.filter(t => t.isMyTurn && !t.isArchived && !t.markedQueued)
+	[getAllActiveThreads],
+	threads => threads.filter(t => t.isMyTurn && !t.markedQueued)
 );
 export default getMyTurnThreads;

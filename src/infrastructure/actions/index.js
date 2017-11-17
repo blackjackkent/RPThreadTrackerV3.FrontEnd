@@ -5,8 +5,10 @@ export { toggleHeaderDropdown, TOGGLE_HEADER_DROPDOWN } from './ui/toggleHeaderD
 export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSidebar';
 
 // Threads
-export { fetchThreads, FETCH_THREADS } from './threads/fetchThreads';
-export { fetchedThreadsSuccess, FETCHED_THREADS_SUCCESS } from './threads/fetchedThreadsSuccess';
+export { fetchActiveThreads, FETCH_ACTIVE_THREADS } from './threads/fetchActiveThreads';
+export { fetchArchivedThreads, FETCH_ARCHIVED_THREADS } from './threads/fetchArchivedThreads';
+export { fetchedActiveThreadsSuccess, FETCHED_ACTIVE_THREADS_SUCCESS } from './threads/fetchedActiveThreadsSuccess';
+export { fetchedArchivedThreadsSuccess, FETCHED_ARCHIVED_THREADS_SUCCESS } from './threads/fetchedArchivedThreadsSuccess';
 export { generateRandomThread, GENERATE_RANDOM_THREAD } from './threads/generateRandomThread';
 export { generatedRandomThreadSuccess, GENERATED_RANDOM_THREAD_SUCCESS } from './threads/generatedRandomThreadSuccess';
 export { setFilteredCharacterId, SET_FILTERED_CHARACTER_ID } from './threads/setFilteredCharacterId';

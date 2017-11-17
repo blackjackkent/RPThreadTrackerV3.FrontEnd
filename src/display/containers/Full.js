@@ -13,7 +13,9 @@ import AsideContainer from '../components/shared/aside/AsideContainer';
 import Footer from '../components/shared/footer/Footer';
 
 import Dashboard from '../views/Dashboard';
-import Threads from '../views/Threads';
+import MyTurnThreads from '../views/MyTurnThreads';
+import TheirTurnThreads from '../views/TheirTurnThreads';
+import ArchivedThreads from '../views/ArchivedThreads';
 import Help from '../views/Help';
 
 const propTypes = {
@@ -54,7 +56,9 @@ class Full extends Component {
 						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
-								<Route path="/threads" name="Threads" component={Threads} />
+								<Route path="/threads/your-turn" name="Threads" component={MyTurnThreads} />
+								<Route path="/threads/their-turn" name="Threads" component={TheirTurnThreads} />
+								<Route path="/threads/archived" name="Threads" component={ArchivedThreads} />
 								<Route path="/help" name="Help" component={Help} />
 								<Redirect from="/" to="/dashboard" />
 							</Switch>

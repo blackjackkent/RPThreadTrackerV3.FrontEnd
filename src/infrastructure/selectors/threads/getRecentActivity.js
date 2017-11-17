@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-const getThreads = state => state.threads;
 function sortByLastPostDate(a, b) {
 	return new Date(b.lastPostDate) - new Date(a.lastPostDate);
 }
+const getAllActiveThreads = state => state.activeThreads;
 const getRecentActivity = createSelector(
-	[getThreads],
+	[getAllActiveThreads],
 	(threads) => {
-		let filtered = threads.filter(t => t.isMyTurn && !t.isArchived && !t.markedQueued);
+		let filtered = threads.filter(t => t.isMyTurn && !t.markedQueued);
 		filtered = filtered.sort(sortByLastPostDate);
 		return filtered.slice(0, 5);
 	}

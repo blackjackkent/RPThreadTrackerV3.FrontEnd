@@ -32,7 +32,7 @@ export const schema = {
 				"required": ["id", "urlIdentifier", "isOnHiatus", "homeUrl"]
 			}
 		},
-		"threads": {
+		"activeThreads": {
 			"type": "array",
 			"minItems": 30,
 			"maxItems": 150,
@@ -53,11 +53,70 @@ export const schema = {
 						"type": "boolean",
 					},
 					"isArchived": {
-						"type": "boolean"
+						"enum": [false]
 					},
 					"markedQueued": {
 						"type": "Date",
 						"faker": "date.recent"
+					},
+					"lastPostDate": {
+						"type": "Date",
+						"faker": "date.past"
+					},
+					"lastPostUrl": {
+						"type": "string",
+						"faker": "internet.url"
+					},
+					"userTitle": {
+						"type": "string",
+						"faker": "lorem.sentence"
+					},
+					"lastPosterUrlIdentifier": {
+						"type": "string",
+						"faker": "lorem.word"
+					},
+					"trackedUserUrlIdentifier": {
+						"type": "string",
+						"faker": "lorem.word"
+					},
+					"tags": {
+						"type": "array",
+						"minItems": 0,
+						"maxItems": 5,
+						"items": {
+							"type": "string",
+							"faker": "lorem.sentence"
+						}
+					}
+				},
+				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier", "characterId"]
+			}
+		},
+		"archivedThreads": {
+			"type": "array",
+			"minItems": 30,
+			"maxItems": 150,
+			"items": {
+				"type": "object",
+				"properties": {
+					"id": {
+						"type": "integer",
+						"unique": true,
+						"minimum": 1
+					},
+					"characterId": {
+						"type": "integer",
+						"minimum": 1,
+						"maximum": 10
+					},
+					"isMyTurn": {
+						"type": "boolean",
+					},
+					"isArchived": {
+						"enum": [true]
+					},
+					"markedQueued": {
+						"enum": [null]
 					},
 					"lastPostDate": {
 						"type": "Date",

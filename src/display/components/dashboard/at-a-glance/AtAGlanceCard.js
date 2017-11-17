@@ -8,8 +8,7 @@ const propTypes = {
 	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired,
 	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	allActiveThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
@@ -19,8 +18,7 @@ const AtAGlanceCard = (props) => {
 		hasDashboardAtAGlanceHiddenToggle,
 		myTurnThreads,
 		theirTurnThreads,
-		allActiveThreads,
-		archivedThreads,
+		activeThreads,
 		queuedThreads
 	} = props;
 	return (
@@ -41,6 +39,13 @@ const AtAGlanceCard = (props) => {
 			<CardBlock className={!hasDashboardAtAGlanceHidden ? 'card-body' : 'd-none'}>
 				<CardGroup>
 					<DashboardSummaryWidget
+						icon="icon-list"
+						color="warning"
+						header={activeThreads.length}
+					>
+						Active Threads
+					</DashboardSummaryWidget>
+					<DashboardSummaryWidget
 						icon="icon-pencil"
 						color="info"
 						header={myTurnThreads.length}
@@ -53,20 +58,6 @@ const AtAGlanceCard = (props) => {
 						header={theirTurnThreads.length}
 					>
 						Their Turn
-					</DashboardSummaryWidget>
-					<DashboardSummaryWidget
-						icon="icon-list"
-						color="warning"
-						header={allActiveThreads.length}
-					>
-						All Threads
-					</DashboardSummaryWidget>
-					<DashboardSummaryWidget
-						icon="icon-drawer"
-						color="primary"
-						header={archivedThreads.length}
-					>
-						Archived
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
 						icon="icon-calendar"
