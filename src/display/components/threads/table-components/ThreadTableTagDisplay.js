@@ -1,16 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from "react-table";
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
-const ThreadTable = (props) => {
+const ThreadTableTagDisplay = (props) => {
 	const { tags } = props;
-	var rows = [];
+	const rows = [];
 	if (tags) {
-		for (var i = 0; i < tags.length; i++) {
+		for (let i = 0; i < tags.length; i++) {
 			rows.push(<span className="tag-display-wrapper" key={i}>#{tags[i]}</span>);
 		}
 	}
@@ -21,6 +20,6 @@ const ThreadTable = (props) => {
 	);
 };
 
-ThreadTable.propTypes = propTypes;
+ThreadTableTagDisplay.propTypes = propTypes;
 
-export default ThreadTable;
+export default ThreadTableTagDisplay;

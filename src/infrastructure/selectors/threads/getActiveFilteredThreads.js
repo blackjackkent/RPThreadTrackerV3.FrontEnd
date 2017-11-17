@@ -1,7 +1,12 @@
 import { createSelector } from 'reselect';
 import getAllActiveThreads from './getAllActiveThreads';
 
-const getFilteredCharacterId = state => state.threadFilter ? state.threadFilter.filteredCharacterId : null;
+const getFilteredCharacterId = (state) => {
+	if (state.threadFilter) {
+		return state.threadFilter.filteredCharacterId;
+	}
+	return null;
+};
 const getActiveFilteredThreads = createSelector(
 	[getAllActiveThreads, getFilteredCharacterId],
 	(threads, filteredCharacterId) => {

@@ -19,7 +19,13 @@
 
 .ReactTable .rt-thead .rt-th,
 .ReactTable .rt-thead .rt-td {
-  border-right: 1px solid $gray-500;
+  border: 2px solid $gray-400;
+  border-left: 1px solid $gray-400;
+  padding: 10px;
+  font-weight: bold;
+}
+.ReactTable .rt-thead .rt-th:last-child, .ReactTable .rt-thead .rt-td:last-child {
+  border-right: 1px solid $gray-400;
 }
 
 .ReactTable .rt-thead .rt-th.-sort-asc,

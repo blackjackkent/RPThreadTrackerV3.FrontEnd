@@ -1,22 +1,32 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from "react-table";
+import ReactTable from 'react-table';
 import { Card, CardHeader, Label, Input, CardBlock, Row, Col, FormGroup } from 'reactstrap';
 import columns from './_columns';
 import ThreadTableSubComponent from './table-components/ThreadTableSubComponent';
 
 const propTypes = {
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	isThreadFilterCardHidden: PropTypes.bool.isRequired,
+	threadFilterHiddenToggle: PropTypes.func.isRequired,
+	setFilteredCharacterId: PropTypes.func.isRequired,
+	rawFilterData: PropTypes.shape({}).isRequired
 };
 
 const ThreadTable = (props) => {
-	let { threads, tableFilter, rawFilterData, isThreadFilterCardHidden, threadFilterHiddenToggle, setFilteredCharacterId } = props;
+	const {
+		threads,
+		rawFilterData,
+		isThreadFilterCardHidden,
+		threadFilterHiddenToggle,
+		setFilteredCharacterId
+	} = props;
 	return (
 		<div>
 			<Card className="at-a-glance-card">
 				<CardHeader>
 					<i className="fa fa-filter" /> Filter
-				<Label className="switch switch-sm switch-text switch-info float-right mb-0">
+					<Label className="switch switch-sm switch-text switch-info float-right mb-0">
 						<Input
 							type="checkbox"
 							className="switch-input"
@@ -32,7 +42,13 @@ const ThreadTable = (props) => {
 						<Col xs="4">
 							<FormGroup>
 								<Label htmlFor="ccmonth">Character</Label>
-								<Input type="select" name="characterId" id="character-id" value={rawFilterData.filteredCharacterId} onChange={setFilteredCharacterId}>
+								<Input
+									type="select"
+									name="characterId"
+									id="character-id"
+									value={rawFilterData.filteredCharacterId}
+									onChange={setFilteredCharacterId}
+								>
 									<option value={null}>All</option>
 									<option value={1}>1</option>
 									<option value={2}>2</option>
@@ -58,7 +74,7 @@ const ThreadTable = (props) => {
 				columns={columns}
 				defaultSorted={[
 					{
-						id: "lastPostDate",
+						id: 'lastPostDate',
 						desc: true
 					}
 				]}
@@ -68,7 +84,5 @@ const ThreadTable = (props) => {
 		</div>
 	);
 };
-
 ThreadTable.propTypes = propTypes;
-
 export default ThreadTable;
