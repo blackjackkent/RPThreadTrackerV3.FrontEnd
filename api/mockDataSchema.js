@@ -183,5 +183,5 @@ export const schema = {
 			}
 		}
 	},
-	"required": ["characters", "news", "threads",],
+	"required": ["characters", "news", "archivedThreads", "activeThreads"],
 };

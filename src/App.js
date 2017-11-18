@@ -14,6 +14,8 @@ import '../scss/style.scss';
 // Containers
 import Full from './display/containers/Full';
 import Login from './display/containers/Login';
+import Register from './display/containers/Register';
+import ForgotPasswrd from './display/containers/ForgotPassword';
 import Maintenance from './display/containers/Maintenance';
 
 const propTypes = {
@@ -43,8 +45,11 @@ const App = (props) => {
 			<Switch>
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
 				<Route exact path="/login" name="Login Page" component={Login} />
-				<Route path="/" name="Home" component={Full} />
+				<Route exact path="/register" name="Register Page" component={Register} />
+				<Route exact path="/forgotpassword" name="Forgot Password Page" component={ForgotPasswrd} />
 				<Route path="/threads" name="Threads" component={Full} />
+				<Route path="/settings" name="Settings" component={Full} />
+				<Route path="/" name="Home" component={Full} />
 			</Switch>
 		</BrowserRouter>
 	);

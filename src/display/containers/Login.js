@@ -20,8 +20,9 @@ const Login = () => (
 								<Col xs="6">
 									<Button color="primary" className="px-4">Login</Button>
 								</Col>
-								<Col xs="6" className="text-right">
-									<Button color="link" className="px-0">Forgot password?</Button>
+								<Col xs="6" className="text-right text-muted">
+									<a href="/register">Sign up</a> &bull; {' '}
+									<a href="/forgotpassword">Forgot password?</a>
 								</Col>
 							</Row>
 						</CardBlock>
