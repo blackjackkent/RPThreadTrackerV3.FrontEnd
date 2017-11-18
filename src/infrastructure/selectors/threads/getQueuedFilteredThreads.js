@@ -12,18 +12,18 @@ const filteredTag = (state) => {
 	}
 	return null;
 };
-const getAllArchivedThreads = state => state.archivedThreads;
-const getArchivedFilteredThreads = createSelector(
-	[getAllArchivedThreads, filteredCharacterId, filteredTag],
+const getAllActiveThreads = state => state.activeThreads;
+const getQueuedFilteredThreads = createSelector(
+	[getAllActiveThreads, filteredCharacterId, filteredTag],
 	(threads, characterId, tag) => {
 		let result = threads;
 		if (characterId) {
 			result = result.filter(t => t.character.id === characterId);
 		}
 		if (tag) {
-			result = result.filter(t => t.tags.includes(tag));
+			result = result.filter(t => t.tags && t.tags.includes(tag));
 		}
-		return result;
+		return result.filter(t => t.markedQueued);
 	}
 );
-export default getArchivedFilteredThreads;
+export default getQueuedFilteredThreads;

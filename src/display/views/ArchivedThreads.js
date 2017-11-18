@@ -7,7 +7,7 @@ import { getArchivedFilteredThreads } from '../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threadFilter: PropTypes.shape({}).isRequired
 };

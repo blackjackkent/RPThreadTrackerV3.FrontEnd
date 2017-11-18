@@ -1,1 +1,3 @@
-export { default as getQuery } from './getQuery'; // eslint-disable-line import/prefer-default-export
+export { default as getQuery } from './getQuery';
+export { default as flattenArrayOfArrays } from './flattenArrayOfArrays';
+export { default as filterDuplicatesFromArray } from './filterDuplicatesFromArray';
