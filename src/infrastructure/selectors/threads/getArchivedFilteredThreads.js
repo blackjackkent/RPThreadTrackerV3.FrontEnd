@@ -6,13 +6,22 @@ const filteredCharacterId = (state) => {
 	}
 	return null;
 };
+const filteredTag = (state) => {
+	if (state.threadFilter) {
+		return state.threadFilter.filteredTag;
+	}
+	return null;
+};
 const getAllArchivedThreads = state => state.archivedThreads;
 const getArchivedFilteredThreads = createSelector(
-	[getAllArchivedThreads, filteredCharacterId],
-	(threads, characterId) => {
+	[getAllArchivedThreads, filteredCharacterId, filteredTag],
+	(threads, characterId, tag) => {
 		let result = threads;
 		if (characterId) {
-			result = result.filter(t => t.characterId === characterId);
+			result = result.filter(t => t.character.id === characterId);
+		}
+		if (tag) {
+			result = result.filter(t => t.tags.includes(tag));
 		}
 		return result;
 	}

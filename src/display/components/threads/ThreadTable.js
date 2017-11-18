@@ -18,17 +18,23 @@ const ThreadTable = (props) => {
 	const {
 		threads,
 		rawFilterData,
+		characters,
+		tags,
 		isThreadFilterCardHidden,
 		threadFilterHiddenToggle,
-		setFilteredCharacterId
+		setFilteredCharacterId,
+		setFilteredTag
 	} = props;
 	return (
 		<div>
 			<ThreadFilterCard
 				rawFilterData={rawFilterData}
+				characters={characters}
+				tags={tags}
 				isThreadFilterCardHidden={isThreadFilterCardHidden}
 				threadFilterHiddenToggle={threadFilterHiddenToggle}
 				setFilteredCharacterId={setFilteredCharacterId}
+				setFilteredTag={setFilteredTag}
 			/>
 			<ReactTable
 				className="-striped"

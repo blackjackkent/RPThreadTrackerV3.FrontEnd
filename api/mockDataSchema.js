@@ -3,33 +3,11 @@ export const schema = {
 	"properties": {
 		"characters": {
 			"type": "array",
-			"minItems": 3,
+			"minItems": 5,
 			"maxItems": 5,
+			"uniqueItems": true,
 			"items": {
-				"type": "object",
-				"properties": {
-					"id": {
-						"type": "integer",
-						"unique": true,
-						"minimum": 1
-					},
-					"characterName": {
-						"type": "string",
-						"faker": "name.findName"
-					},
-					"urlIdentifier": {
-						"type": "string",
-						"faker": "lorem.word"
-					},
-					"homeUrl": {
-						"type": "string",
-						"faker": "internet.url"
-					},
-					"isOnHiatus": {
-						"type": "boolean",
-					}
-				},
-				"required": ["id", "urlIdentifier", "isOnHiatus", "homeUrl"]
+				"$ref": "#/definitions/character"
 			}
 		},
 		"activeThreads": {
@@ -44,10 +22,8 @@ export const schema = {
 						"unique": true,
 						"minimum": 1
 					},
-					"characterId": {
-						"type": "integer",
-						"minimum": 1,
-						"maximum": 10
+					"character": {
+						"$ref": "#/definitions/character"
 					},
 					"isMyTurn": {
 						"type": "boolean",
@@ -89,7 +65,7 @@ export const schema = {
 						}
 					}
 				},
-				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier", "characterId"]
+				"required": ["id", "isMyTurn", "isArchived", "lastPostDate", "lastPostUrl", "userTitle", "lastPosterUrlIdentifier", "character"]
 			}
 		},
 		"archivedThreads": {
@@ -184,4 +160,38 @@ export const schema = {
 		}
 	},
 	"required": ["characters", "news", "activeThreads", "archivedThreads"],
+	"definitions": {
+		"character": {
+			"enum": [{
+				"id": 1,
+				"characterName": "Dominic Trevelyan",
+				"urlIdentifier": "ostwickjoker",
+				"homeUrl": "http://ostwickjoker.tumblr.com",
+				"isOnHiatus": false
+			}, {
+				"id": 2,
+				"characterName": "Elliot Hawke",
+				"urlIdentifier": "somniari-hawke",
+				"homeUrl": "http://somniari-hawke.tumblr.com",
+				"isOnHiatus": false
+			}, {
+				"id": 3,
+				"characterName": "Jenna Shepard",
+				"urlIdentifier": "cmdr-blackjack-shepard",
+				"homeUrl": "http://cmdr-blackjack-shepard.tumblr.com",
+				"isOnHiatus": false
+			}, {
+				"id": 4,
+				"characterName": "Philip Shepard",
+				"urlIdentifier": "n7-tech-geek",
+				"homeUrl": "http://n7-tech-geek.tumblr.com",
+				"isOnHiatus": false
+			}, {
+				"id": 5,
+				"urlIdentifier": "truest-friend-noblest-foe",
+				"homeUrl": "http://truest-friend-noblest-foe.tumblr.com",
+				"isOnHiatus": false
+			}]
+		}
+	}
 };

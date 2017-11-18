@@ -13,6 +13,7 @@ export { fetchedArchivedThreadsSuccess, FETCHED_ARCHIVED_THREADS_SUCCESS } from 
 export { generateRandomThread, GENERATE_RANDOM_THREAD } from './threads/generateRandomThread';
 export { generatedRandomThreadSuccess, GENERATED_RANDOM_THREAD_SUCCESS } from './threads/generatedRandomThreadSuccess';
 export { setFilteredCharacterId, SET_FILTERED_CHARACTER_ID } from './threads/setFilteredCharacterId';
+export { setFilteredTag, SET_FILTERED_TAG } from './threads/setFilteredTag';
 
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';
