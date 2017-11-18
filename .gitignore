@@ -6,6 +6,7 @@ node_modules
 # testing
 .eslintcache
 coverage
+api/db.json
 
 # production
 build
