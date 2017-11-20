@@ -137,3 +137,7 @@
   transform: translateY(-52%);
   transition: all .3s cubic-bezier(.25, .46, .45, .94)
 }
+
+.current-characters-table .ReactTable {
+	color: $card-body-color;
+}

@@ -21,7 +21,7 @@ const getArchivedFilteredThreads = createSelector(
 			result = result.filter(t => t.character.id === characterId);
 		}
 		if (tag) {
-			result = result.filter(t => t.tags.includes(tag));
+			result = result.filter(t => t.tags && t.tags.includes(tag));
 		}
 		return result;
 	}

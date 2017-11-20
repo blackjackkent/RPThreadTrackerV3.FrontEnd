@@ -5,6 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NewCharacterFormCard from '../components/characters/NewCharacterFormCard';
+import CurrentCharacterTable from '../components/characters/CurrentCharacterTable';
 import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchActiveThreads, fetchCharacters } from '../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity } from '../../infrastructure/selectors';
 
@@ -37,11 +38,13 @@ class ManageCharacters extends Component {
 		return (
 			<div className="animated fadeIn dashboard-container">
 				<Row>
-					<Col xs="12" md="6">
+					<Col>
 						<NewCharacterFormCard />
 					</Col>
-					<Col xs="12" md="6">
-						Character list
+				</Row>
+				<Row>
+					<Col>
+						<CurrentCharacterTable characters={characters} />
 					</Col>
 				</Row>
 			</div >

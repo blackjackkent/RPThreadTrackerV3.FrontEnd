@@ -167,30 +167,50 @@ export const schema = {
 				"characterName": "Dominic Trevelyan",
 				"urlIdentifier": "ostwickjoker",
 				"homeUrl": "http://ostwickjoker.tumblr.com",
-				"isOnHiatus": false
+				"isOnHiatus": false,
+				"platform": {
+					"platformId": 1,
+					"platformName": "Tumblr"
+				}
 			}, {
 				"id": 2,
 				"characterName": "Elliot Hawke",
 				"urlIdentifier": "somniari-hawke",
 				"homeUrl": "http://somniari-hawke.tumblr.com",
-				"isOnHiatus": false
+				"isOnHiatus": false,
+				"platform": {
+					"platformId": 1,
+					"platformName": "Tumblr"
+				}
 			}, {
 				"id": 3,
 				"characterName": "Jenna Shepard",
 				"urlIdentifier": "cmdr-blackjack-shepard",
 				"homeUrl": "http://cmdr-blackjack-shepard.tumblr.com",
-				"isOnHiatus": false
+				"isOnHiatus": false,
+				"platform": {
+					"platformId": 1,
+					"platformName": "Tumblr"
+				}
 			}, {
 				"id": 4,
 				"characterName": "Philip Shepard",
 				"urlIdentifier": "n7-tech-geek",
 				"homeUrl": "http://n7-tech-geek.tumblr.com",
-				"isOnHiatus": false
+				"isOnHiatus": false,
+				"platform": {
+					"platformId": 1,
+					"platformName": "Tumblr"
+				}
 			}, {
 				"id": 5,
 				"urlIdentifier": "truest-friend-noblest-foe",
 				"homeUrl": "http://truest-friend-noblest-foe.tumblr.com",
-				"isOnHiatus": false
+				"isOnHiatus": false,
+				"platform": {
+					"platformId": 1,
+					"platformName": "Tumblr"
+				}
 			}]
 		}
 	}
