@@ -15,10 +15,10 @@ const ChangeUsernameCard = (props) => {
 			<CardBlock className="card-body">
 				<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
 					<FormGroup row>
-						<Col md="3">
+						<Col xs="12">
 							<Label htmlFor="current-password">Current Password:</Label>
 						</Col>
-						<Col xs="12" md="9">
+						<Col xs="12">
 							<Input
 								type="password"
 								id="current-password"
@@ -28,10 +28,10 @@ const ChangeUsernameCard = (props) => {
 						</Col>
 					</FormGroup>
 					<FormGroup row>
-						<Col md="3">
+						<Col xs="12">
 							<Label htmlFor="new-password">New Password:</Label>
 						</Col>
-						<Col xs="12" md="9">
+						<Col xs="12">
 							<Input
 								type="password"
 								id="new-password"
@@ -41,10 +41,10 @@ const ChangeUsernameCard = (props) => {
 						</Col>
 					</FormGroup>
 					<FormGroup row>
-						<Col md="3">
+						<Col xs="12">
 							<Label htmlFor="confirm-new-password">Confirm New Password:</Label>
 						</Col>
-						<Col xs="12" md="9">
+						<Col xs="12">
 							<Input
 								type="password"
 								id="confirm-new-password"

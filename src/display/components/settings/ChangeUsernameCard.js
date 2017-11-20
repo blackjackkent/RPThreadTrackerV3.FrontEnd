@@ -15,10 +15,10 @@ const ChangeUsernameCard = (props) => {
 			<CardBlock className="card-body">
 				<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
 					<FormGroup row>
-						<Col md="2">
+						<Col xs="12">
 							<Label htmlFor="new-username">New Username:</Label>
 						</Col>
-						<Col xs="12" md="10">
+						<Col xs="12">
 							<Input
 								type="text"
 								id="new-username"

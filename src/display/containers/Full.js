@@ -17,6 +17,7 @@ import MyTurnThreads from '../views/MyTurnThreads';
 import TheirTurnThreads from '../views/TheirTurnThreads';
 import ArchivedThreads from '../views/ArchivedThreads';
 import QueuedThreads from '../views/QueuedThreads';
+import ManageCharacters from '../views/ManageCharacters';
 import Settings from '../views/Settings';
 import Help from '../views/Help';
 
@@ -63,6 +64,7 @@ class Full extends Component {
 								<Route path="/threads/archived" name="Threads" component={ArchivedThreads} />
 								<Route path="/threads/queued" name="Threads" component={QueuedThreads} />
 								<Route path="/settings" name="Settings" component={Settings} />
+								<Route path="/manage-characters" name="Characters" component={ManageCharacters} />
 								<Route path="/help" name="Help" component={Help} />
 								<Redirect from="/" to="/dashboard" />
 							</Switch>
