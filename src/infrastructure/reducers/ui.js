@@ -1,4 +1,12 @@
-import { TOGGLE_SIDEBAR, TOGGLE_MOBILE_SIDEBAR, TOGGLE_NEWS_ASIDE, TOGGLE_HEADER_DROPDOWN, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from '../actions';
+import {
+	TOGGLE_SIDEBAR,
+	TOGGLE_MOBILE_SIDEBAR,
+	TOGGLE_NEWS_ASIDE,
+	TOGGLE_HEADER_DROPDOWN,
+	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
+	OPEN_EDIT_CHARACTER_MODAL,
+	CLOSE_EDIT_CHARACTER_MODAL
+} from '../actions';
 
 function ui(state = {
 	isNewsAsideOpen: false,
@@ -6,7 +14,8 @@ function ui(state = {
 	isHeaderDropdownOpen: false,
 	isMobileSidebarOpen: false,
 	isMaintenanceMode: false,
-	isThreadFilterCardHidden: true
+	isThreadFilterCardHidden: true,
+	isEditCharacterModalOpen: false
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
@@ -28,6 +37,14 @@ function ui(state = {
 		case TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN:
 			return Object.assign({}, state, {
 				isThreadFilterCardHidden: !state.isThreadFilterCardHidden
+			});
+		case OPEN_EDIT_CHARACTER_MODAL:
+			return Object.assign({}, state, {
+				isEditCharacterModalOpen: true
+			});
+		case CLOSE_EDIT_CHARACTER_MODAL:
+			return Object.assign({}, state, {
+				isEditCharacterModalOpen: false
 			});
 		default:
 			return state;

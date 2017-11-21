@@ -4,6 +4,8 @@ export { toggleNewsAside, TOGGLE_NEWS_ASIDE } from './ui/toggleNewsAside';
 export { toggleHeaderDropdown, TOGGLE_HEADER_DROPDOWN } from './ui/toggleHeaderDropdown';
 export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSidebar';
 export { toggleIsThreadFilterCardHidden, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from './ui/toggleIsThreadFilterCardHidden';
+export { openEditCharacterModal, OPEN_EDIT_CHARACTER_MODAL } from './ui/openEditCharacterModal';
+export { closeEditCharacterModal, CLOSE_EDIT_CHARACTER_MODAL } from './ui/closeEditCharacterModal';
 
 // Threads
 export { fetchActiveThreads, FETCH_ACTIVE_THREADS } from './threads/fetchActiveThreads';

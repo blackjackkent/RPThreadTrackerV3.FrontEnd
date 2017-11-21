@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Button } from 'reactstrap';
 
 const propTypes = {
 	character: PropTypes.shape({}).isRequired
 };
 
 const CharacterTableSubComponent = (props) => {
-	const { character } = props;
+	const { character, openEditCharacterModal } = props;
 	return (
 		<div className="character-table-sub-component">
 			<span className="control-button">
-				<a className="btn btn-primary" href={`/manage-characters/edit/${character.id}`}>
+				<Button color="primary" onClick={() => openEditCharacterModal(character)}>
 					Edit <i className="fa fa-pencil" />
-				</a>
+				</Button>
 			</span>
 			<span className="control-button">
 				<a className="btn btn-danger" href={`/manage-characters/delete/${character.id}`}>

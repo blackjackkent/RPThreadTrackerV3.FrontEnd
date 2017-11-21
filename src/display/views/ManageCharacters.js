@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NewCharacterFormCard from '../components/characters/NewCharacterFormCard';
 import CurrentCharacterTable from '../components/characters/CurrentCharacterTable';
-import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchActiveThreads, fetchCharacters } from '../../infrastructure/actions';
+import EditCharacterModal from '../components/characters/EditCharacterModal';
+import { openEditCharacterModal, fetchCharacters, closeEditCharacterModal } from '../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity } from '../../infrastructure/selectors';
 
 const propTypes = {
@@ -16,14 +17,21 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const {
-		characters
+		characters,
+		ui
 	} = state;
 	return {
-		characters
+		characters,
+		ui
 	};
 }
 
 class ManageCharacters extends Component {
+	constructor(props) {
+		super(props);
+		this.openEditCharacterModal = this.openEditCharacterModal.bind(this);
+		this.closeEditCharacterModal = this.closeEditCharacterModal.bind(this);
+	}
 	componentDidMount() {
 		const { dispatch } = this.props;
 		if (!this.props.characters || !this.props.characters.length) {
@@ -31,9 +39,20 @@ class ManageCharacters extends Component {
 		}
 	}
 
+	openEditCharacterModal(character) {
+		const { dispatch } = this.props;
+		dispatch(openEditCharacterModal(character));
+	}
+
+	closeEditCharacterModal() {
+		const { dispatch } = this.props;
+		dispatch(closeEditCharacterModal());
+	}
+
 	render() {
 		const {
-			characters
+			characters,
+			ui
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -44,9 +63,10 @@ class ManageCharacters extends Component {
 				</Row>
 				<Row>
 					<Col>
-						<CurrentCharacterTable characters={characters} />
+						<CurrentCharacterTable characters={characters} openEditCharacterModal={this.openEditCharacterModal} />
 					</Col>
 				</Row>
+				<EditCharacterModal isEditCharacterModalOpen={ui.isEditCharacterModalOpen} closeEditCharacterModal={this.closeEditCharacterModal} />
 			</div >
 		);
 	}

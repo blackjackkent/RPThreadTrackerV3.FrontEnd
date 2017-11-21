@@ -11,7 +11,8 @@ const propTypes = {
 
 const CurrentCharacterTable = (props) => {
 	const {
-		characters
+		characters,
+		openEditCharacterModal
 	} = props;
 	return (
 		<div className="current-characters-table">
@@ -26,7 +27,7 @@ const CurrentCharacterTable = (props) => {
 					}
 				]}
 				pageSize={5}
-				SubComponent={row => <CharacterTableSubComponent character={row.original} />}
+				SubComponent={row => <CharacterTableSubComponent character={row.original} openEditCharacterModal={openEditCharacterModal} />}
 			/>
 		</div>
 	);
