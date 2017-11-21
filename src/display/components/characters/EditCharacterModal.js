@@ -3,18 +3,26 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
 
 const propTypes = {
-	character: PropTypes.shape({}).isRequired
+	isEditCharacterModalOpen: PropTypes.bool.isRequired,
+	submitEditCharacter: PropTypes.func.isRequired,
+	closeEditCharacterModal: PropTypes.func.isRequired,
+	characterToEdit: PropTypes.shape({}).isRequired
 };
 
 const EditCharacterModal = (props) => {
-	const { isEditCharacterModalOpen, submitEditCharacter, closeEditCharacterModal, characterToEdit } = props;
+	const {
+		isEditCharacterModalOpen,
+		submitEditCharacter,
+		closeEditCharacterModal,
+		characterToEdit
+	} = props;
 	if (!characterToEdit.id) {
 		return (
-			<div></div>
+			<div />
 		);
 	}
 	return (
-		<Modal isOpen={isEditCharacterModalOpen} toggle={closeEditCharacterModal} backdrop={true}>
+		<Modal isOpen={isEditCharacterModalOpen} toggle={closeEditCharacterModal} backdrop>
 			<ModalHeader toggle={closeEditCharacterModal}>Edit Character</ModalHeader>
 			<ModalBody>
 				<Form>
@@ -32,7 +40,9 @@ const EditCharacterModal = (props) => {
 					</FormGroup>
 					<FormGroup row>
 						<Col>
-							<Label htmlFor="character-platform">Platform:</Label><Input disabled
+							<Label htmlFor="character-platform">Platform:</Label>
+							<Input
+								disabled
 								type="select"
 								name="character-platform"
 								id="character-platform"
@@ -53,8 +63,11 @@ const EditCharacterModal = (props) => {
 								value={characterToEdit.urlIdentifier}
 							/>
 							<FormText>
-								For a Tumblr account, this will be the part of your URL before ".tumblr.com". For instance, if your URL is <strong>http://myawesomeblog.tumblr.com</strong>, you would enter <strong>myawesomeblog</strong> in this field.
-					</FormText>
+								For a Tumblr account, this will be the part of your URL before
+								&quot;.tumblr.com&quot;. For instance, if your URL is
+								<strong>http://myawesomeblog.tumblr.com</strong>, you would enter
+								<strong>myawesomeblog</strong> in this field.
+							</FormText>
 						</Col>
 					</FormGroup>
 				</Form>

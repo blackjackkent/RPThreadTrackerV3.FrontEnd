@@ -1,16 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import { Card, CardHeader, Label, Input, CardBlock, Row, Col, FormGroup } from 'reactstrap';
 import columns from './_columns';
 import ThreadFilterCard from './ThreadFilterCard';
 import ThreadTableSubComponent from './table-components/ThreadTableSubComponent';
 
 const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	threadFilterHiddenToggle: PropTypes.func.isRequired,
 	setFilteredCharacterId: PropTypes.func.isRequired,
+	setFilteredTag: PropTypes.func.isRequired,
 	rawFilterData: PropTypes.shape({}).isRequired
 };
 

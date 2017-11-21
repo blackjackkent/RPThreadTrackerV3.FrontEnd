@@ -10,8 +10,10 @@ import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../utility';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threadFilter: PropTypes.shape({}).isRequired,
-	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	isThreadFilterCardHidden: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -68,7 +70,10 @@ class Threads extends Component {
 	}
 	render() {
 		const {
-			filteredThreads, threadFilter, isThreadFilterCardHidden, validCharacterFilterValues, characters
+			filteredThreads,
+			threadFilter,
+			isThreadFilterCardHidden,
+			characters
 		} = this.props;
 		const tags = this.getFilteredThreadTags();
 		return (

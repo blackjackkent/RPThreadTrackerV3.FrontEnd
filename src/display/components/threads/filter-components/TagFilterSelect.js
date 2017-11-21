@@ -3,7 +3,9 @@ import { FormGroup, Label, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	rawFilterData: PropTypes.shape({}).isRequired,
+	setFilteredTag: PropTypes.func.isRequired
 };
 
 const CharacterFilterSelect = (props) => {
@@ -11,11 +13,8 @@ const CharacterFilterSelect = (props) => {
 	const options = [];
 	if (tags) {
 		for (let i = 0; i < tags.length; i++) {
-			options.push(
-				<option value={tags[i]} key={tags[i]}>
-					{tags[i]}
-				</option>
-			);
+			const element = <option value={tags[i]} key={tags[i]}>{tags[i]}</option>;
+			options.push(element);
 		}
 	}
 	return (
@@ -28,7 +27,7 @@ const CharacterFilterSelect = (props) => {
 				value={rawFilterData.filteredTag}
 				onChange={setFilteredTag}
 			>
-				<option value={''}>All</option>
+				<option value="">All</option>
 				{options}
 			</Input>
 		</FormGroup>

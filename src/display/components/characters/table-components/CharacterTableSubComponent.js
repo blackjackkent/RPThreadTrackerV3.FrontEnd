@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
 const propTypes = {
-	character: PropTypes.shape({}).isRequired
+	character: PropTypes.shape({}).isRequired,
+	openEditCharacterModal: PropTypes.func.isRequired
 };
 
 const CharacterTableSubComponent = (props) => {
@@ -17,8 +18,7 @@ const CharacterTableSubComponent = (props) => {
 			</span>
 			<span className="control-button">
 				{
-					character.isOnHiatus
-						?
+					character.isOnHiatus ?
 						<Button color="primary">
 							Set Off Hiatus <i className="fa fa-power-off" />
 						</Button>

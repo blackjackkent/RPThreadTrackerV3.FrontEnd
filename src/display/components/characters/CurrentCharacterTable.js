@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import { Card, CardHeader, Label, Input, CardBlock, Row, Col, FormGroup } from 'reactstrap';
 import columns from './_columns';
 import CharacterTableSubComponent from './table-components/CharacterTableSubComponent';
 
 const propTypes = {
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	openEditCharacterModal: PropTypes.func.isRequired
 };
 
 const CurrentCharacterTable = (props) => {
@@ -27,7 +27,14 @@ const CurrentCharacterTable = (props) => {
 					}
 				]}
 				pageSize={5}
-				SubComponent={row => <CharacterTableSubComponent character={row.original} openEditCharacterModal={openEditCharacterModal} />}
+				SubComponent={
+					row => (
+						<CharacterTableSubComponent
+							character={row.original}
+							openEditCharacterModal={openEditCharacterModal}
+						/>
+					)
+				}
 			/>
 		</div>
 	);

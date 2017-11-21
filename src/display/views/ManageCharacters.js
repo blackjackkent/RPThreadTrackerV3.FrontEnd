@@ -8,11 +8,12 @@ import NewCharacterFormCard from '../components/characters/NewCharacterFormCard'
 import CurrentCharacterTable from '../components/characters/CurrentCharacterTable';
 import EditCharacterModal from '../components/characters/EditCharacterModal';
 import { openEditCharacterModal, fetchCharacters, closeEditCharacterModal } from '../../infrastructure/actions';
-import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity } from '../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
+	isEditCharacterModalOpen: PropTypes.bool.isRequired,
+	characterToEdit: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -23,7 +24,7 @@ function mapStateToProps(state) {
 	} = state;
 	return {
 		characters,
-		ui,
+		isEditCharacterModalOpen: ui.isEditCharacterModalOpen,
 		characterToEdit
 	};
 }
@@ -54,7 +55,7 @@ class ManageCharacters extends Component {
 	render() {
 		const {
 			characters,
-			ui,
+			isEditCharacterModalOpen,
 			characterToEdit
 		} = this.props;
 		return (
@@ -66,10 +67,17 @@ class ManageCharacters extends Component {
 				</Row>
 				<Row>
 					<Col>
-						<CurrentCharacterTable characters={characters} openEditCharacterModal={this.openEditCharacterModal} />
+						<CurrentCharacterTable
+							characters={characters}
+							openEditCharacterModal={this.openEditCharacterModal}
+						/>
 					</Col>
 				</Row>
-				<EditCharacterModal isEditCharacterModalOpen={ui.isEditCharacterModalOpen} closeEditCharacterModal={this.closeEditCharacterModal} characterToEdit={characterToEdit} />
+				<EditCharacterModal
+					isEditCharacterModalOpen={isEditCharacterModalOpen}
+					closeEditCharacterModal={this.closeEditCharacterModal}
+					characterToEdit={characterToEdit}
+				/>
 			</div >
 		);
 	}

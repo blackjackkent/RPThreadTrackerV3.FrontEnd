@@ -8,6 +8,6 @@ const routes = {
 	'/threads/queued': 'Queued',
 	'/manage-characters': 'Manage Characters',
 	'/settings': 'Account Settings',
-	'/help': 'Help',
+	'/help': 'Help'
 };
 export default routes;
