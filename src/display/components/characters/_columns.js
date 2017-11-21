@@ -5,7 +5,7 @@ export default [
 	{
 		Header: 'Character Name',
 		accessor: 'characterName',
-		Cell: row => <span>{row.value ? row.value : 'Unnamed Character'}</span>
+		Cell: row => <span className={row.original.isOnHiatus ? 'text-muted' : ''}>{row.value ? row.value : 'Unnamed Character'} {row.original.isOnHiatus ? '(On Hiatus)' : ''}</span>
 	}, {
 		Header: 'URL Identifier',
 		accessor: 'urlIdentifier',

@@ -177,7 +177,7 @@ export const schema = {
 				"characterName": "Elliot Hawke",
 				"urlIdentifier": "somniari-hawke",
 				"homeUrl": "http://somniari-hawke.tumblr.com",
-				"isOnHiatus": false,
+				"isOnHiatus": true,
 				"platform": {
 					"platformId": 1,
 					"platformName": "Tumblr"
@@ -197,7 +197,7 @@ export const schema = {
 				"characterName": "Philip Shepard",
 				"urlIdentifier": "n7-tech-geek",
 				"homeUrl": "http://n7-tech-geek.tumblr.com",
-				"isOnHiatus": false,
+				"isOnHiatus": true,
 				"platform": {
 					"platformId": 1,
 					"platformName": "Tumblr"

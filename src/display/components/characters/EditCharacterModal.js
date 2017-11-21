@@ -7,7 +7,12 @@ const propTypes = {
 };
 
 const EditCharacterModal = (props) => {
-	const { isEditCharacterModalOpen, submitEditCharacter, closeEditCharacterModal } = props;
+	const { isEditCharacterModalOpen, submitEditCharacter, closeEditCharacterModal, characterToEdit } = props;
+	if (!characterToEdit.id) {
+		return (
+			<div></div>
+		);
+	}
 	return (
 		<Modal isOpen={isEditCharacterModalOpen} toggle={closeEditCharacterModal} backdrop={true}>
 			<ModalHeader toggle={closeEditCharacterModal}>Edit Character</ModalHeader>
@@ -20,6 +25,7 @@ const EditCharacterModal = (props) => {
 								type="text"
 								id="character-name"
 								name="character-name"
+								value={characterToEdit.characterName}
 								placeholder="Enter Character Name"
 							/>
 						</Col>
@@ -30,6 +36,7 @@ const EditCharacterModal = (props) => {
 								type="select"
 								name="character-platform"
 								id="character-platform"
+								value={characterToEdit.platform.platformId}
 							>
 								<option value={1}>Tumblr</option>
 							</Input>
@@ -43,6 +50,7 @@ const EditCharacterModal = (props) => {
 								id="character-url-identifier"
 								name="character-url-identifier"
 								placeholder="Enter URL Identifier"
+								value={characterToEdit.urlIdentifier}
 							/>
 							<FormText>
 								For a Tumblr account, this will be the part of your URL before ".tumblr.com". For instance, if your URL is <strong>http://myawesomeblog.tumblr.com</strong>, you would enter <strong>myawesomeblog</strong> in this field.

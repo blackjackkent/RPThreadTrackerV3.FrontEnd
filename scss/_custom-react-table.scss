@@ -51,6 +51,8 @@
   border-right: 1px solid $gray-500;
 }
 
+.ReactTable .rt-tbody .rt-td .text-muted { color: #f77 !important; }
+
 .ReactTable .rt-tbody .rt-td a {
 	color: $light-blue;
 }

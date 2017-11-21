@@ -18,11 +18,13 @@ const propTypes = {
 function mapStateToProps(state) {
 	const {
 		characters,
-		ui
+		ui,
+		characterToEdit
 	} = state;
 	return {
 		characters,
-		ui
+		ui,
+		characterToEdit
 	};
 }
 
@@ -52,7 +54,8 @@ class ManageCharacters extends Component {
 	render() {
 		const {
 			characters,
-			ui
+			ui,
+			characterToEdit
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -66,7 +69,7 @@ class ManageCharacters extends Component {
 						<CurrentCharacterTable characters={characters} openEditCharacterModal={this.openEditCharacterModal} />
 					</Col>
 				</Row>
-				<EditCharacterModal isEditCharacterModalOpen={ui.isEditCharacterModalOpen} closeEditCharacterModal={this.closeEditCharacterModal} />
+				<EditCharacterModal isEditCharacterModalOpen={ui.isEditCharacterModalOpen} closeEditCharacterModal={this.closeEditCharacterModal} characterToEdit={characterToEdit} />
 			</div >
 		);
 	}

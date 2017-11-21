@@ -16,6 +16,19 @@ const CharacterTableSubComponent = (props) => {
 				</Button>
 			</span>
 			<span className="control-button">
+				{
+					character.isOnHiatus
+						?
+						<Button color="primary">
+							Set Off Hiatus <i className="fa fa-power-off" />
+						</Button>
+						:
+						<Button color="primary">
+							Set On Hiatus <i className="fa fa-power-off" />
+						</Button>
+				}
+			</span>
+			<span className="control-button">
 				<a className="btn btn-danger" href={`/manage-characters/delete/${character.id}`}>
 					Delete <i className="fa fa-minus-circle" />
 				</a>
