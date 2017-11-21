@@ -40,28 +40,24 @@ const AtAGlanceCard = (props) => {
 				<CardGroup>
 					<DashboardSummaryWidget
 						icon="icon-list"
-						color="warning"
 						header={activeThreads.length}
 					>
 						Active Threads
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
 						icon="icon-pencil"
-						color="info"
 						header={myTurnThreads.length}
 					>
 						Your Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
 						icon="icon-check"
-						color="success"
 						header={theirTurnThreads.length}
 					>
 						Their Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
 						icon="icon-calendar"
-						color="danger"
 						header={queuedThreads.length}
 					>
 						Queued

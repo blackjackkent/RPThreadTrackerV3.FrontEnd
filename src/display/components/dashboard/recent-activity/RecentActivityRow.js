@@ -24,8 +24,8 @@ const RecentActivityRow = (props) => {
 					</Moment>
 				</div>
 				<div className="small">
-					<a href="/untrack">Untrack</a> &bull;
-					<a href="/archive">Archive</a> &bull;
+					<a href="/untrack">Untrack</a> &bull;{' '}
+					<a href="/archive">Archive</a> &bull;{' '}
 					<a href="/queue">Mark Queued</a>
 				</div>
 			</Col>

@@ -2,6 +2,7 @@
 /***** GLOBAL ******/
 .app-header.navbar .navbar-brand {background-image: none; display: block; font-size: 16px; line-height: 38px;}
 .app-header.navbar { padding-right: 30px; }
+.app-header.navbar .navbar-toggler { height: 55px; }
 .breadcrumb a { color: $light-blue}
 .footer a { color: $light-blue}
 .aside-menu a { color: $light-blue; }
@@ -12,7 +13,7 @@
 
 // /***** DASHBOARD *****/
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
-.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; }
+.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; border-right: 1px solid $gray-800; }
 .dashboard-container .recent-activity-card .row,
 .dashboard-container .your-characters-card .row { padding: 12px 0; border-bottom: 1px solid $gray-800; }
 .dashboard-container .recent-activity-card .row:first-child,
@@ -40,7 +41,7 @@
 .thread-filter-card .card-header span { cursor: pointer; }
 
 /********** MANAGE CHARACTERS *********/
-
+.track-new-character-form .form-group .col-12 { margin-bottom: 10px;}
 .character-table-sub-component { background: $gray-600; border-bottom: 3px solid $gray-400;}
 .character-table-sub-component .control-button { width: 50%; display: inline-block; text-align: center; padding: 10px;}
 

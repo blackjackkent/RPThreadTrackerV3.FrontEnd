@@ -8,17 +8,15 @@ const propTypes = {
 const NewCharacterFormCard = (props) => {
 	const { } = props;
 	return (
-		<Card className="track-new-character">
+		<Card className="track-new-character-form">
 			<CardHeader>
 				<i className="fa fa-user" />Track New Character
 					</CardHeader>
 			<CardBlock className="card-body">
 				<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
 					<FormGroup row>
-						<Col xs="12">
+						<Col xs="12" xl="4">
 							<Label htmlFor="character-name">Character Name:</Label>
-						</Col>
-						<Col xs="12">
 							<Input
 								type="text"
 								id="character-name"
@@ -26,13 +24,8 @@ const NewCharacterFormCard = (props) => {
 								placeholder="Enter Character Name"
 							/>
 						</Col>
-					</FormGroup>
-					<FormGroup row>
-						<Col xs="12">
-							<Label htmlFor="character-platform">Platform:</Label>
-						</Col>
-						<Col xs="12">
-							<Input disabled
+						<Col xs="12" xl="4">
+							<Label htmlFor="character-platform">Platform:</Label><Input disabled
 								type="select"
 								name="character-platform"
 								id="character-platform"
@@ -40,21 +33,17 @@ const NewCharacterFormCard = (props) => {
 								<option value={1}>Tumblr</option>
 							</Input>
 						</Col>
-					</FormGroup>
-					<FormGroup row>
-						<Col xs="12">
+						<Col xs="12" xl="4">
 							<Label htmlFor="character-url-identifier">Character URL Identifier:</Label>
-						</Col>
-						<Col xs="12">
 							<Input
-								type="password"
+								type="text"
 								id="character-url-identifier"
 								name="character-url-identifier"
 								placeholder="Enter URL Identifier"
 							/>
 							<FormText>
 								For a Tumblr account, this will be the part of your URL before ".tumblr.com". For instance, if your URL is <strong>http://myawesomeblog.tumblr.com</strong>, you would enter <strong>myawesomeblog</strong> in this field.
-							</FormText>
+					</FormText>
 						</Col>
 					</FormGroup>
 				</Form>
