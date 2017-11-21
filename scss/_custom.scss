@@ -20,14 +20,13 @@
 .dashboard-container .your-characters-card .row:first-child { padding-top: 0 }
 .dashboard-container .recent-activity-card .row:last-child,
 .dashboard-container .your-characters-card .row:last-child { border-bottom: none;}
-.dashboard-container .your-characters-card .row { text-align: center;}
 .dashboard-container .your-characters-card .row div:first-child { text-align: left;}
 
 .dashboard-container .random-thread-generator-card,
 .dashboard-container .patreon-card { height: 180px;}
 .dashboard-container .random-thread-generator-card .card-body,
 .dashboard-container .patreon-card .card-body {  text-align: center; }
-.dashboard-container .patreon-card a {color: $white}
+.dashboard-container .card a.btn {color: $white}
 
 .dashboard-container .random-thread-result { padding: 10px; margin: 10px; background: rgba(50, 50, 50, 0.5)}
 .dashboard-container .random-thread-result p { margin: 0; }

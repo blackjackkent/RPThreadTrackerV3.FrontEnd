@@ -13,6 +13,7 @@ const YourCharactersCard = (props) => {
 		<Card className="your-characters-card">
 			<CardHeader>
 				<i className="fa fa-users" /> Your Characters
+				<div className="float-right"><a href="/manage-characters">Manage Characters</a></div>
 			</CardHeader>
 			<CardBlock className="card-body">
 				{

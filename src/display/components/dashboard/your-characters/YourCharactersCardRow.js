@@ -17,10 +17,10 @@ const YourCharactersCard = (props) => {
 	return (
 		<Row className="your-characters-card-row">
 			<Col xs="6">
-				{character.characterName || 'Unnamed Character'} (<a href={character.homeUrl}>{character.urlIdentifier}</a>)
+				{character.characterName || 'Unnamed Character'}
 			</Col>
 			<Col xs="6">
-				<a href={`characters/edit/${character.id}`}>Edit</a>
+				<a href={character.homeUrl}>{character.urlIdentifier}</a>
 			</Col>
 		</Row>
 	);
