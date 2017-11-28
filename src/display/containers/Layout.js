@@ -6,20 +6,20 @@ import PropTypes from 'prop-types';
 
 import { fetchUser, fetchNews } from '../../infrastructure/actions';
 
-import HeaderContainer from '../components/shared/header/HeaderContainer';
-import Sidebar from '../components/shared/sidebar/Sidebar';
-import Breadcrumb from '../components/shared/breadcrumb/Breadcrumb';
-import AsideContainer from '../components/shared/aside/AsideContainer';
-import Footer from '../components/shared/footer/Footer';
+import HeaderContainer from '../shared/header/HeaderContainer';
+import Sidebar from '../shared/sidebar/Sidebar';
+import Breadcrumb from '../shared/breadcrumb/Breadcrumb';
+import AsideContainer from '../shared/aside/AsideContainer';
+import Footer from '../shared/footer/Footer';
 
-import Dashboard from '../views/Dashboard';
-import MyTurnThreads from '../views/MyTurnThreads';
-import TheirTurnThreads from '../views/TheirTurnThreads';
-import ArchivedThreads from '../views/ArchivedThreads';
-import QueuedThreads from '../views/QueuedThreads';
-import ManageCharacters from '../views/ManageCharacters';
-import Settings from '../views/Settings';
-import Help from '../views/Help';
+import Dashboard from '../views/dashboard/Dashboard';
+import MyTurnThreads from '../views/threads/MyTurnThreads';
+import TheirTurnThreads from '../views/threads/TheirTurnThreads';
+import ArchivedThreads from '../views/threads/ArchivedThreads';
+import QueuedThreads from '../views/threads/QueuedThreads';
+import ManageCharacters from '../views/characters/ManageCharacters';
+import Settings from '../views/settings/Settings';
+import Help from '../views/help/Help';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
 		news
 	};
 }
-class Full extends Component {
+class Layout extends Component {
 	componentDidMount() {
 		const { dispatch } = this.props;
 		if (!this.props.user || !this.props.user.id) {
@@ -78,6 +78,6 @@ class Full extends Component {
 	}
 }
 
-Full.propTypes = propTypes;
+Layout.propTypes = propTypes;
 
-export default connect(mapStateToProps)(Full);
+export default connect(mapStateToProps)(Layout);

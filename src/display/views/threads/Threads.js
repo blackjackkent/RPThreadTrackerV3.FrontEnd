@@ -4,9 +4,9 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ThreadTable from '../components/threads/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters } from '../../infrastructure/actions';
-import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../utility';
+import ThreadTable from './components/ThreadTable';
+import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters } from '../../../infrastructure/actions';
+import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,

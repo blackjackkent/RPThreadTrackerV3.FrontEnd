@@ -2,8 +2,8 @@ import React from 'react';
 import {
 	Row, Col
 } from 'reactstrap';
-import ChangeUsernameCard from '../components/settings/ChangeUsernameCard';
-import ChangePasswordCard from '../components/settings/ChangePasswordCard';
+import ChangeUsernameCard from './components/ChangeUsernameCard';
+import ChangePasswordCard from './components/ChangePasswordCard';
 
 const Settings = () => (
 	<div className="animated fadeIn dashboard-container">

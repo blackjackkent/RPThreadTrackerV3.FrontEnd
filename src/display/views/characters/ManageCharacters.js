@@ -4,10 +4,10 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import NewCharacterFormCard from '../components/characters/NewCharacterFormCard';
-import CurrentCharacterTable from '../components/characters/CurrentCharacterTable';
-import EditCharacterModal from '../components/characters/EditCharacterModal';
-import { openEditCharacterModal, fetchCharacters, closeEditCharacterModal } from '../../infrastructure/actions';
+import NewCharacterFormCard from './components/NewCharacterFormCard';
+import CurrentCharacterTable from './components/CurrentCharacterTable';
+import EditCharacterModal from './components/EditCharacterModal';
+import { openEditCharacterModal, fetchCharacters, closeEditCharacterModal } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

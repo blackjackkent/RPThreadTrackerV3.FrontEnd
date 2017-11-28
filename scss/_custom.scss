@@ -60,7 +60,7 @@
 	// above 992px
 
 	.dashboard-container .recent-activity-card,
-	.dashboard-container .your-characters-card { height: 400px; overflow: auto;}
+	.dashboard-container .your-characters-card { height: 400px; overflow-y: auto; overflow-x: hidden;}
 }
 @include media-breakpoint-up(lg) {
 	// above 1200px

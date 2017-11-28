@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Threads from './Threads';
-import { fetchArchivedThreads } from '../../infrastructure/actions';
-import { getArchivedFilteredThreads } from '../../infrastructure/selectors';
+import { fetchArchivedThreads } from '../../../infrastructure/actions';
+import { getArchivedFilteredThreads } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Threads from './Threads';
-import { fetchActiveThreads } from '../../infrastructure/actions';
-import { getTheirTurnFilteredThreads } from '../../infrastructure/selectors';
+import { fetchActiveThreads } from '../../../infrastructure/actions';
+import { getTheirTurnFilteredThreads } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,

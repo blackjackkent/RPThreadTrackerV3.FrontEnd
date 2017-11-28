@@ -4,18 +4,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 // Styles
-// Import Font Awesome Icons Set
 import 'font-awesome/css/font-awesome.min.css';
-// Import Simple Line Icons Set
 import 'simple-line-icons/css/simple-line-icons.css';
-// Import Main styles for this application
 import '../scss/style.scss';
 
 // Containers
-import Full from './display/containers/Full';
+import Layout from './display/containers/Layout';
 import Login from './display/containers/Login';
 import Register from './display/containers/Register';
-import ForgotPasswrd from './display/containers/ForgotPassword';
+import ForgotPassword from './display/containers/ForgotPassword';
 import Maintenance from './display/containers/Maintenance';
 
 const propTypes = {
@@ -46,10 +43,10 @@ const App = (props) => {
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
 				<Route exact path="/login" name="Login Page" component={Login} />
 				<Route exact path="/register" name="Register Page" component={Register} />
-				<Route exact path="/forgotpassword" name="Forgot Password Page" component={ForgotPasswrd} />
-				<Route path="/threads" name="Threads" component={Full} />
-				<Route path="/settings" name="Settings" component={Full} />
-				<Route path="/" name="Home" component={Full} />
+				<Route exact path="/forgotpassword" name="Forgot Password Page" component={ForgotPassword} />
+				<Route path="/threads" name="Threads" component={Layout} />
+				<Route path="/settings" name="Settings" component={Layout} />
+				<Route path="/" name="Home" component={Layout} />
 			</Switch>
 		</BrowserRouter>
 	);
