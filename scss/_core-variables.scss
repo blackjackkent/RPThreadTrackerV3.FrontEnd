@@ -42,7 +42,7 @@ $navbar-disabled-color:	$white;
 	background: transparent; // remove default button style
 	border: $border-width solid transparent; // remove default button style
 	@include border-radius($navbar-toggler-border-radius);
-  
+
 	@include hover-focus {
 	  text-decoration: none;
 	}
@@ -86,3 +86,8 @@ $footer-borders: (
 
 $card-body-color: $gray-100;
 $progress-bar-color:            $base-blue;
+
+$tab-content-bg: $gray-700;
+$tab-content-color: $card-body-color;
+$tab-content-border-color: $card-border-color;
+$nav-tab-link-bg: $card-cap-bg;

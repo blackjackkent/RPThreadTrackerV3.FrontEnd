@@ -41,9 +41,9 @@ const App = (props) => {
 		<BrowserRouter>
 			<Switch>
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
-				<Route exact path="/login" name="Login Page" component={Login} />
-				<Route exact path="/register" name="Register Page" component={Register} />
-				<Route exact path="/forgotpassword" name="Forgot Password Page" component={ForgotPassword} />
+				<Route exact path="/login" name="Login" component={Login} />
+				<Route exact path="/register" name="Register" component={Register} />
+				<Route exact path="/forgotpassword" name="Forgot Password" component={ForgotPassword} />
 				<Route path="/threads" name="Threads" component={Layout} />
 				<Route path="/settings" name="Settings" component={Layout} />
 				<Route path="/" name="Home" component={Layout} />
