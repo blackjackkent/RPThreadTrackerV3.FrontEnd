@@ -5,7 +5,8 @@ import {
 	TOGGLE_HEADER_DROPDOWN,
 	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
 	OPEN_EDIT_CHARACTER_MODAL,
-	CLOSE_EDIT_CHARACTER_MODAL
+	CLOSE_EDIT_CHARACTER_MODAL,
+	SET_ACTIVE_HELP_TAB
 } from '../actions';
 
 function ui(state = {
@@ -15,7 +16,8 @@ function ui(state = {
 	isMobileSidebarOpen: false,
 	isMaintenanceMode: false,
 	isThreadFilterCardHidden: true,
-	isEditCharacterModalOpen: false
+	isEditCharacterModalOpen: false,
+	activeHelpTab: 'about'
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
@@ -45,6 +47,10 @@ function ui(state = {
 		case CLOSE_EDIT_CHARACTER_MODAL:
 			return Object.assign({}, state, {
 				isEditCharacterModalOpen: false
+			});
+		case SET_ACTIVE_HELP_TAB:
+			return Object.assign({}, state, {
+				activeHelpTab: action.data
 			});
 		default:
 			return state;

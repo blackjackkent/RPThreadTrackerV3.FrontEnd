@@ -6,6 +6,7 @@ export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSid
 export { toggleIsThreadFilterCardHidden, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from './ui/toggleIsThreadFilterCardHidden';
 export { openEditCharacterModal, OPEN_EDIT_CHARACTER_MODAL } from './ui/openEditCharacterModal';
 export { closeEditCharacterModal, CLOSE_EDIT_CHARACTER_MODAL } from './ui/closeEditCharacterModal';
+export { setActiveHelpTab, SET_ACTIVE_HELP_TAB } from './ui/setActiveHelpTab';
 
 // Threads
 export { fetchActiveThreads, FETCH_ACTIVE_THREADS } from './threads/fetchActiveThreads';
