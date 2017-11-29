@@ -4,33 +4,26 @@ import {
 } from 'reactstrap';
 import TabNavItemLink from '../../../shared/tabs/TabNavItemLink';
 
-const HelpTabNav = (props) => {
+const SettingsTabNav = (props) => {
 	const { activeTab, setActiveTab } = props;
 	return (
 		<Nav tabs>
 			<TabNavItemLink
-				tabId="about"
+				tabId="change-password"
 				activeTab={activeTab}
 				setActiveTab={setActiveTab}
-				iconId="info-circle"
-				title="About RPThreadTracker"
+				iconId="key"
+				title="Change Password"
 			/>
 			<TabNavItemLink
-				tabId="support"
+				tabId="change-username"
 				activeTab={activeTab}
 				setActiveTab={setActiveTab}
-				iconId="question-circle"
-				title="Support Topics"
-			/>
-			<TabNavItemLink
-				tabId="contact"
-				activeTab={activeTab}
-				setActiveTab={setActiveTab}
-				iconId="envelope"
-				title="Contact Me"
+				iconId="user"
+				title="Update Account Info"
 			/>
 		</Nav>
 	);
 }
 
-export default HelpTabNav;
+export default SettingsTabNav;

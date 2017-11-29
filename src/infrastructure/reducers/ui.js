@@ -6,7 +6,8 @@ import {
 	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
 	OPEN_EDIT_CHARACTER_MODAL,
 	CLOSE_EDIT_CHARACTER_MODAL,
-	SET_ACTIVE_HELP_TAB
+	SET_ACTIVE_HELP_TAB,
+	SET_ACTIVE_SETTINGS_TAB
 } from '../actions';
 
 function ui(state = {
@@ -17,7 +18,8 @@ function ui(state = {
 	isMaintenanceMode: false,
 	isThreadFilterCardHidden: true,
 	isEditCharacterModalOpen: false,
-	activeHelpTab: 'about'
+	activeHelpTab: 'about',
+	activeSettingsTab: 'change-password'
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
@@ -51,6 +53,10 @@ function ui(state = {
 		case SET_ACTIVE_HELP_TAB:
 			return Object.assign({}, state, {
 				activeHelpTab: action.data
+			});
+		case SET_ACTIVE_SETTINGS_TAB:
+			return Object.assign({}, state, {
+				activeSettingsTab: action.data
 			});
 		default:
 			return state;

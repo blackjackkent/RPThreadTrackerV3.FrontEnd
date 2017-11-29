@@ -1,21 +1,57 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
-	Row, Col
+	Row, Col, Nav, NavItem, NavLink, TabContent
 } from 'reactstrap';
-import ChangeUsernameCard from './components/ChangeUsernameCard';
-import ChangePasswordCard from './components/ChangePasswordCard';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import SettingsTabNav from './components/SettingsTabNav';
+import ChangePasswordPane from './components/ChangePasswordPane';
+import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
+import { setActiveSettingsTab } from '../../../infrastructure/actions';
 
-const Settings = () => (
-	<div className="animated fadeIn dashboard-container">
-		<Row>
-			<Col xs="12" xl="6">
-				<ChangeUsernameCard />
-			</Col>
-			<Col xs="12" xl="6">
-				<ChangePasswordCard />
-			</Col>
-		</Row>
-	</div >
-);
+const propTypes = {
+	activeTab: PropTypes.string.isRequired,
+	dispatch: PropTypes.func.isRequired
+};
 
-export default Settings;
+function mapStateToProps(state) {
+	const {
+		ui,
+		user
+	} = state;
+	return {
+		user,
+		activeTab: ui.activeSettingsTab
+	};
+}
+
+class Settings extends Component {
+	constructor(props) {
+		super(props);
+		this.setActiveTab = this.setActiveTab.bind(this);
+	}
+
+	setActiveTab(tab) {
+		const { dispatch } = this.props;
+		dispatch(setActiveSettingsTab(tab));
+	}
+	render() {
+		const { activeTab, user } = this.props;
+		return (
+			<div className="animated fadeIn static-container settings-container">
+				<Row>
+					<Col>
+						<SettingsTabNav setActiveTab={this.setActiveTab} activeTab={activeTab} />
+						<TabContent activeTab={activeTab}>
+							<ChangePasswordPane />
+							<UpdateAccountInfoPane user={user} />
+						</TabContent>
+					</Col>
+				</Row>
+			</div>
+		);
+	}
+}
+
+Settings.propTypes = propTypes;
+export default connect(mapStateToProps)(Settings);
