@@ -5,6 +5,7 @@ import {
 	NavItem,
 	NavLink,
 	Badge,
+	Button,
 	NavbarToggler,
 	NavbarBrand,
 	Dropdown,
@@ -42,9 +43,17 @@ const Header = (props) => {
 				&#9776;
 			</NavbarToggler>
 			<NavbarBrand href="/">RPTHREADTRACKER</NavbarBrand>
-			<NavbarToggler className="d-md-down-none mr-auto" onClick={sidebarToggle}>
+			<NavbarToggler className="d-md-down-none" onClick={sidebarToggle}>
 				&#9776;
 			</NavbarToggler>
+			<Nav className="d-md-down-none ml-4" navbar>
+				<NavItem>
+					<Button color="primary">Add Character</Button>
+				</NavItem>
+				<NavItem>
+					<Button className="ml-4" color="primary">Track New Thread</Button>
+				</NavItem>
+			</Nav>
 			<Nav className="ml-auto" navbar>
 				<NavItem>
 					<NavLink href="#" onClick={asideToggle}>
@@ -60,6 +69,8 @@ const Header = (props) => {
 							<span className="d-md-down-none">{user ? user.userName : ''}</span>
 						</DropdownToggle>
 						<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
+							<DropdownItem className="hidden-lg-up"><i className="fa fa-pencil" /> Track New Thread</DropdownItem>
+							<DropdownItem className="hidden-lg-up"><i className="fa fa-user" /> Add Character</DropdownItem>
 							<DropdownItem><i className="fa fa-lock" /> Logout</DropdownItem>
 						</DropdownMenu>
 					</Dropdown>

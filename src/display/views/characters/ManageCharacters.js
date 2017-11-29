@@ -62,11 +62,6 @@ class ManageCharacters extends Component {
 			<div className="animated fadeIn dashboard-container">
 				<Row>
 					<Col>
-						<NewCharacterFormCard />
-					</Col>
-				</Row>
-				<Row>
-					<Col>
 						<CurrentCharacterTable
 							characters={characters}
 							openEditCharacterModal={this.openEditCharacterModal}
