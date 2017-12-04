@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-	Row, Col, Nav, NavItem, NavLink, TabContent
+	Row, Col, TabContent
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';

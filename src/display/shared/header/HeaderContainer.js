@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown } from '../../../infrastructure/actions';
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openEditCharacterModal } from '../../../infrastructure/actions';
 import { getNewsUnreadCount } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -37,6 +37,7 @@ class HeaderContainer extends Component {
 		this.sidebarToggle = this.sidebarToggle.bind(this);
 		this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
 		this.headerDropdownToggle = this.headerDropdownToggle.bind(this);
+		this.openEditCharacterModal = this.openEditCharacterModal.bind(this);
 	}
 
 	componentDidMount() {
@@ -73,6 +74,12 @@ class HeaderContainer extends Component {
 		dispatch(toggleHeaderDropdown());
 	}
 
+	openEditCharacterModal(character) {
+		const { dispatch } = this.props;
+		dispatch(openEditCharacterModal(character));
+	}
+
+
 	render() {
 		return (
 			<Header
@@ -81,6 +88,7 @@ class HeaderContainer extends Component {
 				asideToggle={this.asideToggle}
 				headerDropdownToggle={this.headerDropdownToggle}
 				sidebarToggle={this.sidebarToggle}
+				openEditCharacterModal={this.openEditCharacterModal}
 			/>
 		);
 	}

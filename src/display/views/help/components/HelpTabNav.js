@@ -1,9 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
-	Nav, NavItem, NavLink
+	Nav
 } from 'reactstrap';
 import TabNavItemLink from '../../../shared/tabs/TabNavItemLink';
 
+const propTypes = {
+	activeTab: PropTypes.string.isRequired,
+	setActiveTab: PropTypes.func.isRequired
+};
 const HelpTabNav = (props) => {
 	const { activeTab, setActiveTab } = props;
 	return (
@@ -31,6 +36,7 @@ const HelpTabNav = (props) => {
 			/>
 		</Nav>
 	);
-}
+};
+HelpTabNav.propTypes = propTypes;
 
 export default HelpTabNav;

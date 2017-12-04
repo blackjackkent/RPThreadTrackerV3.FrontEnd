@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-	Row, Col, Nav, NavItem, NavLink, TabContent
+	Row, Col, TabContent
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -11,6 +11,7 @@ import { setActiveSettingsTab } from '../../../infrastructure/actions';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
+	user: PropTypes.shape({}).isRequired,
 	dispatch: PropTypes.func.isRequired
 };
 

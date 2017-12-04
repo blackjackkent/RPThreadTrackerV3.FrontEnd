@@ -23,7 +23,8 @@ const propTypes = {
 	sidebarToggle: PropTypes.func.isRequired,
 	asideToggle: PropTypes.func.isRequired,
 	headerDropdownToggle: PropTypes.func.isRequired,
-	isHeaderDropdownOpen: PropTypes.bool.isRequired
+	isHeaderDropdownOpen: PropTypes.bool.isRequired,
+	openEditCharacterModal: PropTypes.func.isRequired
 };
 
 const Header = (props) => {
@@ -33,6 +34,7 @@ const Header = (props) => {
 		asideToggle,
 		headerDropdownToggle,
 		isHeaderDropdownOpen,
+		openEditCharacterModal,
 		user,
 		newsUnreadCount
 	} = props;
@@ -48,7 +50,7 @@ const Header = (props) => {
 			</NavbarToggler>
 			<Nav className="d-md-down-none ml-4" navbar>
 				<NavItem>
-					<Button color="primary">Add Character</Button>
+					<Button color="primary" onClick={() => openEditCharacterModal({})}>Add Character</Button>
 				</NavItem>
 				<NavItem>
 					<Button className="ml-4" color="primary">Track New Thread</Button>
@@ -69,8 +71,12 @@ const Header = (props) => {
 							<span className="d-md-down-none">{user ? user.userName : ''}</span>
 						</DropdownToggle>
 						<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
-							<DropdownItem className="hidden-lg-up"><i className="fa fa-pencil" /> Track New Thread</DropdownItem>
-							<DropdownItem className="hidden-lg-up"><i className="fa fa-user" /> Add Character</DropdownItem>
+							<DropdownItem className="hidden-lg-up">
+								<i className="fa fa-pencil" /> Track New Thread
+							</DropdownItem>
+							<DropdownItem className="hidden-lg-up">
+								<i className="fa fa-user" /> Add Character
+							</DropdownItem>
 							<DropdownItem><i className="fa fa-lock" /> Logout</DropdownItem>
 						</DropdownMenu>
 					</Dropdown>

@@ -1,5 +1,10 @@
 import React from 'react';
-import { TabPane, Row, Card, CardHeader, Label, Input, CardBlock, CardFooter, Form, FormGroup, Button, Col } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { TabPane, Row, Label, Input, Form, FormGroup, Button, Col } from 'reactstrap';
+
+const propTypes = {
+	user: PropTypes.shape({}).isRequired
+};
 
 const UpdateAccountInfoPane = (props) => {
 	const { user } = props;
@@ -39,11 +44,11 @@ const UpdateAccountInfoPane = (props) => {
 				<Col sm="12" md={{ size: 8 }} className="text-right">
 					<Button type="submit" color="primary">
 						Submit
-						</Button>
+					</Button>
 				</Col>
 			</Row>
 		</TabPane>
 	);
-}
-
+};
+UpdateAccountInfoPane.propTypes = propTypes;
 export default UpdateAccountInfoPane;

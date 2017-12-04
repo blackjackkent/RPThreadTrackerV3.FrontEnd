@@ -48,7 +48,7 @@ const ChangePasswordPane = () => (
 			<Col sm="12" md={{ size: 8 }} className="text-right">
 				<Button type="submit" color="primary">
 					Submit
-					</Button>
+				</Button>
 			</Col>
 		</Row>
 	</TabPane>

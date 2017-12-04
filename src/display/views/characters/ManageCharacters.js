@@ -4,16 +4,12 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import NewCharacterFormCard from './components/NewCharacterFormCard';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
-import EditCharacterModal from './components/EditCharacterModal';
-import { openEditCharacterModal, fetchCharacters, closeEditCharacterModal } from '../../../infrastructure/actions';
+import { openEditCharacterModal, fetchCharacters } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired,
-	isEditCharacterModalOpen: PropTypes.bool.isRequired,
-	characterToEdit: PropTypes.shape({}).isRequired
+	dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -33,7 +29,6 @@ class ManageCharacters extends Component {
 	constructor(props) {
 		super(props);
 		this.openEditCharacterModal = this.openEditCharacterModal.bind(this);
-		this.closeEditCharacterModal = this.closeEditCharacterModal.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -47,16 +42,9 @@ class ManageCharacters extends Component {
 		dispatch(openEditCharacterModal(character));
 	}
 
-	closeEditCharacterModal() {
-		const { dispatch } = this.props;
-		dispatch(closeEditCharacterModal());
-	}
-
 	render() {
 		const {
-			characters,
-			isEditCharacterModalOpen,
-			characterToEdit
+			characters
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -68,11 +56,6 @@ class ManageCharacters extends Component {
 						/>
 					</Col>
 				</Row>
-				<EditCharacterModal
-					isEditCharacterModalOpen={isEditCharacterModalOpen}
-					closeEditCharacterModal={this.closeEditCharacterModal}
-					characterToEdit={characterToEdit}
-				/>
 			</div >
 		);
 	}

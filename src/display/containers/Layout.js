@@ -11,6 +11,7 @@ import Sidebar from '../shared/sidebar/Sidebar';
 import Breadcrumb from '../shared/breadcrumb/Breadcrumb';
 import AsideContainer from '../shared/aside/AsideContainer';
 import Footer from '../shared/footer/Footer';
+import ModalContainer from '../shared/modals/ModalContainer';
 
 import Dashboard from '../views/dashboard/Dashboard';
 import MyTurnThreads from '../views/threads/MyTurnThreads';
@@ -73,6 +74,7 @@ class Layout extends Component {
 					<AsideContainer />
 				</div>
 				<Footer />
+				<ModalContainer />
 			</div>
 		);
 	}

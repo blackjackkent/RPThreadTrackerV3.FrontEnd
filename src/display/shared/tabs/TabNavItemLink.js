@@ -1,10 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
-	Nav, NavItem, NavLink
+	NavItem, NavLink
 } from 'reactstrap';
 
+const propTypes = {
+	tabId: PropTypes.string.isRequired,
+	activeTab: PropTypes.string.isRequired,
+	setActiveTab: PropTypes.func.isRequired,
+	iconId: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired
+};
+
 const TabNavItemLink = (props) => {
-	const { tabId, activeTab, setActiveTab, iconId, title } = props;
+	const {
+		tabId,
+		activeTab,
+		setActiveTab,
+		iconId,
+		title
+	} = props;
 	return (
 		<NavItem>
 			<NavLink
@@ -16,6 +31,7 @@ const TabNavItemLink = (props) => {
 			</NavLink>
 		</NavItem>
 	);
-}
+};
+TabNavItemLink.propTypes = propTypes;
 
 export default TabNavItemLink;

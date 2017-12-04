@@ -16,14 +16,14 @@ const EditCharacterModal = (props) => {
 		closeEditCharacterModal,
 		characterToEdit
 	} = props;
-	if (!characterToEdit.id) {
+	if (!characterToEdit) {
 		return (
 			<div />
 		);
 	}
 	return (
 		<Modal isOpen={isEditCharacterModalOpen} toggle={closeEditCharacterModal} backdrop>
-			<ModalHeader toggle={closeEditCharacterModal}>Edit Character</ModalHeader>
+			<ModalHeader toggle={closeEditCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
 			<ModalBody>
 				<Form>
 					<FormGroup row>
@@ -46,7 +46,7 @@ const EditCharacterModal = (props) => {
 								type="select"
 								name="character-platform"
 								id="character-platform"
-								value={characterToEdit.platform.platformId}
+								value={characterToEdit.platform ? characterToEdit.platform.platformId : 1}
 							>
 								<option value={1}>Tumblr</option>
 							</Input>
