@@ -7,7 +7,8 @@ import {
 	OPEN_EDIT_CHARACTER_MODAL,
 	CLOSE_EDIT_CHARACTER_MODAL,
 	SET_ACTIVE_HELP_TAB,
-	SET_ACTIVE_SETTINGS_TAB
+	SET_ACTIVE_SETTINGS_TAB,
+	SET_ACTIVE_TOOLS_TAB
 } from '../actions';
 
 function ui(state = {
@@ -19,7 +20,8 @@ function ui(state = {
 	isThreadFilterCardHidden: true,
 	isEditCharacterModalOpen: false,
 	activeHelpTab: 'about',
-	activeSettingsTab: 'change-password'
+	activeSettingsTab: 'change-password',
+	activeToolsTab: 'export-threads'
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
@@ -57,6 +59,10 @@ function ui(state = {
 		case SET_ACTIVE_SETTINGS_TAB:
 			return Object.assign({}, state, {
 				activeSettingsTab: action.data
+			});
+		case SET_ACTIVE_TOOLS_TAB:
+			return Object.assign({}, state, {
+				activeToolsTab: action.data
 			});
 		default:
 			return state;

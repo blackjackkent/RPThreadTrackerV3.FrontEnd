@@ -19,6 +19,7 @@ import TheirTurnThreads from '../views/threads/TheirTurnThreads';
 import ArchivedThreads from '../views/threads/ArchivedThreads';
 import QueuedThreads from '../views/threads/QueuedThreads';
 import ManageCharacters from '../views/characters/ManageCharacters';
+import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
 
@@ -64,6 +65,7 @@ class Layout extends Component {
 								<Route path="/threads/their-turn" name="Threads" component={TheirTurnThreads} />
 								<Route path="/threads/archived" name="Threads" component={ArchivedThreads} />
 								<Route path="/threads/queued" name="Threads" component={QueuedThreads} />
+								<Route path="/tools" name="Tools" component={Tools} />
 								<Route path="/settings" name="Settings" component={Settings} />
 								<Route path="/manage-characters" name="Characters" component={ManageCharacters} />
 								<Route path="/help" name="Help" component={Help} />

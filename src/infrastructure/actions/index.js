@@ -8,6 +8,7 @@ export { openEditCharacterModal, OPEN_EDIT_CHARACTER_MODAL } from './ui/openEdit
 export { closeEditCharacterModal, CLOSE_EDIT_CHARACTER_MODAL } from './ui/closeEditCharacterModal';
 export { setActiveHelpTab, SET_ACTIVE_HELP_TAB } from './ui/setActiveHelpTab';
 export { setActiveSettingsTab, SET_ACTIVE_SETTINGS_TAB } from './ui/setActiveSettingsTab';
+export { setActiveToolsTab, SET_ACTIVE_TOOLS_TAB } from './ui/setActiveToolsTab';
 
 // Threads
 export { fetchActiveThreads, FETCH_ACTIVE_THREADS } from './threads/fetchActiveThreads';
