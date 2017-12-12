@@ -8,6 +8,6 @@ import {
 
 export default function* fetchUserSaga() {
 	yield take(FETCH_USER);
-	const response = yield call(axios.get, 'http://localhost:3001/user');
+	const response = yield call(axios.get, `${API_BASE_URL}user`);
 	yield put(fetchedUserSuccess(response.data));
 }

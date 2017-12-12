@@ -10,12 +10,11 @@ const extractSCSS = new ExtractTextPlugin('[name].styles.css');
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const SRC_DIR = path.resolve(__dirname, 'src');
 
-console.log('BUILD_DIR', BUILD_DIR);
-console.log('SRC_DIR', SRC_DIR);
-
 module.exports = (env = {}) => {
+	const config = require(`./config/config.${Object.keys(env)[0]}.json`);
+	console.log(config);
 	return {
-		entry: ['babel-polyfill', SRC_DIR + '/index.js'],
+		entry: ['babel-polyfill', `${SRC_DIR}/index.js`],
 		output: {
 			path: BUILD_DIR,
 			publicPath: '/',
@@ -90,22 +89,24 @@ module.exports = (env = {}) => {
 				}]
 		},
 		plugins: [
+			new webpack.DefinePlugin({
+				API_BASE_URL: JSON.stringify(config.API_BASE_URL)
+			}),
 			new webpack.HotModuleReplacementPlugin(),
-			//new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
+			// new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
 			new webpack.NamedModulesPlugin(),
 			extractCSS,
 			extractSCSS,
-			new HtmlWebpackPlugin(
-				{
-					inject: true,
-					template: './public/index.html'
-				}
-			),
-			new CopyWebpackPlugin([
-				{ from: './public/img', to: 'img' }
-			],
+			new HtmlWebpackPlugin({
+				inject: true,
+				template: './public/index.html'
+			}),
+			new CopyWebpackPlugin(
+				[
+					{ from: './public/img', to: 'img' }
+				],
 				{ copyUnmodified: false }
 			)
 		]
-	}
+	};
 };
