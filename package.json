@@ -41,6 +41,7 @@
 		"webpack-dev-server": "^2.7.1"
 	},
 	"dependencies": {
+		"availity-reactstrap-validation": "^1.4.3",
 		"axios": "^0.16.2",
 		"babel-polyfill": "^6.26.0",
 		"bootstrap": "^4.0.0-alpha.6",

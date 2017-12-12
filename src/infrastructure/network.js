@@ -11,10 +11,13 @@ const whitelist = [
 function getAccessTokenFromStorage() {
 	return ls.get('rpThreadTrackerAccessToken');
 }
+function isPathInWhitelist(url) {
+	return whitelist.some(path => url.indexOf(path) >= 0);
+}
 export default {
 	setupInterceptors: (store) => {
 		axios.interceptors.request.use((config) => {
-			if (whitelist.some(path => config.url.indexOf(path) >= 0)) {
+			if (isPathInWhitelist(config.url)) {
 				return config;
 			}
 			const accessToken = getAccessTokenFromStorage();
@@ -28,7 +31,7 @@ export default {
 		// Add a response interceptor
 		axios.interceptors.response.use(response => response, (error) => {
 			// catches if the session ended!
-			if (error.response.status === 401) {
+			if (error.response.status === 401 && !isPathInWhitelist(error.config.url)) {
 				localStorage.clear();
 				store.dispatch({ type: LOGOUT });
 				history.push('/login');
