@@ -23,6 +23,7 @@ export { setFilteredTag, SET_FILTERED_TAG } from './threads/setFilteredTag';
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';
 export { fetchedUserSuccess, FETCHED_USER_SUCCESS } from './user/fetchedUserSuccess';
+export { logout, LOGOUT } from './user/logout';
 
 // UserSettings
 export { fetchUserSettings, FETCH_USER_SETTINGS } from './userSettings/fetchUserSettings';
