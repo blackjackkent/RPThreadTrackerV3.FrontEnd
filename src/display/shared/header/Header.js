@@ -77,7 +77,9 @@ const Header = (props) => {
 							<DropdownItem className="hidden-lg-up">
 								<i className="fa fa-user" /> Add Character
 							</DropdownItem>
-							<DropdownItem><i className="fa fa-lock" /> Logout</DropdownItem>
+							<DropdownItem>
+								<i className="fa fa-lock" /> Logout
+							</DropdownItem>
 						</DropdownMenu>
 					</Dropdown>
 				</NavItem>

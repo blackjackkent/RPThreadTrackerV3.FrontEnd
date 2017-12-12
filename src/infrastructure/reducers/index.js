@@ -10,6 +10,8 @@ import randomThread from './randomThread';
 import threadFilter from './threadFilter';
 import characterToEdit from './characterToEdit';
 import tags from './tags';
+import errors from './errors';
+import loading from './loading';
 
 export default combineReducers({
 	news,
@@ -22,5 +24,7 @@ export default combineReducers({
 	randomThread,
 	threadFilter,
 	characterToEdit,
-	tags
+	tags,
+	errors,
+	loading
 });

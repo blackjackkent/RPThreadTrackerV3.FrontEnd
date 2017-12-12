@@ -21,8 +21,7 @@ function ui(state = {
 	isEditCharacterModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
-	activeToolsTab: 'export-threads',
-	userLoggedIn: false
+	activeToolsTab: 'export-threads'
 }, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
