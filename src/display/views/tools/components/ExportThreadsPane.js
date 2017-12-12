@@ -6,10 +6,10 @@ const ExportThreadsPane = () => (
 		<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
 			<p>Use the button below to export an Excel file of your current threads in the database.</p>
 			<FormGroup row>
-				<Col xs="6" sm="5" md="4" xl="2">
+				<Col xs="8" sm="5" md="4" xl="2">
 					<Label htmlFor="current-password">Include Archived Threads:</Label>
 				</Col>
-				<Col xs="6" md="3" xl="1">
+				<Col xs="3" md="3" xl="1">
 					<Label className="switch switch-sm switch-text switch-info mb-0">
 						<Input
 							type="checkbox"
@@ -21,10 +21,10 @@ const ExportThreadsPane = () => (
 				</Col>
 			</FormGroup>
 			<FormGroup row>
-				<Col xs="6" sm="5" md="4" xl="2">
+				<Col xs="8" sm="5" md="4" xl="2">
 					<Label htmlFor="current-password">Include Characters on Hiatus:</Label>
 				</Col>
-				<Col xs="6" md="3" xl="1">
+				<Col xs="3" md="3" xl="1">
 					<Label className="switch switch-sm switch-text switch-info mb-0">
 						<Input
 							type="checkbox"
@@ -37,7 +37,7 @@ const ExportThreadsPane = () => (
 			</FormGroup>
 		</Form>
 		<Row>
-			<Col sm="12" md={{ size: 8 }} className="text-right">
+			<Col xs="1">
 				<Button type="submit" color="primary">
 					Export
 				</Button>

@@ -38,3 +38,7 @@ export { fetchedNewsSuccess, FETCHED_NEWS_SUCCESS } from './news/fetchedNewsSucc
 // Characters
 export { fetchCharacters, FETCH_CHARACTERS } from './characters/fetchCharacters';
 export { fetchedCharactersSuccess, FETCHED_CHARACTERS_SUCCESS } from './characters/fetchedCharactersSuccess';
+
+// Tags
+export { fetchTags, FETCH_TAGS } from './tags/fetchTags';
+export { fetchedTagsSuccess, FETCHED_TAGS_SUCCESS } from './tags/fetchedTagsSuccess';

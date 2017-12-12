@@ -12,3 +12,5 @@ export { default as fetchArchivedThreadsSaga } from './threads/fetchArchivedThre
 export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
 // Characters
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';
+// Tags
+export { default as fet } from './tags/fetchTagsSaga';

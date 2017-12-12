@@ -54,6 +54,12 @@
 .character-table-sub-component { background: $gray-600; border-bottom: 3px solid $gray-400;}
 .character-table-sub-component .control-button { width: 33%; display: inline-block; text-align: center; padding: 10px;}
 
+/*********** TOOLS ***************/
+.manage-tags .table td { border-top: 1px solid $gray-700;}
+.manage-tags .table tr:first-child td { border-top: none;}
+.manage-tags .table tr:first-child { border-top: 1px solid $gray-300; }
+.manage-tags .table tr td:first-child { width: 33%}
+
 /********** STATIC *********/
 .help-container .support-topics .support-button {text-align: center; }
 

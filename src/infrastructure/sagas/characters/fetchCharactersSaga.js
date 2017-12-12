@@ -6,7 +6,7 @@ import {
 	fetchedCharactersSuccess
 } from '../../actions';
 
-export default function* fetchNewsSaga() {
+export default function* fetchCharactersSaga() {
 	yield take(FETCH_CHARACTERS);
 	const response = yield call(axios.get, 'http://localhost:3001/characters');
 	yield put(fetchedCharactersSuccess(response.data));

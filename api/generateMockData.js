@@ -1,26 +1,25 @@
 import jsf from 'json-schema-faker';
-import { schema } from './mockDataSchema';
-import fs from 'fs';
 import chalk from 'chalk';
+import fs from 'fs';
+import faker from 'faker';
+import schema from './mockDataSchema';
 
 import loggedInUser from './loggedInUser';
 import loggedInUserSettings from './loggedInUserSettings';
 
-jsf.extend('faker', function () {
-	return require('faker');
-});
-jsf.resolve(schema).then(function (result) {
-	var destructured = {
+jsf.extend('faker', () => faker);
+jsf.resolve(schema).then((result) => {
+	const destructured = {
 		...result,
 		...loggedInUser,
 		...loggedInUserSettings
 	};
-	fs.writeFile("./api/db.json", JSON.stringify(destructured), function (err) {
+	fs.writeFile('./api/db.json', JSON.stringify(destructured), (err) => {
 		if (err) {
 			return console.log(chalk.red(err));
-		} else {
-			console.log(chalk.green("Mock data generated."));
 		}
+		console.log(chalk.green('Mock data generated.'));
+
 	});
 });
 

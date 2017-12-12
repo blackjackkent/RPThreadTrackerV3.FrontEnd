@@ -9,6 +9,7 @@ import archivedThreads from './archivedThreads';
 import randomThread from './randomThread';
 import threadFilter from './threadFilter';
 import characterToEdit from './characterToEdit';
+import tags from './tags';
 
 export default combineReducers({
 	news,
@@ -20,5 +21,6 @@ export default combineReducers({
 	archivedThreads,
 	randomThread,
 	threadFilter,
-	characterToEdit
+	characterToEdit,
+	tags
 });
