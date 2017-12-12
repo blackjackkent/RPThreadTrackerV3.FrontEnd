@@ -51,6 +51,11 @@ class Layout extends Component {
 		}
 	}
 	render() {
+		if (!this.props.user || !this.props.user.id) {
+			return (
+				<div />
+			);
+		}
 		return (
 			<div className="app">
 				<HeaderContainer />

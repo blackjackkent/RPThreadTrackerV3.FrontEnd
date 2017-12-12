@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+
+import history from './infrastructure/history';
 
 // Styles
 import 'font-awesome/css/font-awesome.min.css';
@@ -32,13 +34,13 @@ const App = (props) => {
 	const { ui } = props;
 	if (ui.isMaintenanceMode) {
 		return (
-			<BrowserRouter>
+			<Router history={history}>
 				<Route path="*" name="Maintenance" component={Maintenance} />
-			</BrowserRouter>
+			</Router>
 		);
 	}
 	return (
-		<BrowserRouter>
+		<Router history={history}>
 			<Switch>
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
 				<Route exact path="/login" name="Login" component={Login} />
@@ -48,7 +50,7 @@ const App = (props) => {
 				<Route path="/settings" name="Settings" component={Layout} />
 				<Route path="/" name="Home" component={Layout} />
 			</Switch>
-		</BrowserRouter>
+		</Router>
 	);
 };
 App.propTypes = propTypes;

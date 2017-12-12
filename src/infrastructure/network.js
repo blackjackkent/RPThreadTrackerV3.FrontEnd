@@ -1,6 +1,7 @@
 import axios from 'axios';
 import ls from 'local-storage';
 import promise from 'promise';
+import history from './history';
 import { LOGOUT } from './actions';
 
 const whitelist = [
@@ -30,6 +31,7 @@ export default {
 			if (error.response.status === 401) {
 				localStorage.clear();
 				store.dispatch({ type: LOGOUT });
+				history.push('/login');
 			}
 			return Promise.reject(error);
 		});
