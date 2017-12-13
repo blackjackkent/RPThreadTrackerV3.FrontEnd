@@ -22,7 +22,7 @@
 @import "core-variables";
 // Import core styles
 @import "core/core";
-// Custom styles for react-table
-@import "custom-react-table";
 // Custom styles
-@import "custom";
+@import "global";
+// Custom component styles
+@import "components";
