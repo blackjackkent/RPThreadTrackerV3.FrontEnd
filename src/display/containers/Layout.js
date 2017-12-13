@@ -12,6 +12,7 @@ import Breadcrumb from '../shared/breadcrumb/Breadcrumb';
 import AsideContainer from '../shared/aside/AsideContainer';
 import Footer from '../shared/footer/Footer';
 import ModalContainer from '../shared/modals/ModalContainer';
+import LoadingIndicator from '../shared/LoadingIndicator';
 
 import Dashboard from '../views/dashboard/Dashboard';
 import MyTurnThreads from '../views/threads/MyTurnThreads';
@@ -53,7 +54,18 @@ class Layout extends Component {
 	render() {
 		if (!this.props.user || !this.props.user.id) {
 			return (
-				<div />
+				<div>
+					<LoadingIndicator
+						style={{
+							width: 50,
+							height: 50,
+							position: 'absolute',
+							top: '50%',
+							left: '50%',
+							transform: 'translate(-50%, -50%)'
+						}}
+					/>
+				</div>
 			);
 		}
 		return (

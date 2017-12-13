@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, CardBlock, Button } from 'reactstrap';
-import { AvForm, AvField, AvFeedback, AvGroup } from 'availity-reactstrap-validation';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { loginValidator } from '../../infrastructure/validators';
 import { submitUserLogin } from '../../infrastructure/actions';
 import LoadingIndicator from '../shared/LoadingIndicator';
+
+const propTypes = {
+	dispatch: PropTypes.func.isRequired,
+	displayLoadingIndicator: PropTypes.bool.isRequired,
+	loginError: PropTypes.string.isRequired
+};
 
 const mapStateToProps = (state) => {
 	const {
@@ -14,9 +21,9 @@ const mapStateToProps = (state) => {
 	} = state;
 	return {
 		displayLoadingIndicator: loading.loginLoading,
-		displayLoginError: errors.loginError
+		loginError: errors.loginError
 	};
-}
+};
 
 class Login extends Component {
 	constructor(props) {
@@ -42,7 +49,7 @@ class Login extends Component {
 		});
 	}
 	render() {
-		const { displayLoadingIndicator, displayLoginError } = this.props;
+		const { displayLoadingIndicator, loginError } = this.props;
 		let loading = (<span />);
 		if (displayLoadingIndicator) {
 			loading = (
@@ -57,10 +64,10 @@ class Login extends Component {
 			);
 		}
 		let error = (<span />);
-		if (displayLoginError) {
+		if (loginError) {
 			error = (
 				<div className="has-danger">
-					<p className="form-control-feedback">{displayLoginError}</p>
+					<p className="form-control-feedback">{loginError}</p>
 				</div>
 			);
 		}
@@ -110,4 +117,5 @@ class Login extends Component {
 		);
 	}
 }
+Login.propTypes = propTypes;
 export default connect(mapStateToProps)(Login);

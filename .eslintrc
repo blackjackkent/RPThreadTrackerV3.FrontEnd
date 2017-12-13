@@ -3,6 +3,9 @@
 	"env": {
 		"browser": true
 	},
+	"globals": {
+		"API_BASE_URL": false
+	},
 	"rules": {
 		"comma-dangle": [
 			"error",

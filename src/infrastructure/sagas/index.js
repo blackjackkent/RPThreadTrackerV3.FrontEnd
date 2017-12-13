@@ -4,6 +4,7 @@ export { default as fetchNewsSaga } from './news/fetchNewsSaga';
 // User
 export { default as fetchUserSaga } from './user/fetchUserSaga';
 export { default as submitUserLoginSaga } from './user/submitUserLoginSaga';
+export { default as submitUserLogoutSaga } from './user/submitUserLogoutSaga';
 // UserSettings
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
 export { default as updateUserSettingsSaga, setHasDashboardAtAGlanceHiddenSaga } from './userSettings/updateUserSettingsSaga';

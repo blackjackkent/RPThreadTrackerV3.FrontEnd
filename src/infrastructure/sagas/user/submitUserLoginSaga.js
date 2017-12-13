@@ -12,9 +12,9 @@ import {
 function* submitUserLogin(action) {
 	try {
 		const response = yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
-		yield put(userLoginSuccess());
 		ls.set('rpThreadTrackerAccessToken', response.data.token);
 		history.push('/dashboard');
+		yield put(userLoginSuccess());
 	} catch (e) {
 		yield put(userLoginFailure(e.response.data));
 	}

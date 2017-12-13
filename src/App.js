@@ -2,15 +2,11 @@ import React from 'react';
 import { Router, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import history from './infrastructure/history';
-
-// Styles
 import 'font-awesome/css/font-awesome.min.css';
 import 'simple-line-icons/css/simple-line-icons.css';
-import '../scss/style.scss';
 
-// Containers
+import '../scss/style.scss';
+import history from './infrastructure/history';
 import Layout from './display/containers/Layout';
 import Login from './display/containers/Login';
 import Register from './display/containers/Register';

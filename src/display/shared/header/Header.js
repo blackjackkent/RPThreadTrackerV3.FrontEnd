@@ -24,7 +24,8 @@ const propTypes = {
 	asideToggle: PropTypes.func.isRequired,
 	headerDropdownToggle: PropTypes.func.isRequired,
 	isHeaderDropdownOpen: PropTypes.bool.isRequired,
-	openEditCharacterModal: PropTypes.func.isRequired
+	openEditCharacterModal: PropTypes.func.isRequired,
+	logout: PropTypes.func.isRequired
 };
 
 const Header = (props) => {
@@ -36,7 +37,8 @@ const Header = (props) => {
 		isHeaderDropdownOpen,
 		openEditCharacterModal,
 		user,
-		newsUnreadCount
+		newsUnreadCount,
+		logout
 	} = props;
 
 	return (
@@ -77,7 +79,7 @@ const Header = (props) => {
 							<DropdownItem className="hidden-lg-up">
 								<i className="fa fa-user" /> Add Character
 							</DropdownItem>
-							<DropdownItem>
+							<DropdownItem onClick={logout}>
 								<i className="fa fa-lock" /> Logout
 							</DropdownItem>
 						</DropdownMenu>

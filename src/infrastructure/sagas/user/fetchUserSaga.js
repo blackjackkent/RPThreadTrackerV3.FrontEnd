@@ -1,13 +1,21 @@
-import { take, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
 	FETCH_USER,
-	fetchedUserSuccess
+	fetchedUserSuccess,
+	fetchedUserFailure
 } from '../../actions';
 
+function* fetchUser() {
+	try {
+		const response = yield call(axios.get, `${API_BASE_URL}api/user`);
+		yield put(fetchedUserSuccess(response.data));
+	} catch (e) {
+		yield put(fetchedUserFailure());
+	}
+}
+
 export default function* fetchUserSaga() {
-	yield take(FETCH_USER);
-	const response = yield call(axios.get, `${API_BASE_URL}api/user`);
-	yield put(fetchedUserSuccess(response.data));
+	yield takeEvery(FETCH_USER, fetchUser);
 }
