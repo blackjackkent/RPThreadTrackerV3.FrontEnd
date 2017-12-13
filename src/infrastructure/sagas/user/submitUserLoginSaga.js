@@ -1,5 +1,7 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
+import ls from 'local-storage';
+import history from '../../history';
 
 import {
 	SUBMIT_USER_LOGIN,
@@ -9,8 +11,10 @@ import {
 
 function* submitUserLogin(action) {
 	try {
-		yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
+		const response = yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
 		yield put(userLoginSuccess());
+		ls.set('rpThreadTrackerAccessToken', response.data.token);
+		history.push('/dashboard');
 	} catch (e) {
 		yield put(userLoginFailure(e.response.data));
 	}

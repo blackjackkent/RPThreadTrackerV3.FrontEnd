@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Row, Col, Card, CardBlock, Button } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { AvForm, AvField, AvFeedback, AvGroup } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
 
 import { loginValidator } from '../../infrastructure/validators';
@@ -9,10 +9,12 @@ import LoadingIndicator from '../shared/LoadingIndicator';
 
 const mapStateToProps = (state) => {
 	const {
-		loading
+		loading,
+		errors
 	} = state;
 	return {
-		displayLoadingIndicator: loading.loginLoading
+		displayLoadingIndicator: loading.loginLoading,
+		displayLoginError: errors.loginError
 	};
 }
 
@@ -40,7 +42,7 @@ class Login extends Component {
 		});
 	}
 	render() {
-		const { displayLoadingIndicator } = this.props;
+		const { displayLoadingIndicator, displayLoginError } = this.props;
 		let loading = (<span />);
 		if (displayLoadingIndicator) {
 			loading = (
@@ -54,6 +56,14 @@ class Login extends Component {
 				/>
 			);
 		}
+		let error = (<span />);
+		if (displayLoginError) {
+			error = (
+				<div className="has-danger">
+					<p className="form-control-feedback">{displayLoginError}</p>
+				</div>
+			);
+		}
 		return (
 			<div className="app flex-row align-items-center">
 				<Container>
@@ -65,6 +75,7 @@ class Login extends Component {
 									<AvForm onValidSubmit={this.handleLoginSubmit}>
 										<h1>Login</h1>
 										<p className="text-muted">Sign in to RPThreadTracker</p>
+										{error}
 										<AvField
 											name="Username"
 											placeholder="Username"
