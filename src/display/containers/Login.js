@@ -7,6 +7,15 @@ import { loginValidator } from '../../infrastructure/validators';
 import { submitUserLogin } from '../../infrastructure/actions';
 import LoadingIndicator from '../shared/LoadingIndicator';
 
+const mapStateToProps = (state) => {
+	const {
+		loading
+	} = state;
+	return {
+		displayLoadingIndicator: loading.loginLoading
+	};
+}
+
 class Login extends Component {
 	constructor(props) {
 		super(props);
@@ -31,6 +40,20 @@ class Login extends Component {
 		});
 	}
 	render() {
+		const { displayLoadingIndicator } = this.props;
+		let loading = (<span />);
+		if (displayLoadingIndicator) {
+			loading = (
+				<LoadingIndicator style={{
+					width: 50,
+					height: 50,
+					position: 'absolute',
+					top: 0,
+					right: 0
+				}}
+				/>
+			);
+		}
 		return (
 			<div className="app flex-row align-items-center">
 				<Container>
@@ -38,14 +61,7 @@ class Login extends Component {
 						<Col md="6">
 							<Card className="login-box p-4">
 								<CardBlock className="card-body">
-									<LoadingIndicator style={{
-										width: 50,
-										height: 50,
-										position: 'absolute',
-										top: 0,
-										right: 0
-									}}
-									/>
+									{loading}
 									<AvForm onValidSubmit={this.handleLoginSubmit}>
 										<h1>Login</h1>
 										<p className="text-muted">Sign in to RPThreadTracker</p>
@@ -83,4 +99,4 @@ class Login extends Component {
 		);
 	}
 }
-export default connect(() => { })(Login);
+export default connect(mapStateToProps)(Login);

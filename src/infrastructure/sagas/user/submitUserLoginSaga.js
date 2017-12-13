@@ -3,19 +3,19 @@ import axios from 'axios';
 
 import {
 	SUBMIT_USER_LOGIN,
-	fetchedUserSuccess
+	userLoginFailure,
+	userLoginSuccess
 } from '../../actions';
 
 function* submitUserLogin(action) {
 	try {
-		const response = yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
-		console.log(response);
+		yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
+		yield put(userLoginSuccess());
 	} catch (e) {
-		console.log(e);
+		yield put(userLoginFailure(e.response.data));
 	}
 }
 
 export default function* submitUserLoginSaga() {
 	yield takeEvery(SUBMIT_USER_LOGIN, submitUserLogin);
-	// yield put(fetchedUserSuccess(response.data));
 }
