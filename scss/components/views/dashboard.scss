@@ -1,0 +1,31 @@
+.dashboard-container .at-a-glance-card > .card-body { padding: 0; }
+.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; border-right: 1px solid $gray-800; }
+.dashboard-container .recent-activity-card .row,
+.dashboard-container .your-characters-card .row { padding: 12px 0; border-bottom: 1px solid $gray-800; }
+.dashboard-container .recent-activity-card .row:first-child,
+.dashboard-container .your-characters-card .row:first-child { padding-top: 0 }
+.dashboard-container .recent-activity-card .row:last-child,
+.dashboard-container .your-characters-card .row:last-child { border-bottom: none;}
+.dashboard-container .your-characters-card .row div:first-child { text-align: left;}
+
+.dashboard-container .random-thread-generator-card,
+.dashboard-container .patreon-card { height: 180px;}
+.dashboard-container .random-thread-generator-card .card-body,
+.dashboard-container .patreon-card .card-body {  text-align: center; }
+.dashboard-container .card a.btn {color: $white}
+
+.dashboard-container .random-thread-result { padding: 10px; margin: 10px; background: rgba(50, 50, 50, 0.5)}
+.dashboard-container .random-thread-result p { margin: 0; }
+
+@include media-breakpoint-up(sm) {
+	// above 768px
+	.dashboard-container .at-a-glance-card > .card-body .card { border-left: 1px solid $gray-800;}
+	.dashboard-container .at-a-glance-card > .card-body .card:first-child { border-left: none;}
+	.dashboard-container .at-a-glance-card > .card-body .card:last-child { border-right: none;}
+}
+@include media-breakpoint-up(md) {
+	// above 992px
+
+	.dashboard-container .recent-activity-card,
+	.dashboard-container .your-characters-card { height: 400px; overflow-y: auto; overflow-x: hidden;}
+}

@@ -1,0 +1,6 @@
+.threads-container { color: $card-body-color; }
+.thread-table-sub-component { background: $gray-600; border-bottom: 3px solid $gray-400;}
+.thread-table-sub-component .control-button { width: 20%; display: inline-block; text-align: center; padding: 10px;}
+.thread-table-sub-component .tag-display-wrapper { padding: 5px 15px; display: inline-block; color: $gray-300;}
+.thread-filter-card .card-header { text-align: right; }
+.thread-filter-card .card-header span { cursor: pointer; }
