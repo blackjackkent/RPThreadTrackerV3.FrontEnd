@@ -8,9 +8,7 @@ import 'simple-line-icons/css/simple-line-icons.css';
 import '../scss/style.scss';
 import history from './infrastructure/history';
 import Layout from './display/containers/Layout';
-import Login from './display/containers/Login';
-import Register from './display/containers/Register';
-import ForgotPassword from './display/containers/ForgotPassword';
+import StaticContainer from './display/containers/StaticContainer';
 import Maintenance from './display/containers/Maintenance';
 
 const propTypes = {
@@ -39,12 +37,10 @@ const App = (props) => {
 		<Router history={history}>
 			<Switch>
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
-				<Route exact path="/login" name="Login" component={Login} />
-				<Route exact path="/register" name="Register" component={Register} />
-				<Route exact path="/forgotpassword" name="Forgot Password" component={ForgotPassword} />
-				<Route path="/threads" name="Threads" component={Layout} />
-				<Route path="/settings" name="Settings" component={Layout} />
-				<Route path="/" name="Home" component={Layout} />
+				{
+					['/login', '/forgotpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
+				}
+				<Route component={Layout} />
 			</Switch>
 		</Router>
 	);
