@@ -38,5 +38,4 @@ const AsideNewsRow = (props) => {
 };
 
 AsideNewsRow.propTypes = propTypes;
-
 export default AsideNewsRow;

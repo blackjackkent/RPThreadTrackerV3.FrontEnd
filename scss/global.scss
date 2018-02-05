@@ -11,39 +11,3 @@
 .nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus { background: $tab-content-bg; color: $light-blue; }
 .tab-content { background: none; color: $tab-content-color; border: none; border-top: none; }
 
-// /***** DASHBOARD *****/
-
-
-/********** THREADS ********/
-
-
-/********** MANAGE CHARACTERS *********/
-
-
-/*********** TOOLS ***************/
-
-
-/********** STATIC *********/
-.help-container .support-topics .support-button {text-align: center; }
-
-@include media-breakpoint-up(xs) {
-	// above 576px
-}
-@include media-breakpoint-up(sm) {
-	// above 768px
-	.dashboard-container .at-a-glance-card > .card-body .card { border-left: 1px solid $gray-800;}
-	.dashboard-container .at-a-glance-card > .card-body .card:first-child { border-left: none;}
-	.dashboard-container .at-a-glance-card > .card-body .card:last-child { border-right: none;}
-}
-@include media-breakpoint-up(md) {
-	// above 992px
-
-	.dashboard-container .recent-activity-card,
-	.dashboard-container .your-characters-card { height: 400px; overflow-y: auto; overflow-x: hidden;}
-}
-@include media-breakpoint-up(lg) {
-	// above 1200px
-}
-@include media-breakpoint-up(xl) {
-	// 1200px and over
-}

@@ -2,3 +2,6 @@
 .app-header.navbar { padding-right: 30px; }
 .app-header.navbar .navbar-toggler { height: 55px; }
 .app-header.navbar .navbar-nav button { border: 1px solid $white; border-radius: 5px; }
+@media (max-width: 991px) {
+.app-header .navbar-brand { position: relative; left: auto; margin: 0;}
+}
