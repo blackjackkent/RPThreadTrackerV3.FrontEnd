@@ -14,10 +14,8 @@ function* fetchActiveThreadsStatus(action) {
 				'Content-Type': 'application/json'
 			}
 		});
-		debugger;
 		yield put(fetchedActiveThreadsStatusSuccess(response.data));
 	} catch (e) {
-		debugger;
 		yield put(fetchedActiveThreadsStatusFailure());
 	}
 }

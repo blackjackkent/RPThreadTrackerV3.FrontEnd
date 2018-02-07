@@ -108,3 +108,6 @@
 	-webkit-transform: translate(-25px, -25px) scale(0.25) translate(25px, 25px);
 	transform: translate(-25px, -25px) scale(0.25) translate(25px, 25px);
   }
+  .lds-spinner.invert div {
+	  background: #fff;
+  }
