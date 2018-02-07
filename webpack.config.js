@@ -90,7 +90,8 @@ module.exports = (env = {}) => {
 		},
 		plugins: [
 			new webpack.DefinePlugin({
-				API_BASE_URL: JSON.stringify(config.API_BASE_URL)
+				API_BASE_URL: JSON.stringify(config.API_BASE_URL),
+				TUMBLR_CLIENT_BASE_URL: JSON.stringify(config.TUMBLR_CLIENT_BASE_URL)
 			}),
 			new webpack.HotModuleReplacementPlugin(),
 			// new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),

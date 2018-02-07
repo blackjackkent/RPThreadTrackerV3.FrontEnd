@@ -1,3 +1,4 @@
 {
-	"API_BASE_URL": "http://localhost:29564/"
+	"API_BASE_URL": "http://localhost:29564/",
+	"TUMBLR_CLIENT_BASE_URL": "https://rpthreadtracker-tumblrclient.azurewebsites.net/"
 }
