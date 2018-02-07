@@ -14,10 +14,13 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const { ui, user, news } = state;
+	const { ui, user, news, loading } = state;
 	const {
 		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
 	} = ui;
+	const {
+		threadsLoading
+	} = loading;
 	const newsUnreadCount = getNewsUnreadCount(state);
 	return {
 		isNewsAsideOpen,
@@ -26,7 +29,8 @@ function mapStateToProps(state) {
 		isMobileSidebarOpen,
 		user,
 		news,
-		newsUnreadCount
+		newsUnreadCount,
+		threadsLoading
 	};
 }
 

@@ -13,6 +13,7 @@ import {
 	DropdownMenu,
 	DropdownItem
 } from 'reactstrap';
+import LoadingIndicator from '../LoadingIndicator';
 
 const propTypes = {
 	user: PropTypes.shape({
@@ -25,7 +26,8 @@ const propTypes = {
 	headerDropdownToggle: PropTypes.func.isRequired,
 	isHeaderDropdownOpen: PropTypes.bool.isRequired,
 	openEditCharacterModal: PropTypes.func.isRequired,
-	logout: PropTypes.func.isRequired
+	logout: PropTypes.func.isRequired,
+	threadsLoading: PropTypes.bool.isRequired
 };
 
 const Header = (props) => {
@@ -38,7 +40,8 @@ const Header = (props) => {
 		openEditCharacterModal,
 		user,
 		newsUnreadCount,
-		logout
+		logout,
+		threadsLoading
 	} = props;
 
 	return (
@@ -57,6 +60,7 @@ const Header = (props) => {
 				<NavItem>
 					<Button className="ml-4" color="primary">Track New Thread</Button>
 				</NavItem>
+				{threadsLoading && <LoadingIndicator className="invert" />}
 			</Nav>
 			<Nav className="ml-auto" navbar>
 				<NavItem>

@@ -4,7 +4,8 @@
 		"browser": true
 	},
 	"globals": {
-		"API_BASE_URL": false
+		"API_BASE_URL": false,
+		"TUMBLR_CLIENT_BASE_URL": false
 	},
 	"rules": {
 		"comma-dangle": [

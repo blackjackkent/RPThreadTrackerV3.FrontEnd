@@ -5,6 +5,7 @@ import user from './user';
 import userSettings from './userSettings';
 import characters from './characters';
 import activeThreads from './activeThreads';
+import activeThreadsStatus from './activeThreadsStatus';
 import archivedThreads from './archivedThreads';
 import randomThread from './randomThread';
 import threadFilter from './threadFilter';
@@ -20,6 +21,7 @@ export default combineReducers({
 	userSettings,
 	characters,
 	activeThreads,
+	activeThreadsStatus,
 	archivedThreads,
 	randomThread,
 	threadFilter,
