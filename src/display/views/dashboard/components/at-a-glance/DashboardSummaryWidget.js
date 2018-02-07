@@ -1,21 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBlock, Progress } from 'reactstrap';
+import LoadingIndicator from '../../../../shared/LoadingIndicator';
 
 const propTypes = {
 	header: PropTypes.number.isRequired,
 	icon: PropTypes.string.isRequired,
-	children: PropTypes.node.isRequired
+	children: PropTypes.node.isRequired,
+	threadsLoading: PropTypes.bool.isRequired
 };
 
 const DashboardSummaryWidget = (props) => {
 	const {
-		header, icon, children, ...attributes
+		header, icon, children, threadsLoading, ...attributes
 	} = props;
 
 	return (
 		<Card {...attributes}>
 			<CardBlock className="card-body">
+				<div className="text-right mb-2">
+					{threadsLoading && <LoadingIndicator className="inverse" style={{ width: 25, height: 25, float: 'left' }} />}
+				</div>
 				<div className="h1  text-right mb-2">
 					<i className={icon} />
 				</div>

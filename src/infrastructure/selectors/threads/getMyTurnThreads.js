@@ -8,13 +8,11 @@ const getMyTurnThreads = createSelector(
 		if (!threads.length || !threadsStatus.length) {
 			return [];
 		}
-		return threads.reduce((result, t) => {
-			const status = threadsStatus.find(s => s.PostId === t.postId);
-			if (status.IsCallingCharactersTurn) {
-				result.push({ thread: t, status });
-			}
-			return result;
-		}, []);
+		const statuses = threadsStatus.filter(s => s.IsCallingCharactersTurn && !s.IsQueued);
+		return statuses.map((s) => {
+			const thread = threads.find(t => t.postId === s.PostId);
+			return { thread, status: s };
+		});
 	}
 );
 export default getMyTurnThreads;

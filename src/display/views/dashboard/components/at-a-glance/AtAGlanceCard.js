@@ -9,7 +9,8 @@ const propTypes = {
 	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	threadsLoading: PropTypes.bool.isRequired
 };
 
 const AtAGlanceCard = (props) => {
@@ -19,7 +20,8 @@ const AtAGlanceCard = (props) => {
 		myTurnThreads,
 		theirTurnThreads,
 		activeThreads,
-		queuedThreads
+		queuedThreads,
+		threadsLoading
 	} = props;
 	return (
 		<Card className="at-a-glance-card">
@@ -47,18 +49,21 @@ const AtAGlanceCard = (props) => {
 					<DashboardSummaryWidget
 						icon="icon-pencil"
 						header={myTurnThreads.length}
+						threadsLoading={threadsLoading}
 					>
 						Your Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
 						icon="icon-check"
 						header={theirTurnThreads.length}
+						threadsLoading={threadsLoading}
 					>
 						Their Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
 						icon="icon-calendar"
 						header={queuedThreads.length}
+						threadsLoading={threadsLoading}
 					>
 						Queued
 					</DashboardSummaryWidget>

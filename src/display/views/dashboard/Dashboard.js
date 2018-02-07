@@ -23,7 +23,8 @@ const propTypes = {
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	randomThread: PropTypes.shape({}).isRequired
+	randomThread: PropTypes.shape({}).isRequired,
+	threadsLoading: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -31,7 +32,8 @@ function mapStateToProps(state) {
 		characters,
 		userSettings,
 		activeThreads,
-		randomThread
+		randomThread,
+		loading
 	} = state;
 	const myTurnThreads = getMyTurnThreads(state);
 	const theirTurnThreads = getTheirTurnThreads(state);
@@ -45,7 +47,8 @@ function mapStateToProps(state) {
 		myTurnThreads,
 		theirTurnThreads,
 		queuedThreads,
-		recentActivityThreads
+		recentActivityThreads,
+		threadsLoading: loading.threadsLoading
 	};
 }
 
@@ -88,7 +91,8 @@ class Dashboard extends Component {
 			theirTurnThreads,
 			queuedThreads,
 			recentActivityThreads,
-			randomThread
+			randomThread,
+			threadsLoading
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -101,6 +105,7 @@ class Dashboard extends Component {
 							theirTurnThreads={theirTurnThreads}
 							activeThreads={activeThreads}
 							queuedThreads={queuedThreads}
+							threadsLoading={threadsLoading}
 						/>
 					</Col>
 				</Row>
