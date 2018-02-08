@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	thread: PropTypes.shape({}).isRequired
+	threadData: PropTypes.shape({}).isRequired
 };
 
 const RandomThreadDisplay = (props) => {
-	const { thread } = props;
-	if (!thread.userTitle) {
+	const { threadData } = props;
+	if (!threadData.thread) {
 		return (
 			<div className="random-thread-result">
 				<p>Pick a random thread to respond to!</p>
@@ -17,14 +17,22 @@ const RandomThreadDisplay = (props) => {
 	return (
 		<div className="random-thread-result">
 			<div>
-				<a href={thread.lastPostUrl}>
-					{thread.userTitle}
+				<a href={threadData.status.LastPostUrl}>
+					{threadData.thread.userTitle}{' '}
 					<i className="fa fa-external-link" />
 				</a>
 			</div>
-			<div className="small ">
-				Last Post by <a href={thread.lastPostUrl}>{thread.lastPosterUrlIdentifier}</a>
-			</div>
+			{threadData.status &&
+				<div className="small ">
+					Last Post by{' '}
+					<a href={threadData.status.LastPostUrl}>{threadData.status.LastPosterUrlIdentifier}</a>
+				</div>
+			}
+			{!threadData.status &&
+				<div className="small ">
+					Awaiting Starter
+				</div>
+			}
 		</div>
 	);
 };

@@ -7,9 +7,10 @@ import {
 } from '../../actions';
 
 function* generateRandomThread() {
-	const validThreads = yield select(getMyTurnThreads);
-	const thread = validThreads[Math.floor(Math.random() * validThreads.length)];
-	yield put(generatedRandomThreadSuccess(thread));
+	let validThreads = yield select(getMyTurnThreads);
+	validThreads = validThreads.filter(t => !t.status || t.status.LastPostUrl);
+	const threadData = validThreads[Math.floor(Math.random() * validThreads.length)];
+	yield put(generatedRandomThreadSuccess(threadData));
 }
 
 export default function* generateRandomThreadSaga() {
