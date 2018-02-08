@@ -32,7 +32,6 @@ function* fetchActiveThreadsStatus(action) {
 		const tasks = [];
 		chunks.map(c => tasks.push(call(fetchActiveThreadsStatusChunk, c)));
 		yield all(tasks);
-
 		yield put(fetchedActiveThreadsStatusSuccess());
 	} catch (e) {
 		yield put(fetchedActiveThreadsStatusFailure());

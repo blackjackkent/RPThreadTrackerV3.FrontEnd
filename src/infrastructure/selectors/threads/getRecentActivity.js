@@ -4,12 +4,20 @@ function sortByLastPostDate(a, b) {
 	return new Date(b.lastPostDate) - new Date(a.lastPostDate);
 }
 const getAllActiveThreads = state => state.activeThreads;
+const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getRecentActivity = createSelector(
-	[getAllActiveThreads],
-	(threads) => {
-		let filtered = threads.filter(t => t.isMyTurn && !t.markedQueued);
-		filtered = filtered.sort(sortByLastPostDate);
-		return filtered.slice(0, 5);
+	[getAllActiveThreads, getAllActiveThreadStatus],
+	(threads, threadsStatus) => {
+		if (!threads.length || !threadsStatus.length) {
+			return [];
+		}
+		let statuses = threadsStatus.filter(s =>
+			s && s.IsCallingCharactersTurn && !s.IsQueued && s.lastPostDate != null);
+		statuses = statuses.sort(sortByLastPostDate);
+		return statuses.map((s) => {
+			const thread = threads.find(t => t.postId === s.PostId);
+			return { thread, status: s };
+		});
 	}
 );
 

@@ -14,7 +14,9 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const { ui, user, news, loading } = state;
+	const {
+		ui, user, news, loading
+	} = state;
 	const {
 		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
 	} = ui;

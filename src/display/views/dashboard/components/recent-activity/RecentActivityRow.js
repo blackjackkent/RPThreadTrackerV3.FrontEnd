@@ -4,23 +4,24 @@ import { Row, Col } from 'reactstrap';
 import Moment from 'react-moment';
 
 const propTypes = {
-	thread: PropTypes.shape({}).isRequired
+	threadData: PropTypes.shape({}).isRequired
 };
 
 const RecentActivityRow = (props) => {
-	const { thread } = props;
+	const { threadData } = props;
 	return (
 		<Row>
 			<Col xs="12" sm="6">
-				<div><a href={thread.lastPostUrl}>{thread.userTitle}</a></div>
+				<div><a href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a></div>
 				<div className="small ">
-					Last Post by <a href={thread.lastPostUrl}>{thread.lastPosterUrlIdentifier}</a>
+					Last Post by{' '}
+					<a href={threadData.status.lastPostUrl}>{threadData.status.lastPosterUrlIdentifier}</a>
 				</div>
 			</Col>
 			<Col sm="6" xs="12" className="text-right">
 				<div>
 					<Moment format="MMMM D, YYYY">
-						{thread.lastPostDate}
+						{threadData.status.lastPostDate}
 					</Moment>
 				</div>
 				<div className="small">
