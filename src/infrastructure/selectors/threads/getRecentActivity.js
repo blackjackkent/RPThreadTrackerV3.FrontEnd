@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 function sortByLastPostDate(a, b) {
-	return new Date(b.lastPostDate) - new Date(a.lastPostDate);
+	return new Date(b.status.LastPostDate) - new Date(a.status.LastPostDate);
 }
 const getAllActiveThreads = state => state.activeThreads;
 const getAllActiveThreadStatus = state => state.activeThreadsStatus;
@@ -11,13 +11,14 @@ const getRecentActivity = createSelector(
 		if (!threads.length || !threadsStatus.length) {
 			return [];
 		}
-		let statuses = threadsStatus.filter(s =>
-			s && s.IsCallingCharactersTurn && !s.IsQueued && s.lastPostDate != null);
-		statuses = statuses.sort(sortByLastPostDate);
-		return statuses.map((s) => {
+		let results = [];
+		const statuses = threadsStatus.filter(s => s.IsCallingCharactersTurn && !s.IsQueued);
+		results = results.concat(statuses.map((s) => {
 			const thread = threads.find(t => t.postId === s.PostId);
 			return { thread, status: s };
-		});
+		}));
+		results = results.sort(sortByLastPostDate);
+		return results.slice(0, 5);
 	}
 );
 

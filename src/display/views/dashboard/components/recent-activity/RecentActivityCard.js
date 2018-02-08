@@ -16,7 +16,7 @@ const RecentActivityCard = (props) => {
 			</CardHeader>
 			<CardBlock className="card-body">
 				{threads.map(threadData =>
-					<RecentActivityRow threadData={threadData} key={threadData.thread.id} />)}
+					<RecentActivityRow threadData={threadData} key={threadData.thread.threadId} />)}
 			</CardBlock>
 		</Card>
 	);
