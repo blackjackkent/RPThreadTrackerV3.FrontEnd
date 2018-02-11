@@ -1,13 +1,22 @@
-import { take, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
+import ls from 'local-storage';
 
 import {
 	FETCH_USER_SETTINGS,
-	fetchedUserSettingsSuccess
+	fetchedUserSettingsSuccess,
+	fetchedUserSettingsFailure
 } from '../../actions';
 
+function* fetchUserSettings() {
+	try {
+		const response = yield call(axios.get, `${API_BASE_URL}api/profilesettings`);
+		yield put(fetchedUserSettingsSuccess(response.data));
+	} catch (e) {
+		yield put(fetchedUserSettingsFailure());
+	}
+}
+
 export default function* fetchUserSettingsSaga() {
-	yield take(FETCH_USER_SETTINGS);
-	const response = yield call(axios.get, 'http://localhost:3001/settings');
-	yield put(fetchedUserSettingsSuccess(response.data));
+	yield takeEvery(FETCH_USER_SETTINGS, fetchUserSettings);
 }

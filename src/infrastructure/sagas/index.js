@@ -7,7 +7,7 @@ export { default as submitUserLoginSaga } from './user/submitUserLoginSaga';
 export { default as submitUserLogoutSaga } from './user/submitUserLogoutSaga';
 // UserSettings
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
-export { default as updateUserSettingsSaga, setHasDashboardAtAGlanceHiddenSaga } from './userSettings/updateUserSettingsSaga';
+export { default as updateUserSettingsSaga } from './userSettings/updateUserSettingsSaga';
 // Threads
 export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsSaga';
 export { default as fetchActiveThreadsStatusSaga } from './threads/fetchActiveThreadsStatusSaga';

@@ -4,8 +4,8 @@ import { Card, CardHeader, Label, Input, CardBlock, CardGroup } from 'reactstrap
 import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {
-	hasDashboardAtAGlanceHidden: PropTypes.bool.isRequired,
-	hasDashboardAtAGlanceHiddenToggle: PropTypes.func.isRequired,
+	showDashboardThreadDistribution: PropTypes.bool.isRequired,
+	showDashboardThreadDistributionToggle: PropTypes.func.isRequired,
 	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -15,8 +15,8 @@ const propTypes = {
 
 const AtAGlanceCard = (props) => {
 	const {
-		hasDashboardAtAGlanceHidden,
-		hasDashboardAtAGlanceHiddenToggle,
+		showDashboardThreadDistribution,
+		showDashboardThreadDistributionToggle,
 		myTurnThreads,
 		theirTurnThreads,
 		activeThreads,
@@ -31,14 +31,14 @@ const AtAGlanceCard = (props) => {
 					<Input
 						type="checkbox"
 						className="switch-input"
-						checked={!hasDashboardAtAGlanceHidden}
-						onChange={hasDashboardAtAGlanceHiddenToggle}
+						checked={showDashboardThreadDistribution}
+						onChange={showDashboardThreadDistributionToggle}
 					/>
 					<span className="switch-label" data-on="On" data-off="Off" />
 					<span className="switch-handle" />
 				</Label>
 			</CardHeader>
-			<CardBlock className={!hasDashboardAtAGlanceHidden ? 'card-body' : 'd-none'}>
+			<CardBlock className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
 				<CardGroup>
 					<DashboardSummaryWidget
 						icon="icon-list"

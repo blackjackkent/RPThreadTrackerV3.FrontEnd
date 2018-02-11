@@ -1,8 +1,10 @@
-import { takeEvery, put, call, all } from 'redux-saga/effects';
+import { takeEvery, take, put, call, all, fork, race } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
 	FETCHED_ACTIVE_THREADS_SUCCESS,
+	FETCHED_ACTIVE_THREADS_STATUS_CHUNK_SUCCESS,
+	FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE,
 	fetchedActiveThreadsStatusSuccess,
 	fetchedActiveThreadsStatusFailure,
 	fetchedActiveThreadsStatusChunkSuccess,
@@ -11,7 +13,7 @@ import {
 
 function* fetchActiveThreadsStatusChunk(chunk) {
 	try {
-		const response = yield call(axios.post, `${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk, {
+		const response = yield call(axios.post, `http://localhost:62535/api/thread`, chunk, {
 			headers: {
 				'Content-Type': 'application/json'
 			}
@@ -29,9 +31,13 @@ function* fetchActiveThreadsStatus(action) {
 		for (let i = 0, j = requests.length; i < j; i += 10) {
 			chunks.push(requests.slice(i, i + 10));
 		}
-		const tasks = [];
-		chunks.map(c => tasks.push(call(fetchActiveThreadsStatusChunk, c)));
-		yield all(tasks);
+		for (let i = 0; i < chunks.length; i++) {
+			yield fork(fetchActiveThreadsStatusChunk, chunks[i]);
+			yield race({
+				success: take(FETCHED_ACTIVE_THREADS_STATUS_CHUNK_SUCCESS),
+				error: take(FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE)
+			});
+		}
 		yield put(fetchedActiveThreadsStatusSuccess());
 	} catch (e) {
 		yield put(fetchedActiveThreadsStatusFailure());

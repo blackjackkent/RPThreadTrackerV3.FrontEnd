@@ -9,7 +9,7 @@ import RecentActivityCard from './components/recent-activity/RecentActivityCard'
 import YourCharactersCard from './components/your-characters/YourCharactersCard';
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
-import { generateRandomThread, fetchUserSettings, setHasDashboardAtAGlanceHidden, fetchActiveThreads, fetchCharacters } from '../../../infrastructure/actions';
+import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters } from '../../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -55,7 +55,8 @@ function mapStateToProps(state) {
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
-		this.hasDashboardAtAGlanceHiddenToggle = this.hasDashboardAtAGlanceHiddenToggle.bind(this);
+		this.showDashboardThreadDistributionToggle =
+			this.showDashboardThreadDistributionToggle.bind(this);
 		this.generateRandomThread = this.generateRandomThread.bind(this);
 	}
 
@@ -72,9 +73,9 @@ class Dashboard extends Component {
 		}
 	}
 
-	hasDashboardAtAGlanceHiddenToggle() {
+	showDashboardThreadDistributionToggle() {
 		const { dispatch, userSettings } = this.props;
-		dispatch(setHasDashboardAtAGlanceHidden(!userSettings.hasDashboardAtAGlanceHidden));
+		dispatch(updateUserSettings({ showDashboardThreadDistribution: !userSettings.showDashboardThreadDistribution }));
 	}
 
 	generateRandomThread() {
@@ -99,8 +100,8 @@ class Dashboard extends Component {
 				<Row>
 					<Col>
 						<AtAGlanceCard
-							hasDashboardAtAGlanceHidden={userSettings.hasDashboardAtAGlanceHidden}
-							hasDashboardAtAGlanceHiddenToggle={this.hasDashboardAtAGlanceHiddenToggle}
+							showDashboardThreadDistribution={userSettings.showDashboardThreadDistribution}
+							showDashboardThreadDistributionToggle={this.showDashboardThreadDistributionToggle}
 							myTurnThreads={myTurnThreads}
 							theirTurnThreads={theirTurnThreads}
 							activeThreads={activeThreads}

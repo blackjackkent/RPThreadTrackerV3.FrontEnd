@@ -1,27 +1,25 @@
-import { take, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
 	UPDATE_USER_SETTINGS,
-	SET_HAS_DASHBOARD_AT_A_GLANCE_HIDDEN,
+	SET_SHOW_DASHBOARD_THREAD_DISTRIBUTION,
 	updateUserSettings,
 	updatedUserSettingsSuccess,
 	updatedUserSettingsFailure
 } from '../../actions';
 
-export function* setHasDashboardAtAGlanceHiddenSaga() {
-	const action = yield take(SET_HAS_DASHBOARD_AT_A_GLANCE_HIDDEN);
-	yield put(updateUserSettings({ hasDashboardAtAGlanceHidden: action.data }));
-}
-
-export default function* updateUserSettingsSaga() {
-	const action = yield take(UPDATE_USER_SETTINGS);
+function* updateUserProfileSettings(action) {
 	try {
-		const current = yield call(axios.get, 'http://localhost:3001/settings');
+		const current = yield call(axios.get, `${API_BASE_URL}api/profilesettings`);
 		const newState = Object.assign({}, current.data, action.data);
-		const response = yield call(axios.put, 'http://localhost:3001/settings', newState);
-		yield put(updatedUserSettingsSuccess(response.data));
+		yield call(axios.put, `${API_BASE_URL}api/profilesettings`, newState);
+		yield put(updatedUserSettingsSuccess(newState));
 	} catch (e) {
 		yield put(updatedUserSettingsFailure());
 	}
+}
+
+export default function* updateUserSettingsSaga() {
+	yield takeEvery(UPDATE_USER_SETTINGS, updateUserProfileSettings);
 }
