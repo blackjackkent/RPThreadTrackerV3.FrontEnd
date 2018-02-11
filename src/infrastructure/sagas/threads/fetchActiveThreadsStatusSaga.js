@@ -13,7 +13,7 @@ import {
 
 function* fetchActiveThreadsStatusChunk(chunk) {
 	try {
-		const response = yield call(axios.post, `http://localhost:62535/api/thread`, chunk, {
+		const response = yield call(axios.post, `${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk, {
 			headers: {
 				'Content-Type': 'application/json'
 			}

@@ -49,7 +49,7 @@ const ThreadTable = (props) => {
 					}
 				]}
 				showPaginationTop
-				SubComponent={row => <ThreadTableSubComponent thread={row.original} />}
+				SubComponent={row => <ThreadTableSubComponent threadData={row.original} />}
 			/>
 		</div>
 	);

@@ -13,17 +13,28 @@ const filteredTag = (state) => {
 	return null;
 };
 const getAllActiveThreads = state => state.activeThreads;
+const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getQueuedFilteredThreads = createSelector(
-	[getAllActiveThreads, filteredCharacterId, filteredTag],
-	(threads, characterId, tag) => {
-		let result = threads;
+	[getAllActiveThreads, getAllActiveThreadStatus, filteredCharacterId, filteredTag],
+	(threads, threadsStatus, characterId, tag) => {
+		if (!threads.length || !threadsStatus.length) {
+			return [];
+		}
+		let results = [];
+		const statuses = threadsStatus.filter(s => s.IsQueued);
+		results = results.concat(statuses.map((s) => {
+			const thread = threads.find(t => t.postId === s.PostId);
+			return { thread, status: s };
+		}));
+		results = results.concat(threads.filter(t => !t.postId)
+			.map(t => ({ thread: t, status: null })));
 		if (characterId) {
-			result = result.filter(t => t.character.id === characterId);
+			results = results.filter(t => t.thread.characterId === characterId);
 		}
 		if (tag) {
-			result = result.filter(t => t.tags && t.tags.includes(tag));
+			results = results.filter(t => t.thread.tags && t.thread.tags.includes(tag));
 		}
-		return result.filter(t => t.markedQueued);
+		return results;
 	}
 );
 export default getQueuedFilteredThreads;

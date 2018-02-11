@@ -63,7 +63,7 @@ class Threads extends Component {
 	}
 	getFilteredThreadTags() {
 		const { filteredThreads } = this.props;
-		const tagArrays = filteredThreads.map(t => t.tags);
+		const tagArrays = filteredThreads.map(t => t.thread.threadTags);
 		const flattened = flattenArrayOfArrays(tagArrays);
 		const filtered = filterDuplicatesFromArray(flattened);
 		return filtered;
