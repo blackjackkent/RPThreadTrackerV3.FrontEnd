@@ -41,6 +41,7 @@ export { fetchedUserSettingsSuccess, FETCHED_USER_SETTINGS_SUCCESS } from './use
 export { fetchedUserSettingsFailure, FETCHED_USER_SETTINGS_FAILURE } from './userSettings/fetchedUserSettingsFailure';
 export { updateUserSettings, UPDATE_USER_SETTINGS } from './userSettings/updateUserSettings';
 export { updatedUserSettingsSuccess, UPDATED_USER_SETTINGS_SUCCESS } from './userSettings/updatedUserSettingsSuccess';
+export { updatedUserSettingsFailure, UPDATED_USER_SETTINGS_FAILURE } from './userSettings/updatedUserSettingsFailure';
 export { setShowDashboardThreadDistribution, SET_SHOW_DASHBOARD_THREAD_DISTRIBUTION } from './userSettings/setShowDashboardThreadDistribution';
 
 // News

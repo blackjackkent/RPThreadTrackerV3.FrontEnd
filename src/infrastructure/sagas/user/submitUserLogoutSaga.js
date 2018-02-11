@@ -1,5 +1,5 @@
 import { takeEvery } from 'redux-saga/effects';
-import ls from 'local-storage';
+import cache from '../../cache';
 import history from '../../history';
 
 import {
@@ -7,7 +7,7 @@ import {
 } from '../../actions';
 
 function submitUserLogout() {
-	ls.remove('rpThreadTrackerAccessToken');
+	cache.clear();
 	history.push('/login');
 }
 

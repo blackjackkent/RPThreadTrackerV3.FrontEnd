@@ -1,6 +1,6 @@
 import axios from 'axios';
-import ls from 'local-storage';
 import promise from 'promise';
+import cache from './cache';
 import { SUBMIT_USER_LOGOUT } from './actions';
 
 const whitelist = [
@@ -8,7 +8,7 @@ const whitelist = [
 ];
 
 function getAccessTokenFromStorage() {
-	return ls.get('rpThreadTrackerAccessToken');
+	return cache.get('accessToken');
 }
 function isPathInWhitelist(url) {
 	return whitelist.some(path => url.indexOf(path) >= 0);

@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import ls from 'local-storage';
+import cache from '../../cache';
 
 import {
 	FETCH_USER_SETTINGS,
@@ -10,7 +10,13 @@ import {
 
 function* fetchUserSettings() {
 	try {
+		const user = cache.get('userSettings');
+		if (user) {
+			yield put(fetchedUserSettingsSuccess(user));
+			return;
+		}
 		const response = yield call(axios.get, `${API_BASE_URL}api/profilesettings`);
+		cache.set('userSettings', response.data);
 		yield put(fetchedUserSettingsSuccess(response.data));
 	} catch (e) {
 		yield put(fetchedUserSettingsFailure());
