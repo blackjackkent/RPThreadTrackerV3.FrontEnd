@@ -21,25 +21,25 @@ export default [
 		accessor: 'thread.userTitle'
 	}, {
 		Header: 'Last Poster',
-		accessor: 'status',
-		Cell: row => <a href={row.value && row.value.LastPostUrl}> {row.value && row.value.LastPosterUrlIdentifier} </a>,
+		accessor: 'status.LastPosterUrlIdentifier',
+		Cell: row => <a href={row.original.status && row.original.status.LastPostUrl}> {row.value} </a>,
 		width: 150,
 		filterable: false
 	}, {
 		Header: 'Last Post Date',
-		accessor: 'status',
+		accessor: 'status.LastPostDate',
 		Cell: (row) => {
-			if (!row.value) {
+			if (!row.original.status) {
 				return (<span>Awaiting Starter</span>);
 			}
-			return row.value.LastPostDate ? (<Moment format="MMMM D, YYYY h:mmA">{row.value.LastPostDate}</Moment>) : (<span>Post Not Found</span>);
+			return row.original.status.LastPostDate ? (<Moment format="MMMM D, YYYY h:mmA">{row.original.status.LastPostDate}</Moment>) : (<span>Post Not Found</span>);
 		},
 		width: 200,
 		filterable: false
 	}, {
 		Header: 'Watched Shortname',
 		accessor: 'thread.partnerUrlIdentifier',
-		Cell: row => <span>{row.value ? row.value : '' }</span>,
+		Cell: row => <span>{row.value ? row.value : ''}</span>,
 		width: 200,
 		filterable: false
 	}

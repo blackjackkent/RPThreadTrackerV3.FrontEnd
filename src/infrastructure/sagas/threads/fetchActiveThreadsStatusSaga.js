@@ -31,13 +31,9 @@ function* fetchActiveThreadsStatus(action) {
 		for (let i = 0, j = requests.length; i < j; i += 10) {
 			chunks.push(requests.slice(i, i + 10));
 		}
-		for (let i = 0; i < chunks.length; i++) {
-			yield fork(fetchActiveThreadsStatusChunk, chunks[i]);
-			yield race({
-				success: take(FETCHED_ACTIVE_THREADS_STATUS_CHUNK_SUCCESS),
-				error: take(FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE)
-			});
-		}
+		const tasks = [];
+		chunks.map(c => tasks.push(call(fetchActiveThreadsStatusChunk, c)));
+		yield all(tasks);
 		yield put(fetchedActiveThreadsStatusSuccess());
 	} catch (e) {
 		yield put(fetchedActiveThreadsStatusFailure());
