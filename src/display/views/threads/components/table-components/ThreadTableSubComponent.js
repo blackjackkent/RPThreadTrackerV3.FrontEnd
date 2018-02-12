@@ -28,7 +28,7 @@ const ThreadTable = (props) => {
 				</a>
 			</span>
 			<span className="control-button">
-				<a className="btn btn-danger" href={`/thread/archive/${threadData.thread.id}`}>Delete <i className="fa fa-archive" /></a>
+				<a className="btn btn-danger" href={`/thread/archive/${threadData.thread.id}`}>Untrack <i className="fa fa-trash" /></a>
 			</span>
 		</div>
 	);

@@ -21,8 +21,8 @@ export default [
 		accessor: 'thread.userTitle'
 	}, {
 		Header: 'Character',
-		accessor: 'thread.character',
-		Cell: row => <span>{row.value.characterName || row.value.urlIdentifier}</span>
+		accessor: 'thread.character.urlIdentifier',
+		Cell: row => <span>{row.value} {row.original.thread.character.characterName && `(${row.original.thread.character.characterName})`}</span>
 	}, {
 		Header: 'Last Poster',
 		accessor: 'status.LastPosterUrlIdentifier',
