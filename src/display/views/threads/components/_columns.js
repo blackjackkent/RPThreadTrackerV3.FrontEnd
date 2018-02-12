@@ -20,6 +20,10 @@ export default [
 		Header: 'Thread Title',
 		accessor: 'thread.userTitle'
 	}, {
+		Header: 'Character',
+		accessor: 'thread.character',
+		Cell: row => <span>{row.value.characterName || row.value.urlIdentifier}</span>
+	}, {
 		Header: 'Last Poster',
 		accessor: 'status.LastPosterUrlIdentifier',
 		Cell: row => <a href={row.original.status && row.original.status.LastPostUrl}> {row.value} </a>,
