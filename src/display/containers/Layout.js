@@ -3,6 +3,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
+import ReduxToastr from 'react-redux-toastr';
 
 import { fetchUser, fetchNews } from '../../infrastructure/actions';
 
@@ -94,6 +95,7 @@ class Layout extends Component {
 				</div>
 				<Footer />
 				<ModalContainer />
+				<ReduxToastr />
 			</div>
 		);
 	}
