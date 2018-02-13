@@ -1,4 +1,4 @@
-import { SET_FILTERED_CHARACTER_ID, SET_FILTERED_TAG } from '../actions';
+import { SET_FILTERED_CHARACTER_ID, SET_FILTERED_TAG, SUBMIT_USER_LOGOUT } from '../actions';
 
 function ui(state = {}, action) {
 	switch (action.type) {
@@ -10,6 +10,8 @@ function ui(state = {}, action) {
 			return Object.assign({}, state, {
 				filteredTag: action.data
 			});
+		case SUBMIT_USER_LOGOUT:
+			return {};
 		default:
 			return state;
 	}

@@ -1,9 +1,10 @@
-import { SUBMIT_USER_LOGIN, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, FETCH_ACTIVE_THREADS, FETCHED_ACTIVE_THREADS_FAILURE, FETCHED_ACTIVE_THREADS_STATUS_SUCCESS, FETCHED_ACTIVE_THREADS_STATUS_FAILURE } from '../actions';
+import { SUBMIT_USER_LOGIN, SUBMIT_USER_LOGOUT, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, FETCH_ACTIVE_THREADS, FETCHED_ACTIVE_THREADS_FAILURE, FETCHED_ACTIVE_THREADS_STATUS_SUCCESS, FETCHED_ACTIVE_THREADS_STATUS_FAILURE } from '../actions';
 
-function loading(state = {
+const defaultState = {
 	loginLoading: false,
 	threadsLoading: false
-}, action) {
+};
+function loading(state = defaultState, action) {
 	switch (action.type) {
 		case USER_LOGIN_SUCCESS:
 		case USER_LOGIN_FAILURE:
@@ -24,6 +25,8 @@ function loading(state = {
 			return Object.assign({}, state, {
 				threadsLoading: false
 			});
+		case SUBMIT_USER_LOGOUT:
+			return defaultState;
 		default:
 			return state;
 	}

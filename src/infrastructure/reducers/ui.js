@@ -8,10 +8,11 @@ import {
 	CLOSE_EDIT_CHARACTER_MODAL,
 	SET_ACTIVE_HELP_TAB,
 	SET_ACTIVE_SETTINGS_TAB,
-	SET_ACTIVE_TOOLS_TAB
+	SET_ACTIVE_TOOLS_TAB,
+	SUBMIT_USER_LOGOUT
 } from '../actions';
 
-function ui(state = {
+const defaultState = {
 	isNewsAsideOpen: false,
 	isSidebarOpen: true,
 	isHeaderDropdownOpen: false,
@@ -22,7 +23,9 @@ function ui(state = {
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'
-}, action) {
+};
+
+function ui(state = defaultState, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
 			return Object.assign({}, state, {
@@ -64,6 +67,8 @@ function ui(state = {
 			return Object.assign({}, state, {
 				activeToolsTab: action.data
 			});
+		case SUBMIT_USER_LOGOUT:
+			return defaultState;
 		default:
 			return state;
 	}

@@ -13,6 +13,7 @@ export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsS
 export { default as fetchActiveThreadsStatusSaga } from './threads/fetchActiveThreadsStatusSaga';
 export { default as fetchArchivedThreadsSaga } from './threads/fetchArchivedThreadsSaga';
 export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
+export { default as updateThreadSaga } from './threads/updateThreadSaga';
 // Characters
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';
 // Tags

@@ -1,8 +1,10 @@
-import { SUBMIT_USER_LOGIN, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE } from '../actions';
+import { SUBMIT_USER_LOGIN, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, SUBMIT_USER_LOGOUT } from '../actions';
 
-function errors(state = {
+const defaultState = {
 	loginError: null
-}, action) {
+};
+
+function errors(state = defaultState, action) {
 	switch (action.type) {
 		case USER_LOGIN_SUCCESS:
 		case SUBMIT_USER_LOGIN:
@@ -13,6 +15,8 @@ function errors(state = {
 			return Object.assign({}, state, {
 				loginError: action.data
 			});
+		case SUBMIT_USER_LOGOUT:
+			return defaultState;
 		default:
 			return state;
 	}

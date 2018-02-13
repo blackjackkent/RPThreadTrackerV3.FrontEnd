@@ -25,6 +25,9 @@ export { generateRandomThread, GENERATE_RANDOM_THREAD } from './threads/generate
 export { generatedRandomThreadSuccess, GENERATED_RANDOM_THREAD_SUCCESS } from './threads/generatedRandomThreadSuccess';
 export { setFilteredCharacterId, SET_FILTERED_CHARACTER_ID } from './threads/setFilteredCharacterId';
 export { setFilteredTag, SET_FILTERED_TAG } from './threads/setFilteredTag';
+export { updateThread, UPDATE_THREAD } from './threads/updateThread';
+export { updateThreadSuccess, UPDATE_THREAD_SUCCESS } from './threads/updateThreadSuccess';
+export { updateThreadFailure, UPDATE_THREAD_FAILURE } from './threads/updateThreadFailure';
 
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';

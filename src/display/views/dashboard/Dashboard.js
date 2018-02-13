@@ -9,7 +9,7 @@ import RecentActivityCard from './components/recent-activity/RecentActivityCard'
 import YourCharactersCard from './components/your-characters/YourCharactersCard';
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
-import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters } from '../../../infrastructure/actions';
+import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters, updateThread } from '../../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -58,6 +58,7 @@ class Dashboard extends Component {
 		this.showDashboardThreadDistributionToggle =
 			this.showDashboardThreadDistributionToggle.bind(this);
 		this.generateRandomThread = this.generateRandomThread.bind(this);
+		this.archiveThread = this.archiveThread.bind(this);
 	}
 
 	componentDidMount() {
@@ -81,6 +82,14 @@ class Dashboard extends Component {
 	generateRandomThread() {
 		const { dispatch } = this.props;
 		dispatch(generateRandomThread());
+	}
+
+	archiveThread(thread) {
+		const { dispatch } = this.props;
+		const updatedThread = {
+			...thread, isArchived: !thread.isArchived
+		};
+		dispatch(updateThread(updatedThread));
 	}
 
 	render() {
@@ -112,7 +121,7 @@ class Dashboard extends Component {
 				</Row>
 				<Row>
 					<Col xs="12" md="6">
-						<RecentActivityCard threads={recentActivityThreads} />
+						<RecentActivityCard threads={recentActivityThreads} archiveThread={this.archiveThread} />
 					</Col>
 					<Col xs="12" md="6">
 						<YourCharactersCard characters={characters} />

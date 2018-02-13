@@ -1,10 +1,8 @@
-import { takeEvery, take, put, call, all, fork, race } from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
-	FETCHED_ACTIVE_THREADS_SUCCESS,
-	FETCHED_ACTIVE_THREADS_STATUS_CHUNK_SUCCESS,
-	FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE,
+	FETCH_ACTIVE_THREADS_STATUS,
 	fetchedActiveThreadsStatusSuccess,
 	fetchedActiveThreadsStatusFailure,
 	fetchedActiveThreadsStatusChunkSuccess,
@@ -41,5 +39,5 @@ function* fetchActiveThreadsStatus(action) {
 }
 
 export default function* fetchActiveThreadsStatusSaga() {
-	yield takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, fetchActiveThreadsStatus);
+	yield takeLatest(FETCH_ACTIVE_THREADS_STATUS, fetchActiveThreadsStatus);
 }

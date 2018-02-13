@@ -4,11 +4,12 @@ import { Card, CardHeader, CardBlock } from 'reactstrap';
 import RecentActivityRow from './RecentActivityRow';
 
 const propTypes = {
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	archiveThread: PropTypes.func.isRequired
 };
 
 const RecentActivityCard = (props) => {
-	const { threads } = props;
+	const { threads, archiveThread } = props;
 	return (
 		<Card className="recent-activity-card">
 			<CardHeader>
@@ -16,7 +17,7 @@ const RecentActivityCard = (props) => {
 			</CardHeader>
 			<CardBlock className="card-body">
 				{threads.map(threadData =>
-					<RecentActivityRow threadData={threadData} key={threadData.thread.threadId} />)}
+					<RecentActivityRow threadData={threadData} key={threadData.thread.threadId} archiveThread={archiveThread} />)}
 			</CardBlock>
 		</Card>
 	);

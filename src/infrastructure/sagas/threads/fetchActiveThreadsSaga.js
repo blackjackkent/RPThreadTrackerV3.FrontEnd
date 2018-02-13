@@ -1,11 +1,12 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
-import { toastr } from 'react-redux-toastr'
+import { toastr } from 'react-redux-toastr';
 
 import {
 	FETCH_ACTIVE_THREADS,
 	fetchedActiveThreadsSuccess,
-	fetchedActiveThreadsFailure
+	fetchedActiveThreadsFailure,
+	fetchActiveThreadsStatus
 } from '../../actions';
 
 function* fetchActiveThreads() {
@@ -14,12 +15,15 @@ function* fetchActiveThreads() {
 		if (response.data && response.data.threads && response.data.threads.length > 100) {
 			toastr.light('Retrieving more than 100 threads; loading may take several minutes. Archive some threads to reduce loading time.', { status: 'info' });
 		}
-		yield put(fetchedActiveThreadsSuccess(response.data));
+		yield all([
+			put(fetchedActiveThreadsSuccess(response.data)),
+			put(fetchActiveThreadsStatus(response.data))
+		]);
 	} catch (e) {
 		yield put(fetchedActiveThreadsFailure());
 	}
 }
 
 export default function* fetchActiveThreadsSaga() {
-	yield takeEvery(FETCH_ACTIVE_THREADS, fetchActiveThreads);
+	yield takeLatest(FETCH_ACTIVE_THREADS, fetchActiveThreads);
 }

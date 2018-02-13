@@ -4,18 +4,26 @@ import { Row, Col } from 'reactstrap';
 import Moment from 'react-moment';
 
 const propTypes = {
-	threadData: PropTypes.shape({}).isRequired
+	threadData: PropTypes.shape({}).isRequired,
+	archiveThread: PropTypes.func.isRequired
 };
 
 const RecentActivityRow = (props) => {
-	const { threadData } = props;
+	const { threadData, archiveThread } = props;
 	return (
 		<Row>
 			<Col xs="12" sm="6">
-				<div><a target="_blank" href={threadData.status.LastPostUrl}>{threadData.thread.userTitle}</a></div>
+				<div>
+					<a target="_blank" href={threadData.status.LastPostUrl}>{threadData.thread.userTitle}</a>
+				</div>
 				<div className="small ">
 					Last Post by{' '}
-					<a target="_blank" href={threadData.status.LastPostUrl}>{threadData.status.LastPosterUrlIdentifier}</a>
+					<a
+						target="_blank"
+						href={threadData.status.LastPostUrl}
+					>
+						{threadData.status.LastPosterUrlIdentifier}
+					</a>
 				</div>
 			</Col>
 			<Col sm="6" xs="12" className="text-right">
@@ -26,7 +34,7 @@ const RecentActivityRow = (props) => {
 				</div>
 				<div className="small">
 					<a href="/untrack">Untrack</a> &bull;{' '}
-					<a href="/archive">Archive</a> &bull;{' '}
+					<button onClick={() => archiveThread(threadData.thread)}>Archive</button> &bull;{' '}
 					<a href="/queue">Mark Queued</a>
 				</div>
 			</Col>
