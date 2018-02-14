@@ -37,18 +37,12 @@ class Threads extends Component {
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
 	}
 	componentDidMount() {
-		this.initView(this.props);
-	}
-	componentWillReceiveProps(nextProps) {
-		this.initView(nextProps);
-	}
-
-	initView(props) {
-		const { dispatch } = props;
-		if (!props.characters || !props.characters.length) {
+		const { dispatch } = this.props;
+		if (!this.props.characters || !this.props.characters.length) {
 			dispatch(fetchCharacters());
 		}
 	}
+
 	setFilteredCharacterId(e) {
 		const { dispatch } = this.props;
 		dispatch(setFilteredCharacterId(e.target.value));

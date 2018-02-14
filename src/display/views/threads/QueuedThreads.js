@@ -23,15 +23,8 @@ function mapStateToProps(state) {
 
 class ArchivedThreads extends Component {
 	componentDidMount() {
-		this.initView(this.props);
-	}
-	componentWillReceiveProps(nextProps) {
-		this.initView(nextProps);
-	}
-
-	initView(props) {
-		const { dispatch } = props;
-		if (!props.activeThreads || !props.activeThreads.length) {
+		const { dispatch } = this.props;
+		if (!this.props.activeThreads || !this.props.activeThreads.length) {
 			dispatch(fetchActiveThreads());
 		}
 	}
