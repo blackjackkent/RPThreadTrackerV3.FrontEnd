@@ -1,5 +1,6 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
+import cache from '../../cache';
 
 import {
 	UPDATE_THREAD,
@@ -13,9 +14,13 @@ function* updateThread(action) {
 	try {
 		const thread = action.data;
 		yield call(axios.put, `${API_BASE_URL}api/thread/${thread.threadId}`, thread);
-		yield put(updateThreadSuccess());
-		yield put(fetchActiveThreads());
-		yield put(fetchArchivedThreads());
+		cache.clearKey('activeThreads');
+		cache.clearKey('archivedThreads');
+		yield all([
+			put(updateThreadSuccess()),
+			put(fetchActiveThreads()),
+			put(fetchArchivedThreads())
+		]);
 	} catch (e) {
 		yield put(updateThreadFailure());
 	}

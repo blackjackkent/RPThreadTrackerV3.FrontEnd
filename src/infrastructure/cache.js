@@ -19,6 +19,15 @@ export default {
 		ls.set(baseKey, data);
 	},
 
+	clearKey: (key) => {
+		let data = ls.get(baseKey);
+		if (!data) {
+			data = {};
+		}
+		data[key] = null;
+		ls.set(baseKey, data);
+	},
+
 	clear: () => {
 		ls.set(baseKey, null);
 	}

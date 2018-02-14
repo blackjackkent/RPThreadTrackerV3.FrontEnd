@@ -10,9 +10,9 @@ import {
 
 function* fetchUserSettings() {
 	try {
-		const user = cache.get('userSettings');
-		if (user) {
-			yield put(fetchedUserSettingsSuccess(user));
+		const userSettings = cache.get('userSettings');
+		if (userSettings) {
+			yield put(fetchedUserSettingsSuccess(userSettings));
 			return;
 		}
 		const response = yield call(axios.get, `${API_BASE_URL}api/profilesettings`);

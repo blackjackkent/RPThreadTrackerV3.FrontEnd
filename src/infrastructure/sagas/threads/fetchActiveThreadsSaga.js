@@ -1,6 +1,7 @@
 import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import { toastr } from 'react-redux-toastr';
+import cache from '../../cache';
 
 import {
 	FETCH_ACTIVE_THREADS,
@@ -11,13 +12,18 @@ import {
 
 function* fetchActiveThreads() {
 	try {
-		const response = yield call(axios.get, `${API_BASE_URL}api/thread`);
-		if (response.data && response.data.threads && response.data.threads.length > 100) {
+		let threadData = cache.get('activeThreads');
+		if (!threadData) {
+			const response = yield call(axios.get, `${API_BASE_URL}api/thread`);
+			threadData = response.data;
+			cache.set('activeThreads', threadData);
+		}
+		if (threadData && threadData.threads && threadData.threads.length > 100) {
 			toastr.light('Retrieving more than 100 threads; loading may take several minutes. Archive some threads to reduce loading time.', { status: 'info' });
 		}
 		yield all([
-			put(fetchedActiveThreadsSuccess(response.data)),
-			put(fetchActiveThreadsStatus(response.data))
+			put(fetchedActiveThreadsSuccess(threadData)),
+			put(fetchActiveThreadsStatus(threadData))
 		]);
 	} catch (e) {
 		yield put(fetchedActiveThreadsFailure());
