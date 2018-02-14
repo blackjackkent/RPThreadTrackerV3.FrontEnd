@@ -54,6 +54,7 @@ export { fetchedNewsSuccess, FETCHED_NEWS_SUCCESS } from './news/fetchedNewsSucc
 // Characters
 export { fetchCharacters, FETCH_CHARACTERS } from './characters/fetchCharacters';
 export { fetchedCharactersSuccess, FETCHED_CHARACTERS_SUCCESS } from './characters/fetchedCharactersSuccess';
+export { fetchedCharactersFailure, FETCHED_CHARACTERS_FAILURE } from './characters/fetchedCharactersFailure';
 
 // Tags
 export { fetchTags, FETCH_TAGS } from './tags/fetchTags';

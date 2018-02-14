@@ -10,7 +10,7 @@ import YourCharactersCard from './components/your-characters/YourCharactersCard'
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
 import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters, updateThread } from '../../../infrastructure/actions';
-import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity } from '../../../infrastructure/selectors';
+import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -24,7 +24,8 @@ const propTypes = {
 	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	randomThread: PropTypes.shape({}).isRequired,
-	threadsLoading: PropTypes.bool.isRequired
+	threadsLoading: PropTypes.bool.isRequired,
+	characterThreadCounts: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -39,6 +40,7 @@ function mapStateToProps(state) {
 	const theirTurnThreads = getTheirTurnThreads(state);
 	const queuedThreads = getQueuedThreads(state);
 	const recentActivityThreads = getRecentActivity(state);
+	const characterThreadCounts = getThreadCountsByCharacter(state);
 	return {
 		characters,
 		userSettings,
@@ -48,6 +50,7 @@ function mapStateToProps(state) {
 		theirTurnThreads,
 		queuedThreads,
 		recentActivityThreads,
+		characterThreadCounts,
 		threadsLoading: loading.threadsLoading
 	};
 }
@@ -102,7 +105,8 @@ class Dashboard extends Component {
 			queuedThreads,
 			recentActivityThreads,
 			randomThread,
-			threadsLoading
+			threadsLoading,
+			characterThreadCounts
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -124,7 +128,7 @@ class Dashboard extends Component {
 						<RecentActivityCard threads={recentActivityThreads} archiveThread={this.archiveThread} />
 					</Col>
 					<Col xs="12" md="6">
-						<YourCharactersCard characters={characters} />
+						<YourCharactersCard characters={characters} characterThreadCounts={characterThreadCounts} />
 					</Col>
 				</Row>
 				<Row>

@@ -4,11 +4,12 @@ import { Card, CardHeader, CardBlock } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
 
 const propTypes = {
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	characterThreadCounts: PropTypes.shape({}).isRequired
 };
 
 const YourCharactersCard = (props) => {
-	const { characters } = props;
+	const { characters, characterThreadCounts } = props;
 	return (
 		<Card className="your-characters-card">
 			<CardHeader>
@@ -18,7 +19,7 @@ const YourCharactersCard = (props) => {
 			<CardBlock className="card-body">
 				{
 					characters.map(character =>
-						<YourCharactersCardRow character={character} key={character.id} />)
+						<YourCharactersCardRow character={character} key={character.characterId} threadCount={characterThreadCounts[character.characterId]} />)
 				}
 			</CardBlock>
 		</Card>

@@ -9,18 +9,22 @@ const propTypes = {
 		urlIdentifier: PropTypes.string.isRequired,
 		homeUrl: PropTypes.string.isRequired,
 		isOnHiatus: PropTypes.bool.isRequired
-	}).isRequired
+	}).isRequired,
+	threadCount: PropTypes.number.isRequired
 };
 
 const YourCharactersCard = (props) => {
-	const { character } = props;
+	const { character, threadCount } = props;
 	return (
 		<Row className="your-characters-card-row">
-			<Col xs="6">
+			<Col xs="4">
 				{character.characterName || 'Unnamed Character'}
 			</Col>
-			<Col xs="6">
+			<Col xs="4">
 				<a href={character.homeUrl}>{character.urlIdentifier}</a>
+			</Col>
+			<Col xs="4">
+				{threadCount} {threadCount === 1 ? 'thread' : 'threads'}
 			</Col>
 		</Row>
 	);

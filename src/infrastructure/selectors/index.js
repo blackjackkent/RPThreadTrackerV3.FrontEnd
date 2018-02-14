@@ -12,3 +12,4 @@ export { default as getArchivedFilteredThreads } from './threads/getArchivedFilt
 export { default as getQueuedThreads } from './threads/getQueuedThreads';
 export { default as getQueuedFilteredThreads } from './threads/getQueuedFilteredThreads';
 export { default as getRecentActivity } from './threads/getRecentActivity';
+export { default as getThreadCountsByCharacter } from './threads/getThreadCountsByCharacter';
