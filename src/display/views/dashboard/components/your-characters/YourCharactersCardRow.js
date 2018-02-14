@@ -21,7 +21,7 @@ const YourCharactersCard = (props) => {
 				{character.characterName || 'Unnamed Character'}
 			</Col>
 			<Col xs="4">
-				<a href={character.homeUrl}>{character.urlIdentifier}</a>
+				<a target="_blank" href={character.homeUrl}>{character.urlIdentifier}</a>
 			</Col>
 			<Col xs="4">
 				{threadCount} {threadCount === 1 ? 'thread' : 'threads'}

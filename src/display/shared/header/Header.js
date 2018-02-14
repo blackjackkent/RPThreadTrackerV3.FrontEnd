@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 import {
 	Nav,
@@ -49,7 +50,7 @@ const Header = (props) => {
 			<NavbarToggler className="d-lg-none" onClick={mobileSidebarToggle}>
 				&#9776;
 			</NavbarToggler>
-			<NavbarBrand href="/">RPTHREADTRACKER</NavbarBrand>
+			<Link className="navbar-brand" to="/">RPTHREADTRACKER</Link>
 			<NavbarToggler className="d-md-down-none" onClick={sidebarToggle}>
 				&#9776;
 			</NavbarToggler>
