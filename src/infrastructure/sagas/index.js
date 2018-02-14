@@ -18,3 +18,4 @@ export { default as updateThreadSaga } from './threads/updateThreadSaga';
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';
 // Tags
 export { default as fet } from './tags/fetchTagsSaga';
+

@@ -5,11 +5,12 @@ import RecentActivityRow from './RecentActivityRow';
 
 const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	archiveThread: PropTypes.func.isRequired
+	archiveThread: PropTypes.func.isRequired,
+	openUntrackThreadModal: PropTypes.func.isRequired
 };
 
 const RecentActivityCard = (props) => {
-	const { threads, archiveThread } = props;
+	const { threads, archiveThread, openUntrackThreadModal } = props;
 	return (
 		<Card className="recent-activity-card">
 			<CardHeader>
@@ -17,7 +18,7 @@ const RecentActivityCard = (props) => {
 			</CardHeader>
 			<CardBlock className="card-body">
 				{threads.map(threadData =>
-					<RecentActivityRow threadData={threadData} key={threadData.thread.threadId} archiveThread={archiveThread} />)}
+					<RecentActivityRow threadData={threadData} key={threadData.thread.threadId} archiveThread={archiveThread} openUntrackThreadModal={openUntrackThreadModal} />)}
 			</CardBlock>
 		</Card>
 	);

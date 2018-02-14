@@ -6,6 +6,8 @@ import {
 	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
 	OPEN_EDIT_CHARACTER_MODAL,
 	CLOSE_EDIT_CHARACTER_MODAL,
+	OPEN_UNTRACK_THREAD_MODAL,
+	CLOSE_UNTRACK_THREAD_MODAL,
 	SET_ACTIVE_HELP_TAB,
 	SET_ACTIVE_SETTINGS_TAB,
 	SET_ACTIVE_TOOLS_TAB,
@@ -20,6 +22,7 @@ const defaultState = {
 	isMaintenanceMode: false,
 	isThreadFilterCardHidden: true,
 	isEditCharacterModalOpen: false,
+	isUntrackThreadModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'
@@ -54,6 +57,14 @@ function ui(state = defaultState, action) {
 		case CLOSE_EDIT_CHARACTER_MODAL:
 			return Object.assign({}, state, {
 				isEditCharacterModalOpen: false
+			});
+		case OPEN_UNTRACK_THREAD_MODAL:
+			return Object.assign({}, state, {
+				isUntrackThreadModalOpen: true
+			});
+		case CLOSE_UNTRACK_THREAD_MODAL:
+			return Object.assign({}, state, {
+				isUntrackThreadModalOpen: false
 			});
 		case SET_ACTIVE_HELP_TAB:
 			return Object.assign({}, state, {

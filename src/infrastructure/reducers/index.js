@@ -11,6 +11,7 @@ import news from './news';
 import randomThread from './randomThread';
 import tags from './tags';
 import threadFilter from './threadFilter';
+import threadToEdit from './threadToEdit';
 import ui from './ui';
 import user from './user';
 import userSettings from './userSettings';
@@ -27,6 +28,7 @@ export default combineReducers({
 	randomThread,
 	tags,
 	threadFilter,
+	threadToEdit,
 	toastr,
 	ui,
 	user,

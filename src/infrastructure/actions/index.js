@@ -6,6 +6,8 @@ export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSid
 export { toggleIsThreadFilterCardHidden, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from './ui/toggleIsThreadFilterCardHidden';
 export { openEditCharacterModal, OPEN_EDIT_CHARACTER_MODAL } from './ui/openEditCharacterModal';
 export { closeEditCharacterModal, CLOSE_EDIT_CHARACTER_MODAL } from './ui/closeEditCharacterModal';
+export { openUntrackThreadModal, OPEN_UNTRACK_THREAD_MODAL } from './ui/openUntrackThreadModal';
+export { closeUntrackThreadModal, CLOSE_UNTRACK_THREAD_MODAL } from './ui/closeUntrackThreadModal';
 export { setActiveHelpTab, SET_ACTIVE_HELP_TAB } from './ui/setActiveHelpTab';
 export { setActiveSettingsTab, SET_ACTIVE_SETTINGS_TAB } from './ui/setActiveSettingsTab';
 export { setActiveToolsTab, SET_ACTIVE_TOOLS_TAB } from './ui/setActiveToolsTab';
@@ -28,6 +30,9 @@ export { setFilteredTag, SET_FILTERED_TAG } from './threads/setFilteredTag';
 export { updateThread, UPDATE_THREAD } from './threads/updateThread';
 export { updateThreadSuccess, UPDATE_THREAD_SUCCESS } from './threads/updateThreadSuccess';
 export { updateThreadFailure, UPDATE_THREAD_FAILURE } from './threads/updateThreadFailure';
+export { untrackThread, UNTRACK_THREAD } from './threads/untrackThread';
+export { untrackThreadSuccess, UNTRACK_THREAD_SUCCESS } from './threads/untrackThreadSuccess';
+export { untrackThreadFailure, UNTRACK_THREAD_FAILURE } from './threads/untrackThreadFailure';
 
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';
