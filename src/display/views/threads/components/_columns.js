@@ -1,7 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
 
-export default [
+const getColumns = () => [
 	{
 		expander: true,
 		width: 65,
@@ -43,10 +43,11 @@ export default [
 		width: 200,
 		filterable: false
 	}, {
-		Header: 'Watched Shortname',
+		Header: 'Tracked Partner',
 		accessor: 'thread.partnerUrlIdentifier',
 		Cell: row => <span>{row.value ? row.value : ''}</span>,
 		width: 200,
 		filterable: false
 	}
 ];
+export default getColumns;

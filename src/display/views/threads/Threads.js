@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from './components/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters } from '../../../infrastructure/actions';
+import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal } from '../../../infrastructure/actions';
 import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
 
 const propTypes = {
@@ -35,6 +35,8 @@ class Threads extends Component {
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
+		this.archiveThread = this.archiveThread.bind(this);
+		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -62,6 +64,20 @@ class Threads extends Component {
 		const filtered = filterDuplicatesFromArray(flattened);
 		return filtered;
 	}
+
+	archiveThread(thread) {
+		const { dispatch } = this.props;
+		const updatedThread = {
+			...thread, isArchived: !thread.isArchived
+		};
+		dispatch(updateThread(updatedThread));
+	}
+
+	openUntrackThreadModal(thread) {
+		const { dispatch } = this.props;
+		dispatch(openUntrackThreadModal(thread));
+	}
+
 	render() {
 		const {
 			filteredThreads,
@@ -83,6 +99,8 @@ class Threads extends Component {
 							setFilteredTag={this.setFilteredTag}
 							isThreadFilterCardHidden={isThreadFilterCardHidden}
 							threadFilterHiddenToggle={this.isThreadFilterCardHiddenToggle}
+							archiveThread={this.archiveThread}
+							openUntrackThreadModal={this.openUntrackThreadModal}
 						/>
 					</Col>
 				</Row>

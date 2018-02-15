@@ -6,8 +6,9 @@ const markUnreadNews = createSelector(
 	[getNews, getUserSettings],
 	(news, userSettings) => {
 		const { lastNewsReadDate } = userSettings;
+		const dateValue = new Date(lastNewsReadDate);
 		return news.map(n => ({
-			...n, isUnread: !lastNewsReadDate || n.PostDate > lastNewsReadDate
+			...n, isUnread: !dateValue || n.PostDate > dateValue
 		}));
 	}
 );

@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import ThreadTableTagDisplay from './ThreadTableTagDisplay';
 
 const propTypes = {
-	threadData: PropTypes.shape({}).isRequired
+	threadData: PropTypes.shape({}).isRequired,
+	archiveThread: PropTypes.func.isRequired,
+	openUntrackThreadModal: PropTypes.func.isRequired
 };
 
 const ThreadTable = (props) => {
-	const { threadData } = props;
+	const { threadData, archiveThread, openUntrackThreadModal } = props;
 	return (
 		<div className="thread-table-sub-component">
 			<ThreadTableTagDisplay tags={threadData.thread.threadTags} />
@@ -23,12 +25,12 @@ const ThreadTable = (props) => {
 			</span>
 			<span className="control-button" />
 			<span className="control-button">
-				<a className="btn btn-primary" href={`/thread/archive/${threadData.thread.id}`}>
+				<button className="btn btn-primary" onClick={() => archiveThread(threadData.thread)}>
 					Archive <i className="fa fa-archive" />
-				</a>
+				</button>
 			</span>
 			<span className="control-button">
-				<a className="btn btn-danger" href={`/thread/archive/${threadData.thread.id}`}>Untrack <i className="fa fa-trash" /></a>
+				<button className="btn btn-danger" onClick={() => openUntrackThreadModal(threadData)}>Untrack <i className="fa fa-trash" /></button>
 			</span>
 		</div>
 	);
