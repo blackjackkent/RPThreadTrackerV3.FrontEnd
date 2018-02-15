@@ -45,6 +45,10 @@
 		"react/jsx-indent-props": [
 			"error",
 			"tab"
+		],
+		"arrow-body-style": [
+			"error",
+			"as-needed"
 		]
 	}
 }

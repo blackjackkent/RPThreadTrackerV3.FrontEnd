@@ -1,13 +1,17 @@
-import { take, put, call } from 'redux-saga/effects';
+import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
+import ls from 'local-storage';
 
 import {
 	FETCH_NEWS,
 	fetchedNewsSuccess
 } from '../../actions';
 
-export default function* fetchNewsSaga() {
-	yield take(FETCH_NEWS);
-	const response = yield call(axios.get, 'http://localhost:3001/news');
+function* fetchNews() {
+	const response = yield call(axios.get, `${TUMBLR_CLIENT_BASE_URL}api/news`);
 	yield put(fetchedNewsSuccess(response.data));
+}
+
+export default function* fetchNewsSaga() {
+	yield takeLatest(FETCH_NEWS, fetchNews);
 }

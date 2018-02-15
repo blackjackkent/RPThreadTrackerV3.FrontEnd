@@ -9,8 +9,8 @@ import Moment from 'react-moment';
 
 const propTypes = {
 	item: PropTypes.shape({
-		id: PropTypes.number,
-		userTitle: PropTypes.string.isRequired,
+		PostId: PropTypes.number,
+		PostTitle: PropTypes.string.isRequired,
 		lastPostDate: PropTypes.string.isRequired
 	}).isRequired
 };
@@ -21,13 +21,13 @@ const AsideNewsRow = (props) => {
 		<div>
 			<div className="callout callout-danger m-0 py-3">
 				<div>
-					<a href="item.lastPostUrl">
-						{item.userTitle}
+					<a href={item.PostUrl}>
+						{item.PostTitle}
 					</a>
 				</div>
 				<small className="mr-3">
 					<Moment format="MMMM D, YYYY">
-						{item.lastPostDate}
+						{item.PostDate}
 					</Moment>
 				</small>
 				<Badge color="danger" className={item.isUnread ? 'float-right' : 'd-none'} > New</Badge>
