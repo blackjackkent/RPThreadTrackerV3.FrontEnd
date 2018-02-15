@@ -63,6 +63,7 @@ class Dashboard extends Component {
 		this.generateRandomThread = this.generateRandomThread.bind(this);
 		this.archiveThread = this.archiveThread.bind(this);
 		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
+		this.markThreadQueued = this.markThreadQueued.bind(this);
 	}
 
 	componentDidMount() {
@@ -92,6 +93,14 @@ class Dashboard extends Component {
 		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
+		};
+		dispatch(updateThread(updatedThread));
+	}
+
+	markThreadQueued(thread) {
+		const { dispatch } = this.props;
+		const updatedThread = {
+			...thread, dateMarkedQueued: new Date(Date.now())
 		};
 		dispatch(updateThread(updatedThread));
 	}
@@ -131,7 +140,7 @@ class Dashboard extends Component {
 				</Row>
 				<Row>
 					<Col xs="12" md="6">
-						<RecentActivityCard threads={recentActivityThreads} archiveThread={this.archiveThread} openUntrackThreadModal={this.openUntrackThreadModal} />
+						<RecentActivityCard threads={recentActivityThreads} archiveThread={this.archiveThread} openUntrackThreadModal={this.openUntrackThreadModal} markThreadQueued={this.markThreadQueued} />
 					</Col>
 					<Col xs="12" md="6">
 						<YourCharactersCard characters={characters} characterThreadCounts={characterThreadCounts} />

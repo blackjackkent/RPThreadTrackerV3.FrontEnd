@@ -6,11 +6,12 @@ import Moment from 'react-moment';
 const propTypes = {
 	threadData: PropTypes.shape({}).isRequired,
 	archiveThread: PropTypes.func.isRequired,
-	openUntrackThreadModal: PropTypes.func.isRequired
+	openUntrackThreadModal: PropTypes.func.isRequired,
+	markThreadQueued: PropTypes.func.isRequired
 };
 
 const RecentActivityRow = (props) => {
-	const { threadData, archiveThread, openUntrackThreadModal } = props;
+	const { threadData, archiveThread, openUntrackThreadModal, markThreadQueued } = props;
 	return (
 		<Row>
 			<Col xs="12" sm="6">
@@ -36,7 +37,7 @@ const RecentActivityRow = (props) => {
 				<div className="small">
 					<button onClick={() => openUntrackThreadModal(threadData)}>Untrack</button> &bull;{' '}
 					<button onClick={() => archiveThread(threadData.thread)}>Archive</button> &bull;{' '}
-					<a href="/queue">Mark Queued</a>
+					<button onClick={() => markThreadQueued(threadData.thread)}>Mark Queued</button>
 				</div>
 			</Col>
 		</Row>

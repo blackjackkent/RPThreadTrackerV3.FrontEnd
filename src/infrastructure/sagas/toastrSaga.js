@@ -3,7 +3,8 @@ import { toastr } from 'react-redux-toastr';
 
 import {
 	FETCHED_ACTIVE_THREADS_SUCCESS,
-	UNTRACK_THREAD_FAILURE
+	UNTRACK_THREAD_FAILURE,
+	UPDATE_THREAD_FAILURE
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -17,9 +18,14 @@ function displayUntrackThreadError() {
 	toastr.error('There was a problem untracking your thread.');
 }
 
+function displayUpdateThreadError() {
+	toastr.error('There was a problem updating your thread.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
-		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError)
+		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError),
+		takeEvery(UPDATE_THREAD_FAILURE, displayUpdateThreadError)
 	]);
 }
