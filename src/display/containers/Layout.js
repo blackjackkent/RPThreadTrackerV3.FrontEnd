@@ -71,6 +71,7 @@ class Layout extends Component {
 		}
 		return (
 			<div className="app">
+				<ReduxToastr />
 				<HeaderContainer />
 				<div className="app-body">
 					<Sidebar {...this.props} />
@@ -95,7 +96,6 @@ class Layout extends Component {
 				</div>
 				<Footer />
 				<ModalContainer />
-				<ReduxToastr />
 			</div>
 		);
 	}

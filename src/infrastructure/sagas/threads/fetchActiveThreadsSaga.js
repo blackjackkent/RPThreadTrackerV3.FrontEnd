@@ -18,9 +18,6 @@ function* fetchActiveThreads() {
 			threadData = response.data;
 			cache.set('activeThreads', threadData);
 		}
-		if (threadData && threadData.threads && threadData.threads.length > 100) {
-			toastr.light('Retrieving more than 100 threads; loading may take several minutes. Archive some threads to reduce loading time.', { status: 'info' });
-		}
 		yield all([
 			put(fetchedActiveThreadsSuccess(threadData)),
 			put(fetchActiveThreadsStatus(threadData))

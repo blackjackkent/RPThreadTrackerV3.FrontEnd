@@ -13,6 +13,7 @@ import {
 	SET_ACTIVE_TOOLS_TAB,
 	SUBMIT_USER_LOGOUT
 } from '../actions';
+import { UNTRACK_THREAD } from '../actions/threads/untrackThread';
 
 const defaultState = {
 	isNewsAsideOpen: false,
@@ -63,6 +64,7 @@ function ui(state = defaultState, action) {
 				isUntrackThreadModalOpen: true
 			});
 		case CLOSE_UNTRACK_THREAD_MODAL:
+		case UNTRACK_THREAD:
 			return Object.assign({}, state, {
 				isUntrackThreadModalOpen: false
 			});
