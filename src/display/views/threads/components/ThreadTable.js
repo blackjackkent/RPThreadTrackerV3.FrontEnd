@@ -20,9 +20,7 @@ const propTypes = {
 
 function getData(threads) {
 	const data = threads.map((item) => {
-		// using chancejs to generate guid
-		// shortid is probably better but seems to have performance issues
-		// on codesandbox.io
+		// eslint-disable-next-line no-underscore-dangle
 		const _id = item.thread.threadId;
 		return {
 			_id,

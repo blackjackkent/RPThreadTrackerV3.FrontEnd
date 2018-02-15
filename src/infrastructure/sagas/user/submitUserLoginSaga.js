@@ -1,6 +1,5 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import ls from 'local-storage';
 import cache from '../../cache';
 import history from '../../history';
 

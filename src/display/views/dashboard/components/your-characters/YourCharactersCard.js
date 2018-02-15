@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardBlock } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
 
@@ -15,12 +15,18 @@ const YourCharactersCard = (props) => {
 		<Card className="your-characters-card">
 			<CardHeader>
 				<i className="fa fa-users" /> Your Characters
-				<div className="float-right"><Link to="/manage-characters">Manage Characters</Link></div>
+				<div className="float-right">
+					<Link href="/manage-characters" to="/manage-characters">Manage Characters</Link>
+				</div>
 			</CardHeader>
 			<CardBlock className="card-body">
 				{
 					characters.map(character =>
-						<YourCharactersCardRow character={character} key={character.characterId} threadCount={characterThreadCounts[character.characterId]} />)
+						(<YourCharactersCardRow
+							character={character}
+							key={character.characterId}
+							threadCount={characterThreadCounts[character.characterId]}
+						/>))
 				}
 			</CardBlock>
 		</Card>

@@ -81,7 +81,9 @@ class Dashboard extends Component {
 
 	showDashboardThreadDistributionToggle() {
 		const { dispatch, userSettings } = this.props;
-		dispatch(updateUserSettings({ showDashboardThreadDistribution: !userSettings.showDashboardThreadDistribution }));
+		dispatch(updateUserSettings({
+			showDashboardThreadDistribution: !userSettings.showDashboardThreadDistribution
+		}));
 	}
 
 	generateRandomThread() {
@@ -140,10 +142,18 @@ class Dashboard extends Component {
 				</Row>
 				<Row>
 					<Col xs="12" md="6">
-						<RecentActivityCard threads={recentActivityThreads} archiveThread={this.archiveThread} openUntrackThreadModal={this.openUntrackThreadModal} markThreadQueued={this.markThreadQueued} />
+						<RecentActivityCard
+							threads={recentActivityThreads}
+							archiveThread={this.archiveThread}
+							openUntrackThreadModal={this.openUntrackThreadModal}
+							markThreadQueued={this.markThreadQueued}
+						/>
 					</Col>
 					<Col xs="12" md="6">
-						<YourCharactersCard characters={characters} characterThreadCounts={characterThreadCounts} />
+						<YourCharactersCard
+							characters={characters}
+							characterThreadCounts={characterThreadCounts}
+						/>
 					</Col>
 				</Row>
 				<Row>

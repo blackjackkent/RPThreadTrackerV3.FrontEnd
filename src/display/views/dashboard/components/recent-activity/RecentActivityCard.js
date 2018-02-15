@@ -11,7 +11,9 @@ const propTypes = {
 };
 
 const RecentActivityCard = (props) => {
-	const { threads, archiveThread, openUntrackThreadModal, markThreadQueued } = props;
+	const {
+		threads, archiveThread, openUntrackThreadModal, markThreadQueued
+	} = props;
 	return (
 		<Card className="recent-activity-card">
 			<CardHeader>

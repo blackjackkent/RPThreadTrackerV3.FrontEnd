@@ -36,7 +36,9 @@ export default [
 			if (!row.original.status) {
 				return (<span>Awaiting Starter</span>);
 			}
-			return row.original.status.LastPostDate ? (<Moment format="MMMM D, YYYY h:mmA">{row.original.status.LastPostDate}</Moment>) : (<span>Post Not Found</span>);
+			return row.original.status.LastPostDate ?
+				(<Moment format="MMMM D, YYYY h:mmA">{row.original.status.LastPostDate}</Moment>) :
+				(<span>Post Not Found</span>);
 		},
 		width: 200,
 		filterable: false

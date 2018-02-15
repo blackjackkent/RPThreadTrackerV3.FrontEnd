@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openEditCharacterModal, submitUserLogout } from '../../../infrastructure/actions';
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openEditCharacterModal, submitUserLogout, updateUserSettings } from '../../../infrastructure/actions';
 import { getNewsUnreadCount } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -69,6 +69,9 @@ class HeaderContainer extends Component {
 	asideToggle() {
 		const { dispatch } = this.props;
 		dispatch(toggleNewsAside());
+		dispatch(updateUserSettings({
+			lastNewsReadDate: new Date(Date.now())
+		}));
 	}
 
 	mobileSidebarToggle() {

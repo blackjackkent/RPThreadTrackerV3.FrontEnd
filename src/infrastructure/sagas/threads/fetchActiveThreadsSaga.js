@@ -1,6 +1,5 @@
 import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
-import { toastr } from 'react-redux-toastr';
 import cache from '../../cache';
 
 import {

@@ -1,6 +1,5 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import ls from 'local-storage';
 
 import {
 	FETCH_NEWS,

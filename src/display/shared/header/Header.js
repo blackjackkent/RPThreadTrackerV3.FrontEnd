@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
 	Nav,
@@ -8,7 +8,6 @@ import {
 	Badge,
 	Button,
 	NavbarToggler,
-	NavbarBrand,
 	Dropdown,
 	DropdownToggle,
 	DropdownMenu,
@@ -50,7 +49,7 @@ const Header = (props) => {
 			<NavbarToggler className="d-lg-none" onClick={mobileSidebarToggle}>
 				&#9776;
 			</NavbarToggler>
-			<Link className="navbar-brand" to="/">RPTHREADTRACKER</Link>
+			<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER</Link>
 			<NavbarToggler className="d-md-down-none" onClick={sidebarToggle}>
 				&#9776;
 			</NavbarToggler>

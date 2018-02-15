@@ -11,7 +11,9 @@ const propTypes = {
 };
 
 const RecentActivityRow = (props) => {
-	const { threadData, archiveThread, openUntrackThreadModal, markThreadQueued } = props;
+	const {
+		threadData, archiveThread, openUntrackThreadModal, markThreadQueued
+	} = props;
 	return (
 		<Row>
 			<Col xs="12" sm="6">

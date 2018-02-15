@@ -5,8 +5,7 @@ import Aside from './Aside';
 import { markUnreadNews } from '../../../infrastructure/selectors';
 
 const propTypes = {
-	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	newsUnreadCount: PropTypes.number.isRequired
+	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
