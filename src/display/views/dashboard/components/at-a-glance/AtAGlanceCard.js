@@ -26,7 +26,7 @@ const AtAGlanceCard = (props) => {
 	return (
 		<Card className="at-a-glance-card">
 			<CardHeader>
-				<i className="fa fa-search" /> At a Glance
+				<i className="fas fa-search" /> At a Glance
 				<Label className="switch switch-sm switch-text switch-info float-right mb-0">
 					<Input
 						type="checkbox"

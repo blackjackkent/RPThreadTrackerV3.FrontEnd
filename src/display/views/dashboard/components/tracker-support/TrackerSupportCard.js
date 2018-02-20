@@ -4,7 +4,7 @@ import { Card, CardHeader, CardBlock } from 'reactstrap';
 const TrackerSupportCard = () => (
 	<Card className="patreon-card">
 		<CardHeader>
-			<i className="fa fa-dollar" /> Support Tracker Development
+			<i className="fas fa-dollar-sign" /> Support Tracker Development
 		</CardHeader>
 		<CardBlock className="card-body">
 			<div className="form-container">

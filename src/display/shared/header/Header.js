@@ -78,13 +78,13 @@ const Header = (props) => {
 						</DropdownToggle>
 						<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
 							<DropdownItem className="hidden-lg-up">
-								<i className="fa fa-pencil" /> Track New Thread
+								Track New Thread
 							</DropdownItem>
 							<DropdownItem className="hidden-lg-up">
-								<i className="fa fa-user" /> Add Character
+								Add Character
 							</DropdownItem>
 							<DropdownItem onClick={logout}>
-								<i className="fa fa-lock" /> Logout
+								Logout
 							</DropdownItem>
 						</DropdownMenu>
 					</Dropdown>

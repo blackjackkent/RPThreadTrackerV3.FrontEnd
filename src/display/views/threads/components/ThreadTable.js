@@ -7,18 +7,19 @@ import ThreadTableSubComponent from './table-components/ThreadTableSubComponent'
 
 const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
-	toggleThreadIsArchived: PropTypes.func.isRequired,
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	isArchive: PropTypes.bool.isRequired,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
-	threadFilterHiddenToggle: PropTypes.func.isRequired,
+	markThreadQueued: PropTypes.func.isRequired,
+	openUntrackThreadModal: PropTypes.func.isRequired,
+	rawFilterData: PropTypes.shape({}).isRequired,
 	setFilteredCharacterId: PropTypes.func.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
-	rawFilterData: PropTypes.shape({}).isRequired,
-	openUntrackThreadModal: PropTypes.func.isRequired,
-	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isArchive: PropTypes.bool.isRequired
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	threadFilterHiddenToggle: PropTypes.func.isRequired,
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	toggleThreadIsArchived: PropTypes.func.isRequired
 };
 
 function getData(threads) {
@@ -88,6 +89,7 @@ class ThreadTable extends React.Component {
 			setFilteredCharacterId,
 			setFilteredTag,
 			toggleThreadIsArchived,
+			markThreadQueued,
 			openUntrackThreadModal,
 			columns,
 			isArchive
@@ -124,7 +126,14 @@ class ThreadTable extends React.Component {
 						}
 					]}
 					showPaginationTop
-					SubComponent={row => <ThreadTableSubComponent threadData={row.original} toggleThreadIsArchived={toggleThreadIsArchived} openUntrackThreadModal={openUntrackThreadModal} isArchive={isArchive} />}
+					SubComponent={row =>
+						(<ThreadTableSubComponent
+							threadData={row.original}
+							toggleThreadIsArchived={toggleThreadIsArchived}
+							openUntrackThreadModal={openUntrackThreadModal}
+							markThreadQueued={markThreadQueued}
+							isArchive={isArchive}
+						/>)}
 					{...checkboxProps}
 				/>
 			</div>

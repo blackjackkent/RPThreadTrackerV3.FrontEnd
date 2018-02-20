@@ -6,12 +6,13 @@ const propTypes = {
 	threadData: PropTypes.shape({}).isRequired,
 	toggleThreadIsArchived: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
+	markThreadQueued: PropTypes.func.isRequired,
 	isArchive: PropTypes.bool.isRequired
 };
 
 const ThreadTable = (props) => {
 	const {
-		threadData, toggleThreadIsArchived, openUntrackThreadModal, isArchive
+		threadData, toggleThreadIsArchived, openUntrackThreadModal, isArchive, markThreadQueued
 	} = props;
 	return (
 		<div className="thread-table-sub-component">
@@ -19,25 +20,29 @@ const ThreadTable = (props) => {
 			<span className="control-button">
 				{isArchive && threadData.thread.postId &&
 					<a className="btn btn-primary" href={threadData.thread.threadHomeUrl} target="_blank">
-						View <i className="fa fa-external-link" />
+						View <i className="fas fa-external-link-alt" />
 					</a>
 				}
 				{!isArchive && threadData.status && threadData.status.LastPostUrl &&
 					<a className="btn btn-primary" href={threadData.status.LastPostUrl} target="_blank">
-						View <i className="fa fa-external-link" />
+						View <i className="fas fa-external-link-alt" />
 					</a>
 				}
 			</span>
 			<span className="control-button">
 				<a className="btn btn-primary" href={`/thread/edit/${threadData.thread.id}`}>
-					Edit <i className="fa fa-pencil" />
+					Edit <i className="fas fa-edit" />
 				</a>
 			</span>
-			<span className="control-button" />
+			<span className="control-button">
+				<button className="btn btn-primary" onClick={() => markThreadQueued(threadData.thread)}>
+					Mark Queued <i className="fas fa-clock" />
+				</button>
+			</span>
 			<span className="control-button">
 				<button className="btn btn-primary" onClick={() => toggleThreadIsArchived(threadData.thread)}>
 					{isArchive ? 'Unarchive' : 'Archive'}{' '}
-					<i className="fa fa-archive" />
+					<i className="fas fa-archive" />
 				</button>
 			</span>
 			<span className="control-button">
@@ -45,7 +50,7 @@ const ThreadTable = (props) => {
 					className="btn btn-danger"
 					onClick={() => openUntrackThreadModal(threadData)}
 				>
-					Untrack <i className="fa fa-trash" />
+					Untrack <i className="fas fa-trash-alt" />
 				</button>
 			</span>
 		</div>

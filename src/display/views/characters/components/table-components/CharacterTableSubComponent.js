@@ -13,24 +13,24 @@ const CharacterTableSubComponent = (props) => {
 		<div className="character-table-sub-component">
 			<span className="control-button">
 				<Button color="primary" onClick={() => openEditCharacterModal(character)}>
-					Edit <i className="fa fa-pencil" />
+					Edit <i className="fas fa-edit" />
 				</Button>
 			</span>
 			<span className="control-button">
 				{
 					character.isOnHiatus ?
 						<Button color="primary">
-							Set Off Hiatus <i className="fa fa-power-off" />
+							Set Off Hiatus <i className="fas fa-power-off" />
 						</Button>
 						:
 						<Button color="primary">
-							Set On Hiatus <i className="fa fa-power-off" />
+							Set On Hiatus <i className="fas fa-power-off" />
 						</Button>
 				}
 			</span>
 			<span className="control-button">
 				<a className="btn btn-danger" href={`/manage-characters/delete/${character.id}`}>
-					Delete <i className="fa fa-minus-circle" />
+					Delete <i className="fas fa-trash-alt" />
 				</a>
 			</span>
 		</div>

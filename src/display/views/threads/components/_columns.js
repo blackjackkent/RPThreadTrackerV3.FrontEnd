@@ -8,7 +8,7 @@ const getColumns = () => [
 		Expander: () =>
 			(
 				<div>
-					<i className="fa fa-cog" />
+					<i className="fas fa-cog" />
 				</div>
 			),
 		style: {

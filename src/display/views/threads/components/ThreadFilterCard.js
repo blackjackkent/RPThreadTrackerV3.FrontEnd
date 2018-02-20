@@ -34,7 +34,7 @@ const ThreadFilterCard = (props) => {
 						role="button"
 						tabIndex={0}
 					>
-						Filter <i className="fa fa-filter" />
+						Filter <i className="fas fa-filter" />
 					</span>
 
 				</CardHeader>

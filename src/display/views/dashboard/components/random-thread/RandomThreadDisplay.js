@@ -19,7 +19,7 @@ const RandomThreadDisplay = (props) => {
 			<div>
 				<a href={threadData.status.LastPostUrl}>
 					{threadData.thread.userTitle}{' '}
-					<i className="fa fa-external-link" />
+					<i className="fas fa-external-link-alt" />
 				</a>
 			</div>
 			{threadData.status &&

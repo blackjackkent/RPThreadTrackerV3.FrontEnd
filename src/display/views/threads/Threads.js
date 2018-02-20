@@ -9,13 +9,13 @@ import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden,
 import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	threadFilter: PropTypes.shape({}).isRequired,
+	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	dispatch: PropTypes.func.isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	isArchive: PropTypes.bool,
-	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	isThreadFilterCardHidden: PropTypes.bool.isRequired,
+	threadFilter: PropTypes.shape({}).isRequired
 };
 
 const defaultProps = {
@@ -38,11 +38,12 @@ function mapStateToProps(state) {
 class Threads extends Component {
 	constructor(props) {
 		super(props);
+		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
+		this.markThreadQueued = this.markThreadQueued.bind(this);
+		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
-		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
-		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -50,7 +51,6 @@ class Threads extends Component {
 			dispatch(fetchCharacters());
 		}
 	}
-
 	setFilteredCharacterId(e) {
 		const { dispatch } = this.props;
 		dispatch(setFilteredCharacterId(e.target.value));
@@ -70,7 +70,6 @@ class Threads extends Component {
 		const filtered = filterDuplicatesFromArray(flattened);
 		return filtered;
 	}
-
 	toggleThreadIsArchived(thread) {
 		const { dispatch } = this.props;
 		const updatedThread = {
@@ -78,12 +77,17 @@ class Threads extends Component {
 		};
 		dispatch(updateThread(updatedThread));
 	}
-
+	markThreadQueued(thread) {
+		const { dispatch } = this.props;
+		const updatedThread = {
+			...thread, dateMarkedQueued: new Date(Date.now())
+		};
+		dispatch(updateThread(updatedThread));
+	}
 	openUntrackThreadModal(thread) {
 		const { dispatch } = this.props;
 		dispatch(openUntrackThreadModal(thread));
 	}
-
 	render() {
 		const {
 			filteredThreads,
@@ -99,18 +103,19 @@ class Threads extends Component {
 				<Row>
 					<Col>
 						<ThreadTable
-							threads={filteredThreads}
 							characters={characters}
-							tags={tags}
+							columns={columns}
+							isArchive={isArchive}
+							isThreadFilterCardHidden={isThreadFilterCardHidden}
+							markThreadQueued={this.markThreadQueued}
+							openUntrackThreadModal={this.openUntrackThreadModal}
 							rawFilterData={threadFilter}
 							setFilteredCharacterId={this.setFilteredCharacterId}
 							setFilteredTag={this.setFilteredTag}
-							isThreadFilterCardHidden={isThreadFilterCardHidden}
+							tags={tags}
 							threadFilterHiddenToggle={this.isThreadFilterCardHiddenToggle}
+							threads={filteredThreads}
 							toggleThreadIsArchived={this.toggleThreadIsArchived}
-							openUntrackThreadModal={this.openUntrackThreadModal}
-							columns={columns}
-							isArchive={isArchive}
 						/>
 					</Col>
 				</Row>

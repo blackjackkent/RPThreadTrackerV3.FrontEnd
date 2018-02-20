@@ -17,7 +17,7 @@ const RecentActivityCard = (props) => {
 	return (
 		<Card className="recent-activity-card">
 			<CardHeader>
-				<i className="fa fa-align-justify" /> Recent Activity
+				<i className="fas fa-bolt" /> Recent Activity
 			</CardHeader>
 			<CardBlock className="card-body">
 				{threads.map(threadData =>

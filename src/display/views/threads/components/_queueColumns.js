@@ -8,7 +8,7 @@ const getColumns = () => [
 		Expander: () =>
 			(
 				<div>
-					<i className="fa fa-cog" />
+					<i className="fas fa-cog" />
 				</div>
 			),
 		style: {
@@ -49,7 +49,7 @@ const getColumns = () => [
 		accessor: 'thread.dateMarkedQueued',
 		Cell: (row) => {
 			return row.original.thread.dateMarkedQueued &&
-				(<Moment format="MMMM D, YYYY h:mmA">{row.original.thread.dateMarkedQueued}</Moment>);
+				(<Moment format="MMMM D, YYYY h:mmA">{new Date(row.original.thread.dateMarkedQueued)}</Moment>);
 		},
 		minWidth: 200,
 		filterable: false

@@ -14,7 +14,7 @@ const YourCharactersCard = (props) => {
 	return (
 		<Card className="your-characters-card">
 			<CardHeader>
-				<i className="fa fa-users" /> Your Characters
+				<i className="fas fa-users" /> Your Characters
 				<div className="float-right">
 					<Link href="/manage-characters" to="/manage-characters">Manage Characters</Link>
 				</div>
