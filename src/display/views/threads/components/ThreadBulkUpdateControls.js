@@ -1,33 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 
 const propTypes = {
 	isArchive: PropTypes.bool.isRequired,
-	toggleThreadsAreArchived: PropTypes.func.isRequired,
-	openUntrackThreadsModal: PropTypes.func.isRequired,
-	selectedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	isQueue: PropTypes.bool.isRequired,
+	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
+	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
+	openBulkUntrackThreadsModal: PropTypes.func.isRequired
 };
 
 const ThreadBulkUpdateControls = (props) => {
 	const {
 		isArchive,
-		toggleThreadsAreArchived,
-		selectedThreads,
-		openUntrackThreadsModal
+		isQueue,
+		bulkToggleThreadsAreMarkedQueued,
+		bulkToggleThreadsAreArchived,
+		openBulkUntrackThreadsModal
 	} = props;
 	return (
-		<Row>
+		<Row className="thread-bulk-update-controls">
 			<Col xs={{ size: 6, offset: 3 }}>
-				<button className="btn btn-primary" onClick={() => toggleThreadsAreArchived(selectedThreads)}>
+				<span className="control-button">
+					<button className="btn btn-primary" onClick={() => bulkToggleThreadsAreMarkedQueued()}>
+						{isQueue ? 'Unmark' : 'Mark'} Selected as Queued <i className="fas fa-clock" />
+					</button>
+				</span>
+				<button className="btn btn-primary" onClick={() => bulkToggleThreadsAreArchived()}>
 					{isArchive ? 'Unarchive' : 'Archive'} Selected{' '}
 					<i className="fas fa-archive" />
 				</button>
 				<button
 					className="btn btn-danger"
-					onClick={() => openUntrackThreadsModal(selectedThreads)}
+					onClick={() => openBulkUntrackThreadsModal()}
 				>
-					Untrack <i className="fas fa-trash-alt" />
+					Untrack Selected <i className="fas fa-trash-alt" />
 				</button>
 			</Col>
 		</Row>

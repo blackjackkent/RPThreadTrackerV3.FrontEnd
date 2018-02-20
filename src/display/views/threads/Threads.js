@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from './components/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal } from '../../../infrastructure/actions';
+import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal, bulkUpdateThreads } from '../../../infrastructure/actions';
 import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
 
 const propTypes = {
@@ -46,6 +46,7 @@ class Threads extends Component {
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
+		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -90,15 +91,22 @@ class Threads extends Component {
 		const { dispatch } = this.props;
 		dispatch(openUntrackThreadModal(thread));
 	}
+	bulkToggleThreadsAreMarkedQueued(threads) {
+		const { dispatch } = this.props;
+		const updatedThreads = threads.map(t => ({
+			...t, dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now())
+		}));
+		dispatch(bulkUpdateThreads(updatedThreads));
+	}
 	render() {
 		const {
-			filteredThreads,
-			threadFilter,
-			isThreadFilterCardHidden,
 			characters,
+			columns,
+			filteredThreads,
 			isArchive,
 			isQueue,
-			columns
+			isThreadFilterCardHidden,
+			threadFilter
 		} = this.props;
 		const tags = this.getFilteredThreadTags();
 		return (
@@ -106,12 +114,12 @@ class Threads extends Component {
 				<Row>
 					<Col>
 						<ThreadTable
+							bulkToggleThreadsAreMarkedQueued={this.bulkToggleThreadsAreMarkedQueued}
 							characters={characters}
 							columns={columns}
 							isArchive={isArchive}
 							isQueue={isQueue}
 							isThreadFilterCardHidden={isThreadFilterCardHidden}
-							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
 							openUntrackThreadModal={this.openUntrackThreadModal}
 							rawFilterData={threadFilter}
 							setFilteredCharacterId={this.setFilteredCharacterId}
@@ -120,6 +128,7 @@ class Threads extends Component {
 							threadFilterHiddenToggle={this.isThreadFilterCardHiddenToggle}
 							threads={filteredThreads}
 							toggleThreadIsArchived={this.toggleThreadIsArchived}
+							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
 						/>
 					</Col>
 				</Row>

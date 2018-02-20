@@ -4,6 +4,7 @@ import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
 import ThreadFilterCard from './ThreadFilterCard';
 import ThreadTableSubComponent from './table-components/ThreadTableSubComponent';
+import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
@@ -20,7 +21,10 @@ const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	threadFilterHiddenToggle: PropTypes.func.isRequired,
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	toggleThreadIsArchived: PropTypes.func.isRequired
+	toggleThreadIsArchived: PropTypes.func.isRequired,
+	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
+	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
+	openBulkUntrackThreadsModal: PropTypes.func.isRequired
 };
 
 function getData(threads) {
@@ -46,18 +50,19 @@ class ThreadTable extends React.Component {
 		this.toggleAll = this.toggleAll.bind(this);
 		this.isSelected = this.isSelected.bind(this);
 	}
-	toggleSelection(key) {
+	toggleSelection(key, shift, row) {
 		let selection = [
 			...this.state.selection
 		];
-		const keyIndex = selection.indexOf(key);
+		// eslint-disable-next-line no-underscore-dangle
+		const keyIndex = selection.findIndex(s => s._id === key);
 		if (keyIndex >= 0) {
 			selection = [
 				...selection.slice(0, keyIndex),
 				...selection.slice(keyIndex + 1)
 			];
 		} else {
-			selection.push(key);
+			selection.push(row);
 		}
 		this.setState({ selection });
 	}
@@ -75,7 +80,8 @@ class ThreadTable extends React.Component {
 		this.setState({ selectAll, selection });
 	}
 	isSelected(key) {
-		return this.state.selection.includes(key);
+		// eslint-disable-next-line no-underscore-dangle
+		return this.state.selection.findIndex(s => s._id === key) > -1;
 	}
 	render() {
 		const { toggleSelection, toggleAll, isSelected } = this;
@@ -94,7 +100,10 @@ class ThreadTable extends React.Component {
 			openUntrackThreadModal,
 			columns,
 			isArchive,
-			isQueue
+			isQueue,
+			bulkToggleThreadsAreMarkedQueued,
+			bulkToggleThreadsAreArchived,
+			openBulkUntrackThreadsModal
 		} = this.props;
 
 		const checkboxProps = {
@@ -115,6 +124,15 @@ class ThreadTable extends React.Component {
 					setFilteredCharacterId={setFilteredCharacterId}
 					setFilteredTag={setFilteredTag}
 				/>
+				{this.state.selection.length > 0 &&
+					<ThreadBulkUpdateControls
+						isArchive={isArchive}
+						isQueue={isQueue}
+						bulkToggleThreadsAreMarkedQueued={() => bulkToggleThreadsAreMarkedQueued(this.state.selection.map(t => t.thread))}
+						bulkToggleThreadsAreArchived={() => bulkToggleThreadsAreArchived(this.state.selection.map(t => t.thread))}
+						openBulkUntrackThreadsModal={() => openBulkUntrackThreadsModal(this.state.selection.map(t => t.thread))}
+					/>
+				}
 				<CheckboxTable
 					// eslint-disable-next-line no-return-assign
 					ref={r => this.checkboxTable = r}
