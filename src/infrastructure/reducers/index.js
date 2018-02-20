@@ -3,6 +3,7 @@ import { reducer as toastr } from 'react-redux-toastr';
 import activeThreads from './activeThreads';
 import activeThreadsStatus from './activeThreadsStatus';
 import archivedThreads from './archivedThreads';
+import bulkThreadsToEdit from './bulkThreadsToEdit';
 import characterToEdit from './characterToEdit';
 import characters from './characters';
 import errors from './errors';
@@ -20,6 +21,7 @@ export default combineReducers({
 	activeThreads,
 	activeThreadsStatus,
 	archivedThreads,
+	bulkThreadsToEdit,
 	characterToEdit,
 	characters,
 	errors,

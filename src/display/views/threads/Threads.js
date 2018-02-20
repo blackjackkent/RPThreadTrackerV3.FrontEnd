@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from './components/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal, bulkUpdateThreads } from '../../../infrastructure/actions';
+import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal } from '../../../infrastructure/actions';
 import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
 
 const propTypes = {
@@ -44,6 +44,7 @@ class Threads extends Component {
 		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
 		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
+		this.openBulkUntrackThreadsModal = this.openBulkUntrackThreadsModal.bind(this);
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
@@ -92,6 +93,10 @@ class Threads extends Component {
 		const { dispatch } = this.props;
 		dispatch(openUntrackThreadModal(thread));
 	}
+	openBulkUntrackThreadsModal(thread) {
+		const { dispatch } = this.props;
+		dispatch(openBulkUntrackThreadsModal(thread));
+	}
 	bulkToggleThreadsAreMarkedQueued(threads) {
 		const { dispatch } = this.props;
 		const updatedThreads = threads.map(t => ({
@@ -124,6 +129,7 @@ class Threads extends Component {
 						<ThreadTable
 							bulkToggleThreadsAreArchived={this.bulkToggleThreadsAreArchived}
 							bulkToggleThreadsAreMarkedQueued={this.bulkToggleThreadsAreMarkedQueued}
+							openBulkUntrackThreadsModal={this.openBulkUntrackThreadsModal}
 							characters={characters}
 							columns={columns}
 							isArchive={isArchive}

@@ -1,6 +1,6 @@
 import { CLOSE_UNTRACK_THREAD_MODAL, OPEN_UNTRACK_THREAD_MODAL, SUBMIT_USER_LOGOUT } from '../actions';
 
-function characterToEdit(state = {}, action) {
+function threadToEdit(state = {}, action) {
 	switch (action.type) {
 		case OPEN_UNTRACK_THREAD_MODAL:
 			return action.data;
@@ -12,4 +12,4 @@ function characterToEdit(state = {}, action) {
 	}
 }
 
-export default characterToEdit;
+export default threadToEdit;

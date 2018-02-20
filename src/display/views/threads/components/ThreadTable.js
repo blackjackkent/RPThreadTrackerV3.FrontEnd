@@ -49,6 +49,8 @@ class ThreadTable extends React.Component {
 		this.toggleSelection = this.toggleSelection.bind(this);
 		this.toggleAll = this.toggleAll.bind(this);
 		this.isSelected = this.isSelected.bind(this);
+		this.executeBulkAction = this.executeBulkAction.bind(this);
+		this.clearSelection = this.clearSelection.bind(this);
 	}
 	toggleSelection(key, shift, row) {
 		let selection = [
@@ -74,7 +76,7 @@ class ThreadTable extends React.Component {
 			const currentRecords = wrappedInstance.getResolvedState().sortedData;
 			currentRecords.forEach((item) => {
 				// eslint-disable-next-line no-underscore-dangle
-				selection.push(item._original.thread.threadId);
+				selection.push(item._original);
 			});
 		}
 		this.setState({ selectAll, selection });
@@ -82,6 +84,13 @@ class ThreadTable extends React.Component {
 	isSelected(key) {
 		// eslint-disable-next-line no-underscore-dangle
 		return this.state.selection.findIndex(s => s._id === key) > -1;
+	}
+	executeBulkAction(func) {
+		func(this.state.selection.map(t => t.thread));
+		this.clearSelection();
+	}
+	clearSelection() {
+		this.setState({ selectAll: false, selection: [] });
 	}
 	render() {
 		const { toggleSelection, toggleAll, isSelected } = this;
@@ -124,15 +133,14 @@ class ThreadTable extends React.Component {
 					setFilteredCharacterId={setFilteredCharacterId}
 					setFilteredTag={setFilteredTag}
 				/>
-				{this.state.selection.length > 0 &&
-					<ThreadBulkUpdateControls
-						isArchive={isArchive}
-						isQueue={isQueue}
-						bulkToggleThreadsAreMarkedQueued={() => bulkToggleThreadsAreMarkedQueued(this.state.selection.map(t => t.thread))}
-						bulkToggleThreadsAreArchived={() => bulkToggleThreadsAreArchived(this.state.selection.map(t => t.thread))}
-						openBulkUntrackThreadsModal={() => openBulkUntrackThreadsModal(this.state.selection.map(t => t.thread))}
-					/>
-				}
+				<ThreadBulkUpdateControls
+					isArchive={isArchive}
+					isQueue={isQueue}
+					selectedThreadCount={this.state.selection.length}
+					bulkToggleThreadsAreMarkedQueued={() => this.executeBulkAction(bulkToggleThreadsAreMarkedQueued)}
+					bulkToggleThreadsAreArchived={() => this.executeBulkAction(bulkToggleThreadsAreArchived)}
+					openBulkUntrackThreadsModal={() => this.executeBulkAction(openBulkUntrackThreadsModal)}
+				/>
 				<CheckboxTable
 					// eslint-disable-next-line no-return-assign
 					ref={r => this.checkboxTable = r}

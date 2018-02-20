@@ -36,9 +36,11 @@ const ThreadTable = (props) => {
 				</a>
 			</span>
 			<span className="control-button">
-				<button className="btn btn-primary" onClick={() => toggleThreadIsMarkedQueued(threadData.thread)}>
-					{isQueue ? 'Unmark' : 'Mark'} Queued <i className="fas fa-clock" />
-				</button>
+				{!isArchive &&
+					<button className="btn btn-primary" onClick={() => toggleThreadIsMarkedQueued(threadData.thread)}>
+						{isQueue ? 'Unmark' : 'Mark'} Queued <i className="fas fa-clock" />
+					</button>
+				}
 			</span>
 			<span className="control-button">
 				<button className="btn btn-primary" onClick={() => toggleThreadIsArchived(threadData.thread)}>
@@ -49,7 +51,7 @@ const ThreadTable = (props) => {
 			<span className="control-button">
 				<button
 					className="btn btn-danger"
-					onClick={() => openUntrackThreadModal(threadData)}
+					onClick={() => openUntrackThreadModal(threadData.thread)}
 				>
 					Untrack <i className="fas fa-trash-alt" />
 				</button>

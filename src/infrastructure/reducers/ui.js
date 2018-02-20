@@ -8,12 +8,15 @@ import {
 	CLOSE_EDIT_CHARACTER_MODAL,
 	OPEN_UNTRACK_THREAD_MODAL,
 	CLOSE_UNTRACK_THREAD_MODAL,
+	OPEN_BULK_UNTRACK_THREADS_MODAL,
+	CLOSE_BULK_UNTRACK_THREADS_MODAL,
 	SET_ACTIVE_HELP_TAB,
 	SET_ACTIVE_SETTINGS_TAB,
 	SET_ACTIVE_TOOLS_TAB,
-	SUBMIT_USER_LOGOUT
+	SUBMIT_USER_LOGOUT,
+	UNTRACK_THREAD,
+	BULK_UNTRACK_THREADS
 } from '../actions';
-import { UNTRACK_THREAD } from '../actions/threads/untrackThread';
 
 const defaultState = {
 	isNewsAsideOpen: false,
@@ -23,7 +26,7 @@ const defaultState = {
 	isMaintenanceMode: false,
 	isThreadFilterCardHidden: true,
 	isEditCharacterModalOpen: false,
-	isUntrackThreadModalOpen: false,
+	isBulkUntrackThreadsModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'
@@ -67,6 +70,15 @@ function ui(state = defaultState, action) {
 		case UNTRACK_THREAD:
 			return Object.assign({}, state, {
 				isUntrackThreadModalOpen: false
+			});
+		case OPEN_BULK_UNTRACK_THREADS_MODAL:
+			return Object.assign({}, state, {
+				isBulkUntrackThreadsModalOpen: true
+			});
+		case CLOSE_BULK_UNTRACK_THREADS_MODAL:
+		case BULK_UNTRACK_THREADS:
+			return Object.assign({}, state, {
+				isBulkUntrackThreadsModalOpen: false
 			});
 		case SET_ACTIVE_HELP_TAB:
 			return Object.assign({}, state, {

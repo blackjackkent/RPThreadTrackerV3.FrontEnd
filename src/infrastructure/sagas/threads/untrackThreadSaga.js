@@ -9,11 +9,13 @@ import {
 	fetchActiveThreads,
 	fetchArchivedThreads
 } from '../../actions';
+import { BULK_UNTRACK_THREADS } from '../../actions/threads/bulkUntrackThreads';
+import { bulkUntrackThreadsSuccess } from '../../actions/threads/bulkUntrackThreadsSuccess';
+import { bulkUntrackThreadsFailure } from '../../actions/threads/bulkUntrackThreadsFailure';
 
-function* untrackThread(action) {
+function* untrackThread(thread) {
 	try {
-		const threadData = action.data;
-		yield call(axios.delete, `${API_BASE_URL}api/thread/${threadData.thread.threadId}`);
+		yield call(axios.delete, `${API_BASE_URL}api/thread/${thread.threadId}`);
 		cache.clearKey('activeThreads');
 		cache.clearKey('archivedThreads');
 		yield all([
@@ -26,6 +28,32 @@ function* untrackThread(action) {
 	}
 }
 
+function* untrackIndividualThread(action) {
+	const thread = action.data;
+	yield call(untrackThread, thread);
+}
+
+function* bulkUntrackThreads(action) {
+	try {
+		const threads = action.data;
+		const tasks = [];
+		threads.map(t => tasks.push(call(untrackThread, t)));
+		yield all(tasks);
+		cache.clearKey('activeThreads');
+		cache.clearKey('archivedThreads');
+		yield all([
+			put(bulkUntrackThreadsSuccess()),
+			put(fetchActiveThreads()),
+			put(fetchArchivedThreads())
+		]);
+	} catch (e) {
+		yield put(bulkUntrackThreadsFailure());
+	}
+}
+
 export default function* untrackThreadSaga() {
-	yield takeEvery(UNTRACK_THREAD, untrackThread);
+	yield all([
+		takeEvery(UNTRACK_THREAD, untrackIndividualThread),
+		takeEvery(BULK_UNTRACK_THREADS, bulkUntrackThreads)
+	]);
 }

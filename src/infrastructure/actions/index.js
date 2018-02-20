@@ -8,6 +8,8 @@ export { openEditCharacterModal, OPEN_EDIT_CHARACTER_MODAL } from './ui/openEdit
 export { closeEditCharacterModal, CLOSE_EDIT_CHARACTER_MODAL } from './ui/closeEditCharacterModal';
 export { openUntrackThreadModal, OPEN_UNTRACK_THREAD_MODAL } from './ui/openUntrackThreadModal';
 export { closeUntrackThreadModal, CLOSE_UNTRACK_THREAD_MODAL } from './ui/closeUntrackThreadModal';
+export { openBulkUntrackThreadsModal, OPEN_BULK_UNTRACK_THREADS_MODAL } from './ui/openBulkUntrackThreadsModal';
+export { closeBulkUntrackThreadsModal, CLOSE_BULK_UNTRACK_THREADS_MODAL } from './ui/closeBulkUntrackThreadsModal';
 export { setActiveHelpTab, SET_ACTIVE_HELP_TAB } from './ui/setActiveHelpTab';
 export { setActiveSettingsTab, SET_ACTIVE_SETTINGS_TAB } from './ui/setActiveSettingsTab';
 export { setActiveToolsTab, SET_ACTIVE_TOOLS_TAB } from './ui/setActiveToolsTab';
@@ -16,6 +18,9 @@ export { setActiveToolsTab, SET_ACTIVE_TOOLS_TAB } from './ui/setActiveToolsTab'
 export { bulkUpdateThreads, BULK_UPDATE_THREADS } from './threads/bulkUpdateThreads';
 export { bulkUpdateThreadsSuccess, BULK_UPDATE_THREADS_SUCCESS } from './threads/bulkUpdateThreadsSuccess';
 export { bulkUpdateThreadsFailure, BULK_UPDATE_THREADS_FAILURE } from './threads/bulkUpdateThreadsFailure';
+export { bulkUntrackThreads, BULK_UNTRACK_THREADS } from './threads/bulkUntrackThreads';
+export { bulkUntrackThreadsSuccess, BULK_UNTRACK_THREADS_SUCCESS } from './threads/bulkUntrackThreadsSuccess';
+export { bulkUntrackThreadsFailure, BULK_UNTRACK_THREADS_FAILURE } from './threads/bulkUntrackThreadsFailure';
 export { fetchActiveThreads, FETCH_ACTIVE_THREADS } from './threads/fetchActiveThreads';
 export { fetchActiveThreadsStatus, FETCH_ACTIVE_THREADS_STATUS } from './threads/fetchActiveThreadsStatus';
 export { fetchArchivedThreads, FETCH_ARCHIVED_THREADS } from './threads/fetchArchivedThreads';
