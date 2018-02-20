@@ -13,7 +13,13 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threadFilter: PropTypes.shape({}).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isThreadFilterCardHidden: PropTypes.bool.isRequired
+	isThreadFilterCardHidden: PropTypes.bool.isRequired,
+	isArchive: PropTypes.bool,
+	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+};
+
+const defaultProps = {
+	isArchive: false
 };
 
 function mapStateToProps(state) {
@@ -35,7 +41,7 @@ class Threads extends Component {
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
-		this.archiveThread = this.archiveThread.bind(this);
+		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
 		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 	}
 	componentDidMount() {
@@ -65,7 +71,7 @@ class Threads extends Component {
 		return filtered;
 	}
 
-	archiveThread(thread) {
+	toggleThreadIsArchived(thread) {
 		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
@@ -83,7 +89,9 @@ class Threads extends Component {
 			filteredThreads,
 			threadFilter,
 			isThreadFilterCardHidden,
-			characters
+			characters,
+			isArchive,
+			columns
 		} = this.props;
 		const tags = this.getFilteredThreadTags();
 		return (
@@ -99,8 +107,10 @@ class Threads extends Component {
 							setFilteredTag={this.setFilteredTag}
 							isThreadFilterCardHidden={isThreadFilterCardHidden}
 							threadFilterHiddenToggle={this.isThreadFilterCardHiddenToggle}
-							archiveThread={this.archiveThread}
+							toggleThreadIsArchived={this.toggleThreadIsArchived}
 							openUntrackThreadModal={this.openUntrackThreadModal}
+							columns={columns}
+							isArchive={isArchive}
 						/>
 					</Col>
 				</Row>
@@ -110,4 +120,5 @@ class Threads extends Component {
 }
 
 Threads.propTypes = propTypes;
+Threads.defaultProps = defaultProps;
 export default connect(mapStateToProps)(Threads);

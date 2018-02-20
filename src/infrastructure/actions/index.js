@@ -18,6 +18,7 @@ export { fetchArchivedThreads, FETCH_ARCHIVED_THREADS } from './threads/fetchArc
 export { fetchActiveThreadsStatus, FETCH_ACTIVE_THREADS_STATUS } from './threads/fetchActiveThreadsStatus';
 export { fetchedActiveThreadsSuccess, FETCHED_ACTIVE_THREADS_SUCCESS } from './threads/fetchedActiveThreadsSuccess';
 export { fetchedArchivedThreadsSuccess, FETCHED_ARCHIVED_THREADS_SUCCESS } from './threads/fetchedArchivedThreadsSuccess';
+export { fetchedArchivedThreadsFailure, FETCHED_ARCHIVED_THREADS_FAILURE } from './threads/fetchedArchivedThreadsFailure';
 export { fetchedActiveThreadsStatusSuccess, FETCHED_ACTIVE_THREADS_STATUS_SUCCESS } from './threads/fetchedActiveThreadsStatusSuccess';
 export { fetchedActiveThreadsStatusChunkSuccess, FETCHED_ACTIVE_THREADS_STATUS_CHUNK_SUCCESS } from './threads/fetchedActiveThreadsStatusChunkSuccess';
 export { fetchedActiveThreadsFailure, FETCHED_ACTIVE_THREADS_FAILURE } from './threads/fetchedActiveThreadsFailure';

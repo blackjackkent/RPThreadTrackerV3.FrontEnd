@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import getColumns from './components/_queueColumns';
 import Threads from './Threads';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
 import { getQueuedFilteredThreads } from '../../../infrastructure/selectors';
@@ -34,7 +35,7 @@ class ArchivedThreads extends Component {
 			filteredThreads
 		} = this.props;
 		return (
-			<Threads {...this.props} filteredThreads={filteredThreads} />
+			<Threads {...this.props} filteredThreads={filteredThreads} columns={getColumns()} />
 		);
 	}
 }

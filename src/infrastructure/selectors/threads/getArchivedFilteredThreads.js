@@ -16,14 +16,18 @@ const getAllArchivedThreads = state => state.archivedThreads;
 const getArchivedFilteredThreads = createSelector(
 	[getAllArchivedThreads, filteredCharacterId, filteredTag],
 	(threads, characterId, tag) => {
-		let result = threads;
+		if (!threads.length) {
+			return [];
+		}
+		let results = [];
+		results = results.concat(threads.map(t => ({ thread: t, status: null })));
 		if (characterId) {
-			result = result.filter(t => t.character.id === characterId);
+			results = results.filter(t => t.thread.characterId === characterId);
 		}
 		if (tag) {
-			result = result.filter(t => t.tags && t.tags.includes(tag));
+			results = results.filter(t => t.thread.tags && t.thread.tags.includes(tag));
 		}
-		return result;
+		return results;
 	}
 );
 export default getArchivedFilteredThreads;

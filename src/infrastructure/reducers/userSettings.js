@@ -1,6 +1,6 @@
 import { FETCHED_USER_SETTINGS_SUCCESS, UPDATED_USER_SETTINGS_SUCCESS, UPDATE_USER_SETTINGS, SUBMIT_USER_LOGOUT } from '../actions';
 
-const defaultState = { hasDashboardAtAGlanceHidden: false };
+const defaultState = { showDashboardThreadDistribution: true };
 function userSettings(state = defaultState, action) {
 	switch (action.type) {
 		case FETCHED_USER_SETTINGS_SUCCESS:

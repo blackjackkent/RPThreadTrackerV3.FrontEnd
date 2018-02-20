@@ -45,6 +45,15 @@ const getColumns = () => [
 		minWidth: 200,
 		filterable: false
 	}, {
+		Header: 'Date Queued',
+		accessor: 'thread.dateMarkedQueued',
+		Cell: (row) => {
+			return row.original.thread.dateMarkedQueued &&
+				(<Moment format="MMMM D, YYYY h:mmA">{row.original.thread.dateMarkedQueued}</Moment>);
+		},
+		minWidth: 200,
+		filterable: false
+	}, {
 		Header: 'Tracked Partner',
 		accessor: 'thread.partnerUrlIdentifier',
 		Cell: row => <span>{row.value ? row.value : ''}</span>,

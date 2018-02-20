@@ -1,4 +1,14 @@
 import queryString from 'query-string';
 
-const getQuery = () => (typeof (window) !== 'undefined' ? queryString.parse(window.location.search) : {});
+const getQuery = () => {
+	try {
+		if (typeof (window) !== 'undefined') {
+			return queryString.parse(window.location.search);
+		}
+		return {};
+	} catch (e) {
+		console.log(e);
+		return null;
+	}
+};
 export default getQuery;

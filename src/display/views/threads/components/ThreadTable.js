@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import getColumns from './_columns';
 import ThreadFilterCard from './ThreadFilterCard';
 import ThreadTableSubComponent from './table-components/ThreadTableSubComponent';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
-	archiveThread: PropTypes.func.isRequired,
+	toggleThreadIsArchived: PropTypes.func.isRequired,
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -17,7 +16,9 @@ const propTypes = {
 	setFilteredCharacterId: PropTypes.func.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
 	rawFilterData: PropTypes.shape({}).isRequired,
-	openUntrackThreadModal: PropTypes.func.isRequired
+	openUntrackThreadModal: PropTypes.func.isRequired,
+	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	isArchive: PropTypes.bool.isRequired
 };
 
 function getData(threads) {
@@ -77,7 +78,6 @@ class ThreadTable extends React.Component {
 	render() {
 		const { toggleSelection, toggleAll, isSelected } = this;
 		const { selectAll } = this.state;
-		const columns = getColumns();
 		const {
 			threads,
 			rawFilterData,
@@ -87,8 +87,10 @@ class ThreadTable extends React.Component {
 			threadFilterHiddenToggle,
 			setFilteredCharacterId,
 			setFilteredTag,
-			archiveThread,
-			openUntrackThreadModal
+			toggleThreadIsArchived,
+			openUntrackThreadModal,
+			columns,
+			isArchive
 		} = this.props;
 
 		const checkboxProps = {
@@ -122,7 +124,7 @@ class ThreadTable extends React.Component {
 						}
 					]}
 					showPaginationTop
-					SubComponent={row => <ThreadTableSubComponent threadData={row.original} archiveThread={archiveThread} openUntrackThreadModal={openUntrackThreadModal} />}
+					SubComponent={row => <ThreadTableSubComponent threadData={row.original} toggleThreadIsArchived={toggleThreadIsArchived} openUntrackThreadModal={openUntrackThreadModal} isArchive={isArchive} />}
 					{...checkboxProps}
 				/>
 			</div>
