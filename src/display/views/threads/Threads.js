@@ -40,13 +40,14 @@ function mapStateToProps(state) {
 class Threads extends Component {
 	constructor(props) {
 		super(props);
+		this.bulkToggleThreadsAreArchived = this.bulkToggleThreadsAreArchived.bind(this);
+		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
-		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
 		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
-		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
+		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -98,6 +99,13 @@ class Threads extends Component {
 		}));
 		dispatch(bulkUpdateThreads(updatedThreads));
 	}
+	bulkToggleThreadsAreArchived(threads) {
+		const { dispatch } = this.props;
+		const updatedThreads = threads.map(t => ({
+			...t, isArchived: !t.isArchived
+		}));
+		dispatch(bulkUpdateThreads(updatedThreads));
+	}
 	render() {
 		const {
 			characters,
@@ -114,6 +122,7 @@ class Threads extends Component {
 				<Row>
 					<Col>
 						<ThreadTable
+							bulkToggleThreadsAreArchived={this.bulkToggleThreadsAreArchived}
 							bulkToggleThreadsAreMarkedQueued={this.bulkToggleThreadsAreMarkedQueued}
 							characters={characters}
 							columns={columns}
