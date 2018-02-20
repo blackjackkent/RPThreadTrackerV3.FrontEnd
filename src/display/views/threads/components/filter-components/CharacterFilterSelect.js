@@ -15,8 +15,8 @@ const CharacterFilterSelect = (props) => {
 		for (let i = 0; i < characters.length; i++) {
 			const element = (
 				<option
-					value={characters[i].id}
-					key={characters[i].id}
+					value={characters[i].characterId}
+					key={characters[i].characterId}
 				>
 					{characters[i].characterName ? characters[i].characterName : characters[i].urlIdentifier}
 				</option>
