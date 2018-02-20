@@ -35,7 +35,7 @@ class ArchivedThreads extends Component {
 			filteredThreads
 		} = this.props;
 		return (
-			<Threads {...this.props} filteredThreads={filteredThreads} columns={getColumns()} />
+			<Threads {...this.props} filteredThreads={filteredThreads} columns={getColumns()} isQueue />
 		);
 	}
 }

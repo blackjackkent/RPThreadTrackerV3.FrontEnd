@@ -10,8 +10,9 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isArchive: PropTypes.bool.isRequired,
+	isQueue: PropTypes.bool.isRequired,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
-	markThreadQueued: PropTypes.func.isRequired,
+	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
 	rawFilterData: PropTypes.shape({}).isRequired,
 	setFilteredCharacterId: PropTypes.func.isRequired,
@@ -89,10 +90,11 @@ class ThreadTable extends React.Component {
 			setFilteredCharacterId,
 			setFilteredTag,
 			toggleThreadIsArchived,
-			markThreadQueued,
+			toggleThreadIsMarkedQueued,
 			openUntrackThreadModal,
 			columns,
-			isArchive
+			isArchive,
+			isQueue
 		} = this.props;
 
 		const checkboxProps = {
@@ -131,8 +133,9 @@ class ThreadTable extends React.Component {
 							threadData={row.original}
 							toggleThreadIsArchived={toggleThreadIsArchived}
 							openUntrackThreadModal={openUntrackThreadModal}
-							markThreadQueued={markThreadQueued}
+							toggleThreadIsMarkedQueued={toggleThreadIsMarkedQueued}
 							isArchive={isArchive}
+							isQueue={isQueue}
 						/>)}
 					{...checkboxProps}
 				/>

@@ -14,12 +14,14 @@ const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isArchive: PropTypes.bool,
+	isQueue: PropTypes.bool,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	threadFilter: PropTypes.shape({}).isRequired
 };
 
 const defaultProps = {
-	isArchive: false
+	isArchive: false,
+	isQueue: false
 };
 
 function mapStateToProps(state) {
@@ -39,7 +41,7 @@ class Threads extends Component {
 	constructor(props) {
 		super(props);
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
-		this.markThreadQueued = this.markThreadQueued.bind(this);
+		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
 		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
@@ -77,10 +79,10 @@ class Threads extends Component {
 		};
 		dispatch(updateThread(updatedThread));
 	}
-	markThreadQueued(thread) {
+	toggleThreadIsMarkedQueued(thread) {
 		const { dispatch } = this.props;
 		const updatedThread = {
-			...thread, dateMarkedQueued: new Date(Date.now())
+			...thread, dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now())
 		};
 		dispatch(updateThread(updatedThread));
 	}
@@ -95,6 +97,7 @@ class Threads extends Component {
 			isThreadFilterCardHidden,
 			characters,
 			isArchive,
+			isQueue,
 			columns
 		} = this.props;
 		const tags = this.getFilteredThreadTags();
@@ -106,8 +109,9 @@ class Threads extends Component {
 							characters={characters}
 							columns={columns}
 							isArchive={isArchive}
+							isQueue={isQueue}
 							isThreadFilterCardHidden={isThreadFilterCardHidden}
-							markThreadQueued={this.markThreadQueued}
+							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
 							openUntrackThreadModal={this.openUntrackThreadModal}
 							rawFilterData={threadFilter}
 							setFilteredCharacterId={this.setFilteredCharacterId}
