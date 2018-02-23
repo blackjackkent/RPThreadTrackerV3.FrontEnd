@@ -4,21 +4,24 @@ import { connect } from 'react-redux';
 import getColumns from './components/_archiveColumns';
 import Threads from './Threads';
 import { fetchArchivedThreads } from '../../../infrastructure/actions';
-import { getArchivedFilteredThreads } from '../../../infrastructure/selectors';
+import { getArchivedFilteredThreads, getArchivedThreadTags } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	threadFilter: PropTypes.shape({}).isRequired
+	threadFilter: PropTypes.shape({}).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const { archivedThreads } = state;
 	const filteredThreads = getArchivedFilteredThreads(state);
+	const tags = getArchivedThreadTags(state);
 	return {
 		archivedThreads,
-		filteredThreads
+		filteredThreads,
+		tags
 	};
 }
 
@@ -32,10 +35,17 @@ class ArchivedThreads extends Component {
 
 	render() {
 		const {
-			filteredThreads
+			filteredThreads,
+			tags
 		} = this.props;
 		return (
-			<Threads {...this.props} filteredThreads={filteredThreads} columns={getColumns()} isArchive />
+			<Threads
+				{...this.props}
+				filteredThreads={filteredThreads}
+				columns={getColumns()}
+				tags={tags}
+				isArchive
+			/>
 		);
 	}
 }

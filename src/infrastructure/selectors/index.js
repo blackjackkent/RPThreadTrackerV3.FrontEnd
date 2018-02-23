@@ -18,3 +18,5 @@ export { default as getQueuedFilteredThreads } from './threads/queued/getQueuedF
 
 export { default as getRecentActivity } from './threads/getRecentActivity';
 export { default as getThreadCountsByCharacter } from './threads/getThreadCountsByCharacter';
+export { default as getActiveThreadTags } from './threads/getActiveThreadTags';
+export { default as getArchivedThreadTags } from './threads/getArchivedThreadTags';

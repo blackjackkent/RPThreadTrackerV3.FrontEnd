@@ -13,13 +13,13 @@ const CharacterFilterSelect = (props) => {
 	const options = [];
 	if (tags) {
 		for (let i = 0; i < tags.length; i++) {
-			const element = <option value={tags[i]} key={tags[i]}>{tags[i]}</option>;
+			const element = <option value={tags[i].tagId} key={tags[i].tagId}>{tags[i].tagText}</option>;
 			options.push(element);
 		}
 	}
 	return (
 		<FormGroup>
-			<Label htmlFor="characterId">Tag</Label>
+			<Label htmlFor="tag">Tag</Label>
 			<Input
 				type="select"
 				name="tag"

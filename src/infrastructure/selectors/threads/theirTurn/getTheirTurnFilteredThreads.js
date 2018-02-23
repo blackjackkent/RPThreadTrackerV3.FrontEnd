@@ -32,7 +32,12 @@ const getTheirTurnFilteredThreads = createSelector(
 			results = results.filter(t => t.thread.characterId === characterId);
 		}
 		if (tag) {
-			results = results.filter(t => t.thread.tags && t.thread.tags.includes(tag));
+			results = results.filter((t) => {
+				if (!t.thread.threadTags) {
+					return [];
+				}
+				return t.thread.threadTags.filter(tt => tt.tagText === tag).length > 0;
+			});
 		}
 		return results;
 	}

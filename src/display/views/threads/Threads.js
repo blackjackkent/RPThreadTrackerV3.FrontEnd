@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from './components/ThreadTable';
 import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal } from '../../../infrastructure/actions';
-import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -16,6 +15,7 @@ const propTypes = {
 	isArchive: PropTypes.bool,
 	isQueue: PropTypes.bool,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threadFilter: PropTypes.shape({}).isRequired
 };
 
@@ -68,13 +68,6 @@ class Threads extends Component {
 		const { dispatch, isThreadFilterCardHidden } = this.props;
 		dispatch(toggleIsThreadFilterCardHidden(isThreadFilterCardHidden));
 	}
-	getFilteredThreadTags() {
-		const { filteredThreads } = this.props;
-		const tagArrays = filteredThreads.map(t => t.thread.threadTags);
-		const flattened = flattenArrayOfArrays(tagArrays);
-		const filtered = filterDuplicatesFromArray(flattened);
-		return filtered;
-	}
 	toggleThreadIsArchived(thread) {
 		const { dispatch } = this.props;
 		const updatedThread = {
@@ -119,9 +112,9 @@ class Threads extends Component {
 			isArchive,
 			isQueue,
 			isThreadFilterCardHidden,
+			tags,
 			threadFilter
 		} = this.props;
-		const tags = this.getFilteredThreadTags();
 		return (
 			<div className="animated fadeIn threads-container">
 				<Row>

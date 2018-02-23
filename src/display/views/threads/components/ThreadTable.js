@@ -137,9 +137,15 @@ class ThreadTable extends React.Component {
 					isArchive={isArchive}
 					isQueue={isQueue}
 					selectedThreadCount={this.state.selection.length}
-					bulkToggleThreadsAreMarkedQueued={() => this.executeBulkAction(bulkToggleThreadsAreMarkedQueued)}
-					bulkToggleThreadsAreArchived={() => this.executeBulkAction(bulkToggleThreadsAreArchived)}
-					openBulkUntrackThreadsModal={() => this.executeBulkAction(openBulkUntrackThreadsModal)}
+					bulkToggleThreadsAreMarkedQueued={
+						() => this.executeBulkAction(bulkToggleThreadsAreMarkedQueued)
+					}
+					bulkToggleThreadsAreArchived={
+						() => this.executeBulkAction(bulkToggleThreadsAreArchived)
+					}
+					openBulkUntrackThreadsModal={
+						() => this.executeBulkAction(openBulkUntrackThreadsModal)
+					}
 				/>
 				<CheckboxTable
 					// eslint-disable-next-line no-return-assign

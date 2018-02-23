@@ -47,10 +47,12 @@ const getColumns = () => [
 	}, {
 		Header: 'Date Queued',
 		accessor: 'thread.dateMarkedQueued',
-		Cell: (row) => {
-			return row.original.thread.dateMarkedQueued &&
-				(<Moment format="MMMM D, YYYY h:mmA">{new Date(row.original.thread.dateMarkedQueued)}</Moment>);
-		},
+		Cell: row =>
+			row.original.thread.dateMarkedQueued && (
+				<Moment format="MMMM D, YYYY h:mmA">
+					{new Date(row.original.thread.dateMarkedQueued)}
+				</Moment>
+			),
 		minWidth: 200,
 		filterable: false
 	}, {

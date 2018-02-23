@@ -13,7 +13,12 @@ const propTypes = {
 
 const ThreadTable = (props) => {
 	const {
-		threadData, toggleThreadIsArchived, openUntrackThreadModal, isArchive, toggleThreadIsMarkedQueued, isQueue
+		threadData,
+		toggleThreadIsArchived,
+		openUntrackThreadModal,
+		isArchive,
+		toggleThreadIsMarkedQueued,
+		isQueue
 	} = props;
 	return (
 		<div className="thread-table-sub-component">
@@ -37,13 +42,19 @@ const ThreadTable = (props) => {
 			</span>
 			<span className="control-button">
 				{!isArchive &&
-					<button className="btn btn-primary" onClick={() => toggleThreadIsMarkedQueued(threadData.thread)}>
+					<button
+						className="btn btn-primary"
+						onClick={() => toggleThreadIsMarkedQueued(threadData.thread)}
+					>
 						{isQueue ? 'Unmark' : 'Mark'} Queued <i className="fas fa-clock" />
 					</button>
 				}
 			</span>
 			<span className="control-button">
-				<button className="btn btn-primary" onClick={() => toggleThreadIsArchived(threadData.thread)}>
+				<button
+					className="btn btn-primary"
+					onClick={() => toggleThreadIsArchived(threadData.thread)}
+				>
 					{isArchive ? 'Unarchive' : 'Archive'}{' '}
 					<i className="fas fa-archive" />
 				</button>

@@ -10,7 +10,7 @@ const ThreadTableTagDisplay = (props) => {
 	const rows = [];
 	if (tags) {
 		for (let i = 0; i < tags.length; i++) {
-			rows.push(<span className="tag-display-wrapper" key={i}>#{tags[i]}</span>);
+			rows.push(<span className="tag-display-wrapper" key={i.tagId}>#{tags[i].tagText}</span>);
 		}
 	}
 	return (
