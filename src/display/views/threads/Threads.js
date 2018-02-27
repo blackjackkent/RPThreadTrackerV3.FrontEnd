@@ -56,9 +56,9 @@ class Threads extends Component {
 			dispatch(fetchCharacters());
 		}
 	}
-	setFilteredCharacterId(e) {
+	setFilteredCharacterId(characterId) {
 		const { dispatch } = this.props;
-		dispatch(setFilteredCharacterId(e.target.value));
+		dispatch(setFilteredCharacterId(characterId));
 	}
 	setFilteredTag(e) {
 		const { dispatch } = this.props;

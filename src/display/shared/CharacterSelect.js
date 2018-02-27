@@ -4,12 +4,19 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	rawFilterData: PropTypes.shape({}).isRequired,
-	onSelectCharacter: PropTypes.func.isRequired
+	selectedCharacterId: PropTypes.shape({}),
+	onSelectCharacter: PropTypes.func.isRequired,
+	defaultText: PropTypes.string
+};
+const defaultProps = {
+	selectedCharacterId: null,
+	defaultText: 'Select Character'
 };
 
 const CharacterSelect = (props) => {
-	const { characters, rawFilterData, onSelectCharacter } = props;
+	const {
+		characters, selectedCharacterId, onSelectCharacter, defaultText
+	} = props;
 	const options = [];
 	if (characters) {
 		for (let i = 0; i < characters.length; i++) {
@@ -31,10 +38,10 @@ const CharacterSelect = (props) => {
 				type="select"
 				name="characterId"
 				id="character-id"
-				value={rawFilterData.filteredCharacterId}
-				onChange={onSelectCharacter}
+				value={selectedCharacterId}
+				onChange={e => onSelectCharacter(parseInt(e.target.value, 10))}
 			>
-				<option value={null}>All</option>
+				<option value={null}>{defaultText}</option>
 				{options}
 			</Input>
 		</FormGroup>
@@ -42,5 +49,5 @@ const CharacterSelect = (props) => {
 };
 
 CharacterSelect.propTypes = propTypes;
-
+CharacterSelect.defaultProps = defaultProps;
 export default CharacterSelect;

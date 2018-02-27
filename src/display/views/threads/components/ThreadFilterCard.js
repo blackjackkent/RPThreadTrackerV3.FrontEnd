@@ -43,8 +43,9 @@ const ThreadFilterCard = (props) => {
 						<Col xs="4">
 							<CharacterSelect
 								characters={characters}
-								rawFilterData={rawFilterData}
+								selectedCharacterId={rawFilterData.filteredCharacterId}
 								onSelectCharacter={setFilteredCharacterId}
+								defaultText="All"
 							/>
 						</Col>
 						<Col xs="4">
