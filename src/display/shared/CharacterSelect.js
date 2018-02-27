@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	rawFilterData: PropTypes.shape({}).isRequired,
-	setFilteredCharacterId: PropTypes.func.isRequired
+	onSelectCharacter: PropTypes.func.isRequired
 };
 
-const CharacterFilterSelect = (props) => {
-	const { characters, rawFilterData, setFilteredCharacterId } = props;
+const CharacterSelect = (props) => {
+	const { characters, rawFilterData, onSelectCharacter } = props;
 	const options = [];
 	if (characters) {
 		for (let i = 0; i < characters.length; i++) {
@@ -32,7 +32,7 @@ const CharacterFilterSelect = (props) => {
 				name="characterId"
 				id="character-id"
 				value={rawFilterData.filteredCharacterId}
-				onChange={setFilteredCharacterId}
+				onChange={onSelectCharacter}
 			>
 				<option value={null}>All</option>
 				{options}
@@ -41,6 +41,6 @@ const CharacterFilterSelect = (props) => {
 	);
 };
 
-CharacterFilterSelect.propTypes = propTypes;
+CharacterSelect.propTypes = propTypes;
 
-export default CharacterFilterSelect;
+export default CharacterSelect;

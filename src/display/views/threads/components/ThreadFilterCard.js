@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardBlock, Row, Col } from 'reactstrap';
-import CharacterFilterSelect from './filter-components/CharacterFilterSelect';
+import CharacterSelect from '../../../shared/CharacterSelect';
 import TagFilterSelect from './filter-components/TagFilterSelect';
 
 const propTypes = {
@@ -41,10 +41,10 @@ const ThreadFilterCard = (props) => {
 				<CardBlock className={!isThreadFilterCardHidden ? 'card-body' : 'd-none'}>
 					<Row>
 						<Col xs="4">
-							<CharacterFilterSelect
+							<CharacterSelect
 								characters={characters}
 								rawFilterData={rawFilterData}
-								setFilteredCharacterId={setFilteredCharacterId}
+								onSelectCharacter={setFilteredCharacterId}
 							/>
 						</Col>
 						<Col xs="4">
