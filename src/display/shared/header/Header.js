@@ -16,32 +16,34 @@ import {
 import LoadingIndicator from '../LoadingIndicator';
 
 const propTypes = {
-	user: PropTypes.shape({
-		id: PropTypes.string
-	}).isRequired,
-	newsUnreadCount: PropTypes.number.isRequired,
-	mobileSidebarToggle: PropTypes.func.isRequired,
-	sidebarToggle: PropTypes.func.isRequired,
 	asideToggle: PropTypes.func.isRequired,
 	headerDropdownToggle: PropTypes.func.isRequired,
 	isHeaderDropdownOpen: PropTypes.bool.isRequired,
-	openEditCharacterModal: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
-	threadsLoading: PropTypes.bool.isRequired
+	mobileSidebarToggle: PropTypes.func.isRequired,
+	newsUnreadCount: PropTypes.number.isRequired,
+	openEditCharacterModal: PropTypes.func.isRequired,
+	openNewThreadModal: PropTypes.func.isRequired,
+	sidebarToggle: PropTypes.func.isRequired,
+	threadsLoading: PropTypes.bool.isRequired,
+	user: PropTypes.shape({
+		id: PropTypes.string
+	}).isRequired
 };
 
 const Header = (props) => {
 	const {
-		mobileSidebarToggle,
-		sidebarToggle,
 		asideToggle,
 		headerDropdownToggle,
 		isHeaderDropdownOpen,
-		openEditCharacterModal,
-		user,
-		newsUnreadCount,
 		logout,
-		threadsLoading
+		mobileSidebarToggle,
+		newsUnreadCount,
+		openEditCharacterModal,
+		openNewThreadModal,
+		sidebarToggle,
+		threadsLoading,
+		user
 	} = props;
 
 	return (
@@ -58,7 +60,7 @@ const Header = (props) => {
 					<Button color="primary" onClick={() => openEditCharacterModal({})}>Add Character</Button>
 				</NavItem>
 				<NavItem>
-					<Button className="ml-4" color="primary">Track New Thread</Button>
+					<Button className="ml-4" color="primary" onClick={() => openNewThreadModal({})}> Track New Thread</Button>
 				</NavItem>
 				{threadsLoading && <LoadingIndicator className="invert" />}
 			</Nav>

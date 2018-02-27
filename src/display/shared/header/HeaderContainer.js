@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openEditCharacterModal, submitUserLogout, updateUserSettings } from '../../../infrastructure/actions';
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openEditCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
 import { getNewsUnreadCount } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -44,6 +44,7 @@ class HeaderContainer extends Component {
 		this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
 		this.headerDropdownToggle = this.headerDropdownToggle.bind(this);
 		this.openEditCharacterModal = this.openEditCharacterModal.bind(this);
+		this.openNewThreadModal = this.openNewThreadModal.bind(this);
 		this.logout = this.logout.bind(this);
 	}
 
@@ -89,6 +90,11 @@ class HeaderContainer extends Component {
 		dispatch(openEditCharacterModal(character));
 	}
 
+	openNewThreadModal() {
+		const { dispatch } = this.props;
+		dispatch(openUpsertThreadModal({}));
+	}
+
 	logout() {
 		const { dispatch } = this.props;
 		dispatch(submitUserLogout());
@@ -103,6 +109,7 @@ class HeaderContainer extends Component {
 				headerDropdownToggle={this.headerDropdownToggle}
 				sidebarToggle={this.sidebarToggle}
 				openEditCharacterModal={this.openEditCharacterModal}
+				openNewThreadModal={this.openNewThreadModal}
 				logout={this.logout}
 			/>
 		);

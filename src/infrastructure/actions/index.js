@@ -6,6 +6,8 @@ export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSid
 export { toggleIsThreadFilterCardHidden, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from './ui/toggleIsThreadFilterCardHidden';
 export { openEditCharacterModal, OPEN_EDIT_CHARACTER_MODAL } from './ui/openEditCharacterModal';
 export { closeEditCharacterModal, CLOSE_EDIT_CHARACTER_MODAL } from './ui/closeEditCharacterModal';
+export { openUpsertThreadModal, OPEN_UPSERT_THREAD_MODAL } from './ui/openUpsertThreadModal';
+export { closeUpsertThreadModal, CLOSE_UPSERT_THREAD_MODAL } from './ui/closeUpsertThreadModal';
 export { openUntrackThreadModal, OPEN_UNTRACK_THREAD_MODAL } from './ui/openUntrackThreadModal';
 export { closeUntrackThreadModal, CLOSE_UNTRACK_THREAD_MODAL } from './ui/closeUntrackThreadModal';
 export { openBulkUntrackThreadsModal, OPEN_BULK_UNTRACK_THREADS_MODAL } from './ui/openBulkUntrackThreadsModal';

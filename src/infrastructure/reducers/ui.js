@@ -6,6 +6,8 @@ import {
 	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
 	OPEN_EDIT_CHARACTER_MODAL,
 	CLOSE_EDIT_CHARACTER_MODAL,
+	OPEN_UPSERT_THREAD_MODAL,
+	CLOSE_UPSERT_THREAD_MODAL,
 	OPEN_UNTRACK_THREAD_MODAL,
 	CLOSE_UNTRACK_THREAD_MODAL,
 	OPEN_BULK_UNTRACK_THREADS_MODAL,
@@ -25,6 +27,7 @@ const defaultState = {
 	isMobileSidebarOpen: false,
 	isMaintenanceMode: false,
 	isThreadFilterCardHidden: true,
+	isUpsertThreadModalOpen: false,
 	isEditCharacterModalOpen: false,
 	isBulkUntrackThreadsModalOpen: false,
 	activeHelpTab: 'about',
@@ -61,6 +64,14 @@ function ui(state = defaultState, action) {
 		case CLOSE_EDIT_CHARACTER_MODAL:
 			return Object.assign({}, state, {
 				isEditCharacterModalOpen: false
+			});
+		case OPEN_UPSERT_THREAD_MODAL:
+			return Object.assign({}, state, {
+				isUpsertThreadModalOpen: true
+			});
+		case CLOSE_UPSERT_THREAD_MODAL:
+			return Object.assign({}, state, {
+				isUpsertThreadModalOpen: false
 			});
 		case OPEN_UNTRACK_THREAD_MODAL:
 			return Object.assign({}, state, {
