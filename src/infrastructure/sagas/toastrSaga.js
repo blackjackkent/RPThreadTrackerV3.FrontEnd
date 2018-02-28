@@ -4,7 +4,8 @@ import { toastr } from 'react-redux-toastr';
 import {
 	FETCHED_ACTIVE_THREADS_SUCCESS,
 	UNTRACK_THREAD_FAILURE,
-	UPDATE_THREAD_FAILURE
+	UPSERT_THREAD_FAILURE,
+	UPSERT_THREAD_SUCCESS
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -22,10 +23,16 @@ function displayUpdateThreadError() {
 	toastr.error('There was a problem updating your thread.');
 }
 
+function displayUpdateThreadSuccess(action) {
+	const thread = action.data;
+	toastr.success(`Successfully updated thread with title ${thread.userTitle}.`);
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
 		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError),
-		takeEvery(UPDATE_THREAD_FAILURE, displayUpdateThreadError)
+		takeEvery(UPSERT_THREAD_FAILURE, displayUpdateThreadError),
+		takeEvery(UPSERT_THREAD_SUCCESS, displayUpdateThreadSuccess)
 	]);
 }

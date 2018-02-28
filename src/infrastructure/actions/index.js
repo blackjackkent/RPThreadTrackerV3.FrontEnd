@@ -41,9 +41,9 @@ export { setFilteredTag, SET_FILTERED_TAG } from './threads/setFilteredTag';
 export { untrackThread, UNTRACK_THREAD } from './threads/untrackThread';
 export { untrackThreadFailure, UNTRACK_THREAD_FAILURE } from './threads/untrackThreadFailure';
 export { untrackThreadSuccess, UNTRACK_THREAD_SUCCESS } from './threads/untrackThreadSuccess';
-export { updateThread, UPDATE_THREAD } from './threads/updateThread';
-export { updateThreadFailure, UPDATE_THREAD_FAILURE } from './threads/updateThreadFailure';
-export { updateThreadSuccess, UPDATE_THREAD_SUCCESS } from './threads/updateThreadSuccess';
+export { upsertThread, UPSERT_THREAD } from './threads/upsertThread';
+export { upsertThreadFailure, UPSERT_THREAD_FAILURE } from './threads/upsertThreadFailure';
+export { upsertThreadSuccess, UPSERT_THREAD_SUCCESS } from './threads/upsertThreadSuccess';
 
 // User
 export { fetchUser, FETCH_USER } from './user/fetchUser';

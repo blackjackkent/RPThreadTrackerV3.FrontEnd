@@ -6,16 +6,18 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	selectedCharacterId: PropTypes.shape({}),
 	onSelectCharacter: PropTypes.func.isRequired,
-	defaultText: PropTypes.string
+	defaultText: PropTypes.string,
+	includeNullValue: PropTypes.bool
 };
 const defaultProps = {
 	selectedCharacterId: null,
-	defaultText: 'Select Character'
+	defaultText: 'Select Character',
+	includeNullValue: true
 };
 
 const CharacterSelect = (props) => {
 	const {
-		characters, selectedCharacterId, onSelectCharacter, defaultText
+		characters, selectedCharacterId, onSelectCharacter, defaultText, includeNullValue
 	} = props;
 	const options = [];
 	if (characters) {
@@ -41,7 +43,7 @@ const CharacterSelect = (props) => {
 				value={selectedCharacterId}
 				onChange={e => onSelectCharacter(parseInt(e.target.value, 10))}
 			>
-				<option value={null}>{defaultText}</option>
+				{includeNullValue && <option value={null}>{defaultText}</option>}
 				{options}
 			</Input>
 		</FormGroup>

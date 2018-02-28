@@ -17,7 +17,8 @@ import {
 	SET_ACTIVE_TOOLS_TAB,
 	SUBMIT_USER_LOGOUT,
 	UNTRACK_THREAD,
-	BULK_UNTRACK_THREADS
+	BULK_UNTRACK_THREADS,
+	UPSERT_THREAD
 } from '../actions';
 
 const defaultState = {
@@ -70,6 +71,7 @@ function ui(state = defaultState, action) {
 				isUpsertThreadModalOpen: true
 			});
 		case CLOSE_UPSERT_THREAD_MODAL:
+		case UPSERT_THREAD:
 			return Object.assign({}, state, {
 				isUpsertThreadModalOpen: false
 			});

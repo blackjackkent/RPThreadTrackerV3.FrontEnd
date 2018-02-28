@@ -2,26 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { closeEditCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal } from '../../../infrastructure/actions';
+import { closeEditCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, upsertThread } from '../../../infrastructure/actions';
 import EditCharacterModal from './EditCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
+	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	bulkUntrackThreads: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	closeUntrackThreadModal: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
-	threadToEdit: PropTypes.shape({}).isRequired,
-	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	dispatch: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
 	isEditCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
-	closeUntrackThreadModal: PropTypes.func.isRequired,
-	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	threadToEdit: PropTypes.shape({}).isRequired,
 	untrackThread: PropTypes.func.isRequired,
-	bulkUntrackThreads: PropTypes.func.isRequired
+	upsertThread: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -72,6 +73,7 @@ class ModalContainer extends Component {
 					isUpsertThreadModalOpen={isUpsertThreadModalOpen}
 					closeUpsertThreadModal={this.props.closeUpsertThreadModal}
 					threadToEdit={threadToEdit}
+					submitUpsertThread={this.props.upsertThread}
 					characters={characters}
 				/>
 				<EditCharacterModal
@@ -110,5 +112,6 @@ export default connect(mapStateToProps, {
 	closeUntrackThreadModal,
 	untrackThread,
 	closeBulkUntrackThreadsModal,
-	bulkUntrackThreads
+	bulkUntrackThreads,
+	upsertThread
 })(ModalContainer);

@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
 import CharacterSelect from '../CharacterSelect';
+import { upsertThreadValidator } from '../../../infrastructure/validators';
 
 const propTypes = {
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
-	submitEditCharacter: PropTypes.func.isRequired,
+	submitUpsertThread: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	threadToEdit: PropTypes.shape({}).isRequired,
 	characters: PropTypes.shape({}).isRequired
@@ -38,7 +40,7 @@ class UpsertThreadModal extends Component {
 	render() {
 		const {
 			isUpsertThreadModalOpen,
-			submitEditCharacter,
+			submitUpsertThread,
 			closeUpsertThreadModal,
 			threadToEdit,
 			characters
@@ -50,42 +52,77 @@ class UpsertThreadModal extends Component {
 		}
 		return (
 			<Modal isOpen={isUpsertThreadModalOpen} toggle={closeUpsertThreadModal} backdrop>
-				<ModalHeader toggle={closeUpsertThreadModal}>{threadToEdit.id ? 'Edit Thread' : 'Add New Thread'}</ModalHeader>
-				<ModalBody>
-					<Form>
+				<AvForm onValidSubmit={() => submitUpsertThread(this.state.threadToEdit)}>
+					<ModalHeader toggle={closeUpsertThreadModal}>{threadToEdit.id ? 'Edit Thread' : 'Add New Thread'}</ModalHeader>
+					<ModalBody>
 						<FormGroup row>
 							<Col>
 								<CharacterSelect
 									characters={characters}
 									selectedCharacterId={this.state.threadToEdit.characterId}
 									onSelectCharacter={this.selectCharacter}
+									includeNullValue={false}
 								/>
 							</Col>
 						</FormGroup>
-						<FormGroup row>
+						<Row>
 							<Col>
-								<Label htmlFor="character-url-identifier">Character URL Identifier:</Label>
-								<Input
+								<AvField
+									name="userTitle"
+									placeholder="Thread Title"
+									label="Thread Title"
 									type="text"
-									id="character-url-identifier"
-									name="character-url-identifier"
-									placeholder="Enter URL Identifier"
-									value={threadToEdit.urlIdentifier}
+									onChange={this.handleInputChange}
+									validate={upsertThreadValidator.userTitle}
+									helpMessage="This can be anything you like!"
 								/>
-								<FormText>
-									For a Tumblr account, this will be the part of your URL before
-									&quot;.tumblr.com&quot;. For instance, if your URL is
-									<strong>http://myawesomeblog.tumblr.com</strong>, you would enter
-									<strong>myawesomeblog</strong> in this field.
-								</FormText>
 							</Col>
-						</FormGroup>
-					</Form>
-				</ModalBody>
-				<ModalFooter>
-					<Button color="primary" onClick={submitEditCharacter}>Do Something</Button>{' '}
-					<Button color="secondary" onClick={closeUpsertThreadModal}>Cancel</Button>
-				</ModalFooter>
+						</Row>
+						<Row>
+							<Col>
+								<AvField
+									name="postId"
+									placeholder="Post ID"
+									label="Post ID"
+									type="text"
+									onChange={this.handleInputChange}
+									validate={upsertThreadValidator.postId}
+									helpMessage={[
+										'This must be a post from your blog. The post ID is the ',
+										'part of the URL after ".tumblr.com/post/". For instance, ',
+										'if the post is at the URL ',
+										<strong>http://myawesomeblog.tumblr.com/post/12345</strong>,
+										', you would enter ',
+										<strong>12345</strong>,
+										' in this field.']}
+								/>
+							</Col>
+						</Row>
+						<Row>
+							<Col>
+								<AvField
+									name="partnerUrlIdentifier"
+									placeholder="Partner Url Identifier"
+									label="Partner URL Identifier"
+									type="text"
+									onChange={this.handleInputChange}
+									validate={upsertThreadValidator.partnerUrlIdentifier}
+									helpMessage={[
+										'This will be the part of your partner\'s URL before ',
+										'".tumblr.com". For instance, if their URL is',
+										<strong>http://myawesomeblog.tumblr.com</strong>,
+										', you would enter',
+										<strong>myawesomeblog</strong>,
+										' in this field.']}
+								/>
+							</Col>
+						</Row>
+					</ModalBody>
+					<ModalFooter>
+						<Button color="primary">Add Thread</Button>{' '}
+						<Button color="secondary" onClick={closeUpsertThreadModal}>Cancel</Button>
+					</ModalFooter>
+				</AvForm>
 			</Modal>
 		);
 	}

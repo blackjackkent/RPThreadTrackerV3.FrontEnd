@@ -9,7 +9,7 @@ import RecentActivityCard from './components/recent-activity/RecentActivityCard'
 import YourCharactersCard from './components/your-characters/YourCharactersCard';
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
-import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters, updateThread, openUntrackThreadModal } from '../../../infrastructure/actions';
+import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters, upsertThread, openUntrackThreadModal } from '../../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -96,7 +96,7 @@ class Dashboard extends Component {
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
 		};
-		dispatch(updateThread(updatedThread));
+		dispatch(upsertThread(updatedThread));
 	}
 
 	markThreadQueued(thread) {
@@ -104,7 +104,7 @@ class Dashboard extends Component {
 		const updatedThread = {
 			...thread, dateMarkedQueued: new Date(Date.now())
 		};
-		dispatch(updateThread(updatedThread));
+		dispatch(upsertThread(updatedThread));
 	}
 
 	openUntrackThreadModal(thread) {

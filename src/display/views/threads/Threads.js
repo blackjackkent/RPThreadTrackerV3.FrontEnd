@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from './components/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, updateThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal } from '../../../infrastructure/actions';
+import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -73,14 +73,14 @@ class Threads extends Component {
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
 		};
-		dispatch(updateThread(updatedThread));
+		dispatch(upsertThread(updatedThread));
 	}
 	toggleThreadIsMarkedQueued(thread) {
 		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now())
 		};
-		dispatch(updateThread(updatedThread));
+		dispatch(upsertThread(updatedThread));
 	}
 	openUntrackThreadModal(thread) {
 		const { dispatch } = this.props;

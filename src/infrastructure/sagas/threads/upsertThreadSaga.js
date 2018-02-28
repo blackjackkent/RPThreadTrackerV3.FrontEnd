@@ -3,10 +3,10 @@ import axios from 'axios';
 import cache from '../../cache';
 
 import {
-	UPDATE_THREAD,
+	UPSERT_THREAD,
 	BULK_UPDATE_THREADS,
-	updateThreadSuccess,
-	updateThreadFailure,
+	upsertThreadFailure,
+	upsertThreadSuccess,
 	fetchActiveThreads,
 	fetchArchivedThreads,
 	bulkUpdateThreadsSuccess,
@@ -19,18 +19,28 @@ function* updateThread(thread) {
 		cache.clearKey('activeThreads');
 		cache.clearKey('archivedThreads');
 		yield all([
-			put(updateThreadSuccess()),
+			put(upsertThreadSuccess(thread)),
 			put(fetchActiveThreads()),
 			put(fetchArchivedThreads())
 		]);
 	} catch (e) {
-		yield put(updateThreadFailure());
+		yield put(upsertThreadFailure());
 	}
 }
 
-function* updateIndividualThread(action) {
-	const thread = action.data;
-	yield call(updateThread, thread);
+function* insertThread(thread) {
+	try {
+		yield call(axios.post, `${API_BASE_URL}api/thread`, thread);
+		cache.clearKey('activeThreads');
+		cache.clearKey('archivedThreads');
+		yield all([
+			put(upsertThreadSuccess(thread)),
+			put(fetchActiveThreads()),
+			put(fetchArchivedThreads())
+		]);
+	} catch (e) {
+		yield put(upsertThreadFailure());
+	}
 }
 
 function* bulkUpdateThreads(action) {
@@ -51,9 +61,18 @@ function* bulkUpdateThreads(action) {
 	}
 }
 
-export default function* updateThreadSaga() {
+function* upsertIndividualThread(action) {
+	const thread = action.data;
+	if (thread && thread.threadId) {
+		yield call(updateThread, thread);
+	} else {
+		yield call(insertThread, thread);
+	}
+}
+
+export default function* upsertThreadSaga() {
 	yield all([
-		takeEvery(UPDATE_THREAD, updateIndividualThread),
+		takeEvery(UPSERT_THREAD, upsertIndividualThread),
 		takeEvery(BULK_UPDATE_THREADS, bulkUpdateThreads)
 	]);
 }
