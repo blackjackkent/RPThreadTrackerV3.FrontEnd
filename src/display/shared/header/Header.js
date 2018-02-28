@@ -80,7 +80,14 @@ const Header = (props) => {
 						</DropdownToggle>
 						<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
 							<DropdownItem className="hidden-lg-up">
-								Track New Thread
+								<span
+									role="button"
+									tabIndex="-1"
+									onKeyDown={() => openNewThreadModal({})}
+									onClick={() => openNewThreadModal({})}
+								>
+									Track New Thread
+								</span>
 							</DropdownItem>
 							<DropdownItem className="hidden-lg-up">
 								Add Character
