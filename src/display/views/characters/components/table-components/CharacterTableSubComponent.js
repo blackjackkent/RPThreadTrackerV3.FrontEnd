@@ -4,15 +4,15 @@ import { Button } from 'reactstrap';
 
 const propTypes = {
 	character: PropTypes.shape({}).isRequired,
-	openEditCharacterModal: PropTypes.func.isRequired
+	openUpsertCharacterModal: PropTypes.func.isRequired
 };
 
 const CharacterTableSubComponent = (props) => {
-	const { character, openEditCharacterModal } = props;
+	const { character, openUpsertCharacterModal } = props;
 	return (
 		<div className="character-table-sub-component">
 			<span className="control-button">
-				<Button color="primary" onClick={() => openEditCharacterModal(character)}>
+				<Button color="primary" onClick={() => openUpsertCharacterModal(character)}>
 					Edit <i className="fas fa-edit" />
 				</Button>
 			</span>

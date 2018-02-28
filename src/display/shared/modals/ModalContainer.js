@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { closeEditCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, upsertThread } from '../../../infrastructure/actions';
-import EditCharacterModal from './EditCharacterModal';
+import { closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, upsertThread } from '../../../infrastructure/actions';
+import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
 
@@ -15,9 +15,9 @@ const propTypes = {
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	closeUntrackThreadModal: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
-	closeEditCharacterModal: PropTypes.func.isRequired,
+	closeUpsertCharacterModal: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
-	isEditCharacterModalOpen: PropTypes.bool.isRequired,
+	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
 	threadToEdit: PropTypes.shape({}),
@@ -38,7 +38,7 @@ function mapStateToProps(state) {
 		bulkThreadsToEdit
 	} = state;
 	return {
-		isEditCharacterModalOpen: ui.isEditCharacterModalOpen,
+		isUpsertCharacterModalOpen: ui.isUpsertCharacterModalOpen,
 		isUntrackThreadModalOpen: ui.isUntrackThreadModalOpen,
 		isBulkUntrackThreadsModalOpen: ui.isBulkUntrackThreadsModalOpen,
 		isUpsertThreadModalOpen: ui.isUpsertThreadModalOpen,
@@ -52,7 +52,7 @@ function mapStateToProps(state) {
 const ModalContainer = (props) => {
 	const {
 		isUpsertThreadModalOpen,
-		isEditCharacterModalOpen,
+		isUpsertCharacterModalOpen,
 		isUntrackThreadModalOpen,
 		isBulkUntrackThreadsModalOpen,
 		characterToEdit,
@@ -69,9 +69,9 @@ const ModalContainer = (props) => {
 				submitUpsertThread={props.upsertThread}
 				characters={characters}
 			/>
-			<EditCharacterModal
-				isEditCharacterModalOpen={isEditCharacterModalOpen}
-				closeEditCharacterModal={props.closeEditCharacterModal}
+			<UpsertCharacterModal
+				isUpsertCharacterModalOpen={isUpsertCharacterModalOpen}
+				closeUpsertCharacterModal={props.closeUpsertCharacterModal}
 				characterToEdit={characterToEdit}
 			/>
 			<GenericConfirmationModal
@@ -103,7 +103,7 @@ ModalContainer.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	closeUpsertThreadModal,
 	closeUntrackThreadModal,
-	closeEditCharacterModal,
+	closeUpsertCharacterModal,
 	untrackThread,
 	closeBulkUntrackThreadsModal,
 	bulkUntrackThreads,

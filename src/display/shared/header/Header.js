@@ -22,7 +22,7 @@ const propTypes = {
 	logout: PropTypes.func.isRequired,
 	mobileSidebarToggle: PropTypes.func.isRequired,
 	newsUnreadCount: PropTypes.number.isRequired,
-	openEditCharacterModal: PropTypes.func.isRequired,
+	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openNewThreadModal: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
 	threadsLoading: PropTypes.bool.isRequired,
@@ -39,7 +39,7 @@ const Header = (props) => {
 		logout,
 		mobileSidebarToggle,
 		newsUnreadCount,
-		openEditCharacterModal,
+		openUpsertCharacterModal,
 		openNewThreadModal,
 		sidebarToggle,
 		threadsLoading,
@@ -57,7 +57,7 @@ const Header = (props) => {
 			</NavbarToggler>
 			<Nav className="d-md-down-none ml-4" navbar>
 				<NavItem>
-					<Button color="primary" onClick={() => openEditCharacterModal({})}>Add Character</Button>
+					<Button color="primary" onClick={() => openUpsertCharacterModal({})}>Add Character</Button>
 				</NavItem>
 				<NavItem>
 					<Button className="ml-4" color="primary" onClick={() => openNewThreadModal({})}> Track New Thread</Button>

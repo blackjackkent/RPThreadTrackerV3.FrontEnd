@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
-import { openEditCharacterModal, fetchCharacters } from '../../../infrastructure/actions';
+import { openUpsertCharacterModal, fetchCharacters } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -20,7 +20,7 @@ function mapStateToProps(state) {
 	} = state;
 	return {
 		characters,
-		isEditCharacterModalOpen: ui.isEditCharacterModalOpen,
+		isUpsertCharacterModal: ui.isUpsertCharacterModal,
 		characterToEdit
 	};
 }
@@ -28,7 +28,7 @@ function mapStateToProps(state) {
 class ManageCharacters extends Component {
 	constructor(props) {
 		super(props);
-		this.openEditCharacterModal = this.openEditCharacterModal.bind(this);
+		this.openUpsertCharacterModal = this.openUpsertCharacterModal.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -37,9 +37,9 @@ class ManageCharacters extends Component {
 		}
 	}
 
-	openEditCharacterModal(character) {
+	openUpsertCharacterModal(character) {
 		const { dispatch } = this.props;
-		dispatch(openEditCharacterModal(character));
+		dispatch(openUpsertCharacterModal(character));
 	}
 
 	render() {
@@ -52,7 +52,7 @@ class ManageCharacters extends Component {
 					<Col>
 						<CurrentCharacterTable
 							characters={characters}
-							openEditCharacterModal={this.openEditCharacterModal}
+							openUpsertCharacterModal={this.openUpsertCharacterModal}
 						/>
 					</Col>
 				</Row>

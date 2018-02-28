@@ -4,8 +4,8 @@ import {
 	TOGGLE_NEWS_ASIDE,
 	TOGGLE_HEADER_DROPDOWN,
 	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
-	OPEN_EDIT_CHARACTER_MODAL,
-	CLOSE_EDIT_CHARACTER_MODAL,
+	OPEN_UPSERT_CHARACTER_MODAL,
+	CLOSE_UPSERT_CHARACTER_MODAL,
 	OPEN_UPSERT_THREAD_MODAL,
 	CLOSE_UPSERT_THREAD_MODAL,
 	OPEN_UNTRACK_THREAD_MODAL,
@@ -29,7 +29,7 @@ const defaultState = {
 	isMaintenanceMode: false,
 	isThreadFilterCardHidden: true,
 	isUpsertThreadModalOpen: false,
-	isEditCharacterModalOpen: false,
+	isUpsertCharacterModalOpen: false,
 	isBulkUntrackThreadsModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
@@ -58,13 +58,13 @@ function ui(state = defaultState, action) {
 			return Object.assign({}, state, {
 				isThreadFilterCardHidden: !state.isThreadFilterCardHidden
 			});
-		case OPEN_EDIT_CHARACTER_MODAL:
+		case OPEN_UPSERT_CHARACTER_MODAL:
 			return Object.assign({}, state, {
-				isEditCharacterModalOpen: true
+				isUpsertCharacterModalOpen: true
 			});
-		case CLOSE_EDIT_CHARACTER_MODAL:
+		case CLOSE_UPSERT_CHARACTER_MODAL:
 			return Object.assign({}, state, {
-				isEditCharacterModalOpen: false
+				isUpsertCharacterModalOpen: false
 			});
 		case OPEN_UPSERT_THREAD_MODAL:
 			return Object.assign({}, state, {

@@ -3,17 +3,17 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
 
 const propTypes = {
-	isEditCharacterModalOpen: PropTypes.bool.isRequired,
-	submitEditCharacter: PropTypes.func.isRequired,
-	closeEditCharacterModal: PropTypes.func.isRequired,
+	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
+	submitUpsertCharacter: PropTypes.func.isRequired,
+	closeUpsertCharacterModal: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({}).isRequired
 };
 
-const EditCharacterModal = (props) => {
+const UpsertCharacterModal = (props) => {
 	const {
-		isEditCharacterModalOpen,
-		submitEditCharacter,
-		closeEditCharacterModal,
+		isUpsertCharacterModalOpen,
+		submitUpsertCharacter,
+		closeUpsertCharacterModal,
 		characterToEdit
 	} = props;
 	if (!characterToEdit) {
@@ -22,8 +22,8 @@ const EditCharacterModal = (props) => {
 		);
 	}
 	return (
-		<Modal isOpen={isEditCharacterModalOpen} toggle={closeEditCharacterModal} backdrop>
-			<ModalHeader toggle={closeEditCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
+		<Modal isOpen={isUpsertCharacterModalOpen} toggle={closeUpsertCharacterModal} backdrop>
+			<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
 			<ModalBody>
 				<Form>
 					<FormGroup row>
@@ -73,13 +73,13 @@ const EditCharacterModal = (props) => {
 				</Form>
 			</ModalBody>
 			<ModalFooter>
-				<Button color="primary" onClick={submitEditCharacter}>Do Something</Button>{' '}
-				<Button color="secondary" onClick={closeEditCharacterModal}>Cancel</Button>
+				<Button color="primary" onClick={submitUpsertCharacter}>Do Something</Button>{' '}
+				<Button color="secondary" onClick={closeUpsertCharacterModal}>Cancel</Button>
 			</ModalFooter>
 		</Modal>
 	);
 };
 
-EditCharacterModal.propTypes = propTypes;
+UpsertCharacterModal.propTypes = propTypes;
 
-export default EditCharacterModal;
+export default UpsertCharacterModal;
