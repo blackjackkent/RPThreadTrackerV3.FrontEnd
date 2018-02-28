@@ -15,6 +15,7 @@ const propTypes = {
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
+	openEditThreadModal: PropTypes.func.isRequired,
 	rawFilterData: PropTypes.shape({}).isRequired,
 	setFilteredCharacterId: PropTypes.func.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
@@ -107,6 +108,7 @@ class ThreadTable extends React.Component {
 			toggleThreadIsArchived,
 			toggleThreadIsMarkedQueued,
 			openUntrackThreadModal,
+			openEditThreadModal,
 			columns,
 			isArchive,
 			isQueue,
@@ -165,6 +167,7 @@ class ThreadTable extends React.Component {
 							threadData={row.original}
 							toggleThreadIsArchived={toggleThreadIsArchived}
 							openUntrackThreadModal={openUntrackThreadModal}
+							openEditThreadModal={openEditThreadModal}
 							toggleThreadIsMarkedQueued={toggleThreadIsMarkedQueued}
 							isArchive={isArchive}
 							isQueue={isQueue}

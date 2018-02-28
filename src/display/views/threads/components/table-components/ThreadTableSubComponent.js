@@ -6,6 +6,7 @@ const propTypes = {
 	threadData: PropTypes.shape({}).isRequired,
 	toggleThreadIsArchived: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
+	openEditThreadModal: PropTypes.func.isRequired,
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	isArchive: PropTypes.bool.isRequired,
 	isQueue: PropTypes.bool.isRequired
@@ -16,6 +17,7 @@ const ThreadTable = (props) => {
 		threadData,
 		toggleThreadIsArchived,
 		openUntrackThreadModal,
+		openEditThreadModal,
 		isArchive,
 		toggleThreadIsMarkedQueued,
 		isQueue
@@ -36,9 +38,12 @@ const ThreadTable = (props) => {
 				}
 			</span>
 			<span className="control-button">
-				<a className="btn btn-primary" href={`/thread/edit/${threadData.thread.id}`}>
+				<button
+					className="btn btn-primary"
+					onClick={() => openEditThreadModal(threadData.thread)}
+				>
 					Edit <i className="fas fa-edit" />
-				</a>
+				</button>
 			</span>
 			<span className="control-button">
 				{!isArchive &&

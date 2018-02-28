@@ -14,13 +14,17 @@ const propTypes = {
 };
 
 class UpsertThreadModal extends Component {
-	constructor(props) {
+	constructor() {
 		super();
 		this.selectCharacter = this.selectCharacter.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.state = {
-			threadToEdit: props.threadToEdit
+			threadToEdit: null
 		};
+	}
+
+	componentWillReceiveProps(nextProps) {
+		this.setState({ threadToEdit: nextProps.threadToEdit });
 	}
 
 	selectCharacter(characterId) {
@@ -53,13 +57,13 @@ class UpsertThreadModal extends Component {
 		return (
 			<Modal isOpen={isUpsertThreadModalOpen} toggle={closeUpsertThreadModal} backdrop>
 				<AvForm onValidSubmit={() => submitUpsertThread(this.state.threadToEdit)}>
-					<ModalHeader toggle={closeUpsertThreadModal}>{threadToEdit.id ? 'Edit Thread' : 'Add New Thread'}</ModalHeader>
+					<ModalHeader toggle={closeUpsertThreadModal}>{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add New Thread'}</ModalHeader>
 					<ModalBody>
 						<FormGroup row>
 							<Col>
 								<CharacterSelect
 									characters={characters}
-									selectedCharacterId={this.state.threadToEdit.characterId}
+									selectedCharacterId={this.state.threadToEdit ? this.state.threadToEdit.characterId : null}
 									onSelectCharacter={this.selectCharacter}
 									includeNullValue={false}
 								/>
@@ -72,6 +76,7 @@ class UpsertThreadModal extends Component {
 									placeholder="Thread Title"
 									label="Thread Title"
 									type="text"
+									value={this.state.threadToEdit ? this.state.threadToEdit.userTitle : null}
 									onChange={this.handleInputChange}
 									validate={upsertThreadValidator.userTitle}
 									helpMessage="This can be anything you like!"
@@ -87,6 +92,7 @@ class UpsertThreadModal extends Component {
 									type="text"
 									onChange={this.handleInputChange}
 									validate={upsertThreadValidator.postId}
+									value={this.state.threadToEdit ? this.state.threadToEdit.postId : null}
 									helpMessage={[
 										'This must be a post from your blog. The post ID is the ',
 										'part of the URL after ".tumblr.com/post/". For instance, ',
@@ -107,6 +113,7 @@ class UpsertThreadModal extends Component {
 									type="text"
 									onChange={this.handleInputChange}
 									validate={upsertThreadValidator.partnerUrlIdentifier}
+									value={this.state.threadToEdit ? this.state.threadToEdit.partnerUrlIdentifier : null}
 									helpMessage={[
 										'This will be the part of your partner\'s URL before ',
 										'".tumblr.com". For instance, if their URL is',
@@ -119,7 +126,7 @@ class UpsertThreadModal extends Component {
 						</Row>
 					</ModalBody>
 					<ModalFooter>
-						<Button color="primary">Add Thread</Button>{' '}
+						<Button color="primary">{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add Thread'}</Button>{' '}
 						<Button color="secondary" onClick={closeUpsertThreadModal}>Cancel</Button>
 					</ModalFooter>
 				</AvForm>

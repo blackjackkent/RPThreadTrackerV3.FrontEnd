@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
@@ -15,14 +15,18 @@ const propTypes = {
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	closeUntrackThreadModal: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
-	dispatch: PropTypes.func.isRequired,
+	closeEditCharacterModal: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
 	isEditCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
-	threadToEdit: PropTypes.shape({}).isRequired,
+	threadToEdit: PropTypes.shape({}),
 	untrackThread: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired
+};
+
+const defaultProps = {
+	threadToEdit: null
 };
 
 function mapStateToProps(state) {
@@ -45,71 +49,61 @@ function mapStateToProps(state) {
 	};
 }
 
-class ModalContainer extends Component {
-	constructor(props) {
-		super(props);
-		this.closeEditCharacterModal = this.closeEditCharacterModal.bind(this);
-	}
-
-	closeEditCharacterModal() {
-		const { dispatch } = this.props;
-		dispatch(closeEditCharacterModal());
-	}
-
-	render() {
-		const {
-			isUpsertThreadModalOpen,
-			isEditCharacterModalOpen,
-			isUntrackThreadModalOpen,
-			isBulkUntrackThreadsModalOpen,
-			characterToEdit,
-			characters,
-			threadToEdit,
-			bulkThreadsToEdit
-		} = this.props;
-		return (
-			<div>
-				<UpsertThreadModal
-					isUpsertThreadModalOpen={isUpsertThreadModalOpen}
-					closeUpsertThreadModal={this.props.closeUpsertThreadModal}
-					threadToEdit={threadToEdit}
-					submitUpsertThread={this.props.upsertThread}
-					characters={characters}
-				/>
-				<EditCharacterModal
-					isEditCharacterModalOpen={isEditCharacterModalOpen}
-					closeEditCharacterModal={this.closeEditCharacterModal}
-					characterToEdit={characterToEdit}
-				/>
-				<GenericConfirmationModal
-					isModalOpen={isUntrackThreadModalOpen}
-					submitCallback={this.props.untrackThread}
-					submitButtonText="Untrack"
-					closeCallback={this.props.closeUntrackThreadModal}
-					closeButtonText="Cancel"
-					data={threadToEdit}
-					headerText="Confirm Thread Untracking"
-					bodyText={`Are you sure you want to untrack ${threadToEdit ? threadToEdit.userTitle : ''}?`}
-				/>
-				<GenericConfirmationModal
-					isModalOpen={isBulkUntrackThreadsModalOpen}
-					submitCallback={this.props.bulkUntrackThreads}
-					submitButtonText="Untrack"
-					closeCallback={this.props.closeBulkUntrackThreadsModal}
-					closeButtonText="Cancel"
-					data={bulkThreadsToEdit}
-					headerText="Confirm Thread Untracking"
-					bodyText={`Are you sure you want to untrack ${bulkThreadsToEdit.length} threads?`}
-				/>
-			</div>
-		);
-	}
-}
+const ModalContainer = (props) => {
+	const {
+		isUpsertThreadModalOpen,
+		isEditCharacterModalOpen,
+		isUntrackThreadModalOpen,
+		isBulkUntrackThreadsModalOpen,
+		characterToEdit,
+		characters,
+		threadToEdit,
+		bulkThreadsToEdit
+	} = props;
+	return (
+		<div>
+			<UpsertThreadModal
+				isUpsertThreadModalOpen={isUpsertThreadModalOpen}
+				closeUpsertThreadModal={props.closeUpsertThreadModal}
+				threadToEdit={threadToEdit}
+				submitUpsertThread={props.upsertThread}
+				characters={characters}
+			/>
+			<EditCharacterModal
+				isEditCharacterModalOpen={isEditCharacterModalOpen}
+				closeEditCharacterModal={props.closeEditCharacterModal}
+				characterToEdit={characterToEdit}
+			/>
+			<GenericConfirmationModal
+				isModalOpen={isUntrackThreadModalOpen}
+				submitCallback={props.untrackThread}
+				submitButtonText="Untrack"
+				closeCallback={props.closeUntrackThreadModal}
+				closeButtonText="Cancel"
+				data={threadToEdit}
+				headerText="Confirm Thread Untracking"
+				bodyText={`Are you sure you want to untrack ${threadToEdit ? threadToEdit.userTitle : ''}?`}
+			/>
+			<GenericConfirmationModal
+				isModalOpen={isBulkUntrackThreadsModalOpen}
+				submitCallback={props.bulkUntrackThreads}
+				submitButtonText="Untrack"
+				closeCallback={props.closeBulkUntrackThreadsModal}
+				closeButtonText="Cancel"
+				data={bulkThreadsToEdit}
+				headerText="Confirm Thread Untracking"
+				bodyText={`Are you sure you want to untrack ${bulkThreadsToEdit.length} threads?`}
+			/>
+		</div>
+	);
+};
 
 ModalContainer.propTypes = propTypes;
+ModalContainer.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	closeUpsertThreadModal,
 	closeUntrackThreadModal,
+	closeEditCharacterModal,
 	untrackThread,
 	closeBulkUntrackThreadsModal,
 	bulkUntrackThreads,

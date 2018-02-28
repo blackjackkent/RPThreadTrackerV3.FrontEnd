@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ThreadTable from './components/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal } from '../../../infrastructure/actions';
+import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -45,6 +45,7 @@ class Threads extends Component {
 		this.isThreadFilterCardHiddenToggle = this.isThreadFilterCardHiddenToggle.bind(this);
 		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 		this.openBulkUntrackThreadsModal = this.openBulkUntrackThreadsModal.bind(this);
+		this.openEditThreadModal = this.openEditThreadModal.bind(this);
 		this.setFilteredCharacterId = this.setFilteredCharacterId.bind(this);
 		this.setFilteredTag = this.setFilteredTag.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
@@ -85,6 +86,10 @@ class Threads extends Component {
 	openUntrackThreadModal(thread) {
 		const { dispatch } = this.props;
 		dispatch(openUntrackThreadModal(thread));
+	}
+	openEditThreadModal(thread) {
+		const { dispatch } = this.props;
+		dispatch(openUpsertThreadModal(thread));
 	}
 	openBulkUntrackThreadsModal(thread) {
 		const { dispatch } = this.props;
@@ -129,6 +134,7 @@ class Threads extends Component {
 							isQueue={isQueue}
 							isThreadFilterCardHidden={isThreadFilterCardHidden}
 							openUntrackThreadModal={this.openUntrackThreadModal}
+							openEditThreadModal={this.openEditThreadModal}
 							rawFilterData={threadFilter}
 							setFilteredCharacterId={this.setFilteredCharacterId}
 							setFilteredTag={this.setFilteredTag}
