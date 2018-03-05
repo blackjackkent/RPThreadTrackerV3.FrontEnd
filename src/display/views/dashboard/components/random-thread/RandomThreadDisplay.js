@@ -16,21 +16,29 @@ const RandomThreadDisplay = (props) => {
 	}
 	return (
 		<div className="random-thread-result">
-			<div>
-				<a href={threadData.status.LastPostUrl}>
-					{threadData.thread.userTitle}{' '}
-					<i className="fas fa-external-link-alt" />
-				</a>
-			</div>
 			{threadData.status &&
-				<div className="small ">
-					Last Post by{' '}
-					<a href={threadData.status.LastPostUrl}>{threadData.status.LastPosterUrlIdentifier}</a>
+				<div>
+					<p>
+						<a href={threadData.status.LastPostUrl}>
+							{threadData.thread.userTitle}{' '}
+							<i className="fas fa-external-link-alt" />
+						</a>
+					</p>
+					<div className="small">
+						Last Post by{' '}
+						<a href={threadData.status.LastPostUrl}>{threadData.status.LastPosterUrlIdentifier}</a>
+					</div>
 				</div>
 			}
 			{!threadData.status &&
-				<div className="small ">
-					Awaiting Starter
+				<div>
+					<p>
+						{threadData.thread.userTitle}{' '}
+						<i className="fas fa-external-link-alt" />
+					</p>
+					<div className="small ">
+						Awaiting Starter
+					</div>
 				</div>
 			}
 		</div>

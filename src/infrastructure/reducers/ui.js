@@ -30,6 +30,7 @@ const defaultState = {
 	isUpsertThreadModalOpen: false,
 	isEditCharacterModalOpen: false,
 	isBulkUntrackThreadsModalOpen: false,
+	isUntrackThreadModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'

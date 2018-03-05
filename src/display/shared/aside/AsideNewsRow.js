@@ -8,11 +8,7 @@ import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 
 const propTypes = {
-	item: PropTypes.shape({
-		PostId: PropTypes.number,
-		PostTitle: PropTypes.string.isRequired,
-		lastPostDate: PropTypes.string.isRequired
-	}).isRequired
+	item: PropTypes.shape({}).isRequired
 };
 
 const AsideNewsRow = (props) => {

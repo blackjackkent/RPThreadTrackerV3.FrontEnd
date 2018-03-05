@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Col, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { upsertThreadValidator } from '../../../infrastructure/validators';
 import CharacterSelect from '../CharacterSelect';
 
 const propTypes = {
@@ -8,7 +10,7 @@ const propTypes = {
 	submitEditCharacter: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	threadToEdit: PropTypes.shape({}).isRequired,
-	characters: PropTypes.shape({}).isRequired
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 class UpsertThreadModal extends Component {
@@ -21,8 +23,14 @@ class UpsertThreadModal extends Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		console.log(nextProps === this.props);
+	}
+
 	selectCharacter(characterId) {
-		this.setState({ threadToEdit: { ...this.state.threadToEdit, characterId } });
+		if (this.state.threadToEdit.characterId !== characterId) {
+			this.setState({ threadToEdit: { ...this.state.threadToEdit, characterId } });
+		}
 	}
 
 	handleInputChange(event) {
@@ -52,13 +60,15 @@ class UpsertThreadModal extends Component {
 			<Modal isOpen={isUpsertThreadModalOpen} toggle={closeUpsertThreadModal} backdrop>
 				<ModalHeader toggle={closeUpsertThreadModal}>{threadToEdit.id ? 'Edit Thread' : 'Add New Thread'}</ModalHeader>
 				<ModalBody>
-					<Form>
+
+					<AvForm onValidSubmit={this.handleLoginSubmit}>
 						<FormGroup row>
 							<Col>
 								<CharacterSelect
 									characters={characters}
 									selectedCharacterId={this.state.threadToEdit.characterId}
 									onSelectCharacter={this.selectCharacter}
+									validator={upsertThreadValidator.characterId}
 								/>
 							</Col>
 						</FormGroup>
@@ -80,7 +90,7 @@ class UpsertThreadModal extends Component {
 								</FormText>
 							</Col>
 						</FormGroup>
-					</Form>
+					</AvForm>
 				</ModalBody>
 				<ModalFooter>
 					<Button color="primary" onClick={submitEditCharacter}>Do Something</Button>{' '}

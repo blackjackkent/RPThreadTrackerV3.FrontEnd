@@ -1,2 +1,2 @@
-// eslint-disable-next-line import/prefer-default-export
 export { default as loginValidator } from './login';
+export { default as upsertThreadValidator } from './upsertThread';

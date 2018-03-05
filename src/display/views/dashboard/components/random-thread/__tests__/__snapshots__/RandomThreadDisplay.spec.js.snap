@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RandomThreadDisplay renders empty message when thread is null 1`] = `
+<div
+  className="random-thread-result"
+>
+  <p>
+    Pick a random thread to respond to!
+  </p>
+</div>
+`;
+
+exports[`RandomThreadDisplay renders with status 1`] = `
+<div
+  className="random-thread-result"
+>
+  <div>
+    <p>
+      <a
+        href="testurl"
+      >
+        Test Title
+         
+        <i
+          className="fas fa-external-link-alt"
+        />
+      </a>
+    </p>
+    <div
+      className="small"
+    >
+      Last Post by
+       
+      <a
+        href="testurl"
+      >
+        blackjackkent
+      </a>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`RandomThreadDisplay renders without status 1`] = `
+<div
+  className="random-thread-result"
+>
+  <div>
+    <p>
+      Test Title
+       
+      <i
+        className="fas fa-external-link-alt"
+      />
+    </p>
+    <div
+      className="small "
+    >
+      Awaiting Starter
+    </div>
+  </div>
+</div>
+`;
