@@ -1,8 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RandomThreadDisplay renders empty message when thread is null 1`] = `
+exports[`rendering snapshots should render valid snapshot when thread is null 1`] = `
 <div
   className="random-thread-result"
+  data-spec="random-thread-result"
 >
   <p>
     Pick a random thread to respond to!
@@ -10,12 +11,15 @@ exports[`RandomThreadDisplay renders empty message when thread is null 1`] = `
 </div>
 `;
 
-exports[`RandomThreadDisplay renders with status 1`] = `
+exports[`rendering snapshots should render valid snapshot with status 1`] = `
 <div
   className="random-thread-result"
+  data-spec="random-thread-result"
 >
   <div>
-    <p>
+    <p
+      data-spec="random-thread-title"
+    >
       <a
         href="testurl"
       >
@@ -28,6 +32,7 @@ exports[`RandomThreadDisplay renders with status 1`] = `
     </p>
     <div
       className="small"
+      data-spec="random-thread-subtitle"
     >
       Last Post by
        
@@ -41,20 +46,20 @@ exports[`RandomThreadDisplay renders with status 1`] = `
 </div>
 `;
 
-exports[`RandomThreadDisplay renders without status 1`] = `
+exports[`rendering snapshots should render valid snapshot without status 1`] = `
 <div
   className="random-thread-result"
+  data-spec="random-thread-result"
 >
   <div>
-    <p>
+    <p
+      data-spec="random-thread-title"
+    >
       Test Title
-       
-      <i
-        className="fas fa-external-link-alt"
-      />
     </p>
     <div
-      className="small "
+      className="small"
+      data-spec="random-thread-subtitle"
     >
       Awaiting Starter
     </div>

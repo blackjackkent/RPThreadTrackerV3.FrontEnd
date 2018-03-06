@@ -1,34 +1,71 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import renderer from 'react-test-renderer';
+import { getSpecWrapper } from '../../../../../../utility/testHelpers';
 import RandomThreadDisplay from '../RandomThreadDisplay';
 
-describe('RandomThreadDisplay', () => {
-	test('renders empty message when thread is null', () => {
-		const jsx = (<RandomThreadDisplay threadData={{ thread: null }} />);
-		const element = shallow(jsx);
-		const tree = renderer.create(jsx).toJSON();
-		expect(element.text()).toEqual('Pick a random thread to respond to!');
-		expect(element.find('a').length).toEqual(0);
-		expect(tree).toMatchSnapshot();
+const getValidProps = () => ({ thread: { userTitle: 'Test Title' }, status: { LastPostUrl: 'testurl', LastPosterUrlIdentifier: 'blackjackkent' } });
+const getNullStatusProps = () => ({ thread: { userTitle: 'Test Title' }, status: null });
+const getNullThreadProps = () => ({ thread: null });
+
+describe('rendering', () => {
+	describe('snapshots', () => {
+		it('should render valid snapshot when thread is null', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullThreadProps()} />);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot without status', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullStatusProps()} />);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot with status', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getValidProps()} />);
+			expect(element).toMatchSnapshot();
+		});
 	});
-	test('renders without status', () => {
-		const jsx = (<RandomThreadDisplay threadData={{ thread: { userTitle: 'Test Title' }, status: null }} />);
-		const element = shallow(jsx);
-		const tree = renderer.create(jsx).toJSON();
-		expect(element.text()).toContain('Test Title');
-		expect(element.text()).toContain('Awaiting Starter');
-		expect(element.find('a').length).toEqual(0);
-		expect(tree).toMatchSnapshot();
+	describe('when thread null', () => {
+		it('should display paragraph', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullThreadProps()} />);
+			const wrapper = getSpecWrapper(element, 'random-thread-result');
+			expect(wrapper).toExist();
+			expect(wrapper.find('p')).toHaveText('Pick a random thread to respond to!');
+		});
 	});
-	test('renders with status', () => {
-		const jsx = (<RandomThreadDisplay threadData={{ thread: { userTitle: 'Test Title' }, status: { LastPostUrl: 'testurl', LastPosterUrlIdentifier: 'blackjackkent' } }} />);
-		const element = shallow(jsx);
-		const tree = renderer.create(jsx).toJSON();
-		expect(element.text()).toContain('Test Title');
-		expect(element.text()).toContain('Last Post by');
-		expect(element.text()).toContain('blackjackkent');
-		expect(element.find('a[href="testurl"]').length).toEqual(2);
-		expect(tree).toMatchSnapshot();
+	describe('when no status', () => {
+		it('should render display container', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullStatusProps()} />);
+			const wrapper = getSpecWrapper(element, 'random-thread-result');
+			expect(wrapper).toExist();
+		});
+		it('should display thread title', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullStatusProps()} />);
+			const paragraph = getSpecWrapper(element, 'random-thread-title');
+			expect(paragraph).toHaveText('Test Title');
+		});
+		it('should display awaiting starter', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullStatusProps()} />);
+			const subtitle = getSpecWrapper(element, 'random-thread-subtitle');
+			expect(subtitle).toHaveText('Awaiting Starter');
+		});
+	});
+	describe('when status', () => {
+		it('should render display container', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getValidProps()} />);
+			const wrapper = getSpecWrapper(element, 'random-thread-result');
+			expect(wrapper).toExist();
+		});
+		it('should display thread title', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getValidProps()} />);
+			const paragraph = getSpecWrapper(element, 'random-thread-title');
+			expect(paragraph).toIncludeText('Test Title');
+			expect(paragraph.find('a')).toHaveProp({ href: 'testurl' });
+			expect(paragraph.find('i')).toHaveClassName('fa-external-link-alt');
+		});
+		it('should display thread subtitle', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getValidProps()} />);
+			const subtitle = getSpecWrapper(element, 'random-thread-subtitle');
+			expect(subtitle).toIncludeText('Last Post by');
+			expect(subtitle).toIncludeText('blackjackkent');
+			expect(subtitle.find('a')).toHaveProp({ href: 'testurl' });
+		});
 	});
 });

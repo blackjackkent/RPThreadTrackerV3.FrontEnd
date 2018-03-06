@@ -11,13 +11,22 @@ const propTypes = {
 const RandomThreadCard = (props) => {
 	const { generateRandomThread, randomThread } = props;
 	return (
-		<Card className="random-thread-generator-card">
-			<CardHeader>
-				<i className="fas fa-random" /> Random Thread Generator
+		<Card className="random-thread-generator-card" data-spec="random-thread-generator-card">
+			<CardHeader data-spec="random-thread-generator-header">
+				<i
+					className="fas fa-random"
+					data-spec="random-thread-generator-icon"
+				/> Random Thread Generator
 			</CardHeader>
 			<CardBlock className="card-body">
-				<button className="btn btn-primary" onClick={generateRandomThread}>Generate</button>
-				<RandomThreadDisplay threadData={randomThread} />
+				<button
+					className="btn btn-primary"
+					onClick={generateRandomThread}
+					data-spec="random-thread-generator-button"
+				>
+					Generate
+				</button>
+				<RandomThreadDisplay data-spec="random-thread-display" threadData={randomThread} />
 			</CardBlock>
 		</Card>
 	);
