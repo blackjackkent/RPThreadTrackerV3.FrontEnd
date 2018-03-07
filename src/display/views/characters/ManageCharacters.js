@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
-import { openUpsertCharacterModal, fetchCharacters } from '../../../infrastructure/actions';
+import { openUpsertCharacterModal, fetchCharacters, upsertCharacter } from '../../../infrastructure/actions';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -29,6 +29,7 @@ class ManageCharacters extends Component {
 	constructor(props) {
 		super(props);
 		this.openUpsertCharacterModal = this.openUpsertCharacterModal.bind(this);
+		this.toggleCharacterIsOnHiatus = this.toggleCharacterIsOnHiatus.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -42,6 +43,14 @@ class ManageCharacters extends Component {
 		dispatch(openUpsertCharacterModal(character));
 	}
 
+	toggleCharacterIsOnHiatus(character) {
+		const { dispatch } = this.props;
+		const updatedCharacter = {
+			...character, isOnHiatus: !character.isOnHiatus
+		};
+		dispatch(upsertCharacter(updatedCharacter));
+	}
+
 	render() {
 		const {
 			characters
@@ -53,6 +62,7 @@ class ManageCharacters extends Component {
 						<CurrentCharacterTable
 							characters={characters}
 							openUpsertCharacterModal={this.openUpsertCharacterModal}
+							toggleCharacterIsOnHiatus={this.toggleCharacterIsOnHiatus}
 						/>
 					</Col>
 				</Row>

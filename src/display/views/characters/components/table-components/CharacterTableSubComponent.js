@@ -4,11 +4,12 @@ import { Button } from 'reactstrap';
 
 const propTypes = {
 	character: PropTypes.shape({}).isRequired,
-	openUpsertCharacterModal: PropTypes.func.isRequired
+	openUpsertCharacterModal: PropTypes.func.isRequired,
+	toggleCharacterIsOnHiatus: PropTypes.func.isRequired
 };
 
 const CharacterTableSubComponent = (props) => {
-	const { character, openUpsertCharacterModal } = props;
+	const { character, openUpsertCharacterModal, toggleCharacterIsOnHiatus } = props;
 	return (
 		<div className="character-table-sub-component">
 			<span className="control-button">
@@ -19,11 +20,11 @@ const CharacterTableSubComponent = (props) => {
 			<span className="control-button">
 				{
 					character.isOnHiatus ?
-						<Button color="primary">
+						<Button color="primary" onClick={() => toggleCharacterIsOnHiatus(character)}>
 							Set Off Hiatus <i className="fas fa-power-off" />
 						</Button>
 						:
-						<Button color="primary">
+						<Button color="primary" onClick={() => toggleCharacterIsOnHiatus(character)}>
 							Set On Hiatus <i className="fas fa-power-off" />
 						</Button>
 				}

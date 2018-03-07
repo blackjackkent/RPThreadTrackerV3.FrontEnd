@@ -1,4 +1,5 @@
 import React from 'react';
+import platforms from '../../../../infrastructure/constants/platforms';
 
 export default [
 	{
@@ -11,7 +12,8 @@ export default [
 		Cell: row => <a href={row.original.homeUrl}> {row.value} </a>
 	}, {
 		Header: 'Platform',
-		accessor: 'platform.platformName'
+		accessor: 'platformId',
+		Cell: row => <span className={row.original.isOnHiatus ? 'text-muted' : ''}>{platforms[row.value]}</span>
 	}, {
 		Header: 'Status',
 		accessor: 'isOnHiatus',
