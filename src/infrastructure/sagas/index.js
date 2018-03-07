@@ -19,6 +19,7 @@ export { default as untrackThreadSaga } from './threads/untrackThreadSaga';
 // Characters
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';
 export { default as upsertCharacterSaga } from './characters/upsertCharacterSaga';
+export { default as untrackCharacterSaga } from './characters/untrackCharacterSaga';
 
 export { default as toastrSaga } from './toastrSaga';
 

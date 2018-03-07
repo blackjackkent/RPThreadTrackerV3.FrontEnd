@@ -3,11 +3,14 @@ import { toastr } from 'react-redux-toastr';
 
 import {
 	FETCHED_ACTIVE_THREADS_SUCCESS,
+	UNTRACK_THREAD_SUCCESS,
 	UNTRACK_THREAD_FAILURE,
 	UPSERT_THREAD_FAILURE,
 	UPSERT_THREAD_SUCCESS,
 	UPSERT_CHARACTER_FAILURE,
-	UPSERT_CHARACTER_SUCCESS
+	UPSERT_CHARACTER_SUCCESS,
+	UNTRACK_CHARACTER_SUCCESS,
+	UNTRACK_CHARACTER_FAILURE
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -19,6 +22,10 @@ function displayActiveThreadsCountMessage(action) {
 
 function displayUntrackThreadError() {
 	toastr.error('There was a problem untracking your thread.');
+}
+
+function displayUntrackThreadSuccess() {
+	toastr.success('Successfully untracked thread.');
 }
 
 function displayUpdateThreadError() {
@@ -39,13 +46,24 @@ function displayUpdateCharacterSuccess(action) {
 	toastr.success(`Successfully updated character ${character.characterName ? character.characterName : character.urlIdentifier}`);
 }
 
+function displayUntrackCharacterSuccess() {
+	toastr.success('Successfully untracked character.');
+}
+
+function displayUntrackCharacterError() {
+	toastr.error('There was a problem untracking your character.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
+		takeEvery(UNTRACK_THREAD_SUCCESS, displayUntrackThreadSuccess),
 		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError),
 		takeEvery(UPSERT_THREAD_FAILURE, displayUpdateThreadError),
 		takeEvery(UPSERT_THREAD_SUCCESS, displayUpdateThreadSuccess),
 		takeEvery(UPSERT_CHARACTER_FAILURE, displayUpdateCharacterError),
-		takeEvery(UPSERT_CHARACTER_SUCCESS, displayUpdateCharacterSuccess)
+		takeEvery(UPSERT_CHARACTER_SUCCESS, displayUpdateCharacterSuccess),
+		takeEvery(UNTRACK_CHARACTER_FAILURE, displayUntrackCharacterError),
+		takeEvery(UNTRACK_CHARACTER_SUCCESS, displayUntrackCharacterSuccess)
 	]);
 }

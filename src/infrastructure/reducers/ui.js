@@ -1,25 +1,28 @@
 import {
-	TOGGLE_SIDEBAR,
-	TOGGLE_MOBILE_SIDEBAR,
-	TOGGLE_NEWS_ASIDE,
-	TOGGLE_HEADER_DROPDOWN,
-	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
-	OPEN_UPSERT_CHARACTER_MODAL,
-	CLOSE_UPSERT_CHARACTER_MODAL,
-	OPEN_UPSERT_THREAD_MODAL,
-	CLOSE_UPSERT_THREAD_MODAL,
-	OPEN_UNTRACK_THREAD_MODAL,
-	CLOSE_UNTRACK_THREAD_MODAL,
-	OPEN_BULK_UNTRACK_THREADS_MODAL,
+	BULK_UNTRACK_THREADS,
 	CLOSE_BULK_UNTRACK_THREADS_MODAL,
+	CLOSE_UNTRACK_CHARACTER_MODAL,
+	CLOSE_UNTRACK_THREAD_MODAL,
+	CLOSE_UPSERT_CHARACTER_MODAL,
+	CLOSE_UPSERT_THREAD_MODAL,
+	OPEN_BULK_UNTRACK_THREADS_MODAL,
+	OPEN_UNTRACK_CHARACTER_MODAL,
+	OPEN_UNTRACK_THREAD_MODAL,
+	OPEN_UPSERT_CHARACTER_MODAL,
+	OPEN_UPSERT_THREAD_MODAL,
 	SET_ACTIVE_HELP_TAB,
 	SET_ACTIVE_SETTINGS_TAB,
 	SET_ACTIVE_TOOLS_TAB,
 	SUBMIT_USER_LOGOUT,
+	TOGGLE_HEADER_DROPDOWN,
+	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
+	TOGGLE_MOBILE_SIDEBAR,
+	TOGGLE_NEWS_ASIDE,
+	TOGGLE_SIDEBAR,
+	UNTRACK_CHARACTER,
 	UNTRACK_THREAD,
-	BULK_UNTRACK_THREADS,
-	UPSERT_THREAD,
-	UPSERT_CHARACTER
+	UPSERT_CHARACTER,
+	UPSERT_THREAD
 } from '../actions';
 
 const defaultState = {
@@ -33,6 +36,7 @@ const defaultState = {
 	isUpsertCharacterModalOpen: false,
 	isBulkUntrackThreadsModalOpen: false,
 	isUntrackThreadModalOpen: false,
+	isUntrackCharacterModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'
@@ -95,6 +99,15 @@ function ui(state = defaultState, action) {
 		case BULK_UNTRACK_THREADS:
 			return Object.assign({}, state, {
 				isBulkUntrackThreadsModalOpen: false
+			});
+		case OPEN_UNTRACK_CHARACTER_MODAL:
+			return Object.assign({}, state, {
+				isUntrackCharacterModalOpen: true
+			});
+		case CLOSE_UNTRACK_CHARACTER_MODAL:
+		case UNTRACK_CHARACTER:
+			return Object.assign({}, state, {
+				isUntrackCharacterModalOpen: false
 			});
 		case SET_ACTIVE_HELP_TAB:
 			return Object.assign({}, state, {

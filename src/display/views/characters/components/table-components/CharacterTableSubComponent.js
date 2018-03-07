@@ -5,11 +5,12 @@ import { Button } from 'reactstrap';
 const propTypes = {
 	character: PropTypes.shape({}).isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
-	toggleCharacterIsOnHiatus: PropTypes.func.isRequired
+	toggleCharacterIsOnHiatus: PropTypes.func.isRequired,
+	openUntrackCharacterModal: PropTypes.func.isRequired
 };
 
 const CharacterTableSubComponent = (props) => {
-	const { character, openUpsertCharacterModal, toggleCharacterIsOnHiatus } = props;
+	const { character, openUpsertCharacterModal, toggleCharacterIsOnHiatus, openUntrackCharacterModal } = props;
 	return (
 		<div className="character-table-sub-component">
 			<span className="control-button">
@@ -30,9 +31,12 @@ const CharacterTableSubComponent = (props) => {
 				}
 			</span>
 			<span className="control-button">
-				<a className="btn btn-danger" href={`/manage-characters/delete/${character.id}`}>
-					Delete <i className="fas fa-trash-alt" />
-				</a>
+				<button
+					className="btn btn-danger"
+					onClick={() => openUntrackCharacterModal(character)}
+				>
+					Untrack <i className="fas fa-trash-alt" />
+				</button>
 			</span>
 		</div>
 	);

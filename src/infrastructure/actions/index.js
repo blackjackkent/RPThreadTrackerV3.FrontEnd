@@ -10,6 +10,8 @@ export { openUpsertThreadModal, OPEN_UPSERT_THREAD_MODAL } from './ui/openUpsert
 export { closeUpsertThreadModal, CLOSE_UPSERT_THREAD_MODAL } from './ui/closeUpsertThreadModal';
 export { openUntrackThreadModal, OPEN_UNTRACK_THREAD_MODAL } from './ui/openUntrackThreadModal';
 export { closeUntrackThreadModal, CLOSE_UNTRACK_THREAD_MODAL } from './ui/closeUntrackThreadModal';
+export { openUntrackCharacterModal, OPEN_UNTRACK_CHARACTER_MODAL } from './ui/openUntrackCharacterModal';
+export { closeUntrackCharacterModal, CLOSE_UNTRACK_CHARACTER_MODAL } from './ui/closeUntrackCharacterModal';
 export { openBulkUntrackThreadsModal, OPEN_BULK_UNTRACK_THREADS_MODAL } from './ui/openBulkUntrackThreadsModal';
 export { closeBulkUntrackThreadsModal, CLOSE_BULK_UNTRACK_THREADS_MODAL } from './ui/closeBulkUntrackThreadsModal';
 export { setActiveHelpTab, SET_ACTIVE_HELP_TAB } from './ui/setActiveHelpTab';
@@ -74,6 +76,9 @@ export { fetchedCharactersFailure, FETCHED_CHARACTERS_FAILURE } from './characte
 export { upsertCharacter, UPSERT_CHARACTER } from './characters/upsertCharacter';
 export { upsertCharacterFailure, UPSERT_CHARACTER_FAILURE } from './characters/upsertCharacterFailure';
 export { upsertCharacterSuccess, UPSERT_CHARACTER_SUCCESS } from './characters/upsertCharacterSuccess';
+export { untrackCharacter, UNTRACK_CHARACTER } from './characters/untrackCharacter';
+export { untrackCharacterSuccess, UNTRACK_CHARACTER_SUCCESS } from './characters/untrackCharacterSuccess';
+export { untrackCharacterFailure, UNTRACK_CHARACTER_FAILURE } from './characters/untrackCharacterFailure';
 
 // Tags
 export { fetchTags, FETCH_TAGS } from './tags/fetchTags';

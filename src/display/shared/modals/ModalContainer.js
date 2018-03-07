@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, upsertThread, upsertCharacter } from '../../../infrastructure/actions';
+import { closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter } from '../../../infrastructure/actions';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
@@ -19,11 +19,14 @@ const propTypes = {
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
+	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
 	threadToEdit: PropTypes.shape({}),
 	untrackThread: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
-	upsertCharacter: PropTypes.func.isRequired
+	upsertCharacter: PropTypes.func.isRequired,
+	untrackCharacter: PropTypes.func.isRequired,
+	closeUntrackCharacterModal: PropTypes.func.isRequired
 };
 
 const defaultProps = {
@@ -43,6 +46,7 @@ function mapStateToProps(state) {
 		isUntrackThreadModalOpen: ui.isUntrackThreadModalOpen,
 		isBulkUntrackThreadsModalOpen: ui.isBulkUntrackThreadsModalOpen,
 		isUpsertThreadModalOpen: ui.isUpsertThreadModalOpen,
+		isUntrackCharacterModalOpen: ui.isUntrackCharacterModalOpen,
 		characterToEdit,
 		characters,
 		threadToEdit,
@@ -56,6 +60,7 @@ const ModalContainer = (props) => {
 		isUpsertCharacterModalOpen,
 		isUntrackThreadModalOpen,
 		isBulkUntrackThreadsModalOpen,
+		isUntrackCharacterModalOpen,
 		characterToEdit,
 		characters,
 		threadToEdit,
@@ -96,6 +101,16 @@ const ModalContainer = (props) => {
 				headerText="Confirm Thread Untracking"
 				bodyText={`Are you sure you want to untrack ${bulkThreadsToEdit.length} threads?`}
 			/>
+			<GenericConfirmationModal
+				isModalOpen={isUntrackCharacterModalOpen}
+				submitCallback={props.untrackCharacter}
+				submitButtonText="Untrack"
+				closeCallback={props.closeUntrackCharacterModal}
+				closeButtonText="Cancel"
+				data={characterToEdit}
+				headerText="Confirm Character Untracking"
+				bodyText={`Are you sure you want to untrack ${characterToEdit.characterName ? characterToEdit.characterName : characterToEdit.urlIdentifier}? This will also untrack all threads associated with this character.`}
+			/>
 		</div>
 	);
 };
@@ -110,5 +125,7 @@ export default connect(mapStateToProps, {
 	closeBulkUntrackThreadsModal,
 	bulkUntrackThreads,
 	upsertThread,
-	upsertCharacter
+	upsertCharacter,
+	untrackCharacter,
+	closeUntrackCharacterModal
 })(ModalContainer);

@@ -7,14 +7,16 @@ import CharacterTableSubComponent from './table-components/CharacterTableSubComp
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
-	toggleCharacterIsOnHiatus: PropTypes.func.isRequired
+	toggleCharacterIsOnHiatus: PropTypes.func.isRequired,
+	openUntrackCharacterModal: PropTypes.func.isRequired
 };
 
 const CurrentCharacterTable = (props) => {
 	const {
 		characters,
 		openUpsertCharacterModal,
-		toggleCharacterIsOnHiatus
+		toggleCharacterIsOnHiatus,
+		openUntrackCharacterModal
 	} = props;
 	return (
 		<div className="current-characters-table">
@@ -35,6 +37,7 @@ const CurrentCharacterTable = (props) => {
 							character={row.original}
 							openUpsertCharacterModal={openUpsertCharacterModal}
 							toggleCharacterIsOnHiatus={toggleCharacterIsOnHiatus}
+							openUntrackCharacterModal={openUntrackCharacterModal}
 						/>
 					)
 				}
