@@ -10,7 +10,10 @@ const propTypes = {
 	closeButtonText: PropTypes.string,
 	headerText: PropTypes.string.isRequired,
 	bodyText: PropTypes.string.isRequired,
-	data: PropTypes.shape({}).isRequired
+	data: PropTypes.oneOfType([
+		PropTypes.shape({}),
+		PropTypes.array
+	]).isRequired
 };
 
 const defaultProps = {

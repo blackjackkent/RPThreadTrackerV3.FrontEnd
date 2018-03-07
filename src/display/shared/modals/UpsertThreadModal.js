@@ -10,7 +10,7 @@ const propTypes = {
 	submitUpsertThread: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	threadToEdit: PropTypes.shape({}).isRequired,
-	characters: PropTypes.shape({}).isRequired
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 class UpsertThreadModal extends Component {
@@ -28,7 +28,9 @@ class UpsertThreadModal extends Component {
 	}
 
 	selectCharacter(characterId) {
-		this.setState({ threadToEdit: { ...this.state.threadToEdit, characterId } });
+		if (this.state.threadToEdit.characterId !== characterId) {
+			this.setState({ threadToEdit: { ...this.state.threadToEdit, characterId } });
+		}
 	}
 
 	handleInputChange(event) {

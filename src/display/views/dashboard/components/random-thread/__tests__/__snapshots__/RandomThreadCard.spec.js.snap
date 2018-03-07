@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Card
+  className="random-thread-generator-card"
+  data-spec="random-thread-generator-card"
+  tag="div"
+>
+  <CardHeader
+    data-spec="random-thread-generator-header"
+    tag="div"
+  >
+    <i
+      className="fas fa-random"
+      data-spec="random-thread-generator-icon"
+    />
+     Random Thread Generator
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <button
+      className="btn btn-primary"
+      data-spec="random-thread-generator-button"
+      onClick={[MockFunction]}
+    >
+      Generate
+    </button>
+    <RandomThreadDisplay
+      data-spec="random-thread-display"
+      threadData={
+        Object {
+          "status": Object {},
+          "thread": Object {
+            "userTitle": "Test Title",
+          },
+        }
+      }
+    />
+  </CardBlock>
+</Card>
+`;
