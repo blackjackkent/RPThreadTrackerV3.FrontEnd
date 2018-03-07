@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { buildThreadDataByPredicate } from '../common';
 
 function sortByLastPostDate(a, b) {
 	return new Date(b.status.LastPostDate) - new Date(a.status.LastPostDate);
@@ -11,12 +12,11 @@ const getRecentActivity = createSelector(
 		if (!threads.length || !threadsStatus.length) {
 			return [];
 		}
-		let results = [];
-		const statuses = threadsStatus.filter(s => s.IsCallingCharactersTurn && !s.IsQueued);
-		results = results.concat(statuses.map((s) => {
-			const thread = threads.find(t => t.postId === s.PostId);
-			return { thread, status: s };
-		}));
+		let results = buildThreadDataByPredicate(
+			threads,
+			threadsStatus,
+			s => s.IsCallingCharactersTurn && !s.IsQueued
+		);
 		results = results.sort(sortByLastPostDate);
 		return results.slice(0, 5);
 	}
