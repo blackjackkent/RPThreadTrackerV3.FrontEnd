@@ -71,6 +71,9 @@ export { fetchedNewsSuccess, FETCHED_NEWS_SUCCESS } from './news/fetchedNewsSucc
 export { fetchCharacters, FETCH_CHARACTERS } from './characters/fetchCharacters';
 export { fetchedCharactersSuccess, FETCHED_CHARACTERS_SUCCESS } from './characters/fetchedCharactersSuccess';
 export { fetchedCharactersFailure, FETCHED_CHARACTERS_FAILURE } from './characters/fetchedCharactersFailure';
+export { upsertCharacter, UPSERT_CHARACTER } from './characters/upsertCharacter';
+export { upsertCharacterFailure, UPSERT_CHARACTER_FAILURE } from './characters/upsertCharacterFailure';
+export { upsertCharacterSuccess, UPSERT_CHARACTER_SUCCESS } from './characters/upsertCharacterSuccess';
 
 // Tags
 export { fetchTags, FETCH_TAGS } from './tags/fetchTags';

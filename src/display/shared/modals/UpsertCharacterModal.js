@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { upsertCharacterValidator } from '../../../infrastructure/validators';
 
 const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
@@ -9,76 +11,109 @@ const propTypes = {
 	characterToEdit: PropTypes.shape({}).isRequired
 };
 
-const UpsertCharacterModal = (props) => {
-	const {
-		isUpsertCharacterModalOpen,
-		submitUpsertCharacter,
-		closeUpsertCharacterModal,
-		characterToEdit
-	} = props;
-	if (!characterToEdit) {
-		return (
-			<div />
-		);
+class UpsertCharacterModal extends React.Component {
+	constructor() {
+		super();
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.state = {
+			characterToEdit: {
+				characterName: '',
+				platformId: 1,
+				urlIdentifier: ''
+			}
+		};
 	}
-	return (
-		<Modal isOpen={isUpsertCharacterModalOpen} toggle={closeUpsertCharacterModal} backdrop>
-			<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
-			<ModalBody>
-				<Form>
-					<FormGroup row>
-						<Col>
-							<Label htmlFor="character-name">Character Name:</Label>
-							<Input
-								type="text"
-								id="character-name"
-								name="character-name"
-								value={characterToEdit.characterName}
-								placeholder="Enter Character Name"
-							/>
-						</Col>
-					</FormGroup>
-					<FormGroup row>
-						<Col>
-							<Label htmlFor="character-platform">Platform:</Label>
-							<Input
-								disabled
-								type="select"
-								name="character-platform"
-								id="character-platform"
-								value={characterToEdit.platform ? characterToEdit.platform.platformId : 1}
-							>
-								<option value={1}>Tumblr</option>
-							</Input>
-						</Col>
-					</FormGroup>
-					<FormGroup row>
-						<Col>
-							<Label htmlFor="character-url-identifier">Character URL Identifier:</Label>
-							<Input
-								type="text"
-								id="character-url-identifier"
-								name="character-url-identifier"
-								placeholder="Enter URL Identifier"
-								value={characterToEdit.urlIdentifier}
-							/>
-							<FormText>
-								For a Tumblr account, this will be the part of your URL before
-								&quot;.tumblr.com&quot;. For instance, if your URL is
-								<strong>http://myawesomeblog.tumblr.com</strong>, you would enter
-								<strong>myawesomeblog</strong> in this field.
-							</FormText>
-						</Col>
-					</FormGroup>
-				</Form>
-			</ModalBody>
-			<ModalFooter>
-				<Button color="primary" onClick={submitUpsertCharacter}>Do Something</Button>{' '}
-				<Button color="secondary" onClick={closeUpsertCharacterModal}>Cancel</Button>
-			</ModalFooter>
-		</Modal>
-	);
-};
+
+	componentWillReceiveProps(nextProps) {
+		const { characterToEdit } = nextProps;
+		this.setState({ characterToEdit: Object.assign({}, this.state.characterToEdit, characterToEdit) });
+	}
+
+	handleInputChange(event) {
+		const { target } = event;
+		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const { name } = target;
+		this.setState({
+			characterToEdit: Object.assign({}, this.state.characterToEdit, {
+				[name]: value
+			})
+		});
+	}
+	render() {
+		const {
+			isUpsertCharacterModalOpen,
+			submitUpsertCharacter,
+			closeUpsertCharacterModal,
+			characterToEdit
+		} = this.props;
+		if (!characterToEdit) {
+			return (
+				<div />
+			);
+		}
+		return (
+			<Modal isOpen={isUpsertCharacterModalOpen} toggle={closeUpsertCharacterModal} backdrop>
+				<AvForm onValidSubmit={() => submitUpsertCharacter(this.state.characterToEdit)}>
+					<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
+					<ModalBody>
+						<Row>
+							<Col>
+								<AvField
+									name="characterName"
+									placeholder="Character Name"
+									label="Character Name"
+									type="text"
+									value={this.state.characterToEdit.characterName}
+									onChange={this.handleInputChange}
+									validate={upsertCharacterValidator.characterName}
+								/>
+							</Col>
+						</Row>
+						<FormGroup row>
+							<Col>
+								<Label htmlFor="character-platform">Platform:</Label>
+								<Input
+									disabled
+									type="select"
+									name="character-platform"
+									id="character-platform"
+									value={characterToEdit.platformId}
+								>
+									<option value={1}>Tumblr</option>
+								</Input>
+							</Col>
+						</FormGroup>
+						<Row>
+							<Col>
+								<AvField
+									name="urlIdentifier"
+									placeholder="Character URL Identifier"
+									label="Character URL Identifier"
+									type="text"
+									value={this.state.characterToEdit.urlIdentifier}
+									onChange={this.handleInputChange}
+									validate={upsertCharacterValidator.urlIdentifier}
+									helpMessage={[
+										'For a Tumblr account, this will be the part of your URL before ',
+										'".tumblr.com". For instance, if your URL is ',
+										<strong>http://myawesomeblog.tumblr.com</strong>,
+										' you would enter ',
+										<strong>myawesomeblog</strong>,
+										' in this field.'
+									]}
+								/>
+							</Col>
+						</Row>
+					</ModalBody>
+					<ModalFooter>
+						<Button color="primary">Submit Character</Button>{' '}
+						<Button color="secondary" onClick={closeUpsertCharacterModal}>Cancel</Button>
+					</ModalFooter>
+				</AvForm>
+			</Modal>
+		);
+	};
+}
 
 UpsertCharacterModal.propTypes = propTypes;
 

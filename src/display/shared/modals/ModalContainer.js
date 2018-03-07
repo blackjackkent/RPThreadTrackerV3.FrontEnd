@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, upsertThread } from '../../../infrastructure/actions';
+import { closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, upsertThread, upsertCharacter } from '../../../infrastructure/actions';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
@@ -22,7 +22,8 @@ const propTypes = {
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
 	threadToEdit: PropTypes.shape({}),
 	untrackThread: PropTypes.func.isRequired,
-	upsertThread: PropTypes.func.isRequired
+	upsertThread: PropTypes.func.isRequired,
+	upsertCharacter: PropTypes.func.isRequired
 };
 
 const defaultProps = {
@@ -72,6 +73,7 @@ const ModalContainer = (props) => {
 			<UpsertCharacterModal
 				isUpsertCharacterModalOpen={isUpsertCharacterModalOpen}
 				closeUpsertCharacterModal={props.closeUpsertCharacterModal}
+				submitUpsertCharacter={props.upsertCharacter}
 				characterToEdit={characterToEdit}
 			/>
 			<GenericConfirmationModal
@@ -107,5 +109,6 @@ export default connect(mapStateToProps, {
 	untrackThread,
 	closeBulkUntrackThreadsModal,
 	bulkUntrackThreads,
-	upsertThread
+	upsertThread,
+	upsertCharacter
 })(ModalContainer);

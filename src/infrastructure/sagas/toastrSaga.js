@@ -5,7 +5,9 @@ import {
 	FETCHED_ACTIVE_THREADS_SUCCESS,
 	UNTRACK_THREAD_FAILURE,
 	UPSERT_THREAD_FAILURE,
-	UPSERT_THREAD_SUCCESS
+	UPSERT_THREAD_SUCCESS,
+	UPSERT_CHARACTER_FAILURE,
+	UPSERT_CHARACTER_SUCCESS
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -23,9 +25,18 @@ function displayUpdateThreadError() {
 	toastr.error('There was a problem updating your thread.');
 }
 
+function displayUpdateCharacterError() {
+	toastr.error('There was a problem updating your character.');
+}
+
 function displayUpdateThreadSuccess(action) {
 	const thread = action.data;
 	toastr.success(`Successfully updated thread with title ${thread.userTitle}.`);
+}
+
+function displayUpdateCharacterSuccess(action) {
+	const character = action.data;
+	toastr.success(`Successfully updated character ${character.characterName ? character.characterName : character.urlIdentifier}`);
 }
 
 export default function* fetchActiveThreadsSaga() {
@@ -33,6 +44,8 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
 		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError),
 		takeEvery(UPSERT_THREAD_FAILURE, displayUpdateThreadError),
-		takeEvery(UPSERT_THREAD_SUCCESS, displayUpdateThreadSuccess)
+		takeEvery(UPSERT_THREAD_SUCCESS, displayUpdateThreadSuccess),
+		takeEvery(UPSERT_CHARACTER_FAILURE, displayUpdateCharacterError),
+		takeEvery(UPSERT_CHARACTER_SUCCESS, displayUpdateCharacterSuccess)
 	]);
 }

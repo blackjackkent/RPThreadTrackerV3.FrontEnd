@@ -18,7 +18,8 @@ import {
 	SUBMIT_USER_LOGOUT,
 	UNTRACK_THREAD,
 	BULK_UNTRACK_THREADS,
-	UPSERT_THREAD
+	UPSERT_THREAD,
+	UPSERT_CHARACTER
 } from '../actions';
 
 const defaultState = {
@@ -64,6 +65,7 @@ function ui(state = defaultState, action) {
 				isUpsertCharacterModalOpen: true
 			});
 		case CLOSE_UPSERT_CHARACTER_MODAL:
+		case UPSERT_CHARACTER:
 			return Object.assign({}, state, {
 				isUpsertCharacterModalOpen: false
 			});
