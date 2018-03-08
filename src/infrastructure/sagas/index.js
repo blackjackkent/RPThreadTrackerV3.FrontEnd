@@ -22,4 +22,5 @@ export { default as upsertCharacterSaga } from './characters/upsertCharacterSaga
 export { default as untrackCharacterSaga } from './characters/untrackCharacterSaga';
 
 export { default as toastrSaga } from './toastrSaga';
+export { default as logoutSaga } from './logoutSaga';
 
