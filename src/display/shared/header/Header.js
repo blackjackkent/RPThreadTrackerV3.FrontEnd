@@ -57,10 +57,21 @@ const Header = (props) => {
 			</NavbarToggler>
 			<Nav className="d-md-down-none ml-4" navbar>
 				<NavItem>
-					<Button color="primary" onClick={() => openUpsertCharacterModal({})}>Add Character</Button>
+					<Button
+						color="primary"
+						onClick={() => openUpsertCharacterModal({})}
+					>
+						Add Character
+					</Button>
 				</NavItem>
 				<NavItem>
-					<Button className="ml-4" color="primary" onClick={() => openNewThreadModal({})}> Track New Thread</Button>
+					<Button
+						className="ml-4"
+						color="primary"
+						onClick={() => openNewThreadModal({})}
+					>
+						Track New Thread
+					</Button>
 				</NavItem>
 				{threadsLoading && <LoadingIndicator className="invert" />}
 			</Nav>

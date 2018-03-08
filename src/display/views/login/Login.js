@@ -4,7 +4,7 @@ import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { loginValidator } from '../../../infrastructure/validators';
+import { loginValidator } from '../../forms/validators';
 import { submitUserLogin } from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 

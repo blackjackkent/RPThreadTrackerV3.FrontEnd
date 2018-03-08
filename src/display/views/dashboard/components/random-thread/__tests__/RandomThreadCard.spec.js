@@ -15,7 +15,8 @@ const createTestProps = propOverrides => ({
 
 describe('rendering', () => {
 	it('should render valid snapshot', () => {
-		const jsx = (<RandomThreadCard {...createTestProps() } />);
+		const props = createTestProps();
+		const jsx = (<RandomThreadCard {...props} />);
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});

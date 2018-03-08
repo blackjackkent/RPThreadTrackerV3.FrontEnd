@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import 'simple-line-icons/css/simple-line-icons.css';
 import 'react-redux-toastr/src/styles/index.scss';
+import 'rc-tooltip/assets/bootstrap.css';
 
 import '../scss/style.scss';
 import history from './infrastructure/history';

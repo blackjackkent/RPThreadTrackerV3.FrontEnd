@@ -10,7 +10,12 @@ const propTypes = {
 };
 
 const CharacterTableSubComponent = (props) => {
-	const { character, openUpsertCharacterModal, toggleCharacterIsOnHiatus, openUntrackCharacterModal } = props;
+	const {
+		character,
+		openUpsertCharacterModal,
+		toggleCharacterIsOnHiatus,
+		openUntrackCharacterModal
+	} = props;
 	return (
 		<div className="character-table-sub-component">
 			<span className="control-button">

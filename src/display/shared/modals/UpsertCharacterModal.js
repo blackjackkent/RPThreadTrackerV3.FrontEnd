@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, FormGroup, Label, Input, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { upsertCharacterValidator } from '../../../infrastructure/validators';
+import { upsertCharacterValidator } from '../../forms/validators';
 
 const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
@@ -26,7 +26,9 @@ class UpsertCharacterModal extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		const { characterToEdit } = nextProps;
-		this.setState({ characterToEdit: Object.assign({}, this.state.characterToEdit, characterToEdit) });
+		this.setState({
+			characterToEdit: Object.assign({}, this.state.characterToEdit, characterToEdit)
+		});
 	}
 
 	handleInputChange(event) {
@@ -112,7 +114,7 @@ class UpsertCharacterModal extends React.Component {
 				</AvForm>
 			</Modal>
 		);
-	};
+	}
 }
 
 UpsertCharacterModal.propTypes = propTypes;

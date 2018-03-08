@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { buildThreadDataByPredicate } from '../../common'
+import { buildThreadDataByPredicate } from '../../common';
 
 const getAllActiveThreads = state => state.activeThreads;
 const getAllActiveThreadStatus = state => state.activeThreadsStatus;

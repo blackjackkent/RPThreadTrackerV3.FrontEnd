@@ -1,6 +1,5 @@
 import React from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
-import { AvField } from 'availity-reactstrap-validation';
 import PropTypes from 'prop-types';
 
 const propTypes = {

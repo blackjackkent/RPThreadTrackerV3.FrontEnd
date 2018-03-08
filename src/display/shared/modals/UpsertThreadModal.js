@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, Form, FormGroup, Label, Input, FormText, Button } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, FormGroup, Button } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
+import Tooltip from 'rc-tooltip';
 import CharacterSelect from '../CharacterSelect';
-import { upsertThreadValidator } from '../../../infrastructure/validators';
+import { upsertThreadValidator as validator } from '../../forms/validators';
+import { upsertThread as formData } from '../../forms/displayData';
 
 const propTypes = {
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
@@ -18,13 +20,34 @@ class UpsertThreadModal extends Component {
 		super();
 		this.selectCharacter = this.selectCharacter.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.showTooltip = this.showTooltip.bind(this);
+		this.hideTooltip = this.hideTooltip.bind(this);
 		this.state = {
-			threadToEdit: null
+			threadToEdit: null,
+			displayTooltip: {}
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({ threadToEdit: nextProps.threadToEdit });
+	}
+
+	showTooltip(e) {
+		const { name } = e.target;
+		this.setState({
+			displayTooltip: Object.assign({}, this.state.displayTooltip, {
+				[name]: true
+			})
+		});
+	}
+
+	hideTooltip(e) {
+		const { name } = e.target;
+		this.setState({
+			displayTooltip: Object.assign({}, this.state.displayTooltip, {
+				[name]: false
+			})
+		});
 	}
 
 	selectCharacter(characterId) {
@@ -59,13 +82,19 @@ class UpsertThreadModal extends Component {
 		return (
 			<Modal isOpen={isUpsertThreadModalOpen} toggle={closeUpsertThreadModal} backdrop>
 				<AvForm onValidSubmit={() => submitUpsertThread(this.state.threadToEdit)}>
-					<ModalHeader toggle={closeUpsertThreadModal}>{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add New Thread'}</ModalHeader>
+					<ModalHeader toggle={closeUpsertThreadModal}>
+						{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add New Thread'}
+					</ModalHeader>
 					<ModalBody>
 						<FormGroup row>
 							<Col>
 								<CharacterSelect
 									characters={characters}
-									selectedCharacterId={this.state.threadToEdit ? this.state.threadToEdit.characterId : null}
+									selectedCharacterId={
+										this.state.threadToEdit
+											? this.state.threadToEdit.characterId
+											: null
+									}
 									onSelectCharacter={this.selectCharacter}
 									includeNullValue={false}
 								/>
@@ -80,8 +109,8 @@ class UpsertThreadModal extends Component {
 									type="text"
 									value={this.state.threadToEdit ? this.state.threadToEdit.userTitle : null}
 									onChange={this.handleInputChange}
-									validate={upsertThreadValidator.userTitle}
-									helpMessage="This can be anything you like!"
+									validate={validator.userTitle}
+									helpMessage={formData.userTitle.helpMessage}
 								/>
 							</Col>
 						</Row>
@@ -93,37 +122,35 @@ class UpsertThreadModal extends Component {
 									label="Post ID"
 									type="text"
 									onChange={this.handleInputChange}
-									validate={upsertThreadValidator.postId}
+									validate={validator.postId}
 									value={this.state.threadToEdit ? this.state.threadToEdit.postId : null}
-									helpMessage={[
-										'This must be a post from your blog. The post ID is the ',
-										'part of the URL after ".tumblr.com/post/". For instance, ',
-										'if the post is at the URL ',
-										<strong>http://myawesomeblog.tumblr.com/post/12345</strong>,
-										', you would enter ',
-										<strong>12345</strong>,
-										' in this field.']}
+									helpMessage={formData.postId.helpMessage}
 								/>
 							</Col>
 						</Row>
 						<Row>
 							<Col>
-								<AvField
-									name="partnerUrlIdentifier"
-									placeholder="Partner Url Identifier"
-									label="Partner URL Identifier"
-									type="text"
-									onChange={this.handleInputChange}
-									validate={upsertThreadValidator.partnerUrlIdentifier}
-									value={this.state.threadToEdit ? this.state.threadToEdit.partnerUrlIdentifier : null}
-									helpMessage={[
-										'This will be the part of your partner\'s URL before ',
-										'".tumblr.com". For instance, if their URL is',
-										<strong>http://myawesomeblog.tumblr.com</strong>,
-										', you would enter',
-										<strong>myawesomeblog</strong>,
-										' in this field.']}
-								/>
+								<Tooltip
+									visible={this.state.displayTooltip.partnerUrlIdentifier}
+									overlay={formData.partnerUrlIdentifier.tooltip}
+									overlayStyle={{ width: 300 }}
+									placement="top"
+								>
+									<AvField
+										name="partnerUrlIdentifier"
+										placeholder="Partner Url Identifier"
+										label="Partner URL Identifier (Optional)"
+										type="text"
+										onChange={this.handleInputChange}
+										validate={validator.partnerUrlIdentifier}
+										value={this.state.threadToEdit
+											? this.state.threadToEdit.partnerUrlIdentifier
+											: null}
+										helpMessage={formData.partnerUrlIdentifier.helpMessage}
+										onFocus={this.showTooltip}
+										onBlur={this.hideTooltip}
+									/>
+								</Tooltip>
 							</Col>
 						</Row>
 					</ModalBody>
