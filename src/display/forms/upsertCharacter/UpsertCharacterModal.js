@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Col, Row, FormGroup, Label, Input, Button } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
-import { upsertCharacterValidator } from '../../forms/validators';
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import { AvForm } from 'availity-reactstrap-validation';
+import validator from './_validator';
+import formData from './_formData';
+import UpsertCharacterForm from './UpsertCharacterForm';
+import TooltipForm from '../TooltipForm';
 
 const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
@@ -58,54 +61,13 @@ class UpsertCharacterModal extends React.Component {
 				<AvForm onValidSubmit={() => submitUpsertCharacter(this.state.characterToEdit)}>
 					<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
 					<ModalBody>
-						<Row>
-							<Col>
-								<AvField
-									name="characterName"
-									placeholder="Character Name"
-									label="Character Name"
-									type="text"
-									value={this.state.characterToEdit.characterName}
-									onChange={this.handleInputChange}
-									validate={upsertCharacterValidator.characterName}
-								/>
-							</Col>
-						</Row>
-						<FormGroup row>
-							<Col>
-								<Label htmlFor="character-platform">Platform:</Label>
-								<Input
-									disabled
-									type="select"
-									name="character-platform"
-									id="character-platform"
-									value={characterToEdit.platformId}
-								>
-									<option value={1}>Tumblr</option>
-								</Input>
-							</Col>
-						</FormGroup>
-						<Row>
-							<Col>
-								<AvField
-									name="urlIdentifier"
-									placeholder="Character URL Identifier"
-									label="Character URL Identifier"
-									type="text"
-									value={this.state.characterToEdit.urlIdentifier}
-									onChange={this.handleInputChange}
-									validate={upsertCharacterValidator.urlIdentifier}
-									helpMessage={[
-										'For a Tumblr account, this will be the part of your URL before ',
-										'".tumblr.com". For instance, if your URL is ',
-										<strong>http://myawesomeblog.tumblr.com</strong>,
-										' you would enter ',
-										<strong>myawesomeblog</strong>,
-										' in this field.'
-									]}
-								/>
-							</Col>
-						</Row>
+						<TooltipForm
+							Renderable={UpsertCharacterForm}
+							characterToEdit={characterToEdit}
+							validator={validator}
+							formData={formData}
+							handleInputChange={this.handleInputChange}
+						/>
 					</ModalBody>
 					<ModalFooter>
 						<Button color="primary">Submit Character</Button>{' '}
@@ -118,5 +80,4 @@ class UpsertCharacterModal extends React.Component {
 }
 
 UpsertCharacterModal.propTypes = propTypes;
-
 export default UpsertCharacterModal;

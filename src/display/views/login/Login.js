@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBlock, Button } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
+import { AvForm } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { loginValidator } from '../../forms/validators';
+import LoginForm from '../../forms/login/LoginForm';
 import { submitUserLogin } from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 
@@ -79,20 +78,7 @@ class Login extends Component {
 						<h1>Login</h1>
 						<p className="text-muted">Sign in to RPThreadTracker</p>
 						{error}
-						<AvField
-							name="Username"
-							placeholder="Username"
-							type="text"
-							onChange={this.handleInputChange}
-							validate={loginValidator.username}
-						/>
-						<AvField
-							name="Password"
-							placeholder="Password"
-							type="password"
-							onChange={this.handleInputChange}
-							validate={loginValidator.password}
-						/>
+						<LoginForm handleInputChange={this.handleInputChange} />
 						<Row>
 							<Col xs="6">
 								<Button color="primary" className="px-4">Login</Button>

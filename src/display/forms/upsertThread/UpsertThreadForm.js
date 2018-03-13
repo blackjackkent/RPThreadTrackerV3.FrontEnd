@@ -91,6 +91,9 @@ class UpsertThreadForm extends Component {
 							visible={tooltipDisplayData.partnerUrlIdentifier}
 							overlay={formData.partnerUrlIdentifier.tooltip}
 							overlayStyle={{ width: 300 }}
+							align={{
+								offset: [0, 30]
+							}}
 							placement="top"
 						>
 							<AvField
