@@ -101,7 +101,14 @@ const Header = (props) => {
 								</span>
 							</DropdownItem>
 							<DropdownItem className="hidden-lg-up">
-								Add Character
+								<span
+									role="button"
+									tabIndex="-1"
+									onKeyDown={() => openUpsertCharacterModal({})}
+									onClick={() => openUpsertCharacterModal({})}
+								>
+									Add Character
+								</span>
 							</DropdownItem>
 							<DropdownItem onClick={logout}>
 								Logout
