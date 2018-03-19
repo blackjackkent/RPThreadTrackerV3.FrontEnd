@@ -4,6 +4,7 @@ import { Col, Row, FormGroup } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import CharacterSelect from '../../shared/CharacterSelect';
+import MultipleValueTextInput from '../../shared/MultipleValueTextInput';
 
 const propTypes = {
 	threadToEdit: PropTypes.shape({}).isRequired,
@@ -24,12 +25,35 @@ class UpsertThreadForm extends Component {
 			threadToEdit: {
 				userTitle: '',
 				postId: '',
-				partnerUrlIdentifier: ''
+				partnerUrlIdentifier: '',
+				threadTags: []
 			}
 		};
+		this.handleTagAdded = this.handleTagAdded.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
-		this.setState({ threadToEdit: nextProps.threadToEdit });
+		this.setState({
+			threadToEdit: Object.assign({}, this.state.threadToEdit, nextProps.threadToEdit)
+		});
+	}
+	handleTagAdded(tagValue) {
+		const currentTags = this.state.threadToEdit.threadTags;
+		const newTag = { tagText: tagValue };
+		const newTags = currentTags.concat(newTag);
+		this.setState({
+			threadToEdit: Object.assign({}, this.state.threadToEdit, {
+				threadTags: newTags
+			})
+		});
+	}
+	handleTagRemoved(tagValue) {
+		const currentTags = this.state.threadToEdit.threadTags;
+		const newTags = currentTags.filter(tag => tag.tagText !== tagValue);
+		this.setState({
+			threadToEdit: Object.assign({}, this.state.threadToEdit, {
+				threadTags: newTags
+			})
+		});
 	}
 	render() {
 		const {
@@ -43,6 +67,13 @@ class UpsertThreadForm extends Component {
 			formData,
 			tooltipDisplayData
 		} = this.props;
+		const tagValues = this.state.threadToEdit.threadTags.map(t => t.tagText);
+		let selectedCharacterId = -1;
+		if (this.state.threadToEdit.characterId) {
+			selectedCharacterId = this.state.threadToEdit.characterId;
+		} else if (characters.length) {
+			selectedCharacterId = characters[0].characterId;
+		}
 		if (!threadToEdit) {
 			return (
 				<div />
@@ -54,11 +85,7 @@ class UpsertThreadForm extends Component {
 					<Col>
 						<CharacterSelect
 							characters={characters}
-							selectedCharacterId={
-								this.state.threadToEdit
-									? this.state.threadToEdit.characterId
-									: -1
-							}
+							selectedCharacterId={selectedCharacterId}
 							onSelectCharacter={selectCharacter}
 							includeNullValue={false}
 						/>
@@ -120,6 +147,15 @@ class UpsertThreadForm extends Component {
 						</Tooltip>
 					</Col>
 				</Row>
+				<MultipleValueTextInput
+					values={tagValues}
+					onItemAdded={this.handleTagAdded}
+					onItemDeleted={this.handleTagRemoved}
+					label="Thread Tags"
+					name="threadTags"
+					placeholder="Thread Tags"
+					helpMessage={formData.threadTags.helpMessage}
+				/>
 			</div>
 		);
 	}

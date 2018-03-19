@@ -40,7 +40,6 @@ const CharacterSelect = (props) => {
 				type="select"
 				name="characterId"
 				id="character-id"
-				value={selectedCharacterId}
 				onChange={e => onSelectCharacter(parseInt(e.target.value, 10))}
 			>
 				{includeNullValue && <option value={null}>{defaultText}</option>}

@@ -31,5 +31,8 @@ export default {
 	},
 	userTitle: {
 		helpMessage: 'This can be anything you like!'
+	},
+	threadTags: {
+		helpMessage: 'Enter a comma-separated list of tags. (optional)'
 	}
 };

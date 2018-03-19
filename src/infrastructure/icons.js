@@ -10,6 +10,7 @@ import faFilter from '@fortawesome/fontawesome-free-solid/faFilter';
 import faPowerOff from '@fortawesome/fontawesome-free-solid/faPowerOff';
 import faRandom from '@fortawesome/fontawesome-free-solid/faRandom';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
+import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt';
 import faUsers from '@fortawesome/fontawesome-free-solid/faUsers';
 
@@ -26,6 +27,7 @@ const icons = {
 		fontawesome.library.add(faPowerOff);
 		fontawesome.library.add(faRandom);
 		fontawesome.library.add(faSearch);
+		fontawesome.library.add(faTimes);
 		fontawesome.library.add(faTrashAlt);
 		fontawesome.library.add(faUsers);
 	}
