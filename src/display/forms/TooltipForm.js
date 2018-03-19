@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	Renderable: PropTypes.element.isRequired
+	Renderable: PropTypes.func.isRequired
 };
 
 class TooltipForm extends Component {

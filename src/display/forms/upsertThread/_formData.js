@@ -2,14 +2,14 @@ import React from 'react';
 
 export default {
 	partnerUrlIdentifier: {
-		helpMessage: [
-			'For a Tumblr account, this will be the part of your URL before ',
-			'".tumblr.com". For instance, if your URL is ',
-			<strong>http://myawesomeblog.tumblr.com</strong>,
-			' you would enter ',
-			<strong>myawesomeblog</strong>,
-			' in this field.'
-		],
+		helpMessage: (
+			<span>
+				For a Tumblr account, this will be the part of your URL before{' '}
+				&quot;.tumblr.com&quot;. For instance, if your URL is{' '}
+				<strong>http://myawesomeblog.tumblr.com</strong>, you would enter{' '}
+				<strong>myawesomeblog</strong> in this field.
+			</span>
+		),
 		tooltip: (
 			<div>
 				Make sure you spell this correctly. The tracker will use this value to filter{' '}
@@ -20,15 +20,14 @@ export default {
 		)
 	},
 	postId: {
-		helpMessage: [
-			'This must be a post from your blog. The post ID is the ',
-			'part of the URL after ".tumblr.com/post/". For instance, ',
-			'if the post is at the URL ',
-			<strong>http://myawesomeblog.tumblr.com/post/12345</strong>,
-			', you would enter ',
-			<strong>12345</strong>,
-			' in this field.'
-		]
+		helpMessage: (
+			<span>
+				This must be a post from your blog. The post ID is the part of the URL{' '}
+				after &quot;.tumblr.com/post/&quot;. For instance, if the post is at the URL{' '}
+				<strong>http://myawesomeblog.tumblr.com/post/12345</strong>, you would enter{' '}
+				<strong>12345</strong> in this field.
+			</span>
+		)
 	},
 	userTitle: {
 		helpMessage: 'This can be anything you like!'

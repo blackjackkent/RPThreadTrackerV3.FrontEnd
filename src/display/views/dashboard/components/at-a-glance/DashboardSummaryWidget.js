@@ -7,7 +7,11 @@ const propTypes = {
 	header: PropTypes.number.isRequired,
 	icon: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
-	threadsLoading: PropTypes.bool.isRequired
+	threadsLoading: PropTypes.bool
+};
+
+const defaultProps = {
+	threadsLoading: false
 };
 
 const DashboardSummaryWidget = (props) => {
@@ -33,5 +37,5 @@ const DashboardSummaryWidget = (props) => {
 };
 
 DashboardSummaryWidget.propTypes = propTypes;
-
+DashboardSummaryWidget.defaultProps = defaultProps;
 export default DashboardSummaryWidget;

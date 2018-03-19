@@ -50,7 +50,7 @@ class UpsertThreadForm extends Component {
 							selectedCharacterId={
 								this.state.threadToEdit
 									? this.state.threadToEdit.characterId
-									: null
+									: -1
 							}
 							onSelectCharacter={selectCharacter}
 							includeNullValue={false}

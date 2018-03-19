@@ -13,7 +13,7 @@ const propTypes = {
 	threadCount: PropTypes.number.isRequired
 };
 
-const YourCharactersCard = (props) => {
+const YourCharactersCardRow = (props) => {
 	const { character, threadCount } = props;
 	return (
 		<Row className="your-characters-card-row">
@@ -30,6 +30,6 @@ const YourCharactersCard = (props) => {
 	);
 };
 
-YourCharactersCard.propTypes = propTypes;
+YourCharactersCardRow.propTypes = propTypes;
 
-export default YourCharactersCard;
+export default YourCharactersCardRow;

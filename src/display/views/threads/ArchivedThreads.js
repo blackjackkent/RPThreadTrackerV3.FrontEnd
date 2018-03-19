@@ -10,7 +10,6 @@ const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	threadFilter: PropTypes.shape({}).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 

@@ -6,7 +6,7 @@ import TagFilterSelect from './filter-components/TagFilterSelect';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	threadFilterHiddenToggle: PropTypes.func.isRequired,
 	setFilteredCharacterId: PropTypes.func.isRequired,

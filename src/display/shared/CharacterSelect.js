@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	selectedCharacterId: PropTypes.shape({}),
+	selectedCharacterId: PropTypes.number,
 	onSelectCharacter: PropTypes.func.isRequired,
 	defaultText: PropTypes.string,
 	includeNullValue: PropTypes.bool
 };
 const defaultProps = {
-	selectedCharacterId: null,
+	selectedCharacterId: -1,
 	defaultText: 'Select Character',
 	includeNullValue: true
 };

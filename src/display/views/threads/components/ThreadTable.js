@@ -19,7 +19,7 @@ const propTypes = {
 	rawFilterData: PropTypes.shape({}).isRequired,
 	setFilteredCharacterId: PropTypes.func.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threadFilterHiddenToggle: PropTypes.func.isRequired,
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	toggleThreadIsArchived: PropTypes.func.isRequired,

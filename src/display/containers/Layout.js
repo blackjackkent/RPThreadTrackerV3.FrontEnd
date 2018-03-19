@@ -26,13 +26,14 @@ import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
+	fetchUser: PropTypes.func.isRequired,
+	fetchNews: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string.isRequired
 	}).isRequired,
 	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
 	const {
 		user,
 		news
@@ -41,32 +42,40 @@ function mapStateToProps(state) {
 		user,
 		news
 	};
-}
+};
 class Layout extends Component {
+	constructor() {
+		super();
+		this.isUserLoaded = this.isUserLoaded.bind(this);
+		this.isNewsLoaded = this.isNewsLoaded.bind(this);
+	}
 	componentDidMount() {
-		const { dispatch } = this.props;
-		if (!this.props.user || !this.props.user.id) {
-			dispatch(fetchUser());
+		if (!this.isUserLoaded()) {
+			this.props.fetchUser();
 		}
-		if (!this.props.news || !this.props.news.length) {
-			dispatch(fetchNews());
+		if (!this.isNewsLoaded()) {
+			this.props.fetchNews();
 		}
 	}
+	isUserLoaded() {
+		return this.props.user && this.props.user.id;
+	}
+	isNewsLoaded() {
+		return this.props.news && this.props.news.length;
+	}
 	render() {
-		if (!this.props.user || !this.props.user.id) {
+		if (!this.isUserLoaded()) {
 			return (
-				<div>
-					<LoadingIndicator
-						style={{
-							width: 50,
-							height: 50,
-							position: 'absolute',
-							top: '50%',
-							left: '50%',
-							transform: 'translate(-50%, -50%)'
-						}}
-					/>
-				</div>
+				<LoadingIndicator
+					style={{
+						width: 50,
+						height: 50,
+						position: 'absolute',
+						top: '50%',
+						left: '50%',
+						transform: 'translate(-50%, -50%)'
+					}}
+				/>
 			);
 		}
 		return (
@@ -102,5 +111,7 @@ class Layout extends Component {
 }
 
 Layout.propTypes = propTypes;
-
-export default connect(mapStateToProps)(Layout);
+export default connect(mapStateToProps, {
+	fetchUser,
+	fetchNews
+})(Layout);

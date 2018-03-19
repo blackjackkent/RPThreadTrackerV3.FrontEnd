@@ -30,7 +30,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	threadToEdit: null
+	threadToEdit: {}
 };
 
 function mapStateToProps(state) {
