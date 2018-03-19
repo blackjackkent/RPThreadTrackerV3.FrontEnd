@@ -3,6 +3,21 @@ import platforms from '../../../../infrastructure/constants/platforms';
 
 export default [
 	{
+		expander: true,
+		width: 65,
+		Expander: () =>
+			(
+				<div>
+					<i className="fas fa-cog" />
+				</div>
+			),
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		}
+	},
+	{
 		Header: 'Character Name',
 		accessor: 'characterName',
 		Cell: row => <span className={row.original.isOnHiatus ? 'text-muted' : ''}>{row.value ? row.value : 'Unnamed Character'}</span>
@@ -18,19 +33,5 @@ export default [
 		Header: 'Status',
 		accessor: 'isOnHiatus',
 		Cell: row => <span className={row.original.isOnHiatus ? 'text-muted' : ''}> {row.value ? 'On Hiatus' : 'Active'} </span>
-	}, {
-		expander: true,
-		width: 65,
-		Expander: () =>
-			(
-				<div>
-					<i className="fas fa-cog" />
-				</div>
-			),
-		style: {
-			cursor: 'pointer',
-			textAlign: 'center',
-			userSelect: 'none'
-		}
 	}
 ];

@@ -18,8 +18,18 @@ class UpsertCharacterForm extends Component {
 	constructor() {
 		super();
 		this.state = {
-			characterToEdit: null
+			characterToEdit: {
+				characterName: '',
+				platformId: 1,
+				urlIdentifier: ''
+			}
 		};
+	}
+	componentWillReceiveProps(nextProps) {
+		const { characterToEdit } = nextProps;
+		this.setState({
+			characterToEdit: Object.assign({}, this.state.characterToEdit, characterToEdit)
+		});
 	}
 	render() {
 		const {
@@ -45,7 +55,7 @@ class UpsertCharacterForm extends Component {
 							placeholder="Character Name"
 							label="Character Name"
 							type="text"
-							value={this.state.characterToEdit ? this.state.characterToEdit.characterName : ''}
+							value={this.state.characterToEdit.characterName ? this.state.characterToEdit.characterName : ''}
 							onChange={handleInputChange}
 							validate={validator.characterName}
 						/>
@@ -81,7 +91,7 @@ class UpsertCharacterForm extends Component {
 								placeholder="Character URL Identifier"
 								label="Character URL Identifier"
 								type="text"
-								value={this.state.characterToEdit ? this.state.characterToEdit.urlIdentifier : ''}
+								value={this.state.characterToEdit.urlIdentifier ? this.state.characterToEdit.urlIdentifier : ''}
 								onChange={handleInputChange}
 								validate={validator.urlIdentifier}
 								helpMessage={formData.urlIdentifier.helpMessage}

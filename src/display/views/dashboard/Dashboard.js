@@ -157,13 +157,13 @@ class Dashboard extends Component {
 					</Col>
 				</Row>
 				<Row>
-					<Col md="6">
+					<Col md="6" xs="12">
 						<RandomThreadCard
 							generateRandomThread={this.generateRandomThread}
 							randomThread={randomThread}
 						/>
 					</Col>
-					<Col md="6">
+					<Col md="6" xs="12">
 						<TrackerSupportCard />
 					</Col>
 				</Row>

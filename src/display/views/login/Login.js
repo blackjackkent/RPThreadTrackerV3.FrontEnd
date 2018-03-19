@@ -10,7 +10,10 @@ import LoadingIndicator from '../../shared/LoadingIndicator';
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	displayLoadingIndicator: PropTypes.bool.isRequired,
-	loginError: PropTypes.string.isRequired
+	loginError: PropTypes.string
+};
+const defaultProps = {
+	loginError: ''
 };
 
 const mapStateToProps = (state) => {
@@ -96,4 +99,5 @@ class Login extends Component {
 	}
 }
 Login.propTypes = propTypes;
+Login.defaultProps = defaultProps;
 export default connect(mapStateToProps)(Login);

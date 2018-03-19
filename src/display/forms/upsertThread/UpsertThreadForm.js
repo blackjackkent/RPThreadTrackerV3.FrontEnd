@@ -21,8 +21,15 @@ class UpsertThreadForm extends Component {
 	constructor() {
 		super();
 		this.state = {
-			threadToEdit: null
+			threadToEdit: {
+				userTitle: '',
+				postId: '',
+				partnerUrlIdentifier: ''
+			}
 		};
+	}
+	componentWillReceiveProps(nextProps) {
+		this.setState({ threadToEdit: nextProps.threadToEdit });
 	}
 	render() {
 		const {
@@ -64,7 +71,7 @@ class UpsertThreadForm extends Component {
 							placeholder="Thread Title"
 							label="Thread Title"
 							type="text"
-							value={this.state.threadToEdit ? this.state.threadToEdit.userTitle : null}
+							value={this.state.threadToEdit.userTitle ? this.state.threadToEdit.userTitle : ''}
 							onChange={handleInputChange}
 							validate={validator.userTitle}
 							helpMessage={formData.userTitle.helpMessage}
@@ -80,7 +87,7 @@ class UpsertThreadForm extends Component {
 							type="text"
 							onChange={handleInputChange}
 							validate={validator.postId}
-							value={this.state.threadToEdit ? this.state.threadToEdit.postId : null}
+							value={this.state.threadToEdit.postId ? this.state.threadToEdit.postId : ''}
 							helpMessage={formData.postId.helpMessage}
 						/>
 					</Col>
@@ -103,9 +110,9 @@ class UpsertThreadForm extends Component {
 								type="text"
 								onChange={handleInputChange}
 								validate={validator.partnerUrlIdentifier}
-								value={this.state.threadToEdit
+								value={this.state.threadToEdit.partnerUrlIdentifier
 									? this.state.threadToEdit.partnerUrlIdentifier
-									: null}
+									: ''}
 								helpMessage={formData.partnerUrlIdentifier.helpMessage}
 								onFocus={showTooltip}
 								onBlur={hideTooltip}

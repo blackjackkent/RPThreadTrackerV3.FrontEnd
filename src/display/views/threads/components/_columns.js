@@ -28,7 +28,18 @@ const getColumns = () => [
 	}, {
 		Header: 'Last Poster',
 		accessor: 'status.LastPosterUrlIdentifier',
-		Cell: row => <a target="_blank" href={row.original.status && row.original.status.LastPostUrl}> {row.value} <i className="fas fa-external-link-alt" /></a>,
+		Cell: row => (
+			<span>
+				{row.value &&
+					<a
+						target="_blank"
+						href={row.original.status && row.original.status.LastPostUrl}
+					>
+						{row.value} <i className="fas fa-external-link-alt" />
+					</a>
+				}
+			</span>
+		),
 		minWidth: 250,
 		filterable: false
 	}, {
