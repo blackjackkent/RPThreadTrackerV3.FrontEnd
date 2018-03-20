@@ -18,13 +18,7 @@ class UpsertCharacterModal extends React.Component {
 	constructor() {
 		super();
 		this.handleInputChange = this.handleInputChange.bind(this);
-		this.state = {
-			characterToEdit: {
-				characterName: '',
-				platformId: 1,
-				urlIdentifier: ''
-			}
-		};
+		this.state = {};
 	}
 
 	componentWillReceiveProps(nextProps) {

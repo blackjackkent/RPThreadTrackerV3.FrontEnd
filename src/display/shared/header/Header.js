@@ -59,7 +59,7 @@ const Header = (props) => {
 				<NavItem>
 					<Button
 						color="primary"
-						onClick={() => openUpsertCharacterModal({})}
+						onClick={() => openUpsertCharacterModal(null)}
 					>
 						Add Character
 					</Button>
