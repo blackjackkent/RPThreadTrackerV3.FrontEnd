@@ -92,7 +92,7 @@ class HeaderContainer extends Component {
 
 	openNewThreadModal() {
 		const { dispatch } = this.props;
-		dispatch(openUpsertThreadModal({}));
+		dispatch(openUpsertThreadModal(null));
 	}
 
 	logout() {

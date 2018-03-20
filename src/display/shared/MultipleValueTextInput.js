@@ -26,6 +26,7 @@ class MultipleValueTextInput extends Component {
 		};
 		this.handleKeypress = this.handleKeypress.bind(this);
 		this.handleValueChange = this.handleValueChange.bind(this);
+		this.handleItemRemove = this.handleItemRemove.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
 		const { values } = nextProps;
@@ -49,8 +50,7 @@ class MultipleValueTextInput extends Component {
 	handleValueChange(e) {
 		this.setState({ value: e.target.value });
 	}
-	handleItemRemove(e) {
-		const { value } = e.target.data;
+	handleItemRemove(value) {
 		this.props.onItemDeleted(value);
 		const currentValues = this.state.values;
 		const newValues = currentValues.filter(v => v !== value);
@@ -65,15 +65,19 @@ class MultipleValueTextInput extends Component {
 		if (values) {
 			for (let i = 0; i < values.length; i++) {
 				const element = (
-					<span className="multiple-value-text-input-item" data-value={values[i]} key={`input-values-${i}`}>
+					<span className="multiple-value-text-input-item" key={`input-values-${i}`}>
 						{values[i]}{' '}
-						<i
-							className="fas fa-times"
+						<span
+							data-value={values[i]}
 							tabIndex="-1"
 							role="button"
-							onKeyPress={this.onItemDeleted}
-							onClick={() => onItemDeleted(values[i])}
-						/>
+							onKeyPress={() => this.handleItemRemove(values[i])}
+							onClick={() => this.handleItemRemove(values[i])}
+						>
+							<i
+								className="fas fa-times"
+							/>
+						</span>
 					</span>
 				);
 				valueDisplays.push(element);

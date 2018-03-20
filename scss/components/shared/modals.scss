@@ -11,5 +11,8 @@
 		background: $gray-100;
 		padding: .3rem .5rem;
 		margin-right: .5rem;
+		> span {
+			cursor: pointer;
+		}
 	}
 }

@@ -20,13 +20,25 @@ class UpsertThreadModal extends Component {
 		super();
 		this.selectCharacter = this.selectCharacter.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleTagAdded = this.handleTagAdded.bind(this);
+		this.handleTagRemoved = this.handleTagRemoved.bind(this);
+		this.getTagValues = this.getTagValues.bind(this);
 		this.state = {
-			threadToEdit: null
+			threadToEdit: {}
 		};
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({ threadToEdit: nextProps.threadToEdit });
+		const threadToEdit = this.getInitialThreadData(nextProps);
+		this.setState({ threadToEdit });
+	}
+
+	getInitialThreadData(nextProps) {
+		const { threadToEdit, characters } = nextProps;
+		if (!threadToEdit.characterId && characters.length) {
+			threadToEdit.characterId = characters[0].characterId;
+		}
+		return threadToEdit;
 	}
 
 	selectCharacter(characterId) {
@@ -45,6 +57,35 @@ class UpsertThreadModal extends Component {
 			})
 		});
 	}
+
+	handleTagAdded(tagValue) {
+		const currentTags = this.state.threadToEdit.threadTags;
+		const newTag = { tagText: tagValue };
+		const newTags = currentTags.concat(newTag);
+		this.setState({
+			threadToEdit: Object.assign({}, this.state.threadToEdit, {
+				threadTags: newTags
+			})
+		});
+	}
+
+	handleTagRemoved(tagValue) {
+		const currentTags = this.state.threadToEdit.threadTags;
+		const newTags = currentTags.filter(tag => tag.tagText !== tagValue);
+		this.setState({
+			threadToEdit: Object.assign({}, this.state.threadToEdit, {
+				threadTags: newTags
+			})
+		});
+	}
+
+	getTagValues() {
+		if (!this.state.threadToEdit.threadTags) {
+			return [];
+		}
+		return this.state.threadToEdit.threadTags.map(t => t.tagText);
+	}
+
 	render() {
 		const {
 			isUpsertThreadModalOpen,
@@ -73,10 +114,13 @@ class UpsertThreadModal extends Component {
 							characters={characters}
 							selectCharacter={this.selectCharacter}
 							handleInputChange={this.handleInputChange}
+							handleTagAdded={this.handleTagAdded}
+							handleTagRemoved={this.handleTagRemoved}
+							tagValues={this.getTagValues()}
 						/>
 					</ModalBody>
 					<ModalFooter>
-						<Button color="primary">{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add Thread'}</Button>{' '}
+						<Button color="primary">{threadToEdit.threadId ? 'Edit Thread' : 'Add Thread'}</Button>{' '}
 						<Button color="secondary" onClick={closeUpsertThreadModal}>Cancel</Button>
 					</ModalFooter>
 				</AvForm>

@@ -21,16 +21,12 @@ const propTypes = {
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
 	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
-	threadToEdit: PropTypes.shape({}),
+	threadToEdit: PropTypes.shape({}).isRequired,
 	untrackThread: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
 	upsertCharacter: PropTypes.func.isRequired,
 	untrackCharacter: PropTypes.func.isRequired,
 	closeUntrackCharacterModal: PropTypes.func.isRequired
-};
-
-const defaultProps = {
-	threadToEdit: {}
 };
 
 function mapStateToProps(state) {
@@ -116,7 +112,6 @@ const ModalContainer = (props) => {
 };
 
 ModalContainer.propTypes = propTypes;
-ModalContainer.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	closeUpsertThreadModal,
 	closeUntrackThreadModal,
