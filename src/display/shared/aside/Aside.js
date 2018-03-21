@@ -1,6 +1,8 @@
+// #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
 import AsideNewsRow from './AsideNewsRow';
+// #endregion imports
 
 const propTypes = {
 	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired

@@ -6,7 +6,10 @@ function userSettings(state = defaultState, action) {
 		case FETCHED_USER_SETTINGS_SUCCESS:
 		case UPDATED_USER_SETTINGS_SUCCESS:
 		case UPDATE_USER_SETTINGS:
-			return Object.assign({}, state, action.data);
+			if (!action.shouldSkipViewUpdate) {
+				return Object.assign({}, state, action.data);
+			}
+			return state;
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;
 		default:

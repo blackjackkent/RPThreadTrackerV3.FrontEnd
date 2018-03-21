@@ -1,5 +1,7 @@
+// #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
+// #endregion imports
 
 const propTypes = {
 	threadData: PropTypes.shape({}).isRequired

@@ -85,7 +85,7 @@ const Header = (props) => {
 					</NavLink>
 				</NavItem>
 				<NavItem>
-					<Dropdown isOpen={isHeaderDropdownOpen} toggle={headerDropdownToggle}>
+					<Dropdown isOpen={isHeaderDropdownOpen} toggle={() => headerDropdownToggle(!isHeaderDropdownOpen)}>
 						<DropdownToggle className="nav-link dropdown-toggle">
 							<span className="d-md-down-none">{user ? user.userName : ''}</span>
 						</DropdownToggle>

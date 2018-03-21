@@ -72,7 +72,7 @@ class HeaderContainer extends Component {
 		dispatch(toggleNewsAside());
 		dispatch(updateUserSettings({
 			lastNewsReadDate: new Date(Date.now())
-		}));
+		}, !this.props.isNewsAsideOpen));
 	}
 
 	mobileSidebarToggle() {
@@ -80,9 +80,9 @@ class HeaderContainer extends Component {
 		dispatch(toggleMobileSidebar());
 	}
 
-	headerDropdownToggle() {
+	headerDropdownToggle(value) {
 		const { dispatch } = this.props;
-		dispatch(toggleHeaderDropdown());
+		dispatch(toggleHeaderDropdown(value));
 	}
 
 	openUpsertCharacterModal(character) {

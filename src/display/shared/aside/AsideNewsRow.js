@@ -1,11 +1,9 @@
-
-
+// #region imports
 import React from 'react';
-import {
-	Badge
-} from 'reactstrap';
+import { Badge } from 'reactstrap';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
+// #endregion imports
 
 const propTypes = {
 	item: PropTypes.shape({}).isRequired

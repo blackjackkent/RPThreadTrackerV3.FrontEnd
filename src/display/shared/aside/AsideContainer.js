@@ -1,8 +1,10 @@
+// #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Aside from './Aside';
 import { markUnreadNews } from '../../../infrastructure/selectors';
+// #endregion imports
 
 const propTypes = {
 	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired

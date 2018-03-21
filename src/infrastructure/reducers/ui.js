@@ -58,7 +58,7 @@ function ui(state = defaultState, action) {
 			});
 		case TOGGLE_HEADER_DROPDOWN:
 			return Object.assign({}, state, {
-				isHeaderDropdownOpen: !state.isHeaderDropdownOpen
+				isHeaderDropdownOpen: action.data
 			});
 		case TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN:
 			return Object.assign({}, state, {

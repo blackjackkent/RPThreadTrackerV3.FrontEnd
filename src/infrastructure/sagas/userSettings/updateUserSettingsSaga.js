@@ -14,7 +14,9 @@ function* updateUserProfileSettings(action) {
 		const newState = Object.assign({}, current, action.data);
 		yield call(axios.put, `${API_BASE_URL}api/profilesettings`, newState);
 		cache.set('userSettings', newState);
-		yield put(updatedUserSettingsSuccess(newState));
+		if (!action.shouldSkipViewUpdate) {
+			yield put(updatedUserSettingsSuccess(newState));
+		}
 	} catch (e) {
 		yield put(updatedUserSettingsFailure());
 	}

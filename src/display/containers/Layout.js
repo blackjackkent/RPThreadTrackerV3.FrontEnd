@@ -1,3 +1,4 @@
+// #region imports
 import React, { Component } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -24,6 +25,7 @@ import ManageCharacters from '../views/characters/ManageCharacters';
 import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
+// #endregion imports
 
 const propTypes = {
 	fetchUser: PropTypes.func.isRequired,
@@ -63,21 +65,21 @@ class Layout extends Component {
 	isNewsLoaded() {
 		return this.props.news && this.props.news.length;
 	}
-	render() {
-		if (!this.isUserLoaded()) {
-			return (
-				<LoadingIndicator
-					style={{
-						width: 50,
-						height: 50,
-						position: 'absolute',
-						top: '50%',
-						left: '50%',
-						transform: 'translate(-50%, -50%)'
-					}}
-				/>
-			);
-		}
+	showLoadingIndicator() {
+		return (
+			<LoadingIndicator
+				style={{
+					width: 50,
+					height: 50,
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)'
+				}}
+			/>
+		);
+	}
+	showLayout() {
 		return (
 			<div className="app">
 				<ReduxToastr />
@@ -107,6 +109,12 @@ class Layout extends Component {
 				<ModalContainer />
 			</div>
 		);
+	}
+	render() {
+		if (!this.isUserLoaded()) {
+			return this.showLoadingIndicator();
+		}
+		return this.showLayout();
 	}
 }
 
