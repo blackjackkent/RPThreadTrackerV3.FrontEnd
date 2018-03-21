@@ -1,3 +1,4 @@
+// #region imports
 import {
 	BULK_UNTRACK_THREADS,
 	CLOSE_BULK_UNTRACK_THREADS_MODAL,
@@ -24,6 +25,7 @@ import {
 	UPSERT_CHARACTER,
 	UPSERT_THREAD
 } from '../actions';
+// #endregion imports
 
 const defaultState = {
 	isNewsAsideOpen: false,

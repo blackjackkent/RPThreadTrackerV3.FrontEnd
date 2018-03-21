@@ -1,6 +1,5 @@
 import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
-import cache from '../../cache';
 
 import {
 	UPSERT_THREAD,
@@ -16,8 +15,6 @@ import {
 function* updateThread(thread) {
 	try {
 		yield call(axios.put, `${API_BASE_URL}api/thread/${thread.threadId}`, thread);
-		cache.clearKey('activeThreads');
-		cache.clearKey('archivedThreads');
 		yield all([
 			put(upsertThreadSuccess(thread)),
 			put(fetchActiveThreads()),
@@ -31,8 +28,6 @@ function* updateThread(thread) {
 function* insertThread(thread) {
 	try {
 		yield call(axios.post, `${API_BASE_URL}api/thread`, thread);
-		cache.clearKey('activeThreads');
-		cache.clearKey('archivedThreads');
 		yield all([
 			put(upsertThreadSuccess(thread)),
 			put(fetchActiveThreads()),
@@ -49,8 +44,6 @@ function* bulkUpdateThreads(action) {
 		const tasks = [];
 		threads.map(t => tasks.push(call(updateThread, t)));
 		yield all(tasks);
-		cache.clearKey('activeThreads');
-		cache.clearKey('archivedThreads');
 		yield all([
 			put(bulkUpdateThreadsSuccess()),
 			put(fetchActiveThreads()),

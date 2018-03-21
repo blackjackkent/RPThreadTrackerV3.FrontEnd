@@ -1,22 +1,18 @@
+// #region imports
 import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
-import cache from '../../cache';
-
 import {
 	FETCH_ACTIVE_THREADS,
 	fetchedActiveThreadsSuccess,
 	fetchedActiveThreadsFailure,
 	fetchActiveThreadsStatus
 } from '../../actions';
+// #endregion imports
 
 function* fetchActiveThreads() {
 	try {
-		let threadData = cache.get('activeThreads');
-		if (!threadData) {
-			const response = yield call(axios.get, `${API_BASE_URL}api/thread`);
-			threadData = response.data;
-			cache.set('activeThreads', threadData);
-		}
+		const response = yield call(axios.get, `${API_BASE_URL}api/thread`);
+		const threadData = response.data;
 		yield all([
 			put(fetchedActiveThreadsSuccess(threadData)),
 			put(fetchActiveThreadsStatus(threadData))

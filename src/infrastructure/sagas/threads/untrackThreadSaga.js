@@ -1,23 +1,20 @@
 import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
-import cache from '../../cache';
 
 import {
 	UNTRACK_THREAD,
+	BULK_UNTRACK_THREADS,
 	untrackThreadSuccess,
 	untrackThreadFailure,
+	bulkUntrackThreadsSuccess,
+	bulkUntrackThreadsFailure,
 	fetchActiveThreads,
 	fetchArchivedThreads
 } from '../../actions';
-import { BULK_UNTRACK_THREADS } from '../../actions/threads/bulkUntrackThreads';
-import { bulkUntrackThreadsSuccess } from '../../actions/threads/bulkUntrackThreadsSuccess';
-import { bulkUntrackThreadsFailure } from '../../actions/threads/bulkUntrackThreadsFailure';
 
 function* untrackThread(thread) {
 	try {
 		yield call(axios.delete, `${API_BASE_URL}api/thread/${thread.threadId}`);
-		cache.clearKey('activeThreads');
-		cache.clearKey('archivedThreads');
 		yield all([
 			put(untrackThreadSuccess()),
 			put(fetchActiveThreads()),
@@ -39,8 +36,6 @@ function* bulkUntrackThreads(action) {
 		const tasks = [];
 		threads.map(t => tasks.push(call(untrackThread, t)));
 		yield all(tasks);
-		cache.clearKey('activeThreads');
-		cache.clearKey('archivedThreads');
 		yield all([
 			put(bulkUntrackThreadsSuccess()),
 			put(fetchActiveThreads()),

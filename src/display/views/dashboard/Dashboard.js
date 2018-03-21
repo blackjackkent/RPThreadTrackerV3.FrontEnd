@@ -82,6 +82,7 @@ class Dashboard extends Component {
 	showDashboardThreadDistributionToggle() {
 		const { dispatch, userSettings } = this.props;
 		dispatch(updateUserSettings({
+			...userSettings,
 			showDashboardThreadDistribution: !userSettings.showDashboardThreadDistribution
 		}));
 	}

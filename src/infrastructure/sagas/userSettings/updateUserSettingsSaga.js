@@ -1,6 +1,5 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import cache from '../../cache';
 
 import {
 	UPDATE_USER_SETTINGS,
@@ -10,12 +9,9 @@ import {
 
 function* updateUserProfileSettings(action) {
 	try {
-		const current = cache.get('userSettings');
-		const newState = Object.assign({}, current, action.data);
-		yield call(axios.put, `${API_BASE_URL}api/profilesettings`, newState);
-		cache.set('userSettings', newState);
+		yield call(axios.put, `${API_BASE_URL}api/profilesettings`, action.data);
 		if (!action.shouldSkipViewUpdate) {
-			yield put(updatedUserSettingsSuccess(newState));
+			yield put(updatedUserSettingsSuccess(action.data));
 		}
 	} catch (e) {
 		yield put(updatedUserSettingsFailure());

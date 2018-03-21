@@ -10,12 +10,13 @@ const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	isSidebarOpen: PropTypes.bool.isRequired,
 	isNewsAsideOpen: PropTypes.bool.isRequired,
-	isMobileSidebarOpen: PropTypes.bool.isRequired
+	isMobileSidebarOpen: PropTypes.bool.isRequired,
+	userSettings: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
-		ui, user, news, loading
+		ui, user, news, loading, userSettings
 	} = state;
 	const {
 		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
@@ -32,7 +33,8 @@ function mapStateToProps(state) {
 		user,
 		news,
 		newsUnreadCount,
-		threadsLoading
+		threadsLoading,
+		userSettings
 	};
 }
 
@@ -68,9 +70,10 @@ class HeaderContainer extends Component {
 	}
 
 	asideToggle(value) {
-		const { dispatch } = this.props;
+		const { dispatch, userSettings } = this.props;
 		dispatch(toggleNewsAside());
 		dispatch(updateUserSettings({
+			...userSettings,
 			lastNewsReadDate: new Date(Date.now())
 		}, !value));
 	}

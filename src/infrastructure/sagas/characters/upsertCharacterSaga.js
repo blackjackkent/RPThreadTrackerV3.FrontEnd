@@ -1,7 +1,5 @@
 import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
-import cache from '../../cache';
-
 import {
 	UPSERT_CHARACTER,
 	upsertCharacterFailure,
@@ -12,7 +10,6 @@ import {
 function* updateCharacter(character) {
 	try {
 		yield call(axios.put, `${API_BASE_URL}api/character/${character.characterId}`, character);
-		cache.clearKey('characters');
 		yield all([
 			put(upsertCharacterSuccess(character)),
 			put(fetchCharacters())
@@ -25,7 +22,6 @@ function* updateCharacter(character) {
 function* insertCharacter(character) {
 	try {
 		yield call(axios.post, `${API_BASE_URL}api/character`, character);
-		cache.clearKey('characters');
 		yield all([
 			put(upsertCharacterSuccess(character)),
 			put(fetchCharacters())
