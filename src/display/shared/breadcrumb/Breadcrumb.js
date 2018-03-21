@@ -1,8 +1,10 @@
+// #region imports
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Breadcrumb, BreadcrumbItem } from 'reactstrap';
 import routes from '../../../infrastructure/routes';
+// #endregion imports
 
 const findRouteName = url => routes[url];
 

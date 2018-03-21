@@ -71,7 +71,7 @@ class HeaderContainer extends Component {
 
 	asideToggle(value) {
 		const { dispatch, userSettings } = this.props;
-		dispatch(toggleNewsAside());
+		dispatch(toggleNewsAside(value));
 		dispatch(updateUserSettings({
 			...userSettings,
 			lastNewsReadDate: new Date(Date.now())

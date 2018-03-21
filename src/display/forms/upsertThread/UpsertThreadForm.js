@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Col, Row, FormGroup } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
-import CharacterSelect from '../../shared/CharacterSelect';
+import CharacterSelect from '../../shared/character-select/CharacterSelect';
 import MultipleValueTextInput from '../../shared/MultipleValueTextInput';
 
 const propTypes = {

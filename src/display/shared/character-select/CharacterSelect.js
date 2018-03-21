@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
+import CharacterSelectItem from './CharacterSelectItem';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -19,20 +20,7 @@ const CharacterSelect = (props) => {
 	const {
 		characters, selectedCharacterId, onSelectCharacter, defaultText, includeNullValue
 	} = props;
-	const options = [];
-	if (characters) {
-		for (let i = 0; i < characters.length; i++) {
-			const element = (
-				<option
-					value={characters[i].characterId}
-					key={characters[i].characterId}
-				>
-					{characters[i].characterName ? characters[i].characterName : characters[i].urlIdentifier}
-				</option>
-			);
-			options.push(element);
-		}
-	}
+	const options = characters.map(c => <CharacterSelectItem character={c} />);
 	return (
 		<FormGroup>
 			<Label htmlFor="characterId">Character</Label>

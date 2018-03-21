@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardBlock, Row, Col } from 'reactstrap';
-import CharacterSelect from '../../../shared/CharacterSelect';
+import CharacterSelect from '../../../shared/character-select/CharacterSelect';
 import TagFilterSelect from './filter-components/TagFilterSelect';
 
 const propTypes = {
