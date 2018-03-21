@@ -46,15 +46,15 @@ function ui(state = defaultState, action) {
 	switch (action.type) {
 		case TOGGLE_SIDEBAR:
 			return Object.assign({}, state, {
-				isSidebarOpen: !state.isSidebarOpen
+				isSidebarOpen: action.data
 			});
 		case TOGGLE_MOBILE_SIDEBAR:
 			return Object.assign({}, state, {
-				isMobileSidebarOpen: !state.isMobileSidebarOpen
+				isMobileSidebarOpen: action.data
 			});
 		case TOGGLE_NEWS_ASIDE:
 			return Object.assign({}, state, {
-				isNewsAsideOpen: !state.isNewsAsideOpen
+				isNewsAsideOpen: action.data
 			});
 		case TOGGLE_HEADER_DROPDOWN:
 			return Object.assign({}, state, {

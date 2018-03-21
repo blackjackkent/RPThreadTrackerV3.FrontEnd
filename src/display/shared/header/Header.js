@@ -25,7 +25,10 @@ const propTypes = {
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openNewThreadModal: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
+	isSidebarOpen: PropTypes.bool.isRequired,
+	isMobileSidebarOpen: PropTypes.bool.isRequired,
 	threadsLoading: PropTypes.bool.isRequired,
+	isNewsAsideOpen: PropTypes.bool.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string
 	}).isRequired
@@ -43,16 +46,19 @@ const Header = (props) => {
 		openNewThreadModal,
 		sidebarToggle,
 		threadsLoading,
+		isSidebarOpen,
+		isMobileSidebarOpen,
+		isNewsAsideOpen,
 		user
 	} = props;
 
 	return (
 		<header className="app-header navbar">
-			<NavbarToggler className="d-lg-none" onClick={mobileSidebarToggle}>
+			<NavbarToggler className="d-lg-none" onClick={() => mobileSidebarToggle(!isMobileSidebarOpen)}>
 				&#9776;
 			</NavbarToggler>
 			<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER</Link>
-			<NavbarToggler className="d-md-down-none" onClick={sidebarToggle}>
+			<NavbarToggler className="d-md-down-none" onClick={() => sidebarToggle(!isSidebarOpen)}>
 				&#9776;
 			</NavbarToggler>
 			<Nav className="d-md-down-none ml-4" navbar>
@@ -77,7 +83,7 @@ const Header = (props) => {
 			</Nav>
 			<Nav className="ml-auto" navbar>
 				<NavItem>
-					<NavLink href="#" onClick={asideToggle}>
+					<NavLink href="#" onClick={() => asideToggle(!isNewsAsideOpen)}>
 						<i className="icon-bell" />
 						{newsUnreadCount > 0 &&
 							<Badge pill color="danger">{newsUnreadCount}</Badge>

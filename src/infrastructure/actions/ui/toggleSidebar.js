@@ -1,6 +1,7 @@
 export const TOGGLE_SIDEBAR = 'TOGGLE_SIDEBAR';
-export function toggleSidebar() {
+export function toggleSidebar(value) {
 	return {
-		type: TOGGLE_SIDEBAR
+		type: TOGGLE_SIDEBAR,
+		data: value
 	};
 }

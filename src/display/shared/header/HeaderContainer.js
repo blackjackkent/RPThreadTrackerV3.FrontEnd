@@ -62,22 +62,22 @@ class HeaderContainer extends Component {
 		document.body.classList.toggle('sidebar-mobile-show', props.isMobileSidebarOpen);
 	}
 
-	sidebarToggle() {
+	sidebarToggle(value) {
 		const { dispatch } = this.props;
-		dispatch(toggleSidebar());
+		dispatch(toggleSidebar(value));
 	}
 
-	asideToggle() {
+	asideToggle(value) {
 		const { dispatch } = this.props;
 		dispatch(toggleNewsAside());
 		dispatch(updateUserSettings({
 			lastNewsReadDate: new Date(Date.now())
-		}, !this.props.isNewsAsideOpen));
+		}, !value));
 	}
 
-	mobileSidebarToggle() {
+	mobileSidebarToggle(value) {
 		const { dispatch } = this.props;
-		dispatch(toggleMobileSidebar());
+		dispatch(toggleMobileSidebar(value));
 	}
 
 	headerDropdownToggle(value) {

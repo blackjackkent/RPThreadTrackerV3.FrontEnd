@@ -1,6 +1,7 @@
 export const TOGGLE_NEWS_ASIDE = 'TOGGLE_NEWS_ASIDE';
-export function toggleNewsAside() {
+export function toggleNewsAside(value) {
 	return {
-		type: TOGGLE_NEWS_ASIDE
+		type: TOGGLE_NEWS_ASIDE,
+		data: value
 	};
 }
