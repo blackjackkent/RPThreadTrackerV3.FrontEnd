@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, FormGroup, Label, Input, FormText } from 'reactstrap';
+import MultipleValueTextInputItem from './MultipleValueTextInputItem';
 
 const propTypes = {
 	values: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -26,6 +27,7 @@ class MultipleValueTextInput extends Component {
 		};
 		this.handleKeypress = this.handleKeypress.bind(this);
 		this.handleValueChange = this.handleValueChange.bind(this);
+		this.handleItemAdd = this.handleItemAdd.bind(this);
 		this.handleItemRemove = this.handleItemRemove.bind(this);
 	}
 	componentWillReceiveProps(nextProps) {
@@ -39,16 +41,22 @@ class MultipleValueTextInput extends Component {
 		// 13: Enter, 44: Comma
 		if (e.charCode === 13 || e.charCode === 44) {
 			e.preventDefault();
-			const { value } = e.target;
-			this.setState({
-				values: this.state.values.concat(value),
-				value: ''
-			});
-			onItemAdded(value);
+			this.handleItemAdd(e.target.value, onItemAdded);
 		}
 	}
 	handleValueChange(e) {
 		this.setState({ value: e.target.value });
+	}
+	handleItemAdd(value, onItemAdded) {
+		if (this.state.values.includes(value)) {
+			this.setState({ value: '' });
+			return;
+		}
+		this.setState({
+			values: this.state.values.concat(value),
+			value: ''
+		});
+		onItemAdded(value);
 	}
 	handleItemRemove(value) {
 		this.props.onItemDeleted(value);
@@ -61,28 +69,7 @@ class MultipleValueTextInput extends Component {
 			placeholder, label, name, helpMessage
 		} = this.props;
 		const { values } = this.state;
-		const valueDisplays = [];
-		if (values) {
-			for (let i = 0; i < values.length; i++) {
-				const element = (
-					<span className="multiple-value-text-input-item" key={`input-values-${i}`}>
-						{values[i]}{' '}
-						<span
-							data-value={values[i]}
-							tabIndex="-1"
-							role="button"
-							onKeyPress={() => this.handleItemRemove(values[i])}
-							onClick={() => this.handleItemRemove(values[i])}
-						>
-							<i
-								className="fas fa-times"
-							/>
-						</span>
-					</span>
-				);
-				valueDisplays.push(element);
-			}
-		}
+		const valueDisplays = values.map(v => <MultipleValueTextInputItem value={v} key={v} />);
 		return (
 			<div>
 				<Row>
