@@ -31,7 +31,7 @@ const UpsertCharacterForm = (props) => {
 	}
 	return (
 		<div>
-			<Row>
+			<Row> {/* character name */}
 				<Col>
 					<AvField
 						name="characterName"
@@ -44,7 +44,7 @@ const UpsertCharacterForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<FormGroup row>
+			<FormGroup row> {/* character platform */}
 				<Col>
 					<Label htmlFor="character-platform">Platform:</Label>
 					<Input
@@ -58,7 +58,7 @@ const UpsertCharacterForm = (props) => {
 					</Input>
 				</Col>
 			</FormGroup>
-			<Row>
+			<Row> {/* character url identifier */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.urlIdentifier}

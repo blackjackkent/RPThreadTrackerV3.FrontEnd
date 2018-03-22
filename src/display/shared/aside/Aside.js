@@ -24,5 +24,4 @@ const Aside = (props) => {
 };
 
 Aside.propTypes = propTypes;
-
 export default Aside;

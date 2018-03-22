@@ -1,5 +1,7 @@
+// #region imports
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+// #endregion imports
 
 const propTypes = {
 	Renderable: PropTypes.func.isRequired

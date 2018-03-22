@@ -43,7 +43,7 @@ const UpsertThreadForm = (props) => {
 	}
 	return (
 		<div>
-			<FormGroup row>
+			<FormGroup row>{/* character selector */}
 				<Col>
 					<CharacterSelect
 						characters={characters}
@@ -53,7 +53,7 @@ const UpsertThreadForm = (props) => {
 					/>
 				</Col>
 			</FormGroup>
-			<Row>
+			<Row> {/* thread title */}
 				<Col>
 					<AvField
 						name="userTitle"
@@ -67,7 +67,7 @@ const UpsertThreadForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<Row>
+			<Row> {/* thread post ID */}
 				<Col>
 					<AvField
 						name="postId"
@@ -81,7 +81,7 @@ const UpsertThreadForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<Row>
+			<Row> {/* partner url identifier */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.partnerUrlIdentifier}
@@ -107,6 +107,7 @@ const UpsertThreadForm = (props) => {
 					</Tooltip>
 				</Col>
 			</Row>
+			{/* tags */}
 			<MultipleValueTextInput
 				values={tagValues}
 				onItemAdded={handleTagAdded}

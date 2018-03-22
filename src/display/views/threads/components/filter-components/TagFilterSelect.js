@@ -13,7 +13,13 @@ const TagFilterSelect = (props) => {
 	const options = [];
 	if (tags) {
 		for (let i = 0; i < tags.length; i++) {
-			const element = <option value={tags[i].tagText} key={tags[i].threadTagId}>{tags[i].tagText}</option>;
+			const element = (
+				<option
+					value={tags[i].tagText}
+					key={tags[i].threadTagId}
+				>
+					{tags[i].tagText}
+				</option>);
 			options.push(element);
 		}
 	}

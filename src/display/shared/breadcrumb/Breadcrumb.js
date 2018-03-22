@@ -10,9 +10,9 @@ const findRouteName = url => routes[url];
 
 const getPaths = (pathname) => {
 	const paths = ['/'];
-
-	if (pathname === '/') return paths;
-
+	if (pathname === '/') {
+		return paths;
+	}
 	pathname.split('/').reduce((prev, curr) => {
 		const currPath = `${prev}/${curr}`;
 		paths.push(currPath);
@@ -26,14 +26,10 @@ const BreadcrumbsItem = ({ match }) => {
 	if (routeName) {
 		return (
 			match.isExact ?
-				(
-					<BreadcrumbItem active>{routeName}</BreadcrumbItem>
-				) :
+				(<BreadcrumbItem active>{routeName}</BreadcrumbItem>) :
 				(
 					<BreadcrumbItem>
-						<Link href={match.url} to={match.url}>
-							{routeName}
-						</Link>
+						<Link href={match.url} to={match.url}>{routeName}</Link>
 					</BreadcrumbItem>
 				)
 		);
@@ -49,11 +45,7 @@ const Breadcrumbs = ({ location: { pathname } }) => {
 	const paths = getPaths(pathname);
 	// eslint-disable-next-line react/no-array-index-key
 	const items = paths.map((path, i) => <Route key={i} path={path} component={BreadcrumbsItem} />);
-	return (
-		<Breadcrumb>
-			{items}
-		</Breadcrumb>
-	);
+	return (<Breadcrumb>{items}</Breadcrumb>);
 };
 
 Breadcrumbs.propTypes = {

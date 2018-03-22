@@ -1,7 +1,9 @@
+// #region imports
 import React from 'react';
 import { FormGroup, Label, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
 import CharacterSelectItem from './CharacterSelectItem';
+// #endregion imports
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

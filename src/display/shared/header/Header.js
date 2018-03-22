@@ -1,20 +1,9 @@
 // #region imports
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-	Nav,
-	NavItem,
-	NavLink,
-	Badge,
-	Button,
-	NavbarToggler,
-	Dropdown,
-	DropdownToggle,
-	DropdownMenu,
-	DropdownItem
-} from 'reactstrap';
+import { Nav } from 'reactstrap';
 import LoadingIndicator from '../LoadingIndicator';
+import { HeaderLogoBlock, HeaderButton, HeaderAsideToggle, HeaderDropdown } from './components';
 // #endregion imports
 
 const propTypes = {
@@ -56,74 +45,31 @@ const Header = (props) => {
 
 	return (
 		<header className="app-header navbar">
-			<NavbarToggler className="d-lg-none" onClick={() => mobileSidebarToggle(!isMobileSidebarOpen)}>
-				&#9776;
-			</NavbarToggler>
-			<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER</Link>
-			<NavbarToggler className="d-md-down-none" onClick={() => sidebarToggle(!isSidebarOpen)}>
-				&#9776;
-			</NavbarToggler>
+			<HeaderLogoBlock
+				mobileSidebarToggle={mobileSidebarToggle}
+				sidebarToggle={sidebarToggle}
+				isSidebarOpen={isSidebarOpen}
+				isMobileSidebarOpen={isMobileSidebarOpen}
+			/>
 			<Nav className="d-md-down-none ml-4" navbar>
-				<NavItem>
-					<Button
-						color="primary"
-						onClick={() => openUpsertCharacterModal(null)}
-					>
-						Add Character
-					</Button>
-				</NavItem>
-				<NavItem>
-					<Button
-						className="ml-4"
-						color="primary"
-						onClick={() => openNewThreadModal({})}
-					>
-						Track New Thread
-					</Button>
-				</NavItem>
+				<HeaderButton onClick={() => openUpsertCharacterModal(null)} label="Add Character" />
+				<HeaderButton onClick={() => openNewThreadModal(null)} label="Track New Thread" />
 				{threadsLoading && <LoadingIndicator className="invert" />}
 			</Nav>
 			<Nav className="ml-auto" navbar>
-				<NavItem>
-					<NavLink href="#" onClick={() => asideToggle(!isNewsAsideOpen)}>
-						<i className="icon-bell" />
-						{newsUnreadCount > 0 &&
-							<Badge pill color="danger">{newsUnreadCount}</Badge>
-						}
-					</NavLink>
-				</NavItem>
-				<NavItem>
-					<Dropdown isOpen={isHeaderDropdownOpen} toggle={() => headerDropdownToggle(!isHeaderDropdownOpen)}>
-						<DropdownToggle className="nav-link dropdown-toggle">
-							<span className="d-md-down-none">{user ? user.userName : ''}</span>
-						</DropdownToggle>
-						<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
-							<DropdownItem className="hidden-lg-up">
-								<span
-									role="button"
-									tabIndex="-1"
-									onKeyDown={() => openNewThreadModal({})}
-									onClick={() => openNewThreadModal({})}
-								>
-									Track New Thread
-								</span>
-							</DropdownItem>
-							<DropdownItem className="hidden-lg-up">
-								<span
-									role="button"
-									tabIndex="-1"
-									onKeyDown={() => openUpsertCharacterModal({})}
-									onClick={() => openUpsertCharacterModal({})}
-								>
-									Add Character
-								</span>
-							</DropdownItem>
-							<DropdownItem onClick={logout}>
-								Logout
-							</DropdownItem>
-						</DropdownMenu>
-					</Dropdown>
-				</NavItem>
+				<HeaderAsideToggle
+					asideToggle={asideToggle}
+					isNewsAsideOpen={isNewsAsideOpen}
+					newsUnreadCount={newsUnreadCount}
+				/>
+				<HeaderDropdown
+					headerDropdownToggle={headerDropdownToggle}
+					isHeaderDropdownOpen={isHeaderDropdownOpen}
+					logout={logout}
+					openUpsertCharacterModal={openUpsertCharacterModal}
+					openNewThreadModal={openNewThreadModal}
+					user={user}
+				/>
 			</Nav>
 		</header>
 	);

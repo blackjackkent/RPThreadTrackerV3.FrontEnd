@@ -1,3 +1,4 @@
+// #region imports
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
@@ -6,6 +7,7 @@ import TooltipForm from '../TooltipForm';
 import UpsertThreadForm from './UpsertThreadForm';
 import validator from './_validator';
 import formData from './_formData';
+// #endregion imports
 
 const propTypes = {
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
