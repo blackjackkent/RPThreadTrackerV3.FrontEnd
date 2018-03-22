@@ -1,6 +1,8 @@
+// #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import TableSubComponentButton from '../../../../shared/TableSubComponentButton';
+// #endregion imports
 
 const propTypes = {
 	character: PropTypes.shape({}).isRequired,
@@ -16,37 +18,28 @@ const CharacterTableSubComponent = (props) => {
 		toggleCharacterIsOnHiatus,
 		openUntrackCharacterModal
 	} = props;
+	const hiatusLabel = character.isOnHiatus ? 'Set Off Hiatus' : 'Set On Hiatus';
 	return (
 		<div className="character-table-sub-component">
-			<span className="control-button">
-				<Button color="primary" onClick={() => openUpsertCharacterModal(character)}>
-					Edit <i className="fas fa-edit" />
-				</Button>
-			</span>
-			<span className="control-button">
-				{
-					character.isOnHiatus ?
-						<Button color="primary" onClick={() => toggleCharacterIsOnHiatus(character)}>
-							Set Off Hiatus <i className="fas fa-power-off" />
-						</Button>
-						:
-						<Button color="primary" onClick={() => toggleCharacterIsOnHiatus(character)}>
-							Set On Hiatus <i className="fas fa-power-off" />
-						</Button>
-				}
-			</span>
-			<span className="control-button">
-				<button
-					className="btn btn-danger"
-					onClick={() => openUntrackCharacterModal(character)}
-				>
-					Untrack <i className="fas fa-trash-alt" />
-				</button>
-			</span>
+			<TableSubComponentButton
+				onClick={() => openUpsertCharacterModal(character)}
+				label="Edit"
+				iconTag="fa-edit"
+			/>
+			<TableSubComponentButton
+				onClick={() => toggleCharacterIsOnHiatus(character)}
+				label={hiatusLabel}
+				iconTag="fa-power-off"
+			/>
+			<TableSubComponentButton
+				onClick={() => openUntrackCharacterModal(character)}
+				label="Untrack"
+				iconTag="fa-trash-alt"
+				colorTag="danger"
+			/>
 		</div>
 	);
 };
 
 CharacterTableSubComponent.propTypes = propTypes;
-
 export default CharacterTableSubComponent;

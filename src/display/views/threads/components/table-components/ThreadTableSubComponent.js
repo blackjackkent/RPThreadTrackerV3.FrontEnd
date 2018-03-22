@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ThreadTableTagDisplay from './ThreadTableTagDisplay';
+import TableSubComponentButton from '../../../../shared/TableSubComponentButton';
 
 const propTypes = {
 	threadData: PropTypes.shape({}).isRequired,
@@ -12,70 +13,66 @@ const propTypes = {
 	isQueue: PropTypes.bool.isRequired
 };
 
-const ThreadTable = (props) => {
-	const {
-		threadData,
-		toggleThreadIsArchived,
-		openUntrackThreadModal,
-		openEditThreadModal,
-		isArchive,
-		toggleThreadIsMarkedQueued,
-		isQueue
-	} = props;
-	return (
-		<div className="thread-table-sub-component">
-			<ThreadTableTagDisplay tags={threadData.thread.threadTags} />
-			<span className="control-button">
-				{isArchive && threadData.thread.postId &&
-					<a className="btn btn-primary" href={threadData.thread.threadHomeUrl} target="_blank">
-						View <i className="fas fa-external-link-alt" />
-					</a>
+class ThreadTable extends Component {
+	getPostUrl() {
+		const { isArchive, threadData } = this.props;
+		let postUrl = '';
+		if (isArchive && threadData.thread.postId) {
+			postUrl = threadData.thread.threadHomeUrl;
+		}
+		if (!isArchive && threadData.status && threadData.status.LastPostUrl) {
+			postUrl = threadData.status.LastPostUrl;
+		}
+		return postUrl;
+	}
+	render() {
+		const {
+			threadData,
+			toggleThreadIsArchived,
+			openUntrackThreadModal,
+			openEditThreadModal,
+			isArchive,
+			toggleThreadIsMarkedQueued,
+			isQueue
+		} = this.props;
+		const postUrl = this.getPostUrl();
+
+		return (
+			<div className="thread-table-sub-component">
+				<ThreadTableTagDisplay tags={threadData.thread.threadTags} />
+				{
+					postUrl && <TableSubComponentButton
+						onClick={() => window.open(postUrl)}
+						iconTag="fa-external-link-alt"
+						label="View"
+					/>
 				}
-				{!isArchive && threadData.status && threadData.status.LastPostUrl &&
-					<a className="btn btn-primary" href={threadData.status.LastPostUrl} target="_blank">
-						View <i className="fas fa-external-link-alt" />
-					</a>
-				}
-			</span>
-			<span className="control-button">
-				<button
-					className="btn btn-primary"
+				<TableSubComponentButton
 					onClick={() => openEditThreadModal(threadData.thread)}
-				>
-					Edit <i className="fas fa-edit" />
-				</button>
-			</span>
-			<span className="control-button">
-				{!isArchive &&
-					<button
-						className="btn btn-primary"
+					iconTag="fa-edit"
+					label="Edit"
+				/>
+				{
+					!isArchive && <TableSubComponentButton
 						onClick={() => toggleThreadIsMarkedQueued(threadData.thread)}
-					>
-						{isQueue ? 'Unmark' : 'Mark'} Queued <i className="fas fa-clock" />
-					</button>
+						iconTag="fa-clock"
+						label={`${isQueue ? 'Unmark' : 'Mark'} Queued`}
+					/>
 				}
-			</span>
-			<span className="control-button">
-				<button
-					className="btn btn-primary"
+				<TableSubComponentButton
 					onClick={() => toggleThreadIsArchived(threadData.thread)}
-				>
-					{isArchive ? 'Unarchive' : 'Archive'}{' '}
-					<i className="fas fa-archive" />
-				</button>
-			</span>
-			<span className="control-button">
-				<button
-					className="btn btn-danger"
+					iconTag="fa-archive"
+					label={`${isArchive ? 'Unarchive' : 'Archive'}`}
+				/>
+				<TableSubComponentButton
+					colorTag="danger"
 					onClick={() => openUntrackThreadModal(threadData.thread)}
-				>
-					Untrack <i className="fas fa-trash-alt" />
-				</button>
-			</span>
-		</div>
-	);
-};
-
+					iconTag="fa-trash-alt"
+					label="Untrack"
+				/>
+			</div>
+		);
+	}
+}
 ThreadTable.propTypes = propTypes;
-
 export default ThreadTable;

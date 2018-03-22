@@ -24,12 +24,7 @@ const CurrentCharacterTable = (props) => {
 				className="-striped"
 				data={characters}
 				columns={columns}
-				defaultSorted={[
-					{
-						id: 'characterName',
-						desc: true
-					}
-				]}
+				defaultSorted={[{ id: 'characterName', desc: true }]}
 				pageSize={5}
 				SubComponent={
 					row => (

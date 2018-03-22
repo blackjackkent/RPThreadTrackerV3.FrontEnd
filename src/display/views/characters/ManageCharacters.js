@@ -1,11 +1,11 @@
+// #region imports
 import React, { Component } from 'react';
-import {
-	Row, Col
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
 import { openUpsertCharacterModal, fetchCharacters, upsertCharacter, openUntrackCharacterModal } from '../../../infrastructure/actions';
+// #endregion imports
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -15,12 +15,10 @@ const propTypes = {
 function mapStateToProps(state) {
 	const {
 		characters,
-		ui,
 		characterToEdit
 	} = state;
 	return {
 		characters,
-		isUpsertCharacterModal: ui.isUpsertCharacterModal,
 		characterToEdit
 	};
 }
