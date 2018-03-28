@@ -55,6 +55,9 @@ export { submitUserLogin, SUBMIT_USER_LOGIN } from './user/submitUserLogin';
 export { userLoginSuccess, USER_LOGIN_SUCCESS } from './user/userLoginSuccess';
 export { userLoginFailure, USER_LOGIN_FAILURE } from './user/userLoginFailure';
 export { submitUserLogout, SUBMIT_USER_LOGOUT } from './user/submitUserLogout';
+export { submitUserRegistration, SUBMIT_USER_REGISTRATION } from './user/submitUserRegistration';
+export { userRegistrationFailure, USER_REGISTRATION_FAILURE } from './user/userRegistrationFailure';
+export { userRegistrationSuccess, USER_REGISTRATION_SUCCESS } from './user/userRegistrationSuccess';
 
 // UserSettings
 export { fetchUserSettings, FETCH_USER_SETTINGS } from './userSettings/fetchUserSettings';

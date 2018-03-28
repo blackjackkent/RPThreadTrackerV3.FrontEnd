@@ -1,10 +1,11 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import cache from '../../cache';
 import history from '../../history';
 
 import {
 	SUBMIT_USER_LOGIN,
+	USER_REGISTRATION_SUCCESS,
 	userLoginFailure,
 	userLoginSuccess
 } from '../../actions';
@@ -21,5 +22,8 @@ function* submitUserLogin(action) {
 }
 
 export default function* submitUserLoginSaga() {
-	yield takeEvery(SUBMIT_USER_LOGIN, submitUserLogin);
+	yield all([
+		takeEvery(SUBMIT_USER_LOGIN, submitUserLogin),
+		takeEvery(USER_REGISTRATION_SUCCESS, submitUserLogin)
+	]);
 }

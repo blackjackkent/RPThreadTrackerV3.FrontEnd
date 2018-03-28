@@ -17,7 +17,7 @@ const AboutTrackerPane = () => (
 			or posting permissions. It retrieves information solely through
 			public application programming interfaces.
 		</p>
-		<p>RPThreadTracker is a product of <a href="http://www.blackjacksoftware.com">Blackjack Software</a>.</p>
+		<p>RPThreadTracker is a product of <a href="http://www.blackjack-software.com">Blackjack Software</a>.</p>
 	</TabPane>
 );
 

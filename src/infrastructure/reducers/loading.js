@@ -1,19 +1,23 @@
 import {
+	FETCHED_ACTIVE_THREADS_FAILURE,
+	FETCHED_ACTIVE_THREADS_STATUS_FAILURE,
+	FETCHED_ACTIVE_THREADS_STATUS_SUCCESS,
+	FETCHED_ARCHIVED_THREADS_FAILURE,
+	FETCHED_ARCHIVED_THREADS_SUCCESS,
+	FETCH_ACTIVE_THREADS,
+	FETCH_ARCHIVED_THREADS,
 	SUBMIT_USER_LOGIN,
 	SUBMIT_USER_LOGOUT,
-	USER_LOGIN_SUCCESS,
+	SUBMIT_USER_REGISTRATION,
 	USER_LOGIN_FAILURE,
-	FETCH_ACTIVE_THREADS,
-	FETCHED_ACTIVE_THREADS_FAILURE,
-	FETCHED_ACTIVE_THREADS_STATUS_SUCCESS,
-	FETCHED_ACTIVE_THREADS_STATUS_FAILURE,
-	FETCHED_ARCHIVED_THREADS_SUCCESS,
-	FETCHED_ARCHIVED_THREADS_FAILURE
+	USER_LOGIN_SUCCESS,
+	USER_REGISTRATION_FAILURE,
+	USER_REGISTRATION_SUCCESS
 } from '../actions';
-import { FETCH_ARCHIVED_THREADS } from '../actions/threads/fetchArchivedThreads';
 
 const defaultState = {
 	loginLoading: false,
+	registrationLoading: false,
 	threadsLoading: false
 };
 function loading(state = defaultState, action) {
@@ -26,6 +30,15 @@ function loading(state = defaultState, action) {
 		case SUBMIT_USER_LOGIN:
 			return Object.assign({}, state, {
 				loginLoading: true
+			});
+		case USER_REGISTRATION_FAILURE:
+		case USER_REGISTRATION_SUCCESS:
+			return Object.assign({}, state, {
+				registrationLoading: false
+			});
+		case SUBMIT_USER_REGISTRATION:
+			return Object.assign({}, state, {
+				registrationLoading: true
 			});
 		case FETCH_ACTIVE_THREADS:
 		case FETCH_ARCHIVED_THREADS:

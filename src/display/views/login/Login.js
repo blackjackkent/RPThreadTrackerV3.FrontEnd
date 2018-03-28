@@ -1,3 +1,4 @@
+// #region imports
 import React, { Component } from 'react';
 import { Row, Col, Card, CardBlock, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
@@ -6,6 +7,7 @@ import PropTypes from 'prop-types';
 import LoginForm from '../../forms/login/LoginForm';
 import { submitUserLogin } from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
+// #endregion imports
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
