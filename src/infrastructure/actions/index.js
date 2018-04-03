@@ -61,6 +61,9 @@ export { userRegistrationSuccess, USER_REGISTRATION_SUCCESS } from './user/userR
 export { submitUserForgotPassword, SUBMIT_USER_FORGOT_PASSWORD } from './user/submitUserForgotPassword';
 export { userForgotPasswordSuccess, USER_FORGOT_PASSWORD_SUCCESS } from './user/userForgotPasswordSuccess';
 export { userForgotPasswordFailure, USER_FORGOT_PASSWORD_FAILURE } from './user/userForgotPasswordFailure';
+export { submitUserResetPassword, SUBMIT_USER_RESET_PASSWORD } from './user/submitUserResetPassword';
+export { userResetPasswordSuccess, USER_RESET_PASSWORD_SUCCESS } from './user/userResetPasswordSuccess';
+export { userResetPasswordFailure, USER_RESET_PASSWORD_FAILURE } from './user/userResetPasswordFailure';
 
 // UserSettings
 export { fetchUserSettings, FETCH_USER_SETTINGS } from './userSettings/fetchUserSettings';

@@ -39,7 +39,7 @@ const App = (props) => {
 			<Switch>
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
 				{
-					['/login', '/forgotpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
+					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
 				}
 				<Route component={Layout} />
 			</Switch>

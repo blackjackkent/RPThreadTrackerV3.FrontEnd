@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import { Card, CardBlock, Button, Row, Col } from 'reactstrap';
-import { submitUserForgotPassword } from '../../../infrastructure/actions';
+import { submitUserResetPassword } from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
-import ForgotPasswordForm from '../../forms/forgot-password/ForgotPasswordForm';
+import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
+import { getQuery } from '../../../utility';
 
 const propTypes = {
 	displayLoadingIndicator: PropTypes.bool.isRequired,
-	forgotPasswordError: PropTypes.string,
-	submitUserForgotPassword: PropTypes.func.isRequired
+	resetPasswordError: PropTypes.string,
+	submitUserResetPassword: PropTypes.func.isRequired
 };
 const defaultProps = {
-	forgotPasswordError: ''
+	resetPasswordError: ''
 };
 
 const mapStateToProps = (state) => {
@@ -22,36 +23,38 @@ const mapStateToProps = (state) => {
 		errors
 	} = state;
 	return {
-		displayLoadingIndicator: loading.forgotPasswordLoading,
-		forgotPasswordError: errors.forgotPasswordError
+		displayLoadingIndicator: loading.resetPasswordLoading,
+		resetPasswordError: errors.resetPasswordError
 	};
 };
 
-class ForgotPassword extends Component {
+class ResetPassword extends Component {
 	constructor(props) {
 		super(props);
-		this.handleForgotPasswordSubmit = this.handleForgotPasswordSubmit.bind(this);
+		this.handleResetPasswordSubmit = this.handleResetPasswordSubmit.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.state = {
-			forgotPasswordRequest: {}
+			resetPasswordRequest: {
+				Email: getQuery().email,
+				Code: getQuery().code
+			}
 		};
 	}
-	handleForgotPasswordSubmit() {
-		console.log(this.state.forgotPasswordRequest);
-		this.props.submitUserForgotPassword(this.state.forgotPasswordRequest);
+	handleResetPasswordSubmit() {
+		this.props.submitUserResetPassword(this.state.resetPasswordRequest);
 	}
 	handleInputChange(event) {
 		const { target } = event;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const { name } = target;
 		this.setState({
-			forgotPasswordRequest: Object.assign({}, this.state.forgotPasswordRequest, {
+			resetPasswordRequest: Object.assign({}, this.state.resetPasswordRequest, {
 				[name]: value
 			})
 		});
 	}
 	render() {
-		const { displayLoadingIndicator, forgotPasswordError } = this.props;
+		const { displayLoadingIndicator, resetPasswordError } = this.props;
 		let loading = (<span />);
 		if (displayLoadingIndicator) {
 			loading = (
@@ -66,10 +69,10 @@ class ForgotPassword extends Component {
 			);
 		}
 		let error = (<span />);
-		if (forgotPasswordError) {
+		if (resetPasswordError) {
 			error = (
 				<div className="has-danger">
-					<p className="form-control-feedback">{forgotPasswordError}</p>
+					<p className="form-control-feedback">{resetPasswordError}</p>
 				</div>
 			);
 		}
@@ -77,13 +80,13 @@ class ForgotPassword extends Component {
 			<Card className="mx-4">
 				<CardBlock className="p-4">
 					{loading}
-					<AvForm onValidSubmit={this.handleForgotPasswordSubmit}>
-						<h1>Forgot your password?</h1>
+					<AvForm onValidSubmit={this.handleResetPasswordSubmit}>
+						<h1>Reset Password</h1>
 						<p className="text-muted">
-							Enter your email address below and we will email you a link to reset your password.
+							Enter your new password below.
 						</p>
 						{error}
-						<ForgotPasswordForm handleInputChange={this.handleInputChange} />
+						<ResetPasswordForm handleInputChange={this.handleInputChange} />
 						<Row>
 							<Col xs="6">
 								<Button color="primary" className="px-4">Request</Button>
@@ -99,8 +102,8 @@ class ForgotPassword extends Component {
 		);
 	}
 }
-ForgotPassword.propTypes = propTypes;
-ForgotPassword.defaultProps = defaultProps;
+ResetPassword.propTypes = propTypes;
+ResetPassword.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	submitUserForgotPassword
-})(ForgotPassword);
+	submitUserResetPassword
+})(ResetPassword);

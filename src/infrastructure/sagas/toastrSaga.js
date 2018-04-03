@@ -10,7 +10,9 @@ import {
 	UPSERT_CHARACTER_FAILURE,
 	UPSERT_CHARACTER_SUCCESS,
 	UNTRACK_CHARACTER_SUCCESS,
-	UNTRACK_CHARACTER_FAILURE
+	UNTRACK_CHARACTER_FAILURE,
+	USER_FORGOT_PASSWORD_SUCCESS,
+	USER_RESET_PASSWORD_SUCCESS
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -54,6 +56,14 @@ function displayUntrackCharacterError() {
 	toastr.error('There was a problem untracking your character.');
 }
 
+function displayForgotPasswordSuccess() {
+	toastr.success('Please check your email for a link to reset your password.');
+}
+
+function displayResetPasswordSuccess() {
+	toastr.success('Success. You can now log in with your updated password');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
@@ -64,6 +74,8 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(UPSERT_CHARACTER_FAILURE, displayUpdateCharacterError),
 		takeEvery(UPSERT_CHARACTER_SUCCESS, displayUpdateCharacterSuccess),
 		takeEvery(UNTRACK_CHARACTER_FAILURE, displayUntrackCharacterError),
-		takeEvery(UNTRACK_CHARACTER_SUCCESS, displayUntrackCharacterSuccess)
+		takeEvery(UNTRACK_CHARACTER_SUCCESS, displayUntrackCharacterSuccess),
+		takeEvery(USER_FORGOT_PASSWORD_SUCCESS, displayForgotPasswordSuccess),
+		takeEvery(USER_RESET_PASSWORD_SUCCESS, displayResetPasswordSuccess)
 	]);
 }

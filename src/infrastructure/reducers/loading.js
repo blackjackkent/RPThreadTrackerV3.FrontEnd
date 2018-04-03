@@ -15,14 +15,18 @@ import {
 	USER_REGISTRATION_SUCCESS,
 	USER_FORGOT_PASSWORD_FAILURE,
 	USER_FORGOT_PASSWORD_SUCCESS,
-	SUBMIT_USER_FORGOT_PASSWORD
+	SUBMIT_USER_FORGOT_PASSWORD,
+	SUBMIT_USER_RESET_PASSWORD,
+	USER_RESET_PASSWORD_FAILURE,
+	USER_RESET_PASSWORD_SUCCESS
 } from '../actions';
 
 const defaultState = {
 	loginLoading: false,
 	registrationLoading: false,
 	threadsLoading: false,
-	forgotPasswordLoading: false
+	forgotPasswordLoading: false,
+	resetPasswordLoading: false
 };
 function loading(state = defaultState, action) {
 	switch (action.type) {
@@ -43,6 +47,15 @@ function loading(state = defaultState, action) {
 		case SUBMIT_USER_FORGOT_PASSWORD:
 			return Object.assign({}, state, {
 				forgotPasswordLoading: true
+			});
+		case USER_RESET_PASSWORD_FAILURE:
+		case USER_RESET_PASSWORD_SUCCESS:
+			return Object.assign({}, state, {
+				resetPasswordLoading: false
+			});
+		case SUBMIT_USER_RESET_PASSWORD:
+			return Object.assign({}, state, {
+				resetPasswordLoading: true
 			});
 		case USER_REGISTRATION_FAILURE:
 		case USER_REGISTRATION_SUCCESS:
