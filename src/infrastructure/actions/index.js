@@ -58,6 +58,9 @@ export { submitUserLogout, SUBMIT_USER_LOGOUT } from './user/submitUserLogout';
 export { submitUserRegistration, SUBMIT_USER_REGISTRATION } from './user/submitUserRegistration';
 export { userRegistrationFailure, USER_REGISTRATION_FAILURE } from './user/userRegistrationFailure';
 export { userRegistrationSuccess, USER_REGISTRATION_SUCCESS } from './user/userRegistrationSuccess';
+export { submitUserForgotPassword, SUBMIT_USER_FORGOT_PASSWORD } from './user/submitUserForgotPassword';
+export { userForgotPasswordSuccess, USER_FORGOT_PASSWORD_SUCCESS } from './user/userForgotPasswordSuccess';
+export { userForgotPasswordFailure, USER_FORGOT_PASSWORD_FAILURE } from './user/userForgotPasswordFailure';
 
 // UserSettings
 export { fetchUserSettings, FETCH_USER_SETTINGS } from './userSettings/fetchUserSettings';

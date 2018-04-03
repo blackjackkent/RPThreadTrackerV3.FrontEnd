@@ -1,8 +1,20 @@
-import { SUBMIT_USER_LOGIN, USER_LOGIN_SUCCESS, USER_LOGIN_FAILURE, SUBMIT_USER_LOGOUT, USER_REGISTRATION_SUCCESS, SUBMIT_USER_REGISTRATION, USER_REGISTRATION_FAILURE } from '../actions';
+import {
+	SUBMIT_USER_LOGIN,
+	USER_LOGIN_SUCCESS,
+	USER_LOGIN_FAILURE,
+	SUBMIT_USER_LOGOUT,
+	USER_REGISTRATION_SUCCESS,
+	SUBMIT_USER_REGISTRATION,
+	USER_REGISTRATION_FAILURE,
+	USER_FORGOT_PASSWORD_SUCCESS,
+	USER_FORGOT_PASSWORD_FAILURE,
+	SUBMIT_USER_FORGOT_PASSWORD
+} from '../actions';
 
 const defaultState = {
 	loginError: null,
-	registrationErrors: []
+	registrationErrors: [],
+	forgotPasswordError: null
 };
 
 function errors(state = defaultState, action) {
@@ -17,6 +29,11 @@ function errors(state = defaultState, action) {
 			return Object.assign({}, state, {
 				registrationErrors: []
 			});
+		case USER_FORGOT_PASSWORD_SUCCESS:
+		case SUBMIT_USER_FORGOT_PASSWORD:
+			return Object.assign({}, state, {
+				forgotPasswordError: null
+			});
 		case USER_LOGIN_FAILURE:
 			return Object.assign({}, state, {
 				loginError: action.data
@@ -24,6 +41,10 @@ function errors(state = defaultState, action) {
 		case USER_REGISTRATION_FAILURE:
 			return Object.assign({}, state, {
 				registrationErrors: action.data
+			});
+		case USER_FORGOT_PASSWORD_FAILURE:
+			return Object.assign({}, state, {
+				forgotPasswordError: action.data
 			});
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;

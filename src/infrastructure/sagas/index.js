@@ -6,6 +6,7 @@ export { default as fetchUserSaga } from './user/fetchUserSaga';
 export { default as submitUserLoginSaga } from './user/submitUserLoginSaga';
 export { default as submitUserLogoutSaga } from './user/submitUserLogoutSaga';
 export { default as submitUserRegistrationSaga } from './user/submitUserRegistrationSaga';
+export { default as submitUserForgotPasswordSaga } from './user/submitUserForgotPasswordSaga';
 // UserSettings
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
 export { default as updateUserSettingsSaga } from './userSettings/updateUserSettingsSaga';

@@ -12,13 +12,17 @@ import {
 	USER_LOGIN_FAILURE,
 	USER_LOGIN_SUCCESS,
 	USER_REGISTRATION_FAILURE,
-	USER_REGISTRATION_SUCCESS
+	USER_REGISTRATION_SUCCESS,
+	USER_FORGOT_PASSWORD_FAILURE,
+	USER_FORGOT_PASSWORD_SUCCESS,
+	SUBMIT_USER_FORGOT_PASSWORD
 } from '../actions';
 
 const defaultState = {
 	loginLoading: false,
 	registrationLoading: false,
-	threadsLoading: false
+	threadsLoading: false,
+	forgotPasswordLoading: false
 };
 function loading(state = defaultState, action) {
 	switch (action.type) {
@@ -30,6 +34,15 @@ function loading(state = defaultState, action) {
 		case SUBMIT_USER_LOGIN:
 			return Object.assign({}, state, {
 				loginLoading: true
+			});
+		case USER_FORGOT_PASSWORD_SUCCESS:
+		case USER_FORGOT_PASSWORD_FAILURE:
+			return Object.assign({}, state, {
+				forgotPasswordLoading: false
+			});
+		case SUBMIT_USER_FORGOT_PASSWORD:
+			return Object.assign({}, state, {
+				forgotPasswordLoading: true
 			});
 		case USER_REGISTRATION_FAILURE:
 		case USER_REGISTRATION_SUCCESS:
