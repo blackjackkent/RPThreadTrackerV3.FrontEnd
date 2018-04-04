@@ -71,9 +71,12 @@ function attemptFileSave(response) {
 	saveWithWindowOpen(response, octetStreamMime, urlCreator);
 }
 
-function* exportThreads() {
+function* exportThreads(action) {
 	try {
-		const response = yield call(axios.get, `${API_BASE_URL}api/thread/export`, { responseType: 'arraybuffer' });
+		const response = yield call(axios.get, `${API_BASE_URL}api/thread/export`, {
+			responseType: 'arraybuffer',
+			params: action.data
+		});
 		yield attemptFileSave(response);
 		yield put(exportThreadsSuccess());
 	} catch (e) {
