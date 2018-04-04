@@ -27,7 +27,7 @@ const TabNavItemLink = (props) => {
 				className={activeTab === tabId ? 'active' : ''}
 				onClick={() => { setActiveTab(tabId); }}
 			>
-				<i className={iconId ? `fa fa-${iconId}` : ''} /> {title}
+				<i className={iconId ? `fas fa-${iconId}` : ''} /> {title}
 			</NavLink>
 		</NavItem>
 	);

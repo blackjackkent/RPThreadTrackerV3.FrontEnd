@@ -7,12 +7,13 @@ import { connect } from 'react-redux';
 import ToolsTabNav from './components/ToolsTabNav';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import ManageTagsPane from './components/ManageTagsPane';
-import { setActiveToolsTab, fetchTags } from '../../../infrastructure/actions';
+import { setActiveToolsTab, fetchTags, exportThreads } from '../../../infrastructure/actions';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired
+	dispatch: PropTypes.func.isRequired,
+	exportThreads: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -32,6 +33,7 @@ class Tools extends Component {
 	constructor(props) {
 		super(props);
 		this.setActiveTab = this.setActiveTab.bind(this);
+		this.onExportRequest = this.onExportRequest.bind(this);
 	}
 	componentDidMount() {
 		const { dispatch } = this.props;
@@ -43,6 +45,10 @@ class Tools extends Component {
 		const { dispatch } = this.props;
 		dispatch(setActiveToolsTab(tab));
 	}
+	onExportRequest(includeHiatused, includeArchive) {
+		this.props.exportThreads({ includeHiatused, includeArchive });
+	}
+
 	render() {
 		const { activeTab, tags } = this.props;
 		return (
@@ -51,7 +57,7 @@ class Tools extends Component {
 					<Col>
 						<ToolsTabNav setActiveTab={this.setActiveTab} activeTab={activeTab} />
 						<TabContent activeTab={activeTab}>
-							<ExportThreadsPane />
+							<ExportThreadsPane onExportRequest={this.onExportRequest} />
 							<ManageTagsPane tags={tags} />
 						</TabContent>
 					</Col>
@@ -62,4 +68,6 @@ class Tools extends Component {
 }
 
 Tools.propTypes = propTypes;
-export default connect(mapStateToProps)(Tools);
+export default connect(mapStateToProps, {
+	exportThreads
+})(Tools);

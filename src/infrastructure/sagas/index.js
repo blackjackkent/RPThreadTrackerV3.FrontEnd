@@ -12,6 +12,7 @@ export { default as submitUserResetPasswordSaga } from './user/submitUserResetPa
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
 export { default as updateUserSettingsSaga } from './userSettings/updateUserSettingsSaga';
 // Threads
+export { default as exportThreadsSaga } from './threads/exportThreadsSaga';
 export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsSaga';
 export { default as fetchActiveThreadsStatusSaga } from './threads/fetchActiveThreadsStatusSaga';
 export { default as fetchArchivedThreadsSaga } from './threads/fetchArchivedThreadsSaga';
