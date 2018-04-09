@@ -4,10 +4,11 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import SettingsTabNav from './components/SettingsTabNav';
 import ChangePasswordPane from './components/ChangePasswordPane';
 import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
 import { setActiveSettingsTab } from '../../../infrastructure/actions';
+import StaticTabNav from '../../shared/static/StaticTabNav';
+import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
@@ -38,11 +39,38 @@ class Settings extends Component {
 	}
 	render() {
 		const { activeTab, user } = this.props;
+		const options = [
+			{
+				tabId: 'change-password',
+				name: 'Change Password',
+				icon: 'key'
+			},
+			{
+				tabId: 'change-username',
+				name: 'Change Username/Email',
+				icon: 'user'
+			}
+		];
 		return (
 			<div className="animated fadeIn static-container settings-container">
 				<Row>
-					<Col>
-						<SettingsTabNav setActiveTab={this.setActiveTab} activeTab={activeTab} />
+					<Col className="d-lg-none text-center">
+						<StaticDropdownNav
+							setActiveTab={this.setActiveTab}
+							activeTab={activeTab}
+							options={options}
+						/>
+					</Col>
+				</Row>
+				<Row>
+					<Col className="d-none d-lg-block" md={3}>
+						<StaticTabNav
+							setActiveTab={this.setActiveTab}
+							activeTab={activeTab}
+							options={options}
+						/>
+					</Col>
+					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ChangePasswordPane />
 							<UpdateAccountInfoPane user={user} />

@@ -35,7 +35,7 @@ class StaticTabNavItem extends React.Component {
 					className={activeTab === tabId ? 'active' : ''}
 					onClick={(e) => { this.onClick(e, tabId); }}
 				>
-					<i className={iconId ? `fas fa-${iconId}` : ''} /> {title}
+					<span className="d-none d-xl-inline"><i className={iconId ? `fas fa-${iconId}` : ''} /></span> {title}
 				</NavLink>
 			</NavItem>
 		);

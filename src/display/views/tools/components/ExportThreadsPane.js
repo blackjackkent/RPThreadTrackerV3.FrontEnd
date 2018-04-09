@@ -32,10 +32,10 @@ class ExportThreadsPane extends Component {
 						Use the button below to export an Excel file of your current threads in the database.
 					</p>
 					<FormGroup row>
-						<Col xs="8" sm="5" md="4" xl="2">
+						<Col md={{ offset: 2, size: 6 }}>
 							<Label htmlFor="current-password">Include Archived Threads:</Label>
 						</Col>
-						<Col xs="3" md="3" xl="1">
+						<Col>
 							<Label className="switch switch-sm switch-text switch-info mb-0">
 								<Input
 									type="checkbox"
@@ -50,10 +50,10 @@ class ExportThreadsPane extends Component {
 						</Col>
 					</FormGroup>
 					<FormGroup row>
-						<Col xs="8" sm="5" md="4" xl="2">
+						<Col md={{ offset: 2, size: 6 }}>
 							<Label htmlFor="current-password">Include Characters on Hiatus:</Label>
 						</Col>
-						<Col xs="3" md="3" xl="1">
+						<Col>
 							<Label className="switch switch-sm switch-text switch-info mb-0">
 								<Input
 									type="checkbox"
@@ -69,7 +69,7 @@ class ExportThreadsPane extends Component {
 					</FormGroup>
 				</Form>
 				<Row>
-					<Col xs="1">
+					<Col className="text-right">
 						<Button
 							type="submit"
 							color="primary"

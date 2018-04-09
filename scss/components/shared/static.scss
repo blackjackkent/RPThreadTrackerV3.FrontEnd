@@ -1,3 +1,15 @@
 .static-tab-nav {
-	padding: 1rem;
+	padding-top: 1rem;
+
+	.nav-link {
+		color: #fff;
+		padding: 10px;
+		margin-bottom: 10px;
+	}
+	.nav-link.active {
+		background: $gray-600;
+	}
+	.nav-link:hover {
+		background: $gray-700;
+	}
 }

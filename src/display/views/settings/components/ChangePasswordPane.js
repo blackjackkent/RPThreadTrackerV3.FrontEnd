@@ -5,10 +5,10 @@ const ChangePasswordPane = () => (
 	<TabPane tabId="change-password">
 		<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
 			<FormGroup row>
-				<Col xs="12" md={{ size: 3 }}>
+				<Col xs="12" lg="3">
 					<Label htmlFor="current-password">Current Password:</Label>
 				</Col>
-				<Col xs="12" md="6">
+				<Col xs="12" lg="9">
 					<Input
 						type="password"
 						id="current-password"
@@ -18,10 +18,10 @@ const ChangePasswordPane = () => (
 				</Col>
 			</FormGroup>
 			<FormGroup row>
-				<Col xs="12" md={{ size: 3 }}>
+				<Col xs="12" lg="3">
 					<Label htmlFor="new-password">New Password:</Label>
 				</Col>
-				<Col xs="12" md="6">
+				<Col xs="12" lg="9">
 					<Input
 						type="password"
 						id="new-password"
@@ -31,10 +31,10 @@ const ChangePasswordPane = () => (
 				</Col>
 			</FormGroup>
 			<FormGroup row>
-				<Col xs="12" md={{ size: 3 }}>
+				<Col xs="12" lg="3">
 					<Label htmlFor="confirm-new-password">Confirm New Password:</Label>
 				</Col>
-				<Col xs="12" md="6">
+				<Col xs="12" lg="9">
 					<Input
 						type="password"
 						id="confirm-new-password"
@@ -45,7 +45,7 @@ const ChangePasswordPane = () => (
 			</FormGroup>
 		</Form>
 		<Row>
-			<Col sm="12" md={{ size: 8 }} className="text-right">
+			<Col className="text-right">
 				<Button type="submit" color="primary">
 					Submit
 				</Button>

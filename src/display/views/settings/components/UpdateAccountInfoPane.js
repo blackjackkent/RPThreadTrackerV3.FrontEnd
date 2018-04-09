@@ -12,10 +12,10 @@ const UpdateAccountInfoPane = (props) => {
 		<TabPane tabId="change-username">
 			<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
 				<FormGroup row>
-					<Col xs="12" md={{ size: 3 }}>
+					<Col xs="12" lg="3">
 						<Label htmlFor="username">Username:</Label>
 					</Col>
-					<Col xs="12" md="6">
+					<Col xs="12" lg="9">
 						<Input
 							type="text"
 							id="username"
@@ -26,10 +26,10 @@ const UpdateAccountInfoPane = (props) => {
 					</Col>
 				</FormGroup>
 				<FormGroup row>
-					<Col xs="12" md={{ size: 3 }}>
+					<Col xs="12" lg="3">
 						<Label htmlFor="email">Email:</Label>
 					</Col>
-					<Col xs="12" md="6">
+					<Col xs="12" lg="9">
 						<Input
 							type="email"
 							id="email"
@@ -41,7 +41,7 @@ const UpdateAccountInfoPane = (props) => {
 				</FormGroup>
 			</Form>
 			<Row>
-				<Col sm="12" md={{ size: 8 }} className="text-right">
+				<Col className="text-right">
 					<Button type="submit" color="primary">
 						Submit
 					</Button>
