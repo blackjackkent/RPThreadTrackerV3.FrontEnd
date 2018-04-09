@@ -4,15 +4,17 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ToolsTabNav from './components/ToolsTabNav';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import ManageTagsPane from './components/ManageTagsPane';
+import StaticTabNav from '../../shared/static/StaticTabNav';
+import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import { setActiveToolsTab, fetchTags, exportThreads } from '../../../infrastructure/actions';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired,
+	fetchTags: PropTypes.func.isRequired,
+	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired
 };
 
@@ -36,14 +38,12 @@ class Tools extends Component {
 		this.onExportRequest = this.onExportRequest.bind(this);
 	}
 	componentDidMount() {
-		const { dispatch } = this.props;
 		if (!this.props.tags || !this.props.tags.length) {
-			dispatch(fetchTags());
+			this.props.fetchTags();
 		}
 	}
 	setActiveTab(tab) {
-		const { dispatch } = this.props;
-		dispatch(setActiveToolsTab(tab));
+		this.props.setActiveToolsTab(tab);
 	}
 	onExportRequest(includeHiatused, includeArchive) {
 		this.props.exportThreads({ includeHiatused, includeArchive });
@@ -51,11 +51,38 @@ class Tools extends Component {
 
 	render() {
 		const { activeTab, tags } = this.props;
+		const options = [
+			{
+				tabId: 'export-threads',
+				name: 'Export Threads',
+				icon: 'tags'
+			},
+			{
+				tabId: 'manage-tags',
+				name: 'Manage Tags',
+				icon: 'download'
+			}
+		];
 		return (
 			<div className="animated fadeIn static-container settings-container">
 				<Row>
-					<Col>
-						<ToolsTabNav setActiveTab={this.setActiveTab} activeTab={activeTab} />
+					<Col className="d-lg-none text-center">
+						<StaticDropdownNav
+							setActiveTab={this.setActiveTab}
+							activeTab={activeTab}
+							options={options}
+						/>
+					</Col>
+				</Row>
+				<Row>
+					<Col className="d-none d-lg-block" md={3}>
+						<StaticTabNav
+							setActiveTab={this.setActiveTab}
+							activeTab={activeTab}
+							options={options}
+						/>
+					</Col>
+					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
 							<ManageTagsPane tags={tags} />
@@ -69,5 +96,7 @@ class Tools extends Component {
 
 Tools.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	exportThreads
+	exportThreads,
+	setActiveToolsTab,
+	fetchTags
 })(Tools);

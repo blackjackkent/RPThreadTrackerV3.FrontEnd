@@ -7,6 +7,7 @@ const routes = {
 	'/threads/archived': 'Archived',
 	'/threads/queued': 'Queued',
 	'/manage-characters': 'Manage Characters',
+	'/tools': 'Tools',
 	'/settings': 'Account Settings',
 	'/help': 'Help'
 };
