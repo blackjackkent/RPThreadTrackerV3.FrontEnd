@@ -37,7 +37,6 @@ class ForgotPassword extends Component {
 		};
 	}
 	handleForgotPasswordSubmit() {
-		console.log(this.state.forgotPasswordRequest);
 		this.props.submitUserForgotPassword(this.state.forgotPasswordRequest);
 	}
 	handleInputChange(event) {

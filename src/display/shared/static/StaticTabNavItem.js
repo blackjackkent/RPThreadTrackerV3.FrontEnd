@@ -8,7 +8,6 @@ const propTypes = {
 	tabId: PropTypes.string.isRequired,
 	activeTab: PropTypes.string.isRequired,
 	setActiveTab: PropTypes.func.isRequired,
-	iconId: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired
 };
 
@@ -25,7 +24,6 @@ class StaticTabNavItem extends React.Component {
 		const {
 			tabId,
 			activeTab,
-			iconId,
 			title
 		} = this.props;
 		return (
@@ -35,7 +33,7 @@ class StaticTabNavItem extends React.Component {
 					className={activeTab === tabId ? 'active' : ''}
 					onClick={(e) => { this.onClick(e, tabId); }}
 				>
-					<span className="d-none d-xl-inline"><i className={iconId ? `fas fa-${iconId}` : ''} /></span> {title}
+					{title}
 				</NavLink>
 			</NavItem>
 		);

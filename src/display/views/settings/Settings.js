@@ -42,13 +42,11 @@ class Settings extends Component {
 		const options = [
 			{
 				tabId: 'change-password',
-				name: 'Change Password',
-				icon: 'key'
+				name: 'Change Password'
 			},
 			{
 				tabId: 'change-username',
-				name: 'Change Username/Email',
-				icon: 'user'
+				name: 'Change Username/Email'
 			}
 		];
 		return (

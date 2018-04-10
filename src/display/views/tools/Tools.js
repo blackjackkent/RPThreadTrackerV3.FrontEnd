@@ -54,13 +54,11 @@ class Tools extends Component {
 		const options = [
 			{
 				tabId: 'export-threads',
-				name: 'Export Threads',
-				icon: 'tags'
+				name: 'Export Threads'
 			},
 			{
 				tabId: 'manage-tags',
-				name: 'Manage Tags',
-				icon: 'download'
+				name: 'Manage Tags'
 			}
 		];
 		return (

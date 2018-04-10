@@ -1,13 +1,22 @@
 import React from 'react';
 import {
-	TabPane
+	TabPane, Card, CardHeader, CardBlock
 } from 'reactstrap';
 
 const FAQPane = () => (
 	<TabPane tabId="faq">
-		<p>
-			Coming soon!
-		</p>
+		<Card>
+			<CardHeader>
+				<i
+					className="fas fa-question-circle"
+				/> FAQ
+			</CardHeader>
+			<CardBlock className="card-body">
+				<p>
+					Coming soon!
+				</p>
+			</CardBlock>
+		</Card>
 	</TabPane>
 );
 

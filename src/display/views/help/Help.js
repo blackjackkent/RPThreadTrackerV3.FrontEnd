@@ -32,23 +32,19 @@ const Help = (props) => {
 	const options = [
 		{
 			tabId: 'about',
-			name: 'About RPThreadTracker',
-			icon: 'info-circle'
+			name: 'About RPThreadTracker'
 		},
 		{
 			tabId: 'faq',
-			name: 'FAQ',
-			icon: 'question-circle'
+			name: 'FAQ'
 		},
 		{
 			tabId: 'guides',
-			name: 'Usage Guides',
-			icon: 'play-circle'
+			name: 'Usage Guides'
 		},
 		{
 			tabId: 'contact',
-			name: 'Contact Me',
-			icon: 'envelope'
+			name: 'Contact Me'
 		}
 	];
 	return (

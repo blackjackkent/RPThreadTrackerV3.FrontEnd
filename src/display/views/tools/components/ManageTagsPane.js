@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabPane, Table, Row, Col } from 'reactstrap';
+import { TabPane, Table, Row, Col, Card, CardHeader, CardBlock } from 'reactstrap';
 import PropTypes from 'prop-types';
 import TagManagementRow from './TagManagementRow';
 
@@ -10,21 +10,30 @@ const ManageThreadsPane = (props) => {
 	const { tags } = props;
 	return (
 		<TabPane tabId="manage-tags" className="manage-tags">
-			<p>
-				Here you can edit or delete tags that you
-				have used to identify and group your tracked threads.
-			</p>
-			<Row>
-				<Col xl={{ size: 8, offset: 2 }}>
-					<Table>
-						<tbody>
-							{
-								tags.length ? tags.map(item => <TagManagementRow tag={item} key={item.id} />) : ''
-							}
-						</tbody>
-					</Table>
-				</Col>
-			</Row>
+			<Card>
+				<CardHeader>
+					<i
+						className="fas fa-tags"
+					/> Manage Tags
+				</CardHeader>
+				<CardBlock className="card-body">
+					<p>
+						Here you can edit or delete tags that you
+						have used to identify and group your tracked threads.
+					</p>
+					<Row>
+						<Col xl={{ size: 8, offset: 2 }}>
+							<Table>
+								<tbody>
+									{
+										tags.length ? tags.map(item => <TagManagementRow tag={item} key={item.id} />) : ''
+									}
+								</tbody>
+							</Table>
+						</Col>
+					</Row>
+				</CardBlock>
+			</Card>
 		</TabPane>
 	);
 };

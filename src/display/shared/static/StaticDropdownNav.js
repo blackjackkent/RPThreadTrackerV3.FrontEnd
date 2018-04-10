@@ -1,8 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Nav
-} from 'reactstrap';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
