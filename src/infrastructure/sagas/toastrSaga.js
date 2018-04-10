@@ -12,7 +12,9 @@ import {
 	UNTRACK_CHARACTER_SUCCESS,
 	UNTRACK_CHARACTER_FAILURE,
 	USER_FORGOT_PASSWORD_SUCCESS,
-	USER_RESET_PASSWORD_SUCCESS
+	USER_RESET_PASSWORD_SUCCESS,
+	SUBMIT_CONTACT_FORM_SUCCESS,
+	SUBMIT_CONTACT_FORM_FAILURE
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -64,6 +66,14 @@ function displayResetPasswordSuccess() {
 	toastr.success('Success. You can now log in with your updated password');
 }
 
+function displaySubmitContactFormSuccess() {
+	toastr.success('Thanks! Your message has been submitted and we\'ll get back to you as soon as possible.');
+}
+
+function displaySubmitContactFormError() {
+	toastr.error('There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
@@ -76,6 +86,8 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(UNTRACK_CHARACTER_FAILURE, displayUntrackCharacterError),
 		takeEvery(UNTRACK_CHARACTER_SUCCESS, displayUntrackCharacterSuccess),
 		takeEvery(USER_FORGOT_PASSWORD_SUCCESS, displayForgotPasswordSuccess),
-		takeEvery(USER_RESET_PASSWORD_SUCCESS, displayResetPasswordSuccess)
+		takeEvery(USER_RESET_PASSWORD_SUCCESS, displayResetPasswordSuccess),
+		takeEvery(SUBMIT_CONTACT_FORM_SUCCESS, displaySubmitContactFormSuccess),
+		takeEvery(SUBMIT_CONTACT_FORM_FAILURE, displaySubmitContactFormError)
 	]);
 }

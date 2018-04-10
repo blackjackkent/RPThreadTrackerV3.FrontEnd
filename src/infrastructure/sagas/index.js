@@ -25,6 +25,9 @@ export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga
 export { default as upsertCharacterSaga } from './characters/upsertCharacterSaga';
 export { default as untrackCharacterSaga } from './characters/untrackCharacterSaga';
 
+// Help
+export { default as submitContactFormSaga } from './help/submitContactFormSaga';
+
 export { default as toastrSaga } from './toastrSaga';
 export { default as logoutSaga } from './logoutSaga';
 

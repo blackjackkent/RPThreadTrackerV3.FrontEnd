@@ -1,3 +1,4 @@
+// #region imports
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
@@ -6,6 +7,7 @@ import Login from '../views/login/Login';
 import ForgotPassword from '../views/forgot-password/ForgotPassword';
 import Register from '../views/register/Register';
 import ResetPassword from '../views/reset-password/ResetPassword';
+// #endregion imports
 
 const StaticContainer = () => (
 	<div className="app flex-row align-items-center">

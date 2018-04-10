@@ -95,3 +95,8 @@ export { untrackCharacterFailure, UNTRACK_CHARACTER_FAILURE } from './characters
 // Tags
 export { fetchTags, FETCH_TAGS } from './tags/fetchTags';
 export { fetchedTagsSuccess, FETCHED_TAGS_SUCCESS } from './tags/fetchedTagsSuccess';
+
+// Help
+export { submitContactForm, SUBMIT_CONTACT_FORM } from './help/submitContactForm';
+export { submitContactFormSuccess, SUBMIT_CONTACT_FORM_SUCCESS } from './help/submitContactFormSuccess';
+export { submitContactFormFailure, SUBMIT_CONTACT_FORM_FAILURE } from './help/submitContactFormFailure';
