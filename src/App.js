@@ -11,6 +11,7 @@ import history from './infrastructure/history';
 import Layout from './display/containers/Layout';
 import StaticContainer from './display/containers/StaticContainer';
 import Maintenance from './display/containers/Maintenance';
+import PublicContainer from './display/containers/PublicContainer';
 
 const propTypes = {
 	ui: PropTypes.shape({}).isRequired
@@ -41,6 +42,7 @@ const App = (props) => {
 				{
 					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
 				}
+				<Route path="/public" name="Public" component={PublicContainer} />
 				<Route component={Layout} />
 			</Switch>
 		</Router>

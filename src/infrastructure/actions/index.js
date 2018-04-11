@@ -106,3 +106,8 @@ export { fetchedTagsSuccess, FETCHED_TAGS_SUCCESS } from './tags/fetchedTagsSucc
 export { submitContactForm, SUBMIT_CONTACT_FORM } from './help/submitContactForm';
 export { submitContactFormSuccess, SUBMIT_CONTACT_FORM_SUCCESS } from './help/submitContactFormSuccess';
 export { submitContactFormFailure, SUBMIT_CONTACT_FORM_FAILURE } from './help/submitContactFormFailure';
+
+// Public
+export { fetchPublicThreads, FETCH_PUBLIC_THREADS } from './public/fetchPublicThreads';
+export { fetchPublicThreadsSuccess, FETCH_PUBLIC_THREADS_SUCCESS } from './public/fetchPublicThreadsSuccess';
+export { fetchPublicThreadsFailure, FETCH_PUBLIC_THREADS_FAILURE } from './public/fetchPublicThreadsFailure';
