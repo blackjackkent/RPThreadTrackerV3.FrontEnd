@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChangePasswordPane from './components/ChangePasswordPane';
 import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
-import { setActiveSettingsTab, submitUserChangePassword } from '../../../infrastructure/actions';
+import { setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo } from '../../../infrastructure/actions';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 
@@ -14,7 +14,8 @@ const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	user: PropTypes.shape({}).isRequired,
 	setActiveSettingsTab: PropTypes.func.isRequired,
-	submitUserChangePassword: PropTypes.func.isRequired
+	submitUserChangePassword: PropTypes.func.isRequired,
+	submitUserAccountInfo: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -72,7 +73,7 @@ class Settings extends Component {
 					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ChangePasswordPane submitChangePasswordForm={this.props.submitUserChangePassword} />
-							<UpdateAccountInfoPane user={user} />
+							<UpdateAccountInfoPane submitAccountInfoForm={this.props.submitUserAccountInfo} user={user} />
 						</TabContent>
 					</Col>
 				</Row>
@@ -84,5 +85,6 @@ class Settings extends Component {
 Settings.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	submitUserChangePassword,
-	setActiveSettingsTab
+	setActiveSettingsTab,
+	submitUserAccountInfo
 })(Settings);

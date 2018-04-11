@@ -17,7 +17,9 @@ import {
 	SUBMIT_CONTACT_FORM_SUCCESS,
 	SUBMIT_CONTACT_FORM_FAILURE,
 	USER_CHANGE_PASSWORD_FAILURE,
-	USER_CHANGE_PASSWORD_SUCCESS
+	USER_CHANGE_PASSWORD_SUCCESS,
+	USER_ACCOUNT_INFO_FAILURE,
+	USER_ACCOUNT_INFO_SUCCESS
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -96,6 +98,25 @@ function displayUserChangePasswordSuccess() {
 	toastr.success('Your password was successfully updated.');
 }
 
+function displayUserAccountInfoError(action) {
+	const errors = action.data;
+	const messages = [];
+	for (let i = 0; i < errors.length; i++) {
+		messages.push(<span>{errors[i]}<br /></span>);
+	}
+	const message = (
+		<span>
+			There was a problem updating your account information.<br />
+			{messages}
+		</span>
+	);
+	toastr.error('', { component: () => message });
+}
+
+function displayUserAccountInfoSuccess() {
+	toastr.success('Your account information was successfully updated.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
@@ -112,6 +133,8 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(SUBMIT_CONTACT_FORM_SUCCESS, displaySubmitContactFormSuccess),
 		takeEvery(SUBMIT_CONTACT_FORM_FAILURE, displaySubmitContactFormError),
 		takeEvery(USER_CHANGE_PASSWORD_FAILURE, displayUserChangePasswordError),
-		takeEvery(USER_CHANGE_PASSWORD_SUCCESS, displayUserChangePasswordSuccess)
+		takeEvery(USER_CHANGE_PASSWORD_SUCCESS, displayUserChangePasswordSuccess),
+		takeEvery(USER_ACCOUNT_INFO_FAILURE, displayUserAccountInfoError),
+		takeEvery(USER_ACCOUNT_INFO_SUCCESS, displayUserAccountInfoSuccess)
 	]);
 }

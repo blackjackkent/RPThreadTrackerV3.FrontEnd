@@ -70,6 +70,9 @@ export { userResetPasswordFailure, USER_RESET_PASSWORD_FAILURE } from './user/us
 export { submitUserChangePassword, SUBMIT_USER_CHANGE_PASSWORD } from './user/submitUserChangePassword';
 export { userChangePasswordSuccess, USER_CHANGE_PASSWORD_SUCCESS } from './user/userChangePasswordSuccess';
 export { userChangePasswordFailure, USER_CHANGE_PASSWORD_FAILURE } from './user/userChangePasswordFailure';
+export { submitUserAccountInfo, SUBMIT_USER_ACCOUNT_INFO } from './user/submitUserAccountInfo';
+export { userAccountInfoSuccess, USER_ACCOUNT_INFO_SUCCESS } from './user/userAccountInfoSuccess';
+export { userAccountInfoFailure, USER_ACCOUNT_INFO_FAILURE } from './user/userAccountInfoFailure';
 
 // UserSettings
 export { fetchUserSettings, FETCH_USER_SETTINGS } from './userSettings/fetchUserSettings';

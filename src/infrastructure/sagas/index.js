@@ -9,6 +9,7 @@ export { default as submitUserRegistrationSaga } from './user/submitUserRegistra
 export { default as submitUserForgotPasswordSaga } from './user/submitUserForgotPasswordSaga';
 export { default as submitUserResetPasswordSaga } from './user/submitUserResetPasswordSaga';
 export { default as submitUserChangePasswordSaga } from './user/submitUserChangePasswordSaga';
+export { default as submitUserAccountInfoSaga } from './user/submitUserAccountInfoSaga';
 // UserSettings
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
 export { default as updateUserSettingsSaga } from './userSettings/updateUserSettingsSaga';
