@@ -67,6 +67,9 @@ export { userForgotPasswordFailure, USER_FORGOT_PASSWORD_FAILURE } from './user/
 export { submitUserResetPassword, SUBMIT_USER_RESET_PASSWORD } from './user/submitUserResetPassword';
 export { userResetPasswordSuccess, USER_RESET_PASSWORD_SUCCESS } from './user/userResetPasswordSuccess';
 export { userResetPasswordFailure, USER_RESET_PASSWORD_FAILURE } from './user/userResetPasswordFailure';
+export { submitUserChangePassword, SUBMIT_USER_CHANGE_PASSWORD } from './user/submitUserChangePassword';
+export { userChangePasswordSuccess, USER_CHANGE_PASSWORD_SUCCESS } from './user/userChangePasswordSuccess';
+export { userChangePasswordFailure, USER_CHANGE_PASSWORD_FAILURE } from './user/userChangePasswordFailure';
 
 // UserSettings
 export { fetchUserSettings, FETCH_USER_SETTINGS } from './userSettings/fetchUserSettings';

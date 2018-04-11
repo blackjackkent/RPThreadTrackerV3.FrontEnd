@@ -18,7 +18,7 @@ const defaultState = {
 	loginError: null,
 	registrationErrors: [],
 	forgotPasswordError: null,
-	resetPasswordError: null
+	resetPasswordErrors: []
 };
 
 function errors(state = defaultState, action) {
@@ -41,7 +41,7 @@ function errors(state = defaultState, action) {
 		case USER_RESET_PASSWORD_SUCCESS:
 		case SUBMIT_USER_RESET_PASSWORD:
 			return Object.assign({}, state, {
-				resetPasswordError: null
+				resetPasswordErrors: []
 			});
 		case USER_LOGIN_FAILURE:
 			return Object.assign({}, state, {

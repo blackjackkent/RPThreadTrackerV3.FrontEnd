@@ -6,14 +6,15 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChangePasswordPane from './components/ChangePasswordPane';
 import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
-import { setActiveSettingsTab } from '../../../infrastructure/actions';
+import { setActiveSettingsTab, submitUserChangePassword } from '../../../infrastructure/actions';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	user: PropTypes.shape({}).isRequired,
-	dispatch: PropTypes.func.isRequired
+	setActiveSettingsTab: PropTypes.func.isRequired,
+	submitUserChangePassword: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -34,9 +35,9 @@ class Settings extends Component {
 	}
 
 	setActiveTab(tab) {
-		const { dispatch } = this.props;
-		dispatch(setActiveSettingsTab(tab));
+		this.props.setActiveSettingsTab(tab);
 	}
+
 	render() {
 		const { activeTab, user } = this.props;
 		const options = [
@@ -70,7 +71,7 @@ class Settings extends Component {
 					</Col>
 					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
-							<ChangePasswordPane />
+							<ChangePasswordPane submitChangePasswordForm={this.props.submitUserChangePassword} />
 							<UpdateAccountInfoPane user={user} />
 						</TabContent>
 					</Col>
@@ -81,4 +82,7 @@ class Settings extends Component {
 }
 
 Settings.propTypes = propTypes;
-export default connect(mapStateToProps)(Settings);
+export default connect(mapStateToProps, {
+	submitUserChangePassword,
+	setActiveSettingsTab
+})(Settings);

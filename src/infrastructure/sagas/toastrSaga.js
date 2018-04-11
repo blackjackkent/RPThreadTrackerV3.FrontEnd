@@ -1,3 +1,4 @@
+import React from 'react';
 import { takeEvery, all } from 'redux-saga/effects';
 import { toastr } from 'react-redux-toastr';
 
@@ -14,7 +15,9 @@ import {
 	USER_FORGOT_PASSWORD_SUCCESS,
 	USER_RESET_PASSWORD_SUCCESS,
 	SUBMIT_CONTACT_FORM_SUCCESS,
-	SUBMIT_CONTACT_FORM_FAILURE
+	SUBMIT_CONTACT_FORM_FAILURE,
+	USER_CHANGE_PASSWORD_FAILURE,
+	USER_CHANGE_PASSWORD_SUCCESS
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -74,6 +77,25 @@ function displaySubmitContactFormError() {
 	toastr.error('There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.');
 }
 
+function displayUserChangePasswordError(action) {
+	const errors = action.data;
+	const messages = [];
+	for (let i = 0; i < errors.length; i++) {
+		messages.push(<span>{errors[i]}<br /></span>);
+	}
+	const message = (
+		<span>
+			There was a problem updating your password.<br />
+			{messages}
+		</span>
+	);
+	toastr.error('', { component: () => message });
+}
+
+function displayUserChangePasswordSuccess() {
+	toastr.success('Your password was successfully updated.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
@@ -88,6 +110,8 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(USER_FORGOT_PASSWORD_SUCCESS, displayForgotPasswordSuccess),
 		takeEvery(USER_RESET_PASSWORD_SUCCESS, displayResetPasswordSuccess),
 		takeEvery(SUBMIT_CONTACT_FORM_SUCCESS, displaySubmitContactFormSuccess),
-		takeEvery(SUBMIT_CONTACT_FORM_FAILURE, displaySubmitContactFormError)
+		takeEvery(SUBMIT_CONTACT_FORM_FAILURE, displaySubmitContactFormError),
+		takeEvery(USER_CHANGE_PASSWORD_FAILURE, displayUserChangePasswordError),
+		takeEvery(USER_CHANGE_PASSWORD_SUCCESS, displayUserChangePasswordSuccess)
 	]);
 }
