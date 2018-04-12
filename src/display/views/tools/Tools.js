@@ -8,25 +8,30 @@ import ExportThreadsPane from './components/ExportThreadsPane';
 import ManageTagsPane from './components/ManageTagsPane';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
-import { setActiveToolsTab, fetchTags, exportThreads } from '../../../infrastructure/actions';
+import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews } from '../../../infrastructure/actions';
+import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchTags: PropTypes.func.isRequired,
+	fetchPublicViews: PropTypes.func.isRequired,
 	setActiveToolsTab: PropTypes.func.isRequired,
-	exportThreads: PropTypes.func.isRequired
+	exportThreads: PropTypes.func.isRequired,
+	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
 		ui,
 		user,
-		tags
+		tags,
+		publicViews
 	} = state;
 	return {
 		user,
 		tags,
+		publicViews,
 		activeTab: ui.activeToolsTab
 	};
 }
@@ -40,6 +45,9 @@ class Tools extends Component {
 	componentDidMount() {
 		if (!this.props.tags || !this.props.tags.length) {
 			this.props.fetchTags();
+		}
+		if (!this.props.publicViews || !this.props.publicViews.length) {
+			this.props.fetchPublicViews();
 		}
 	}
 	setActiveTab(tab) {
@@ -57,8 +65,8 @@ class Tools extends Component {
 				name: 'Export Threads'
 			},
 			{
-				tabId: 'manage-tags',
-				name: 'Manage Tags'
+				tabId: 'manage-public-views',
+				name: 'Manage Public Views'
 			}
 		];
 		return (
@@ -83,7 +91,7 @@ class Tools extends Component {
 					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
-							<ManageTagsPane tags={tags} />
+							<ManagePublicViewsPane />
 						</TabContent>
 					</Col>
 				</Row>
@@ -96,5 +104,6 @@ Tools.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	exportThreads,
 	setActiveToolsTab,
-	fetchTags
+	fetchTags,
+	fetchPublicViews
 })(Tools);

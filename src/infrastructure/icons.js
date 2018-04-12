@@ -8,6 +8,7 @@ import faDownload from '@fortawesome/fontawesome-free-solid/faDownload';
 import faEdit from '@fortawesome/fontawesome-free-solid/faEdit';
 import faEnvelope from '@fortawesome/fontawesome-free-solid/faEnvelope';
 import faExternalLinkAlt from '@fortawesome/fontawesome-free-solid/faExternalLinkAlt';
+import faEye from '@fortawesome/fontawesome-free-solid/faEye';
 import faFilter from '@fortawesome/fontawesome-free-solid/faFilter';
 import faInfoCircle from '@fortawesome/fontawesome-free-solid/faInfoCircle';
 import faKey from '@fortawesome/fontawesome-free-solid/faKey';
@@ -33,6 +34,7 @@ const icons = {
 		fontawesome.library.add(faEdit);
 		fontawesome.library.add(faEnvelope);
 		fontawesome.library.add(faExternalLinkAlt);
+		fontawesome.library.add(faEye);
 		fontawesome.library.add(faFilter);
 		fontawesome.library.add(faKey);
 		fontawesome.library.add(faInfoCircle);

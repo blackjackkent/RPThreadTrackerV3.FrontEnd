@@ -1,0 +1,48 @@
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { TabPane, Form, FormGroup, Col, Label, Row, Input, Button, Card, CardHeader, CardBlock } from 'reactstrap';
+
+const propTypes = {
+	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	showCreatePublicViewModal: PropTypes.func.isRequired
+};
+
+const ManagePublicViewsPane = (props) => {
+	const { publicViews, showCreatePublicViewModal } = props;
+	return (
+		<TabPane tabId="manage-public-views">
+			<Card>
+				<CardHeader>
+					<i
+						className="fas fa-eye"
+					/> Manage Public Views
+				</CardHeader>
+				<CardBlock className="card-body">
+					<Row>
+						<Col className="text-center">
+							<p>
+								<Button
+									color="primary"
+									onClick={
+										() => showCreatePublicViewModal()}
+								>
+									Create New Public View
+								</Button>
+							</p>
+						</Col>
+					</Row>
+					<Row>
+						<Col>
+							<p className="text-center">
+								Public views allow you to customize a display of your current threads
+								and share them with others.
+							</p>
+						</Col>
+					</Row>
+				</CardBlock>
+			</Card>
+		</TabPane>
+	);
+};
+ManagePublicViewsPane.propTypes = propTypes;
+export default ManagePublicViewsPane;

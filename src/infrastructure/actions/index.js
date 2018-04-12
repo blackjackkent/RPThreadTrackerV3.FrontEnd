@@ -109,5 +109,8 @@ export { submitContactFormFailure, SUBMIT_CONTACT_FORM_FAILURE } from './help/su
 
 // Public
 export { fetchPublicThreads, FETCH_PUBLIC_THREADS } from './public/fetchPublicThreads';
-export { fetchPublicThreadsSuccess, FETCH_PUBLIC_THREADS_SUCCESS } from './public/fetchPublicThreadsSuccess';
-export { fetchPublicThreadsFailure, FETCH_PUBLIC_THREADS_FAILURE } from './public/fetchPublicThreadsFailure';
+export { fetchedPublicThreadsSuccess, FETCHED_PUBLIC_THREADS_SUCCESS } from './public/fetchedPublicThreadsSuccess';
+export { fetchedPublicThreadsFailure, FETCHED_PUBLIC_THREADS_FAILURE } from './public/fetchedPublicThreadsFailure';
+export { fetchPublicViews, FETCH_PUBLIC_VIEWS } from './public/fetchPublicViews';
+export { fetchedPublicViewsSuccess, FETCHED_PUBLIC_VIEWS_SUCCESS } from './public/fetchedPublicViewsSuccess';
+export { fetchedPublicViewsFailure, FETCHED_PUBLIC_VIEWS_FAILURE } from './public/fetchedPublicViewsFailure';

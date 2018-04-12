@@ -30,6 +30,9 @@ export { default as untrackCharacterSaga } from './characters/untrackCharacterSa
 // Help
 export { default as submitContactFormSaga } from './help/submitContactFormSaga';
 
+// Public
+export { default as fetchPublicViewsSaga } from './public/fetchPublicViewsSaga';
+
 export { default as toastrSaga } from './toastrSaga';
 export { default as logoutSaga } from './logoutSaga';
 
