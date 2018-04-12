@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import getColumns from './components/_columns';
-import Threads from './Threads';
+import ThreadTable from './components/ThreadTable';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
 import { getMyTurnFilteredThreads, getActiveThreadTags } from '../../../infrastructure/selectors';
 
@@ -38,7 +38,7 @@ class MyTurnThreads extends Component {
 			tags
 		} = this.props;
 		return (
-			<Threads
+			<ThreadTable
 				{...this.props}
 				filteredThreads={filteredThreads}
 				columns={getColumns()}

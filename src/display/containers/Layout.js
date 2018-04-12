@@ -17,6 +17,7 @@ import ModalContainer from '../shared/modals/ModalContainer';
 import LoadingIndicator from '../shared/LoadingIndicator';
 
 import Dashboard from '../views/dashboard/Dashboard';
+import Threads from '../views/threads/Threads';
 import MyTurnThreads from '../views/threads/MyTurnThreads';
 import TheirTurnThreads from '../views/threads/TheirTurnThreads';
 import ArchivedThreads from '../views/threads/ArchivedThreads';
@@ -91,10 +92,11 @@ class Layout extends Component {
 						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
-								<Route path="/threads/your-turn" name="Threads" component={MyTurnThreads} />
-								<Route path="/threads/their-turn" name="Threads" component={TheirTurnThreads} />
-								<Route path="/threads/archived" name="Threads" component={ArchivedThreads} />
-								<Route path="/threads/queued" name="Threads" component={QueuedThreads} />
+								<Route path="threads/*" name="Threads" component={Threads} />
+								<Route path="/threads/your-turn" name="Threads" render={() => <Threads renderable={MyTurnThreads} />} />
+								<Route path="/threads/their-turn" name="Threads" render={() => <Threads renderable={TheirTurnThreads} />} />
+								<Route path="/threads/archived" name="Threads" render={() => <Threads renderable={ArchivedThreads} />} />
+								<Route path="/threads/queued" name="Threads" render={() => <Threads renderable={QueuedThreads} />} />
 								<Route path="/tools" name="Tools" component={Tools} />
 								<Route path="/settings" name="Settings" component={Settings} />
 								<Route path="/manage-characters" name="Characters" component={ManageCharacters} />
