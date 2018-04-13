@@ -4,11 +4,11 @@ import Moment from 'react-moment';
 const getColumns = () => [
 	{
 		expander: true,
-		width: 65,
+		width: 30,
 		Expander: () =>
 			(
 				<div>
-					<i className="fas fa-cog" />
+					<i className="fas fa-tags" />
 				</div>
 			),
 		style: {
@@ -16,7 +16,64 @@ const getColumns = () => [
 			textAlign: 'center',
 			userSelect: 'none'
 		}
-	}, {
+	},
+	{
+		id: 'deleteButton',
+		Cell: () => (
+			<span>
+				<i title="Untrack Thread" className="fas fa-trash-alt" />
+			</span>
+		),
+		width: 30,
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		}
+	},
+	{
+		id: 'editButton',
+		Cell: () => (
+			<span>
+				<i title="Edit Thread" className="fas fa-edit" />
+			</span>
+		),
+		width: 30,
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		}
+	},
+	{
+		id: 'archiveButton',
+		Cell: () => (
+			<span>
+				<i title="Archive Thread" className="fas fa-lock" />
+			</span>
+		),
+		width: 30,
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		}
+	},
+	{
+		id: 'queueButton',
+		Cell: () => (
+			<span>
+				<i title="Unmark Thread Queued" className="fas fa-undo" />
+			</span>
+		),
+		width: 30,
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		}
+	},
+	{
 		Header: 'Thread Title',
 		accessor: 'thread.userTitle',
 		minWidth: 200

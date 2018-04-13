@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TabPane, Row, Label, Input, Form, FormGroup, Button, Col, Card, CardHeader, CardBlock } from 'reactstrap';
+import { TabPane, Row, Button, Col, Card, CardHeader, CardBlock } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
 
@@ -46,7 +46,10 @@ class UpdateAccountInfoPane extends React.Component {
 					</CardHeader>
 					<CardBlock className="card-body">
 						<AvForm onValidSubmit={() => submitAccountInfoForm(this.state.formData)}>
-							<UpdateAccountInfoForm handleInputChange={this.handleInputChange} user={this.state.formData} />
+							<UpdateAccountInfoForm
+								handleInputChange={this.handleInputChange}
+								user={this.state.formData}
+							/>
 							<Row>
 								<Col className="text-right">
 									<Button type="submit" color="primary">

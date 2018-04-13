@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import getColumns from './components/_archiveColumns';
+import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchArchivedThreads } from '../../../infrastructure/actions';
 import { getArchivedFilteredThreads } from '../../../infrastructure/selectors';
@@ -9,7 +10,11 @@ import { getArchivedFilteredThreads } from '../../../infrastructure/selectors';
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	openUntrackThreadModal: PropTypes.func.isRequired,
+	openEditThreadModal: PropTypes.func.isRequired,
+	toggleThreadIsArchived: PropTypes.func.isRequired,
+	toggleThreadIsMarkedQueued: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -31,7 +36,11 @@ class ArchivedThreads extends Component {
 
 	render() {
 		const {
-			filteredThreads
+			filteredThreads,
+			openUntrackThreadModal,
+			openEditThreadModal,
+			toggleThreadIsArchived,
+			toggleThreadIsMarkedQueued
 		} = this.props;
 		return (
 			<ThreadTable
@@ -39,6 +48,12 @@ class ArchivedThreads extends Component {
 				filteredThreads={filteredThreads}
 				isArchive
 				columns={getColumns()}
+				tdProps={getTdProps(
+					openUntrackThreadModal,
+					openEditThreadModal,
+					toggleThreadIsArchived,
+					toggleThreadIsMarkedQueued
+				)}
 			/>
 		);
 	}

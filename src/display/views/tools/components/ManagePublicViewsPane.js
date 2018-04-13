@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { TabPane, Form, FormGroup, Col, Label, Row, Input, Button, Card, CardHeader, CardBlock } from 'reactstrap';
+import { TabPane, Col, Row, Button, Card, CardHeader, CardBlock } from 'reactstrap';
 
 const propTypes = {
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

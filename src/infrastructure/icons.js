@@ -1,5 +1,4 @@
 import fontawesome from '@fortawesome/fontawesome';
-import faArchive from '@fortawesome/fontawesome-free-solid/faArchive';
 import faBolt from '@fortawesome/fontawesome-free-solid/faBolt';
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faCog from '@fortawesome/fontawesome-free-solid/faCog';
@@ -12,6 +11,7 @@ import faEye from '@fortawesome/fontawesome-free-solid/faEye';
 import faFilter from '@fortawesome/fontawesome-free-solid/faFilter';
 import faInfoCircle from '@fortawesome/fontawesome-free-solid/faInfoCircle';
 import faKey from '@fortawesome/fontawesome-free-solid/faKey';
+import faLock from '@fortawesome/fontawesome-free-solid/faLock';
 import faPlayCircle from '@fortawesome/fontawesome-free-solid/faPlayCircle';
 import faPowerOff from '@fortawesome/fontawesome-free-solid/faPowerOff';
 import faQuestionCircle from '@fortawesome/fontawesome-free-solid/faQuestionCircle';
@@ -20,12 +20,13 @@ import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
 import faTags from '@fortawesome/fontawesome-free-solid/faTags';
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt';
+import faUndo from '@fortawesome/fontawesome-free-solid/faUndo';
+import faUnlock from '@fortawesome/fontawesome-free-solid/faUnlock';
 import faUsers from '@fortawesome/fontawesome-free-solid/faUsers';
 import faUser from '@fortawesome/fontawesome-free-solid/faUser';
 
 const icons = {
 	init: () => {
-		fontawesome.library.add(faArchive);
 		fontawesome.library.add(faBolt);
 		fontawesome.library.add(faClock);
 		fontawesome.library.add(faCog);
@@ -36,8 +37,9 @@ const icons = {
 		fontawesome.library.add(faExternalLinkAlt);
 		fontawesome.library.add(faEye);
 		fontawesome.library.add(faFilter);
-		fontawesome.library.add(faKey);
 		fontawesome.library.add(faInfoCircle);
+		fontawesome.library.add(faKey);
+		fontawesome.library.add(faLock);
 		fontawesome.library.add(faPlayCircle);
 		fontawesome.library.add(faPowerOff);
 		fontawesome.library.add(faQuestionCircle);
@@ -46,6 +48,8 @@ const icons = {
 		fontawesome.library.add(faTags);
 		fontawesome.library.add(faTimes);
 		fontawesome.library.add(faTrashAlt);
+		fontawesome.library.add(faUndo);
+		fontawesome.library.add(faUnlock);
 		fontawesome.library.add(faUsers);
 		fontawesome.library.add(faUser);
 	}

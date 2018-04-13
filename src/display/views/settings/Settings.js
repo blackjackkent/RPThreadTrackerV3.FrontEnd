@@ -73,7 +73,10 @@ class Settings extends Component {
 					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ChangePasswordPane submitChangePasswordForm={this.props.submitUserChangePassword} />
-							<UpdateAccountInfoPane submitAccountInfoForm={this.props.submitUserAccountInfo} user={user} />
+							<UpdateAccountInfoPane
+								submitAccountInfoForm={this.props.submitUserAccountInfo}
+								user={user}
+							/>
 						</TabContent>
 					</Col>
 				</Row>

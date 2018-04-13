@@ -8,7 +8,7 @@ const propTypes = {
 const ThreadTableTagDisplay = (props) => {
 	const { tags } = props;
 	const rows = [];
-	if (tags) {
+	if (tags && tags.length) {
 		for (let i = 0; i < tags.length; i++) {
 			const element = (
 				<span
@@ -19,9 +19,16 @@ const ThreadTableTagDisplay = (props) => {
 				</span>);
 			rows.push(element);
 		}
+	} else {
+		rows.push((
+			<span
+				className="tag-display-wrapper"
+			>
+				There are no tags assigned to this thread.
+			</span>));
 	}
 	return (
-		<div className="thread-table-tag-display">
+		<div className="thread-table-tag-display thread-table-sub-component">
 			{rows}
 		</div>
 	);

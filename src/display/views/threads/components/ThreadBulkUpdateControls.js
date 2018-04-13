@@ -38,7 +38,7 @@ const ThreadBulkUpdateControls = (props) => {
 					disabled={selectedThreadCount === 0}
 				>
 					{isArchive ? 'Unarchive' : 'Archive'} Selected{' '}
-					<i className="fas fa-archive" />
+					<i className="fas fa-lock" />
 				</button>
 				<button
 					className="btn btn-danger"

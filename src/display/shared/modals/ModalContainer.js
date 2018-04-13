@@ -85,7 +85,7 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={threadToEdit}
 				headerText="Confirm Thread Untracking"
-				bodyText={`Are you sure you want to untrack ${threadToEdit ? threadToEdit.userTitle : ''}?`}
+				bodyText={<span>Are you sure you want to untrack <strong>{threadToEdit ? threadToEdit.userTitle : ''}</strong>?</span>}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkUntrackThreadsModalOpen}
@@ -105,7 +105,14 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={characterToEdit}
 				headerText="Confirm Character Untracking"
-				bodyText={`Are you sure you want to untrack ${characterToEdit.characterName ? characterToEdit.characterName : characterToEdit.urlIdentifier}? This will also untrack all threads associated with this character.`}
+				bodyText={
+					<span>Are you sure you want to untrack{' '}
+						<strong>
+							{characterToEdit.characterName
+								? characterToEdit.characterName
+								: characterToEdit.urlIdentifier}
+						</strong>? This will also untrack all threads associated with this character.
+					</span>}
 			/>
 		</div>
 	);

@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import ThreadTableSubComponent from './table-components/ThreadTableSubComponent';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
+import ThreadTableTagDisplay from './table-components/ThreadTableTagDisplay';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isArchive: PropTypes.bool,
-	isQueue: PropTypes.bool,
+	isArchive: PropTypes.bool.isRequired,
+	isQueue: PropTypes.bool.isRequired,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
@@ -24,15 +24,12 @@ const propTypes = {
 	toggleThreadIsArchived: PropTypes.func.isRequired,
 	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
 	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
-	openBulkUntrackThreadsModal: PropTypes.func.isRequired
-};
-const defaultProps = {
-	isArchive: false,
-	isQueue: false
+	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	tdProps: PropTypes.func.isRequired
 };
 
-function getData(threads) {
-	const data = threads.map((item) => {
+function getData(filteredThreads) {
+	const data = filteredThreads.map((item) => {
 		// eslint-disable-next-line no-underscore-dangle
 		const _id = item.thread.threadId;
 		return {
@@ -101,16 +98,13 @@ class ThreadTable extends React.Component {
 		const { selectAll } = this.state;
 		const {
 			filteredThreads,
-			toggleThreadIsArchived,
-			toggleThreadIsMarkedQueued,
-			openUntrackThreadModal,
-			openEditThreadModal,
 			columns,
 			isArchive,
 			isQueue,
 			bulkToggleThreadsAreMarkedQueued,
 			bulkToggleThreadsAreArchived,
-			openBulkUntrackThreadsModal
+			openBulkUntrackThreadsModal,
+			tdProps
 		} = this.props;
 
 		const checkboxProps = {
@@ -142,6 +136,7 @@ class ThreadTable extends React.Component {
 					className="-striped"
 					data={getData(filteredThreads)}
 					columns={columns}
+					getTdProps={tdProps}
 					defaultSorted={[
 						{
 							id: 'status.LastPostDate',
@@ -150,14 +145,8 @@ class ThreadTable extends React.Component {
 					]}
 					showPaginationTop
 					SubComponent={row =>
-						(<ThreadTableSubComponent
-							threadData={row.original}
-							toggleThreadIsArchived={toggleThreadIsArchived}
-							openUntrackThreadModal={openUntrackThreadModal}
-							openEditThreadModal={openEditThreadModal}
-							toggleThreadIsMarkedQueued={toggleThreadIsMarkedQueued}
-							isArchive={isArchive}
-							isQueue={isQueue}
+						(<ThreadTableTagDisplay
+							tags={row.original.thread.threadTags}
 						/>)}
 					{...checkboxProps}
 				/>
@@ -166,5 +155,4 @@ class ThreadTable extends React.Component {
 	}
 }
 ThreadTable.propTypes = propTypes;
-ThreadTable.defaultProps = defaultProps;
 export default ThreadTable;
