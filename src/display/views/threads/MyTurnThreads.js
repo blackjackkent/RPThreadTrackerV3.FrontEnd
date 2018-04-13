@@ -4,23 +4,20 @@ import { connect } from 'react-redux';
 import getColumns from './components/_columns';
 import ThreadTable from './components/ThreadTable';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
-import { getMyTurnFilteredThreads, getActiveThreadTags } from '../../../infrastructure/selectors';
+import { getMyTurnFilteredThreads } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const { activeThreads } = state;
 	const filteredThreads = getMyTurnFilteredThreads(state);
-	const tags = getActiveThreadTags(state);
 	return {
 		activeThreads,
-		filteredThreads,
-		tags
+		filteredThreads
 	};
 }
 
@@ -34,15 +31,13 @@ class MyTurnThreads extends Component {
 
 	render() {
 		const {
-			filteredThreads,
-			tags
+			filteredThreads
 		} = this.props;
 		return (
 			<ThreadTable
 				{...this.props}
 				filteredThreads={filteredThreads}
 				columns={getColumns()}
-				tags={tags}
 			/>
 		);
 	}

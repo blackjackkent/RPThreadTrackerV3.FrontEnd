@@ -4,18 +4,12 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ThreadTable from './components/ThreadTable';
-import { setFilteredCharacterId, setFilteredTag, toggleIsThreadFilterCardHidden, fetchCharacters, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
+import { fetchCharacters, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
 
 const propTypes = {
 	Renderable: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	dispatch: PropTypes.func.isRequired
-};
-
-const defaultProps = {
-	isArchive: false,
-	isQueue: false
 };
 
 function mapStateToProps(state) {
@@ -118,5 +112,4 @@ class Threads extends Component {
 }
 
 Threads.propTypes = propTypes;
-Threads.defaultProps = defaultProps;
 export default connect(mapStateToProps)(Threads);

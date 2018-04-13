@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import ThreadFilterCard from './ThreadFilterCard';
 import ThreadTableSubComponent from './table-components/ThreadTableSubComponent';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 
@@ -10,8 +9,8 @@ const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isArchive: PropTypes.bool.isRequired,
-	isQueue: PropTypes.bool.isRequired,
+	isArchive: PropTypes.bool,
+	isQueue: PropTypes.bool,
 	isThreadFilterCardHidden: PropTypes.bool.isRequired,
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
@@ -21,11 +20,15 @@ const propTypes = {
 	setFilteredTag: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threadFilterHiddenToggle: PropTypes.func.isRequired,
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	toggleThreadIsArchived: PropTypes.func.isRequired,
 	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
 	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired
+};
+const defaultProps = {
+	isArchive: false,
+	isQueue: false
 };
 
 function getData(threads) {
@@ -97,14 +100,7 @@ class ThreadTable extends React.Component {
 		const { toggleSelection, toggleAll, isSelected } = this;
 		const { selectAll } = this.state;
 		const {
-			threads,
-			rawFilterData,
-			characters,
-			tags,
-			isThreadFilterCardHidden,
-			threadFilterHiddenToggle,
-			setFilteredCharacterId,
-			setFilteredTag,
+			filteredThreads,
 			toggleThreadIsArchived,
 			toggleThreadIsMarkedQueued,
 			openUntrackThreadModal,
@@ -126,15 +122,6 @@ class ThreadTable extends React.Component {
 		};
 		return (
 			<div>
-				<ThreadFilterCard
-					rawFilterData={rawFilterData}
-					characters={characters}
-					tags={tags}
-					isThreadFilterCardHidden={isThreadFilterCardHidden}
-					threadFilterHiddenToggle={threadFilterHiddenToggle}
-					setFilteredCharacterId={setFilteredCharacterId}
-					setFilteredTag={setFilteredTag}
-				/>
 				<ThreadBulkUpdateControls
 					isArchive={isArchive}
 					isQueue={isQueue}
@@ -153,7 +140,7 @@ class ThreadTable extends React.Component {
 					// eslint-disable-next-line no-return-assign
 					ref={r => this.checkboxTable = r}
 					className="-striped"
-					data={getData(threads)}
+					data={getData(filteredThreads)}
 					columns={columns}
 					defaultSorted={[
 						{
@@ -179,4 +166,5 @@ class ThreadTable extends React.Component {
 	}
 }
 ThreadTable.propTypes = propTypes;
+ThreadTable.defaultProps = defaultProps;
 export default ThreadTable;

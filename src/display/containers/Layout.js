@@ -93,10 +93,10 @@ class Layout extends Component {
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
 								<Route path="threads/*" name="Threads" component={Threads} />
-								<Route path="/threads/your-turn" name="Threads" render={() => <Threads renderable={MyTurnThreads} />} />
-								<Route path="/threads/their-turn" name="Threads" render={() => <Threads renderable={TheirTurnThreads} />} />
-								<Route path="/threads/archived" name="Threads" render={() => <Threads renderable={ArchivedThreads} />} />
-								<Route path="/threads/queued" name="Threads" render={() => <Threads renderable={QueuedThreads} />} />
+								<Route path="/threads/your-turn" name="Threads" render={() => <Threads Renderable={MyTurnThreads} />} />
+								<Route path="/threads/their-turn" name="Threads" render={() => <Threads Renderable={TheirTurnThreads} />} />
+								<Route path="/threads/archived" name="Threads" render={() => <Threads Renderable={ArchivedThreads} />} />
+								<Route path="/threads/queued" name="Threads" render={() => <Threads Renderable={QueuedThreads} />} />
 								<Route path="/tools" name="Tools" component={Tools} />
 								<Route path="/settings" name="Settings" component={Settings} />
 								<Route path="/manage-characters" name="Characters" component={ManageCharacters} />

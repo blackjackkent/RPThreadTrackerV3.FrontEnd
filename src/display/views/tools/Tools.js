@@ -5,7 +5,6 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ExportThreadsPane from './components/ExportThreadsPane';
-import ManageTagsPane from './components/ManageTagsPane';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews } from '../../../infrastructure/actions';
@@ -58,7 +57,7 @@ class Tools extends Component {
 	}
 
 	render() {
-		const { activeTab, tags } = this.props;
+		const { activeTab } = this.props;
 		const options = [
 			{
 				tabId: 'export-threads',
