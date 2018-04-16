@@ -5,7 +5,7 @@ const getLastPostersFromThreadList = (threads) => {
 		return [];
 	}
 	const lastPosters = threads.map((t) => {
-		if (!t.thread) {
+		if (!t.status) {
 			return '';
 		}
 		return t.status.LastPosterUrlIdentifier;

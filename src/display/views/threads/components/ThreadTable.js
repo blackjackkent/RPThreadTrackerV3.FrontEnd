@@ -143,6 +143,12 @@ class ThreadTable extends React.Component {
 							desc: true
 						}
 					]}
+					defaultFilterMethod={(filter, row) => {
+						const id = filter.pivotId || filter.id;
+						return row[id] !== undefined
+							? String(row[id]).toLowerCase().includes(filter.value)
+							: true;
+					}}
 					showPaginationTop
 					SubComponent={row =>
 						(<ThreadTableTagDisplay
