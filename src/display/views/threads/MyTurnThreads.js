@@ -6,6 +6,7 @@ import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
 import { getMyTurnFilteredThreads } from '../../../infrastructure/selectors';
+import { getCharactersFromThreadList, getPartnersFromThreadList, getLastPostersFromThreadList } from '../../../utility';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -14,15 +15,24 @@ const propTypes = {
 	openUntrackThreadModal: PropTypes.func.isRequired,
 	openEditThreadModal: PropTypes.func.isRequired,
 	toggleThreadIsArchived: PropTypes.func.isRequired,
-	toggleThreadIsMarkedQueued: PropTypes.func.isRequired
+	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	partners: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	lastPosters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const { activeThreads } = state;
 	const filteredThreads = getMyTurnFilteredThreads(state);
+	const characters = getCharactersFromThreadList(filteredThreads);
+	const partners = getPartnersFromThreadList(filteredThreads);
+	const lastPosters = getLastPostersFromThreadList(filteredThreads);
 	return {
 		activeThreads,
-		filteredThreads
+		filteredThreads,
+		characters,
+		partners,
+		lastPosters
 	};
 }
 
@@ -40,13 +50,16 @@ class MyTurnThreads extends Component {
 			openUntrackThreadModal,
 			openEditThreadModal,
 			toggleThreadIsArchived,
-			toggleThreadIsMarkedQueued
+			toggleThreadIsMarkedQueued,
+			characters,
+			partners,
+			lastPosters
 		} = this.props;
 		return (
 			<ThreadTable
 				{...this.props}
 				filteredThreads={filteredThreads}
-				columns={getColumns()}
+				columns={getColumns(characters, partners, lastPosters)}
 				tdProps={getTdProps(
 					openUntrackThreadModal,
 					openEditThreadModal,
