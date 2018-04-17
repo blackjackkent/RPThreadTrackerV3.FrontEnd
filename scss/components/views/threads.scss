@@ -1,9 +1,5 @@
 .threads-container { color: $card-body-color; }
 .thread-table-sub-component { background: $gray-600; border-bottom: 3px solid $gray-400;}
 .thread-table-sub-component .tag-display-wrapper { padding: 5px 15px; display: inline-block; color: $gray-300;}
-.thread-bulk-update-controls { text-align: center; }
-.thread-bulk-update-controls .btn { margin: 0 10px;}
-
-@include media-breakpoint-down(md) {
-	.thread-bulk-update-controls .btn { margin: 5px 10px;}
-}
+.thread-bulk-update-controls, .tag-filter-select { text-align: center; margin-bottom: 10px; background: $gray-900; padding:10px; }
+.thread-bulk-update-controls .btn { margin-left: 10px;}

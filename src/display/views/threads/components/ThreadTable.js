@@ -4,8 +4,8 @@ import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
 import { Row, Col } from 'reactstrap';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
-import ThreadTableTagDisplay from './table-components/ThreadTableTagDisplay';
-import TagFilterSelect from './filter-components/TagFilterSelect';
+import ThreadTableTagDisplay from './ThreadTableTagDisplay';
+import TagFilterSelect from './TagFilterSelect';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
@@ -123,14 +123,14 @@ class ThreadTable extends React.Component {
 		return (
 			<div>
 				<Row>
-					<Col xs="12" md="6">
+					<Col xs="12" sm="6">
 						<TagFilterSelect
 							setFilteredTag={setFilteredTag}
 							tags={tags}
 							filteredTag={threadFilter.filteredTag}
 						/>
 					</Col>
-					<Col xs="12" md="6">
+					<Col xs="12" sm="6">
 						<ThreadBulkUpdateControls
 							isArchive={isArchive}
 							isQueue={isQueue}

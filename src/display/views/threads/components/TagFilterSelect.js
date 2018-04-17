@@ -28,7 +28,7 @@ const TagFilterSelect = (props) => {
 		}
 	}
 	return (
-		<FormGroup>
+		<FormGroup className="tag-filter-select">
 			<Input
 				type="select"
 				name="tag"
