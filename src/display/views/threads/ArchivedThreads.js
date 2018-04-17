@@ -5,9 +5,7 @@ import getColumns from './components/_archiveColumns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchArchivedThreads } from '../../../infrastructure/actions';
-import { getArchivedFilteredThreads } from '../../../infrastructure/selectors';
-import { getCharactersFromThreadList, getPartnersFromThreadList } from '../../../utility';
-
+import { getArchivedFilteredThreads, getArchivedThreadCharacters, getArchivedThreadPartners, getArchivedThreadTags } from '../../../infrastructure/selectors';
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -17,19 +15,22 @@ const propTypes = {
 	toggleThreadIsArchived: PropTypes.func.isRequired,
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	partners: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	partners: PropTypes.arrayOf(PropTypes.string).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const { archivedThreads } = state;
+	const characters = getArchivedThreadCharacters(state);
+	const partners = getArchivedThreadPartners(state);
+	const tags = getArchivedThreadTags(state);
 	const filteredThreads = getArchivedFilteredThreads(state);
-	const characters = getCharactersFromThreadList(filteredThreads);
-	const partners = getPartnersFromThreadList(filteredThreads);
 	return {
 		archivedThreads,
 		filteredThreads,
 		characters,
-		partners
+		partners,
+		tags
 	};
 }
 
@@ -49,12 +50,14 @@ class ArchivedThreads extends Component {
 			toggleThreadIsArchived,
 			toggleThreadIsMarkedQueued,
 			characters,
-			partners
+			partners,
+			tags
 		} = this.props;
 		return (
 			<ThreadTable
 				{...this.props}
 				filteredThreads={filteredThreads}
+				tags={tags}
 				isArchive
 				columns={getColumns(characters, partners)}
 				tdProps={getTdProps(

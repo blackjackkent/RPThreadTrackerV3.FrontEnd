@@ -8,18 +8,20 @@ export { default as getActiveThreadPartners } from './threads/active/getActiveTh
 export { default as getActiveThreadLastPosters } from './threads/active/getActiveThreadLastPosters';
 export { default as getActiveThreadTags } from './threads/active/getActiveThreadTags';
 export { default as getMyTurnFilteredThreads } from './threads/active/getMyTurnFilteredThreads';
+export { default as getTheirTurnFilteredThreads } from './threads/active/getTheirTurnFilteredThreads';
+export { default as getQueuedFilteredThreads } from './threads/active/getQueuedFilteredThreads';
 
 export { default as getMyTurnThreads } from './threads/myTurn/getMyTurnThreads';
 
 export { default as getTheirTurnThreads } from './threads/theirTurn/getTheirTurnThreads';
-export { default as getTheirTurnFilteredThreads } from './threads/theirTurn/getTheirTurnFilteredThreads';
 
 export { default as getArchivedThreads } from './threads/archived/getArchivedThreads';
+export { default as getArchivedThreadCharacters } from './threads/archived/getArchivedThreadCharacters';
+export { default as getArchivedThreadPartners } from './threads/archived/getArchivedThreadPartners';
+export { default as getArchivedThreadTags } from './threads/archived/getArchivedThreadTags';
 export { default as getArchivedFilteredThreads } from './threads/archived/getArchivedFilteredThreads';
 
 export { default as getQueuedThreads } from './threads/queued/getQueuedThreads';
-export { default as getQueuedFilteredThreads } from './threads/queued/getQueuedFilteredThreads';
 
 export { default as getRecentActivity } from './threads/getRecentActivity';
 export { default as getThreadCountsByCharacter } from './threads/getThreadCountsByCharacter';
-export { default as getArchivedThreadTags } from './threads/getArchivedThreadTags';

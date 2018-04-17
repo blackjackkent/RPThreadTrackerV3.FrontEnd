@@ -5,8 +5,7 @@ import getColumns from './components/_queueColumns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
-import { getQueuedFilteredThreads } from '../../../infrastructure/selectors';
-import { getCharactersFromThreadList, getPartnersFromThreadList, getLastPostersFromThreadList } from '../../../utility';
+import { getQueuedFilteredThreads, getActiveThreadCharacters, getActiveThreadPartners, getActiveThreadLastPosters, getActiveThreadTags } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -17,22 +16,25 @@ const propTypes = {
 	toggleThreadIsArchived: PropTypes.func.isRequired,
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	partners: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	lastPosters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	partners: PropTypes.arrayOf(PropTypes.string).isRequired,
+	lastPosters: PropTypes.arrayOf(PropTypes.string).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
 	const { activeThreads } = state;
+	const characters = getActiveThreadCharacters(state);
+	const partners = getActiveThreadPartners(state);
+	const lastPosters = getActiveThreadLastPosters(state);
+	const tags = getActiveThreadTags(state);
 	const filteredThreads = getQueuedFilteredThreads(state);
-	const characters = getCharactersFromThreadList(filteredThreads);
-	const partners = getPartnersFromThreadList(filteredThreads);
-	const lastPosters = getLastPostersFromThreadList(filteredThreads);
 	return {
 		activeThreads,
 		filteredThreads,
 		characters,
 		partners,
-		lastPosters
+		lastPosters,
+		tags
 	};
 }
 
@@ -53,12 +55,14 @@ class QueuedThreads extends Component {
 			toggleThreadIsMarkedQueued,
 			characters,
 			partners,
-			lastPosters
+			lastPosters,
+			tags
 		} = this.props;
 		return (
 			<ThreadTable
 				{...this.props}
 				filteredThreads={filteredThreads}
+				tags={tags}
 				isQueue
 				columns={getColumns(characters, partners, lastPosters)}
 				tdProps={getTdProps(

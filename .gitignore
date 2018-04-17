@@ -19,3 +19,5 @@ Thumbs.db
 npm-debug.log
 compilation-stats.json
 .vscode/*
+*.bak
+*.orig

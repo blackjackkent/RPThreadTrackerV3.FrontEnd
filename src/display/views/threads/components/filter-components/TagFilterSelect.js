@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-	filteredTag: {}
+	filteredTag: undefined
 };
 
 const TagFilterSelect = (props) => {
@@ -37,7 +37,7 @@ const TagFilterSelect = (props) => {
 				value={filteredTag}
 				onChange={e => setFilteredTag(e.target.value)}
 			>
-				<option value={{}}>Filter by Tag</option>
+				<option value="">Filter by Tag</option>
 				{options}
 			</Input>
 		</FormGroup>
