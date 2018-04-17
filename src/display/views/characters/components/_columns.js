@@ -3,19 +3,55 @@ import platforms from '../../../../infrastructure/constants/platforms';
 
 export default [
 	{
-		expander: true,
-		width: 65,
-		Expander: () =>
-			(
-				<div>
-					<i className="fas fa-cog" />
-				</div>
-			),
+		id: 'editButton',
+		Cell: () => (
+			<span>
+				<i title="Edit Character" className="fas fa-edit" />
+			</span>
+		),
+		width: 30,
 		style: {
 			cursor: 'pointer',
 			textAlign: 'center',
 			userSelect: 'none'
-		}
+		},
+		sortable: false,
+		resizable: false,
+		filterable: false
+	},
+	{
+		id: 'toggleHiatusButton',
+		Cell: row => (
+			<span>
+				<i title={`${row.original.isOnHiatus ? 'Remove from Hiatus' : 'Set On Hiatus'}`} className="fas fa-power-off" />
+			</span>
+		),
+		width: 30,
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		},
+		sortable: false,
+		resizable: false,
+		filterable: false
+	},
+	{
+		id: 'untrackButton',
+		Cell: () => (
+			<span>
+				<i title="Untrack Character" className="fas fa-trash-alt" />
+			</span>
+		),
+		width: 30,
+		style: {
+			cursor: 'pointer',
+			textAlign: 'center',
+			userSelect: 'none'
+		},
+		sortable: false,
+		resizable: false,
+		filterable: false
 	},
 	{
 		Header: 'Character Name',
