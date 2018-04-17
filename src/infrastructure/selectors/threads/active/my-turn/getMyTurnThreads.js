@@ -1,9 +1,9 @@
 import { createSelector } from 'reselect';
-import { buildThreadDataByPredicate } from '../../common';
+import { buildThreadDataByPredicate } from '../../../common';
 
 const getAllActiveThreads = state => state.activeThreads;
 const getAllActiveThreadStatus = state => state.activeThreadsStatus;
-const getTheirTurnThreads = createSelector(
+const getMyTurnThreads = createSelector(
 	[getAllActiveThreads, getAllActiveThreadStatus],
 	(threads, threadsStatus) => {
 		if (!threads.length || !threadsStatus.length) {
@@ -12,8 +12,9 @@ const getTheirTurnThreads = createSelector(
 		return buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => !s.IsCallingCharactersTurn && !s.IsQueued
+			s => s.IsCallingCharactersTurn && !s.IsQueued,
+			true
 		);
 	}
 );
-export default getTheirTurnThreads;
+export default getMyTurnThreads;

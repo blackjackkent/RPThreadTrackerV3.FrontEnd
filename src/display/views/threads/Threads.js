@@ -33,6 +33,7 @@ function mapStateToProps(state) {
 class Threads extends Component {
 	constructor(props) {
 		super(props);
+
 		this.bulkToggleThreadsAreArchived = this.bulkToggleThreadsAreArchived.bind(this);
 		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
