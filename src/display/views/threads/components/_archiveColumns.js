@@ -100,7 +100,7 @@ const getColumns = (characters, partners) => [
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>
-				{characters.map(character => <option value={character.urlIdentifier}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
+				{characters.map(character => <option key={character.characterId} value={character.urlIdentifier}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
 			</select>
 		)
 	}, {
@@ -111,7 +111,6 @@ const getColumns = (characters, partners) => [
 		filterable: false,
 		sortable: true,
 		resizable: true,
-		filterable: true,
 		// eslint-disable-next-line react/prop-types
 		Filter: ({ filter, onChange }) => (
 			<select
@@ -120,7 +119,7 @@ const getColumns = (characters, partners) => [
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>
-				{partners.map(p => <option value={p}>{p}</option>)}
+				{partners.map(p => <option key={p} value={p}>{p}</option>)}
 			</select>
 		)
 	}

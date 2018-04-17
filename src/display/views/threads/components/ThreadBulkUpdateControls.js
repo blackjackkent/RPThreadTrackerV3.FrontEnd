@@ -21,17 +21,17 @@ const ThreadBulkUpdateControls = (props) => {
 		openBulkUntrackThreadsModal
 	} = props;
 	return (
-		<Row className="thread-bulk-update-controls">
-			<Col xs={{ size: 6, offset: 3 }}>
-				<span className="control-button">
-					<button
-						className="btn btn-primary"
-						onClick={() => bulkToggleThreadsAreMarkedQueued()}
-						disabled={selectedThreadCount === 0}
-					>
-						{isQueue ? 'Unmark' : 'Mark'} Selected as Queued <i className="fas fa-clock" />
-					</button>
-				</span>
+		<div className="thread-bulk-update-controls">
+			<span className="control-button">
+				<button
+					className="btn btn-primary"
+					onClick={() => bulkToggleThreadsAreMarkedQueued()}
+					disabled={selectedThreadCount === 0}
+				>
+					{isQueue ? 'Unmark' : 'Mark'} Selected as Queued <i className="fas fa-clock" />
+				</button>
+			</span>
+			<span className="control-button">
 				<button
 					className="btn btn-primary"
 					onClick={() => bulkToggleThreadsAreArchived()}
@@ -40,6 +40,8 @@ const ThreadBulkUpdateControls = (props) => {
 					{isArchive ? 'Unarchive' : 'Archive'} Selected{' '}
 					<i className="fas fa-lock" />
 				</button>
+			</span>
+			<span>
 				<button
 					className="btn btn-danger"
 					onClick={() => openBulkUntrackThreadsModal()}
@@ -47,8 +49,8 @@ const ThreadBulkUpdateControls = (props) => {
 				>
 					Untrack Selected <i className="fas fa-trash-alt" />
 				</button>
-			</Col>
-		</Row>
+			</span>
+		</div>
 	);
 };
 ThreadBulkUpdateControls.propTypes = propTypes;

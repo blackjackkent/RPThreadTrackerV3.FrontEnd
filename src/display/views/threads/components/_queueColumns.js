@@ -111,7 +111,7 @@ const getColumns = (characters, partners, lastPosters) => [
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>
-				{characters.map(character => <option value={character.urlIdentifier}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
+				{characters.map(character => <option key={character.characterId} value={character.urlIdentifier}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
 			</select>
 		)
 	}, {
@@ -130,7 +130,7 @@ const getColumns = (characters, partners, lastPosters) => [
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>
-				{lastPosters.map(lp => <option value={lp}>{lp}</option>)}
+				{lastPosters.map(lp => <option key={lp} value={lp}>{lp}</option>)}
 			</select>
 		)
 	}, {
@@ -173,7 +173,7 @@ const getColumns = (characters, partners, lastPosters) => [
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>
-				{partners.map(p => <option value={p}>{p}</option>)}
+				{partners.map(p => <option key={p} value={p}>{p}</option>)}
 			</select>
 		)
 	}

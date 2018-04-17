@@ -4,12 +4,16 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	rawFilterData: PropTypes.shape({}).isRequired,
+	filteredTag: PropTypes.shape({}),
 	setFilteredTag: PropTypes.func.isRequired
 };
 
+const defaultProps = {
+	filteredTag: {}
+};
+
 const TagFilterSelect = (props) => {
-	const { tags, rawFilterData, setFilteredTag } = props;
+	const { tags, filteredTag, setFilteredTag } = props;
 	const options = [];
 	if (tags) {
 		for (let i = 0; i < tags.length; i++) {
@@ -25,15 +29,15 @@ const TagFilterSelect = (props) => {
 	}
 	return (
 		<FormGroup>
-			<Label htmlFor="tag">Tag</Label>
 			<Input
 				type="select"
 				name="tag"
 				id="tag"
-				value={rawFilterData.filteredTag}
-				onChange={setFilteredTag}
+				className="clean-select"
+				value={filteredTag}
+				onChange={e => setFilteredTag(e.target.value)}
 			>
-				<option value="">All</option>
+				<option value={{}}>Filter by Tag</option>
 				{options}
 			</Input>
 		</FormGroup>
@@ -41,5 +45,5 @@ const TagFilterSelect = (props) => {
 };
 
 TagFilterSelect.propTypes = propTypes;
-
+TagFilterSelect.defaultProps = defaultProps;
 export default TagFilterSelect;

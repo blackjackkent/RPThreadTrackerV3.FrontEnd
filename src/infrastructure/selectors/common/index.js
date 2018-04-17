@@ -1,2 +1,2 @@
-export { default as filterThreadsByTagAndCharacter } from './filterThreadsByTagAndCharacter';
+export { default as filterThreadsByTag } from './filterThreadsByTag';
 export { default as buildThreadDataByPredicate } from './buildThreadDataByPredicate';

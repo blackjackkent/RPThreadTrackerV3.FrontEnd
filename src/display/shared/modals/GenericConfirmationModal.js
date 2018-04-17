@@ -9,7 +9,7 @@ const propTypes = {
 	closeCallback: PropTypes.func.isRequired,
 	closeButtonText: PropTypes.string,
 	headerText: PropTypes.string.isRequired,
-	bodyText: PropTypes.string.isRequired,
+	bodyText: PropTypes.node.isRequired,
 	data: PropTypes.oneOfType([
 		PropTypes.shape({}),
 		PropTypes.array

@@ -3,7 +3,6 @@ export { toggleSidebar, TOGGLE_SIDEBAR } from './ui/toggleSidebar';
 export { toggleNewsAside, TOGGLE_NEWS_ASIDE } from './ui/toggleNewsAside';
 export { toggleHeaderDropdown, TOGGLE_HEADER_DROPDOWN } from './ui/toggleHeaderDropdown';
 export { toggleMobileSidebar, TOGGLE_MOBILE_SIDEBAR } from './ui/toggleMobileSidebar';
-export { toggleIsThreadFilterCardHidden, TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN } from './ui/toggleIsThreadFilterCardHidden';
 export { openUpsertCharacterModal, OPEN_UPSERT_CHARACTER_MODAL } from './ui/openUpsertCharacterModal';
 export { closeUpsertCharacterModal, CLOSE_UPSERT_CHARACTER_MODAL } from './ui/closeUpsertCharacterModal';
 export { openUpsertThreadModal, OPEN_UPSERT_THREAD_MODAL } from './ui/openUpsertThreadModal';
@@ -41,7 +40,6 @@ export { fetchedArchivedThreadsFailure, FETCHED_ARCHIVED_THREADS_FAILURE } from 
 export { fetchedArchivedThreadsSuccess, FETCHED_ARCHIVED_THREADS_SUCCESS } from './threads/fetchedArchivedThreadsSuccess';
 export { generateRandomThread, GENERATE_RANDOM_THREAD } from './threads/generateRandomThread';
 export { generatedRandomThreadSuccess, GENERATED_RANDOM_THREAD_SUCCESS } from './threads/generatedRandomThreadSuccess';
-export { setFilteredCharacterId, SET_FILTERED_CHARACTER_ID } from './threads/setFilteredCharacterId';
 export { setFilteredTag, SET_FILTERED_TAG } from './threads/setFilteredTag';
 export { untrackThread, UNTRACK_THREAD } from './threads/untrackThread';
 export { untrackThreadFailure, UNTRACK_THREAD_FAILURE } from './threads/untrackThreadFailure';

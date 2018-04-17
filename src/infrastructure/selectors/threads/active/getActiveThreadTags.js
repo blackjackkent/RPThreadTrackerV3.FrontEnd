@@ -1,6 +1,6 @@
 
 import { createSelector } from 'reselect';
-import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../utility';
+import { flattenArrayOfArrays, filterDuplicatesFromArray } from '../../../../utility';
 
 const getAllActiveThreads = state => state.activeThreads;
 const getActiveThreadTags = createSelector(

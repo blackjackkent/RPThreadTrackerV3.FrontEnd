@@ -4,24 +4,29 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchCharacters, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
+import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
 
 const propTypes = {
 	Renderable: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired
+	setFilteredTag: PropTypes.func.isRequired,
+	bulkUpdateThreads: PropTypes.func.isRequired,
+	fetchCharacters: PropTypes.func.isRequired,
+	upsertThread: PropTypes.func.isRequired,
+	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	openUpsertThreadModal: PropTypes.func.isRequired,
+	openUntrackThreadModal: PropTypes.func.isRequired,
+	threadFilter: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
 		threadFilter,
-		characters,
-		ui
+		characters
 	} = state;
 	return {
 		threadFilter,
-		characters,
-		isThreadFilterCardHidden: ui.isThreadFilterCardHidden
+		characters
 	};
 }
 
@@ -30,62 +35,43 @@ class Threads extends Component {
 		super(props);
 		this.bulkToggleThreadsAreArchived = this.bulkToggleThreadsAreArchived.bind(this);
 		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
-		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
-		this.openBulkUntrackThreadsModal = this.openBulkUntrackThreadsModal.bind(this);
-		this.openEditThreadModal = this.openEditThreadModal.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
 		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
 	}
 	componentDidMount() {
-		const { dispatch } = this.props;
 		if (!this.props.characters || !this.props.characters.length) {
-			dispatch(fetchCharacters());
+			this.props.fetchCharacters();
 		}
 	}
 	toggleThreadIsArchived(thread) {
-		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
 		};
-		dispatch(upsertThread(updatedThread));
+		this.props.upsertThread(updatedThread);
 	}
 	toggleThreadIsMarkedQueued(thread) {
-		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now())
 		};
-		dispatch(upsertThread(updatedThread));
-	}
-	openUntrackThreadModal(thread) {
-		const { dispatch } = this.props;
-		dispatch(openUntrackThreadModal(thread));
-	}
-	openEditThreadModal(thread) {
-		const { dispatch } = this.props;
-		dispatch(openUpsertThreadModal(thread));
-	}
-	openBulkUntrackThreadsModal(thread) {
-		const { dispatch } = this.props;
-		dispatch(openBulkUntrackThreadsModal(thread));
+		this.props.upsertThread(updatedThread);
 	}
 	bulkToggleThreadsAreMarkedQueued(threads) {
-		const { dispatch } = this.props;
 		const updatedThreads = threads.map(t => ({
 			...t, dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now())
 		}));
-		dispatch(bulkUpdateThreads(updatedThreads));
+		this.props.bulkUpdateThreads(updatedThreads);
 	}
 	bulkToggleThreadsAreArchived(threads) {
-		const { dispatch } = this.props;
 		const updatedThreads = threads.map(t => ({
 			...t, isArchived: !t.isArchived
 		}));
-		dispatch(bulkUpdateThreads(updatedThreads));
+		this.props.bulkUpdateThreads(updatedThreads);
 	}
 	render() {
 		const {
 			characters,
-			Renderable
+			Renderable,
+			threadFilter
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
@@ -94,13 +80,12 @@ class Threads extends Component {
 						<Renderable
 							bulkToggleThreadsAreArchived={this.bulkToggleThreadsAreArchived}
 							bulkToggleThreadsAreMarkedQueued={this.bulkToggleThreadsAreMarkedQueued}
-							openBulkUntrackThreadsModal={this.openBulkUntrackThreadsModal}
+							openBulkUntrackThreadsModal={this.props.openBulkUntrackThreadsModal}
 							characters={characters}
-							openUntrackThreadModal={this.openUntrackThreadModal}
-							openEditThreadModal={this.openEditThreadModal}
-							setFilteredCharacterId={this.setFilteredCharacterId}
-							setFilteredTag={this.setFilteredTag}
-							threadFilterHiddenToggle={this.isThreadFilterCardHiddenToggle}
+							openUntrackThreadModal={this.props.openUntrackThreadModal}
+							openEditThreadModal={this.props.openUpsertThreadModal}
+							setFilteredTag={this.props.setFilteredTag}
+							threadFilter={threadFilter}
 							toggleThreadIsArchived={this.toggleThreadIsArchived}
 							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
 						/>
@@ -112,4 +97,12 @@ class Threads extends Component {
 }
 
 Threads.propTypes = propTypes;
-export default connect(mapStateToProps)(Threads);
+export default connect(mapStateToProps, {
+	setFilteredTag,
+	bulkUpdateThreads,
+	fetchCharacters,
+	upsertThread,
+	openBulkUntrackThreadsModal,
+	openUpsertThreadModal,
+	openUntrackThreadModal
+})(Threads);

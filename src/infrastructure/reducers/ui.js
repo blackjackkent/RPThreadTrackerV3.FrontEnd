@@ -16,7 +16,6 @@ import {
 	SET_ACTIVE_TOOLS_TAB,
 	SUBMIT_USER_LOGOUT,
 	TOGGLE_HEADER_DROPDOWN,
-	TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
 	TOGGLE_SIDEBAR,
@@ -33,7 +32,6 @@ const defaultState = {
 	isHeaderDropdownOpen: false,
 	isMobileSidebarOpen: false,
 	isMaintenanceMode: false,
-	isThreadFilterCardHidden: true,
 	isUpsertThreadModalOpen: false,
 	isUpsertCharacterModalOpen: false,
 	isBulkUntrackThreadsModalOpen: false,
@@ -61,10 +59,6 @@ function ui(state = defaultState, action) {
 		case TOGGLE_HEADER_DROPDOWN:
 			return Object.assign({}, state, {
 				isHeaderDropdownOpen: action.data
-			});
-		case TOGGLE_IS_THREAD_FILTER_CARD_HIDDEN:
-			return Object.assign({}, state, {
-				isThreadFilterCardHidden: !state.isThreadFilterCardHidden
 			});
 		case OPEN_UPSERT_CHARACTER_MODAL:
 			return Object.assign({}, state, {
