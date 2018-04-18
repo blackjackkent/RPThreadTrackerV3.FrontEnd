@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import columns from '../../../../infrastructure/constants/columns';
 
 const getColumns = (characters, partners, lastPosters) => [
 	{
@@ -89,15 +90,15 @@ const getColumns = (characters, partners, lastPosters) => [
 		filterable: false
 	},
 	{
-		Header: 'Thread Title',
-		accessor: 'thread.userTitle',
+		Header: columns.THREAD_TITLE.name,
+		accessor: columns.THREAD_TITLE.key,
 		minWidth: 200,
 		sortable: true,
 		resizable: true,
 		filterable: true
 	}, {
-		Header: 'Character',
-		accessor: 'thread.character.urlIdentifier',
+		Header: columns.CHARACTER.name,
+		accessor: columns.CHARACTER.key,
 		Cell: row => <span>{row.value} {row.original.thread.character.characterName && `(${row.original.thread.character.characterName})`}</span>,
 		minWidth: 250,
 		sortable: true,
@@ -115,8 +116,8 @@ const getColumns = (characters, partners, lastPosters) => [
 			</select>
 		)
 	}, {
-		Header: 'Last Poster',
-		accessor: 'status.LastPosterUrlIdentifier',
+		Header: columns.LAST_POSTER.name,
+		accessor: columns.LAST_POSTER.key,
 		Cell: row => <a href={row.original.status && row.original.status.LastPostUrl}> {row.value} </a>,
 		minWidth: 250,
 		sortable: true,
@@ -134,8 +135,8 @@ const getColumns = (characters, partners, lastPosters) => [
 			</select>
 		)
 	}, {
-		Header: 'Last Post Date',
-		accessor: 'status.LastPostDate',
+		Header: columns.LAST_POST_DATE.name,
+		accessor: columns.LAST_POST_DATE.key,
 		Cell: (row) => {
 			if (!row.original.status) {
 				return (<span>Awaiting Starter</span>);
@@ -147,8 +148,8 @@ const getColumns = (characters, partners, lastPosters) => [
 		minWidth: 200,
 		filterable: false
 	}, {
-		Header: 'Date Queued',
-		accessor: 'thread.dateMarkedQueued',
+		Header: columns.DATE_QUEUED.name,
+		accessor: columns.DATE_QUEUED.key,
 		Cell: row =>
 			row.original.thread.dateMarkedQueued && (
 				<Moment format="MMMM D, YYYY h:mmA">
@@ -158,8 +159,8 @@ const getColumns = (characters, partners, lastPosters) => [
 		minWidth: 200,
 		filterable: false
 	}, {
-		Header: 'Tracked Partner',
-		accessor: 'thread.partnerUrlIdentifier',
+		Header: columns.TRACKED_PARTNER.name,
+		accessor: columns.TRACKED_PARTNER.key,
 		Cell: row => <span>{row.value ? row.value : ''}</span>,
 		minWidth: 200,
 		sortable: true,

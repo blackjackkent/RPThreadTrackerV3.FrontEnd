@@ -18,6 +18,7 @@ import threadToEdit from './threadToEdit';
 import ui from './ui';
 import user from './user';
 import userSettings from './userSettings';
+import viewToEdit from './viewToEdit';
 
 export default combineReducers({
 	activeThreads,
@@ -38,5 +39,6 @@ export default combineReducers({
 	toastr,
 	ui,
 	user,
-	userSettings
+	userSettings,
+	viewToEdit
 });

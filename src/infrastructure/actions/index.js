@@ -13,6 +13,10 @@ export { openUntrackCharacterModal, OPEN_UNTRACK_CHARACTER_MODAL } from './ui/op
 export { closeUntrackCharacterModal, CLOSE_UNTRACK_CHARACTER_MODAL } from './ui/closeUntrackCharacterModal';
 export { openBulkUntrackThreadsModal, OPEN_BULK_UNTRACK_THREADS_MODAL } from './ui/openBulkUntrackThreadsModal';
 export { closeBulkUntrackThreadsModal, CLOSE_BULK_UNTRACK_THREADS_MODAL } from './ui/closeBulkUntrackThreadsModal';
+export { openUpsertPublicViewModal, OPEN_UPSERT_PUBLIC_VIEW_MODAL } from './ui/openUpsertPublicViewModal';
+export { closeUpsertPublicViewModal, CLOSE_UPSERT_PUBLIC_VIEW_MODAL } from './ui/closeUpsertPublicViewModal';
+export { openUntrackPublicViewModal, OPEN_UNTRACK_PUBLIC_VIEW_MODAL } from './ui/openUntrackPublicViewModal';
+export { closeUntrackPublicViewModal, CLOSE_UNTRACK_PUBLIC_VIEW_MODAL } from './ui/closeUntrackPublicViewModal';
 export { setActiveHelpTab, SET_ACTIVE_HELP_TAB } from './ui/setActiveHelpTab';
 export { setActiveSettingsTab, SET_ACTIVE_SETTINGS_TAB } from './ui/setActiveSettingsTab';
 export { setActiveToolsTab, SET_ACTIVE_TOOLS_TAB } from './ui/setActiveToolsTab';
@@ -112,3 +116,9 @@ export { fetchedPublicThreadsFailure, FETCHED_PUBLIC_THREADS_FAILURE } from './p
 export { fetchPublicViews, FETCH_PUBLIC_VIEWS } from './public/fetchPublicViews';
 export { fetchedPublicViewsSuccess, FETCHED_PUBLIC_VIEWS_SUCCESS } from './public/fetchedPublicViewsSuccess';
 export { fetchedPublicViewsFailure, FETCHED_PUBLIC_VIEWS_FAILURE } from './public/fetchedPublicViewsFailure';
+export { upsertPublicView, UPSERT_PUBLIC_VIEW } from './public/upsertPublicView';
+export { upsertPublicViewSuccess, UPSERT_PUBLIC_VIEW_SUCCESS } from './public/upsertPublicViewSuccess';
+export { upsertPublicViewFailure, UPSERT_PUBLIC_VIEW_FAILURE } from './public/upsertPublicViewFailure';
+export { untrackPublicView, UNTRACK_PUBLIC_VIEW } from './public/untrackPublicView';
+export { untrackPublicViewSuccess, UNTRACK_PUBLIC_VIEW_SUCCESS } from './public/untrackPublicViewSuccess';
+export { untrackPublicViewFailure, UNTRACK_PUBLIC_VIEW_FAILURE } from './public/untrackPublicViewFailure';

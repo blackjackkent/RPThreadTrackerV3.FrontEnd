@@ -4,11 +4,11 @@ import { TabPane, Col, Row, Button, Card, CardHeader, CardBlock } from 'reactstr
 
 const propTypes = {
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	showCreatePublicViewModal: PropTypes.func.isRequired
+	openUpsertPublicViewModal: PropTypes.func.isRequired
 };
 
 const ManagePublicViewsPane = (props) => {
-	const { publicViews, showCreatePublicViewModal } = props;
+	const { publicViews, openUpsertPublicViewModal } = props;
 	return (
 		<TabPane tabId="manage-public-views">
 			<Card>
@@ -24,7 +24,7 @@ const ManagePublicViewsPane = (props) => {
 								<Button
 									color="primary"
 									onClick={
-										() => showCreatePublicViewModal()}
+										() => openUpsertPublicViewModal({})}
 								>
 									Create New Public View
 								</Button>

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
-import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews } from '../../../infrastructure/actions';
+import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal } from '../../../infrastructure/actions';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 
 const propTypes = {
@@ -17,7 +17,8 @@ const propTypes = {
 	fetchPublicViews: PropTypes.func.isRequired,
 	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
-	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	openUpsertPublicViewModal: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -90,7 +91,7 @@ class Tools extends Component {
 					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
-							<ManagePublicViewsPane />
+							<ManagePublicViewsPane openUpsertPublicViewModal={this.props.openUpsertPublicViewModal} />
 						</TabContent>
 					</Col>
 				</Row>
@@ -104,5 +105,6 @@ export default connect(mapStateToProps, {
 	exportThreads,
 	setActiveToolsTab,
 	fetchTags,
-	fetchPublicViews
+	fetchPublicViews,
+	openUpsertPublicViewModal
 })(Tools);

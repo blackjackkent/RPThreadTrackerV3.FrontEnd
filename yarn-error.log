@@ -1,14 +1,14 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js lint:watch
+  C:\Program Files\nodejs\node.exe C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add availity-reactstrap-validation
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\rwills\bin;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\Program Files\dotnet;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\WinMerge;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio;C:\Users\rwills\AppData\Local\Microsoft\WindowsApps;C:\Users\rwills\AppData\Roaming\npm;C:\Users\rwills\AppData\Local\Yarn\bin;C:\Program Files\Microsoft VS Code\bin
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\rosalindwills\bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Yarn\bin;C:\ProgramData\Oracle\Java\javapath;C:\Perl64\site\bin;C:\Perl64\bin;C:\Program Files\Java\jdk1.7.0_51\bin;C:\Program Files (x86)\EasyPHP-DevServer-13.1VC11\binaries\php\php_runningversion;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0;C:\Program Files\Microsoft SQL Server\110\Tools\Binn;C:\Program Files (x86)\Ant\apache-ant-1.9.3\bin;C:\Program Files (x86)\Cobertura\bin;C:\cygwin64\bin;C:\Users\rosalindwills\Downloads\Downloaded Applications\ffmpeg\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn;C:\Program Files\Microsoft SQL Server\120\Tools\Binn;C:\Program Files\Microsoft SQL Server\120\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn;C:\Program Files\Apache Software Foundation\apache-maven-3.2.3\bin;C:\Program Files\MongoDB 2.6 Standard\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\PostgreSQL\9.4\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;%USERPROFILE%\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\GitExtensions;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\NuGet\Visual Studio 2015;C:\Program Files (x86)\Skype\Phone;C:\Program Files\dotnet;C:\Program Files (x86)\Microsoft Emulator Manager\1.0;C:\Program Files\PuTTY;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Users\rosalindwills\AppData\Local\Programs\Python\Python36-32;C:\Program Files\Git\cmd;C:\Ruby22-x64\bin;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\rosalindwills\AppData\Local\Microsoft\WindowsApps;C:\Program Files\dig;C:\Users\rosalindwills\AppData\Local\atom\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\rosalindwills\AppData\Roaming\npm;C:\Program Files (x86)\Nmap;C:\Users\rosalindwills\AppData\Local\Programs\Fiddler;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps
 
 Yarn version: 
-  1.5.1
+  1.3.2
 
 Node version: 
-  8.11.1
+  8.2.1
 
 Platform: 
   win32 x64
@@ -68,7 +68,6 @@ npm manifest:
   		"@fortawesome/fontawesome": "^1.1.3",
   		"@fortawesome/fontawesome-free-regular": "^5.0.6",
   		"@fortawesome/fontawesome-free-solid": "^5.0.6",
-  		"availity-reactstrap-validation": "^1.4.3",
   		"axios": "^0.16.2",
   		"babel-polyfill": "^6.26.0",
   		"bootstrap": "^4.0.0-alpha.6",
@@ -8728,17 +8727,4 @@ Lockfile:
       commander "^2.7.1"
 
 Trace: 
-  Error: Command failed.
-  Exit code: 1
-  Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c esw src/ -w
-  Directory: C:\Users\rwills\Documents\_Github\RPThreadTrackerV3.FrontEnd
-  Output:
-  
-      at ProcessTermError.MessageError (C:\Program Files (x86)\Yarn\lib\cli.js:186:110)
-      at new ProcessTermError (C:\Program Files (x86)\Yarn\lib\cli.js:226:113)
-      at ChildProcess.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:30281:17)
-      at emitTwo (events.js:126:13)
-      at ChildProcess.emit (events.js:214:7)
-      at maybeClose (internal/child_process.js:925:16)
-      at Process.ChildProcess._handle.onexit (internal/child_process.js:209:5)
+  Error: EPERM: operation not permitted, unlink 'C:\Users\rosalindwills\Documents\_Programming\Personal Projects\RPThreadTrackerV3.FrontEnd\node_modules\node-sass\vendor\win32-x64-57\binding.node'

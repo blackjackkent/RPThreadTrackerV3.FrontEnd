@@ -5,11 +5,13 @@ import {
 	CLOSE_UNTRACK_CHARACTER_MODAL,
 	CLOSE_UNTRACK_THREAD_MODAL,
 	CLOSE_UPSERT_CHARACTER_MODAL,
+	CLOSE_UPSERT_PUBLIC_VIEW_MODAL,
 	CLOSE_UPSERT_THREAD_MODAL,
 	OPEN_BULK_UNTRACK_THREADS_MODAL,
 	OPEN_UNTRACK_CHARACTER_MODAL,
 	OPEN_UNTRACK_THREAD_MODAL,
 	OPEN_UPSERT_CHARACTER_MODAL,
+	OPEN_UPSERT_PUBLIC_VIEW_MODAL,
 	OPEN_UPSERT_THREAD_MODAL,
 	SET_ACTIVE_HELP_TAB,
 	SET_ACTIVE_SETTINGS_TAB,
@@ -22,6 +24,7 @@ import {
 	UNTRACK_CHARACTER,
 	UNTRACK_THREAD,
 	UPSERT_CHARACTER,
+	UPSERT_PUBLIC_VIEW,
 	UPSERT_THREAD
 } from '../actions';
 // #endregion imports
@@ -37,6 +40,7 @@ const defaultState = {
 	isBulkUntrackThreadsModalOpen: false,
 	isUntrackThreadModalOpen: false,
 	isUntrackCharacterModalOpen: false,
+	isUpsertPublicViewModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'
@@ -68,6 +72,15 @@ function ui(state = defaultState, action) {
 		case UPSERT_CHARACTER:
 			return Object.assign({}, state, {
 				isUpsertCharacterModalOpen: false
+			});
+		case OPEN_UPSERT_PUBLIC_VIEW_MODAL:
+			return Object.assign({}, state, {
+				isUpsertPublicViewModalOpen: true
+			});
+		case CLOSE_UPSERT_PUBLIC_VIEW_MODAL:
+		case UPSERT_PUBLIC_VIEW:
+			return Object.assign({}, state, {
+				isUpsertPublicViewModalOpen: false
 			});
 		case OPEN_UPSERT_THREAD_MODAL:
 			return Object.assign({}, state, {

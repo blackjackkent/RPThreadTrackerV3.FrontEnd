@@ -1,5 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
+import columns from '../../../../infrastructure/constants/columns';
 
 const getColumns = (characters, partners, lastPosters) => [
 	{
@@ -89,16 +90,16 @@ const getColumns = (characters, partners, lastPosters) => [
 		filterable: false
 	},
 	{
-		Header: 'Thread Title',
-		accessor: 'thread.userTitle',
+		Header: columns.THREAD_TITLE.name,
+		accessor: columns.THREAD_TITLE.key,
 		minWidth: 200,
 		sortable: true,
 		resizable: true,
 		filterable: true
 	},
 	{
-		Header: 'Character',
-		accessor: 'thread.character.urlIdentifier',
+		Header: columns.CHARACTER.name,
+		accessor: columns.CHARACTER.key,
 		Cell: row => <span>{row.value} {row.original.thread.character.characterName && `(${row.original.thread.character.characterName})`}</span>,
 		minWidth: 250,
 		sortable: true,
@@ -117,8 +118,8 @@ const getColumns = (characters, partners, lastPosters) => [
 		)
 	},
 	{
-		Header: 'Last Poster',
-		accessor: 'status.LastPosterUrlIdentifier',
+		Header: columns.LAST_POSTER.name,
+		accessor: columns.LAST_POSTER.key,
 		Cell: row => (
 			<span>
 				{row.value &&
@@ -148,8 +149,8 @@ const getColumns = (characters, partners, lastPosters) => [
 		)
 	},
 	{
-		Header: 'Last Post Date',
-		accessor: 'status.LastPostDate',
+		Header: columns.LAST_POST_DATE.name,
+		accessor: columns.LAST_POST_DATE.key,
 		Cell: (row) => {
 			if (!row.original.status) {
 				return (<span>Awaiting Starter</span>);
@@ -162,8 +163,8 @@ const getColumns = (characters, partners, lastPosters) => [
 		filterable: false
 	},
 	{
-		Header: 'Tracked Partner',
-		accessor: 'thread.partnerUrlIdentifier',
+		Header: columns.TRACKED_PARTNER.name,
+		accessor: columns.TRACKED_PARTNER.key,
 		Cell: row => <span>{row.value ? row.value : ''}</span>,
 		minWidth: 200,
 		sortable: true,

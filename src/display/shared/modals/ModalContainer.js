@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter } from '../../../infrastructure/actions';
+import { closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
 import UpsertCharacterModal from '../../forms/upsertCharacter/UpsertCharacterModal';
 import UpsertThreadModal from '../../forms/upsertThread/UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
+import UpsertPublicViewModal from './UpsertPublicViewModal';
 
 const propTypes = {
 	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -26,7 +27,11 @@ const propTypes = {
 	upsertThread: PropTypes.func.isRequired,
 	upsertCharacter: PropTypes.func.isRequired,
 	untrackCharacter: PropTypes.func.isRequired,
-	closeUntrackCharacterModal: PropTypes.func.isRequired
+	closeUntrackCharacterModal: PropTypes.func.isRequired,
+	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
+	viewToEdit: PropTypes.shape({}).isRequired,
+	upsertPublicView: PropTypes.func.isRequired,
+	closeUpsertPublicViewModal: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -35,7 +40,8 @@ function mapStateToProps(state) {
 		characters,
 		characterToEdit,
 		threadToEdit,
-		bulkThreadsToEdit
+		bulkThreadsToEdit,
+		viewToEdit
 	} = state;
 	return {
 		isUpsertCharacterModalOpen: ui.isUpsertCharacterModalOpen,
@@ -43,10 +49,12 @@ function mapStateToProps(state) {
 		isBulkUntrackThreadsModalOpen: ui.isBulkUntrackThreadsModalOpen,
 		isUpsertThreadModalOpen: ui.isUpsertThreadModalOpen,
 		isUntrackCharacterModalOpen: ui.isUntrackCharacterModalOpen,
+		isUpsertPublicViewModalOpen: ui.isUpsertPublicViewModalOpen,
 		characterToEdit,
 		characters,
 		threadToEdit,
-		bulkThreadsToEdit
+		bulkThreadsToEdit,
+		viewToEdit
 	};
 }
 
@@ -57,10 +65,12 @@ const ModalContainer = (props) => {
 		isUntrackThreadModalOpen,
 		isBulkUntrackThreadsModalOpen,
 		isUntrackCharacterModalOpen,
+		isUpsertPublicViewModalOpen,
 		characterToEdit,
 		characters,
 		threadToEdit,
-		bulkThreadsToEdit
+		bulkThreadsToEdit,
+		viewToEdit
 	} = props;
 	return (
 		<div>
@@ -76,6 +86,12 @@ const ModalContainer = (props) => {
 				closeUpsertCharacterModal={props.closeUpsertCharacterModal}
 				submitUpsertCharacter={props.upsertCharacter}
 				characterToEdit={characterToEdit}
+			/>
+			<UpsertPublicViewModal
+				isUpsertPublicViewModalOpen={isUpsertPublicViewModalOpen}
+				submitUpsertPublicView={props.upsertPublicView}
+				closeUpsertPublicViewModal={props.closeUpsertPublicViewModal}
+				viewToEdit={viewToEdit}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isUntrackThreadModalOpen}
@@ -129,5 +145,7 @@ export default connect(mapStateToProps, {
 	upsertThread,
 	upsertCharacter,
 	untrackCharacter,
-	closeUntrackCharacterModal
+	closeUntrackCharacterModal,
+	upsertPublicView,
+	closeUpsertPublicViewModal
 })(ModalContainer);

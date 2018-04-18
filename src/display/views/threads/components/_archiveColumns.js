@@ -1,4 +1,5 @@
 import React from 'react';
+import columns from '../../../../infrastructure/constants/columns';
 
 const getColumns = (characters, partners) => [
 	{
@@ -70,8 +71,8 @@ const getColumns = (characters, partners) => [
 		resizable: false,
 		filterable: false
 	}, {
-		Header: 'Thread Title',
-		accessor: 'thread.userTitle',
+		Header: columns.THREAD_TITLE.name,
+		accessor: columns.THREAD_TITLE.key,
 		Cell: row => (
 			<a
 				target="_blank"
@@ -85,8 +86,8 @@ const getColumns = (characters, partners) => [
 		resizable: true,
 		filterable: true
 	}, {
-		Header: 'Character',
-		accessor: 'thread.character.urlIdentifier',
+		Header: columns.CHARACTER.name,
+		accessor: columns.CHARACTER.key,
 		Cell: row => <span>{row.value} {row.original.thread.character.characterName && `(${row.original.thread.character.characterName})`}</span>,
 		minWidth: 250,
 		sortable: true,
@@ -104,8 +105,8 @@ const getColumns = (characters, partners) => [
 			</select>
 		)
 	}, {
-		Header: 'Tracked Partner',
-		accessor: 'thread.partnerUrlIdentifier',
+		Header: columns.TRACKED_PARTNER.name,
+		accessor: columns.TRACKED_PARTNER.key,
 		Cell: row => <span>{row.value ? row.value : ''}</span>,
 		minWidth: 200,
 		filterable: false,
