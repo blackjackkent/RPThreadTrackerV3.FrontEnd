@@ -21,3 +21,6 @@ export { default as getArchivedFilteredThreads } from './threads/archived/getArc
 
 export { default as getRecentActivity } from './threads/getRecentActivity';
 export { default as getThreadCountsByCharacter } from './threads/getThreadCountsByCharacter';
+
+// user
+export { default as getIsRefreshingAuthToken } from './user/getIsRefreshingAuthToken';

@@ -7,6 +7,7 @@ import bulkThreadsToEdit from './bulkThreadsToEdit';
 import characterToEdit from './characterToEdit';
 import characters from './characters';
 import errors from './errors';
+import isRefreshingAuthToken from './isRefreshingAuthToken';
 import loading from './loading';
 import news from './news';
 import publicThreads from './publicThreads';
@@ -28,6 +29,7 @@ export default combineReducers({
 	characterToEdit,
 	characters,
 	errors,
+	isRefreshingAuthToken,
 	loading,
 	news,
 	publicThreads,

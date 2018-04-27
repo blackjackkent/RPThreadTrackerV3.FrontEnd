@@ -13,7 +13,8 @@ import {
 function* submitUserLogin(action) {
 	try {
 		const response = yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
-		cache.set('accessToken', response.data.token);
+		cache.set('accessToken', response.data.token.token);
+		cache.set('refreshToken', response.data.refresh_token.token);
 		history.push('/dashboard');
 		yield put(userLoginSuccess());
 	} catch (e) {
