@@ -4,8 +4,8 @@ import platforms from '../../../../infrastructure/constants/platforms';
 export default [
 	{
 		id: 'editButton',
-		Cell: () => (
-			<span>
+		Cell: row => (
+			<span className={row.original.isOnHiatus ? 'text-muted' : ''}>
 				<i title="Edit Character" className="fas fa-edit" />
 			</span>
 		),
@@ -22,7 +22,7 @@ export default [
 	{
 		id: 'toggleHiatusButton',
 		Cell: row => (
-			<span>
+			<span className={row.original.isOnHiatus ? 'text-muted' : ''}>
 				<i title={`${row.original.isOnHiatus ? 'Remove from Hiatus' : 'Set On Hiatus'}`} className="fas fa-power-off" />
 			</span>
 		),
@@ -38,8 +38,8 @@ export default [
 	},
 	{
 		id: 'untrackButton',
-		Cell: () => (
-			<span>
+		Cell: row => (
+			<span className={row.original.isOnHiatus ? 'text-muted' : ''}>
 				<i title="Untrack Character" className="fas fa-trash-alt" />
 			</span>
 		),
@@ -60,7 +60,7 @@ export default [
 	}, {
 		Header: 'URL Identifier',
 		accessor: 'urlIdentifier',
-		Cell: row => <a href={row.original.homeUrl}> {row.value} </a>
+		Cell: row => <a className={row.original.isOnHiatus ? 'text-muted' : ''} href={row.original.homeUrl}> {row.value} </a>
 	}, {
 		Header: 'Platform',
 		accessor: 'platformId',

@@ -2,7 +2,7 @@ import axios from 'axios';
 import promise from 'promise';
 import cache from './cache';
 import cacheKeys from './constants/cacheKeys';
-import { SUBMIT_USER_LOGOUT } from './actions';
+import { SUBMIT_USER_LOGOUT, SET_MAINTENANCE_MODE_ON } from './actions';
 
 const whitelist = [
 	'api/auth',
@@ -76,6 +76,10 @@ export default {
 			const { config } = error;
 			if (error.response.status === 498) {
 				store.dispatch({ type: SUBMIT_USER_LOGOUT });
+				return Promise.reject(error);
+			}
+			if (error.response.status === 503) {
+				store.dispatch({ type: SET_MAINTENANCE_MODE_ON });
 				return Promise.reject(error);
 			}
 			if (error.response.status === 401 && !isPathInWhitelist(error.config.url)) {

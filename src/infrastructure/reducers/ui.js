@@ -25,7 +25,8 @@ import {
 	UNTRACK_THREAD,
 	UPSERT_CHARACTER,
 	UPSERT_PUBLIC_VIEW,
-	UPSERT_THREAD
+	UPSERT_THREAD,
+	SET_MAINTENANCE_MODE_ON
 } from '../actions';
 // #endregion imports
 
@@ -129,6 +130,10 @@ function ui(state = defaultState, action) {
 		case SET_ACTIVE_TOOLS_TAB:
 			return Object.assign({}, state, {
 				activeToolsTab: action.data
+			});
+		case SET_MAINTENANCE_MODE_ON:
+			return Object.assign({}, state, {
+				isMaintenanceMode: true
 			});
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;
