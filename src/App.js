@@ -8,6 +8,7 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 import '../scss/style.scss';
 import history from './infrastructure/history';
+import withPageViewTracker from './infrastructure/withPageViewTracker';
 import Layout from './display/containers/Layout';
 import StaticContainer from './display/containers/StaticContainer';
 import Maintenance from './display/containers/Maintenance';
@@ -31,19 +32,19 @@ const App = (props) => {
 	if (ui.isMaintenanceMode) {
 		return (
 			<Router history={history}>
-				<Route path="*" name="Maintenance" component={Maintenance} />
+				<Route path="*" name="Maintenance" component={withPageViewTracker(Maintenance)} />
 			</Router>
 		);
 	}
 	return (
 		<Router history={history}>
 			<Switch>
-				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
+				<Route path="/maintenance" name="Maintenance" component={withPageViewTracker(Maintenance)} />
 				{
-					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
+					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={withPageViewTracker(StaticContainer)} />)
 				}
-				<Route path="/public" name="Public" component={PublicContainer} />
-				<Route component={Layout} />
+				<Route path="/public" name="Public" component={withPageViewTracker(PublicContainer)} />
+				<Route component={withPageViewTracker(Layout)} />
 			</Switch>
 		</Router>
 	);
