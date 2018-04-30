@@ -1,93 +1,87 @@
 import axios from 'axios';
 import promise from 'promise';
 import cache from './cache';
-import { SUBMIT_USER_LOGOUT, REFRESH_AUTH_TOKEN } from './actions';
+import cacheKeys from './constants/cacheKeys';
+import { SUBMIT_USER_LOGOUT } from './actions';
 
 const whitelist = [
-	'api/auth'
+	'api/auth',
+	`${TUMBLR_CLIENT_BASE_URL}`
 ];
 const refreshSubscribers = [];
 let isRefreshing = false;
 
-function getAccessTokenFromStorage() {
-	return cache.get('accessToken');
-}
-function getRefreshTokenFromStorage() {
-	return cache.get('refreshToken');
-}
 function isPathInWhitelist(url) {
 	return whitelist.some(path => url.indexOf(path) >= 0);
 }
 function subscribeTokenRefresh(cb) {
 	refreshSubscribers.push(cb);
 }
-function onRefreshed(token) {
+function onTokenRefreshed(token) {
 	refreshSubscribers.map(cb => cb(token));
 }
 function refreshAccessToken(error) {
 	return axios
-		.post(`${API_BASE_URL}/api/auth/refresh`, { RefreshToken: getRefreshTokenFromStorage() })
+		.post(`${API_BASE_URL}/api/auth/refresh`, { RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN) })
 		.then(({ data }) => {
-			const newToken = data.token.token;
-			const newRefreshToken = data.refresh_token.token;
-			cache.set('accessToken', newToken);
-			cache.set('refreshToken', newRefreshToken);
-			const config = {
-				...error.config,
-				params: { ...error.config.params, token: newToken }
-			};
-			return axios(config);
+			cache.set(cacheKeys.ACCESS_TOKEN, data.token.token);
+			cache.set(cacheKeys.REFRESH_TOKEN, data.refresh_token.token);
 		})
 		.catch(() => {
 			throw error;
 		});
 }
+function setAuthHeader(config) {
+	if (isPathInWhitelist(config.url)) {
+		return config;
+	}
+	const accessToken = cache.get(cacheKeys.ACCESS_TOKEN);
+	if (accessToken) {
+		if (config.method !== 'OPTIONS') {
+			// eslint-disable-next-line no-param-reassign
+			config.headers.authorization = `Bearer ${accessToken}`;
+		}
+	}
+	return config;
+}
+function handleUnauthorizedRequest(error, originalRequest) {
+	// start token refresh if it isn't already in process
+	if (!isRefreshing) {
+		isRefreshing = true;
+		refreshAccessToken(error)
+			.then(() => {
+				isRefreshing = false;
+				onTokenRefreshed();
+			});
+	}
+
+	// add request to list to be re-executed when token refresh is complete
+	const retryOrigReq = new Promise((resolve) => {
+		subscribeTokenRefresh(() => {
+			const token = cache.get(cacheKeys.ACCESS_TOKEN);
+			const newRequest = {
+				headers: { authorization: `Bearer ${token}` },
+				...originalRequest
+			};
+			resolve(axios(newRequest));
+		});
+	});
+	return retryOrigReq;
+}
+
 export default {
 	setupInterceptors: (store) => {
-		axios.interceptors.request.use((config) => {
-			if (isPathInWhitelist(config.url)) {
-				return config;
-			}
-			const accessToken = getAccessTokenFromStorage();
-			if (accessToken) {
-				if (config.method !== 'OPTIONS') {
-					// eslint-disable-next-line no-param-reassign
-					config.headers.authorization = `Bearer ${accessToken}`;
-				}
-			}
-			return config;
-		}, error => promise.reject(error));
-		// Add a response interceptor
+		axios.interceptors.request.use(setAuthHeader, error => promise.reject(error));
 		axios.interceptors.response.use(response => response, (error) => {
-			// catches if the session ended!
 			const { config } = error;
-			const originalRequest = config;
 			if (error.response.status === 498) {
-				store.dispatch({ type: SUBMIT_USER_LOGOUT, data: getRefreshTokenFromStorage() });
+				store.dispatch({ type: SUBMIT_USER_LOGOUT });
 				return Promise.reject(error);
 			}
-
 			if (error.response.status === 401 && !isPathInWhitelist(error.config.url)) {
-				if (!isRefreshing) {
-					isRefreshing = true;
-					refreshAccessToken(error)
-						.then((newToken) => {
-							isRefreshing = false;
-							onRefreshed(newToken);
-						});
-				}
-
-				const retryOrigReq = new Promise((resolve) => {
-					subscribeTokenRefresh((token) => {
-						// replace the expired token and retry
-						originalRequest.headers.Authorization = `Bearer ${token}`;
-						resolve(axios(originalRequest));
-					});
-				});
-				return retryOrigReq;
+				return handleUnauthorizedRequest(error, config);
 			}
 			return Promise.reject(error);
-
 		});
 	}
 };
