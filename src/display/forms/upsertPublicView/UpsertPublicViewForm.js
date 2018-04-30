@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
-import { AvField, AvGroup, AvInput} from 'availity-reactstrap-validation';
+import { AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import columns from '../../../infrastructure/constants/columns';
 
@@ -119,10 +119,10 @@ const UpsertPublicViewForm = (props) => {
 				</Col>
 
 				<Col xs="6">
-				<div className="form-check form-check-inline">
-					<input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
-					<label className="form-check-label" htmlFor="inlineCheckbox1">1</label>
-				</div>
+					<div className="form-check form-check-inline">
+						<input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+						<label className="form-check-label" htmlFor="inlineCheckbox1">1</label>
+					</div>
 				</Col>
 			</Row>
 		</div>

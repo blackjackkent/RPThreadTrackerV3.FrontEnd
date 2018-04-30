@@ -15,17 +15,12 @@ const propTypes = {
 };
 
 class UpsertCharacterModal extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.handleInputChange = this.handleInputChange.bind(this);
-		this.state = {};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { characterToEdit } = nextProps;
-		this.setState({
-			characterToEdit: Object.assign({}, this.state.characterToEdit, characterToEdit)
-		});
+		this.state = {
+			characterToEdit: props.characterToEdit
+		};
 	}
 
 	handleInputChange(event) {

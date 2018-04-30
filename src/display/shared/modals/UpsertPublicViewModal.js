@@ -16,17 +16,12 @@ const propTypes = {
 };
 
 class UpsertCharacterModal extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.handleInputChange = this.handleInputChange.bind(this);
-		this.state = {};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { viewToEdit } = nextProps;
-		this.setState({
-			viewToEdit: Object.assign({}, this.state.viewToEdit, viewToEdit)
-		});
+		this.state = {
+			viewToEdit: props.viewToEdit
+		};
 	}
 
 	handleInputChange(event) {

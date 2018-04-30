@@ -18,21 +18,16 @@ const propTypes = {
 };
 
 class UpsertThreadModal extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.selectCharacter = this.selectCharacter.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleTagAdded = this.handleTagAdded.bind(this);
 		this.handleTagRemoved = this.handleTagRemoved.bind(this);
 		this.getTagValues = this.getTagValues.bind(this);
 		this.state = {
-			threadToEdit: {}
+			threadToEdit: props.threadToEdit
 		};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const threadToEdit = this.getInitialThreadData(nextProps);
-		this.setState({ threadToEdit });
 	}
 
 	getInitialThreadData(nextProps) {
