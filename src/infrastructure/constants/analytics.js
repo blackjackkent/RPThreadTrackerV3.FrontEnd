@@ -7,6 +7,9 @@ export default {
 		OUTBOUND_LINK: 'outboundLink'
 	},
 	categories: {
-		CHARACTER: 'Character'
+		CHARACTER: 'Character',
+		ACCOUNT: 'Account',
+		PUBLIC: 'Public',
+		THREAD: 'Thread'
 	}
 };
