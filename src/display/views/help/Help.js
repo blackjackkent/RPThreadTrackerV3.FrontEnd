@@ -8,6 +8,7 @@ import AboutTrackerPane from './components/AboutTrackerPane';
 import SupportGuidesPane from './components/SupportGuidesPane';
 import ContactFormPane from './components/ContactFormPane';
 import { setActiveHelpTab, submitContactForm } from '../../../infrastructure/actions';
+import tabs from '../../../infrastructure/constants/tabs';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import FAQPane from './components/FAQPane';
@@ -29,24 +30,7 @@ function mapStateToProps(state) {
 
 const Help = (props) => {
 	const { activeTab } = props;
-	const options = [
-		{
-			tabId: 'about',
-			name: 'About RPThreadTracker'
-		},
-		{
-			tabId: 'faq',
-			name: 'FAQ'
-		},
-		{
-			tabId: 'guides',
-			name: 'Usage Guides'
-		},
-		{
-			tabId: 'contact',
-			name: 'Contact Me'
-		}
-	];
+	const options = Object.values(tabs.HELP);
 	return (
 		<div className="animated fadeIn static-container help-container">
 			<Row>

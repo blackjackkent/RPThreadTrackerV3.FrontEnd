@@ -10,6 +10,7 @@ export default {
 		CHARACTER: 'Character',
 		ACCOUNT: 'Account',
 		PUBLIC: 'Public',
-		THREAD: 'Thread'
+		THREAD: 'Thread',
+		UI: 'UI'
 	}
 };

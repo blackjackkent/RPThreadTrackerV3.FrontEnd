@@ -9,6 +9,7 @@ import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
 import { setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo } from '../../../infrastructure/actions';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
+import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
@@ -41,16 +42,7 @@ class Settings extends Component {
 
 	render() {
 		const { activeTab, user } = this.props;
-		const options = [
-			{
-				tabId: 'change-password',
-				name: 'Change Password'
-			},
-			{
-				tabId: 'change-username',
-				name: 'Change Username/Email'
-			}
-		];
+		const options = Object.values(tabs.SETTINGS);
 		return (
 			<div className="animated fadeIn static-container settings-container">
 				<Row>

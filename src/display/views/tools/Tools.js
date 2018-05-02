@@ -9,6 +9,7 @@ import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal } from '../../../infrastructure/actions';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
+import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
@@ -59,16 +60,7 @@ class Tools extends Component {
 
 	render() {
 		const { activeTab } = this.props;
-		const options = [
-			{
-				tabId: 'export-threads',
-				name: 'Export Threads'
-			},
-			{
-				tabId: 'manage-public-views',
-				name: 'Manage Public Views'
-			}
-		];
+		const options = Object.values(tabs.TOOLS);
 		return (
 			<div className="animated fadeIn static-container settings-container">
 				<Row>
@@ -91,7 +83,9 @@ class Tools extends Component {
 					<Col xs="12" lg="9">
 						<TabContent activeTab={activeTab}>
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
-							<ManagePublicViewsPane openUpsertPublicViewModal={this.props.openUpsertPublicViewModal} />
+							<ManagePublicViewsPane
+								openUpsertPublicViewModal={this.props.openUpsertPublicViewModal}
+							/>
 						</TabContent>
 					</Col>
 				</Row>

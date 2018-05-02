@@ -57,9 +57,6 @@ export { upsertThreadSuccess, UPSERT_THREAD_SUCCESS } from './threads/upsertThre
 export { fetchedUserFailure, FETCHED_USER_FAILURE } from './user/fetchedUserFailure';
 export { fetchedUserSuccess, FETCHED_USER_SUCCESS } from './user/fetchedUserSuccess';
 export { fetchUser, FETCH_USER } from './user/fetchUser';
-export { refreshAuthToken, REFRESH_AUTH_TOKEN } from './user/refreshAuthToken';
-export { refreshAuthTokenFailure, REFRESH_AUTH_TOKEN_FAILURE } from './user/refreshAuthTokenFailure';
-export { refreshAuthTokenSuccess, REFRESH_AUTH_TOKEN_SUCCESS } from './user/refreshAuthTokenSuccess';
 export { submitUserAccountInfo, SUBMIT_USER_ACCOUNT_INFO } from './user/submitUserAccountInfo';
 export { submitUserChangePassword, SUBMIT_USER_CHANGE_PASSWORD } from './user/submitUserChangePassword';
 export { submitUserForgotPassword, SUBMIT_USER_FORGOT_PASSWORD } from './user/submitUserForgotPassword';

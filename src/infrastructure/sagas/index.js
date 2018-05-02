@@ -35,5 +35,4 @@ export { default as fetchPublicViewsSaga } from './public/fetchPublicViewsSaga';
 
 export { default as analyticsSaga } from './analyticsSaga';
 export { default as toastrSaga } from './toastrSaga';
-export { default as logoutSaga } from './logoutSaga';
 

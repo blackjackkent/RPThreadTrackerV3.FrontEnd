@@ -19,6 +19,7 @@ const StaticTabNav = (props) => {
 			setActiveTab={setActiveTab}
 			iconId={o.icon}
 			title={o.name}
+			key={o.tabId}
 		/>
 	));
 	return (
