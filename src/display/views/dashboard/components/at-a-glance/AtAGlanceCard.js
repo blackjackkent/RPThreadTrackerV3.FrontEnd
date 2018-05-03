@@ -25,10 +25,11 @@ const AtAGlanceCard = (props) => {
 	} = props;
 	return (
 		<Card className="at-a-glance-card">
-			<CardHeader>
-				<i className="fas fa-search" /> At a Glance
+			<CardHeader data-spec="at-a-glance-card-header">
+				<i className="fas fa-search" data-spec="at-a-glance-card-icon" /> At a Glance
 				<Label className="switch switch-sm switch-text switch-info float-right mb-0">
 					<Input
+						data-spec="at-a-glance-card-toggle"
 						type="checkbox"
 						className="switch-input"
 						checked={showDashboardThreadDistribution}
@@ -38,15 +39,17 @@ const AtAGlanceCard = (props) => {
 					<span className="switch-handle" />
 				</Label>
 			</CardHeader>
-			<CardBlock className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
+			<CardBlock data-spec="at-a-glance-card-body" className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
 				<CardGroup>
 					<DashboardSummaryWidget
+						data-spec="at-a-glance-active-widget"
 						icon="icon-list"
 						header={activeThreads.length}
 					>
 						Active Threads
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
+						data-spec="at-a-glance-my-turn-widget"
 						icon="icon-pencil"
 						header={myTurnThreads.length}
 						threadsLoading={threadsLoading}
@@ -54,6 +57,7 @@ const AtAGlanceCard = (props) => {
 						Your Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
+						data-spec="at-a-glance-their-turn-widget"
 						icon="icon-check"
 						header={theirTurnThreads.length}
 						threadsLoading={threadsLoading}
@@ -61,6 +65,7 @@ const AtAGlanceCard = (props) => {
 						Their Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
+						data-spec="at-a-glance-queued-widget"
 						icon="icon-calendar"
 						header={queuedThreads.length}
 						threadsLoading={threadsLoading}
@@ -74,5 +79,4 @@ const AtAGlanceCard = (props) => {
 };
 
 AtAGlanceCard.propTypes = propTypes;
-
 export default AtAGlanceCard;

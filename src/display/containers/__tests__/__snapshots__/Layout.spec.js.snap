@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot when loading 1`] = `
+<LoadingIndicator
+  className=""
+  data-spec="layout-loader"
+  style={
+    Object {
+      "height": 50,
+      "left": "50%",
+      "position": "absolute",
+      "top": "50%",
+      "transform": "translate(-50%, -50%)",
+      "width": 50,
+    }
+  }
+/>
+`;
+
+exports[`rendering should render valid snapshot with loading indicator 1`] = `
+<div
+  className="app"
+  data-spec="layout-app"
+>
+  <Connect(ReduxToastr)
+    data-spec="layout-toastr"
+  />
+  <Connect(HeaderContainer)
+    data-spec="layout-header"
+  />
+  <div
+    className="app-body"
+  >
+    <Sidebar
+      data-spec="layout-sidebar"
+      fetchNews={[Function]}
+      fetchUser={[Function]}
+      news={Array []}
+      user={
+        Object {
+          "id": "12345",
+        }
+      }
+    />
+    <main
+      className="main"
+    >
+      <Component
+        data-spec="layout-breadcrumb"
+      />
+      <Container
+        data-spec="layout-container"
+        fluid={true}
+        tag="div"
+      >
+        <Switch>
+          <Route
+            component={[Function]}
+            name="Dashboard"
+            path="/dashboard"
+          />
+          <Route
+            component={[Function]}
+            name="Threads"
+            path="threads/*"
+          />
+          <Route
+            name="Threads"
+            path="/threads/your-turn"
+            render={[Function]}
+          />
+          <Route
+            name="Threads"
+            path="/threads/their-turn"
+            render={[Function]}
+          />
+          <Route
+            name="Threads"
+            path="/threads/archived"
+            render={[Function]}
+          />
+          <Route
+            name="Threads"
+            path="/threads/queued"
+            render={[Function]}
+          />
+          <Route
+            component={[Function]}
+            name="Tools"
+            path="/tools"
+          />
+          <Route
+            component={[Function]}
+            name="Settings"
+            path="/settings"
+          />
+          <Route
+            component={[Function]}
+            name="Characters"
+            path="/manage-characters"
+          />
+          <Route
+            component={[Function]}
+            name="Help"
+            path="/help"
+          />
+          <Redirect
+            from="/"
+            push={false}
+            to="/dashboard"
+          />
+        </Switch>
+      </Container>
+    </main>
+    <Connect(AsideContainer)
+      data-spec="layout-aside"
+    />
+  </div>
+  <Footer
+    data-spec="layout-footer"
+  />
+  <Connect(ModalContainer)
+    data-spec="layout-modals"
+  />
+</div>
+`;

@@ -7,7 +7,7 @@ export function openUpsertThreadModal(thread) {
 		data: thread,
 		analytics: {
 			func: analytics.funcs.MODALVIEW,
-			path: thread.threadId ? '/modals/update-thread' : '/modals/add-thread'
+			path: thread && thread.threadId ? '/modals/update-thread' : '/modals/add-thread'
 		}
 	};
 }

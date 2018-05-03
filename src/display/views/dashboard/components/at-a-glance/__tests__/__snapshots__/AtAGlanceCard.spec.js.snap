@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Card
+  className="at-a-glance-card"
+  tag="div"
+>
+  <CardHeader
+    data-spec="at-a-glance-card-header"
+    tag="div"
+  >
+    <i
+      className="fas fa-search"
+      data-spec="at-a-glance-card-icon"
+    />
+     At a Glance
+    <Label
+      className="switch switch-sm switch-text switch-info float-right mb-0"
+      tag="label"
+    >
+      <Input
+        checked={true}
+        className="switch-input"
+        data-spec="at-a-glance-card-toggle"
+        onChange={[MockFunction]}
+        tag="p"
+        type="checkbox"
+      />
+      <span
+        className="switch-label"
+        data-off="Off"
+        data-on="On"
+      />
+      <span
+        className="switch-handle"
+      />
+    </Label>
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    data-spec="at-a-glance-card-body"
+    tag="div"
+  >
+    <CardGroup
+      tag="div"
+    >
+      <DashboardSummaryWidget
+        data-spec="at-a-glance-active-widget"
+        header={6}
+        icon="icon-list"
+        threadsLoading={false}
+      >
+        Active Threads
+      </DashboardSummaryWidget>
+      <DashboardSummaryWidget
+        data-spec="at-a-glance-my-turn-widget"
+        header={1}
+        icon="icon-pencil"
+        threadsLoading={false}
+      >
+        Your Turn
+      </DashboardSummaryWidget>
+      <DashboardSummaryWidget
+        data-spec="at-a-glance-their-turn-widget"
+        header={2}
+        icon="icon-check"
+        threadsLoading={false}
+      >
+        Their Turn
+      </DashboardSummaryWidget>
+      <DashboardSummaryWidget
+        data-spec="at-a-glance-queued-widget"
+        header={3}
+        icon="icon-calendar"
+        threadsLoading={false}
+      >
+        Queued
+      </DashboardSummaryWidget>
+    </CardGroup>
+  </CardBlock>
+</Card>
+`;

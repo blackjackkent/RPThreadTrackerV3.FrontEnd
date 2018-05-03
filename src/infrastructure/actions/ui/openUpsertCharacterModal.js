@@ -7,7 +7,7 @@ export function openUpsertCharacterModal(character) {
 		data: character,
 		analytics: {
 			func: analytics.funcs.MODALVIEW,
-			path: character.characterId ? '/modals/update-character' : '/modals/add-character'
+			path: character && character.characterId ? '/modals/update-character' : '/modals/add-character'
 		}
 	};
 }

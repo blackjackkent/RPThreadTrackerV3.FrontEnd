@@ -65,6 +65,6 @@ describe('behavior', () => {
 		const element = shallow(jsx);
 		const button = getSpecWrapper(element, 'random-thread-generator-button');
 		button.simulate('click');
-		expect(props.generateRandomThread).toHaveBeenCalledWith();
+		expect(props.generateRandomThread).toHaveBeenCalledTimes(1);
 	});
 });

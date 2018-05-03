@@ -69,6 +69,7 @@ class Layout extends Component {
 	showLoadingIndicator() {
 		return (
 			<LoadingIndicator
+				data-spec="layout-loader"
 				style={{
 					width: 50,
 					height: 50,
@@ -82,14 +83,14 @@ class Layout extends Component {
 	}
 	showLayout() {
 		return (
-			<div className="app">
-				<ReduxToastr />
-				<HeaderContainer />
+			<div className="app" data-spec="layout-app">
+				<ReduxToastr data-spec="layout-toastr" />
+				<HeaderContainer data-spec="layout-header" />
 				<div className="app-body">
-					<Sidebar {...this.props} />
+					<Sidebar {...this.props} data-spec="layout-sidebar" />
 					<main className="main">
-						<Breadcrumb />
-						<Container fluid>
+						<Breadcrumb data-spec="layout-breadcrumb" />
+						<Container fluid data-spec="layout-container">
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
 								<Route path="threads/*" name="Threads" component={Threads} />
@@ -121,10 +122,10 @@ class Layout extends Component {
 							</Switch>
 						</Container>
 					</main>
-					<AsideContainer />
+					<AsideContainer data-spec="layout-aside" />
 				</div>
-				<Footer />
-				<ModalContainer />
+				<Footer data-spec="layout-footer" />
+				<ModalContainer data-spec="layout-modals" />
 			</div>
 		);
 	}

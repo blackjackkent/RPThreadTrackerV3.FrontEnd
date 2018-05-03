@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Card
+  tag="div"
+>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <div
+      className="text-right mb-2"
+    />
+    <div
+      className="h1  text-right mb-2"
+    >
+      <i
+        className="icon-list"
+        data-spec="dashboard-summary-widget-icon"
+      />
+    </div>
+    <div
+      className="h4 mb-0"
+      data-spec="dashboard-summary-widget-header"
+    >
+      33
+    </div>
+    <small
+      className=" text-uppercase font-weight-bold"
+      data-spec="dashboard-summary-widget-body"
+    >
+      Test
+    </small>
+    <Progress
+      className="progress-xs mt-3 mb-0"
+      max={100}
+      tag="div"
+      value="100"
+    />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering should render valid snapshot with loading indicator 1`] = `
+<Card
+  tag="div"
+>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <div
+      className="text-right mb-2"
+    >
+      <LoadingIndicator
+        className="inverse"
+        data-spec="dashboard-summary-widget-loading"
+        style={
+          Object {
+            "float": "left",
+            "height": 25,
+            "width": 25,
+          }
+        }
+      />
+    </div>
+    <div
+      className="h1  text-right mb-2"
+    >
+      <i
+        className="icon-list"
+        data-spec="dashboard-summary-widget-icon"
+      />
+    </div>
+    <div
+      className="h4 mb-0"
+      data-spec="dashboard-summary-widget-header"
+    >
+      33
+    </div>
+    <small
+      className=" text-uppercase font-weight-bold"
+      data-spec="dashboard-summary-widget-body"
+    >
+      Test
+    </small>
+    <Progress
+      className="progress-xs mt-3 mb-0"
+      max={100}
+      tag="div"
+      value="100"
+    />
+  </CardBlock>
+</Card>
+`;
