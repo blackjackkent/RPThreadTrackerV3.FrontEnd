@@ -1,5 +1,5 @@
 import React from 'react';
-import { FormGroup, Label, Input } from 'reactstrap';
+import { FormGroup, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 const propTypes = {

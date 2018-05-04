@@ -39,7 +39,11 @@ const App = (props) => {
 	return (
 		<Router history={history}>
 			<Switch>
-				<Route path="/maintenance" name="Maintenance" component={withPageViewTracker(Maintenance)} />
+				<Route
+					path="/maintenance"
+					name="Maintenance"
+					component={withPageViewTracker(Maintenance)}
+				/>
 				{
 					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={withPageViewTracker(StaticContainer)} />)
 				}

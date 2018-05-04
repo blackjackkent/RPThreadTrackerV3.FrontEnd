@@ -17,8 +17,3 @@ export const shallowWithState = (component, state) => {
 	};
 	return shallow(component, { context });
 };
-
-export const mountWithState = (component, state) => {
-	const store = createMockStore(state);
-	return mount(<Provider store={store}>{component}</Provider>);
-};

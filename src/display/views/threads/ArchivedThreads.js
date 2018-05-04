@@ -6,6 +6,7 @@ import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchArchivedThreads } from '../../../infrastructure/actions';
 import { getArchivedFilteredThreads, getArchivedThreadCharacters, getArchivedThreadPartners, getArchivedThreadTags } from '../../../infrastructure/selectors';
+
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

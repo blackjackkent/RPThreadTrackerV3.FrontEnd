@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
-import { AvField, AvGroup, AvInput } from 'availity-reactstrap-validation';
+import { Col, Row } from 'reactstrap';
+import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import columns from '../../../infrastructure/constants/columns';
 
@@ -25,8 +25,8 @@ const UpsertPublicViewForm = (props) => {
 		showTooltip,
 		hideTooltip
 	} = props;
-	console.log(columns.keys);
-	const columnOptions = Object.getOwnPropertyNames(columns).map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
+	const columnOptions = Object.getOwnPropertyNames(columns)
+		.map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
 	if (!viewToEdit) {
 		return (
 			<div />
@@ -120,7 +120,12 @@ const UpsertPublicViewForm = (props) => {
 
 				<Col xs="6">
 					<div className="form-check form-check-inline">
-						<input className="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1" />
+						<input
+							className="form-check-input"
+							type="checkbox"
+							id="inlineCheckbox1"
+							value="option1"
+						/>
 						<label className="form-check-label" htmlFor="inlineCheckbox1">1</label>
 					</div>
 				</Col>
