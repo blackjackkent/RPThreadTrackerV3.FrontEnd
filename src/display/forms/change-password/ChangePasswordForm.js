@@ -16,10 +16,16 @@ const ChangePasswordForm = (props) => {
 		<div>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label htmlFor="current-password">Current Password:</Label>
+					<Label
+						data-spec="current-password-label"
+						htmlFor="current-password"
+					>
+						Current Password:
+					</Label>
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
+						data-spec="current-password-field"
 						name="currentPassword"
 						placeholder="Current Password"
 						type="password"
@@ -30,10 +36,11 @@ const ChangePasswordForm = (props) => {
 			</FormGroup>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label htmlFor="new-password">New Password:</Label>
+					<Label htmlFor="new-password" data-spec="new-password-label">New Password:</Label>
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
+						data-spec="new-password-field"
 						name="newPassword"
 						placeholder="New Password"
 						type="password"
@@ -44,10 +51,16 @@ const ChangePasswordForm = (props) => {
 			</FormGroup>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label htmlFor="confirm-new-password">Confirm New Password:</Label>
+					<Label
+						htmlFor="confirm-new-password"
+						data-spec="confirm-new-password-label"
+					>
+						Confirm New Password:
+					</Label>
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
+						data-spec="confirm-new-password-field"
 						name="confirmNewPassword"
 						placeholder="Confirm New Password"
 						type="password"

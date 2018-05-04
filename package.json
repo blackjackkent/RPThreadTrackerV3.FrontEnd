@@ -101,7 +101,8 @@
 		"start-mockapi": "json-server --watch api/db.json --port 3001",
 		"test": "jest",
 		"test:watch": "jest --watch",
-		"test:coverage": "jest --coverage"
+		"test:coverage": "jest --coverage",
+		"test:ci": "jest --config=\"./jest.config.json\""
 	},
 	"engines": {
 		"node": ">= 6.0.0",

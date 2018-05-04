@@ -1,6 +1,4 @@
-import { shallow, mount } from 'enzyme';
-import React from 'react';
-import { Provider } from 'react-redux';
+import { shallow } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 
 export const DATA_SPEC_ATTRIBUTE_NAME = 'data-spec';

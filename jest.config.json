@@ -1,0 +1,16 @@
+{
+	"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+	"testEnvironment": "enzyme",
+	"testEnvironmentOptions": {
+		"enzymeAdapter": "react15"
+	},
+	"coveragePathIgnorePatterns": [
+		"/node_modules/",
+		"/src/utility/testHelpers",
+		"/src/setupTests.js"
+	],
+	"collectCoverage": true,
+	"collectCoverageFrom": [
+		"**/src/**/*.{js|jsx}"
+	]
+}

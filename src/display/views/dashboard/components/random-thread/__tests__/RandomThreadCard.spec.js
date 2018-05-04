@@ -26,29 +26,6 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
-	it('should render component header', () => {
-		const props = createTestProps();
-		const jsx = (<RandomThreadCard {...props} />);
-		const element = shallow(jsx);
-		const header = getSpecWrapper(element, 'random-thread-generator-header');
-		expect(header).toExist();
-	});
-	it('should render correct card icon', () => {
-		const props = createTestProps();
-		const jsx = (<RandomThreadCard {...props} />);
-		const element = shallow(jsx);
-		const icon = getSpecWrapper(element, 'random-thread-generator-icon');
-		expect(icon).toExist();
-		expect(icon).toHaveClassName('fa-random');
-	});
-	it('should render button correctly', () => {
-		const props = createTestProps();
-		const jsx = (<RandomThreadCard {...props} />);
-		const element = shallow(jsx);
-		const button = getSpecWrapper(element, 'random-thread-generator-button');
-		expect(button).toExist();
-		expect(button).toHaveText('Generate');
-	});
 	it('should render display correctly', () => {
 		const props = createTestProps();
 		const jsx = (<RandomThreadCard {...props} />);

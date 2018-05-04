@@ -28,21 +28,6 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
-	it('should render card header', () => {
-		const props = createTestProps();
-		const jsx = (<AtAGlanceCard {...props} />);
-		const element = shallow(jsx);
-		const header = getSpecWrapper(element, 'at-a-glance-card-header');
-		expect(header).toExist();
-	});
-	it('should render card header icon', () => {
-		const props = createTestProps();
-		const jsx = (<AtAGlanceCard {...props} />);
-		const element = shallow(jsx);
-		const icon = getSpecWrapper(element, 'at-a-glance-card-icon');
-		expect(icon).toExist();
-		expect(icon).toHaveClassName('fa-search');
-	});
 	it('should render card header toggle state', () => {
 		const props = createTestProps();
 		const props2 = createTestProps({ showDashboardThreadDistribution: false });
@@ -52,8 +37,6 @@ describe('rendering', () => {
 		const element2 = shallow(jsx2);
 		const toggle = getSpecWrapper(element, 'at-a-glance-card-toggle');
 		const toggle2 = getSpecWrapper(element2, 'at-a-glance-card-toggle');
-		expect(toggle).toExist();
-		expect(toggle2).toExist();
 		expect(toggle).toHaveProp('checked', true);
 		expect(toggle2).toHaveProp('checked', false);
 	});
@@ -66,8 +49,6 @@ describe('rendering', () => {
 		const element2 = shallow(jsx2);
 		const body = getSpecWrapper(element, 'at-a-glance-card-body');
 		const body2 = getSpecWrapper(element2, 'at-a-glance-card-body');
-		expect(body).toExist();
-		expect(body2).toExist();
 		expect(body).toHaveClassName('card-body');
 		expect(body2).toHaveClassName('d-none');
 	});
@@ -76,7 +57,6 @@ describe('rendering', () => {
 		const jsx = (<AtAGlanceCard {...props} />);
 		const element = shallow(jsx);
 		const widget = getSpecWrapper(element, 'at-a-glance-active-widget');
-		expect(widget).toExist();
 		expect(widget).toHaveProp('icon', 'icon-list');
 		expect(widget).toHaveProp('header', 6);
 	});
@@ -85,7 +65,6 @@ describe('rendering', () => {
 		const jsx = (<AtAGlanceCard {...props} />);
 		const element = shallow(jsx);
 		const widget = getSpecWrapper(element, 'at-a-glance-my-turn-widget');
-		expect(widget).toExist();
 		expect(widget).toHaveProp('icon', 'icon-pencil');
 		expect(widget).toHaveProp('header', 1);
 		expect(widget).toHaveProp('threadsLoading', false);
@@ -95,7 +74,6 @@ describe('rendering', () => {
 		const jsx = (<AtAGlanceCard {...props} />);
 		const element = shallow(jsx);
 		const widget = getSpecWrapper(element, 'at-a-glance-their-turn-widget');
-		expect(widget).toExist();
 		expect(widget).toHaveProp('icon', 'icon-check');
 		expect(widget).toHaveProp('header', 2);
 		expect(widget).toHaveProp('threadsLoading', false);
@@ -105,7 +83,6 @@ describe('rendering', () => {
 		const jsx = (<AtAGlanceCard {...props} />);
 		const element = shallow(jsx);
 		const widget = getSpecWrapper(element, 'at-a-glance-queued-widget');
-		expect(widget).toExist();
 		expect(widget).toHaveProp('icon', 'icon-calendar');
 		expect(widget).toHaveProp('header', 3);
 		expect(widget).toHaveProp('threadsLoading', false);

@@ -45,7 +45,3 @@ describe('rendering', () => {
 		expect(getSpecWrapper(element, 'dashboard-summary-widget-loading')).toHaveLength(1);
 	});
 });
-
-describe('behavior', () => {
-
-});

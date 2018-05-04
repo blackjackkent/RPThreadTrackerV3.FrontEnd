@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<div
+  className="app flex-row align-items-center"
+>
+  <Container
+    tag="div"
+  >
+    <Row
+      className="justify-content-center"
+      tag="div"
+    >
+      <Col
+        md="6"
+        tag="div"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <Card
+          className="login-box p-4"
+          tag="div"
+        >
+          <CardBlock
+            className="card-body"
+            tag="div"
+          >
+            <span
+              className="clearfix"
+            >
+              <h1
+                className="float-left display-3"
+              >
+                503
+              </h1>
+              <h4
+                className="pt-3"
+              >
+                Service Unavailable
+              </h4>
+              <p
+                className="text-muted float-left"
+              >
+                RPThreadTracker is temporarily down for maintenance.
+              </p>
+            </span>
+            <p>
+              Please see
+               
+              <a
+                href="http://tblrthreadtracker.tumblr.com"
+              >
+                our announcements blog
+              </a>
+               
+              for further information and updates.
+            </p>
+          </CardBlock>
+        </Card>
+      </Col>
+    </Row>
+  </Container>
+</div>
+`;
