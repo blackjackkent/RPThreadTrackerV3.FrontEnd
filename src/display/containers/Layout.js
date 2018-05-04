@@ -97,22 +97,30 @@ class Layout extends Component {
 								<Route
 									path="/threads/your-turn"
 									name="Threads"
-									render={() => <Threads Renderable={MyTurnThreads} />}
+									render={
+										/* istanbul ignore next */
+										() => (<Threads Renderable={MyTurnThreads} />)}
 								/>
 								<Route
 									path="/threads/their-turn"
 									name="Threads"
-									render={() => <Threads Renderable={TheirTurnThreads} />}
+									render={
+										/* istanbul ignore next */
+										() => (<Threads Renderable={TheirTurnThreads} />)}
 								/>
 								<Route
 									path="/threads/archived"
 									name="Threads"
-									render={() => <Threads Renderable={ArchivedThreads} />}
+									render={
+										/* istanbul ignore next */
+										() => (<Threads Renderable={ArchivedThreads} />)}
 								/>
 								<Route
 									path="/threads/queued"
 									name="Threads"
-									render={() => <Threads Renderable={QueuedThreads} />}
+									render={
+										/* istanbul ignore next */
+										() => (<Threads Renderable={QueuedThreads} />)}
 								/>
 								<Route path="/tools" name="Tools" component={Tools} />
 								<Route path="/settings" name="Settings" component={Settings} />

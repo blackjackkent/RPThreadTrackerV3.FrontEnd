@@ -1,7 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallow } from 'enzyme';
-import { getSpecWrapper, shallowWithState } from '../../../utility/testHelpers';
+import { getSpecWrapper, shallowWithState, mountWithState } from '../../../utility/testHelpers';
 import Layout from '../Layout';
 // #endregion imports
 
@@ -84,5 +83,40 @@ describe('rendering', () => {
 		expect(getSpecWrapper(element, 'layout-aside')).toHaveLength(1);
 		expect(getSpecWrapper(element, 'layout-footer')).toHaveLength(1);
 		expect(getSpecWrapper(element, 'layout-modals')).toHaveLength(1);
+	});
+});
+
+describe('behavior', () => {
+	it('should retrieve user when user is not loaded', () => {
+		const fetchUser = jest.fn();
+		const props = createTestProps({ fetchUser });
+		const state = createTestState();
+		const jsx = (<Layout {...props} />);
+		shallowWithState(jsx, state).dive('Layout');
+		expect(fetchUser).toHaveBeenCalledTimes(1);
+	});
+	it('should not retrieve user when user is loaded', () => {
+		const fetchUser = jest.fn();
+		const props = createTestProps({ fetchUser });
+		const state = createTestState({ user: { id: '12345' } });
+		const jsx = (<Layout {...props} />);
+		shallowWithState(jsx, state).dive('Layout');
+		expect(fetchUser).toHaveBeenCalledTimes(0);
+	});
+	it('should retrieve news when news is not loaded', () => {
+		const fetchNews = jest.fn();
+		const props = createTestProps({ fetchNews });
+		const state = createTestState();
+		const jsx = (<Layout {...props} />);
+		shallowWithState(jsx, state).dive('Layout');
+		expect(fetchNews).toHaveBeenCalledTimes(1);
+	});
+	it('should not retrieve news when news is loaded', () => {
+		const fetchNews = jest.fn();
+		const props = createTestProps({ fetchNews });
+		const state = createTestState({ news: [{}, {}] });
+		const jsx = (<Layout {...props} />);
+		shallowWithState(jsx, state).dive('Layout');
+		expect(fetchNews).toHaveBeenCalledTimes(0);
 	});
 });
