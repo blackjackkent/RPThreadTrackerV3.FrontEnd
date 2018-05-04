@@ -1,7 +1,30 @@
+// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper, shallowWithState } from '../../../utility/testHelpers';
 import Layout from '../Layout';
+// #endregion imports
+
+// #region mocks
+jest.mock('../../../infrastructure/actions', () => ({}));
+jest.mock('../../shared/header/HeaderContainer', () => 'HeaderContainer');
+jest.mock('../../shared/sidebar/Sidebar', () => 'Sidebar');
+jest.mock('../../shared/breadcrumb/Breadcrumb', () => 'Breadcrumb');
+jest.mock('../../shared/aside/AsideContainer', () => 'AsideContainer');
+jest.mock('../../shared/footer/Footer', () => 'Footer');
+jest.mock('../../shared/modals/ModalContainer', () => 'ModalContainer');
+jest.mock('../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../views/dashboard/Dashboard', () => () => 'Dashboard');
+jest.mock('../../views/threads/Threads', () => () => 'Threads');
+jest.mock('../../views/threads/MyTurnThreads', () => 'MyTurnThreads');
+jest.mock('../../views/threads/TheirTurnThreads', () => 'TheirTurnThreads');
+jest.mock('../../views/threads/ArchivedThreads', () => 'ArchivedThreads');
+jest.mock('../../views/threads/QueuedThreads', () => 'QueuedThreads');
+jest.mock('../../views/characters/ManageCharacters', () => () => 'ManageCharacters');
+jest.mock('../../views/tools/Tools', () => () => 'Tools');
+jest.mock('../../views/settings/Settings', () => () => 'Settings');
+jest.mock('../../views/help/Help', () => () => 'Help');
+// #endregion mocks
 
 const createTestProps = propOverrides => ({
 	fetchUser: jest.fn(),

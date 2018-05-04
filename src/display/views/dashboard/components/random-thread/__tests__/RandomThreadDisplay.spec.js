@@ -1,7 +1,9 @@
+// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '../../../../../../utility/testHelpers';
 import RandomThreadDisplay from '../RandomThreadDisplay';
+// #endregion imports
 
 const getValidProps = () => ({ thread: { userTitle: 'Test Title' }, status: { LastPostUrl: 'testurl', LastPosterUrlIdentifier: 'blackjackkent' } });
 const getNullStatusProps = () => ({ thread: { userTitle: 'Test Title' }, status: null });

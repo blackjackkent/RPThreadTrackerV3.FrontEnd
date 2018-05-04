@@ -1,7 +1,13 @@
+// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '../../../../../../utility/testHelpers';
 import AtAGlanceCard from '../AtAGlanceCard';
+// #endregion imports
+
+// #region mocks
+jest.mock('../DashboardSummaryWidget', () => 'DashboardSummaryWidget');
+// #endregion mocks
 
 const createTestProps = propOverrides => ({
 	// common props
@@ -73,7 +79,6 @@ describe('rendering', () => {
 		expect(widget).toExist();
 		expect(widget).toHaveProp('icon', 'icon-list');
 		expect(widget).toHaveProp('header', 6);
-		expect(widget).toHaveProp('threadsLoading', false);
 	});
 	it('should pass correct values to my turn widget', () => {
 		const props = createTestProps();

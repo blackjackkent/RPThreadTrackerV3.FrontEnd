@@ -48,7 +48,6 @@ exports[`rendering should render valid snapshot 1`] = `
         data-spec="at-a-glance-active-widget"
         header={6}
         icon="icon-list"
-        threadsLoading={false}
       >
         Active Threads
       </DashboardSummaryWidget>

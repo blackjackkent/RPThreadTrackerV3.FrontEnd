@@ -1,7 +1,13 @@
+// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '../../../../../../utility/testHelpers';
 import DashboardSummaryWidget from '../DashboardSummaryWidget';
+// #endregion imports
+
+// #region mocks
+jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+// #endregion mocks
 
 const createTestProps = propOverrides => ({
 	header: 33,

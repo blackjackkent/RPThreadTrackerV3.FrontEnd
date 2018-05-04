@@ -1,7 +1,13 @@
+// #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '../../../../../../utility/testHelpers';
 import RandomThreadCard from '../RandomThreadCard';
+// #endregion imports
+
+// #region mocks
+jest.mock('../RandomThreadDisplay', () => 'RandomThreadDisplay');
+// #endregion mocks
 
 const createTestProps = propOverrides => ({
 	// common props

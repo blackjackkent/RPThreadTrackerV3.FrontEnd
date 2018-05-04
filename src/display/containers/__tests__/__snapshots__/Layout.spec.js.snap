@@ -2,7 +2,6 @@
 
 exports[`rendering should render valid snapshot when loading 1`] = `
 <LoadingIndicator
-  className=""
   data-spec="layout-loader"
   style={
     Object {
@@ -25,7 +24,7 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
   <Connect(ReduxToastr)
     data-spec="layout-toastr"
   />
-  <Connect(HeaderContainer)
+  <HeaderContainer
     data-spec="layout-header"
   />
   <div
@@ -33,8 +32,14 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
   >
     <Sidebar
       data-spec="layout-sidebar"
-      fetchNews={[Function]}
-      fetchUser={[Function]}
+      fetchNews={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        }
+      }
+      fetchUser={[MockFunction]}
       news={Array []}
       user={
         Object {
@@ -45,7 +50,7 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
     <main
       className="main"
     >
-      <Component
+      <Breadcrumb
         data-spec="layout-breadcrumb"
       />
       <Container
@@ -112,14 +117,14 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
         </Switch>
       </Container>
     </main>
-    <Connect(AsideContainer)
+    <AsideContainer
       data-spec="layout-aside"
     />
   </div>
   <Footer
     data-spec="layout-footer"
   />
-  <Connect(ModalContainer)
+  <ModalContainer
     data-spec="layout-modals"
   />
 </div>
