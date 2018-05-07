@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardBlock } from 'reactstrap';
 import RecentActivityRow from './RecentActivityRow';
-debugger;
+
 const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	archiveThread: PropTypes.func.isRequired,

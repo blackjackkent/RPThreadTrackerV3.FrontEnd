@@ -28,5 +28,15 @@ export default {
 		tooltip: (
 			<span>Ctrl-click or shift-click to select multiple columns.</span>
 		)
+	},
+	characterIds: {
+		helpMessage: (
+			<span>
+				The characters whose threads should be displayed to visitors in this public view.
+			</span>
+		),
+		tooltip: (
+			<span>Ctrl-click or shift-click to select multiple characters.</span>
+		)
 	}
 };

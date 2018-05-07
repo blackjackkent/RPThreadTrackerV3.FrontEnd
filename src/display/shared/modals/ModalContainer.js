@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { getCharactersSortedByIdentifier } from '../../../infrastructure/selectors'
 import { closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
@@ -12,7 +13,7 @@ const propTypes = {
 	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	bulkUntrackThreads: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({}).isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	closeUntrackThreadModal: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
@@ -43,6 +44,7 @@ function mapStateToProps(state) {
 		bulkThreadsToEdit,
 		viewToEdit
 	} = state;
+	const sortedCharacters = getCharactersSortedByIdentifier(state);
 	return {
 		isUpsertCharacterModalOpen: ui.isUpsertCharacterModalOpen,
 		isUntrackThreadModalOpen: ui.isUntrackThreadModalOpen,
@@ -54,7 +56,8 @@ function mapStateToProps(state) {
 		characters,
 		threadToEdit,
 		bulkThreadsToEdit,
-		viewToEdit
+		viewToEdit,
+		sortedCharacters
 	};
 }
 
@@ -67,10 +70,10 @@ const ModalContainer = (props) => {
 		isUntrackCharacterModalOpen,
 		isUpsertPublicViewModalOpen,
 		characterToEdit,
-		characters,
 		threadToEdit,
 		bulkThreadsToEdit,
-		viewToEdit
+		viewToEdit,
+		sortedCharacters
 	} = props;
 	return (
 		<div>
@@ -79,7 +82,7 @@ const ModalContainer = (props) => {
 				closeUpsertThreadModal={props.closeUpsertThreadModal}
 				threadToEdit={threadToEdit}
 				submitUpsertThread={props.upsertThread}
-				characters={characters}
+				characters={sortedCharacters}
 			/>
 			<UpsertCharacterModal
 				isUpsertCharacterModalOpen={isUpsertCharacterModalOpen}
@@ -92,6 +95,7 @@ const ModalContainer = (props) => {
 				submitUpsertPublicView={props.upsertPublicView}
 				closeUpsertPublicViewModal={props.closeUpsertPublicViewModal}
 				viewToEdit={viewToEdit}
+				characters={sortedCharacters}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isUntrackThreadModalOpen}

@@ -7,12 +7,14 @@ import { connect } from 'react-redux';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
-import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal } from '../../../infrastructure/actions';
+import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	fetchCharacters: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchTags: PropTypes.func.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
@@ -49,6 +51,9 @@ class Tools extends Component {
 		}
 		if (!this.props.publicViews || !this.props.publicViews.length) {
 			this.props.fetchPublicViews();
+		}
+		if (!this.props.characters || !this.props.characters.length) {
+			this.props.fetchCharacters();
 		}
 	}
 	setActiveTab(tab) {
@@ -100,5 +105,6 @@ export default connect(mapStateToProps, {
 	setActiveToolsTab,
 	fetchTags,
 	fetchPublicViews,
-	openUpsertPublicViewModal
+	openUpsertPublicViewModal,
+	fetchCharacters
 })(Tools);

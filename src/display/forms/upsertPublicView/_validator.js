@@ -30,5 +30,11 @@ export default {
 			value: true,
 			errorMessage: 'You must select a column to sort the table by.'
 		}
+	},
+	characterIds: {
+		required: {
+			value: true,
+			errorMessage: 'You must select characters for your public thread table.'
+		}
 	}
 };

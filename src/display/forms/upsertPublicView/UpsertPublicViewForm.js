@@ -4,12 +4,13 @@ import { Col, Row } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import columns from '../../../infrastructure/constants/columns';
+import validator from './_validator';
+import formData from './_formData';
 
 const propTypes = {
 	viewToEdit: PropTypes.shape({}).isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	validator: PropTypes.shape({}).isRequired,
-	formData: PropTypes.shape({}).isRequired,
 	tooltipDisplayData: PropTypes.shape({}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired
@@ -19,14 +20,21 @@ const UpsertPublicViewForm = (props) => {
 	const {
 		viewToEdit,
 		handleInputChange,
-		validator,
-		formData,
 		tooltipDisplayData,
 		showTooltip,
-		hideTooltip
+		hideTooltip,
+		characters
 	} = props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
 		.map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
+	const characterOptions = characters.map(c => (
+		<option
+			value={c.characterId}
+			key={c.characterId}
+		>
+			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
+		</option>
+	));
 	if (!viewToEdit) {
 		return (
 			<div />
@@ -119,18 +127,103 @@ const UpsertPublicViewForm = (props) => {
 				</Col>
 
 				<Col xs="6">
-					<div className="form-check form-check-inline">
-						<input
-							className="form-check-input"
-							type="checkbox"
-							id="inlineCheckbox1"
-							value="option1"
-						/>
-						<label className="form-check-label" htmlFor="inlineCheckbox1">1</label>
-					</div>
+					<AvField
+						name="sortDescending"
+						label="Sort Order"
+						type="select"
+						value={viewToEdit.sortDescending}
+						onChange={handleInputChange}
+					>
+						<option value={false}>Ascending</option>
+						<option
+							value={true} // eslint-disable-line react/jsx-boolean-value
+						>
+							Descending
+						</option>
+					</AvField>
 				</Col>
 			</Row>
-		</div>
+			<Row className="public-view-form-turn-section">
+				<div className="container">
+					<Row>
+						<Col xs="6">
+							<label htmlFor="includeMyTurn">
+								<input
+									name="includeMyTurn"
+									onChange={handleInputChange}
+									type="checkbox"
+									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeMyTurn}
+								/>
+								Include My Turn Threads
+							</label>
+						</Col>
+						<Col xs="6">
+							<label htmlFor="includeTheirTurn">
+								<input
+									name="includeTheirTurn"
+									onChange={handleInputChange}
+									type="checkbox"
+									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeTheirTurn}
+								/>
+								Include Partner's Turn Threads
+							</label>
+						</Col>
+					</Row>
+					<Row>
+						<Col xs="6">
+							<label htmlFor="includeQueued">
+								<input
+									name="includeQueued"
+									type="checkbox"
+									onChange={handleInputChange}
+									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeQueued}
+								/>
+								Include Queued Threads
+							</label>
+						</Col>
+						<Col xs="6">
+							<label htmlFor="includeArchived">
+								<input
+									name="includeArchived"
+									type="checkbox"
+									onChange={handleInputChange}
+									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeArchived}
+								/>
+								Include Archived Threads
+							</label>
+						</Col>
+					</Row>
+				</div>
+			</Row>
+			<Row> {/* view characters */}
+				<Col>
+					<Tooltip
+						visible={tooltipDisplayData.characterIds}
+						overlay={formData.characterIds.tooltip}
+						overlayStyle={{ width: 300 }}
+						align={{
+							offset: [0, 30]
+						}}
+						placement="top"
+					>
+						<AvField
+							name="characterIds"
+							label="Characters"
+							type="select"
+							value={viewToEdit.characterIds}
+							onChange={handleInputChange}
+							validate={validator.characterIds}
+							helpMessage={formData.characterIds.helpMessage}
+							multiple
+							onFocus={showTooltip}
+							onBlur={hideTooltip}
+						>
+							{characterOptions}
+						</AvField>
+					</Tooltip>
+				</Col>
+			</Row>
+		</div >
 	);
 };
 

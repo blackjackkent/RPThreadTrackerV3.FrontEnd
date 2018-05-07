@@ -21,3 +21,5 @@ export { default as getArchivedFilteredThreads } from './threads/archived/getArc
 
 export { default as getRecentActivity } from './threads/getRecentActivity';
 export { default as getThreadCountsByCharacter } from './threads/getThreadCountsByCharacter';
+
+export { default as getCharactersSortedByIdentifier } from './characters/getCharactersSortedByIdentifier';

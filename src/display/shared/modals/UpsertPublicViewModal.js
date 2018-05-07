@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import validator from '../../forms/upsertPublicView/_validator';
-import formData from '../../forms/upsertPublicView/_formData';
 import UpsertPublicViewForm from '../../forms/upsertPublicView/UpsertPublicViewForm';
 import TooltipForm from '../../forms/TooltipForm';
 import { getValuesFromMultiSelect } from '../../../utility';
@@ -12,7 +10,8 @@ const propTypes = {
 	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
 	submitUpsertPublicView: PropTypes.func.isRequired,
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
-	viewToEdit: PropTypes.shape({}).isRequired
+	viewToEdit: PropTypes.shape({}).isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 class UpsertCharacterModal extends React.Component {
@@ -31,6 +30,19 @@ class UpsertCharacterModal extends React.Component {
 			value = getValuesFromMultiSelect(target);
 		}
 		const { name } = target;
+		if (target.type === 'checkbox') {
+			let { turnFilter } = this.state.viewToEdit;
+			if (!turnFilter) {
+				turnFilter = {};
+			}
+			turnFilter[name] = value;
+			this.setState({
+				viewToEdit: Object.assign({}, this.state.viewToEdit, {
+					turnFilter
+				})
+			});
+			return;
+		}
 		this.setState({
 			viewToEdit: Object.assign({}, this.state.viewToEdit, {
 				[name]: value
@@ -42,7 +54,8 @@ class UpsertCharacterModal extends React.Component {
 			isUpsertPublicViewModalOpen,
 			submitUpsertPublicView,
 			closeUpsertPublicViewModal,
-			viewToEdit
+			viewToEdit,
+			characters
 		} = this.props;
 		if (!viewToEdit) {
 			return (
@@ -57,8 +70,7 @@ class UpsertCharacterModal extends React.Component {
 						<TooltipForm
 							Renderable={UpsertPublicViewForm}
 							viewToEdit={viewToEdit}
-							validator={validator}
-							formData={formData}
+							characters={characters}
 							handleInputChange={this.handleInputChange}
 						/>
 					</ModalBody>
