@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import validator from './_validator';
-import formData from './_formData';
-import UpsertCharacterForm from './UpsertCharacterForm';
-import TooltipForm from '../TooltipForm';
+import UpsertCharacterForm from '../../forms/upsertCharacter/UpsertCharacterForm';
+import TooltipForm from '../../forms/TooltipForm';
 
 const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
@@ -53,8 +51,6 @@ class UpsertCharacterModal extends React.Component {
 						<TooltipForm
 							Renderable={UpsertCharacterForm}
 							characterToEdit={characterToEdit}
-							validator={validator}
-							formData={formData}
 							handleInputChange={this.handleInputChange}
 						/>
 					</ModalBody>

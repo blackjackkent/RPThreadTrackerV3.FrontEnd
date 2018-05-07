@@ -28,6 +28,7 @@ const UpdateAccountInfoForm = (props) => {
 						value={user.userName}
 						onChange={handleInputChange}
 						validate={validator.username}
+						data-spec="username-field"
 					/>
 				</Col>
 			</FormGroup>
@@ -44,6 +45,7 @@ const UpdateAccountInfoForm = (props) => {
 						onChange={handleInputChange}
 						validate={validator.email}
 						disabled
+						data-spec="email-field"
 					/>
 				</Col>
 			</FormGroup>

@@ -19,6 +19,7 @@ const LoginForm = (props) => {
 				type="text"
 				onChange={handleInputChange}
 				validate={validator.username}
+				data-spec="username-field"
 			/>
 			<AvField
 				name="Password"
@@ -26,6 +27,7 @@ const LoginForm = (props) => {
 				type="password"
 				onChange={handleInputChange}
 				validate={validator.password}
+				data-spec="password-field"
 			/>
 		</div>
 	);

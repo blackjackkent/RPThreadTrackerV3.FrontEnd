@@ -19,6 +19,7 @@ const RegisterForm = (props) => {
 				type="text"
 				onChange={handleInputChange}
 				validate={validator.username}
+				data-spec="username-field"
 			/>
 			<AvField
 				name="email"
@@ -26,6 +27,7 @@ const RegisterForm = (props) => {
 				type="email"
 				onChange={handleInputChange}
 				validate={validator.email}
+				data-spec="email-field"
 			/>
 			<AvField
 				name="password"
@@ -33,6 +35,7 @@ const RegisterForm = (props) => {
 				type="password"
 				onChange={handleInputChange}
 				validate={validator.password}
+				data-spec="password-field"
 			/>
 			<AvField
 				name="confirmPassword"
@@ -40,6 +43,7 @@ const RegisterForm = (props) => {
 				type="password"
 				onChange={handleInputChange}
 				validate={validator.confirmPassword}
+				data-spec="confirm-password-field"
 			/>
 		</div>
 	);

@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
-import UpsertCharacterModal from '../../forms/upsertCharacter/UpsertCharacterModal';
-import UpsertThreadModal from '../../forms/upsertThread/UpsertThreadModal';
+import UpsertCharacterModal from './UpsertCharacterModal';
+import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
 import UpsertPublicViewModal from './UpsertPublicViewModal';
 

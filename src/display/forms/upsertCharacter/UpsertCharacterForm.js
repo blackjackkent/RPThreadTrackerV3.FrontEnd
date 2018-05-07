@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
+import validator from './_validator';
+import formData from './_formData';
 
 const propTypes = {
 	characterToEdit: PropTypes.shape({}).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	validator: PropTypes.shape({}).isRequired,
-	formData: PropTypes.shape({}).isRequired,
 	tooltipDisplayData: PropTypes.shape({}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired
@@ -18,8 +18,6 @@ const UpsertCharacterForm = (props) => {
 	const {
 		characterToEdit,
 		handleInputChange,
-		validator,
-		formData,
 		tooltipDisplayData,
 		showTooltip,
 		hideTooltip
@@ -41,6 +39,7 @@ const UpsertCharacterForm = (props) => {
 						value={characterToEdit.characterName}
 						onChange={handleInputChange}
 						validate={validator.characterName}
+						data-spec="character-name-field"
 					/>
 				</Col>
 			</Row>
@@ -53,6 +52,7 @@ const UpsertCharacterForm = (props) => {
 						name="character-platform"
 						id="character-platform"
 						value={characterToEdit.platformId}
+						data-spec="platform-id-field"
 					>
 						<option value={1}>Tumblr</option>
 					</Input>
@@ -80,6 +80,7 @@ const UpsertCharacterForm = (props) => {
 							helpMessage={formData.urlIdentifier.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
+							data-spec="url-identifier-field"
 						/>
 					</Tooltip>
 				</Col>

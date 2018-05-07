@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import TooltipForm from '../TooltipForm';
-import UpsertThreadForm from './UpsertThreadForm';
-import validator from './_validator';
-import formData from './_formData';
+import TooltipForm from '../../forms/TooltipForm';
+import UpsertThreadForm from '../../forms/upsertThread/UpsertThreadForm';
+import validator from '../../forms/upsertThread/_validator';
+import formData from '../../forms/upsertThread/_formData';
 // #endregion imports
 
 const propTypes = {

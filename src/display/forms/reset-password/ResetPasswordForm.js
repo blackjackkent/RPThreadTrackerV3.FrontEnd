@@ -19,6 +19,7 @@ const ResetPasswordForm = (props) => {
 				type="password"
 				onChange={handleInputChange}
 				validate={validator.newPassword}
+				data-spec="new-password-field"
 			/>
 			<AvField
 				name="confirmNewPassword"
@@ -26,6 +27,7 @@ const ResetPasswordForm = (props) => {
 				type="password"
 				onChange={handleInputChange}
 				validate={validator.confirmNewPassword}
+				data-spec="confirm-new-password-field"
 			/>
 		</div>
 	);

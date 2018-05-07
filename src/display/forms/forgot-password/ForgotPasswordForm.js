@@ -19,6 +19,7 @@ const ForgotPasswordForm = (props) => {
 				type="text"
 				onChange={handleInputChange}
 				validate={validator.email}
+				data-spec="email-field"
 			/>
 		</div>
 	);
