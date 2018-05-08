@@ -1,14 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, Card, CardHeader, CardBlock } from 'reactstrap';
+import PublicViewsTable from './public-views/PublicViewsTable';
 
 const propTypes = {
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	openUpsertPublicViewModal: PropTypes.func.isRequired
+	openUpsertPublicViewModal: PropTypes.func.isRequired,
+	openDeletePublicViewModal: PropTypes.func.isRequired
 };
 
 const ManagePublicViewsPane = (props) => {
-	const { publicViews, openUpsertPublicViewModal } = props;
+	const { publicViews, openUpsertPublicViewModal, openDeletePublicViewModal } = props;
 	return (
 		<TabPane tabId="manage-public-views">
 			<Card>
@@ -41,6 +43,15 @@ const ManagePublicViewsPane = (props) => {
 					</Row>
 				</CardBlock>
 			</Card>
+			<Row>
+				<Col>
+					<PublicViewsTable
+						publicViews={publicViews}
+						openUpsertPublicViewModal={openUpsertPublicViewModal}
+						openDeletePublicViewModal={openDeletePublicViewModal}
+					/>
+				</Col>
+			</Row>
 		</TabPane>
 	);
 };

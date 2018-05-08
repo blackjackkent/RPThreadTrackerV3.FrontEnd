@@ -1,14 +1,14 @@
 // UI
 export { closeBulkUntrackThreadsModal, CLOSE_BULK_UNTRACK_THREADS_MODAL } from './ui/closeBulkUntrackThreadsModal';
 export { closeUntrackCharacterModal, CLOSE_UNTRACK_CHARACTER_MODAL } from './ui/closeUntrackCharacterModal';
-export { closeUntrackPublicViewModal, CLOSE_UNTRACK_PUBLIC_VIEW_MODAL } from './ui/closeUntrackPublicViewModal';
+export { closeDeletePublicViewModal, CLOSE_DELETE_PUBLIC_VIEW_MODAL } from './ui/closeDeletePublicViewModal';
 export { closeUntrackThreadModal, CLOSE_UNTRACK_THREAD_MODAL } from './ui/closeUntrackThreadModal';
 export { closeUpsertCharacterModal, CLOSE_UPSERT_CHARACTER_MODAL } from './ui/closeUpsertCharacterModal';
 export { closeUpsertPublicViewModal, CLOSE_UPSERT_PUBLIC_VIEW_MODAL } from './ui/closeUpsertPublicViewModal';
 export { closeUpsertThreadModal, CLOSE_UPSERT_THREAD_MODAL } from './ui/closeUpsertThreadModal';
 export { openBulkUntrackThreadsModal, OPEN_BULK_UNTRACK_THREADS_MODAL } from './ui/openBulkUntrackThreadsModal';
 export { openUntrackCharacterModal, OPEN_UNTRACK_CHARACTER_MODAL } from './ui/openUntrackCharacterModal';
-export { openUntrackPublicViewModal, OPEN_UNTRACK_PUBLIC_VIEW_MODAL } from './ui/openUntrackPublicViewModal';
+export { openDeletePublicViewModal, OPEN_DELETE_PUBLIC_VIEW_MODAL } from './ui/openDeletePublicViewModal';
 export { openUntrackThreadModal, OPEN_UNTRACK_THREAD_MODAL } from './ui/openUntrackThreadModal';
 export { openUpsertCharacterModal, OPEN_UPSERT_CHARACTER_MODAL } from './ui/openUpsertCharacterModal';
 export { openUpsertPublicViewModal, OPEN_UPSERT_PUBLIC_VIEW_MODAL } from './ui/openUpsertPublicViewModal';
@@ -118,9 +118,9 @@ export { fetchedPublicViewsFailure, FETCHED_PUBLIC_VIEWS_FAILURE } from './publi
 export { fetchedPublicViewsSuccess, FETCHED_PUBLIC_VIEWS_SUCCESS } from './public/fetchedPublicViewsSuccess';
 export { fetchPublicThreads, FETCH_PUBLIC_THREADS } from './public/fetchPublicThreads';
 export { fetchPublicViews, FETCH_PUBLIC_VIEWS } from './public/fetchPublicViews';
-export { untrackPublicView, UNTRACK_PUBLIC_VIEW } from './public/untrackPublicView';
-export { untrackPublicViewFailure, UNTRACK_PUBLIC_VIEW_FAILURE } from './public/untrackPublicViewFailure';
-export { untrackPublicViewSuccess, UNTRACK_PUBLIC_VIEW_SUCCESS } from './public/untrackPublicViewSuccess';
+export { deletePublicView, DELETE_PUBLIC_VIEW } from './public/deletePublicView';
+export { deletePublicViewFailure, DELETE_PUBLIC_VIEW_FAILURE } from './public/deletePublicViewFailure';
+export { deletePublicViewSuccess, DELETE_PUBLIC_VIEW_SUCCESS } from './public/deletePublicViewSuccess';
 export { upsertPublicView, UPSERT_PUBLIC_VIEW } from './public/upsertPublicView';
 export { upsertPublicViewFailure, UPSERT_PUBLIC_VIEW_FAILURE } from './public/upsertPublicViewFailure';
 export { upsertPublicViewSuccess, UPSERT_PUBLIC_VIEW_SUCCESS } from './public/upsertPublicViewSuccess';

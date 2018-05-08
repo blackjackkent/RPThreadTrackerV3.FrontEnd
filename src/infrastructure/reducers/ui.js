@@ -26,7 +26,10 @@ import {
 	UPSERT_CHARACTER,
 	UPSERT_PUBLIC_VIEW,
 	UPSERT_THREAD,
-	SET_MAINTENANCE_MODE_ON
+	SET_MAINTENANCE_MODE_ON,
+	OPEN_DELETE_PUBLIC_VIEW_MODAL,
+	CLOSE_DELETE_PUBLIC_VIEW_MODAL,
+	DELETE_PUBLIC_VIEW
 } from '../actions';
 // #endregion imports
 
@@ -42,6 +45,7 @@ const defaultState = {
 	isUntrackThreadModalOpen: false,
 	isUntrackCharacterModalOpen: false,
 	isUpsertPublicViewModalOpen: false,
+	isDeletePublicViewModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads'
@@ -118,6 +122,15 @@ function ui(state = defaultState, action) {
 		case UNTRACK_CHARACTER:
 			return Object.assign({}, state, {
 				isUntrackCharacterModalOpen: false
+			});
+		case OPEN_DELETE_PUBLIC_VIEW_MODAL:
+			return Object.assign({}, state, {
+				isDeletePublicViewModalOpen: true
+			});
+		case CLOSE_DELETE_PUBLIC_VIEW_MODAL:
+		case DELETE_PUBLIC_VIEW:
+			return Object.assign({}, state, {
+				isDeletePublicViewModalOpen: false
 			});
 		case SET_ACTIVE_HELP_TAB:
 			return Object.assign({}, state, {

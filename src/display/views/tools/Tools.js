@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
-import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
+import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, openDeletePublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
@@ -21,7 +21,8 @@ const propTypes = {
 	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	openUpsertPublicViewModal: PropTypes.func.isRequired
+	openUpsertPublicViewModal: PropTypes.func.isRequired,
+	openDeletePublicViewModal: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -92,6 +93,7 @@ class Tools extends Component {
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
 							<ManagePublicViewsPane
 								openUpsertPublicViewModal={this.props.openUpsertPublicViewModal}
+								openDeletePublicViewModal={this.props.openDeletePublicViewModal}
 								publicViews={publicViews}
 							/>
 						</TabContent>
@@ -109,5 +111,6 @@ export default connect(mapStateToProps, {
 	fetchTags,
 	fetchPublicViews,
 	openUpsertPublicViewModal,
+	openDeletePublicViewModal,
 	fetchCharacters
 })(Tools);

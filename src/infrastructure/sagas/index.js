@@ -34,6 +34,7 @@ export { default as submitContactFormSaga } from './help/submitContactFormSaga';
 // Public
 export { default as fetchPublicViewsSaga } from './public/fetchPublicViewsSaga';
 export { default as upsertPublicViewSaga } from './public/upsertPublicViewSaga';
+export { default as deletePublicViewSaga } from './public/deletePublicViewSaga';
 
 export { default as analyticsSaga } from './analyticsSaga';
 export { default as toastrSaga } from './toastrSaga';

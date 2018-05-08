@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { getCharactersSortedByIdentifier, getTagsSortedByTagText } from '../../../infrastructure/selectors';
-import { closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
+import { closeDeletePublicViewModal, deletePublicView, closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
@@ -13,27 +13,29 @@ const propTypes = {
 	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	bulkUntrackThreads: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({}).isRequired,
-	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
-	closeUntrackThreadModal: PropTypes.func.isRequired,
-	closeUpsertThreadModal: PropTypes.func.isRequired,
-	closeUpsertCharacterModal: PropTypes.func.isRequired,
-	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
-	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
-	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
-	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
-	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
-	threadToEdit: PropTypes.shape({}).isRequired,
-	untrackThread: PropTypes.func.isRequired,
-	upsertThread: PropTypes.func.isRequired,
-	upsertCharacter: PropTypes.func.isRequired,
-	untrackCharacter: PropTypes.func.isRequired,
+	closeDeletePublicViewModal: PropTypes.func.isRequired,
 	closeUntrackCharacterModal: PropTypes.func.isRequired,
-	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
-	viewToEdit: PropTypes.shape({}).isRequired,
-	upsertPublicView: PropTypes.func.isRequired,
+	closeUntrackThreadModal: PropTypes.func.isRequired,
+	closeUpsertCharacterModal: PropTypes.func.isRequired,
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
-	sortedTags: PropTypes.arrayOf(PropTypes.string).isRequired
+	closeUpsertThreadModal: PropTypes.func.isRequired,
+	deletePublicView: PropTypes.func.isRequired,
+	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
+	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
+	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
+	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
+	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
+	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
+	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	sortedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	threadToEdit: PropTypes.shape({}).isRequired,
+	untrackCharacter: PropTypes.func.isRequired,
+	untrackThread: PropTypes.func.isRequired,
+	upsertCharacter: PropTypes.func.isRequired,
+	upsertPublicView: PropTypes.func.isRequired,
+	upsertThread: PropTypes.func.isRequired,
+	viewToEdit: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -54,6 +56,7 @@ function mapStateToProps(state) {
 		isUpsertThreadModalOpen: ui.isUpsertThreadModalOpen,
 		isUntrackCharacterModalOpen: ui.isUntrackCharacterModalOpen,
 		isUpsertPublicViewModalOpen: ui.isUpsertPublicViewModalOpen,
+		isDeletePublicViewModalOpen: ui.isDeletePublicViewModalOpen,
 		characterToEdit,
 		characters,
 		threadToEdit,
@@ -72,6 +75,7 @@ const ModalContainer = (props) => {
 		isBulkUntrackThreadsModalOpen,
 		isUntrackCharacterModalOpen,
 		isUpsertPublicViewModalOpen,
+		isDeletePublicViewModalOpen,
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
@@ -139,6 +143,16 @@ const ModalContainer = (props) => {
 						</strong>? This will also untrack all threads associated with this character.
 					</span>}
 			/>
+			<GenericConfirmationModal
+				isModalOpen={isDeletePublicViewModalOpen}
+				submitCallback={props.deletePublicView}
+				submitButtonText="Delete"
+				closeCallback={props.closeDeletePublicViewModal}
+				closeButtonText="Cancel"
+				data={viewToEdit}
+				headerText="Confirm Public View Deletion"
+				bodyText={<span>Are you sure you want to delete <strong>{viewToEdit.name}</strong>?</span>}
+			/>
 		</div>
 	);
 };
@@ -156,5 +170,7 @@ export default connect(mapStateToProps, {
 	untrackCharacter,
 	closeUntrackCharacterModal,
 	upsertPublicView,
-	closeUpsertPublicViewModal
+	closeUpsertPublicViewModal,
+	closeDeletePublicViewModal,
+	deletePublicView
 })(ModalContainer);

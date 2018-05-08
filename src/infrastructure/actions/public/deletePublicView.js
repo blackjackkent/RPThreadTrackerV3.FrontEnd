@@ -1,9 +1,9 @@
 import analytics from '../../constants/analytics';
 
-export const UNTRACK_PUBLIC_VIEW = 'UNTRACK_PUBLIC_VIEW';
-export function untrackPublicView(data) {
+export const DELETE_PUBLIC_VIEW = 'DELETE_PUBLIC_VIEW';
+export function deletePublicView(data) {
 	return {
-		type: UNTRACK_PUBLIC_VIEW,
+		type: DELETE_PUBLIC_VIEW,
 		data,
 		analytics: {
 			func: analytics.funcs.EVENT,
