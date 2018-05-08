@@ -1,0 +1,330 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<div>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="character-name-field"
+        label="Character Name"
+        name="characterName"
+        onChange={[MockFunction]}
+        placeholder="Character Name"
+        type="text"
+        validate={
+          Object {
+            "maxLength": Object {
+              "errorMessage": "Your character's name is too long.",
+              "value": 256,
+            },
+          }
+        }
+      />
+    </Col>
+  </Row>
+  <FormGroup
+    row={true}
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Label
+        htmlFor="character-platform"
+        tag="label"
+      >
+        Platform:
+      </Label>
+      <Input
+        data-spec="platform-id-field"
+        disabled={true}
+        id="character-platform"
+        name="character-platform"
+        tag="p"
+        type="select"
+      >
+        <option
+          value={1}
+        >
+          Tumblr
+        </option>
+      </Input>
+    </Col>
+  </FormGroup>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay="You can change this later if necessary."
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="url-identifier-field"
+          helpMessage={
+            <span>
+              For a Tumblr account, this will be the part of your URL before ".tumblr.com".
+               
+              For instance, if your URL is 
+              <strong>
+                http://myawesomeblog.tumblr.com
+              </strong>
+              , you would
+               
+              enter 
+              <strong>
+                myawesomeblog
+              </strong>
+               in this field.
+            </span>
+          }
+          label="Character URL Identifier"
+          name="urlIdentifier"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          placeholder="Character URL Identifier"
+          type="text"
+          validate={
+            Object {
+              "pattern": Object {
+                "errorMessage": "Do not enter the full URL for your character, only their shortname identifier.",
+                "value": /\\^\\[A-z\\\\d-\\]\\+\\$/,
+              },
+              "required": Object {
+                "errorMessage": "You must enter a URL identifier for your character.",
+                "value": true,
+              },
+            }
+          }
+        />
+      </Tooltip>
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`rendering should render valid snapshot with character 1`] = `
+<div>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="character-name-field"
+        label="Character Name"
+        name="characterName"
+        onChange={[MockFunction]}
+        placeholder="Character Name"
+        type="text"
+        validate={
+          Object {
+            "maxLength": Object {
+              "errorMessage": "Your character's name is too long.",
+              "value": 256,
+            },
+          }
+        }
+        value="John Smith"
+      />
+    </Col>
+  </Row>
+  <FormGroup
+    row={true}
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Label
+        htmlFor="character-platform"
+        tag="label"
+      >
+        Platform:
+      </Label>
+      <Input
+        data-spec="platform-id-field"
+        disabled={true}
+        id="character-platform"
+        name="character-platform"
+        tag="p"
+        type="select"
+        value={2}
+      >
+        <option
+          value={1}
+        >
+          Tumblr
+        </option>
+      </Input>
+    </Col>
+  </FormGroup>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay="You can change this later if necessary."
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="url-identifier-field"
+          helpMessage={
+            <span>
+              For a Tumblr account, this will be the part of your URL before ".tumblr.com".
+               
+              For instance, if your URL is 
+              <strong>
+                http://myawesomeblog.tumblr.com
+              </strong>
+              , you would
+               
+              enter 
+              <strong>
+                myawesomeblog
+              </strong>
+               in this field.
+            </span>
+          }
+          label="Character URL Identifier"
+          name="urlIdentifier"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          placeholder="Character URL Identifier"
+          type="text"
+          validate={
+            Object {
+              "pattern": Object {
+                "errorMessage": "Do not enter the full URL for your character, only their shortname identifier.",
+                "value": /\\^\\[A-z\\\\d-\\]\\+\\$/,
+              },
+              "required": Object {
+                "errorMessage": "You must enter a URL identifier for your character.",
+                "value": true,
+              },
+            }
+          }
+          value="my-test-character"
+        />
+      </Tooltip>
+    </Col>
+  </Row>
+</div>
+`;

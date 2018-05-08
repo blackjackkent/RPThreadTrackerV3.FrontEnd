@@ -38,11 +38,6 @@ const UpsertPublicViewForm = (props) => {
 		</option>
 	));
 	const tagOptions = tags.map(t => (<option value={t} key={t}>{t}</option>));
-	if (!viewToEdit) {
-		return (
-			<div />
-		);
-	}
 	return (
 		<div>
 			<Row> {/* view name */}

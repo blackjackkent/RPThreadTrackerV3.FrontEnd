@@ -36,11 +36,6 @@ const UpsertThreadForm = (props) => {
 		handleTagRemoved,
 		tagValues
 	} = props;
-	if (!threadToEdit) {
-		return (
-			<div />
-		);
-	}
 	return (
 		<div>
 			<FormGroup row>{/* character selector */}

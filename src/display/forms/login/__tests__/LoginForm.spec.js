@@ -17,6 +17,22 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
+	it('should validate the username field', () => {
+		const props = createTestProps();
+		const jsx = (<LoginForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'username-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.minLength).toHaveProperty('value', 3);
+		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+	});
+	it('should validate the password field', () => {
+		const props = createTestProps();
+		const jsx = (<LoginForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'password-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+	});
 });
 
 describe('behavior', () => {

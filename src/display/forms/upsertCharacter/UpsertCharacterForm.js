@@ -24,11 +24,6 @@ const UpsertCharacterForm = (props) => {
 		showTooltip,
 		hideTooltip
 	} = props;
-	if (!characterToEdit) {
-		return (
-			<div />
-		);
-	}
 	return (
 		<div>
 			<Row> {/* character name */}

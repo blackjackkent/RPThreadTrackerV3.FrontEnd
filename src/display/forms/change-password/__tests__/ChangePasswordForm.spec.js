@@ -17,6 +17,29 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
+	it('should validate the current password field', () => {
+		const props = createTestProps();
+		const jsx = (<ChangePasswordForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'current-password-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+	});
+	it('should validate the new password field', () => {
+		const props = createTestProps();
+		const jsx = (<ChangePasswordForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'new-password-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.minLength).toHaveProperty('value', 6);
+	});
+	it('should validate the confirm new password field', () => {
+		const props = createTestProps();
+		const jsx = (<ChangePasswordForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'confirm-new-password-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.match).toHaveProperty('value', 'newPassword');
+	});
 });
 
 describe('behavior', () => {

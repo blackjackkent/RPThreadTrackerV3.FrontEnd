@@ -17,6 +17,14 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
+	it('should validate the email field', () => {
+		const props = createTestProps();
+		const jsx = (<ForgotPasswordForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'email-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.email).toHaveProperty('value', true);
+	});
 });
 
 describe('behavior', () => {

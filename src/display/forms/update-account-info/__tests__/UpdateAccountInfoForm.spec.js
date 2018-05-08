@@ -36,6 +36,23 @@ describe('rendering', () => {
 		expect(field).toHaveValue('test@test.com');
 		expect(field).toBeDisabled();
 	});
+	it('should validate the username field', () => {
+		const props = createTestProps();
+		const jsx = (<UpdateAccountInfoForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'username-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.minLength).toHaveProperty('value', 3);
+		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+	});
+	it('should validate the email field', () => {
+		const props = createTestProps();
+		const jsx = (<UpdateAccountInfoForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'email-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.email).toHaveProperty('value', true);
+	});
 });
 
 describe('behavior', () => {

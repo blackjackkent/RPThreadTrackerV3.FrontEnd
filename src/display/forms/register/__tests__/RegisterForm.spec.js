@@ -17,6 +17,39 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
+	it('should validate the username field', () => {
+		const props = createTestProps();
+		const jsx = (<RegisterForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'username-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.minLength).toHaveProperty('value', 3);
+		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+	});
+	it('should validate the email field', () => {
+		const props = createTestProps();
+		const jsx = (<RegisterForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'email-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.email).toHaveProperty('value', true);
+	});
+	it('should validate the password field', () => {
+		const props = createTestProps();
+		const jsx = (<RegisterForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'password-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.minLength).toHaveProperty('value', 6);
+	});
+	it('should validate the confirm password field', () => {
+		const props = createTestProps();
+		const jsx = (<RegisterForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'confirm-password-field');
+		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.match).toHaveProperty('value', 'password');
+	});
 });
 
 describe('behavior', () => {
