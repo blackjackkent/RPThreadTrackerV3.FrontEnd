@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Col, Row } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
-import columns from '../../../infrastructure/constants/columns';
 import validator from './_validator';
 import formData from './_formData';
 
@@ -14,7 +13,8 @@ const propTypes = {
 	handleInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
-	hideTooltip: PropTypes.func.isRequired
+	hideTooltip: PropTypes.func.isRequired,
+	columns: PropTypes.shape({}).isRequired
 };
 
 const UpsertPublicViewForm = (props) => {
@@ -25,15 +25,13 @@ const UpsertPublicViewForm = (props) => {
 		showTooltip,
 		hideTooltip,
 		characters,
-		tags
+		tags,
+		columns
 	} = props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
 		.map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
 	const characterOptions = characters.map(c => (
-		<option
-			value={c.characterId}
-			key={c.characterId}
-		>
+		<option value={c.characterId} key={c.characterId}>
 			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
 		</option>
 	));
@@ -51,6 +49,7 @@ const UpsertPublicViewForm = (props) => {
 						onChange={handleInputChange}
 						validate={validator.name}
 						helpMessage={formData.name.helpMessage}
+						data-spec="view-name-field"
 					/>
 				</Col>
 			</Row>
@@ -65,6 +64,7 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
+						data-spec="view-slug-tooltip"
 					>
 						<AvField
 							name="slug"
@@ -77,6 +77,7 @@ const UpsertPublicViewForm = (props) => {
 							helpMessage={formData.slug.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
+							data-spec="view-slug-field"
 						/>
 					</Tooltip>
 				</Col>
@@ -91,6 +92,7 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
+						data-spec="view-columns-tooltip"
 					>
 						<AvField
 							name="columns"
@@ -103,6 +105,7 @@ const UpsertPublicViewForm = (props) => {
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
+							data-spec="view-columns-field"
 						>
 							{columnOptions}
 						</AvField>
@@ -118,6 +121,7 @@ const UpsertPublicViewForm = (props) => {
 						value={viewToEdit.sortKey}
 						onChange={handleInputChange}
 						validate={validator.sortKey}
+						data-spec="sort-key-field"
 					>
 						<option value="">Select Column</option>
 						{columnOptions}
@@ -131,6 +135,7 @@ const UpsertPublicViewForm = (props) => {
 						type="select"
 						value={viewToEdit.sortDescending}
 						onChange={handleInputChange}
+						data-spec="sort-descending-field"
 					>
 						<option value={false}>Ascending</option>
 						<option
@@ -151,6 +156,7 @@ const UpsertPublicViewForm = (props) => {
 									onChange={handleInputChange}
 									type="checkbox"
 									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeMyTurn}
+									data-spec="include-my-turn-field"
 								/>
 								Include My Turn Threads
 							</label>
@@ -162,6 +168,7 @@ const UpsertPublicViewForm = (props) => {
 									onChange={handleInputChange}
 									type="checkbox"
 									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeTheirTurn}
+									data-spec="include-their-turn-field"
 								/>
 								Include Partner{"'"}s Turn Threads
 							</label>
@@ -175,6 +182,7 @@ const UpsertPublicViewForm = (props) => {
 									type="checkbox"
 									onChange={handleInputChange}
 									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeQueued}
+									data-spec="include-queued-field"
 								/>
 								Include Queued Threads
 							</label>
@@ -186,6 +194,7 @@ const UpsertPublicViewForm = (props) => {
 									type="checkbox"
 									onChange={handleInputChange}
 									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeArchived}
+									data-spec="include-archived-field"
 								/>
 								Include Archived Threads
 							</label>
@@ -203,6 +212,7 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
+						data-spec="view-characters-tooltip"
 					>
 						<AvField
 							name="characterIds"
@@ -215,6 +225,7 @@ const UpsertPublicViewForm = (props) => {
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
+							data-spec="view-characters-field"
 						>
 							{characterOptions}
 						</AvField>
@@ -231,6 +242,7 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
+						data-spec="view-tags-tooltip"
 					>
 						<AvField
 							name="tags"
@@ -242,6 +254,7 @@ const UpsertPublicViewForm = (props) => {
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
+							data-spec="view-tags-field"
 						>
 							{tagOptions}
 						</AvField>

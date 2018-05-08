@@ -1,0 +1,1326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<div>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="view-name-field"
+        helpMessage={
+          <span>
+            For your own use; a name that will help you remember
+             
+            what this view contains.
+          </span>
+        }
+        label="View Name"
+        name="name"
+        onChange={[MockFunction]}
+        placeholder="View Name"
+        type="text"
+        validate={
+          Object {
+            "maxLength": Object {
+              "errorMessage": "Your character's name is too long.",
+              "value": 256,
+            },
+            "required": Object {
+              "errorMessage": "You must enter a name for your public view.",
+              "value": true,
+            },
+          }
+        }
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-slug-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Will be rendered as 
+            <em>
+              http://www.rpthreadtracker.com/public/
+              <strong>
+                {
+                slug
+                }
+              </strong>
+            </em>
+            .
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-slug-field"
+          helpMessage={
+            <span>
+              The unique URL identifier for this public view.
+            </span>
+          }
+          label="URL Slug"
+          name="slug"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          placeholder="URL Slug"
+          type="text"
+          validate={
+            Object {
+              "pattern": Object {
+                "errorMessage": "Slugs can only contain letters, numbers, and dashes.",
+                "value": /\\^\\[A-z\\\\d-\\]\\+\\$/,
+              },
+              "required": Object {
+                "errorMessage": "You must enter a slug for your public view.",
+                "value": true,
+              },
+            }
+          }
+        />
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-columns-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Ctrl-click or shift-click to select multiple columns.
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-columns-field"
+          helpMessage={
+            <span>
+              Which columns should be displayed to visitors in this public view.
+            </span>
+          }
+          label="View Columns"
+          multiple={true}
+          name="columns"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          type="select"
+          validate={
+            Object {
+              "required": Object {
+                "errorMessage": "You must select columns for your public thread table.",
+                "value": true,
+              },
+            }
+          }
+        >
+          <option
+            key="column1"
+            value="column1"
+          >
+            Column 1
+          </option>
+          <option
+            key="column2"
+            value="column2"
+          >
+            Column 2
+          </option>
+          <option
+            key="column3"
+            value="column3"
+          >
+            Column 3
+          </option>
+        </AvField>
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="6"
+    >
+      <AvField
+        data-spec="sort-key-field"
+        label="Sort By"
+        name="sortKey"
+        onChange={[MockFunction]}
+        type="select"
+        validate={
+          Object {
+            "required": Object {
+              "errorMessage": "You must select a column to sort the table by.",
+              "value": true,
+            },
+          }
+        }
+      >
+        <option
+          value=""
+        >
+          Select Column
+        </option>
+        <option
+          key="column1"
+          value="column1"
+        >
+          Column 1
+        </option>
+        <option
+          key="column2"
+          value="column2"
+        >
+          Column 2
+        </option>
+        <option
+          key="column3"
+          value="column3"
+        >
+          Column 3
+        </option>
+      </AvField>
+    </Col>
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="6"
+    >
+      <AvField
+        data-spec="sort-descending-field"
+        label="Sort Order"
+        name="sortDescending"
+        onChange={[MockFunction]}
+        type="select"
+      >
+        <option
+          value={false}
+        >
+          Ascending
+        </option>
+        <option
+          value={true}
+        >
+          Descending
+        </option>
+      </AvField>
+    </Col>
+  </Row>
+  <Row
+    className="public-view-form-turn-section"
+    tag="div"
+  >
+    <div
+      className="container"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeMyTurn"
+          >
+            <input
+              data-spec="include-my-turn-field"
+              name="includeMyTurn"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include My Turn Threads
+          </label>
+        </Col>
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeTheirTurn"
+          >
+            <input
+              data-spec="include-their-turn-field"
+              name="includeTheirTurn"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include Partner
+            '
+            s Turn Threads
+          </label>
+        </Col>
+      </Row>
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeQueued"
+          >
+            <input
+              data-spec="include-queued-field"
+              name="includeQueued"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include Queued Threads
+          </label>
+        </Col>
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeArchived"
+          >
+            <input
+              data-spec="include-archived-field"
+              name="includeArchived"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include Archived Threads
+          </label>
+        </Col>
+      </Row>
+    </div>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-characters-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Ctrl-click or shift-click to select multiple characters.
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-characters-field"
+          helpMessage={
+            <span>
+              The characters whose threads should be displayed to visitors in this public view.
+            </span>
+          }
+          label="Characters"
+          multiple={true}
+          name="characterIds"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          type="select"
+          validate={
+            Object {
+              "required": Object {
+                "errorMessage": "You must select characters for your public thread table.",
+                "value": true,
+              },
+            }
+          }
+        >
+          <option
+            key="1"
+            value={1}
+          >
+            character-1
+             (
+            Character 1
+            )
+          </option>
+          <option
+            key="2"
+            value={2}
+          >
+            character-2
+             (
+            Character 2
+            )
+          </option>
+          <option
+            key="3"
+            value={3}
+          >
+            character-3
+             (
+            Character 3
+            )
+          </option>
+          <option
+            key="4"
+            value={4}
+          >
+            character-4
+             (
+            Character 4
+            )
+          </option>
+          <option
+            key="5"
+            value={5}
+          >
+            character-5
+             (
+            Unnamed Character
+            )
+          </option>
+        </AvField>
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-tags-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Ctrl-click or shift-click to select multiple tags.
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-tags-field"
+          helpMessage={
+            <span>
+              The public view will only include threads with these tags.
+               
+              (Leave unselected to display all threads.)
+            </span>
+          }
+          label="Tags"
+          multiple={true}
+          name="tags"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          type="select"
+        >
+          <option
+            key="tag1"
+            value="tag1"
+          >
+            tag1
+          </option>
+          <option
+            key="tag2"
+            value="tag2"
+          >
+            tag2
+          </option>
+          <option
+            key="tag3"
+            value="tag3"
+          >
+            tag3
+          </option>
+          <option
+            key="tag4"
+            value="tag4"
+          >
+            tag4
+          </option>
+        </AvField>
+      </Tooltip>
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`rendering should render valid snapshot with view 1`] = `
+<div>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="view-name-field"
+        helpMessage={
+          <span>
+            For your own use; a name that will help you remember
+             
+            what this view contains.
+          </span>
+        }
+        label="View Name"
+        name="name"
+        onChange={[MockFunction]}
+        placeholder="View Name"
+        type="text"
+        validate={
+          Object {
+            "maxLength": Object {
+              "errorMessage": "Your character's name is too long.",
+              "value": 256,
+            },
+            "required": Object {
+              "errorMessage": "You must enter a name for your public view.",
+              "value": true,
+            },
+          }
+        }
+        value="Test View"
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-slug-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Will be rendered as 
+            <em>
+              http://www.rpthreadtracker.com/public/
+              <strong>
+                {
+                slug
+                }
+              </strong>
+            </em>
+            .
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-slug-field"
+          helpMessage={
+            <span>
+              The unique URL identifier for this public view.
+            </span>
+          }
+          label="URL Slug"
+          name="slug"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          placeholder="URL Slug"
+          type="text"
+          validate={
+            Object {
+              "pattern": Object {
+                "errorMessage": "Slugs can only contain letters, numbers, and dashes.",
+                "value": /\\^\\[A-z\\\\d-\\]\\+\\$/,
+              },
+              "required": Object {
+                "errorMessage": "You must enter a slug for your public view.",
+                "value": true,
+              },
+            }
+          }
+          value="test-slug"
+        />
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-columns-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Ctrl-click or shift-click to select multiple columns.
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-columns-field"
+          helpMessage={
+            <span>
+              Which columns should be displayed to visitors in this public view.
+            </span>
+          }
+          label="View Columns"
+          multiple={true}
+          name="columns"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          type="select"
+          validate={
+            Object {
+              "required": Object {
+                "errorMessage": "You must select columns for your public thread table.",
+                "value": true,
+              },
+            }
+          }
+          value={
+            Array [
+              "column1",
+              "column2",
+            ]
+          }
+        >
+          <option
+            key="column1"
+            value="column1"
+          >
+            Column 1
+          </option>
+          <option
+            key="column2"
+            value="column2"
+          >
+            Column 2
+          </option>
+          <option
+            key="column3"
+            value="column3"
+          >
+            Column 3
+          </option>
+        </AvField>
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="6"
+    >
+      <AvField
+        data-spec="sort-key-field"
+        label="Sort By"
+        name="sortKey"
+        onChange={[MockFunction]}
+        type="select"
+        validate={
+          Object {
+            "required": Object {
+              "errorMessage": "You must select a column to sort the table by.",
+              "value": true,
+            },
+          }
+        }
+        value="column1"
+      >
+        <option
+          value=""
+        >
+          Select Column
+        </option>
+        <option
+          key="column1"
+          value="column1"
+        >
+          Column 1
+        </option>
+        <option
+          key="column2"
+          value="column2"
+        >
+          Column 2
+        </option>
+        <option
+          key="column3"
+          value="column3"
+        >
+          Column 3
+        </option>
+      </AvField>
+    </Col>
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="6"
+    >
+      <AvField
+        data-spec="sort-descending-field"
+        label="Sort Order"
+        name="sortDescending"
+        onChange={[MockFunction]}
+        type="select"
+        value={true}
+      >
+        <option
+          value={false}
+        >
+          Ascending
+        </option>
+        <option
+          value={true}
+        >
+          Descending
+        </option>
+      </AvField>
+    </Col>
+  </Row>
+  <Row
+    className="public-view-form-turn-section"
+    tag="div"
+  >
+    <div
+      className="container"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeMyTurn"
+          >
+            <input
+              data-spec="include-my-turn-field"
+              name="includeMyTurn"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include My Turn Threads
+          </label>
+        </Col>
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeTheirTurn"
+          >
+            <input
+              data-spec="include-their-turn-field"
+              name="includeTheirTurn"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include Partner
+            '
+            s Turn Threads
+          </label>
+        </Col>
+      </Row>
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeQueued"
+          >
+            <input
+              data-spec="include-queued-field"
+              name="includeQueued"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include Queued Threads
+          </label>
+        </Col>
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <label
+            htmlFor="includeArchived"
+          >
+            <input
+              data-spec="include-archived-field"
+              name="includeArchived"
+              onChange={[MockFunction]}
+              type="checkbox"
+            />
+            Include Archived Threads
+          </label>
+        </Col>
+      </Row>
+    </div>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-characters-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Ctrl-click or shift-click to select multiple characters.
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-characters-field"
+          helpMessage={
+            <span>
+              The characters whose threads should be displayed to visitors in this public view.
+            </span>
+          }
+          label="Characters"
+          multiple={true}
+          name="characterIds"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          type="select"
+          validate={
+            Object {
+              "required": Object {
+                "errorMessage": "You must select characters for your public thread table.",
+                "value": true,
+              },
+            }
+          }
+          value={
+            Array [
+              1,
+              2,
+              3,
+            ]
+          }
+        >
+          <option
+            key="1"
+            value={1}
+          >
+            character-1
+             (
+            Character 1
+            )
+          </option>
+          <option
+            key="2"
+            value={2}
+          >
+            character-2
+             (
+            Character 2
+            )
+          </option>
+          <option
+            key="3"
+            value={3}
+          >
+            character-3
+             (
+            Character 3
+            )
+          </option>
+          <option
+            key="4"
+            value={4}
+          >
+            character-4
+             (
+            Character 4
+            )
+          </option>
+          <option
+            key="5"
+            value={5}
+          >
+            character-5
+             (
+            Unnamed Character
+            )
+          </option>
+        </AvField>
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="view-tags-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <span>
+            Ctrl-click or shift-click to select multiple tags.
+          </span>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="view-tags-field"
+          helpMessage={
+            <span>
+              The public view will only include threads with these tags.
+               
+              (Leave unselected to display all threads.)
+            </span>
+          }
+          label="Tags"
+          multiple={true}
+          name="tags"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          type="select"
+          value={
+            Array [
+              "tag1",
+              "tag2",
+            ]
+          }
+        >
+          <option
+            key="tag1"
+            value="tag1"
+          >
+            tag1
+          </option>
+          <option
+            key="tag2"
+            value="tag2"
+          >
+            tag2
+          </option>
+          <option
+            key="tag3"
+            value="tag3"
+          >
+            tag3
+          </option>
+          <option
+            key="tag4"
+            value="tag4"
+          >
+            tag4
+          </option>
+        </AvField>
+      </Tooltip>
+    </Col>
+  </Row>
+</div>
+`;

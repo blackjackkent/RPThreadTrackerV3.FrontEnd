@@ -65,6 +65,7 @@ const UpsertCharacterForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
+						data-spec="url-identifier-tooltip"
 					>
 						<AvField
 							name="urlIdentifier"

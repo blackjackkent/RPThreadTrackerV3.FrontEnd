@@ -73,6 +73,18 @@ describe('rendering', () => {
 		const field = getSpecWrapper(element, 'url-identifier-field');
 		expect(field).toHaveProp('value', 'my-test-character');
 	});
+	it('should render url identifier tooltip when visible', () => {
+		const props = createTestProps({ tooltipDisplayData: { urlIdentifier: true } });
+		const props2 = createTestProps();
+		const jsx = (<UpsertCharacterForm {...props} />);
+		const jsx2 = (<UpsertCharacterForm {...props2} />);
+		const element = shallow(jsx);
+		const element2 = shallow(jsx2);
+		const field = getSpecWrapper(element, 'url-identifier-tooltip');
+		const field2 = getSpecWrapper(element2, 'url-identifier-tooltip');
+		expect(field.props().visible).toBeTruthy();
+		expect(field2.props().visible).toBeFalsy();
+	});
 });
 
 describe('behavior', () => {
@@ -85,7 +97,7 @@ describe('behavior', () => {
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});
-	it('should handle input change for url identifier name', () => {
+	it('should handle input change for url identifier', () => {
 		const handleInputChange = jest.fn();
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<UpsertCharacterForm {...props} />);
@@ -93,5 +105,23 @@ describe('behavior', () => {
 		const field = getSpecWrapper(element, 'url-identifier-field');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	});
+	it('should show url identifier tooltip on focus', () => {
+		const showTooltip = jest.fn();
+		const props = createTestProps({ showTooltip });
+		const jsx = (<UpsertCharacterForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'url-identifier-field');
+		field.simulate('focus');
+		expect(showTooltip).toHaveBeenCalledTimes(1);
+	});
+	it('should hide url identifier tooltip on blur', () => {
+		const hideTooltip = jest.fn();
+		const props = createTestProps({ hideTooltip });
+		const jsx = (<UpsertCharacterForm {...props} />);
+		const element = shallow(jsx);
+		const field = getSpecWrapper(element, 'url-identifier-field');
+		field.simulate('blur');
+		expect(hideTooltip).toHaveBeenCalledTimes(1);
 	});
 });

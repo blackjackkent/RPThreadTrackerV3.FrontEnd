@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCharactersSortedByIdentifier, getTagsSortedByTagText } from '../../../infrastructure/selectors';
 import { closeDeletePublicViewModal, deletePublicView, closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
+import columns from '../../../infrastructure/constants/columns';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
@@ -105,6 +106,7 @@ const ModalContainer = (props) => {
 				viewToEdit={viewToEdit}
 				characters={sortedCharacters}
 				tags={sortedTags}
+				columns={columns}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isUntrackThreadModalOpen}

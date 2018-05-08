@@ -101,6 +101,7 @@ exports[`rendering should render valid snapshot 1`] = `
           }
         }
         arrowContent={null}
+        data-spec="url-identifier-tooltip"
         destroyTooltipOnHide={false}
         mouseEnterDelay={0}
         mouseLeaveDelay={0.1}
@@ -266,6 +267,7 @@ exports[`rendering should render valid snapshot with character 1`] = `
           }
         }
         arrowContent={null}
+        data-spec="url-identifier-tooltip"
         destroyTooltipOnHide={false}
         mouseEnterDelay={0}
         mouseLeaveDelay={0.1}

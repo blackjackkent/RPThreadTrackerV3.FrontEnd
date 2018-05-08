@@ -12,7 +12,8 @@ const propTypes = {
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
 	viewToEdit: PropTypes.shape({}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	columns: PropTypes.shape({}).isRequired
 };
 
 class UpsertCharacterModal extends React.Component {
@@ -57,7 +58,8 @@ class UpsertCharacterModal extends React.Component {
 			closeUpsertPublicViewModal,
 			viewToEdit,
 			characters,
-			tags
+			tags,
+			columns
 		} = this.props;
 		if (!viewToEdit) {
 			return (
@@ -74,6 +76,7 @@ class UpsertCharacterModal extends React.Component {
 							viewToEdit={viewToEdit}
 							characters={characters}
 							tags={tags}
+							columns={columns}
 							handleInputChange={this.handleInputChange}
 						/>
 					</ModalBody>
