@@ -103,6 +103,7 @@ export { upsertCharacterSuccess, UPSERT_CHARACTER_SUCCESS } from './characters/u
 
 // Tags
 export { fetchedTagsSuccess, FETCHED_TAGS_SUCCESS } from './tags/fetchedTagsSuccess';
+export { fetchedTagsFailure, FETCHED_TAGS_FAILURE } from './tags/fetchedTagsFailure';
 export { fetchTags, FETCH_TAGS } from './tags/fetchTags';
 
 // Help

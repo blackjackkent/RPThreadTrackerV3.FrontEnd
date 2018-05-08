@@ -23,3 +23,5 @@ export { default as getRecentActivity } from './threads/getRecentActivity';
 export { default as getThreadCountsByCharacter } from './threads/getThreadCountsByCharacter';
 
 export { default as getCharactersSortedByIdentifier } from './characters/getCharactersSortedByIdentifier';
+
+export { default as getTagsSortedByTagText } from './tags/getTagsSortedByTagText';

@@ -15,7 +15,7 @@ const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	fetchTags: PropTypes.func.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
 	setActiveToolsTab: PropTypes.func.isRequired,
@@ -29,9 +29,11 @@ function mapStateToProps(state) {
 		ui,
 		user,
 		tags,
-		publicViews
+		publicViews,
+		characters
 	} = state;
 	return {
+		characters,
 		user,
 		tags,
 		publicViews,
@@ -64,7 +66,7 @@ class Tools extends Component {
 	}
 
 	render() {
-		const { activeTab } = this.props;
+		const { activeTab, publicViews } = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
 			<div className="animated fadeIn static-container settings-container">
@@ -90,6 +92,7 @@ class Tools extends Component {
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
 							<ManagePublicViewsPane
 								openUpsertPublicViewModal={this.props.openUpsertPublicViewModal}
+								publicViews={publicViews}
 							/>
 						</TabContent>
 					</Col>

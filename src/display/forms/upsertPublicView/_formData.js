@@ -38,5 +38,16 @@ export default {
 		tooltip: (
 			<span>Ctrl-click or shift-click to select multiple characters.</span>
 		)
+	},
+	tags: {
+		helpMessage: (
+			<span>
+				The public view will only include threads with these tags.{' '}
+				(Leave unselected to display all threads.)
+			</span>
+		),
+		tooltip: (
+			<span>Ctrl-click or shift-click to select multiple tags.</span>
+		)
 	}
 };

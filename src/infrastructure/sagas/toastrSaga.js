@@ -19,7 +19,9 @@ import {
 	USER_CHANGE_PASSWORD_FAILURE,
 	USER_CHANGE_PASSWORD_SUCCESS,
 	USER_ACCOUNT_INFO_FAILURE,
-	USER_ACCOUNT_INFO_SUCCESS
+	USER_ACCOUNT_INFO_SUCCESS,
+	UPSERT_PUBLIC_VIEW_FAILURE,
+	UPSERT_PUBLIC_VIEW_SUCCESS
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -117,6 +119,15 @@ function displayUserAccountInfoSuccess() {
 	toastr.success('Your account information was successfully updated.');
 }
 
+function displayUpdatePublicViewError() {
+	toastr.error('There was a problem updating your public view.');
+}
+
+function displayUpdatePublicViewSuccess(action) {
+	const view = action.data;
+	toastr.success(`Successfully updated public view ${view.name}`);
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
@@ -135,6 +146,8 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(USER_CHANGE_PASSWORD_FAILURE, displayUserChangePasswordError),
 		takeEvery(USER_CHANGE_PASSWORD_SUCCESS, displayUserChangePasswordSuccess),
 		takeEvery(USER_ACCOUNT_INFO_FAILURE, displayUserAccountInfoError),
-		takeEvery(USER_ACCOUNT_INFO_SUCCESS, displayUserAccountInfoSuccess)
+		takeEvery(USER_ACCOUNT_INFO_SUCCESS, displayUserAccountInfoSuccess),
+		takeEvery(UPSERT_PUBLIC_VIEW_FAILURE, displayUpdatePublicViewError),
+		takeEvery(UPSERT_PUBLIC_VIEW_SUCCESS, displayUpdatePublicViewSuccess)
 	]);
 }

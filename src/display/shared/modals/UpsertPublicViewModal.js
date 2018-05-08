@@ -11,7 +11,8 @@ const propTypes = {
 	submitUpsertPublicView: PropTypes.func.isRequired,
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
 	viewToEdit: PropTypes.shape({}).isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 class UpsertCharacterModal extends React.Component {
@@ -55,7 +56,8 @@ class UpsertCharacterModal extends React.Component {
 			submitUpsertPublicView,
 			closeUpsertPublicViewModal,
 			viewToEdit,
-			characters
+			characters,
+			tags
 		} = this.props;
 		if (!viewToEdit) {
 			return (
@@ -71,6 +73,7 @@ class UpsertCharacterModal extends React.Component {
 							Renderable={UpsertPublicViewForm}
 							viewToEdit={viewToEdit}
 							characters={characters}
+							tags={tags}
 							handleInputChange={this.handleInputChange}
 						/>
 					</ModalBody>

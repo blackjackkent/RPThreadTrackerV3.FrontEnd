@@ -18,6 +18,7 @@ export { default as exportThreadsSaga } from './threads/exportThreadsSaga';
 export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsSaga';
 export { default as fetchActiveThreadsStatusSaga } from './threads/fetchActiveThreadsStatusSaga';
 export { default as fetchArchivedThreadsSaga } from './threads/fetchArchivedThreadsSaga';
+export { default as fetchTagsSaga } from './threads/fetchTagsSaga';
 export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
 export { default as upsertThreadSaga } from './threads/upsertThreadSaga';
 export { default as untrackThreadSaga } from './threads/untrackThreadSaga';
@@ -32,6 +33,7 @@ export { default as submitContactFormSaga } from './help/submitContactFormSaga';
 
 // Public
 export { default as fetchPublicViewsSaga } from './public/fetchPublicViewsSaga';
+export { default as upsertPublicViewSaga } from './public/upsertPublicViewSaga';
 
 export { default as analyticsSaga } from './analyticsSaga';
 export { default as toastrSaga } from './toastrSaga';

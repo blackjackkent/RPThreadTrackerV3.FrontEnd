@@ -10,6 +10,7 @@ import formData from './_formData';
 const propTypes = {
 	viewToEdit: PropTypes.shape({}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
@@ -23,7 +24,8 @@ const UpsertPublicViewForm = (props) => {
 		tooltipDisplayData,
 		showTooltip,
 		hideTooltip,
-		characters
+		characters,
+		tags
 	} = props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
 		.map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
@@ -35,6 +37,7 @@ const UpsertPublicViewForm = (props) => {
 			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
 		</option>
 	));
+	const tagOptions = tags.map(t => (<option value={t} key={t}>{t}</option>));
 	if (!viewToEdit) {
 		return (
 			<div />
@@ -165,7 +168,7 @@ const UpsertPublicViewForm = (props) => {
 									type="checkbox"
 									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeTheirTurn}
 								/>
-								Include Partner's Turn Threads
+								Include Partner{"'"}s Turn Threads
 							</label>
 						</Col>
 					</Row>
@@ -219,6 +222,33 @@ const UpsertPublicViewForm = (props) => {
 							onBlur={hideTooltip}
 						>
 							{characterOptions}
+						</AvField>
+					</Tooltip>
+				</Col>
+			</Row>
+			<Row> {/* view tags */}
+				<Col>
+					<Tooltip
+						visible={tooltipDisplayData.tags}
+						overlay={formData.tags.tooltip}
+						overlayStyle={{ width: 300 }}
+						align={{
+							offset: [0, 30]
+						}}
+						placement="top"
+					>
+						<AvField
+							name="tags"
+							label="Tags"
+							type="select"
+							value={viewToEdit.tags}
+							onChange={handleInputChange}
+							helpMessage={formData.tags.helpMessage}
+							multiple
+							onFocus={showTooltip}
+							onBlur={hideTooltip}
+						>
+							{tagOptions}
 						</AvField>
 					</Tooltip>
 				</Col>

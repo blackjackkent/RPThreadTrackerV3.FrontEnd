@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { getCharactersSortedByIdentifier } from '../../../infrastructure/selectors'
+import { getCharactersSortedByIdentifier, getTagsSortedByTagText } from '../../../infrastructure/selectors';
 import { closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
@@ -32,7 +32,8 @@ const propTypes = {
 	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
 	viewToEdit: PropTypes.shape({}).isRequired,
 	upsertPublicView: PropTypes.func.isRequired,
-	closeUpsertPublicViewModal: PropTypes.func.isRequired
+	closeUpsertPublicViewModal: PropTypes.func.isRequired,
+	sortedTags: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 function mapStateToProps(state) {
@@ -45,6 +46,7 @@ function mapStateToProps(state) {
 		viewToEdit
 	} = state;
 	const sortedCharacters = getCharactersSortedByIdentifier(state);
+	const sortedTags = getTagsSortedByTagText(state);
 	return {
 		isUpsertCharacterModalOpen: ui.isUpsertCharacterModalOpen,
 		isUntrackThreadModalOpen: ui.isUntrackThreadModalOpen,
@@ -57,7 +59,8 @@ function mapStateToProps(state) {
 		threadToEdit,
 		bulkThreadsToEdit,
 		viewToEdit,
-		sortedCharacters
+		sortedCharacters,
+		sortedTags
 	};
 }
 
@@ -73,7 +76,8 @@ const ModalContainer = (props) => {
 		threadToEdit,
 		bulkThreadsToEdit,
 		viewToEdit,
-		sortedCharacters
+		sortedCharacters,
+		sortedTags
 	} = props;
 	return (
 		<div>
@@ -96,6 +100,7 @@ const ModalContainer = (props) => {
 				closeUpsertPublicViewModal={props.closeUpsertPublicViewModal}
 				viewToEdit={viewToEdit}
 				characters={sortedCharacters}
+				tags={sortedTags}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isUntrackThreadModalOpen}
