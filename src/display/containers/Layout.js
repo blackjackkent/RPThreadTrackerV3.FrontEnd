@@ -84,13 +84,13 @@ class Layout extends Component {
 	showLayout() {
 		return (
 			<div className="app" data-spec="layout-app">
-				<ReduxToastr data-spec="layout-toastr" />
-				<HeaderContainer data-spec="layout-header" />
+				<ReduxToastr />
+				<HeaderContainer />
 				<div className="app-body">
-					<Sidebar {...this.props} data-spec="layout-sidebar" />
+					<Sidebar {...this.props} />
 					<main className="main">
-						<Breadcrumb data-spec="layout-breadcrumb" />
-						<Container fluid data-spec="layout-container">
+						<Breadcrumb />
+						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
 								<Route path="threads/*" name="Threads" component={Threads} />
@@ -130,10 +130,10 @@ class Layout extends Component {
 							</Switch>
 						</Container>
 					</main>
-					<AsideContainer data-spec="layout-aside" />
+					<AsideContainer />
 				</div>
-				<Footer data-spec="layout-footer" />
-				<ModalContainer data-spec="layout-modals" />
+				<Footer />
+				<ModalContainer />
 			</div>
 		);
 	}

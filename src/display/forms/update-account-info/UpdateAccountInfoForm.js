@@ -1,8 +1,10 @@
+// #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AvField } from 'availity-reactstrap-validation';
 import { FormGroup, Col, Label } from 'reactstrap';
 import validator from './_validator';
+// #endregion imports
 
 const propTypes = {
 	handleInputChange: PropTypes.func.isRequired,
@@ -10,10 +12,7 @@ const propTypes = {
 };
 
 const UpdateAccountInfoForm = (props) => {
-	const {
-		handleInputChange,
-		user
-	} = props;
+	const { handleInputChange, user } = props;
 	return (
 		<div>
 			<FormGroup row>

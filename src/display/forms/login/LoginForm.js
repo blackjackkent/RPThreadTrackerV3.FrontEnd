@@ -8,9 +8,7 @@ const propTypes = {
 };
 
 const LoginForm = (props) => {
-	const {
-		handleInputChange
-	} = props;
+	const { handleInputChange } = props;
 	return (
 		<div>
 			<AvField

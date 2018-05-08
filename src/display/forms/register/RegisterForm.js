@@ -8,9 +8,7 @@ const propTypes = {
 };
 
 const RegisterForm = (props) => {
-	const {
-		handleInputChange
-	} = props;
+	const { handleInputChange } = props;
 	return (
 		<div>
 			<AvField

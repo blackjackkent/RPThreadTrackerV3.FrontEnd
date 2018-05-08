@@ -21,17 +21,12 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
   className="app"
   data-spec="layout-app"
 >
-  <Connect(ReduxToastr)
-    data-spec="layout-toastr"
-  />
-  <HeaderContainer
-    data-spec="layout-header"
-  />
+  <Connect(ReduxToastr) />
+  <HeaderContainer />
   <div
     className="app-body"
   >
     <Sidebar
-      data-spec="layout-sidebar"
       fetchNews={
         [MockFunction] {
           "calls": Array [
@@ -50,11 +45,8 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
     <main
       className="main"
     >
-      <Breadcrumb
-        data-spec="layout-breadcrumb"
-      />
+      <Breadcrumb />
       <Container
-        data-spec="layout-container"
         fluid={true}
         tag="div"
       >
@@ -117,15 +109,9 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
         </Switch>
       </Container>
     </main>
-    <AsideContainer
-      data-spec="layout-aside"
-    />
+    <AsideContainer />
   </div>
-  <Footer
-    data-spec="layout-footer"
-  />
-  <ModalContainer
-    data-spec="layout-modals"
-  />
+  <Footer />
+  <ModalContainer />
 </div>
 `;

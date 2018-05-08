@@ -1,25 +1,22 @@
+// #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AvField } from 'availity-reactstrap-validation';
 import { FormGroup, Col, Label } from 'reactstrap';
 import validator from './_validator';
+// #endregion imports
 
 const propTypes = {
 	handleInputChange: PropTypes.func.isRequired
 };
 
 const ChangePasswordForm = (props) => {
-	const {
-		handleInputChange
-	} = props;
+	const { handleInputChange } = props;
 	return (
 		<div>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label
-						data-spec="current-password-label"
-						htmlFor="current-password"
-					>
+					<Label htmlFor="current-password">
 						Current Password:
 					</Label>
 				</Col>
@@ -36,7 +33,7 @@ const ChangePasswordForm = (props) => {
 			</FormGroup>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label htmlFor="new-password" data-spec="new-password-label">New Password:</Label>
+					<Label htmlFor="new-password">New Password:</Label>
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
@@ -51,10 +48,7 @@ const ChangePasswordForm = (props) => {
 			</FormGroup>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label
-						htmlFor="confirm-new-password"
-						data-spec="confirm-new-password-label"
-					>
+					<Label htmlFor="confirm-new-password">
 						Confirm New Password:
 					</Label>
 				</Col>
