@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { Col, Row, FormGroup } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
+import MultipleValueTextInput from 'react-multivalue-text-input';
 import CharacterSelect from '../../shared/character-select/CharacterSelect';
-import MultipleValueTextInput from '../../shared/multiple-value-text-input/MultipleValueTextInput';
 
 const propTypes = {
 	threadToEdit: PropTypes.shape({}).isRequired,
@@ -103,15 +103,23 @@ const UpsertThreadForm = (props) => {
 				</Col>
 			</Row>
 			{/* tags */}
-			<MultipleValueTextInput
-				values={tagValues}
-				onItemAdded={handleTagAdded}
-				onItemDeleted={handleTagRemoved}
-				label="Thread Tags"
-				name="threadTags"
-				placeholder="Thread Tags"
-				helpMessage={formData.threadTags.helpMessage}
-			/>
+			<Row>
+				<Col>
+					<FormGroup>
+						<MultipleValueTextInput
+							values={tagValues}
+							onItemAdded={handleTagAdded}
+							onItemDeleted={handleTagRemoved}
+							label="Thread Tags"
+							name="threadTags"
+							placeholder="Thread Tags"
+							className="form-control"
+							labelClassName="form-control-label"
+						/>
+						<small className="form-text">{formData.threadTags.helpMessage}</small>
+					</FormGroup>
+				</Col>
+			</Row>
 		</div>
 	);
 };

@@ -6395,7 +6395,7 @@ promise@^8.0.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@15.x:
+prop-types@15.x, prop-types@^15.6.1:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   dependencies:
@@ -6643,6 +6643,15 @@ react-dom@^15.6.1:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
+react-dom@^16.3.2:
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.3.2.tgz#cb90f107e09536d683d84ed5d4888e9640e0e4df"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
+
 react-ga@^2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.5.0.tgz#fbba2b33d41ce727f7d4cf383d54dbbfbf96c507"
@@ -6653,6 +6662,13 @@ react-ga@^2.5.0:
 react-moment@^0.6.5:
   version "0.6.9"
   resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.6.9.tgz#f13a0ccedaf65b5fb8b1467d9f91c5346d74c3e2"
+
+react-multivalue-text-input@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/react-multivalue-text-input/-/react-multivalue-text-input-0.4.0.tgz#b16edec60f9fea0eb3adcc6ae62352bcc72198fd"
+  dependencies:
+    prop-types "^15.6.1"
+    react-dom "^16.3.2"
 
 react-reconciler@^0.7.0:
   version "0.7.0"

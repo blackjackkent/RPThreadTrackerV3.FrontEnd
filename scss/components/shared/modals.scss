@@ -4,21 +4,11 @@
 }
 
 .multiple-value-text-input-item-container { 
-	padding: .5rem 0;
-	margin-top: -.5rem; 
-	line-height: 2rem;
+	padding: .5rem 0 0;
 	.multiple-value-text-input-item {
 		border-radius: 5px;
-		background: $gray-100;
-		padding: .3rem .5rem;
-		margin-right: .5rem;
-		margin-bottom: .5rem;
-		> span {
-			cursor: pointer;
-		}
 	}
 }
-
 .public-view-form-turn-section {
 	padding: 15px 0 ; background: #ddd;
 }
