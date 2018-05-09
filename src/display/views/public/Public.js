@@ -4,11 +4,18 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchPublicThreads } from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
 import getColumns from './_columns';
 
 const propTypes = {
-	publicThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	publicThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	slug: PropTypes.string,
+	fetchPublicThreads: PropTypes.func.isRequired
+};
+
+const defaultProps = {
+	slug: ''
 };
 
 function mapStateToProps(state) {
@@ -21,6 +28,9 @@ function mapStateToProps(state) {
 }
 
 class Public extends Component {
+	componentDidMount() {
+		this.props.fetchPublicThreads(this.props.slug);
+	}
 	render() {
 		const {
 			publicThreads
@@ -41,4 +51,7 @@ class Public extends Component {
 }
 
 Public.propTypes = propTypes;
-export default connect(mapStateToProps)(Public);
+Public.defaultProps = defaultProps;
+export default connect(mapStateToProps, {
+	fetchPublicThreads
+})(Public);

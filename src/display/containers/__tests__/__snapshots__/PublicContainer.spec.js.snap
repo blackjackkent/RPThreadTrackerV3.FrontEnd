@@ -31,7 +31,9 @@ exports[`rendering should render valid snapshot 1`] = `
           ]
         }
       >
-        <Component />
+        <Component
+          slug="my-slug"
+        />
       </Col>
     </Row>
   </Container>

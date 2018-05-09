@@ -8,9 +8,19 @@ import PublicContainer from '../PublicContainer';
 jest.mock('../../views/public/Public', () => () => 'Public');
 // #endregion mocks
 
+const createTestProps = propOverrides => ({
+	match: {
+		params: {
+			slug: 'my-slug'
+		}
+	},
+	...propOverrides
+});
+
 describe('rendering', () => {
 	it('should render valid snapshot', () => {
-		const jsx = (<PublicContainer />);
+		const props = createTestProps();
+		const jsx = (<PublicContainer {...props} />);
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
