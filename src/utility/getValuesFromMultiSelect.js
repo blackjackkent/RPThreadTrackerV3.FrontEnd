@@ -1,6 +1,9 @@
 function getValuesFromMultiSelect(select) {
 	const result = [];
-	const options = select && select.options;
+	if (!select || !select.options) {
+		return result;
+	}
+	const { options } = select;
 	let opt;
 
 	for (let i = 0; i < options.length; i++) {

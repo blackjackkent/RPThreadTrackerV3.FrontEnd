@@ -11,6 +11,9 @@ function getSortFunction(key) {
 }
 
 function sortByObjectProperty(collection, key) {
+	if (!collection) {
+		return [];
+	}
 	const func = getSortFunction(key);
 	return collection.sort(func);
 }
