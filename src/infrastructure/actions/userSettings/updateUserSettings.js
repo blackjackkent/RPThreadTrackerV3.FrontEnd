@@ -15,3 +15,17 @@ export function updateUserSettings(data, shouldSkipViewUpdate) {
 		}
 	};
 }
+export const UPDATED_USER_SETTINGS_FAILURE = 'UPDATED_USER_SETTINGS_FAILURE';
+export function updatedUserSettingsFailure(data) {
+	return {
+		type: UPDATED_USER_SETTINGS_FAILURE,
+		data
+	};
+}
+export const UPDATED_USER_SETTINGS_SUCCESS = 'UPDATED_USER_SETTINGS_SUCCESS';
+export function updatedUserSettingsSuccess(data) {
+	return {
+		type: UPDATED_USER_SETTINGS_SUCCESS,
+		data
+	};
+}

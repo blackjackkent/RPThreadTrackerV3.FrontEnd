@@ -4,17 +4,17 @@ import history from '../../history';
 
 import {
 	SUBMIT_USER_RESET_PASSWORD,
-	userResetPasswordFailure,
-	userResetPasswordSuccess
+	submitUserResetPasswordFailure,
+	submitUserResetPasswordSuccess
 } from '../../actions';
 
 function* submitUserResetPassword(action) {
 	try {
 		yield call(axios.post, `${API_BASE_URL}api/auth/resetpassword`, action.data);
 		history.push('/login');
-		yield put(userResetPasswordSuccess());
+		yield put(submitUserResetPasswordSuccess());
 	} catch (e) {
-		yield put(userResetPasswordFailure(e.response.data));
+		yield put(submitUserResetPasswordFailure(e.response.data));
 	}
 }
 

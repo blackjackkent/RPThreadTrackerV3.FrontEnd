@@ -14,3 +14,16 @@ export function submitUserChangePassword(data) {
 		}
 	};
 }
+export const SUBMIT_USER_CHANGE_PASSWORD_FAILURE = 'SUBMIT_USER_CHANGE_PASSWORD_FAILURE';
+export function submitUserChangePasswordFailure(data) {
+	return {
+		type: SUBMIT_USER_CHANGE_PASSWORD_FAILURE,
+		data
+	};
+}
+export const SUBMIT_USER_CHANGE_PASSWORD_SUCCESS = 'SUBMIT_USER_CHANGE_PASSWORD_SUCCESS';
+export function submitUserChangePasswordSuccess() {
+	return {
+		type: SUBMIT_USER_CHANGE_PASSWORD_SUCCESS
+	};
+}

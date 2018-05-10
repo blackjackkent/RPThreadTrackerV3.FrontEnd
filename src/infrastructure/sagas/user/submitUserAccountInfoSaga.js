@@ -3,16 +3,16 @@ import axios from 'axios';
 
 import {
 	SUBMIT_USER_ACCOUNT_INFO,
-	userAccountInfoFailure,
-	userAccountInfoSuccess
+	submitUserAccountInfoFailure,
+	submitUserAccountInfoSuccess
 } from '../../actions';
 
 function* submitUserAccountInfo(action) {
 	try {
 		yield call(axios.put, `${API_BASE_URL}api/user/accountinfo`, action.data);
-		yield put(userAccountInfoSuccess());
+		yield put(submitUserAccountInfoSuccess());
 	} catch (e) {
-		yield put(userAccountInfoFailure(e.response.data));
+		yield put(submitUserAccountInfoFailure(e.response.data));
 	}
 }
 

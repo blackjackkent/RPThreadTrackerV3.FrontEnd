@@ -14,3 +14,16 @@ export function submitUserForgotPassword(data) {
 		}
 	};
 }
+export const SUBMIT_USER_FORGOT_PASSWORD_FAILURE = 'SUBMIT_USER_FORGOT_PASSWORD_FAILURE';
+export function submitUserForgotPasswordFailure(data) {
+	return {
+		type: SUBMIT_USER_FORGOT_PASSWORD_FAILURE,
+		data
+	};
+}
+export const SUBMIT_USER_FORGOT_PASSWORD_SUCCESS = 'SUBMIT_USER_FORGOT_PASSWORD_SUCCESS';
+export function submitUserForgotPasswordSuccess() {
+	return {
+		type: SUBMIT_USER_FORGOT_PASSWORD_SUCCESS
+	};
+}

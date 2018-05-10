@@ -47,7 +47,11 @@ const App = (props) => {
 				{
 					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={withPageViewTracker(StaticContainer)} />)
 				}
-				<Route path="/public/:slug" name="Public" component={withPageViewTracker(PublicContainer)} />
+				<Route
+					path="/public/:slug"
+					name="Public"
+					component={withPageViewTracker(PublicContainer)}
+				/>
 				<Route component={withPageViewTracker(Layout)} />
 			</Switch>
 		</Router>

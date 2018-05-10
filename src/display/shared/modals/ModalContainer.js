@@ -23,6 +23,7 @@ const propTypes = {
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	deletePublicView: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
+	isDeletePublicViewModalOpen: PropTypes.bool.isRequired,
 	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,

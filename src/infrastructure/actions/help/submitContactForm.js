@@ -14,3 +14,16 @@ export function submitContactForm(data) {
 		}
 	};
 }
+export const SUBMIT_CONTACT_FORM_FAILURE = 'SUBMIT_CONTACT_FORM_FAILURE';
+export function submitContactFormFailure() {
+	return {
+		type: SUBMIT_CONTACT_FORM_FAILURE
+	};
+}
+export const SUBMIT_CONTACT_FORM_SUCCESS = 'SUBMIT_CONTACT_FORM_SUCCESS';
+export function submitContactFormSuccess() {
+	return {
+		type: SUBMIT_CONTACT_FORM_SUCCESS
+	};
+}
+

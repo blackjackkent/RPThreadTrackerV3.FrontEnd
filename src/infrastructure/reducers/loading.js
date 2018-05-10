@@ -9,16 +9,16 @@ import {
 	SUBMIT_USER_LOGIN,
 	SUBMIT_USER_LOGOUT,
 	SUBMIT_USER_REGISTRATION,
-	USER_LOGIN_FAILURE,
-	USER_LOGIN_SUCCESS,
-	USER_REGISTRATION_FAILURE,
-	USER_REGISTRATION_SUCCESS,
-	USER_FORGOT_PASSWORD_FAILURE,
-	USER_FORGOT_PASSWORD_SUCCESS,
+	SUBMIT_USER_LOGIN_FAILURE,
+	SUBMIT_USER_LOGIN_SUCCESS,
+	SUBMIT_USER_REGISTRATION_FAILURE,
+	SUBMIT_USER_REGISTRATION_SUCCESS,
+	SUBMIT_USER_FORGOT_PASSWORD_FAILURE,
+	SUBMIT_USER_FORGOT_PASSWORD_SUCCESS,
 	SUBMIT_USER_FORGOT_PASSWORD,
 	SUBMIT_USER_RESET_PASSWORD,
-	USER_RESET_PASSWORD_FAILURE,
-	USER_RESET_PASSWORD_SUCCESS
+	SUBMIT_USER_RESET_PASSWORD_FAILURE,
+	SUBMIT_USER_RESET_PASSWORD_SUCCESS
 } from '../actions';
 
 const defaultState = {
@@ -30,8 +30,8 @@ const defaultState = {
 };
 function loading(state = defaultState, action) {
 	switch (action.type) {
-		case USER_LOGIN_SUCCESS:
-		case USER_LOGIN_FAILURE:
+		case SUBMIT_USER_LOGIN_SUCCESS:
+		case SUBMIT_USER_LOGIN_FAILURE:
 			return Object.assign({}, state, {
 				loginLoading: false
 			});
@@ -39,8 +39,8 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				loginLoading: true
 			});
-		case USER_FORGOT_PASSWORD_SUCCESS:
-		case USER_FORGOT_PASSWORD_FAILURE:
+		case SUBMIT_USER_FORGOT_PASSWORD_SUCCESS:
+		case SUBMIT_USER_FORGOT_PASSWORD_FAILURE:
 			return Object.assign({}, state, {
 				forgotPasswordLoading: false
 			});
@@ -48,8 +48,8 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				forgotPasswordLoading: true
 			});
-		case USER_RESET_PASSWORD_FAILURE:
-		case USER_RESET_PASSWORD_SUCCESS:
+		case SUBMIT_USER_RESET_PASSWORD_FAILURE:
+		case SUBMIT_USER_RESET_PASSWORD_SUCCESS:
 			return Object.assign({}, state, {
 				resetPasswordLoading: false
 			});
@@ -57,8 +57,8 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				resetPasswordLoading: true
 			});
-		case USER_REGISTRATION_FAILURE:
-		case USER_REGISTRATION_SUCCESS:
+		case SUBMIT_USER_REGISTRATION_FAILURE:
+		case SUBMIT_USER_REGISTRATION_SUCCESS:
 			return Object.assign({}, state, {
 				registrationLoading: false
 			});

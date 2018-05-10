@@ -1,6 +1,0 @@
-export const FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE = 'FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE';
-export function fetchedActiveThreadsStatusChunkFailure() {
-	return {
-		type: FETCHED_ACTIVE_THREADS_STATUS_CHUNK_FAILURE
-	};
-}

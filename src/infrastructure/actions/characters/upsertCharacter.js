@@ -14,3 +14,18 @@ export function upsertCharacter(data) {
 		}
 	};
 }
+export const UPSERT_CHARACTER_FAILURE = 'UPSERT_CHARACTER_FAILURE';
+export function upsertCharacterFailure(data) {
+	return {
+		type: UPSERT_CHARACTER_FAILURE,
+		data
+	};
+}
+export const UPSERT_CHARACTER_SUCCESS = 'UPSERT_CHARACTER_SUCCESS';
+export function upsertCharacterSuccess(character) {
+	return {
+		type: UPSERT_CHARACTER_SUCCESS,
+		data: character
+	};
+}
+

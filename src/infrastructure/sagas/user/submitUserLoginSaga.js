@@ -5,9 +5,9 @@ import history from '../../history';
 
 import {
 	SUBMIT_USER_LOGIN,
-	USER_REGISTRATION_SUCCESS,
-	userLoginFailure,
-	userLoginSuccess
+	SUBMIT_USER_REGISTRATION_SUCCESS,
+	submitUserLoginFailure,
+	submitUserLoginSuccess
 } from '../../actions';
 
 function* submitUserLogin(action) {
@@ -16,15 +16,15 @@ function* submitUserLogin(action) {
 		cache.set('accessToken', response.data.token.token);
 		cache.set('refreshToken', response.data.refresh_token.token);
 		history.push('/dashboard');
-		yield put(userLoginSuccess());
+		yield put(submitUserLoginSuccess());
 	} catch (e) {
-		yield put(userLoginFailure(e.response.data));
+		yield put(submitUserLoginFailure(e.response.data));
 	}
 }
 
 export default function* submitUserLoginSaga() {
 	yield all([
 		takeEvery(SUBMIT_USER_LOGIN, submitUserLogin),
-		takeEvery(USER_REGISTRATION_SUCCESS, submitUserLogin)
+		takeEvery(SUBMIT_USER_REGISTRATION_SUCCESS, submitUserLogin)
 	]);
 }

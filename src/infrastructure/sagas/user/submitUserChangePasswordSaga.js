@@ -3,16 +3,16 @@ import axios from 'axios';
 
 import {
 	SUBMIT_USER_CHANGE_PASSWORD,
-	userChangePasswordSuccess,
-	userChangePasswordFailure
+	submitUserChangePasswordSuccess,
+	submitUserChangePasswordFailure
 } from '../../actions';
 
 function* submitUserChangePassword(action) {
 	try {
 		yield call(axios.put, `${API_BASE_URL}api/user/password`, action.data);
-		yield put(userChangePasswordSuccess());
+		yield put(submitUserChangePasswordSuccess());
 	} catch (e) {
-		yield put(userChangePasswordFailure(e.response.data));
+		yield put(submitUserChangePasswordFailure(e.response.data));
 	}
 }
 

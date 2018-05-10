@@ -3,16 +3,16 @@ import axios from 'axios';
 
 import {
 	SUBMIT_USER_REGISTRATION,
-	userRegistrationFailure,
-	userRegistrationSuccess
+	submitUserRegistrationFailure,
+	submitUserRegistrationSuccess
 } from '../../actions';
 
 function* submitUserRegistration(action) {
 	try {
 		yield call(axios.post, `${API_BASE_URL}api/auth/register`, action.data);
-		yield put(userRegistrationSuccess(action.data));
+		yield put(submitUserRegistrationSuccess(action.data));
 	} catch (e) {
-		yield put(userRegistrationFailure(e.response.data));
+		yield put(submitUserRegistrationFailure(e.response.data));
 	}
 }
 

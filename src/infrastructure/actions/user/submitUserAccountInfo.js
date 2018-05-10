@@ -14,3 +14,16 @@ export function submitUserAccountInfo(data) {
 		}
 	};
 }
+export const SUBMIT_USER_ACCOUNT_INFO_FAILURE = 'SUBMIT_USER_ACCOUNT_INFO_FAILURE';
+export function submitUserAccountInfoFailure(data) {
+	return {
+		type: SUBMIT_USER_ACCOUNT_INFO_FAILURE,
+		data
+	};
+}
+export const SUBMIT_USER_ACCOUNT_INFO_SUCCESS = 'SUBMIT_USER_ACCOUNT_INFO_SUCCESS';
+export function submitUserAccountInfoSuccess() {
+	return {
+		type: SUBMIT_USER_ACCOUNT_INFO_SUCCESS
+	};
+}

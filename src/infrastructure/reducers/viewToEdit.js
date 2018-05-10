@@ -1,5 +1,4 @@
-import { OPEN_UPSERT_PUBLIC_VIEW_MODAL, CLOSE_UPSERT_PUBLIC_VIEW_MODAL, SUBMIT_USER_LOGOUT } from '../actions/ui/openUpsertPublicViewModal';
-import { OPEN_DELETE_PUBLIC_VIEW_MODAL, CLOSE_DELETE_PUBLIC_VIEW_MODAL } from '../actions';
+import { OPEN_DELETE_PUBLIC_VIEW_MODAL, CLOSE_DELETE_PUBLIC_VIEW_MODAL, OPEN_UPSERT_PUBLIC_VIEW_MODAL, CLOSE_UPSERT_PUBLIC_VIEW_MODAL, SUBMIT_USER_LOGOUT } from '../actions';
 
 const defaultState = {};
 function viewToEdit(state = defaultState, action) {

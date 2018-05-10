@@ -19,7 +19,7 @@ function getData(threads) {
 	return data;
 }
 
-class ThreadTable extends React.Component {
+class PublicThreadTable extends React.Component {
 	render() {
 		const {
 			threads,
@@ -47,5 +47,5 @@ class ThreadTable extends React.Component {
 		);
 	}
 }
-ThreadTable.propTypes = propTypes;
-export default ThreadTable;
+PublicThreadTable.propTypes = propTypes;
+export default PublicThreadTable;

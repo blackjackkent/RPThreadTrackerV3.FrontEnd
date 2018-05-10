@@ -14,3 +14,16 @@ export function submitUserLogin(data) {
 		}
 	};
 }
+export const SUBMIT_USER_LOGIN_FAILURE = 'SUBMIT_USER_LOGIN_FAILURE';
+export function submitUserLoginFailure(data) {
+	return {
+		type: SUBMIT_USER_LOGIN_FAILURE,
+		data
+	};
+}
+export const SUBMIT_USER_LOGIN_SUCCESS = 'SUBMIT_USER_LOGIN_SUCCESS';
+export function submitUserLoginSuccess() {
+	return {
+		type: SUBMIT_USER_LOGIN_SUCCESS
+	};
+}
