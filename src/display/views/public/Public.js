@@ -9,7 +9,7 @@ import ThreadTable from './PublicThreadTable';
 import getColumns from './_columns';
 
 const propTypes = {
-	publicThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	slug: PropTypes.string,
 	fetchPublicThreads: PropTypes.func.isRequired
 };
@@ -23,7 +23,8 @@ function mapStateToProps(state) {
 		publicThreads
 	} = state;
 	return {
-		publicThreads
+		view: publicThreads.view,
+		threads: publicThreads.threads
 	};
 }
 
@@ -33,7 +34,7 @@ class Public extends Component {
 	}
 	render() {
 		const {
-			publicThreads
+			threads
 		} = this.props;
 		return (
 			<div className="animated fadeIn">
@@ -41,7 +42,7 @@ class Public extends Component {
 					<Col>
 						<ThreadTable
 							columns={getColumns()}
-							threads={publicThreads}
+							threads={threads}
 						/>
 					</Col>
 				</Row>
