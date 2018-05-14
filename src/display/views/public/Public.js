@@ -11,9 +11,12 @@ import getColumns from './_columns';
 import { getPublicThreads } from '../../../infrastructure/selectors';
 import Footer from '../../shared/footer/Footer';
 import LoadingIndicator from '../../shared/LoadingIndicator';
+import { legacyPublicSlugs, buildLegacyView } from '../../../infrastructure/constants/legacyPublicValues';
+import { getQuery } from '../../../utility';
 
 const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	fetchLegacyPublicThreads: PropTypes.func.isRequired,
 	slug: PropTypes.string,
 	view: PropTypes.shape({}).isRequired,
 	fetchPublicThreads: PropTypes.func.isRequired
@@ -33,7 +36,18 @@ function mapStateToProps(state) {
 
 class Public extends Component {
 	componentDidMount() {
+		const { slug } = this.props;
+		if (legacyPublicSlugs.includes(slug)) {
+			this.fetchLegacyView();
+			return;
+		}
 		this.props.fetchPublicThreads(this.props.slug);
+	}
+	fetchLegacyView() {
+		const query = getQuery();
+		console.log(query);
+		const view = buildLegacyView(query);
+		this.props.fetchLegacyPublicThreads(view);
 	}
 	render() {
 		const {
