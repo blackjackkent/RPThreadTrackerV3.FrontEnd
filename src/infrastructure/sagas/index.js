@@ -33,6 +33,7 @@ export { default as submitContactFormSaga } from './help/submitContactFormSaga';
 
 // Public
 export { default as fetchPublicThreadsSaga } from './public/fetchPublicThreadsSaga';
+export { default as fetchPublicThreadsStatusSaga } from './public/fetchPublicThreadsStatusSaga';
 export { default as fetchPublicViewsSaga } from './public/fetchPublicViewsSaga';
 export { default as upsertPublicViewSaga } from './public/upsertPublicViewSaga';
 export { default as deletePublicViewSaga } from './public/deletePublicViewSaga';

@@ -10,6 +10,7 @@ import errors from './errors';
 import loading from './loading';
 import news from './news';
 import publicThreads from './publicThreads';
+import publicThreadsStatus from './publicThreadsStatus';
 import publicViews from './publicViews';
 import randomThread from './randomThread';
 import tags from './tags';
@@ -31,6 +32,7 @@ export default combineReducers({
 	loading,
 	news,
 	publicThreads,
+	publicThreadsStatus,
 	publicViews,
 	randomThread,
 	tags,

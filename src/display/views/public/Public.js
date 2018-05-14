@@ -6,11 +6,16 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPublicThreads } from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
+import PublicHeader from './PublicHeader';
 import getColumns from './_columns';
+import { getPublicThreads } from '../../../infrastructure/selectors';
+import Footer from '../../shared/footer/Footer';
+import LoadingIndicator from '../../shared/LoadingIndicator';
 
 const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	slug: PropTypes.string,
+	view: PropTypes.shape({}).isRequired,
 	fetchPublicThreads: PropTypes.func.isRequired
 };
 
@@ -19,12 +24,10 @@ const defaultProps = {
 };
 
 function mapStateToProps(state) {
-	const {
-		publicThreads
-	} = state;
+	const publicThreads = getPublicThreads(state);
 	return {
-		view: publicThreads.view,
-		threads: publicThreads.threads
+		view: state.publicThreads.view,
+		threads: publicThreads
 	};
 }
 
@@ -34,18 +37,37 @@ class Public extends Component {
 	}
 	render() {
 		const {
-			threads
+			view,
+			threads,
+			slug
 		} = this.props;
+		const columns = getColumns(view.columns);
+		if (!columns || !columns.length) {
+			return (<LoadingIndicator
+				data-spec="layout-loader"
+				style={{
+					width: 50,
+					height: 50,
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)'
+				}}
+			/>);
+		}
 		return (
 			<div className="animated fadeIn">
+				<PublicHeader title={view.name} slug={slug} />
 				<Row>
 					<Col>
 						<ThreadTable
-							columns={getColumns()}
+							columns={getColumns(view.columns)}
 							threads={threads}
+							view={view}
 						/>
 					</Col>
 				</Row>
+				<Footer />
 			</div >
 		);
 	}

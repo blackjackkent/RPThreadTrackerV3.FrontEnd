@@ -17,9 +17,6 @@ const PublicContainer = ({ match }) => (
 	<div className="app flex-row align-items-center">
 		<ReduxToastr />
 		<Container className="public-threads-container">
-			<header>
-				<h1 className="text-right">Public Threads for Username</h1>
-			</header>
 			<Row>
 				<Col>
 					<Public slug={match.params.slug} />

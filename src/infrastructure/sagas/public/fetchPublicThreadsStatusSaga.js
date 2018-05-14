@@ -41,7 +41,7 @@ function* fetchPublicThreadsStatus(action) {
 			chunks.push(requests.slice(i, i + 10));
 		}
 		const tasks = [];
-		chunks.map(c => tasks.push(call(fetchPublicThreadsStatusChunk, c, action.view)));
+		chunks.map(c => tasks.push(call(fetchPublicThreadsStatusChunk, c, action.data.view)));
 		yield all(tasks);
 		yield put(fetchedPublicThreadsStatusSuccess());
 	} catch (e) {

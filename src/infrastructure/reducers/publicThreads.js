@@ -7,6 +7,12 @@ const defaultState = {
 function publicThreads(state = defaultState, action) {
 	switch (action.type) {
 		case FETCH_PUBLIC_THREADS:
+			return {
+				view: {
+					slug: action.data
+				},
+				threads: []
+			};
 		case FETCHED_PUBLIC_THREADS_FAILURE:
 			return defaultState;
 		case FETCHED_PUBLIC_THREADS_SUCCESS:

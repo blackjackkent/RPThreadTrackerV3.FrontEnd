@@ -4,7 +4,8 @@ import ReactTable from 'react-table';
 
 const propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	view: PropTypes.shape({}).isRequired
 };
 
 function getData(threads) {
@@ -19,33 +20,29 @@ function getData(threads) {
 	return data;
 }
 
-class PublicThreadTable extends React.Component {
-	render() {
-		const {
-			threads,
-			columns
-		} = this.props;
-
-		return (
-			<div>
-				<ReactTable
-					// eslint-disable-next-line no-return-assign
-					className="-striped"
-					data={getData(threads)}
-					columns={columns}
-					defaultSorted={[
-						{
-							id: 'status.LastPostDate',
-							desc: true
-						}
-					]}
-					showPaginationTop
-					SubComponent={row =>
-						(<span />)}
-				/>
-			</div>
-		);
-	}
-}
+const PublicThreadTable = (props) => {
+	const {
+		threads,
+		columns,
+		view
+	} = props;
+	return (
+		<div>
+			<ReactTable
+				// eslint-disable-next-line no-return-assign
+				className="-striped"
+				data={getData(threads)}
+				columns={columns}
+				defaultSorted={[
+					{
+						id: view.sortKey,
+						desc: view.sortDescending
+					}
+				]}
+				showPaginationTop
+			/>
+		</div>
+	);
+};
 PublicThreadTable.propTypes = propTypes;
 export default PublicThreadTable;

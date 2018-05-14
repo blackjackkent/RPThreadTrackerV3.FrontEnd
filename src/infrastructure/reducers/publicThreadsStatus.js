@@ -1,6 +1,6 @@
 import { FETCH_PUBLIC_THREADS_STATUS, FETCHED_PUBLIC_THREADS_STATUS_CHUNK_SUCCESS } from '../actions';
 
-function activeThreads(state = [], action) {
+function publicThreadsStatus(state = [], action) {
 	switch (action.type) {
 		case FETCH_PUBLIC_THREADS_STATUS:
 			return [];
@@ -11,4 +11,4 @@ function activeThreads(state = [], action) {
 	}
 }
 
-export default activeThreads;
+export default publicThreadsStatus;
