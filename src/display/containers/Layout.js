@@ -26,6 +26,7 @@ import ManageCharacters from '../views/characters/ManageCharacters';
 import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
+import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 // #endregion imports
 
 const propTypes = {
@@ -149,4 +150,4 @@ Layout.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	fetchUser,
 	fetchNews
-})(Layout);
+})(withPageViewTracker(Layout));

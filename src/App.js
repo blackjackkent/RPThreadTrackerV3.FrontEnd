@@ -52,7 +52,7 @@ const App = (props) => {
 					name="Public"
 					component={withPageViewTracker(PublicContainer)}
 				/>
-				<Route component={withPageViewTracker(Layout)} />
+				<Route component={Layout} />
 			</Switch>
 		</Router>
 	);

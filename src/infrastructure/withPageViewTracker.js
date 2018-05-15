@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import GoogleAnalytics from 'react-ga';
 
@@ -18,7 +18,7 @@ const withPageViewTracker = (WrappedComponent, options = {}) => {
 		GoogleAnalytics.pageview(page);
 	};
 
-	const HOC = class extends Component {
+	const HOC = class extends PureComponent {
 		componentDidMount() {
 			const page = this.props.location.pathname;
 			trackPage(page);
