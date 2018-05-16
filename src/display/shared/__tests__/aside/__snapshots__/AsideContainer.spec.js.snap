@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Aside
+  news={Array []}
+/>
+`;
+
+exports[`rendering should render valid snapshot with news 1`] = `
+<Aside
+  news={
+    Array [
+      Object {
+        "PostId": "12345",
+        "PostTitle": "Test Title",
+      },
+      Object {
+        "PostId": "23456",
+        "PostTitle": "Test Title 2",
+      },
+      Object {
+        "PostId": "34567",
+        "PostTitle": "Test Title 3",
+      },
+    ]
+  }
+/>
+`;

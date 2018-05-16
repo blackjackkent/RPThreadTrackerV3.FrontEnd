@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<aside
+  className="aside-menu"
+>
+  <div
+    className="callout m-0 py-2 text-center text-uppercase"
+  >
+    <small>
+      <b>
+        RPThreadTracker News
+      </b>
+    </small>
+  </div>
+  <hr
+    className="mx-3 my-0"
+  />
+</aside>
+`;
+
+exports[`rendering should render valid snapshot with items 1`] = `
+<aside
+  className="aside-menu"
+>
+  <div
+    className="callout m-0 py-2 text-center text-uppercase"
+  >
+    <small>
+      <b>
+        RPThreadTracker News
+      </b>
+    </small>
+  </div>
+  <hr
+    className="mx-3 my-0"
+  />
+  <AsideNewsRow
+    item={
+      Object {
+        "PostId": "12345",
+        "PostTitle": "Test Title",
+      }
+    }
+    key="12345"
+  />
+  <AsideNewsRow
+    item={
+      Object {
+        "PostId": "23456",
+        "PostTitle": "Test Title 2",
+      }
+    }
+    key="23456"
+  />
+  <AsideNewsRow
+    item={
+      Object {
+        "PostId": "34567",
+        "PostTitle": "Test Title 3",
+      }
+    }
+    key="34567"
+  />
+</aside>
+`;
