@@ -1,8 +1,8 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../utility/testHelpers';
-import LoginForm from '../LoginForm';
+import { getSpecWrapper } from '../../../utility/testHelpers';
+import ResetPasswordForm from '../reset-password/ResetPasswordForm';
 // #endregion imports
 
 const createTestProps = propOverrides => ({
@@ -13,44 +13,44 @@ const createTestProps = propOverrides => ({
 describe('rendering', () => {
 	it('should render valid snapshot', () => {
 		const props = createTestProps();
-		const jsx = (<LoginForm {...props} />);
+		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
-	it('should validate the username field', () => {
+	it('should validate the new password field', () => {
 		const props = createTestProps();
-		const jsx = (<LoginForm {...props} />);
+		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'username-field');
+		const field = getSpecWrapper(element, 'new-password-field');
 		expect(field.props().validate.required).toHaveProperty('value', true);
-		expect(field.props().validate.minLength).toHaveProperty('value', 3);
-		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+		expect(field.props().validate.minLength).toHaveProperty('value', 6);
 	});
-	it('should validate the password field', () => {
+	it('should validate the confirm new password field', () => {
 		const props = createTestProps();
-		const jsx = (<LoginForm {...props} />);
+		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'password-field');
+		const field = getSpecWrapper(element, 'confirm-new-password-field');
 		expect(field.props().validate.required).toHaveProperty('value', true);
+		expect(field.props().validate.match).toHaveProperty('value', 'newPassword');
 	});
 });
 
 describe('behavior', () => {
-	it('should handle input change for username', () => {
+	it('should handle input change for new password', () => {
 		const handleInputChange = jest.fn();
 		const props = createTestProps({ handleInputChange });
-		const jsx = (<LoginForm {...props} />);
+		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'username-field');
+		const field = getSpecWrapper(element, 'new-password-field');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});
-	it('should handle input change for password', () => {
+	it('should handle input change for confirm-new password', () => {
 		const handleInputChange = jest.fn();
 		const props = createTestProps({ handleInputChange });
-		const jsx = (<LoginForm {...props} />);
+		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'password-field');
+		const field = getSpecWrapper(element, 'confirm-new-password-field');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});

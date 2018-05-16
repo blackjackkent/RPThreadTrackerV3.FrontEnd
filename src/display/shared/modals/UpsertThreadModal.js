@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import TooltipForm from '../../forms/TooltipForm';
-import UpsertThreadForm from '../../forms/upsertThread/UpsertThreadForm';
-import validator from '../../forms/upsertThread/_validator';
-import formData from '../../forms/upsertThread/_formData';
+import UpsertThreadForm from '../../forms/upsert-thread/UpsertThreadForm';
 // #endregion imports
 
 const propTypes = {
@@ -111,8 +109,6 @@ class UpsertThreadModal extends Component {
 						<TooltipForm
 							Renderable={UpsertThreadForm}
 							threadToEdit={threadToEdit}
-							validator={validator}
-							formData={formData}
 							characters={characters}
 							selectCharacter={this.selectCharacter}
 							handleInputChange={this.handleInputChange}

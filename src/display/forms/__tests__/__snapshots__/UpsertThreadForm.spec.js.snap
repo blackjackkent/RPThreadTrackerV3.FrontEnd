@@ -1,0 +1,583 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<div>
+  <FormGroup
+    row={true}
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <CharacterSelect
+        characters={
+          Array [
+            Object {
+              "characterId": 1,
+              "characterName": "Character 1",
+              "urlIdentifier": "character-1",
+            },
+            Object {
+              "characterId": 2,
+              "characterName": "Character 2",
+              "urlIdentifier": "character-2",
+            },
+            Object {
+              "characterId": 3,
+              "characterName": "Character 3",
+              "urlIdentifier": "character-3",
+            },
+            Object {
+              "characterId": 4,
+              "characterName": "Character 4",
+              "urlIdentifier": "character-4",
+            },
+            Object {
+              "characterId": 5,
+              "urlIdentifier": "character-5",
+            },
+          ]
+        }
+        data-spec="characters-field"
+        includeNullValue={false}
+        onSelectCharacter={[MockFunction]}
+      />
+    </Col>
+  </FormGroup>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="user-title-field"
+        helpMessage="This can be anything you like!"
+        label="Thread Title"
+        name="userTitle"
+        onChange={[MockFunction]}
+        placeholder="Thread Title"
+        type="text"
+        validate={
+          Object {
+            "maxLength": Object {
+              "errorMessage": "Your thread title is too long.",
+              "value": 256,
+            },
+            "required": Object {
+              "errorMessage": "You must enter a title for your thread.",
+              "value": true,
+            },
+          }
+        }
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="post-id-field"
+        helpMessage={
+          <span>
+            This must be a post from your blog. The post ID is the part of the URL
+             
+            after ".tumblr.com/post/". For instance, if the post is at the URL
+             
+            <strong>
+              http://myawesomeblog.tumblr.com/post/12345
+            </strong>
+            , you would enter
+             
+            <strong>
+              12345
+            </strong>
+             in this field.
+          </span>
+        }
+        label="Post ID"
+        name="postId"
+        onChange={[MockFunction]}
+        placeholder="Post ID"
+        type="text"
+        validate={
+          Object {
+            "number": Object {
+              "errorMessage": "Post IDs can only contain numbers.",
+              "value": true,
+            },
+          }
+        }
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="partner-url-identifier-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <div>
+            Make sure you spell this correctly. The tracker will use this value to filter
+             
+            out irrelevant replies to the thread; if it is misspelled, or your partner changes
+             
+            their identifier, the tracker will not identify their replies as relevant. (You can
+             
+            also leave this blank to be notified of all replies.)
+          </div>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="partner-url-identifier-field"
+          helpMessage={
+            <span>
+              For a Tumblr account, this will be the part of your URL before
+               
+              ".tumblr.com". For instance, if your URL is
+               
+              <strong>
+                http://myawesomeblog.tumblr.com
+              </strong>
+              , you would enter
+               
+              <strong>
+                myawesomeblog
+              </strong>
+               in this field.
+            </span>
+          }
+          label="Partner URL Identifier (Optional)"
+          name="partnerUrlIdentifier"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          placeholder="Partner Url Identifier"
+          type="text"
+          validate={
+            Object {
+              "maxLength": Object {
+                "errorMessage": "Your partner's URL identifier is too long.",
+                "value": 256,
+              },
+            }
+          }
+        />
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <FormGroup
+        tag="div"
+      >
+        <MultipleValueTextInput
+          charCodes={
+            Array [
+              13,
+              44,
+            ]
+          }
+          className="form-control"
+          data-spec="tags-field"
+          deleteButton={
+            <span>
+              ×
+            </span>
+          }
+          label="Thread Tags"
+          labelClassName="form-control-label"
+          name="threadTags"
+          onItemAdded={[MockFunction]}
+          onItemDeleted={[MockFunction]}
+          placeholder="Thread Tags"
+          values={Array []}
+        />
+        <small
+          className="form-text"
+        >
+          Enter a comma-separated list of tags. (optional)
+        </small>
+      </FormGroup>
+    </Col>
+  </Row>
+</div>
+`;
+
+exports[`rendering should render valid snapshot with thread 1`] = `
+<div>
+  <FormGroup
+    row={true}
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <CharacterSelect
+        characters={
+          Array [
+            Object {
+              "characterId": 1,
+              "characterName": "Character 1",
+              "urlIdentifier": "character-1",
+            },
+            Object {
+              "characterId": 2,
+              "characterName": "Character 2",
+              "urlIdentifier": "character-2",
+            },
+            Object {
+              "characterId": 3,
+              "characterName": "Character 3",
+              "urlIdentifier": "character-3",
+            },
+            Object {
+              "characterId": 4,
+              "characterName": "Character 4",
+              "urlIdentifier": "character-4",
+            },
+            Object {
+              "characterId": 5,
+              "urlIdentifier": "character-5",
+            },
+          ]
+        }
+        data-spec="characters-field"
+        includeNullValue={false}
+        onSelectCharacter={[MockFunction]}
+        selectedCharacterId={2}
+      />
+    </Col>
+  </FormGroup>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="user-title-field"
+        helpMessage="This can be anything you like!"
+        label="Thread Title"
+        name="userTitle"
+        onChange={[MockFunction]}
+        placeholder="Thread Title"
+        type="text"
+        validate={
+          Object {
+            "maxLength": Object {
+              "errorMessage": "Your thread title is too long.",
+              "value": 256,
+            },
+            "required": Object {
+              "errorMessage": "You must enter a title for your thread.",
+              "value": true,
+            },
+          }
+        }
+        value="Test Thread"
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <AvField
+        data-spec="post-id-field"
+        helpMessage={
+          <span>
+            This must be a post from your blog. The post ID is the part of the URL
+             
+            after ".tumblr.com/post/". For instance, if the post is at the URL
+             
+            <strong>
+              http://myawesomeblog.tumblr.com/post/12345
+            </strong>
+            , you would enter
+             
+            <strong>
+              12345
+            </strong>
+             in this field.
+          </span>
+        }
+        label="Post ID"
+        name="postId"
+        onChange={[MockFunction]}
+        placeholder="Post ID"
+        type="text"
+        validate={
+          Object {
+            "number": Object {
+              "errorMessage": "Post IDs can only contain numbers.",
+              "value": true,
+            },
+          }
+        }
+        value="12345"
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+     
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Tooltip
+        align={
+          Object {
+            "offset": Array [
+              0,
+              30,
+            ],
+          }
+        }
+        arrowContent={null}
+        data-spec="partner-url-identifier-tooltip"
+        destroyTooltipOnHide={false}
+        mouseEnterDelay={0}
+        mouseLeaveDelay={0.1}
+        overlay={
+          <div>
+            Make sure you spell this correctly. The tracker will use this value to filter
+             
+            out irrelevant replies to the thread; if it is misspelled, or your partner changes
+             
+            their identifier, the tracker will not identify their replies as relevant. (You can
+             
+            also leave this blank to be notified of all replies.)
+          </div>
+        }
+        overlayStyle={
+          Object {
+            "width": 300,
+          }
+        }
+        placement="top"
+        prefixCls="rc-tooltip"
+        trigger={
+          Array [
+            "hover",
+          ]
+        }
+      >
+        <AvField
+          data-spec="partner-url-identifier-field"
+          helpMessage={
+            <span>
+              For a Tumblr account, this will be the part of your URL before
+               
+              ".tumblr.com". For instance, if your URL is
+               
+              <strong>
+                http://myawesomeblog.tumblr.com
+              </strong>
+              , you would enter
+               
+              <strong>
+                myawesomeblog
+              </strong>
+               in this field.
+            </span>
+          }
+          label="Partner URL Identifier (Optional)"
+          name="partnerUrlIdentifier"
+          onBlur={[MockFunction]}
+          onChange={[MockFunction]}
+          onFocus={[MockFunction]}
+          placeholder="Partner Url Identifier"
+          type="text"
+          validate={
+            Object {
+              "maxLength": Object {
+                "errorMessage": "Your partner's URL identifier is too long.",
+                "value": 256,
+              },
+            }
+          }
+          value="my-partner"
+        />
+      </Tooltip>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <FormGroup
+        tag="div"
+      >
+        <MultipleValueTextInput
+          charCodes={
+            Array [
+              13,
+              44,
+            ]
+          }
+          className="form-control"
+          data-spec="tags-field"
+          deleteButton={
+            <span>
+              ×
+            </span>
+          }
+          label="Thread Tags"
+          labelClassName="form-control-label"
+          name="threadTags"
+          onItemAdded={[MockFunction]}
+          onItemDeleted={[MockFunction]}
+          placeholder="Thread Tags"
+          values={
+            Array [
+              "tag1",
+              "tag2",
+              "tag3",
+            ]
+          }
+        />
+        <small
+          className="form-text"
+        >
+          Enter a comma-separated list of tags. (optional)
+        </small>
+      </FormGroup>
+    </Col>
+  </Row>
+</div>
+`;

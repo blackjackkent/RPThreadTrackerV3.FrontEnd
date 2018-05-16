@@ -5,6 +5,8 @@ import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import MultipleValueTextInput from 'react-multivalue-text-input';
 import CharacterSelect from '../../shared/character-select/CharacterSelect';
+import validator from './_validator';
+import formData from './_formData';
 
 const propTypes = {
 	threadToEdit: PropTypes.shape({}).isRequired,
@@ -13,8 +15,6 @@ const propTypes = {
 	hideTooltip: PropTypes.func.isRequired,
 	selectCharacter: PropTypes.func.isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	validator: PropTypes.shape({}).isRequired,
-	formData: PropTypes.shape({}).isRequired,
 	tooltipDisplayData: PropTypes.shape({}).isRequired,
 	handleTagAdded: PropTypes.func.isRequired,
 	handleTagRemoved: PropTypes.func.isRequired,
@@ -29,8 +29,6 @@ const UpsertThreadForm = (props) => {
 		hideTooltip,
 		selectCharacter,
 		handleInputChange,
-		validator,
-		formData,
 		tooltipDisplayData,
 		handleTagAdded,
 		handleTagRemoved,
@@ -45,6 +43,7 @@ const UpsertThreadForm = (props) => {
 						selectedCharacterId={threadToEdit.characterId}
 						onSelectCharacter={selectCharacter}
 						includeNullValue={false}
+						data-spec="characters-field"
 					/>
 				</Col>
 			</FormGroup>
@@ -59,6 +58,7 @@ const UpsertThreadForm = (props) => {
 						onChange={handleInputChange}
 						validate={validator.userTitle}
 						helpMessage={formData.userTitle.helpMessage}
+						data-spec="user-title-field"
 					/>
 				</Col>
 			</Row>
@@ -73,6 +73,7 @@ const UpsertThreadForm = (props) => {
 						validate={validator.postId}
 						value={threadToEdit.postId}
 						helpMessage={formData.postId.helpMessage}
+						data-spec="post-id-field"
 					/>
 				</Col>
 			</Row>
@@ -86,6 +87,7 @@ const UpsertThreadForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
+						data-spec="partner-url-identifier-tooltip"
 					>
 						<AvField
 							name="partnerUrlIdentifier"
@@ -98,6 +100,7 @@ const UpsertThreadForm = (props) => {
 							helpMessage={formData.partnerUrlIdentifier.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
+							data-spec="partner-url-identifier-field"
 						/>
 					</Tooltip>
 				</Col>
@@ -115,6 +118,7 @@ const UpsertThreadForm = (props) => {
 							placeholder="Thread Tags"
 							className="form-control"
 							labelClassName="form-control-label"
+							data-spec="tags-field"
 						/>
 						<small className="form-text">{formData.threadTags.helpMessage}</small>
 					</FormGroup>

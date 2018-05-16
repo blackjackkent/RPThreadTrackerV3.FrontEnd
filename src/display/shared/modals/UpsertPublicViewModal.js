@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import UpsertPublicViewForm from '../../forms/upsertPublicView/UpsertPublicViewForm';
+import UpsertPublicViewForm from '../../forms/upsert-public-view/UpsertPublicViewForm';
 import TooltipForm from '../../forms/TooltipForm';
 import { getValuesFromMultiSelect } from '../../../utility';
 

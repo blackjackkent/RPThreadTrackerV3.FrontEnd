@@ -111,6 +111,9 @@
 		"npm": ">= 5.0.0"
 	},
 	"jest": {
+		"moduleNameMapper": {
+			"\\.(css|scss)$": "<rootDir>/src/utility/styleMock.js"
+		},
 		"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
 		"testEnvironment": "enzyme",
 		"testEnvironmentOptions": {

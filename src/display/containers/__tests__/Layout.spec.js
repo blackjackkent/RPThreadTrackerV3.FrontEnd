@@ -23,6 +23,7 @@ jest.mock('../../views/characters/ManageCharacters', () => () => 'ManageCharacte
 jest.mock('../../views/tools/Tools', () => () => 'Tools');
 jest.mock('../../views/settings/Settings', () => () => 'Settings');
 jest.mock('../../views/help/Help', () => () => 'Help');
+jest.mock('../../../infrastructure/withPageViewTracker', () => Component => Component);
 // #endregion mocks
 
 const createTestProps = propOverrides => ({

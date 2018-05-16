@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import UpsertCharacterForm from '../../forms/upsertCharacter/UpsertCharacterForm';
+import UpsertCharacterForm from '../../forms/upsert-character/UpsertCharacterForm';
 import TooltipForm from '../../forms/TooltipForm';
 
 const propTypes = {
