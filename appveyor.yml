@@ -1,0 +1,29 @@
+-
+  version: '1.0.{build}'
+  image: Visual Studio 2017
+  environment:
+    nodejs_version: "8"
+  branches:
+    only:
+    - development
+  init:
+    - cmd: git config --global core.autocrlf true
+  install:
+    # Get the latest stable version of Node.js or io.js
+    - ps: Install-Product node $env:nodejs_version
+    # install modules
+    - yarn
+  test_script:
+    # Output useful info for debugging.
+    - node --version
+    - npm --version
+    # run tests
+    - yarn test:ci
+  build_script:
+    - yarn build
+  artifacts:
+    - path: build\
+      name: app
+  deploy:
+    - provider: Environment
+      name: RPThreadTrackerV3-FrontEnd-Dev
