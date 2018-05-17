@@ -12,15 +12,15 @@
     # Get the latest stable version of Node.js or io.js
     - ps: Install-Product node $env:nodejs_version
     # install modules
-    - yarn
+    - npm install
   test_script:
     # Output useful info for debugging.
     - node --version
     - npm --version
     # run tests
-    - yarn test:ci
+    - npm run test:ci
   build_script:
-    - yarn build
+    - npm run build
   artifacts:
     - path: build\
       name: app
