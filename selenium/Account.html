@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
+	<title>Account</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Log In With Invalid Username</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/login<datalist><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option><option>http://localhost:8080/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=Username<datalist><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>type</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>test</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option><option>css=button.px-4.btn.btn-primary</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=p.form-control-feedback<datalist><option>//div[@id='root']/div/div/div/div/div/div/form/div/p</option><option>//div/p</option><option>css=p.form-control-feedback</option></datalist></td><td>Invalid username or password.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Log In With Invalid Password</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/login<datalist><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option><option>http://localhost:8080/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=Username<datalist><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>blackjackkent-test</td>
+</tr>
+<tr><td>type</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>click</td><td>css=.btn-primary<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>css=.btn-primary</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=p.form-control-feedback<datalist><option>//div[@id='root']/div/div/div/div/div/div/form/div/p</option><option>//div/p</option><option>css=p.form-control-feedback</option></datalist></td><td>Invalid username or password.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can Log In With Valid Username</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/login<datalist><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option><option>http://localhost:8080/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=Username<datalist><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>blackjackkent-smoketest</td>
+</tr>
+<tr><td>type</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option><option>css=button.px-4.btn.btn-primary</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=li.active.breadcrumb-item<datalist><option>//div[@id='root']/div/div/main/div/ol/li[2]</option><option>//ol/li[2]</option><option>css=li.active.breadcrumb-item</option></datalist></td><td>Dashboard</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can Log In With Valid Email</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/login<datalist><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option><option>http://localhost:8080/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=Username<datalist><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>rosalind.m.wills+smoketest@gmail.com</td>
+</tr>
+<tr><td>type</td><td>id=Password<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=li.active.breadcrumb-item<datalist><option>css=li.active.breadcrumb-item</option><option>//div[@id='root']/div/div/main/div/ol/li[2]</option><option>//ol/li[2]</option></datalist></td><td>Dashboard</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Shows Feedback on Blur for Username</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option></datalist></td><td></td>
+</tr>
+<tr><td>fireEvent</td><td>id=username<datalist><option>id=username</option><option>name=username</option><option>//input[@id='username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/input</option><option>//input</option><option>css=#username</option></datalist></td><td>focus</td>
+</tr>
+<tr><td>fireEvent</td><td>id=username<datalist><option>id=email</option><option>name=email</option><option>//input[@id='email']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#email</option><option>id=username</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='username-field'] .form-control-feedback<datalist><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>//form/div/div/div/div</option><option>css=div.form-control-feedback</option><option>[data-spec='username-field']</option><option>[data-spec='username-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option></datalist></td><td>You must enter a username.</td>
+</tr>
+<tr><td>type</td><td>id=username<datalist><option>id=username</option></datalist></td><td>aa</td>
+</tr>
+<tr><td>fireEvent</td><td>id=username<datalist><option>id=username</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='username-field'] .form-control-feedback<datalist><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='username-field'] .form-control-feedback</option></datalist></td><td>Your username must be more than 3 characters.</td>
+</tr>
+<tr><td>type</td><td>id=username<datalist><option>id=username</option></datalist></td><td>aaaa</td>
+</tr>
+<tr><td>fireEvent</td><td>id=username<datalist><option>id=username</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>assertElementNotPresent</td><td>css=[data-spec='username-field'] .form-control-feedback<datalist><option>css=[data-spec='username-field'] .form-control-feedback</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Shows Feedback on Blur for Email</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option></datalist></td><td></td>
+</tr>
+<tr><td>fireEvent</td><td>id=email<datalist><option>id=username</option><option>name=username</option><option>//input[@id='username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/input</option><option>//input</option><option>css=#username</option><option>id=email</option></datalist></td><td>focus</td>
+</tr>
+<tr><td>fireEvent</td><td>id=email<datalist><option>id=username</option><option>id=email</option><option>name=email</option><option>//input[@id='email']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#email</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='email-field'] .form-control-feedback<datalist><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>//form/div/div/div/div</option><option>css=div.form-control-feedback</option><option>[data-spec='username-field']</option><option>[data-spec='username-field'] .form-control-feedback</option><option>css=[data-spec='email-field'] .form-control-feedback</option></datalist></td><td>You must enter an email.</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=username</option><option>id=email</option></datalist></td><td>aa</td>
+</tr>
+<tr><td>fireEvent</td><td>id=email<datalist><option>id=username</option><option>id=email</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='email-field'] .form-control-feedback<datalist><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='email-field'] .form-control-feedback</option></datalist></td><td>Please enter a valid email.</td>
+</tr>
+<tr><td>type</td><td>id=email<datalist><option>id=email</option></datalist></td><td>rosalind@blackjack-software.com</td>
+</tr>
+<tr><td>fireEvent</td><td>id=email<datalist><option>id=email</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>assertElementNotPresent</td><td>css=[data-spec='email-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Shows Feedback on Blur for Password</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option></datalist></td><td></td>
+</tr>
+<tr><td>fireEvent</td><td>id=password<datalist><option>id=email</option><option>id=username</option><option>name=username</option><option>//input[@id='username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/input</option><option>//input</option><option>css=#username</option><option>id=password</option></datalist></td><td>focus</td>
+</tr>
+<tr><td>fireEvent</td><td>id=password<datalist><option>id=email</option><option>id=username</option><option>name=email</option><option>//input[@id='email']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#email</option><option>id=password</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>//form/div/div/div/div</option><option>css=div.form-control-feedback</option><option>[data-spec='username-field']</option><option>[data-spec='username-field'] .form-control-feedback</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td>You must enter an email.</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=email</option><option>id=username</option><option>id=password</option></datalist></td><td>aa</td>
+</tr>
+<tr><td>fireEvent</td><td>id=password<datalist><option>id=email</option><option>id=username</option><option>id=password</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td>Your password must be longer than 6 characters.</td>
+</tr>
+<tr><td>type</td><td>id=password<datalist><option>id=email</option><option>id=password</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>fireEvent</td><td>id=password<datalist><option>id=email</option><option>id=password</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>assertElementNotPresent</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td></td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -16,7 +16,7 @@ export default {
 	email: {
 		email: {
 			value: true,
-			errorMessage: 'Please enter a valid email'
+			errorMessage: 'Please enter a valid email.'
 		},
 		required: {
 			value: true,

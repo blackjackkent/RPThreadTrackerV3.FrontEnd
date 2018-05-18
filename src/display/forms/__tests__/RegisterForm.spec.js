@@ -21,7 +21,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'username-field');
+		const field = getSpecWrapper(element, 'username-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.minLength).toHaveProperty('value', 3);
 		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
@@ -30,7 +30,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'email-field');
+		const field = getSpecWrapper(element, 'email-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.email).toHaveProperty('value', true);
 	});
@@ -38,7 +38,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'password-field');
+		const field = getSpecWrapper(element, 'password-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.minLength).toHaveProperty('value', 6);
 	});
@@ -58,7 +58,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'username-field');
+		const field = getSpecWrapper(element, 'username-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});
@@ -67,7 +67,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'email-field');
+		const field = getSpecWrapper(element, 'email-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});
@@ -76,7 +76,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'password-field');
+		const field = getSpecWrapper(element, 'password-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});
