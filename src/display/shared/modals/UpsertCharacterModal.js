@@ -21,6 +21,10 @@ class UpsertCharacterModal extends React.Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		this.setState({ characterToEdit: nextProps.characterToEdit });
+	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -46,7 +50,7 @@ class UpsertCharacterModal extends React.Component {
 		return (
 			<Modal isOpen={isUpsertCharacterModalOpen} toggle={closeUpsertCharacterModal} backdrop>
 				<AvForm onValidSubmit={() => submitUpsertCharacter(this.state.characterToEdit)}>
-					<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.id ? 'Edit Character' : 'Add Character'}</ModalHeader>
+					<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.characterId ? 'Edit Character' : 'Add Character'}</ModalHeader>
 					<ModalBody>
 						<TooltipForm
 							Renderable={UpsertCharacterForm}

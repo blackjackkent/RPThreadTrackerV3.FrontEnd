@@ -25,6 +25,10 @@ class UpsertCharacterModal extends React.Component {
 		};
 	}
 
+	componentWillReceiveProps(nextProps) {
+		this.setState({ viewToEdit: nextProps.viewToEdit });
+	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		let value = target.type === 'checkbox' ? target.checked : target.value;
