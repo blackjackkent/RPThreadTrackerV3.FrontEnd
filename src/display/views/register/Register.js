@@ -68,10 +68,10 @@ class Register extends Component {
 		}
 		let error = (<span />);
 		if (registrationErrors.length) {
-			const errorStrings = registrationErrors.map(e => (<span>{e}<br /></span>));
+			const errorStrings = registrationErrors.map(e => (<span key={e}>{e}<br /></span>));
 			error = (
 				<div className="has-danger">
-					<p className="form-control-feedback">{errorStrings}</p>
+					<p data-spec="register-server-error" className="form-control-feedback">{errorStrings}</p>
 				</div>
 			);
 		}

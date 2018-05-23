@@ -141,7 +141,7 @@
 </tr>
 <tr><td>fireEvent</td><td>id=password<datalist><option>id=email</option><option>id=username</option><option>name=email</option><option>//input[@id='email']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#email</option><option>id=password</option></datalist></td><td>blur</td>
 </tr>
-<tr><td>verifyText</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>//form/div/div/div/div</option><option>css=div.form-control-feedback</option><option>[data-spec='username-field']</option><option>[data-spec='username-field'] .form-control-feedback</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td>You must enter an email.</td>
+<tr><td>verifyText</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>//form/div/div/div/div</option><option>css=div.form-control-feedback</option><option>[data-spec='username-field']</option><option>[data-spec='username-field'] .form-control-feedback</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td>You must enter a password.</td>
 </tr>
 <tr><td>type</td><td>id=password<datalist><option>id=email</option><option>id=username</option><option>id=password</option></datalist></td><td>aa</td>
 </tr>
@@ -154,6 +154,166 @@
 <tr><td>fireEvent</td><td>id=password<datalist><option>id=email</option><option>id=password</option></datalist></td><td>blur</td>
 </tr>
 <tr><td>assertElementNotPresent</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td></td>
+</tr>
+<tr><td>type</td><td>id=confirmPassword<datalist><option>id=password</option><option>id=email</option><option>id=confirmPassword</option></datalist></td><td>Test123a</td>
+</tr>
+<tr><td>fireEvent</td><td>id=confirmPassword<datalist><option>id=password</option><option>id=email</option><option>id=confirmPassword</option></datalist></td><td>blur</td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='confirm-password-field'] .form-control-feedback<datalist><option>css=[data-spec='password-field'] .form-control-feedback</option><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='confirm-password-field'] .form-control-feedback</option></datalist></td><td>Your passwords must match.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register Without Username</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option><option>http://localhost:8080/register</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option><option>id=username</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option><option>id=email</option></datalist></td><td>test@test.com</td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=password</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option><option>id=confirmPassword</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='username-field'] .form-control-feedback<datalist><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option></datalist></td><td>You must enter a username.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register Without Email</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=username</option><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=email</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=password</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=confirmPassword</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='email-field'] .form-control-feedback<datalist><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='email-field'] .form-control-feedback</option></datalist></td><td>You must enter an email.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register Without Password</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=username</option><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=email</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option></datalist></td><td>test@test.com</td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=password</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=confirmPassword</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='password-field'] .form-control-feedback<datalist><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='password-field'] .form-control-feedback</option></datalist></td><td>You must enter a password.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register Without Confirm Password</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=username</option><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=email</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option></datalist></td><td>test@test.com</td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=password</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>testtest</td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=confirmPassword</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option></datalist></td><td></td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='confirm-password-field'] .form-control-feedback<datalist><option>css=[data-spec='password-field'] .form-control-feedback</option><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='confirm-password-field'] .form-control-feedback</option></datalist></td><td>You must confirm your password.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register With Existing Username</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=username</option><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>blackjackkent-test</td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=email</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option></datalist></td><td>rosalind.m.wills+052218350@gmail.com</td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=password</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=confirmPassword</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='register-server-error'].form-control-feedback span<datalist><option>css=[data-spec='password-field'] .form-control-feedback</option><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='register-server-error'] .form-control-feedback</option><option>css=[data-spec='register-server-error'] .form-control-feedback span</option><option>css=[data-spec='register-server-error'].form-control-feedback span</option></datalist></td><td>Error creating account. An account with some or all of this information may already exist.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register With Existing Email</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=username</option><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>blackjackkent-test052218422</td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=email</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option></datalist></td><td>rosalind.m.wills@gmail.com</td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=password</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=confirmPassword</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option></datalist></td><td>Test123a!</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='register-server-error'].form-control-feedback span<datalist><option>css=[data-spec='register-server-error'].form-control-feedback span</option><option>css=[data-spec='password-field'] .form-control-feedback</option><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='register-server-error'] .form-control-feedback</option><option>css=[data-spec='register-server-error'] .form-control-feedback span</option></datalist></td><td>Error creating account. An account with some or all of this information may already exist.</td>
+</tr>
+</tbody></table>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">Can't Register With Invalid Password</td></tr>
+</thead>
+<tbody>
+<tr><td>open</td><td>http://localhost:8080/register<datalist><option>http://localhost:8080/register</option><option>http://localhost:8080/login</option><option>https://rpthreadtrackerv3-frontend-dev.azurewebsites.net/login</option></datalist></td><td></td>
+</tr>
+<tr><td>storeEval</td><td>window.localStorage.clear()<datalist><option>window.localStorage.clear()</option><option>console.log(window.localStorage)</option></datalist></td><td></td>
+</tr>
+<tr><td>setText</td><td>id=username<datalist><option>id=username</option><option>id=Username</option><option>name=Username</option><option>//input[@id='Username']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/input</option><option>//input</option><option>css=#Username</option></datalist></td><td>blackjackkent-test052218422</td>
+</tr>
+<tr><td>setText</td><td>id=email<datalist><option>id=email</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=Email</option></datalist></td><td>rosalind.m.wills+052218422@gmail.com</td>
+</tr>
+<tr><td>setText</td><td>id=password<datalist><option>id=password</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option></datalist></td><td>Test123a</td>
+</tr>
+<tr><td>setText</td><td>id=confirmPassword<datalist><option>id=confirmPassword</option><option>id=Password</option><option>name=Password</option><option>//input[@id='Password']</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div[2]/input</option><option>//div[2]/input</option><option>css=#Password</option><option>id=ConfirmPassword</option></datalist></td><td>Test123a</td>
+</tr>
+<tr><td>click</td><td>css=button.px-4.btn.btn-primary<datalist><option>css=button.px-4.btn.btn-primary</option><option>//div[@id='root']/div/div/div/div/div/div/form/div[2]/div/button</option><option>//button</option></datalist></td><td></td>
+</tr>
+<tr><td>verifyText</td><td>css=[data-spec='register-server-error'].form-control-feedback span<datalist><option>css=[data-spec='register-server-error'].form-control-feedback span</option><option>css=[data-spec='password-field'] .form-control-feedback</option><option>css=[data-spec='email-field'] .form-control-feedback</option><option>css=[data-spec='username-field'] .form-control-feedback</option><option>//div[@id='root']/div/div/div/div/div/div/form/div/div/div/div</option><option>css=[data-spec='register-server-error'] .form-control-feedback</option><option>css=[data-spec='register-server-error'] .form-control-feedback span</option></datalist></td><td>Passwords must have at least one non alphanumeric character.</td>
 </tr>
 </tbody></table>
 </body>

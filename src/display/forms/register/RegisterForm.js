@@ -38,14 +38,16 @@ const RegisterForm = (props) => {
 					validate={validator.password}
 				/>
 			</div>
-			<AvField
-				name="confirmPassword"
-				placeholder="Confirm Password"
-				type="password"
-				onChange={handleInputChange}
-				validate={validator.confirmPassword}
-				data-spec="confirm-password-field"
-			/>
+			<div data-spec="confirm-password-field">
+				<AvField
+					name="confirmPassword"
+					placeholder="Confirm Password"
+					type="password"
+					onChange={handleInputChange}
+					validate={validator.confirmPassword}
+					data-spec="confirm-password-field"
+				/>
+			</div>
 		</div>
 	);
 };
