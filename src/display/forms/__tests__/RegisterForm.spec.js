@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../utility/testHelpers';
+import { getSpecWrapper } from '../../../../config/tests/helpers.unit';
 import RegisterForm from '../register/RegisterForm';
 // #endregion imports
 
@@ -46,7 +46,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'confirm-password-field');
+		const field = getSpecWrapper(element, 'confirm-password-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.match).toHaveProperty('value', 'password');
 	});
@@ -85,7 +85,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<RegisterForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'confirm-password-field');
+		const field = getSpecWrapper(element, 'confirm-password-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});

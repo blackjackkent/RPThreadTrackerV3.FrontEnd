@@ -57,8 +57,7 @@
 				"devDependencies": [
 					"**/*.test.js",
 					"**/*.spec.js",
-					"**/testHelpers.js",
-					"**/setupTests.js"
+					"**/config/**"
 				]
 			}
 		]

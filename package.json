@@ -38,9 +38,10 @@
 		"jest-enzyme": "^5.0.0",
 		"json-server": "^0.12.0",
 		"node-sass": "^4.5.3",
+		"puppeteer": "^1.4.0",
 		"react-test-renderer": "~15",
 		"redux-test-utils": "^0.2.2",
-		"rimraf": "^2.6.1",
+		"rimraf": "^2.6.2",
 		"sass-loader": "^6.0.6",
 		"source-list-map": "^2.0.0",
 		"style-loader": "^0.18.2",
@@ -104,7 +105,8 @@
 		"test": "jest",
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
-		"test:ci": "jest --config=\"./jest.config.json\""
+		"test:ci": "jest --config=\"./config/tests/jest.config.json\"",
+		"test:e2e": "jest --config=\"./config/tests/jest.e2e.config.json\""
 	},
 	"engines": {
 		"node": ">= 6.0.0",
@@ -112,17 +114,22 @@
 	},
 	"jest": {
 		"moduleNameMapper": {
-			"\\.(css|scss)$": "<rootDir>/src/utility/styleMock.js"
+			"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
 		},
 		"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
 		"testEnvironment": "enzyme",
 		"testEnvironmentOptions": {
 			"enzymeAdapter": "react15"
 		},
+		"testPathIgnorePatterns": [
+			"/node_modules/",
+			"/e2e/"
+		],
 		"coveragePathIgnorePatterns": [
 			"/node_modules/",
-			"/src/utility/testHelpers",
-			"/src/utility/getQuery"
+			"/config/",
+			"/src/utility/getQuery",
+			"/e2e/"
 		]
 	}
 }

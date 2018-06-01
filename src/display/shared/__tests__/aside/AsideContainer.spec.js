@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '../../../../utility/testHelpers';
+import { shallowWithState } from '../../../../../config/tests/helpers.unit';
 import AsideContainer from '../../aside/AsideContainer';
 // #endregion imports
 

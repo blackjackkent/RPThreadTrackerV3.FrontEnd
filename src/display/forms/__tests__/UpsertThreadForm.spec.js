@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../utility/testHelpers';
+import { getSpecWrapper } from '../../../../config/tests/helpers.unit';
 import UpsertThreadForm from '../upsert-thread/UpsertThreadForm';
 // #endregion imports
 

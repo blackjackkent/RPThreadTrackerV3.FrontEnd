@@ -33,7 +33,7 @@ const HeaderDropdown = (props) => {
 				toggle={() => headerDropdownToggle(!isHeaderDropdownOpen)}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
-					<span className="d-md-down-none">{user ? user.userName : ''}</span>
+					<span className="d-md-down-none" data-spec="header-dropdown-username">{user ? user.userName : ''}</span>
 				</DropdownToggle>
 				<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
 					<HeaderDropdownItem onClick={() => openNewThreadModal({})} label="Track New Thread" />

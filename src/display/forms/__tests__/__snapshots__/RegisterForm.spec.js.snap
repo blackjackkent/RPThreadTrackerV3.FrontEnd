@@ -72,24 +72,28 @@ exports[`rendering should render valid snapshot 1`] = `
       }
     />
   </div>
-  <AvField
+  <div
     data-spec="confirm-password-field"
-    name="confirmPassword"
-    onChange={[MockFunction]}
-    placeholder="Confirm Password"
-    type="password"
-    validate={
-      Object {
-        "match": Object {
-          "errorMessage": "Your passwords must match.",
-          "value": "password",
-        },
-        "required": Object {
-          "errorMessage": "You must confirm your password.",
-          "value": true,
-        },
+  >
+    <AvField
+      data-spec="confirm-password-field"
+      name="confirmPassword"
+      onChange={[MockFunction]}
+      placeholder="Confirm Password"
+      type="password"
+      validate={
+        Object {
+          "match": Object {
+            "errorMessage": "Your passwords must match.",
+            "value": "password",
+          },
+          "required": Object {
+            "errorMessage": "You must confirm your password.",
+            "value": true,
+          },
+        }
       }
-    }
-  />
+    />
+  </div>
 </div>
 `;

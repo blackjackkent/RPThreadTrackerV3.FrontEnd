@@ -1,6 +1,6 @@
 {
 	"moduleNameMapper": {
-		"\\.(css|scss)$": "<rootDir>/src/utility/styleMock.js"
+		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
 	},
 	"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
 	"testEnvironment": "enzyme",
@@ -9,8 +9,7 @@
 	},
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",
-		"/src/utility/testHelpers",
-		"/src/setupTests.js"
+		"/config/"
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [
