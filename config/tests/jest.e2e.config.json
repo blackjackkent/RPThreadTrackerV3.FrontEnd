@@ -1,5 +1,6 @@
 {
 	"rootDir": "../../",
+	"preset": "jest-puppeteer",
 	"testMatch": [
 		"<rootDir>/e2e/**/*.js?(x)"
 	],

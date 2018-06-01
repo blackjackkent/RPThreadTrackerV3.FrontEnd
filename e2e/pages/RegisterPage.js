@@ -22,6 +22,23 @@ class RegisterPage extends BasePage {
 		await this.clickDataSpec('confirm-password-field');
 		await this.page.keyboard.type(value);
 	}
+	async getUsernameErrorMessage() {
+		const result = await this.getErrorMessageForDataSpec('username-field');
+		return result;
+	}
+	async getEmailErrorMessage() {
+		const result = await this.getErrorMessageForDataSpec('email-field');
+		return result;
+	}
+	async getPasswordErrorMessage() {
+		const result = await this.getErrorMessageForDataSpec('password-field');
+		return result;
+	}
+	async getErrorMessageForDataSpec(value) {
+		await this.page.waitForSelector(`[data-spec="${value}"] .form-control-feedback`);
+		const message = await this.page.$eval(`[data-spec="${value}"] .form-control-feedback`, el => el.innerHTML);
+		return message;
+	}
 	async submit() {
 		await this.page.click('.btn-primary');
 	}
