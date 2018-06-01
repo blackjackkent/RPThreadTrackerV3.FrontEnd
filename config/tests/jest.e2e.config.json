@@ -5,7 +5,8 @@
 	],
 	"testPathIgnorePatterns": [
 		"/node_modules/",
-		"/src/"
+		"/src/",
+		"/e2e/pages/"
 	],
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",

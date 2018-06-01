@@ -1,32 +1,30 @@
 import puppeteer from 'puppeteer';
-import config from '../config/config.test.json';
+import RegisterPage from './pages/RegisterPage';
+import DashboardPage from './pages/DashboardPage';
 
 describe('Registration', () => {
 	it('should allow registration with valid form', async () => {
 		const browser = await puppeteer.launch({
 			headless: false
 		});
-		const page = await browser.newPage();
-
-		await page.goto(`${config.root}register`);
-		await page.waitForSelector('[data-spec="email-field"]');
+		const tab = await browser.newPage();
+		tab.setViewport({ width: 1920, height: 1080 });
+		const registerPage = new RegisterPage(tab);
+		await registerPage.waitUntilLoaded();
 
 		const ticks = Date.now();
 		const username = `blackjackkent${ticks}`;
 		const email = `rosalind.m.wills+${ticks}@gmail.com`;
 		const password = 'Test123a!';
-		await page.click('[data-spec="email-field"]');
-		await page.keyboard.type(email);
-		await page.click('[data-spec="username-field"]');
-		await page.keyboard.type(username);
-		await page.click('[data-spec="password-field"]');
-		await page.keyboard.type(password);
-		await page.click('[data-spec="confirm-password-field"]');
-		await page.keyboard.type(password);
-		await page.click('.btn-primary');
 
-		await page.waitForSelector('[data-spec="header-dropdown-username"]');
-		const loggedInUsername = await page.$eval('[data-spec="header-dropdown-username"]', el => el.innerHTML);
+		await registerPage.fillInUsername(username);
+		await registerPage.fillInEmail(email);
+		await registerPage.fillInPassword(password);
+		await registerPage.fillInConfirmPassword(password);
+		await registerPage.submit();
+
+		const dashboardPage = new DashboardPage(tab);
+		const loggedInUsername = await dashboardPage.getLoggedInUsername();
 		expect(loggedInUsername).toEqual(username);
 		browser.close();
 	}, 16000);
