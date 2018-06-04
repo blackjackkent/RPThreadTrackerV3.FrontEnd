@@ -2,7 +2,7 @@ import BasePage from './BasePage';
 import config from '../../config/config.test.json';
 
 class LoginPage extends BasePage {
-	async waitUntilLoaded() {
+	async navigateAndWaitUntilLoaded() {
 		await this.page.goto(`${config.root}login`);
 		await this.waitForDataSpec('username-field');
 	}
@@ -29,11 +29,6 @@ class LoginPage extends BasePage {
 	async getServerErrorMessage() {
 		await this.waitForDataSpec('login-server-error');
 		const message = await this.$evalDataSpec('login-server-error', el => el.innerHTML);
-		return message;
-	}
-	async getErrorMessageForDataSpec(value) {
-		await this.page.waitForSelector(`[data-spec="${value}"] .form-control-feedback`);
-		const message = await this.page.$eval(`[data-spec="${value}"] .form-control-feedback`, el => el.innerHTML);
 		return message;
 	}
 	async submit() {

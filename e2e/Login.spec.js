@@ -6,9 +6,9 @@ import RegisterPage from './pages/RegisterPage';
 let loginPage;
 beforeEach(async () => {
 	loginPage = new LoginPage(page);
-	await loginPage.waitUntilLoaded();
+	await loginPage.navigateAndWaitUntilLoaded();
 }, 16000);
-describe('Registration', () => {
+describe('Login', () => {
 	it('should prevent form submission with empty username', async () => {
 		await loginPage.fillInUsername('');
 		await loginPage.fillInPassword(config.password);
@@ -77,13 +77,13 @@ describe('Registration', () => {
 	}, 15000);
 	it.only('should allow login with newly registered account', async () => {
 		const registerPage = new RegisterPage(page);
-		await registerPage.waitUntilLoaded();
+		await registerPage.navigateAndWaitUntilLoaded();
 		const ticks = Date.now();
 		await registerPage.register(ticks);
 		const dashboardPage = new DashboardPage(page);
 		await dashboardPage.getLoggedInUsername();
 
-		await loginPage.waitUntilLoaded();
+		await loginPage.navigateAndWaitUntilLoaded();
 		await loginPage.fillInUsername(`demouser-${ticks}`);
 		await loginPage.fillInPassword(config.password);
 		await loginPage.submit();

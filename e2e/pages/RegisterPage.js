@@ -2,7 +2,7 @@ import BasePage from './BasePage';
 import config from '../../config/config.test.json';
 
 class RegisterPage extends BasePage {
-	async waitUntilLoaded() {
+	async navigateAndWaitUntilLoaded() {
 		await this.page.goto(`${config.root}register`);
 		await this.waitForDataSpec('email-field');
 	}
@@ -47,11 +47,6 @@ class RegisterPage extends BasePage {
 	async getServerErrorMessage() {
 		await this.waitForDataSpec('register-server-error');
 		const message = await this.$evalDataSpec('register-server-error', el => el.innerHTML);
-		return message;
-	}
-	async getErrorMessageForDataSpec(value) {
-		await this.page.waitForSelector(`[data-spec="${value}"] .form-control-feedback`);
-		const message = await this.page.$eval(`[data-spec="${value}"] .form-control-feedback`, el => el.innerHTML);
 		return message;
 	}
 	async submit() {

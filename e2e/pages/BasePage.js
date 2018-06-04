@@ -11,5 +11,10 @@ class BasePage {
 	$evalDataSpec(value, predicate) {
 		return this.page.$eval(`[data-spec="${value}"]`, predicate);
 	}
+	async getErrorMessageForDataSpec(value) {
+		await this.page.waitForSelector(`[data-spec="${value}"] .form-control-feedback`);
+		const message = await this.page.$eval(`[data-spec="${value}"] .form-control-feedback`, el => el.innerHTML);
+		return message;
+	}
 }
 export default BasePage;

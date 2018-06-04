@@ -13,14 +13,15 @@ const ForgotPasswordForm = (props) => {
 	const { handleInputChange } = props;
 	return (
 		<div>
-			<AvField
-				name="Email"
-				placeholder="Email"
-				type="text"
-				onChange={handleInputChange}
-				validate={validator.email}
-				data-spec="email-field"
-			/>
+			<div data-spec="email-field">
+				<AvField
+					name="Email"
+					placeholder="Email"
+					type="text"
+					onChange={handleInputChange}
+					validate={validator.email}
+				/>
+			</div>
 		</div>
 	);
 };

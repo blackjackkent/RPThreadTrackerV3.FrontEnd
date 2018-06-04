@@ -21,7 +21,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<ForgotPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'email-field');
+		const field = getSpecWrapper(element, 'email-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.email).toHaveProperty('value', true);
 	});
@@ -33,7 +33,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<ForgotPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'email-field');
+		const field = getSpecWrapper(element, 'email-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});

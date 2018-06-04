@@ -4,7 +4,7 @@ import DashboardPage from './pages/DashboardPage';
 let registerPage;
 beforeEach(async () => {
 	registerPage = new RegisterPage(page);
-	await registerPage.waitUntilLoaded();
+	await registerPage.navigateAndWaitUntilLoaded();
 }, 16000);
 describe.only('Registration', () => {
 	it('should prevent form submission with empty username', async () => {
