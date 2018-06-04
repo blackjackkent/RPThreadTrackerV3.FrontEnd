@@ -11,22 +11,24 @@ const LoginForm = (props) => {
 	const { handleInputChange } = props;
 	return (
 		<div>
-			<AvField
-				name="Username"
-				placeholder="Username"
-				type="text"
-				onChange={handleInputChange}
-				validate={validator.username}
-				data-spec="username-field"
-			/>
-			<AvField
-				name="Password"
-				placeholder="Password"
-				type="password"
-				onChange={handleInputChange}
-				validate={validator.password}
-				data-spec="password-field"
-			/>
+			<div data-spec="username-field">
+				<AvField
+					name="Username"
+					placeholder="Username"
+					type="text"
+					onChange={handleInputChange}
+					validate={validator.username}
+				/>
+			</div>
+			<div data-spec="password-field">
+				<AvField
+					name="Password"
+					placeholder="Password"
+					type="password"
+					onChange={handleInputChange}
+					validate={validator.password}
+				/>
+			</div>
 		</div>
 	);
 };

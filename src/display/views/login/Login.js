@@ -71,7 +71,7 @@ class Login extends Component {
 		if (loginError) {
 			error = (
 				<div className="has-danger">
-					<p className="form-control-feedback">{loginError}</p>
+					<p data-spec="login-server-error" className="form-control-feedback">{loginError}</p>
 				</div>
 			);
 		}

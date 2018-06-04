@@ -4,7 +4,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPublicThreads } from '../../../infrastructure/actions';
+import { fetchPublicThreads, fetchLegacyPublicThreads } from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
 import getColumns from './_columns';
@@ -38,15 +38,14 @@ class Public extends Component {
 	componentDidMount() {
 		const { slug } = this.props;
 		if (legacyPublicSlugs.includes(slug)) {
-			this.fetchLegacyView();
+			this.fetchLegacyView(slug);
 			return;
 		}
 		this.props.fetchPublicThreads(this.props.slug);
 	}
-	fetchLegacyView() {
+	fetchLegacyView(slug) {
 		const query = getQuery();
-		console.log(query);
-		const view = buildLegacyView(query);
+		const view = buildLegacyView(query, slug);
 		this.props.fetchLegacyPublicThreads(view);
 	}
 	render() {
@@ -90,5 +89,6 @@ class Public extends Component {
 Public.propTypes = propTypes;
 Public.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	fetchPublicThreads
+	fetchPublicThreads,
+	fetchLegacyPublicThreads
 })(Public);

@@ -110,7 +110,7 @@
 		"test:watch": "jest --watch",
 		"test:coverage": "jest --coverage",
 		"test:ci": "jest --config=\"./config/tests/jest.config.json\"",
-		"test:e2e": "cross-env JEST_PUPPETEER_CONFIG=\"config/tests/puppeteer.config.js\" jest --config=\"./config/tests/jest.e2e.config.json\""
+		"test:e2e": "cross-env JEST_PUPPETEER_CONFIG=\"config/tests/puppeteer.config.js\" jest --config=\"./config/tests/jest.e2e.config.json\" --runInBand"
 	},
 	"engines": {
 		"node": ">= 6.0.0",

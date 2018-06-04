@@ -300,6 +300,10 @@ export {
 	fetchPublicThreads
 } from './public/fetchPublicThreads';
 export {
+	FETCH_LEGACY_PUBLIC_THREADS,
+	fetchLegacyPublicThreads
+} from './public/fetchLegacyPublicThreads';
+export {
 	FETCH_PUBLIC_THREADS_STATUS,
 	FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE,
 	FETCHED_PUBLIC_THREADS_STATUS_CHUNK_SUCCESS,

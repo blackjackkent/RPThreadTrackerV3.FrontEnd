@@ -39,7 +39,7 @@ exports[`rendering should render valid snapshot with status 1`] = `
       <a
         href="testurl"
       >
-        blackjackkent
+        demouser
       </a>
     </div>
   </div>

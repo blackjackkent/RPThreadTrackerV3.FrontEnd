@@ -1,5 +1,6 @@
 {
 	"root": "http://localhost:8080/",
 	"username": "myusername",
-	"email": "mypassword"
+	"email": "my@email.com",
+	"password": "mypassword"
 }

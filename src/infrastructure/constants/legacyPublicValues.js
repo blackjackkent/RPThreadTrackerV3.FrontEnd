@@ -25,7 +25,20 @@ function getSortKey(orderBy) {
 	return columns.THREAD_TITLE.key;
 }
 
-export function buildLegacyView(queryData) {
+export function buildLegacyView(queryData, slug) {
+	const turnFilter = {};
+	if (slug === 'yourturn') {
+		turnFilter.includeMyTurn = true;
+	}
+	if (slug === 'theirturn') {
+		turnFilter.includeTheirTurn = true;
+	}
+	if (slug === 'queued') {
+		turnFilter.includeQueued = true;
+	}
+	if (slug === 'archived') {
+		turnFilter.includeArchived = true;
+	}
 	return {
 		name: 'Untitled',
 		slug: 'legacy',
@@ -35,10 +48,11 @@ export function buildLegacyView(queryData) {
 			columns.LAST_POST_DATE.key,
 			columns.TRACKED_PARTNER.key
 		],
-		characters: queryData.currentBlog ? [queryData.currentBlog] : [],
+		characterUrlIdentifier: queryData.currentBlog,
 		tags: queryData.filteredTag ? [queryData.filteredTag] : [],
 		userId: queryData.userId,
 		sortDescending: queryData.sortDescending === 'true',
-		sortKey: getSortKey(queryData.currentOrderBy)
+		sortKey: getSortKey(queryData.currentOrderBy),
+		turnFilter
 	};
 }
