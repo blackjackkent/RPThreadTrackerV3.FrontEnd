@@ -10,6 +10,9 @@ class RegisterPage extends BasePage {
 		await this.clickDataSpec('username-field');
 		await this.page.keyboard.type(value);
 	}
+	async fillInExistingUsername() {
+		await this.fillInUsername(config.username);
+	}
 	async fillInEmail(value) {
 		await this.clickDataSpec('email-field');
 		await this.page.keyboard.type(value);
@@ -32,6 +35,10 @@ class RegisterPage extends BasePage {
 	}
 	async getPasswordErrorMessage() {
 		const result = await this.getErrorMessageForDataSpec('password-field');
+		return result;
+	}
+	async getConfirmPasswordErrorMessage() {
+		const result = await this.getErrorMessageForDataSpec('confirm-password-field');
 		return result;
 	}
 	async getErrorMessageForDataSpec(value) {

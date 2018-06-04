@@ -77,7 +77,7 @@ describe('Registration', () => {
 		const message = await registerPage.getPasswordErrorMessage();
 		expect(message).toEqual('You must enter a password.');
 	}, 15000);
-	it('should prevent form submission with empty password', async () => {
+	it('should prevent form submission with invalid password', async () => {
 		const ticks = Date.now();
 		const username = `blackjackkent${ticks}`;
 		const email = `rosalind.m.wills+${ticks}@gmail.com`;
@@ -86,11 +86,40 @@ describe('Registration', () => {
 		await registerPage.fillInUsername(username);
 		await registerPage.fillInEmail(email);
 		await registerPage.fillInPassword('aaaaa');
-		await registerPage.fillInConfirmPassword(password);
+		await registerPage.fillInConfirmPassword('aaaaa');
 		await registerPage.submit();
 
 		const message = await registerPage.getPasswordErrorMessage();
 		expect(message).toEqual('Your password must be longer than 6 characters.');
+	}, 15000);
+	it('should prevent form submission with empty confirm password', async () => {
+		const ticks = Date.now();
+		const username = `blackjackkent${ticks}`;
+		const email = `rosalind.m.wills+${ticks}@gmail.com`;
+		const password = 'Test123a!';
+
+		await registerPage.fillInUsername(username);
+		await registerPage.fillInEmail(email);
+		await registerPage.fillInPassword(password);
+		await registerPage.submit();
+
+		const message = await registerPage.getConfirmPasswordErrorMessage();
+		expect(message).toEqual('You must confirm your password.');
+	}, 15000);
+	it('should prevent form submission with non-matching passwords', async () => {
+		const ticks = Date.now();
+		const username = `blackjackkent${ticks}`;
+		const email = `rosalind.m.wills+${ticks}@gmail.com`;
+		const password = 'Test123a!';
+
+		await registerPage.fillInUsername(username);
+		await registerPage.fillInEmail(email);
+		await registerPage.fillInPassword('Test123a');
+		await registerPage.fillInConfirmPassword(password);
+		await registerPage.submit();
+
+		const message = await registerPage.getConfirmPasswordErrorMessage();
+		expect(message).toEqual('Your passwords must match.');
 	}, 15000);
 	it('should allow registration with valid form', async () => {
 		const ticks = Date.now();

@@ -21,3 +21,4 @@ compilation-stats.json
 .vscode/*
 *.bak
 *.orig
+config/config.test.json
