@@ -1,15 +1,22 @@
 {
+	"rootDir": "../..",
 	"moduleNameMapper": {
 		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
 	},
-	"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+	"setupTestFrameworkScriptFile": "<rootDir>/node_modules/jest-enzyme/lib/index.js",
 	"testEnvironment": "enzyme",
 	"testEnvironmentOptions": {
 		"enzymeAdapter": "react15"
 	},
+	"testPathIgnorePatterns": [
+		"/node_modules/",
+		"/e2e/"
+	],
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",
-		"/config/"
+		"/config/",
+		"/src/utility/getQuery",
+		"/e2e/"
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [
