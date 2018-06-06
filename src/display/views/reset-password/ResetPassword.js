@@ -72,7 +72,12 @@ class ResetPassword extends Component {
 		if (resetPasswordError) {
 			error = (
 				<div className="has-danger">
-					<p data-spec="reset-password-server-error" className="form-control-feedback">{resetPasswordError}</p>
+					<p
+						data-spec="reset-password-server-error"
+						className="form-control-feedback"
+					>
+						{resetPasswordError}
+					</p>
 				</div>
 			);
 		}

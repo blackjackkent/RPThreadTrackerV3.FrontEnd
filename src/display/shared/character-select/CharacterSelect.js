@@ -22,7 +22,7 @@ const CharacterSelect = (props) => {
 	const {
 		characters, selectedCharacterId, onSelectCharacter, defaultText, includeNullValue
 	} = props;
-	const options = characters.map(c => <CharacterSelectItem character={c} />);
+	const options = characters.map(c => <CharacterSelectItem key={c.characterId} character={c} />);
 	return (
 		<FormGroup>
 			<Label htmlFor="characterId">Character</Label>
@@ -30,10 +30,16 @@ const CharacterSelect = (props) => {
 				type="select"
 				name="characterId"
 				id="character-id"
+				data-spec="character-select-field"
 				defaultValue={selectedCharacterId}
 				onChange={e => onSelectCharacter(parseInt(e.target.value, 10))}
 			>
-				{includeNullValue && <option value={null}>{defaultText}</option>}
+				{includeNullValue &&
+					<option
+						data-spec="character-select-null-value"
+						value={null}
+					>{defaultText}
+					</option>}
 				{options}
 			</Input>
 		</FormGroup>
