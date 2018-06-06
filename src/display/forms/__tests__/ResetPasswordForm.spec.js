@@ -21,7 +21,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'new-password-field');
+		const field = getSpecWrapper(element, 'new-password-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.minLength).toHaveProperty('value', 6);
 	});
@@ -29,7 +29,7 @@ describe('rendering', () => {
 		const props = createTestProps();
 		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'confirm-new-password-field');
+		const field = getSpecWrapper(element, 'confirm-new-password-field').find('AvField');
 		expect(field.props().validate.required).toHaveProperty('value', true);
 		expect(field.props().validate.match).toHaveProperty('value', 'newPassword');
 	});
@@ -41,7 +41,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'new-password-field');
+		const field = getSpecWrapper(element, 'new-password-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});
@@ -50,7 +50,7 @@ describe('behavior', () => {
 		const props = createTestProps({ handleInputChange });
 		const jsx = (<ResetPasswordForm {...props} />);
 		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'confirm-new-password-field');
+		const field = getSpecWrapper(element, 'confirm-new-password-field').find('AvField');
 		field.simulate('change');
 		expect(handleInputChange).toHaveBeenCalledTimes(1);
 	});

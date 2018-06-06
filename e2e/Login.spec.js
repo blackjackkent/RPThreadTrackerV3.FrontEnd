@@ -9,7 +9,7 @@ beforeEach(async () => {
 	await loginPage.navigateAndWaitUntilLoaded();
 }, 16000);
 describe('Login', () => {
-	it('should prevent form submission with empty username', async () => {
+	it.only('should prevent form submission with empty username', async () => {
 		await loginPage.fillInUsername('');
 		await loginPage.fillInPassword(config.password);
 		await loginPage.submit();
@@ -75,7 +75,7 @@ describe('Login', () => {
 		const loggedInUsername = await dashboardPage.getLoggedInUsername();
 		expect(loggedInUsername).toEqual(config.username);
 	}, 15000);
-	it.only('should allow login with newly registered account', async () => {
+	it('should allow login with newly registered account', async () => {
 		const registerPage = new RegisterPage(page);
 		await registerPage.navigateAndWaitUntilLoaded();
 		const ticks = Date.now();

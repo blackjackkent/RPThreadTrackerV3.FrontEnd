@@ -1,6 +1,14 @@
 class BasePage {
 	constructor(tab) {
 		this.page = tab;
+		this.toastrSelector = '.redux-toastr .top-right .toastr .rrt-middle-container';
+	}
+	waitForToast() {
+		return this.page.waitForSelector(this.toastrSelector);
+	}
+	async getToastTitle() {
+		await this.waitForToast();
+		return this.page.$eval(`${this.toastrSelector} .rrt-title`, el => el.innerHTML);
 	}
 	waitForDataSpec(value) {
 		return this.page.waitForSelector(`[data-spec="${value}"]`);

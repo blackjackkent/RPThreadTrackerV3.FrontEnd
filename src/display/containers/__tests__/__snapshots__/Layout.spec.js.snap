@@ -21,7 +21,9 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
   className="app"
   data-spec="layout-app"
 >
-  <Connect(ReduxToastr) />
+  <Connect(ReduxToastr)
+    timeOut={30000}
+  />
   <HeaderContainer />
   <div
     className="app-body"

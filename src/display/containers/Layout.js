@@ -85,7 +85,8 @@ class Layout extends Component {
 	showLayout() {
 		return (
 			<div className="app" data-spec="layout-app">
-				<ReduxToastr />
+				<ReduxToastr
+					timeOut={30000} />
 				<HeaderContainer />
 				<div className="app-body">
 					<Sidebar {...this.props} />
