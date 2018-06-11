@@ -25,7 +25,7 @@ function refreshAccessToken(error) {
 		.post(`${API_BASE_URL}/api/auth/refresh`, { RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN) })
 		.then(({ data }) => {
 			cache.set(cacheKeys.ACCESS_TOKEN, data.token.token);
-			cache.set(cacheKeys.REFRESH_TOKEN, data.refresh_token.token);
+			cache.set(cacheKeys.REFRESH_TOKEN, data.refreshToken.token);
 		})
 		.catch(() => {
 			throw error;
