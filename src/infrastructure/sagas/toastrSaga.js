@@ -21,7 +21,8 @@ import {
 	SUBMIT_USER_ACCOUNT_INFO_FAILURE,
 	SUBMIT_USER_ACCOUNT_INFO_SUCCESS,
 	UPSERT_PUBLIC_VIEW_FAILURE,
-	UPSERT_PUBLIC_VIEW_SUCCESS
+	UPSERT_PUBLIC_VIEW_SUCCESS,
+	EXPORT_THREADS_FAILURE
 } from '../actions';
 
 function displayActiveThreadsCountMessage(action) {
@@ -128,6 +129,10 @@ function displayUpdatePublicViewSuccess(action) {
 	toastr.success(`Successfully updated public view ${view.name}`);
 }
 
+function displayExportThreadsError() {
+	toastr.error('There was a problem exporting your threads.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(FETCHED_ACTIVE_THREADS_SUCCESS, displayActiveThreadsCountMessage),
@@ -148,6 +153,7 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(SUBMIT_USER_ACCOUNT_INFO_FAILURE, displayUserAccountInfoError),
 		takeEvery(SUBMIT_USER_ACCOUNT_INFO_SUCCESS, displayUserAccountInfoSuccess),
 		takeEvery(UPSERT_PUBLIC_VIEW_FAILURE, displayUpdatePublicViewError),
-		takeEvery(UPSERT_PUBLIC_VIEW_SUCCESS, displayUpdatePublicViewSuccess)
+		takeEvery(UPSERT_PUBLIC_VIEW_SUCCESS, displayUpdatePublicViewSuccess),
+		takeEvery(EXPORT_THREADS_FAILURE, displayExportThreadsError)
 	]);
 }

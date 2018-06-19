@@ -92,6 +92,7 @@ const getColumns = (characters, partners, lastPosters) => [
 	{
 		Header: columns.THREAD_TITLE.name,
 		accessor: columns.THREAD_TITLE.key,
+		Cell: row => <span title={row.value}>{row.value}</span>,
 		minWidth: 200,
 		sortable: true,
 		resizable: true,
