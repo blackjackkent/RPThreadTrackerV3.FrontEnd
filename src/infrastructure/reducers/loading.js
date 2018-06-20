@@ -21,68 +21,146 @@ import {
 	SUBMIT_USER_RESET_PASSWORD_FAILURE,
 	SUBMIT_USER_RESET_PASSWORD_SUCCESS,
 	FETCHED_CHARACTERS_FAILURE,
-	FETCHED_CHARACTERS_SUCCESS
+	FETCHED_CHARACTERS_SUCCESS,
+	UNTRACK_CHARACTER,
+	UNTRACK_CHARACTER_FAILURE,
+	UNTRACK_CHARACTER_SUCCESS,
+	UPSERT_CHARACTER,
+	UPSERT_CHARACTER_FAILURE,
+	UPSERT_CHARACTER_SUCCESS,
+	SUBMIT_CONTACT_FORM,
+	SUBMIT_CONTACT_FORM_FAILURE,
+	SUBMIT_CONTACT_FORM_SUCCESS,
+	UPSERT_PUBLIC_VIEW,
+	UPSERT_PUBLIC_VIEW_FAILURE,
+	UPSERT_PUBLIC_VIEW_SUCCESS,
+	DELETE_PUBLIC_VIEW,
+	DELETE_PUBLIC_VIEW_FAILURE,
+	DELETE_PUBLIC_VIEW_SUCCESS,
+	FETCH_PUBLIC_VIEWS,
+	FETCHED_PUBLIC_VIEWS_FAILURE,
+	FETCHED_PUBLIC_VIEWS_SUCCESS,
+	EXPORT_THREADS,
+	EXPORT_THREADS_FAILURE,
+	EXPORT_THREADS_SUCCESS,
+	UNTRACK_THREAD,
+	UNTRACK_THREAD_FAILURE,
+	UNTRACK_THREAD_SUCCESS,
+	BULK_UNTRACK_THREADS,
+	BULK_UNTRACK_THREADS_FAILURE,
+	BULK_UNTRACK_THREADS_SUCCESS,
+	UPSERT_THREAD,
+	UPSERT_THREAD_FAILURE,
+	UPSERT_THREAD_SUCCESS,
+	BULK_UPDATE_THREADS,
+	BULK_UPDATE_THREADS_FAILURE,
+	BULK_UPDATE_THREADS_SUCCESS,
+	SUBMIT_USER_CHANGE_PASSWORD,
+	SUBMIT_USER_CHANGE_PASSWORD_FAILURE,
+	SUBMIT_USER_CHANGE_PASSWORD_SUCCESS,
+	SUBMIT_USER_ACCOUNT_INFO,
+	SUBMIT_USER_ACCOUNT_INFO_FAILURE,
+	SUBMIT_USER_ACCOUNT_INFO_SUCCESS
 } from '../actions';
 
 const defaultState = {
-	loginLoading: false,
-	registrationLoading: false,
-	isLoadingIconVisible: false,
+	activeThreadsLoading: false,
+	archivedThreadsLoading: false,
+	bulkUntrackThreadLoading: false,
+	bulkUpsertThreadsLoading: false,
+	changeAccountInfoLoading: false,
+	changePasswordLoading: false,
 	charactersLoading: false,
+	contactFormLoading: false,
+	deletePublicViewLoading: false,
+	exportThreadsLoading: false,
 	forgotPasswordLoading: false,
-	resetPasswordLoading: false
+	loginLoading: false,
+	publicViewsLoading: false,
+	registrationLoading: false,
+	resetPasswordLoading: false,
+	untrackCharactersLoading: false,
+	untrackThreadLoading: false,
+	upsertCharactersLoading: false,
+	upsertPublicViewLoading: false,
+	upsertThreadLoading: false
 };
 function loading(state = defaultState, action) {
 	switch (action.type) {
-		case SUBMIT_USER_LOGIN_SUCCESS:
-		case SUBMIT_USER_LOGIN_FAILURE:
-			return Object.assign({}, state, {
-				loginLoading: false
-			});
-		case SUBMIT_USER_LOGIN:
-			return Object.assign({}, state, {
-				loginLoading: true
-			});
-		case SUBMIT_USER_FORGOT_PASSWORD_SUCCESS:
-		case SUBMIT_USER_FORGOT_PASSWORD_FAILURE:
-			return Object.assign({}, state, {
-				forgotPasswordLoading: false
-			});
-		case SUBMIT_USER_FORGOT_PASSWORD:
-			return Object.assign({}, state, {
-				forgotPasswordLoading: true
-			});
-		case SUBMIT_USER_RESET_PASSWORD_FAILURE:
-		case SUBMIT_USER_RESET_PASSWORD_SUCCESS:
-			return Object.assign({}, state, {
-				resetPasswordLoading: false
-			});
-		case SUBMIT_USER_RESET_PASSWORD:
-			return Object.assign({}, state, {
-				resetPasswordLoading: true
-			});
-		case SUBMIT_USER_REGISTRATION_FAILURE:
-		case SUBMIT_USER_REGISTRATION_SUCCESS:
-			return Object.assign({}, state, {
-				registrationLoading: false
-			});
-		case SUBMIT_USER_REGISTRATION:
-			return Object.assign({}, state, {
-				registrationLoading: true
-			});
+		// #region Active Threads
 		case FETCH_ACTIVE_THREADS:
-		case FETCH_ARCHIVED_THREADS:
 			return Object.assign({}, state, {
-				isLoadingIconVisible: true
+				activeThreadsLoading: true
 			});
 		case FETCHED_ACTIVE_THREADS_FAILURE:
 		case FETCHED_ACTIVE_THREADS_STATUS_SUCCESS:
 		case FETCHED_ACTIVE_THREADS_STATUS_FAILURE:
+			return Object.assign({}, state, {
+				activeThreadsLoading: false
+			});
+		// #endregion
+
+		// #region Archived Threads
+		case FETCH_ARCHIVED_THREADS:
+			return Object.assign({}, state, {
+				archivedThreadsLoading: true
+			});
 		case FETCHED_ARCHIVED_THREADS_FAILURE:
 		case FETCHED_ARCHIVED_THREADS_SUCCESS:
 			return Object.assign({}, state, {
-				isLoadingIconVisible: false
+				archivedThreadsLoading: false
 			});
+		// #endregion
+
+		// #region Bulk Untrack Threads
+		case BULK_UNTRACK_THREADS:
+			return Object.assign({}, state, {
+				bulkUpsertThreadsLoading: true
+			});
+		case BULK_UNTRACK_THREADS_FAILURE:
+		case BULK_UNTRACK_THREADS_SUCCESS:
+			return Object.assign({}, state, {
+				bulkUpsertThreadsLoading: false
+			});
+		// #endregion
+
+		// #region Bulk Update Threads
+		case BULK_UPDATE_THREADS:
+			return Object.assign({}, state, {
+				bulkUpsertThreadsLoading: true
+			});
+		case BULK_UPDATE_THREADS_FAILURE:
+		case BULK_UPDATE_THREADS_SUCCESS:
+			return Object.assign({}, state, {
+				bulkUpsertThreadsLoading: false
+			});
+		// #endregion
+
+		// #region Change Account Info
+		case SUBMIT_USER_ACCOUNT_INFO:
+			return Object.assign({}, state, {
+				changeAccountInfoLoading: true
+			});
+		case SUBMIT_USER_ACCOUNT_INFO_FAILURE:
+		case SUBMIT_USER_ACCOUNT_INFO_SUCCESS:
+			return Object.assign({}, state, {
+				changeAccountInfoLoading: false
+			});
+		// #endregion
+
+		// #region Change Password
+		case SUBMIT_USER_CHANGE_PASSWORD:
+			return Object.assign({}, state, {
+				changePasswordLoading: true
+			});
+		case SUBMIT_USER_CHANGE_PASSWORD_FAILURE:
+		case SUBMIT_USER_CHANGE_PASSWORD_SUCCESS:
+			return Object.assign({}, state, {
+				changePasswordLoading: false
+			});
+		// #endregion
+
+		// #region Characters
 		case FETCH_CHARACTERS:
 			return Object.assign({}, state, {
 				charactersLoading: true
@@ -92,6 +170,164 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				charactersLoading: false
 			});
+		// #endregion
+
+		// #region Contact Form
+		case SUBMIT_CONTACT_FORM:
+			return Object.assign({}, state, {
+				contactFormLoading: true
+			});
+		case SUBMIT_CONTACT_FORM_FAILURE:
+		case SUBMIT_CONTACT_FORM_SUCCESS:
+			return Object.assign({}, state, {
+				contactFormLoading: false
+			});
+		// #endregion
+
+		// #region Delete Public View
+		case DELETE_PUBLIC_VIEW:
+			return Object.assign({}, state, {
+				deletePublicViewLoading: true
+			});
+		case DELETE_PUBLIC_VIEW_FAILURE:
+		case DELETE_PUBLIC_VIEW_SUCCESS:
+			return Object.assign({}, state, {
+				deletePublicViewLoading: false
+			});
+		// #endregion
+
+		// #region Export Threads
+		case EXPORT_THREADS:
+			return Object.assign({}, state, {
+				exportThreadsLoading: true
+			});
+		case EXPORT_THREADS_FAILURE:
+		case EXPORT_THREADS_SUCCESS:
+			return Object.assign({}, state, {
+				exportThreadsLoading: false
+			});
+		// #endregion
+
+		// #region Forgot Password
+		case SUBMIT_USER_FORGOT_PASSWORD_SUCCESS:
+		case SUBMIT_USER_FORGOT_PASSWORD_FAILURE:
+			return Object.assign({}, state, {
+				forgotPasswordLoading: false
+			});
+		case SUBMIT_USER_FORGOT_PASSWORD:
+			return Object.assign({}, state, {
+				forgotPasswordLoading: true
+			});
+		// #endregion
+
+		// #region Login
+		case SUBMIT_USER_LOGIN_SUCCESS:
+		case SUBMIT_USER_LOGIN_FAILURE:
+			return Object.assign({}, state, {
+				loginLoading: false
+			});
+		case SUBMIT_USER_LOGIN:
+			return Object.assign({}, state, {
+				loginLoading: true
+			});
+		// #endregion
+
+		// #region Public Views
+		case FETCH_PUBLIC_VIEWS:
+			return Object.assign({}, state, {
+				publicViewsLoading: true
+			});
+		case FETCHED_PUBLIC_VIEWS_FAILURE:
+		case FETCHED_PUBLIC_VIEWS_SUCCESS:
+			return Object.assign({}, state, {
+				publicViewsLoading: false
+			});
+		// #endregion
+
+		// #region Registration
+		case SUBMIT_USER_REGISTRATION_FAILURE:
+		case SUBMIT_USER_REGISTRATION_SUCCESS:
+			return Object.assign({}, state, {
+				registrationLoading: false
+			});
+		case SUBMIT_USER_REGISTRATION:
+			return Object.assign({}, state, {
+				registrationLoading: true
+			});
+		// #endregion
+
+		// #region Reset Password
+		case SUBMIT_USER_RESET_PASSWORD_FAILURE:
+		case SUBMIT_USER_RESET_PASSWORD_SUCCESS:
+			return Object.assign({}, state, {
+				resetPasswordLoading: false
+			});
+		case SUBMIT_USER_RESET_PASSWORD:
+			return Object.assign({}, state, {
+				resetPasswordLoading: true
+			});
+		// #endregion
+
+		// #region Untrack Character
+		case UNTRACK_CHARACTER:
+			return Object.assign({}, state, {
+				untrackCharactersLoading: true
+			});
+		case UNTRACK_CHARACTER_FAILURE:
+		case UNTRACK_CHARACTER_SUCCESS:
+			return Object.assign({}, state, {
+				untrackCharactersLoading: false
+			});
+		// #endregion
+
+		// #region Untrack Thread
+		case UNTRACK_THREAD:
+			return Object.assign({}, state, {
+				untrackThreadLoading: true
+			});
+		case UNTRACK_THREAD_FAILURE:
+		case UNTRACK_THREAD_SUCCESS:
+			return Object.assign({}, state, {
+				untrackThreadLoading: false
+			});
+		// #endregion
+
+		// #region Upsert Character
+		case UPSERT_CHARACTER:
+			return Object.assign({}, state, {
+				upsertCharactersLoading: true
+			});
+		case UPSERT_CHARACTER_FAILURE:
+		case UPSERT_CHARACTER_SUCCESS:
+			return Object.assign({}, state, {
+				upsertCharactersLoading: false
+			});
+		// #endregion
+
+		// #region Upsert Public View
+		case UPSERT_PUBLIC_VIEW:
+			return Object.assign({}, state, {
+				upsertPublicViewLoading: true
+			});
+		case UPSERT_PUBLIC_VIEW_FAILURE:
+		case UPSERT_PUBLIC_VIEW_SUCCESS:
+			return Object.assign({}, state, {
+				upsertPublicViewLoading: false
+			});
+		// #endregion
+
+		// #region Upsert Thread
+		case UPSERT_THREAD:
+			return Object.assign({}, state, {
+				upsertThreadLoading: true
+			});
+		case UPSERT_THREAD_FAILURE:
+		case UPSERT_THREAD_SUCCESS:
+			return Object.assign({}, state, {
+				upsertThreadLoading: false
+			});
+		// #endregion
+
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;
 		default:
