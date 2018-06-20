@@ -26,6 +26,7 @@ const CurrentCharacterTable = (props) => {
 				columns={columns}
 				defaultSorted={[{ id: 'characterName', desc: true }]}
 				pageSize={10}
+				noDataText="No Characters Found"
 				getTdProps={getTdProps(
 					openUntrackCharacterModal,
 					openUpsertCharacterModal,

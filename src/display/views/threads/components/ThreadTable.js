@@ -152,6 +152,8 @@ class ThreadTable extends React.Component {
 					ref={r => this.checkboxTable = r}
 					className="-striped"
 					data={getData(filteredThreads)}
+					noDataText="No Threads Found"
+					defaultPageSize={filteredThreads.length > 10 ? 20 : 10}
 					columns={columns}
 					getTdProps={tdProps}
 					defaultSorted={[

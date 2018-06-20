@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardBlock } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
+import NoCharactersMessage from '../NoCharactersMessage';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -20,6 +21,7 @@ const YourCharactersCard = (props) => {
 				</div>
 			</CardHeader>
 			<CardBlock className="card-body">
+				{characters.length === 0 && <NoCharactersMessage /> }
 				{
 					characters.map(character =>
 						(<YourCharactersCardRow

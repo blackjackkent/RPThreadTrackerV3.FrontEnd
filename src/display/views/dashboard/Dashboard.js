@@ -144,7 +144,9 @@ class Dashboard extends Component {
 				<Row>
 					<Col xs="12" md="6">
 						<RecentActivityCard
-							threads={recentActivityThreads}
+							recentActivityThreads={recentActivityThreads}
+							allThreads={activeThreads}
+							characters={characters}
 							archiveThread={this.archiveThread}
 							openUntrackThreadModal={this.openUntrackThreadModal}
 							markThreadQueued={this.markThreadQueued}

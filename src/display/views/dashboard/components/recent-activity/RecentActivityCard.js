@@ -2,9 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardHeader, CardBlock } from 'reactstrap';
 import RecentActivityRow from './RecentActivityRow';
+import NoThreadsMessage from '../NoThreadsMessage';
+import NoCharactersMessage from '../NoCharactersMessage';
 
 const propTypes = {
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	allThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	archiveThread: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
 	markThreadQueued: PropTypes.func.isRequired
@@ -12,7 +16,7 @@ const propTypes = {
 
 const RecentActivityCard = (props) => {
 	const {
-		threads, archiveThread, openUntrackThreadModal, markThreadQueued
+		recentActivityThreads, allThreads, characters, archiveThread, openUntrackThreadModal, markThreadQueued
 	} = props;
 	return (
 		<Card className="recent-activity-card">
@@ -20,7 +24,10 @@ const RecentActivityCard = (props) => {
 				<i className="fas fa-bolt" /> Recent Activity
 			</CardHeader>
 			<CardBlock className="card-body">
-				{threads.map(threadData =>
+				{characters.length === 0 && <NoCharactersMessage /> }
+				{characters.length > 0 && allThreads.length === 0 && <NoThreadsMessage />}
+				{characters.length > 0 && allThreads.length > 0 && <NoRecentActivityMessage />}
+				{allThreads.length > 0 && recentActivityThreads.map(threadData =>
 					(<RecentActivityRow
 						threadData={threadData}
 						key={threadData.thread.threadId}

@@ -17,9 +17,9 @@ const TrackerSupportCard = () => (
 					<img alt="" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1" />
 				</form>
 			</div>
-			<div className="patreon-button-wrapper">
+			{/* <div className="patreon-button-wrapper">
 				<a href="https://www.patreon.com/bePatron?u=4797959" className="btn btn-primary">Support me on Patreon!</a>
-			</div>
+			</div> */}
 		</CardBlock>
 	</Card>
 );
