@@ -4,14 +4,40 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardBlock } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
+import LoadingIndicator from '../../../../shared/LoadingIndicator';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	characterThreadCounts: PropTypes.shape({}).isRequired
+	characterThreadCounts: PropTypes.shape({}).isRequired,
+	loadingInProgress: PropTypes.bool.isRequired
+};
+
+const getBlockContent = (loadingInProgress, characters, characterThreadCounts) => {
+	if (loadingInProgress) {
+		return (<LoadingIndicator
+			style={{
+				width: 50,
+				height: 50,
+				position: 'absolute',
+				top: '50%',
+				left: '50%',
+				transform: 'translate(-50%, -50%)'
+			}}
+		/>);
+	}
+	if (characters.length === 0) {
+		return (<NoCharactersMessage />);
+	}
+	return characters.map(character =>
+		(<YourCharactersCardRow
+			character={character}
+			key={character.characterId}
+			threadCount={characterThreadCounts[character.characterId]}
+		/>));
 };
 
 const YourCharactersCard = (props) => {
-	const { characters, characterThreadCounts } = props;
+	const { characters, characterThreadCounts, loadingInProgress } = props;
 	return (
 		<Card className="your-characters-card">
 			<CardHeader>
@@ -21,15 +47,11 @@ const YourCharactersCard = (props) => {
 				</div>
 			</CardHeader>
 			<CardBlock className="card-body">
-				{characters.length === 0 && <NoCharactersMessage /> }
-				{
-					characters.map(character =>
-						(<YourCharactersCardRow
-							character={character}
-							key={character.characterId}
-							threadCount={characterThreadCounts[character.characterId]}
-						/>))
-				}
+				{getBlockContent(
+					loadingInProgress,
+					characters,
+					characterThreadCounts
+				)}
 			</CardBlock>
 		</Card>
 	);

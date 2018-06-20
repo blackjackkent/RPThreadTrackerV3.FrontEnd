@@ -26,3 +26,5 @@ export { default as getPublicThreads } from './threads/getPublicThreads';
 export { default as getCharactersSortedByIdentifier } from './characters/getCharactersSortedByIdentifier';
 
 export { default as getTagsSortedByTagText } from './tags/getTagsSortedByTagText';
+
+export { default as getIsLoadingIconVisible } from './ui/getIsLoadingIconVisible';

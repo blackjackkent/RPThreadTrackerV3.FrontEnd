@@ -135,7 +135,9 @@ exports[`rendering should render valid snapshot 1`] = `
               <strong>
                 myawesomeblog
               </strong>
-               in this field.
+               in this field. (You can track more than one character
+               
+              with the same URL, if your blog is multi-muse.)
             </span>
           }
           label="Character URL Identifier"
@@ -301,7 +303,9 @@ exports[`rendering should render valid snapshot with character 1`] = `
               <strong>
                 myawesomeblog
               </strong>
-               in this field.
+               in this field. (You can track more than one character
+               
+              with the same URL, if your blog is multi-muse.)
             </span>
           }
           label="Character URL Identifier"

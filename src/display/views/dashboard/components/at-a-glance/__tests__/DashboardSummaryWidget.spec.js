@@ -12,7 +12,7 @@ jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
 const createTestProps = propOverrides => ({
 	header: 33,
 	icon: 'icon-list',
-	threadsLoading: false,
+	isLoadingIconVisible: false,
 	...propOverrides
 });
 
@@ -24,7 +24,7 @@ describe('rendering', () => {
 		expect(element).toMatchSnapshot();
 	});
 	it('should render valid snapshot with loading indicator', () => {
-		const props = createTestProps({ threadsLoading: true });
+		const props = createTestProps({ isLoadingIconVisible: true });
 		const jsx = (<DashboardSummaryWidget {...props}>Test</DashboardSummaryWidget>);
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
@@ -39,7 +39,7 @@ describe('rendering', () => {
 		expect(getSpecWrapper(element, 'dashboard-summary-widget-loading')).toHaveLength(0);
 	});
 	it('should render loading icon', () => {
-		const props = createTestProps({ threadsLoading: true });
+		const props = createTestProps({ isLoadingIconVisible: true });
 		const jsx = (<DashboardSummaryWidget {...props}>Test</DashboardSummaryWidget>);
 		const element = shallow(jsx);
 		expect(getSpecWrapper(element, 'dashboard-summary-widget-loading')).toHaveLength(1);

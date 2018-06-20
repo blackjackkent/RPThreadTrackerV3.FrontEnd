@@ -10,7 +10,7 @@ import YourCharactersCard from './components/your-characters/YourCharactersCard'
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
 import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters, upsertThread, openUntrackThreadModal } from '../../../infrastructure/actions';
-import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter } from '../../../infrastructure/selectors';
+import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -24,7 +24,7 @@ const propTypes = {
 	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	randomThread: PropTypes.shape({}).isRequired,
-	threadsLoading: PropTypes.bool.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	characterThreadCounts: PropTypes.shape({}).isRequired
 };
 
@@ -33,14 +33,14 @@ function mapStateToProps(state) {
 		characters,
 		userSettings,
 		activeThreads,
-		randomThread,
-		loading
+		randomThread
 	} = state;
 	const myTurnThreads = getMyTurnThreads(state);
 	const theirTurnThreads = getTheirTurnThreads(state);
 	const queuedThreads = getQueuedThreads(state);
 	const recentActivityThreads = getRecentActivity(state);
 	const characterThreadCounts = getThreadCountsByCharacter(state);
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		characters,
 		userSettings,
@@ -51,7 +51,7 @@ function mapStateToProps(state) {
 		queuedThreads,
 		recentActivityThreads,
 		characterThreadCounts,
-		threadsLoading: loading.threadsLoading
+		isLoadingIconVisible
 	};
 }
 
@@ -123,7 +123,7 @@ class Dashboard extends Component {
 			queuedThreads,
 			recentActivityThreads,
 			randomThread,
-			threadsLoading,
+			isLoadingIconVisible,
 			characterThreadCounts
 		} = this.props;
 		return (
@@ -137,7 +137,7 @@ class Dashboard extends Component {
 							theirTurnThreads={theirTurnThreads}
 							activeThreads={activeThreads}
 							queuedThreads={queuedThreads}
-							threadsLoading={threadsLoading}
+							isLoadingIconVisible={isLoadingIconVisible}
 						/>
 					</Col>
 				</Row>
@@ -150,12 +150,14 @@ class Dashboard extends Component {
 							archiveThread={this.archiveThread}
 							openUntrackThreadModal={this.openUntrackThreadModal}
 							markThreadQueued={this.markThreadQueued}
+							loadingInProgress={isLoadingIconVisible}
 						/>
 					</Col>
 					<Col xs="12" md="6">
 						<YourCharactersCard
 							characters={characters}
 							characterThreadCounts={characterThreadCounts}
+							loadingInProgress={isLoadingIconVisible}
 						/>
 					</Col>
 				</Row>

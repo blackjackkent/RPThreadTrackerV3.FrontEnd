@@ -17,7 +17,7 @@ const createTestProps = propOverrides => ({
 	theirTurnThreads: [{}, {}],
 	activeThreads: [{}, {}, {}, {}, {}, {}],
 	queuedThreads: [{}, {}, {}],
-	threadsLoading: false,
+	isLoadingIconVisible: false,
 	...propOverrides
 });
 
@@ -67,7 +67,7 @@ describe('rendering', () => {
 		const widget = getSpecWrapper(element, 'at-a-glance-my-turn-widget');
 		expect(widget).toHaveProp('icon', 'icon-pencil');
 		expect(widget).toHaveProp('header', 1);
-		expect(widget).toHaveProp('threadsLoading', false);
+		expect(widget).toHaveProp('isLoadingIconVisible', false);
 	});
 	it('should pass correct values to their turn widget', () => {
 		const props = createTestProps();
@@ -76,7 +76,7 @@ describe('rendering', () => {
 		const widget = getSpecWrapper(element, 'at-a-glance-their-turn-widget');
 		expect(widget).toHaveProp('icon', 'icon-check');
 		expect(widget).toHaveProp('header', 2);
-		expect(widget).toHaveProp('threadsLoading', false);
+		expect(widget).toHaveProp('isLoadingIconVisible', false);
 	});
 	it('should pass correct values to queued widget', () => {
 		const props = createTestProps();
@@ -85,18 +85,18 @@ describe('rendering', () => {
 		const widget = getSpecWrapper(element, 'at-a-glance-queued-widget');
 		expect(widget).toHaveProp('icon', 'icon-calendar');
 		expect(widget).toHaveProp('header', 3);
-		expect(widget).toHaveProp('threadsLoading', false);
+		expect(widget).toHaveProp('isLoadingIconVisible', false);
 	});
 	it('should display loading icon when threads are loading', () => {
-		const props = createTestProps({ threadsLoading: true });
+		const props = createTestProps({ isLoadingIconVisible: true });
 		const jsx = (<AtAGlanceCard {...props} />);
 		const element = shallow(jsx);
 		const myTurn = getSpecWrapper(element, 'at-a-glance-my-turn-widget');
 		const theirTurn = getSpecWrapper(element, 'at-a-glance-their-turn-widget');
 		const queued = getSpecWrapper(element, 'at-a-glance-queued-widget');
-		expect(myTurn).toHaveProp('threadsLoading', true);
-		expect(theirTurn).toHaveProp('threadsLoading', true);
-		expect(queued).toHaveProp('threadsLoading', true);
+		expect(myTurn).toHaveProp('isLoadingIconVisible', true);
+		expect(theirTurn).toHaveProp('isLoadingIconVisible', true);
+		expect(queued).toHaveProp('isLoadingIconVisible', true);
 	});
 });
 

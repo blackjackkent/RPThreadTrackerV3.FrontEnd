@@ -6,6 +6,7 @@ import {
 	FETCHED_ARCHIVED_THREADS_SUCCESS,
 	FETCH_ACTIVE_THREADS,
 	FETCH_ARCHIVED_THREADS,
+	FETCH_CHARACTERS,
 	SUBMIT_USER_LOGIN,
 	SUBMIT_USER_LOGOUT,
 	SUBMIT_USER_REGISTRATION,
@@ -18,13 +19,16 @@ import {
 	SUBMIT_USER_FORGOT_PASSWORD,
 	SUBMIT_USER_RESET_PASSWORD,
 	SUBMIT_USER_RESET_PASSWORD_FAILURE,
-	SUBMIT_USER_RESET_PASSWORD_SUCCESS
+	SUBMIT_USER_RESET_PASSWORD_SUCCESS,
+	FETCHED_CHARACTERS_FAILURE,
+	FETCHED_CHARACTERS_SUCCESS
 } from '../actions';
 
 const defaultState = {
 	loginLoading: false,
 	registrationLoading: false,
-	threadsLoading: false,
+	isLoadingIconVisible: false,
+	charactersLoading: false,
 	forgotPasswordLoading: false,
 	resetPasswordLoading: false
 };
@@ -69,7 +73,7 @@ function loading(state = defaultState, action) {
 		case FETCH_ACTIVE_THREADS:
 		case FETCH_ARCHIVED_THREADS:
 			return Object.assign({}, state, {
-				threadsLoading: true
+				isLoadingIconVisible: true
 			});
 		case FETCHED_ACTIVE_THREADS_FAILURE:
 		case FETCHED_ACTIVE_THREADS_STATUS_SUCCESS:
@@ -77,7 +81,16 @@ function loading(state = defaultState, action) {
 		case FETCHED_ARCHIVED_THREADS_FAILURE:
 		case FETCHED_ARCHIVED_THREADS_SUCCESS:
 			return Object.assign({}, state, {
-				threadsLoading: false
+				isLoadingIconVisible: false
+			});
+		case FETCH_CHARACTERS:
+			return Object.assign({}, state, {
+				charactersLoading: true
+			});
+		case FETCHED_CHARACTERS_FAILURE:
+		case FETCHED_CHARACTERS_SUCCESS:
+			return Object.assign({}, state, {
+				charactersLoading: false
 			});
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;

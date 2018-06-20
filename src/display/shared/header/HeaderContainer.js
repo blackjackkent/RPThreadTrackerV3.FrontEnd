@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './Header';
 import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openUpsertCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
-import { getNewsUnreadCount } from '../../../infrastructure/selectors';
+import { getNewsUnreadCount, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -16,15 +16,13 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const {
-		ui, user, news, loading, userSettings
+		ui, user, news, userSettings
 	} = state;
 	const {
 		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
 	} = ui;
-	const {
-		threadsLoading
-	} = loading;
 	const newsUnreadCount = getNewsUnreadCount(state);
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		isNewsAsideOpen,
 		isSidebarOpen,
@@ -33,7 +31,7 @@ function mapStateToProps(state) {
 		user,
 		news,
 		newsUnreadCount,
-		threadsLoading,
+		isLoadingIconVisible,
 		userSettings
 	};
 }

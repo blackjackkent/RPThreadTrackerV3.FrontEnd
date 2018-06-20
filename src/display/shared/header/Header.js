@@ -18,7 +18,7 @@ const propTypes = {
 	sidebarToggle: PropTypes.func.isRequired,
 	isSidebarOpen: PropTypes.bool.isRequired,
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
-	threadsLoading: PropTypes.bool.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	isNewsAsideOpen: PropTypes.bool.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string
@@ -36,7 +36,7 @@ const Header = (props) => {
 		openUpsertCharacterModal,
 		openNewThreadModal,
 		sidebarToggle,
-		threadsLoading,
+		isLoadingIconVisible,
 		isSidebarOpen,
 		isMobileSidebarOpen,
 		isNewsAsideOpen,
@@ -54,7 +54,7 @@ const Header = (props) => {
 			<Nav className="d-md-down-none ml-4" navbar>
 				<HeaderButton onClick={() => openUpsertCharacterModal(null)} label="Add Character" />
 				<HeaderButton onClick={() => openNewThreadModal(null)} label="Track New Thread" />
-				{threadsLoading && <LoadingIndicator className="invert" />}
+				{isLoadingIconVisible && <LoadingIndicator className="invert" />}
 			</Nav>
 			<Nav className="ml-auto" navbar>
 				<HeaderAsideToggle

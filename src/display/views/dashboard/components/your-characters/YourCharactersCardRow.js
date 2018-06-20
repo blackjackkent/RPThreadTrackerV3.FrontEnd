@@ -10,7 +10,10 @@ const propTypes = {
 		homeUrl: PropTypes.string.isRequired,
 		isOnHiatus: PropTypes.bool.isRequired
 	}).isRequired,
-	threadCount: PropTypes.number.isRequired
+	threadCount: PropTypes.number
+};
+const defaultProps = {
+	threadCount: 0
 };
 
 const YourCharactersCardRow = (props) => {
@@ -31,5 +34,5 @@ const YourCharactersCardRow = (props) => {
 };
 
 YourCharactersCardRow.propTypes = propTypes;
-
+YourCharactersCardRow.defaultProps = defaultProps;
 export default YourCharactersCardRow;

@@ -7,23 +7,23 @@ const propTypes = {
 	header: PropTypes.number.isRequired,
 	icon: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
-	threadsLoading: PropTypes.bool
+	isLoadingIconVisible: PropTypes.bool
 };
 
 const defaultProps = {
-	threadsLoading: false
+	isLoadingIconVisible: false
 };
 
 const DashboardSummaryWidget = (props) => {
 	const {
-		header, icon, children, threadsLoading, ...attributes
+		header, icon, children, isLoadingIconVisible, ...attributes
 	} = props;
 
 	return (
 		<Card {...attributes}>
 			<CardBlock className="card-body">
 				<div className="text-right mb-2">
-					{threadsLoading &&
+					{isLoadingIconVisible &&
 						<LoadingIndicator
 							data-spec="dashboard-summary-widget-loading"
 							className="inverse"
