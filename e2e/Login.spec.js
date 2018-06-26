@@ -9,14 +9,14 @@ beforeEach(async () => {
 	await loginPage.navigateAndWaitUntilLoaded();
 }, 16000);
 describe('Login', () => {
-	it.only('should prevent form submission with empty username', async () => {
+	it('should prevent form submission with empty username', async () => {
 		await loginPage.fillInUsername('');
 		await loginPage.fillInPassword(config.password);
 		await loginPage.submit();
 
 		const message = await loginPage.getUsernameErrorMessage();
 		expect(message).toEqual('You must enter a username.');
-	}, 15000);
+	}, 30000);
 	it('should prevent form submission with invalid username', async () => {
 		await loginPage.fillInUsername('aa');
 		await loginPage.fillInPassword(config.password);
@@ -24,7 +24,7 @@ describe('Login', () => {
 
 		const message = await loginPage.getUsernameErrorMessage();
 		expect(message).toEqual('Your username must be more than 3 characters.');
-	}, 15000);
+	}, 30000);
 	it('should prevent form submission with empty password', async () => {
 		await loginPage.fillInUsername(config.email);
 		await loginPage.fillInPassword('');
@@ -32,7 +32,7 @@ describe('Login', () => {
 
 		const message = await loginPage.getPasswordErrorMessage();
 		expect(message).toEqual('You must enter a password.');
-	}, 15000);
+	}, 30000);
 	it('should prevent login with invalid authentication of username', async () => {
 		const ticks = Date.now();
 		const username = config.username + ticks;
@@ -44,7 +44,7 @@ describe('Login', () => {
 
 		const message = await loginPage.getServerErrorMessage();
 		expect(message).toContain('Invalid username or password.');
-	}, 15000);
+	}, 30000);
 	it('should prevent login with invalid authentication of password', async () => {
 		const ticks = Date.now();
 		const { username } = config;
@@ -56,7 +56,7 @@ describe('Login', () => {
 
 		const message = await loginPage.getServerErrorMessage();
 		expect(message).toContain('Invalid username or password.');
-	}, 15000);
+	}, 30000);
 	it('should allow login with valid form and username', async () => {
 		await loginPage.fillInUsername(config.username);
 		await loginPage.fillInPassword(config.password);
@@ -65,7 +65,7 @@ describe('Login', () => {
 		const dashboardPage = new DashboardPage(page);
 		const loggedInUsername = await dashboardPage.getLoggedInUsername();
 		expect(loggedInUsername).toEqual(config.username);
-	}, 15000);
+	}, 30000);
 	it('should allow login with valid form and email', async () => {
 		await loginPage.fillInUsername(config.email);
 		await loginPage.fillInPassword(config.password);
@@ -74,7 +74,7 @@ describe('Login', () => {
 		const dashboardPage = new DashboardPage(page);
 		const loggedInUsername = await dashboardPage.getLoggedInUsername();
 		expect(loggedInUsername).toEqual(config.username);
-	}, 15000);
+	}, 30000);
 	it('should allow login with newly registered account', async () => {
 		const registerPage = new RegisterPage(page);
 		await registerPage.navigateAndWaitUntilLoaded();
@@ -90,5 +90,5 @@ describe('Login', () => {
 
 		const loggedInUsername = await dashboardPage.getLoggedInUsername();
 		expect(loggedInUsername).toEqual(`demouser-${ticks}`);
-	}, 15000);
+	}, 30000);
 });

@@ -7,20 +7,20 @@ beforeEach(async () => {
 	forgotPasswordPage = new ForgotPasswordPage(page);
 	await forgotPasswordPage.navigateAndWaitUntilLoaded();
 }, 16000);
-describe.only('Forgot Password', () => {
+describe('Forgot Password', () => {
 	it('should prevent form submission with empty email', async () => {
 		await forgotPasswordPage.submit();
 
 		const message = await forgotPasswordPage.getEmailErrorMessage();
 		expect(message).toEqual('You must enter an email.');
-	}, 15000);
+	}, 30000);
 	it('should prevent form submission with invalid email', async () => {
 		await forgotPasswordPage.fillInEmail('aaaa');
 		await forgotPasswordPage.submit();
 
 		const message = await forgotPasswordPage.getEmailErrorMessage();
 		expect(message).toEqual('Please enter a valid email.');
-	}, 15000);
+	}, 30000);
 	it('should allow forgot password request with valid email', async () => {
 		const registerPage = new RegisterPage(page);
 		await registerPage.navigateAndWaitUntilLoaded();
@@ -36,7 +36,7 @@ describe.only('Forgot Password', () => {
 		const toastTitle = await forgotPasswordPage.getToastTitle();
 		expect(toastTitle).toEqual('Please check your email for a link to reset your password.');
 	}, 30000);
-	it.only('should allow forgot password request with nonexistent email', async () => {
+	it('should allow forgot password request with nonexistent email', async () => {
 		const ticks = Date.now();
 
 		await forgotPasswordPage.navigateAndWaitUntilLoaded();

@@ -55,7 +55,7 @@ exports[`rendering should render valid snapshot 1`] = `
         data-spec="at-a-glance-my-turn-widget"
         header={1}
         icon="icon-pencil"
-        threadsLoading={false}
+        isLoadingIconVisible={false}
       >
         Your Turn
       </DashboardSummaryWidget>
@@ -63,7 +63,7 @@ exports[`rendering should render valid snapshot 1`] = `
         data-spec="at-a-glance-their-turn-widget"
         header={2}
         icon="icon-check"
-        threadsLoading={false}
+        isLoadingIconVisible={false}
       >
         Their Turn
       </DashboardSummaryWidget>
@@ -71,7 +71,7 @@ exports[`rendering should render valid snapshot 1`] = `
         data-spec="at-a-glance-queued-widget"
         header={3}
         icon="icon-calendar"
-        threadsLoading={false}
+        isLoadingIconVisible={false}
       >
         Queued
       </DashboardSummaryWidget>
