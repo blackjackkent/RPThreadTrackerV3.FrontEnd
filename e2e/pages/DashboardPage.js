@@ -14,8 +14,7 @@ class DashboardPage extends BasePage {
 	}
 
 	async getAtAGlanceWidgetCount(tag) {
-		var text = await page.evaluate(() => document.querySelector(`[data-spec="at-a-glance-${tag}-widget"] [data-spec="dashboard-summary-widget-header"]`).innerText);
-		return text;
+		return this.page.$eval(`[data-spec="at-a-glance-${tag}-widget"] [data-spec="dashboard-summary-widget-header"]`, el => el.innerText);
 	}
 }
 
