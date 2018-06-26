@@ -54,7 +54,7 @@ const Header = (props) => {
 			<Nav className="d-md-down-none ml-4" navbar>
 				<HeaderButton onClick={() => openUpsertCharacterModal(null)} label="Add Character" />
 				<HeaderButton onClick={() => openNewThreadModal(null)} label="Track New Thread" />
-				{isLoadingIconVisible && <LoadingIndicator data-spec="header-loading-indicator" className="invert" />}
+				{isLoadingIconVisible && <div data-spec="header-loading-indicator"><LoadingIndicator className="invert" /></div>}
 			</Nav>
 			<Nav className="ml-auto" navbar>
 				<HeaderAsideToggle
