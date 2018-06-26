@@ -13,6 +13,9 @@ class BasePage {
 	waitForDataSpec(value) {
 		return this.page.waitForSelector(`[data-spec="${value}"]`);
 	}
+	waitForDataSpecRemoved(value) {
+		await page.waitForFunction(() => !document.querySelector(`[data-spec="${value}"]`), { polling: 'mutation' });
+	}
 	clickDataSpec(value) {
 		return this.page.click(`[data-spec="${value}"]`);
 	}
