@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot with new items 1`] = `
+<NavItem
+  tag="li"
+>
+  <NavLink
+    data-spec="header-aside-toggle-link"
+    href="#"
+    onClick={[Function]}
+    tag="a"
+  >
+    <i
+      className="icon-bell"
+    />
+    <Badge
+      color="danger"
+      data-spec="header-aside-toggle-unread-badge"
+      pill={true}
+      tag="span"
+    >
+      3
+    </Badge>
+  </NavLink>
+</NavItem>
+`;
+
+exports[`rendering should render valid snapshot with no new items 1`] = `
+<NavItem
+  tag="li"
+>
+  <NavLink
+    data-spec="header-aside-toggle-link"
+    href="#"
+    onClick={[Function]}
+    tag="a"
+  >
+    <i
+      className="icon-bell"
+    />
+  </NavLink>
+</NavItem>
+`;

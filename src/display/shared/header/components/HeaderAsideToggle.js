@@ -19,9 +19,18 @@ const HeaderAsideToggle = (props) => {
 
 	return (
 		<NavItem>
-			<NavLink href="#" onClick={() => asideToggle(!isNewsAsideOpen)}>
+			<NavLink
+				data-spec="header-aside-toggle-link"
+				href="#"
+				onClick={() => asideToggle(!isNewsAsideOpen)}
+			>
 				<i className="icon-bell" />
-				{newsUnreadCount > 0 && <Badge pill color="danger">{newsUnreadCount}</Badge>}
+				{
+					newsUnreadCount > 0 &&
+					<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
+						{newsUnreadCount}
+					</Badge>
+				}
 			</NavLink>
 		</NavItem>
 	);
