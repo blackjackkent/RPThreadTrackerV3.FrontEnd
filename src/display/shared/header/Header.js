@@ -54,12 +54,12 @@ const Header = (props) => {
 			<Nav className="d-md-down-none ml-4" navbar>
 				<HeaderButton
 					data-spec="header-open-upsert-character-modal-button"
-					onClick={() => openUpsertCharacterModal(null)}
+					onClick={() => openUpsertCharacterModal()}
 					label="Add Character"
 				/>
 				<HeaderButton
 					data-spec="header-open-upsert-thread-modal-button"
-					onClick={() => openNewThreadModal(null)}
+					onClick={() => openNewThreadModal()}
 					label="Track New Thread"
 				/>
 				{isLoadingIconVisible &&

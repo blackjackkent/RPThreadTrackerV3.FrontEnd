@@ -71,7 +71,7 @@ describe('behavior', () => {
 		const button = getSpecWrapper(element, 'header-open-upsert-character-modal-button');
 		button.simulate('click');
 		expect(openUpsertCharacterModal).toHaveBeenCalledTimes(1);
-		expect(openUpsertCharacterModal).toHaveBeenCalledWith(null);
+		expect(openUpsertCharacterModal).toHaveBeenCalledWith();
 	});
 	it('should call passed handler when upsert character modal button is clicked', () => {
 		const openNewThreadModal = jest.fn();
@@ -81,6 +81,6 @@ describe('behavior', () => {
 		const button = getSpecWrapper(element, 'header-open-upsert-thread-modal-button');
 		button.simulate('click');
 		expect(openNewThreadModal).toHaveBeenCalledTimes(1);
-		expect(openNewThreadModal).toHaveBeenCalledWith(null);
+		expect(openNewThreadModal).toHaveBeenCalledWith();
 	});
 });
