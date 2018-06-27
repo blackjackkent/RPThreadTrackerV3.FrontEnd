@@ -35,12 +35,20 @@ exports[`rendering should render valid snapshot with loading indicator 1`] = `
         }
       }
       fetchUser={[MockFunction]}
+      fetchUserSettings={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+        }
+      }
       news={Array []}
       user={
         Object {
           "id": "12345",
         }
       }
+      userSettings={Object {}}
     />
     <main
       className="main"

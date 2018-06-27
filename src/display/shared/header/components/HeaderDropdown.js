@@ -30,15 +30,33 @@ const HeaderDropdown = (props) => {
 		<NavItem>
 			<Dropdown
 				isOpen={isHeaderDropdownOpen}
+				data-spec="header-dropdown"
 				toggle={() => headerDropdownToggle(!isHeaderDropdownOpen)}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
-					<span className="d-md-down-none" data-spec="header-dropdown-username">{user ? user.userName : ''}</span>
+					<span
+						className="d-md-down-none"
+						data-spec="header-dropdown-username"
+					>
+						{user.userName}
+					</span>
 				</DropdownToggle>
 				<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
-					<HeaderDropdownItem onClick={() => openNewThreadModal({})} label="Track New Thread" />
-					<HeaderDropdownItem onClick={() => openUpsertCharacterModal({})} label="Add Character" />
-					<HeaderDropdownItem onClick={logout} label="Logout" />
+					<HeaderDropdownItem
+						data-spec="header-dropdown-upsert-thread-link"
+						onClick={() => openNewThreadModal()}
+						label="Track New Thread"
+					/>
+					<HeaderDropdownItem
+						data-spec="header-dropdown-upsert-character-link"
+						onClick={() => openUpsertCharacterModal()}
+						label="Add Character"
+					/>
+					<HeaderDropdownItem
+						data-spec="header-dropdown-logout-link"
+						onClick={logout}
+						label="Logout"
+					/>
 				</DropdownMenu>
 			</Dropdown>
 		</NavItem>

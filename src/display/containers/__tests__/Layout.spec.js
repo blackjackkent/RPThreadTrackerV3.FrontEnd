@@ -29,12 +29,14 @@ jest.mock('../../../infrastructure/withPageViewTracker', () => Component => Comp
 const createTestProps = propOverrides => ({
 	fetchUser: jest.fn(),
 	fetchNews: jest.fn(),
+	fetchUserSettings: jest.fn(),
 	...propOverrides
 });
 
 const createTestState = stateOverrides => ({
 	user: { id: '' },
 	news: [],
+	userSettings: {},
 	...stateOverrides
 });
 
@@ -103,5 +105,21 @@ describe('behavior', () => {
 		const jsx = (<Layout {...props} />);
 		shallowWithState(jsx, state).dive('Layout');
 		expect(fetchNews).toHaveBeenCalledTimes(0);
+	});
+	it('should retrieve user settings when user settings are not loaded', () => {
+		const fetchUserSettings = jest.fn();
+		const props = createTestProps({ fetchUserSettings });
+		const state = createTestState();
+		const jsx = (<Layout {...props} />);
+		shallowWithState(jsx, state).dive('Layout');
+		expect(fetchUserSettings).toHaveBeenCalledTimes(1);
+	});
+	it('should not retrieve user settings when user settings are loaded', () => {
+		const fetchUserSettings = jest.fn();
+		const props = createTestProps({ fetchUserSettings });
+		const state = createTestState({ userSettings: { settingsId: 54321 } });
+		const jsx = (<Layout {...props} />);
+		shallowWithState(jsx, state).dive('Layout');
+		expect(fetchUserSettings).toHaveBeenCalledTimes(0);
 	});
 });

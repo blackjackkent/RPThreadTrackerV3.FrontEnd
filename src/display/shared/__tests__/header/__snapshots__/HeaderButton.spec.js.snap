@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<NavItem
+  tag="li"
+>
+  <Button
+    color="primary"
+    onClick={[MockFunction]}
+    tag="button"
+  >
+    Test Button
+  </Button>
+</NavItem>
+`;
