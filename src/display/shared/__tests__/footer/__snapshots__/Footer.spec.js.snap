@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<footer
+  className="app-footer"
+>
+  <a
+    href="http://www.rpthreadtracker.com"
+  >
+    RPThreadTracker
+  </a>
+   © 
+  1989
+   
+  <a
+    href="http://blackjack-software.com"
+  >
+    Blackjack Software
+  </a>
+  <span
+    className="float-right"
+  >
+    Powered by 
+    <a
+      href="http://coreui.io"
+    >
+      CoreUI
+    </a>
+  </span>
+</footer>
+`;
