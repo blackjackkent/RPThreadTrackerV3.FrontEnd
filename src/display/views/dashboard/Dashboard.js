@@ -9,7 +9,7 @@ import RecentActivityCard from './components/recent-activity/RecentActivityCard'
 import YourCharactersCard from './components/your-characters/YourCharactersCard';
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
-import { generateRandomThread, fetchUserSettings, updateUserSettings, fetchActiveThreads, fetchCharacters, upsertThread, openUntrackThreadModal } from '../../../infrastructure/actions';
+import { generateRandomThread, updateUserSettings, fetchActiveThreads, fetchCharacters, upsertThread, openUntrackThreadModal } from '../../../infrastructure/actions';
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 
 const propTypes = {
@@ -68,9 +68,6 @@ class Dashboard extends Component {
 
 	componentDidMount() {
 		const { dispatch } = this.props;
-		if (!this.props.userSettings || !this.props.userSettings.id) {
-			dispatch(fetchUserSettings());
-		}
 		if (!this.props.activeThreads || !this.props.activeThreads.length) {
 			dispatch(fetchActiveThreads());
 		}

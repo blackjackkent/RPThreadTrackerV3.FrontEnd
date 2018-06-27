@@ -73,7 +73,7 @@ class HeaderContainer extends Component {
 		dispatch(updateUserSettings({
 			...userSettings,
 			lastNewsReadDate: new Date(Date.now())
-		}, !value));
+		}, value));
 	}
 
 	mobileSidebarToggle(value) {

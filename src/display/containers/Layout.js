@@ -6,7 +6,7 @@ import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 import ReduxToastr from 'react-redux-toastr';
 
-import { fetchUser, fetchNews } from '../../infrastructure/actions';
+import { fetchUser, fetchNews, fetchUserSettings } from '../../infrastructure/actions';
 
 import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
@@ -32,19 +32,25 @@ import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 const propTypes = {
 	fetchUser: PropTypes.func.isRequired,
 	fetchNews: PropTypes.func.isRequired,
+	fetchUserSettings: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string.isRequired
 	}).isRequired,
-	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	userSettings: PropTypes.shape({
+		settingsId: PropTypes.number.isRequired
+	}).isRequired
 };
 const mapStateToProps = (state) => {
 	const {
 		user,
-		news
+		news,
+		userSettings
 	} = state;
 	return {
 		user,
-		news
+		news,
+		userSettings
 	};
 };
 class Layout extends Component {
@@ -60,12 +66,18 @@ class Layout extends Component {
 		if (!this.isNewsLoaded()) {
 			this.props.fetchNews();
 		}
+		if (!this.areUserSettingsLoaded()) {
+			this.props.fetchUserSettings();
+		}
 	}
 	isUserLoaded() {
 		return this.props.user && this.props.user.id;
 	}
 	isNewsLoaded() {
 		return this.props.news && this.props.news.length;
+	}
+	areUserSettingsLoaded() {
+		return this.props.userSettings && this.props.userSettings.settingsId;
 	}
 	showLoadingIndicator() {
 		return (
@@ -149,5 +161,6 @@ class Layout extends Component {
 Layout.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	fetchUser,
-	fetchNews
+	fetchNews,
+	fetchUserSettings
 })(withPageViewTracker(Layout));
