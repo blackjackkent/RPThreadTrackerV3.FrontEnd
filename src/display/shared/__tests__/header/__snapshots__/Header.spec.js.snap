@@ -1,0 +1,112 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<header
+  className="app-header navbar"
+>
+  <HeaderLogoBlock
+    isMobileSidebarOpen={true}
+    isSidebarOpen={true}
+    mobileSidebarToggle={[MockFunction]}
+    sidebarToggle={[MockFunction]}
+  />
+  <Nav
+    className="d-md-down-none ml-4"
+    navbar={true}
+    tag="ul"
+  >
+    <HeaderButton
+      data-spec="header-open-upsert-character-modal-button"
+      label="Add Character"
+      onClick={[Function]}
+    />
+    <HeaderButton
+      data-spec="header-open-upsert-thread-modal-button"
+      label="Track New Thread"
+      onClick={[Function]}
+    />
+    <div
+      data-spec="header-loading-indicator"
+    >
+      <LoadingIndicator
+        className="invert"
+      />
+    </div>
+  </Nav>
+  <Nav
+    className="ml-auto"
+    navbar={true}
+    tag="ul"
+  >
+    <HeaderAsideToggle
+      asideToggle={[MockFunction]}
+      isNewsAsideOpen={true}
+      newsUnreadCount={2}
+    />
+    <HeaderDropdown
+      headerDropdownToggle={[MockFunction]}
+      isHeaderDropdownOpen={true}
+      logout={[MockFunction]}
+      openNewThreadModal={[MockFunction]}
+      openUpsertCharacterModal={[MockFunction]}
+      user={
+        Object {
+          "id": "12345",
+        }
+      }
+    />
+  </Nav>
+</header>
+`;
+
+exports[`rendering should render valid snapshot without loading indicator 1`] = `
+<header
+  className="app-header navbar"
+>
+  <HeaderLogoBlock
+    isMobileSidebarOpen={true}
+    isSidebarOpen={true}
+    mobileSidebarToggle={[MockFunction]}
+    sidebarToggle={[MockFunction]}
+  />
+  <Nav
+    className="d-md-down-none ml-4"
+    navbar={true}
+    tag="ul"
+  >
+    <HeaderButton
+      data-spec="header-open-upsert-character-modal-button"
+      label="Add Character"
+      onClick={[Function]}
+    />
+    <HeaderButton
+      data-spec="header-open-upsert-thread-modal-button"
+      label="Track New Thread"
+      onClick={[Function]}
+    />
+  </Nav>
+  <Nav
+    className="ml-auto"
+    navbar={true}
+    tag="ul"
+  >
+    <HeaderAsideToggle
+      asideToggle={[MockFunction]}
+      isNewsAsideOpen={true}
+      newsUnreadCount={2}
+    />
+    <HeaderDropdown
+      headerDropdownToggle={[MockFunction]}
+      isHeaderDropdownOpen={true}
+      logout={[MockFunction]}
+      openNewThreadModal={[MockFunction]}
+      openUpsertCharacterModal={[MockFunction]}
+      user={
+        Object {
+          "id": "12345",
+        }
+      }
+    />
+  </Nav>
+</header>
+`;

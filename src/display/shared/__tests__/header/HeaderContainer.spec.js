@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { getSpecWrapper, shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '../../../../../config/tests/helpers.unit';
 import HeaderContainer from '../../header/HeaderContainer';
 // #endregion imports
 

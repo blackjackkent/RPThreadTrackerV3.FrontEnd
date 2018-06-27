@@ -52,9 +52,19 @@ const Header = (props) => {
 				isMobileSidebarOpen={isMobileSidebarOpen}
 			/>
 			<Nav className="d-md-down-none ml-4" navbar>
-				<HeaderButton onClick={() => openUpsertCharacterModal(null)} label="Add Character" />
-				<HeaderButton onClick={() => openNewThreadModal(null)} label="Track New Thread" />
-				{isLoadingIconVisible && <div data-spec="header-loading-indicator"><LoadingIndicator className="invert" /></div>}
+				<HeaderButton
+					data-spec="header-open-upsert-character-modal-button"
+					onClick={() => openUpsertCharacterModal(null)}
+					label="Add Character"
+				/>
+				<HeaderButton
+					data-spec="header-open-upsert-thread-modal-button"
+					onClick={() => openNewThreadModal(null)}
+					label="Track New Thread"
+				/>
+				{isLoadingIconVisible &&
+					<div data-spec="header-loading-indicator"><LoadingIndicator className="invert" /></div>
+				}
 			</Nav>
 			<Nav className="ml-auto" navbar>
 				<HeaderAsideToggle
