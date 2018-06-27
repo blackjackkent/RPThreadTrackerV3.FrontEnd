@@ -7,10 +7,17 @@ import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdo
 import { getNewsUnreadCount, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
-	isSidebarOpen: PropTypes.bool.isRequired,
-	isNewsAsideOpen: PropTypes.bool.isRequired,
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
+	isNewsAsideOpen: PropTypes.bool.isRequired,
+	isSidebarOpen: PropTypes.bool.isRequired,
+	openUpsertCharacterModal: PropTypes.func.isRequired,
+	openUpsertThreadModal: PropTypes.func.isRequired,
+	submitUserLogout: PropTypes.func.isRequired,
+	toggleHeaderDropdown: PropTypes.func.isRequired,
+	toggleMobileSidebar: PropTypes.func.isRequired,
+	toggleNewsAside: PropTypes.func.isRequired,
+	toggleSidebar: PropTypes.func.isRequired,
+	updateUserSettings: PropTypes.func.isRequired,
 	userSettings: PropTypes.shape({}).isRequired
 };
 
@@ -63,42 +70,36 @@ class HeaderContainer extends Component {
 	}
 
 	sidebarToggle(value) {
-		const { dispatch } = this.props;
-		dispatch(toggleSidebar(value));
+		this.props.toggleSidebar(value);
 	}
 
 	asideToggle(value) {
-		const { dispatch, userSettings } = this.props;
-		dispatch(toggleNewsAside(value));
-		dispatch(updateUserSettings({
+		const { userSettings } = this.props;
+		this.props.toggleNewsAside(value);
+		this.props.updateUserSettings({
 			...userSettings,
 			lastNewsReadDate: new Date(Date.now())
-		}, value));
+		}, value);
 	}
 
 	mobileSidebarToggle(value) {
-		const { dispatch } = this.props;
-		dispatch(toggleMobileSidebar(value));
+		this.props.toggleMobileSidebar(value);
 	}
 
 	headerDropdownToggle(value) {
-		const { dispatch } = this.props;
-		dispatch(toggleHeaderDropdown(value));
+		this.props.toggleHeaderDropdown(value);
 	}
 
 	openUpsertCharacterModal(character) {
-		const { dispatch } = this.props;
-		dispatch(openUpsertCharacterModal(character));
+		this.props.openUpsertCharacterModal(character);
 	}
 
 	openNewThreadModal() {
-		const { dispatch } = this.props;
-		dispatch(openUpsertThreadModal(null));
+		this.props.openUpsertThreadModal(null);
 	}
 
 	logout() {
-		const { dispatch } = this.props;
-		dispatch(submitUserLogout());
+		this.props.submitUserLogout();
 	}
 
 	render() {
@@ -118,5 +119,13 @@ class HeaderContainer extends Component {
 }
 
 HeaderContainer.propTypes = propTypes;
-
-export default connect(mapStateToProps)(HeaderContainer);
+export default connect(mapStateToProps, {
+	openUpsertCharacterModal,
+	openUpsertThreadModal,
+	submitUserLogout,
+	toggleHeaderDropdown,
+	toggleMobileSidebar,
+	toggleNewsAside,
+	toggleSidebar,
+	updateUserSettings
+})(HeaderContainer);
