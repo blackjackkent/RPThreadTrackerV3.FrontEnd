@@ -5,8 +5,6 @@ exports[`rendering should render valid snapshot 1`] = `
   className="app-header navbar"
 >
   <HeaderLogoBlock
-    isMobileSidebarOpen={true}
-    isSidebarOpen={true}
     mobileSidebarToggle={[MockFunction]}
     sidebarToggle={[MockFunction]}
   />
@@ -40,7 +38,6 @@ exports[`rendering should render valid snapshot 1`] = `
   >
     <HeaderAsideToggle
       asideToggle={[MockFunction]}
-      isNewsAsideOpen={true}
       newsUnreadCount={2}
     />
     <HeaderDropdown
@@ -64,8 +61,6 @@ exports[`rendering should render valid snapshot without loading indicator 1`] = 
   className="app-header navbar"
 >
   <HeaderLogoBlock
-    isMobileSidebarOpen={true}
-    isSidebarOpen={true}
     mobileSidebarToggle={[MockFunction]}
     sidebarToggle={[MockFunction]}
   />
@@ -92,7 +87,6 @@ exports[`rendering should render valid snapshot without loading indicator 1`] = 
   >
     <HeaderAsideToggle
       asideToggle={[MockFunction]}
-      isNewsAsideOpen={true}
       newsUnreadCount={2}
     />
     <HeaderDropdown

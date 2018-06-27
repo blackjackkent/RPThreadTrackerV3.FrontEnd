@@ -49,6 +49,5 @@ describe('behavior', () => {
 		const link = getSpecWrapper(element, 'header-aside-toggle-link');
 		link.simulate('click');
 		expect(asideToggle).toHaveBeenCalledTimes(1);
-		expect(asideToggle).toHaveBeenCalledWith(false);
 	});
 });

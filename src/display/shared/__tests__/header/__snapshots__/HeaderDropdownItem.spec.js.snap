@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<DropdownItem
+  className="hidden-lg-up"
+  tag="button"
+  toggle={true}
+>
+  <span
+    onClick={[MockFunction]}
+    onKeyDown={[MockFunction]}
+    role="button"
+    tabIndex="-1"
+  >
+    Test Item
+  </span>
+</DropdownItem>
+`;

@@ -73,7 +73,7 @@ describe('behavior', () => {
 		expect(openUpsertCharacterModal).toHaveBeenCalledTimes(1);
 		expect(openUpsertCharacterModal).toHaveBeenCalledWith();
 	});
-	it('should call passed handler when upsert character modal button is clicked', () => {
+	it('should call passed handler when upsert thread modal button is clicked', () => {
 		const openNewThreadModal = jest.fn();
 		const props = createTestProps({ openNewThreadModal });
 		const jsx = (<Header {...props} />);

@@ -31,7 +31,7 @@ const HeaderDropdown = (props) => {
 			<Dropdown
 				isOpen={isHeaderDropdownOpen}
 				data-spec="header-dropdown"
-				toggle={() => headerDropdownToggle(!isHeaderDropdownOpen)}
+				toggle={headerDropdownToggle}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
 					<span
@@ -41,7 +41,7 @@ const HeaderDropdown = (props) => {
 						{user.userName}
 					</span>
 				</DropdownToggle>
-				<DropdownMenu right className={isHeaderDropdownOpen ? 'show' : ''}>
+				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderDropdownOpen ? 'show' : ''}>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-upsert-thread-link"
 						onClick={() => openNewThreadModal()}

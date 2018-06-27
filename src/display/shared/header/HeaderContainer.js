@@ -10,6 +10,7 @@ const propTypes = {
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
 	isNewsAsideOpen: PropTypes.bool.isRequired,
 	isSidebarOpen: PropTypes.bool.isRequired,
+	isHeaderDropdownOpen: PropTypes.bool.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openUpsertThreadModal: PropTypes.func.isRequired,
 	submitUserLogout: PropTypes.func.isRequired,
@@ -69,25 +70,29 @@ class HeaderContainer extends Component {
 		document.body.classList.toggle('sidebar-mobile-show', props.isMobileSidebarOpen);
 	}
 
-	sidebarToggle(value) {
-		this.props.toggleSidebar(value);
+	sidebarToggle() {
+		const isCurrentlyOpen = this.props.isSidebarOpen;
+		this.props.toggleSidebar(!isCurrentlyOpen);
 	}
 
-	asideToggle(value) {
+	asideToggle() {
 		const { userSettings } = this.props;
-		this.props.toggleNewsAside(value);
+		const isCurrentlyOpen = this.props.isNewsAsideOpen;
+		this.props.toggleNewsAside(!isCurrentlyOpen);
 		this.props.updateUserSettings({
 			...userSettings,
 			lastNewsReadDate: new Date(Date.now())
-		}, value);
+		}, !isCurrentlyOpen);
 	}
 
-	mobileSidebarToggle(value) {
-		this.props.toggleMobileSidebar(value);
+	mobileSidebarToggle() {
+		const isCurrentlyOpen = this.props.isMobileSidebarOpen;
+		this.props.toggleMobileSidebar(!isCurrentlyOpen);
 	}
 
-	headerDropdownToggle(value) {
-		this.props.toggleHeaderDropdown(value);
+	headerDropdownToggle() {
+		const isCurrentlyOpen = this.props.isHeaderDropdownOpen;
+		this.props.toggleHeaderDropdown(!isCurrentlyOpen);
 	}
 
 	openUpsertCharacterModal(character) {

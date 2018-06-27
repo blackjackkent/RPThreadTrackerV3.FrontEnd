@@ -6,15 +6,13 @@ import { NavItem, NavLink, Badge } from 'reactstrap';
 
 const propTypes = {
 	asideToggle: PropTypes.func.isRequired,
-	newsUnreadCount: PropTypes.number.isRequired,
-	isNewsAsideOpen: PropTypes.bool.isRequired
+	newsUnreadCount: PropTypes.number.isRequired
 };
 
 const HeaderAsideToggle = (props) => {
 	const {
 		asideToggle,
-		newsUnreadCount,
-		isNewsAsideOpen
+		newsUnreadCount
 	} = props;
 
 	return (
@@ -22,7 +20,7 @@ const HeaderAsideToggle = (props) => {
 			<NavLink
 				data-spec="header-aside-toggle-link"
 				href="#"
-				onClick={() => asideToggle(!isNewsAsideOpen)}
+				onClick={asideToggle}
 			>
 				<i className="icon-bell" />
 				{

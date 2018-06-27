@@ -7,29 +7,30 @@ import { NavbarToggler } from 'reactstrap';
 
 const propTypes = {
 	mobileSidebarToggle: PropTypes.func.isRequired,
-	sidebarToggle: PropTypes.func.isRequired,
-	isSidebarOpen: PropTypes.bool.isRequired,
-	isMobileSidebarOpen: PropTypes.bool.isRequired
+	sidebarToggle: PropTypes.func.isRequired
 };
 
 const HeaderLogoBlock = (props) => {
 	const {
 		mobileSidebarToggle,
-		sidebarToggle,
-		isSidebarOpen,
-		isMobileSidebarOpen
+		sidebarToggle
 	} = props;
 
 	return (
 		<div style={{ display: 'inline' }}>
 			<NavbarToggler
 				className="d-lg-none"
-				onClick={() => mobileSidebarToggle(!isMobileSidebarOpen)}
+				data-spec="header-logo-block-mobile-toggler"
+				onClick={mobileSidebarToggle}
 			>
 				&#9776;
 			</NavbarToggler>
 			<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER</Link>
-			<NavbarToggler className="d-md-down-none" onClick={() => sidebarToggle(!isSidebarOpen)}>
+			<NavbarToggler
+				className="d-md-down-none"
+				data-spec="header-logo-block-sidebar-toggler"
+				onClick={sidebarToggle}
+			>
 				&#9776;
 			</NavbarToggler>
 		</div>

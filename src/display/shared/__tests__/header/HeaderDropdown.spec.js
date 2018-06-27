@@ -24,6 +24,26 @@ describe('rendering', () => {
 		const element = shallow(jsx);
 		expect(element).toMatchSnapshot();
 	});
+	it('should render valid snapshot when dropdown is closed', () => {
+		const props = createTestProps({ isHeaderDropdownOpen: false });
+		const jsx = (<HeaderDropdown {...props} />);
+		const element = shallow(jsx);
+		expect(element).toMatchSnapshot();
+	});
+	it('should show dropdown when isHeaderDropdownOpen is true', () => {
+		const props = createTestProps();
+		const jsx = (<HeaderDropdown {...props} />);
+		const element = shallow(jsx);
+		const menu = getSpecWrapper(element, 'header-dropdown-menu');
+		expect(menu).toHaveClassName('show');
+	});
+	it('should hide dropdown when isHeaderDropdownOpen is false', () => {
+		const props = createTestProps({ isHeaderDropdownOpen: false });
+		const jsx = (<HeaderDropdown {...props} />);
+		const element = shallow(jsx);
+		const menu = getSpecWrapper(element, 'header-dropdown-menu');
+		expect(menu).not.toHaveClassName('show');
+	});
 });
 
 describe('behavior', () => {
@@ -56,15 +76,5 @@ describe('behavior', () => {
 		button.simulate('click');
 		expect(logout).toHaveBeenCalledTimes(1);
 		expect(logout).toHaveBeenCalledWith();
-	});
-	it('should call passed handler when toggle is clicked', () => {
-		const headerDropdownToggle = jest.fn();
-		const props = createTestProps({ headerDropdownToggle });
-		const jsx = (<HeaderDropdown {...props} />);
-		const element = shallow(jsx);
-		const dropdown = getSpecWrapper(element, 'header-dropdown');
-		dropdown.simulate('toggle');
-		expect(headerDropdownToggle).toHaveBeenCalledTimes(1);
-		expect(headerDropdownToggle).toHaveBeenCalledWith(false);
 	});
 });

@@ -9,17 +9,14 @@ import { HeaderLogoBlock, HeaderButton, HeaderAsideToggle, HeaderDropdown } from
 const propTypes = {
 	asideToggle: PropTypes.func.isRequired,
 	headerDropdownToggle: PropTypes.func.isRequired,
-	isHeaderDropdownOpen: PropTypes.bool.isRequired,
 	logout: PropTypes.func.isRequired,
 	mobileSidebarToggle: PropTypes.func.isRequired,
 	newsUnreadCount: PropTypes.number.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openNewThreadModal: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
-	isSidebarOpen: PropTypes.bool.isRequired,
-	isMobileSidebarOpen: PropTypes.bool.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
-	isNewsAsideOpen: PropTypes.bool.isRequired,
+	isHeaderDropdownOpen: PropTypes.bool.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string
 	}).isRequired
@@ -29,7 +26,6 @@ const Header = (props) => {
 	const {
 		asideToggle,
 		headerDropdownToggle,
-		isHeaderDropdownOpen,
 		logout,
 		mobileSidebarToggle,
 		newsUnreadCount,
@@ -37,9 +33,7 @@ const Header = (props) => {
 		openNewThreadModal,
 		sidebarToggle,
 		isLoadingIconVisible,
-		isSidebarOpen,
-		isMobileSidebarOpen,
-		isNewsAsideOpen,
+		isHeaderDropdownOpen,
 		user
 	} = props;
 
@@ -48,8 +42,6 @@ const Header = (props) => {
 			<HeaderLogoBlock
 				mobileSidebarToggle={mobileSidebarToggle}
 				sidebarToggle={sidebarToggle}
-				isSidebarOpen={isSidebarOpen}
-				isMobileSidebarOpen={isMobileSidebarOpen}
 			/>
 			<Nav className="d-md-down-none ml-4" navbar>
 				<HeaderButton
@@ -69,12 +61,11 @@ const Header = (props) => {
 			<Nav className="ml-auto" navbar>
 				<HeaderAsideToggle
 					asideToggle={asideToggle}
-					isNewsAsideOpen={isNewsAsideOpen}
 					newsUnreadCount={newsUnreadCount}
 				/>
 				<HeaderDropdown
-					headerDropdownToggle={headerDropdownToggle}
 					isHeaderDropdownOpen={isHeaderDropdownOpen}
+					headerDropdownToggle={headerDropdownToggle}
 					logout={logout}
 					openUpsertCharacterModal={openUpsertCharacterModal}
 					openNewThreadModal={openNewThreadModal}

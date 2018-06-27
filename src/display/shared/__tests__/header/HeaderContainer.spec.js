@@ -84,7 +84,8 @@ describe('behavior', () => {
 			ui: {
 				isMobileSidebarOpen: true,
 				isSidebarOpen: true,
-				isNewsAsideOpen: true
+				isNewsAsideOpen: true,
+				isHeaderDropdownOpen: false
 			}
 		});
 		const jsx = (<HeaderContainer {...props} />);
@@ -102,7 +103,8 @@ describe('behavior', () => {
 			ui: {
 				isMobileSidebarOpen: false,
 				isSidebarOpen: false,
-				isNewsAsideOpen: true
+				isNewsAsideOpen: true,
+				isHeaderDropdownOpen: false
 			}
 		});
 		const jsx = (<HeaderContainer {...props} />);
@@ -120,7 +122,8 @@ describe('behavior', () => {
 			ui: {
 				isMobileSidebarOpen: false,
 				isSidebarOpen: true,
-				isNewsAsideOpen: false
+				isNewsAsideOpen: false,
+				isHeaderDropdownOpen: false
 			}
 		});
 		const jsx = (<HeaderContainer {...props} />);
@@ -139,6 +142,7 @@ describe('behavior', () => {
 		const element = shallowWithState(jsx, state).dive('HeaderContainer');
 		element.instance().sidebarToggle();
 		expect(toggleSidebar).toHaveBeenCalledTimes(1);
+		expect(toggleSidebar).toHaveBeenCalledWith(false);
 	});
 	it('should dispatch aside toggle action when asideToggle is called', () => {
 		const toggleNewsAside = jest.fn();
@@ -148,6 +152,7 @@ describe('behavior', () => {
 		const element = shallowWithState(jsx, state).dive('HeaderContainer');
 		element.instance().asideToggle();
 		expect(toggleNewsAside).toHaveBeenCalledTimes(1);
+		expect(toggleNewsAside).toHaveBeenCalledWith(false);
 	});
 	it('should dispatch mobile sidebar toggle action when mobileSidebarToggle is called', () => {
 		const toggleMobileSidebar = jest.fn();
@@ -157,6 +162,7 @@ describe('behavior', () => {
 		const element = shallowWithState(jsx, state).dive('HeaderContainer');
 		element.instance().mobileSidebarToggle();
 		expect(toggleMobileSidebar).toHaveBeenCalledTimes(1);
+		expect(toggleMobileSidebar).toHaveBeenCalledWith(false);
 	});
 	it('should dispatch header dropdown toggle action when headerDropdownToggle is called', () => {
 		const toggleHeaderDropdown = jest.fn();
@@ -166,6 +172,7 @@ describe('behavior', () => {
 		const element = shallowWithState(jsx, state).dive('HeaderContainer');
 		element.instance().headerDropdownToggle();
 		expect(toggleHeaderDropdown).toHaveBeenCalledTimes(1);
+		expect(toggleHeaderDropdown).toHaveBeenCalledWith(false);
 	});
 	it('should dispatch upsert character modal open action when openUpsertCharacterModal is called', () => {
 		const openUpsertCharacterModal = jest.fn();
