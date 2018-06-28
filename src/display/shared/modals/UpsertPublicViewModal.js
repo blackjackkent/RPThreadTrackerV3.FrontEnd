@@ -65,15 +65,18 @@ class UpsertCharacterModal extends React.Component {
 			tags,
 			columns
 		} = this.props;
-		if (!viewToEdit) {
-			return (
-				<div />
-			);
-		}
 		return (
-			<Modal isOpen={isUpsertPublicViewModalOpen} toggle={closeUpsertPublicViewModal} backdrop>
-				<AvForm onValidSubmit={() => submitUpsertPublicView(this.state.viewToEdit)}>
-					<ModalHeader toggle={closeUpsertPublicViewModal}>{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}</ModalHeader>
+			<Modal
+				data-spec="upsert-public-view-modal"
+				isOpen={isUpsertPublicViewModalOpen}
+				toggle={closeUpsertPublicViewModal}
+				backdrop
+			>
+				<AvForm
+					data-spec="upsert-public-view-modal-form"
+					onValidSubmit={() => submitUpsertPublicView(this.state.viewToEdit)}
+				>
+					<ModalHeader data-spec="upsert-public-view-modal-header" toggle={closeUpsertPublicViewModal}>{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}</ModalHeader>
 					<ModalBody>
 						<TooltipForm
 							Renderable={UpsertPublicViewForm}
@@ -86,7 +89,13 @@ class UpsertCharacterModal extends React.Component {
 					</ModalBody>
 					<ModalFooter>
 						<Button color="primary">Submit Public View</Button>{' '}
-						<Button color="secondary" onClick={closeUpsertPublicViewModal}>Cancel</Button>
+						<Button
+							data-spec="upsert-public-view-modal-close-button"
+							color="secondary"
+							onClick={closeUpsertPublicViewModal}
+						>
+							Cancel
+						</Button>
 					</ModalFooter>
 				</AvForm>
 			</Modal>

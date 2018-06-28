@@ -86,7 +86,16 @@ describe('behavior', () => {
 		const props = createTestProps({ closeUpsertCharacterModal });
 		const jsx = (<UpsertCharacterModal {...props} />);
 		const element = shallow(jsx);
-		const header = getSpecWrapper(element, 'upsert-character-modal');
+		const modal = getSpecWrapper(element, 'upsert-character-modal');
+		modal.prop('toggle')();
+		expect(closeUpsertCharacterModal).toHaveBeenCalledTimes(1);
+	});
+	it('should close modal on modal toggle', () => {
+		const closeUpsertCharacterModal = jest.fn();
+		const props = createTestProps({ closeUpsertCharacterModal });
+		const jsx = (<UpsertCharacterModal {...props} />);
+		const element = shallow(jsx);
+		const header = getSpecWrapper(element, 'upsert-character-modal-header');
 		header.prop('toggle')();
 		expect(closeUpsertCharacterModal).toHaveBeenCalledTimes(1);
 	});

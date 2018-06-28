@@ -94,15 +94,18 @@ class UpsertThreadModal extends Component {
 			threadToEdit,
 			characters
 		} = this.props;
-		if (!threadToEdit) {
-			return (
-				<div />
-			);
-		}
 		return (
-			<Modal isOpen={isUpsertThreadModalOpen} toggle={closeUpsertThreadModal} backdrop>
-				<AvForm onValidSubmit={() => submitUpsertThread(this.state.threadToEdit)}>
-					<ModalHeader toggle={closeUpsertThreadModal}>
+			<Modal
+				data-spec="upsert-thread-modal"
+				isOpen={isUpsertThreadModalOpen}
+				toggle={closeUpsertThreadModal}
+				backdrop
+			>
+				<AvForm
+					data-spec="upsert-thread-modal-form"
+					onValidSubmit={() => submitUpsertThread(this.state.threadToEdit)}
+				>
+					<ModalHeader data-spec="upsert-thread-modal-header" toggle={closeUpsertThreadModal}>
 						{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add New Thread'}
 					</ModalHeader>
 					<ModalBody>
@@ -119,7 +122,13 @@ class UpsertThreadModal extends Component {
 					</ModalBody>
 					<ModalFooter>
 						<Button color="primary">{threadToEdit.threadId ? 'Edit Thread' : 'Add Thread'}</Button>{' '}
-						<Button color="secondary" onClick={closeUpsertThreadModal}>Cancel</Button>
+						<Button
+							data-spec="upsert-thread-modal-close-button"
+							color="secondary"
+							onClick={closeUpsertThreadModal}
+						>
+							Cancel
+						</Button>
 					</ModalFooter>
 				</AvForm>
 			</Modal>
