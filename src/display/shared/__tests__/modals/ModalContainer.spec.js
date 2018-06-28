@@ -1,0 +1,82 @@
+// #region imports
+import React from 'react';
+import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import ModalContainer from '../../modals/ModalContainer';
+// #endregion imports
+
+// #region mocks
+jest.mock('../../../../infrastructure/actions', () => ({}));
+jest.mock('../../../../infrastructure/selectors', () => ({
+	getCharactersSortedByIdentifier: () => [{ characterId: 1 }, { characterId: 2 }],
+	getTagsSortedByTagText: () => ['tag1', 'tag2', 'tag3']
+}));
+jest.mock('../../../../infrastructure/constants/columns', () => ({
+	TEST_COLUMN: {
+		key: 'testKey',
+		name: 'Test Value'
+	}
+}));
+jest.mock('../../modals/UpsertCharacterModal', () => 'UpsertCharacterModal');
+jest.mock('../../modals/UpsertThreadModal', () => 'UpsertThreadModal');
+jest.mock('../../modals/GenericConfirmationModal', () => 'GenericConfirmationModal');
+jest.mock('../../modals/UpsertPublicViewModal', () => 'UpsertPublicViewModal');
+// #endregion mocks
+
+const createTestProps = propOverrides => ({
+	bulkUntrackThreads: jest.fn(),
+	closeBulkUntrackThreadsModal: jest.fn(),
+	closeDeletePublicViewModal: jest.fn(),
+	closeUntrackCharacterModal: jest.fn(),
+	closeUntrackThreadModal: jest.fn(),
+	closeUpsertCharacterModal: jest.fn(),
+	closeUpsertPublicViewModal: jest.fn(),
+	closeUpsertThreadModal: jest.fn(),
+	deletePublicView: jest.fn(),
+	isBulkUntrackThreadsModalOpen: true,
+	isDeletePublicViewModalOpen: true,
+	isUntrackCharacterModalOpen: true,
+	isUntrackThreadModalOpen: true,
+	isUpsertCharacterModalOpen: true,
+	isUpsertPublicViewModalOpen: true,
+	isUpsertThreadModalOpen: true,
+	untrackCharacter: jest.fn(),
+	untrackThread: jest.fn(),
+	upsertCharacter: jest.fn(),
+	upsertPublicView: jest.fn(),
+	upsertThread: jest.fn(),
+	...propOverrides
+});
+
+const createTestState = stateOverrides => ({
+	ui: {
+		isUpsertCharacterModalOpen: true,
+		isUntrackThreadModalOpen: true,
+		isBulkUntrackThreadsModalOpen: true,
+		isUpsertThreadModalOpen: true,
+		isUntrackCharacterModalOpen: true,
+		isUpsertPublicViewModalOpen: true,
+		isDeletePublicViewModalOpen: true
+	},
+	characterToEdit: { characterId: 3, characterName: 'My Test Character' },
+	threadToEdit: { threadId: 5, userTitle: 'My Test Thread' },
+	bulkThreadsToEdit: [{ threadId: 1 }, { threadId: 2 }],
+	viewToEdit: { id: 10, name: 'My Test View' },
+	...stateOverrides
+});
+
+describe('rendering', () => {
+	it('should render valid snapshot', () => {
+		const props = createTestProps();
+		const state = createTestState();
+		const jsx = (<ModalContainer {...props} />);
+		const element = shallowWithState(jsx, state).dive('ModalContainer');
+		expect(element).toMatchSnapshot();
+	});
+	it('should render valid snapshot with missing character name', () => {
+		const props = createTestProps();
+		const state = createTestState({ characterToEdit: { id: 12, urlIdentifier: 'my-test-character' } });
+		const jsx = (<ModalContainer {...props} />);
+		const element = shallowWithState(jsx, state).dive('ModalContainer');
+		expect(element).toMatchSnapshot();
+	});
+});

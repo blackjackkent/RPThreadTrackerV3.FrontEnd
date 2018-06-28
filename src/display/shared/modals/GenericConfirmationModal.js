@@ -39,8 +39,20 @@ const GenericConfirmationModal = (props) => {
 				{bodyText}
 			</ModalBody>
 			<ModalFooter>
-				<Button color="primary" onClick={() => submitCallback(data)}>{submitButtonText}</Button>{' '}
-				<Button color="secondary" onClick={closeCallback}>{closeButtonText}</Button>
+				<Button
+					color="primary"
+					data-spec="generic-confirmation-ok-button"
+					onClick={() => submitCallback(data)}
+				>
+					{submitButtonText}
+				</Button>{' '}
+				<Button
+					color="secondary"
+					data-spec="generic-confirmation-cancel-button"
+					onClick={closeCallback}
+				>
+					{closeButtonText}
+				</Button>
 			</ModalFooter>
 		</Modal>
 	);

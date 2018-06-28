@@ -43,7 +43,6 @@ const propTypes = {
 function mapStateToProps(state) {
 	const {
 		ui,
-		characters,
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
@@ -60,7 +59,6 @@ function mapStateToProps(state) {
 		isUpsertPublicViewModalOpen: ui.isUpsertPublicViewModalOpen,
 		isDeletePublicViewModalOpen: ui.isDeletePublicViewModalOpen,
 		characterToEdit,
-		characters,
 		threadToEdit,
 		bulkThreadsToEdit,
 		viewToEdit,
@@ -117,7 +115,9 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={threadToEdit}
 				headerText="Confirm Thread Untracking"
-				bodyText={<span>Are you sure you want to untrack <strong>{threadToEdit ? threadToEdit.userTitle : ''}</strong>?</span>}
+				bodyText={(
+					<span>Are you sure you want to untrack <strong>{threadToEdit.userTitle}</strong>?</span>
+				)}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkUntrackThreadsModalOpen}

@@ -42,15 +42,18 @@ class UpsertCharacterModal extends React.Component {
 			closeUpsertCharacterModal,
 			characterToEdit
 		} = this.props;
-		if (!characterToEdit) {
-			return (
-				<div />
-			);
-		}
 		return (
-			<Modal isOpen={isUpsertCharacterModalOpen} toggle={closeUpsertCharacterModal} backdrop>
-				<AvForm onValidSubmit={() => submitUpsertCharacter(this.state.characterToEdit)}>
-					<ModalHeader toggle={closeUpsertCharacterModal}>{characterToEdit.characterId ? 'Edit Character' : 'Add Character'}</ModalHeader>
+			<Modal
+				data-spec="upsert-character-modal"
+				isOpen={isUpsertCharacterModalOpen}
+				toggle={closeUpsertCharacterModal}
+				backdrop
+			>
+				<AvForm
+					data-spec="upsert-character-modal-form"
+					onValidSubmit={() => submitUpsertCharacter(this.state.characterToEdit)}
+				>
+					<ModalHeader data-spec="upsert-character-modal-header" toggle={closeUpsertCharacterModal}>{characterToEdit.characterId ? 'Edit Character' : 'Add Character'}</ModalHeader>
 					<ModalBody>
 						<TooltipForm
 							Renderable={UpsertCharacterForm}
@@ -60,7 +63,13 @@ class UpsertCharacterModal extends React.Component {
 					</ModalBody>
 					<ModalFooter>
 						<Button color="primary">Submit Character</Button>{' '}
-						<Button color="secondary" onClick={closeUpsertCharacterModal}>Cancel</Button>
+						<Button
+							data-spec="upsert-character-modal-close-button"
+							color="secondary"
+							onClick={closeUpsertCharacterModal}
+						>
+							Cancel
+						</Button>
 					</ModalFooter>
 				</AvForm>
 			</Modal>

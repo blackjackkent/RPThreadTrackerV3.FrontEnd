@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <ModalHeader
+    tag="h4"
+    toggle={[MockFunction]}
+    wrapTag="div"
+  >
+    Test Header
+  </ModalHeader>
+  <ModalBody
+    tag="div"
+  >
+    <span>
+      Test Body
+    </span>
+  </ModalBody>
+  <ModalFooter
+    tag="div"
+  >
+    <Button
+      color="primary"
+      data-spec="generic-confirmation-ok-button"
+      onClick={[Function]}
+      tag="button"
+    >
+      OK
+    </Button>
+     
+    <Button
+      color="secondary"
+      data-spec="generic-confirmation-cancel-button"
+      onClick={[MockFunction]}
+      tag="button"
+    >
+      Cancel
+    </Button>
+  </ModalFooter>
+</Modal>
+`;
+
+exports[`rendering should render valid snapshot with non-default props 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <ModalHeader
+    tag="h4"
+    toggle={[MockFunction]}
+    wrapTag="div"
+  >
+    Test Header
+  </ModalHeader>
+  <ModalBody
+    tag="div"
+  >
+    <span>
+      Test Body
+    </span>
+  </ModalBody>
+  <ModalFooter
+    tag="div"
+  >
+    <Button
+      color="primary"
+      data-spec="generic-confirmation-ok-button"
+      onClick={[Function]}
+      tag="button"
+    >
+      Test OK
+    </Button>
+     
+    <Button
+      color="secondary"
+      data-spec="generic-confirmation-cancel-button"
+      onClick={[MockFunction]}
+      tag="button"
+    >
+      Test Cancel
+    </Button>
+  </ModalFooter>
+</Modal>
+`;

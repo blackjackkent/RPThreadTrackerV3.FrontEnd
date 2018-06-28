@@ -1,0 +1,143 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-character-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-character-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-character-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Edit Character
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertCharacterForm"
+        characterToEdit={
+          Object {
+            "characterId": 1,
+          }
+        }
+        handleInputChange={[Function]}
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Submit Character
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-character-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;
+
+exports[`rendering should render valid snapshot if character is new 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-character-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-character-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-character-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Add Character
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertCharacterForm"
+        characterToEdit={Object {}}
+        handleInputChange={[Function]}
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Submit Character
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-character-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;
