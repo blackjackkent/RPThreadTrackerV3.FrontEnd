@@ -3,6 +3,8 @@
 .app-header.navbar .navbar-toggler { height: 55px; }
 .app-header.navbar .navbar-brand { height: 53px; }
 .app-header.navbar .navbar-nav button { border: 1px solid $white; border-radius: 5px; margin-right: 10px; }
+.app-header .dropdown-menu button { margin: 0; padding: 0; }
+.app-header .dropdown-menu button span { margin: 10px 20px; display: block;}
 @media (max-width: 991px) {
 .app-header .navbar-brand { position: relative; left: auto; margin: 0;}
 }
