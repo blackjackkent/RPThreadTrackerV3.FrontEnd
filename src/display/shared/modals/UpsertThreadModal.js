@@ -94,6 +94,7 @@ class UpsertThreadModal extends Component {
 			threadToEdit,
 			characters
 		} = this.props;
+		const activeCharacters = [].concat(characters.filter(c => !c.isOnHiatus));
 		return (
 			<Modal
 				data-spec="upsert-thread-modal"
@@ -112,7 +113,7 @@ class UpsertThreadModal extends Component {
 						<TooltipForm
 							Renderable={UpsertThreadForm}
 							threadToEdit={threadToEdit}
-							characters={characters}
+							characters={activeCharacters}
 							selectCharacter={this.selectCharacter}
 							handleInputChange={this.handleInputChange}
 							handleTagAdded={this.handleTagAdded}

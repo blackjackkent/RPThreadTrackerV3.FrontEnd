@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import ReduxToastr from 'react-redux-toastr';
 
 import { fetchUser, fetchNews, fetchUserSettings } from '../../infrastructure/actions';
+import { getIsLoadingIconVisible } from '../../infrastructure/selectors';
 
 import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
@@ -33,11 +34,14 @@ const propTypes = {
 	fetchUser: PropTypes.func.isRequired,
 	fetchNews: PropTypes.func.isRequired,
 	fetchUserSettings: PropTypes.func.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string.isRequired
 	}).isRequired,
 	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	userSettings: PropTypes.shape({}).isRequired
+	userSettings: PropTypes.shape({
+		settingsId: PropTypes.string.isRequired
+	}).isRequired
 };
 const mapStateToProps = (state) => {
 	const {
@@ -45,10 +49,12 @@ const mapStateToProps = (state) => {
 		news,
 		userSettings
 	} = state;
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		user,
 		news,
-		userSettings
+		userSettings,
+		isLoadingIconVisible
 	};
 };
 class Layout extends Component {
@@ -100,7 +106,7 @@ class Layout extends Component {
 				<div className="app-body">
 					<Sidebar {...this.props} />
 					<main className="main">
-						<Breadcrumb />
+						<Breadcrumb isLoadingIconVisible={this.props.isLoadingIconVisible} />
 						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
