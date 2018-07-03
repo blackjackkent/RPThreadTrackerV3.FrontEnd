@@ -33,8 +33,18 @@ const GenericConfirmationModal = (props) => {
 		bodyText
 	} = props;
 	return (
-		<Modal isOpen={isModalOpen} toggle={closeCallback} backdrop>
-			<ModalHeader toggle={closeCallback}>{headerText}</ModalHeader>
+		<Modal
+			isOpen={isModalOpen}
+			toggle={closeCallback}
+			backdrop
+			data-spec="generic-confirmation-modal"
+		>
+			<ModalHeader
+				toggle={closeCallback}
+				data-spec="generic-confirmation-modal-header"
+			>
+				{headerText}
+			</ModalHeader>
 			<ModalBody>
 				{bodyText}
 			</ModalBody>

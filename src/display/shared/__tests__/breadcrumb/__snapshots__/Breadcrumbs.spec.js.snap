@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot with empty string 1`] = `
+exports[`rendering snapshots should render valid snapshot with empty string 1`] = `
 <Breadcrumb
   tag="ol"
 >
@@ -12,7 +12,7 @@ exports[`rendering should render valid snapshot with empty string 1`] = `
 </Breadcrumb>
 `;
 
-exports[`rendering should render valid snapshot with more than one segment path 1`] = `
+exports[`rendering snapshots should render valid snapshot with more than one segment path 1`] = `
 <Breadcrumb
   tag="ol"
 >
@@ -34,7 +34,7 @@ exports[`rendering should render valid snapshot with more than one segment path 
 </Breadcrumb>
 `;
 
-exports[`rendering should render valid snapshot with one segment path 1`] = `
+exports[`rendering snapshots should render valid snapshot with one segment path 1`] = `
 <Breadcrumb
   tag="ol"
 >
@@ -51,7 +51,7 @@ exports[`rendering should render valid snapshot with one segment path 1`] = `
 </Breadcrumb>
 `;
 
-exports[`rendering should render valid snapshot with root path 1`] = `
+exports[`rendering snapshots should render valid snapshot with root path 1`] = `
 <Breadcrumb
   tag="ol"
 >

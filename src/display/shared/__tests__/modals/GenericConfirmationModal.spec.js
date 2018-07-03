@@ -16,41 +16,65 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<GenericConfirmationModal {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
-	});
-	it('should render valid snapshot with non-default props', () => {
-		const props = createTestProps({
-			submitButtonText: 'Test OK',
-			closeButtonText: 'Test Cancel'
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<GenericConfirmationModal {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
 		});
-		const jsx = (<GenericConfirmationModal {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+		it('should render valid snapshot with non-default props', () => {
+			const props = createTestProps({
+				submitButtonText: 'Test OK',
+				closeButtonText: 'Test Cancel'
+			});
+			const jsx = (<GenericConfirmationModal {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should trigger OK handler on click and submit data', () => {
-		const submitCallback = jest.fn();
-		const props = createTestProps({ submitCallback });
-		const jsx = (<GenericConfirmationModal {...props} />);
-		const element = shallow(jsx);
-		const button = getSpecWrapper(element, 'generic-confirmation-ok-button');
-		button.simulate('click');
-		expect(submitCallback).toHaveBeenCalledTimes(1);
-		expect(submitCallback).toHaveBeenCalledWith(['my', 'data']);
+	describe('submitCallback', () => {
+		it('should be triggered with data when submit button is clicked', () => {
+			const submitCallback = jest.fn();
+			const props = createTestProps({ submitCallback });
+			const jsx = (<GenericConfirmationModal {...props} />);
+			const element = shallow(jsx);
+			const button = getSpecWrapper(element, 'generic-confirmation-ok-button');
+			button.simulate('click');
+			expect(submitCallback).toHaveBeenCalledTimes(1);
+			expect(submitCallback).toHaveBeenCalledWith(['my', 'data']);
+		});
 	});
-	it('should trigger cancel handler on click', () => {
-		const closeCallback = jest.fn();
-		const props = createTestProps({ closeCallback });
-		const jsx = (<GenericConfirmationModal {...props} />);
-		const element = shallow(jsx);
-		const button = getSpecWrapper(element, 'generic-confirmation-cancel-button');
-		button.simulate('click');
-		expect(closeCallback).toHaveBeenCalledTimes(1);
+	describe('closeCallback', () => {
+		it('should be triggered when modal is toggled', () => {
+			const closeCallback = jest.fn();
+			const props = createTestProps({ closeCallback });
+			const jsx = (<GenericConfirmationModal {...props} />);
+			const element = shallow(jsx);
+			const modal = getSpecWrapper(element, 'generic-confirmation-modal');
+			modal.prop('toggle')();
+			expect(closeCallback).toHaveBeenCalledTimes(1);
+		});
+		it('should close modal on modal header toggle', () => {
+			const closeCallback = jest.fn();
+			const props = createTestProps({ closeCallback });
+			const jsx = (<GenericConfirmationModal {...props} />);
+			const element = shallow(jsx);
+			const header = getSpecWrapper(element, 'generic-confirmation-modal-header');
+			header.prop('toggle')();
+			expect(closeCallback).toHaveBeenCalledTimes(1);
+		});
+		it('should be triggered when cancel button is clicked', () => {
+			const closeCallback = jest.fn();
+			const props = createTestProps({ closeCallback });
+			const jsx = (<GenericConfirmationModal {...props} />);
+			const element = shallow(jsx);
+			const button = getSpecWrapper(element, 'generic-confirmation-cancel-button');
+			button.simulate('click');
+			expect(closeCallback).toHaveBeenCalledTimes(1);
+		});
 	});
 });

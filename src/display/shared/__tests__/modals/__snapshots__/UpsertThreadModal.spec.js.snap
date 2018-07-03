@@ -1,0 +1,271 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-thread-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-thread-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-thread-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Edit Thread
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertThreadForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 1,
+            },
+            Object {
+              "characterId": 2,
+            },
+          ]
+        }
+        handleInputChange={[Function]}
+        handleTagAdded={[Function]}
+        handleTagRemoved={[Function]}
+        selectCharacter={[Function]}
+        tagValues={Array []}
+        threadToEdit={
+          Object {
+            "threadId": 1,
+          }
+        }
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Edit Thread
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-thread-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;
+
+exports[`rendering snapshots should render valid snapshot if thread has tags 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-thread-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-thread-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-thread-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Edit Thread
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertThreadForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 1,
+            },
+            Object {
+              "characterId": 2,
+            },
+          ]
+        }
+        handleInputChange={[Function]}
+        handleTagAdded={[Function]}
+        handleTagRemoved={[Function]}
+        selectCharacter={[Function]}
+        tagValues={
+          Array [
+            "tag1",
+            "tag2",
+          ]
+        }
+        threadToEdit={
+          Object {
+            "threadId": 1,
+            "threadTags": Array [
+              Object {
+                "tagText": "tag1",
+              },
+              Object {
+                "tagText": "tag2",
+              },
+            ],
+          }
+        }
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Edit Thread
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-thread-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;
+
+exports[`rendering snapshots should render valid snapshot if thread is new 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-thread-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-thread-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-thread-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Add New Thread
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertThreadForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 1,
+            },
+            Object {
+              "characterId": 2,
+            },
+          ]
+        }
+        handleInputChange={[Function]}
+        handleTagAdded={[Function]}
+        handleTagRemoved={[Function]}
+        selectCharacter={[Function]}
+        tagValues={Array []}
+        threadToEdit={Object {}}
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Add Thread
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-thread-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;

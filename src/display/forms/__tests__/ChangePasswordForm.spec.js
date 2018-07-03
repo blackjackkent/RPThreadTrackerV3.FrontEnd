@@ -11,63 +11,69 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
-	});
-	it('should validate the current password field', () => {
-		const props = createTestProps();
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'current-password-field');
-		expect(field.props().validate.required).toHaveProperty('value', true);
-	});
-	it('should validate the new password field', () => {
-		const props = createTestProps();
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'new-password-field');
-		expect(field.props().validate.required).toHaveProperty('value', true);
-		expect(field.props().validate.minLength).toHaveProperty('value', 6);
-	});
-	it('should validate the confirm new password field', () => {
-		const props = createTestProps();
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'confirm-new-password-field');
-		expect(field.props().validate.required).toHaveProperty('value', true);
-		expect(field.props().validate.match).toHaveProperty('value', 'newPassword');
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should handle input change for current password', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'current-password-field');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	describe('validation', () => {
+		it('should validate the current password field', () => {
+			const props = createTestProps();
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'current-password-field');
+			expect(field.props().validate.required).toHaveProperty('value', true);
+		});
+		it('should validate the new password field', () => {
+			const props = createTestProps();
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'new-password-field');
+			expect(field.props().validate.required).toHaveProperty('value', true);
+			expect(field.props().validate.minLength).toHaveProperty('value', 6);
+		});
+		it('should validate the confirm new password field', () => {
+			const props = createTestProps();
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'confirm-new-password-field');
+			expect(field.props().validate.required).toHaveProperty('value', true);
+			expect(field.props().validate.match).toHaveProperty('value', 'newPassword');
+		});
 	});
-	it('should handle input change for new password', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'new-password-field');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
-	});
-	it('should handle input change for confirm new password', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<ChangePasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'confirm-new-password-field');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	describe('handleInputChange', () => {
+		it('should be called when current password changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'current-password-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
+		it('should be called when new password changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'new-password-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
+		it('should be called when new password confirmation changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<ChangePasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'confirm-new-password-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
 	});
 });

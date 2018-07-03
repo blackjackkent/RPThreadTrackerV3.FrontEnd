@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <NavItem
   tag="li"
 >
@@ -49,7 +49,7 @@ exports[`rendering should render valid snapshot 1`] = `
 </NavItem>
 `;
 
-exports[`rendering should render valid snapshot when dropdown is closed 1`] = `
+exports[`rendering snapshots should render valid snapshot when dropdown is closed 1`] = `
 <NavItem
   tag="li"
 >

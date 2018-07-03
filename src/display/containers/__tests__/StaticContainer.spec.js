@@ -12,9 +12,11 @@ jest.mock('../../views/reset-password/ResetPassword', () => () => 'ResetPassword
 // #endregion mocks
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const jsx = (<StaticContainer />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const jsx = (<StaticContainer />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });

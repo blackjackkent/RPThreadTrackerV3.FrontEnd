@@ -41,85 +41,91 @@ const createTestState = stateOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot when loading', () => {
-		const props = createTestProps();
-		const state = createTestState();
-		const jsx = (<Layout {...props} />);
-		const element = shallowWithState(jsx, state).dive('Layout');
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot when loading', () => {
+			const props = createTestProps();
+			const state = createTestState();
+			const jsx = (<Layout {...props} />);
+			const element = shallowWithState(jsx, state).dive('Layout');
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot with loading indicator', () => {
+			const props = createTestProps();
+			const state = createTestState({ user: { id: '12345' } });
+			const jsx = (<Layout {...props} />);
+			const element = shallowWithState(jsx, state).dive('Layout');
+			expect(element).toMatchSnapshot();
+		});
 	});
-	it('should render valid snapshot with loading indicator', () => {
-		const props = createTestProps();
-		const state = createTestState({ user: { id: '12345' } });
-		const jsx = (<Layout {...props} />);
-		const element = shallowWithState(jsx, state).dive('Layout');
-		expect(element).toMatchSnapshot();
-	});
-	it('should render loading indicator if user not loaded', () => {
-		const props = createTestProps();
-		const state = createTestState();
-		const jsx = (<Layout {...props} />);
-		const element = shallowWithState(jsx, state).dive('Layout');
-		expect(getSpecWrapper(element, 'layout-loader')).toHaveLength(1);
-		expect(getSpecWrapper(element, 'layout-app')).toHaveLength(0);
-	});
-	it('should render app if user is loaded', () => {
-		const props = createTestProps();
-		const state = createTestState({ user: { id: '12345' } });
-		const jsx = (<Layout {...props} />);
-		const element = shallowWithState(jsx, state).dive('Layout');
-		expect(getSpecWrapper(element, 'layout-loader')).toHaveLength(0);
-		expect(getSpecWrapper(element, 'layout-app')).toHaveLength(1);
+	describe('loading indicator', () => {
+		it('should be displayed if user not loaded', () => {
+			const props = createTestProps();
+			const state = createTestState();
+			const jsx = (<Layout {...props} />);
+			const element = shallowWithState(jsx, state).dive('Layout');
+			expect(getSpecWrapper(element, 'layout-loader')).toHaveLength(1);
+			expect(getSpecWrapper(element, 'layout-app')).toHaveLength(0);
+		});
+		it('should not be displayed if user is loaded', () => {
+			const props = createTestProps();
+			const state = createTestState({ user: { id: '12345' } });
+			const jsx = (<Layout {...props} />);
+			const element = shallowWithState(jsx, state).dive('Layout');
+			expect(getSpecWrapper(element, 'layout-loader')).toHaveLength(0);
+			expect(getSpecWrapper(element, 'layout-app')).toHaveLength(1);
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should retrieve user when user is not loaded', () => {
-		const fetchUser = jest.fn();
-		const props = createTestProps({ fetchUser });
-		const state = createTestState();
-		const jsx = (<Layout {...props} />);
-		shallowWithState(jsx, state).dive('Layout');
-		expect(fetchUser).toHaveBeenCalledTimes(1);
-	});
-	it('should not retrieve user when user is loaded', () => {
-		const fetchUser = jest.fn();
-		const props = createTestProps({ fetchUser });
-		const state = createTestState({ user: { id: '12345' } });
-		const jsx = (<Layout {...props} />);
-		shallowWithState(jsx, state).dive('Layout');
-		expect(fetchUser).toHaveBeenCalledTimes(0);
-	});
-	it('should retrieve news when news is not loaded', () => {
-		const fetchNews = jest.fn();
-		const props = createTestProps({ fetchNews });
-		const state = createTestState();
-		const jsx = (<Layout {...props} />);
-		shallowWithState(jsx, state).dive('Layout');
-		expect(fetchNews).toHaveBeenCalledTimes(1);
-	});
-	it('should not retrieve news when news is loaded', () => {
-		const fetchNews = jest.fn();
-		const props = createTestProps({ fetchNews });
-		const state = createTestState({ news: [{}, {}] });
-		const jsx = (<Layout {...props} />);
-		shallowWithState(jsx, state).dive('Layout');
-		expect(fetchNews).toHaveBeenCalledTimes(0);
-	});
-	it('should retrieve user settings when user settings are not loaded', () => {
-		const fetchUserSettings = jest.fn();
-		const props = createTestProps({ fetchUserSettings });
-		const state = createTestState();
-		const jsx = (<Layout {...props} />);
-		shallowWithState(jsx, state).dive('Layout');
-		expect(fetchUserSettings).toHaveBeenCalledTimes(1);
-	});
-	it('should not retrieve user settings when user settings are loaded', () => {
-		const fetchUserSettings = jest.fn();
-		const props = createTestProps({ fetchUserSettings });
-		const state = createTestState({ userSettings: { settingsId: 54321 } });
-		const jsx = (<Layout {...props} />);
-		shallowWithState(jsx, state).dive('Layout');
-		expect(fetchUserSettings).toHaveBeenCalledTimes(0);
+	describe('componentDidMount', () => {
+		it('should retrieve user when user is not loaded', () => {
+			const fetchUser = jest.fn();
+			const props = createTestProps({ fetchUser });
+			const state = createTestState();
+			const jsx = (<Layout {...props} />);
+			shallowWithState(jsx, state).dive('Layout');
+			expect(fetchUser).toHaveBeenCalledTimes(1);
+		});
+		it('should not retrieve user when user is loaded', () => {
+			const fetchUser = jest.fn();
+			const props = createTestProps({ fetchUser });
+			const state = createTestState({ user: { id: '12345' } });
+			const jsx = (<Layout {...props} />);
+			shallowWithState(jsx, state).dive('Layout');
+			expect(fetchUser).toHaveBeenCalledTimes(0);
+		});
+		it('should retrieve news when news is not loaded', () => {
+			const fetchNews = jest.fn();
+			const props = createTestProps({ fetchNews });
+			const state = createTestState();
+			const jsx = (<Layout {...props} />);
+			shallowWithState(jsx, state).dive('Layout');
+			expect(fetchNews).toHaveBeenCalledTimes(1);
+		});
+		it('should not retrieve news when news is loaded', () => {
+			const fetchNews = jest.fn();
+			const props = createTestProps({ fetchNews });
+			const state = createTestState({ news: [{}, {}] });
+			const jsx = (<Layout {...props} />);
+			shallowWithState(jsx, state).dive('Layout');
+			expect(fetchNews).toHaveBeenCalledTimes(0);
+		});
+		it('should retrieve user settings when user settings are not loaded', () => {
+			const fetchUserSettings = jest.fn();
+			const props = createTestProps({ fetchUserSettings });
+			const state = createTestState();
+			const jsx = (<Layout {...props} />);
+			shallowWithState(jsx, state).dive('Layout');
+			expect(fetchUserSettings).toHaveBeenCalledTimes(1);
+		});
+		it('should not retrieve user settings when user settings are loaded', () => {
+			const fetchUserSettings = jest.fn();
+			const props = createTestProps({ fetchUserSettings });
+			const state = createTestState({ userSettings: { settingsId: 54321 } });
+			const jsx = (<Layout {...props} />);
+			shallowWithState(jsx, state).dive('Layout');
+			expect(fetchUserSettings).toHaveBeenCalledTimes(0);
+		});
 	});
 });

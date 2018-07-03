@@ -1,10 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <Modal
   autoFocus={true}
   backdrop={true}
   backdropTransitionTimeout={150}
+  data-spec="generic-confirmation-modal"
   fade={true}
   isOpen={true}
   keyboard={true}
@@ -13,6 +14,7 @@ exports[`rendering should render valid snapshot 1`] = `
   zIndex={1050}
 >
   <ModalHeader
+    data-spec="generic-confirmation-modal-header"
     tag="h4"
     toggle={[MockFunction]}
     wrapTag="div"
@@ -50,11 +52,12 @@ exports[`rendering should render valid snapshot 1`] = `
 </Modal>
 `;
 
-exports[`rendering should render valid snapshot with non-default props 1`] = `
+exports[`rendering snapshots should render valid snapshot with non-default props 1`] = `
 <Modal
   autoFocus={true}
   backdrop={true}
   backdropTransitionTimeout={150}
+  data-spec="generic-confirmation-modal"
   fade={true}
   isOpen={true}
   keyboard={true}
@@ -63,6 +66,7 @@ exports[`rendering should render valid snapshot with non-default props 1`] = `
   zIndex={1050}
 >
   <ModalHeader
+    data-spec="generic-confirmation-modal-header"
     tag="h4"
     toggle={[MockFunction]}
     wrapTag="div"

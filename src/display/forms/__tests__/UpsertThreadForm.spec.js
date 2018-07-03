@@ -52,166 +52,180 @@ const createTestPropsWithThread = propOverrides => createTestProps({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot with thread', () => {
+			const props = createTestPropsWithThread();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
-	it('should render valid snapshot with thread', () => {
-		const props = createTestPropsWithThread();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('initial load', () => {
+		it('should populate existing user title', () => {
+			const props = createTestPropsWithThread();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'user-title-field');
+			expect(field).toHaveProp('value', 'Test Thread');
+		});
+		it('should populate existing post ID', () => {
+			const props = createTestPropsWithThread();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'post-id-field');
+			expect(field).toHaveProp('value', '12345');
+		});
+		it('should populate existing partner url identifier', () => {
+			const props = createTestPropsWithThread();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'partner-url-identifier-field');
+			expect(field).toHaveProp('value', 'my-partner');
+		});
+		it('should populate existing tags', () => {
+			const props = createTestPropsWithThread();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'tags-field');
+			expect(field).toHaveProp('values', ['tag1', 'tag2', 'tag3']);
+		});
+		it('should populate tag handlers value', () => {
+			const handleTagAdded = jest.fn();
+			const handleTagRemoved = jest.fn();
+			const props = createTestProps({ handleTagAdded, handleTagRemoved });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'tags-field');
+			expect(field).toHaveProp('onItemAdded', handleTagAdded);
+			expect(field).toHaveProp('onItemDeleted', handleTagRemoved);
+		});
+		it('should populate characters dropdown', () => {
+			const props = createTestProps();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'characters-field');
+			expect(field.props().characters).toHaveLength(5);
+		});
+		it('should populate existing character ID', () => {
+			const props = createTestPropsWithThread();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'characters-field');
+			expect(field.props().selectedCharacterId).toEqual(2);
+		});
+		it('should populate character select handler', () => {
+			const selectCharacter = jest.fn();
+			const props = createTestProps({ selectCharacter });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'characters-field');
+			expect(field.props().onSelectCharacter).toEqual(selectCharacter);
+		});
+		it('should not include null character value', () => {
+			const selectCharacter = jest.fn();
+			const props = createTestProps({ selectCharacter });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'characters-field');
+			expect(field.props().includeNullValue).toBeFalsy();
+		});
 	});
-	it('should validate the user title field', () => {
-		const props = createTestProps();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'user-title-field');
-		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
-		expect(field.props().validate.required).toHaveProperty('value', true);
-	});
-	it('should populate existing user title', () => {
-		const props = createTestPropsWithThread();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'user-title-field');
-		expect(field).toHaveProp('value', 'Test Thread');
-	});
-	it('should validate post ID field', () => {
-		const props = createTestProps();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'post-id-field');
-		expect(field.props().validate.number).toHaveProperty('value', true);
-	});
-	it('should populate existing post ID', () => {
-		const props = createTestPropsWithThread();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'post-id-field');
-		expect(field).toHaveProp('value', '12345');
-	});
-	it('should validate partner url identifier field', () => {
-		const props = createTestProps();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'partner-url-identifier-field');
-		expect(field.props().validate.maxLength).toHaveProperty('value', 256);
-	});
-	it('should populate existing partner url identifier', () => {
-		const props = createTestPropsWithThread();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'partner-url-identifier-field');
-		expect(field).toHaveProp('value', 'my-partner');
-	});
-	it('should render partner url identifier tooltip when visible', () => {
-		const props = createTestProps({ tooltipDisplayData: { partnerUrlIdentifier: true } });
-		const props2 = createTestProps();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const jsx2 = (<UpsertThreadForm {...props2} />);
-		const element = shallow(jsx);
-		const element2 = shallow(jsx2);
-		const field = getSpecWrapper(element, 'partner-url-identifier-tooltip');
-		const field2 = getSpecWrapper(element2, 'partner-url-identifier-tooltip');
-		expect(field.props().visible).toBeTruthy();
-		expect(field2.props().visible).toBeFalsy();
-	});
-	it('should populate existing tags', () => {
-		const props = createTestPropsWithThread();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'tags-field');
-		expect(field).toHaveProp('values', ['tag1', 'tag2', 'tag3']);
-	});
-	it('should populate tag handlers value', () => {
-		const handleTagAdded = jest.fn();
-		const handleTagRemoved = jest.fn();
-		const props = createTestProps({ handleTagAdded, handleTagRemoved });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'tags-field');
-		expect(field).toHaveProp('onItemAdded', handleTagAdded);
-		expect(field).toHaveProp('onItemDeleted', handleTagRemoved);
-	});
-	it('should populate characters dropdown', () => {
-		const props = createTestProps();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'characters-field');
-		expect(field.props().characters).toHaveLength(5);
-	});
-	it('should populate existing character ID', () => {
-		const props = createTestPropsWithThread();
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'characters-field');
-		expect(field.props().selectedCharacterId).toEqual(2);
-	});
-	it('should populate character select handler', () => {
-		const selectCharacter = jest.fn();
-		const props = createTestProps({ selectCharacter });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'characters-field');
-		expect(field.props().onSelectCharacter).toEqual(selectCharacter);
-	});
-	it('should not include null character value', () => {
-		const selectCharacter = jest.fn();
-		const props = createTestProps({ selectCharacter });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'characters-field');
-		expect(field.props().includeNullValue).toBeFalsy();
+	describe('tooltips', () => {
+		it('should be rendered on partner URL identifier field when visible', () => {
+			const props = createTestProps({ tooltipDisplayData: { partnerUrlIdentifier: true } });
+			const props2 = createTestProps();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const jsx2 = (<UpsertThreadForm {...props2} />);
+			const element = shallow(jsx);
+			const element2 = shallow(jsx2);
+			const field = getSpecWrapper(element, 'partner-url-identifier-tooltip');
+			const field2 = getSpecWrapper(element2, 'partner-url-identifier-tooltip');
+			expect(field.props().visible).toBeTruthy();
+			expect(field2.props().visible).toBeFalsy();
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should handle input change for user title', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'user-title-field');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	describe('validation', () => {
+		it('should validate the user title field', () => {
+			const props = createTestProps();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'user-title-field');
+			expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+			expect(field.props().validate.required).toHaveProperty('value', true);
+		});
+		it('should validate post ID field', () => {
+			const props = createTestProps();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'post-id-field');
+			expect(field.props().validate.number).toHaveProperty('value', true);
+		});
+		it('should validate partner url identifier field', () => {
+			const props = createTestProps();
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'partner-url-identifier-field');
+			expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+		});
 	});
-	it('should handle input change for post id', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'post-id-field');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	describe('handleInputChange', () => {
+		it('should be called when user title changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'user-title-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
+		it('should be called when post ID changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'post-id-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
+		it('should be called when partner URL identifier changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'partner-url-identifier-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
 	});
-	it('should handle input change for partner url identifier', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'partner-url-identifier-field');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	describe('showTooltip', () => {
+		it('should be called when partner URL identifer field is focused', () => {
+			const showTooltip = jest.fn();
+			const props = createTestProps({ showTooltip });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'partner-url-identifier-field');
+			field.simulate('focus');
+			expect(showTooltip).toHaveBeenCalledTimes(1);
+		});
 	});
-	it('should show partner url identifier tooltip on focus', () => {
-		const showTooltip = jest.fn();
-		const props = createTestProps({ showTooltip });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'partner-url-identifier-field');
-		field.simulate('focus');
-		expect(showTooltip).toHaveBeenCalledTimes(1);
-	});
-	it('should hide partner url identifier tooltip on blur', () => {
-		const hideTooltip = jest.fn();
-		const props = createTestProps({ hideTooltip });
-		const jsx = (<UpsertThreadForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'partner-url-identifier-field');
-		field.simulate('blur');
-		expect(hideTooltip).toHaveBeenCalledTimes(1);
+	describe('hideTooltip', () => {
+		it('should hide partner url identifier tooltip on blur', () => {
+			const hideTooltip = jest.fn();
+			const props = createTestProps({ hideTooltip });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'partner-url-identifier-field');
+			field.simulate('blur');
+			expect(hideTooltip).toHaveBeenCalledTimes(1);
+		});
 	});
 });

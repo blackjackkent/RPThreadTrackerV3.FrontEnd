@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <div>
   <div
     className="callout callout-danger m-0 py-3"
@@ -47,7 +47,7 @@ exports[`rendering should render valid snapshot 1`] = `
 </div>
 `;
 
-exports[`rendering should render valid snapshot when unread 1`] = `
+exports[`rendering snapshots should render valid snapshot when unread 1`] = `
 <div>
   <div
     className="callout callout-danger m-0 py-3"

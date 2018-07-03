@@ -60,6 +60,9 @@ class UpsertThreadModal extends Component {
 
 	handleTagAdded(tagValue) {
 		const currentTags = this.state.threadToEdit.threadTags;
+		if (currentTags.filter(t => t.tagText === tagValue).length > 0) {
+			return;
+		}
 		const newTag = { tagText: tagValue };
 		const newTags = currentTags.concat(newTag);
 		this.setState({

@@ -5,7 +5,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   autoFocus={true}
   backdrop={true}
   backdropTransitionTimeout={150}
-  data-spec="upsert-character-modal"
+  data-spec="upsert-public-view-modal"
   fade={true}
   isOpen={true}
   keyboard={true}
@@ -14,7 +14,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   zIndex={1050}
 >
   <AvForm
-    data-spec="upsert-character-modal-form"
+    data-spec="upsert-public-view-modal-form"
     method="get"
     model={Object {}}
     onInvalidSubmit={[Function]}
@@ -30,24 +30,47 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     }
   >
     <ModalHeader
-      data-spec="upsert-character-modal-header"
+      data-spec="upsert-public-view-modal-header"
       tag="h4"
       toggle={[MockFunction]}
       wrapTag="div"
     >
-      Edit Character
+      Edit Public View
     </ModalHeader>
     <ModalBody
       tag="div"
     >
       <TooltipForm
-        Renderable="UpsertCharacterForm"
-        characterToEdit={
+        Renderable="UpsertPublicViewForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 2,
+            },
+            Object {
+              "characterId": 3,
+            },
+          ]
+        }
+        columns={
           Object {
-            "characterId": 1,
+            "TEST_COLUMN": Object {
+              "key": "column1",
+            },
           }
         }
         handleInputChange={[Function]}
+        tags={
+          Array [
+            "tag1",
+            "tag2",
+          ]
+        }
+        viewToEdit={
+          Object {
+            "id": 1,
+          }
+        }
       />
     </ModalBody>
     <ModalFooter
@@ -57,12 +80,12 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         color="primary"
         tag="button"
       >
-        Submit Character
+        Submit Public View
       </Button>
        
       <Button
         color="secondary"
-        data-spec="upsert-character-modal-close-button"
+        data-spec="upsert-public-view-modal-close-button"
         onClick={[MockFunction]}
         tag="button"
       >
@@ -73,12 +96,12 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 </Modal>
 `;
 
-exports[`rendering snapshots should render valid snapshot if character is new 1`] = `
+exports[`rendering snapshots should render valid snapshot if view is new 1`] = `
 <Modal
   autoFocus={true}
   backdrop={true}
   backdropTransitionTimeout={150}
-  data-spec="upsert-character-modal"
+  data-spec="upsert-public-view-modal"
   fade={true}
   isOpen={true}
   keyboard={true}
@@ -87,7 +110,7 @@ exports[`rendering snapshots should render valid snapshot if character is new 1`
   zIndex={1050}
 >
   <AvForm
-    data-spec="upsert-character-modal-form"
+    data-spec="upsert-public-view-modal-form"
     method="get"
     model={Object {}}
     onInvalidSubmit={[Function]}
@@ -103,20 +126,43 @@ exports[`rendering snapshots should render valid snapshot if character is new 1`
     }
   >
     <ModalHeader
-      data-spec="upsert-character-modal-header"
+      data-spec="upsert-public-view-modal-header"
       tag="h4"
       toggle={[MockFunction]}
       wrapTag="div"
     >
-      Add Character
+      Add Public View
     </ModalHeader>
     <ModalBody
       tag="div"
     >
       <TooltipForm
-        Renderable="UpsertCharacterForm"
-        characterToEdit={Object {}}
+        Renderable="UpsertPublicViewForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 2,
+            },
+            Object {
+              "characterId": 3,
+            },
+          ]
+        }
+        columns={
+          Object {
+            "TEST_COLUMN": Object {
+              "key": "column1",
+            },
+          }
+        }
         handleInputChange={[Function]}
+        tags={
+          Array [
+            "tag1",
+            "tag2",
+          ]
+        }
+        viewToEdit={Object {}}
       />
     </ModalBody>
     <ModalFooter
@@ -126,12 +172,12 @@ exports[`rendering snapshots should render valid snapshot if character is new 1`
         color="primary"
         tag="button"
       >
-        Submit Character
+        Submit Public View
       </Button>
        
       <Button
         color="secondary"
-        data-spec="upsert-character-modal-close-button"
+        data-spec="upsert-public-view-modal-close-button"
         onClick={[MockFunction]}
         tag="button"
       >

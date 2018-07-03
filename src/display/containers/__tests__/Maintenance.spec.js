@@ -5,9 +5,11 @@ import Maintenance from '../Maintenance';
 // #endregion imports
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const jsx = (<Maintenance />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const jsx = (<Maintenance />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });

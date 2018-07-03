@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <header
   className="app-header navbar"
 >
@@ -56,7 +56,7 @@ exports[`rendering should render valid snapshot 1`] = `
 </header>
 `;
 
-exports[`rendering should render valid snapshot without loading indicator 1`] = `
+exports[`rendering snapshots should render valid snapshot without loading indicator 1`] = `
 <header
   className="app-header navbar"
 >
