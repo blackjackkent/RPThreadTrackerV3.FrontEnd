@@ -1,6 +1,7 @@
 // #region imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Container, Row, Col, Card, CardBlock } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import { fetchCharacters, fetchUser, openUpsertThreadModal } from '../../infrastructure/actions';
@@ -18,7 +19,9 @@ const propTypes = {
 	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
 	fetchUser: PropTypes.func.isRequired,
-	openUpsertThreadModal: PropTypes.func.isRequired
+	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
+	openUpsertThreadModal: PropTypes.func.isRequired,
+	user: PropTypes.shape({}).isRequired
 };
 const mapStateToProps = (state) => {
 	const {
@@ -43,16 +46,16 @@ class AddThreadFromExtensionHandler extends Component {
 		this.props.fetchCharacters();
 	}
 	componentWillReceiveProps(nextProps) {
-		if (this.shouldOpenModal(nextProps)) {
+		if (this.shouldOpenModal(nextProps.user, nextProps.sortedCharacters)) {
 			const thread = getThreadDataFromExtensionQuery(nextProps.sortedCharacters);
 			this.props.openUpsertThreadModal(thread);
 		}
 	}
-	shouldOpenModal(props) {
-		if (!props.user || !props.user.id) {
+	shouldOpenModal(user, characters) {
+		if (!user || !user.id) {
 			return false;
 		}
-		if (!props.sortedCharacters || !props.sortedCharacters.length) {
+		if (!characters || !characters.length) {
 			return false;
 		}
 		if (this.state.hasOpenedModal) {
@@ -78,8 +81,26 @@ class AddThreadFromExtensionHandler extends Component {
 	}
 	showLayout() {
 		return (
-			<div className="app" data-spec="layout-app">
+			<div className="app flex-row align-items-center" data-spec="layout-app">
 				<ModalContainer />
+				{this.state.hasOpenedModal && !this.props.isUpsertThreadModalOpen &&
+					<Container>
+						<Row className="justify-content-center">
+							<Col md="6">
+								<Card className="login-box p-4">
+									<CardBlock className="card-body text-center">
+										<span className="clearfix">
+											<h4 className="pt-3">Thread Added!</h4>
+										</span>
+										<p>
+											You can now close this window.
+										</p>
+									</CardBlock>
+								</Card>
+							</Col>
+						</Row>
+					</Container>
+				}
 			</div>
 		);
 	}
