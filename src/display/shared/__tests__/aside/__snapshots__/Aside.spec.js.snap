@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <aside
   className="aside-menu"
 >
@@ -19,7 +19,7 @@ exports[`rendering should render valid snapshot 1`] = `
 </aside>
 `;
 
-exports[`rendering should render valid snapshot with items 1`] = `
+exports[`rendering snapshots should render valid snapshot with items 1`] = `
 <aside
   className="aside-menu"
 >

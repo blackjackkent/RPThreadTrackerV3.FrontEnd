@@ -22,36 +22,40 @@ const createTestState = stateOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const state = createTestState();
-		markUnreadNews.mockImplementationOnce(() => []);
-		const jsx = (<AsideContainer {...props} />);
-		const element = shallowWithState(jsx, state).dive('AsideContainer');
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const state = createTestState();
+			markUnreadNews.mockImplementationOnce(() => []);
+			const jsx = (<AsideContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive('AsideContainer');
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot with news', () => {
+			const props = createTestProps();
+			const state = createTestState();
+			markUnreadNews.mockImplementationOnce(() => [
+				{ PostId: '12345', PostTitle: 'Test Title' },
+				{ PostId: '23456', PostTitle: 'Test Title 2' },
+				{ PostId: '34567', PostTitle: 'Test Title 3' }
+			]);
+			const jsx = (<AsideContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive('AsideContainer');
+			expect(element).toMatchSnapshot();
+		});
 	});
-	it('should render valid snapshot with news', () => {
-		const props = createTestProps();
-		const state = createTestState();
-		markUnreadNews.mockImplementationOnce(() => [
-			{ PostId: '12345', PostTitle: 'Test Title' },
-			{ PostId: '23456', PostTitle: 'Test Title 2' },
-			{ PostId: '34567', PostTitle: 'Test Title 3' }
-		]);
-		const jsx = (<AsideContainer {...props} />);
-		const element = shallowWithState(jsx, state).dive('AsideContainer');
-		expect(element).toMatchSnapshot();
-	});
-	it('should pass news as prop', () => {
-		const props = createTestProps();
-		const state = createTestState();
-		markUnreadNews.mockImplementationOnce(() => [
-			{ PostId: '12345', PostTitle: 'Test Title' },
-			{ PostId: '23456', PostTitle: 'Test Title 2' },
-			{ PostId: '34567', PostTitle: 'Test Title 3' }
-		]);
-		const jsx = (<AsideContainer {...props} />);
-		const element = shallowWithState(jsx, state).dive('AsideContainer');
-		expect(element.props().news).toHaveLength(3);
+	describe('initial load', () => {
+		it('should pass news as prop', () => {
+			const props = createTestProps();
+			const state = createTestState();
+			markUnreadNews.mockImplementationOnce(() => [
+				{ PostId: '12345', PostTitle: 'Test Title' },
+				{ PostId: '23456', PostTitle: 'Test Title 2' },
+				{ PostId: '34567', PostTitle: 'Test Title 3' }
+			]);
+			const jsx = (<AsideContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive('AsideContainer');
+			expect(element.props().news).toHaveLength(3);
+		});
 	});
 });

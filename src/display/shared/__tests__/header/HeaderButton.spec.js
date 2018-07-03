@@ -11,22 +11,26 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<HeaderButton {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<HeaderButton {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should trigger handler on click', () => {
-		const onClick = jest.fn();
-		const props = createTestProps({ onClick });
-		const jsx = (<HeaderButton {...props} />);
-		const element = shallow(jsx);
-		const link = element.find('Button');
-		link.simulate('click');
-		expect(onClick).toHaveBeenCalledTimes(1);
+	describe('onClick', () => {
+		it('should be triggered on click', () => {
+			const onClick = jest.fn();
+			const props = createTestProps({ onClick });
+			const jsx = (<HeaderButton {...props} />);
+			const element = shallow(jsx);
+			const link = element.find('Button');
+			link.simulate('click');
+			expect(onClick).toHaveBeenCalledTimes(1);
+		});
 	});
 });

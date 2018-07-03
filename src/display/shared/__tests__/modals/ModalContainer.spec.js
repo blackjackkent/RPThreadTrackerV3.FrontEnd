@@ -65,18 +65,20 @@ const createTestState = stateOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const state = createTestState();
-		const jsx = (<ModalContainer {...props} />);
-		const element = shallowWithState(jsx, state).dive('ModalContainer');
-		expect(element).toMatchSnapshot();
-	});
-	it('should render valid snapshot with missing character name', () => {
-		const props = createTestProps();
-		const state = createTestState({ characterToEdit: { id: 12, urlIdentifier: 'my-test-character' } });
-		const jsx = (<ModalContainer {...props} />);
-		const element = shallowWithState(jsx, state).dive('ModalContainer');
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const state = createTestState();
+			const jsx = (<ModalContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive('ModalContainer');
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot with missing character name', () => {
+			const props = createTestProps();
+			const state = createTestState({ characterToEdit: { id: 12, urlIdentifier: 'my-test-character' } });
+			const jsx = (<ModalContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive('ModalContainer');
+			expect(element).toMatchSnapshot();
+		});
 	});
 });

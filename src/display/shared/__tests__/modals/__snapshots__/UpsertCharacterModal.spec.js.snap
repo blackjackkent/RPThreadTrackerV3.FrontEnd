@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <Modal
   autoFocus={true}
   backdrop={true}
@@ -73,7 +73,7 @@ exports[`rendering should render valid snapshot 1`] = `
 </Modal>
 `;
 
-exports[`rendering should render valid snapshot if character is new 1`] = `
+exports[`rendering snapshots should render valid snapshot if character is new 1`] = `
 <Modal
   autoFocus={true}
   backdrop={true}

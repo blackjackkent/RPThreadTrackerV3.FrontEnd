@@ -12,9 +12,11 @@ global.Date.parse = MockDate.parse;
 global.Date.now = MockDate.now;
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const jsx = (<Footer />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const jsx = (<Footer />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot 1`] = `
+exports[`rendering snapshots should render valid snapshot 1`] = `
 <FormGroup
   tag="div"
 >
@@ -29,7 +29,7 @@ exports[`rendering should render valid snapshot 1`] = `
 </FormGroup>
 `;
 
-exports[`rendering should render valid snapshot with items 1`] = `
+exports[`rendering snapshots should render valid snapshot with items 1`] = `
 <FormGroup
   tag="div"
 >
@@ -82,7 +82,7 @@ exports[`rendering should render valid snapshot with items 1`] = `
 </FormGroup>
 `;
 
-exports[`rendering should render valid snapshot with items and no null value 1`] = `
+exports[`rendering snapshots should render valid snapshot with items and no null value 1`] = `
 <FormGroup
   tag="div"
 >
@@ -129,7 +129,7 @@ exports[`rendering should render valid snapshot with items and no null value 1`]
 </FormGroup>
 `;
 
-exports[`rendering should render valid snapshot with non-default props 1`] = `
+exports[`rendering snapshots should render valid snapshot with non-default props 1`] = `
 <FormGroup
   tag="div"
 >

@@ -36,51 +36,59 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<Header {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<Header {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot without loading indicator', () => {
+			const props = createTestProps({ isLoadingIconVisible: false });
+			const jsx = (<Header {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
-	it('should render valid snapshot without loading indicator', () => {
-		const props = createTestProps({ isLoadingIconVisible: false });
-		const jsx = (<Header {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
-	});
-	it('should display loading indicator when isLoadingIndicatorVisible is true', () => {
-		const props = createTestProps();
-		const jsx = (<Header {...props} />);
-		const element = shallow(jsx);
-		expect(getSpecWrapper(element, 'header-loading-indicator')).toHaveLength(1);
-	});
-	it('should hide loading indicator when isLoadingIndicatorVisible is false', () => {
-		const props = createTestProps({ isLoadingIconVisible: false });
-		const jsx = (<Header {...props} />);
-		const element = shallow(jsx);
-		expect(getSpecWrapper(element, 'header-loading-indicator')).toHaveLength(0);
+	describe('loading indicator', () => {
+		it('should be visible when isLoadingIndicatorVisible is true', () => {
+			const props = createTestProps();
+			const jsx = (<Header {...props} />);
+			const element = shallow(jsx);
+			expect(getSpecWrapper(element, 'header-loading-indicator')).toHaveLength(1);
+		});
+		it('should be hidden when isLoadingIndicatorVisible is false', () => {
+			const props = createTestProps({ isLoadingIconVisible: false });
+			const jsx = (<Header {...props} />);
+			const element = shallow(jsx);
+			expect(getSpecWrapper(element, 'header-loading-indicator')).toHaveLength(0);
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should call passed handler when upsert character modal button is clicked', () => {
-		const openUpsertCharacterModal = jest.fn();
-		const props = createTestProps({ openUpsertCharacterModal });
-		const jsx = (<Header {...props} />);
-		const element = shallow(jsx);
-		const button = getSpecWrapper(element, 'header-open-upsert-character-modal-button');
-		button.simulate('click');
-		expect(openUpsertCharacterModal).toHaveBeenCalledTimes(1);
-		expect(openUpsertCharacterModal).toHaveBeenCalledWith();
+	describe('openUpsertCharacterModal', () => {
+		it('should be called when upsert character modal button is clicked', () => {
+			const openUpsertCharacterModal = jest.fn();
+			const props = createTestProps({ openUpsertCharacterModal });
+			const jsx = (<Header {...props} />);
+			const element = shallow(jsx);
+			const button = getSpecWrapper(element, 'header-open-upsert-character-modal-button');
+			button.simulate('click');
+			expect(openUpsertCharacterModal).toHaveBeenCalledTimes(1);
+			expect(openUpsertCharacterModal).toHaveBeenCalledWith();
+		});
 	});
-	it('should call passed handler when upsert thread modal button is clicked', () => {
-		const openNewThreadModal = jest.fn();
-		const props = createTestProps({ openNewThreadModal });
-		const jsx = (<Header {...props} />);
-		const element = shallow(jsx);
-		const button = getSpecWrapper(element, 'header-open-upsert-thread-modal-button');
-		button.simulate('click');
-		expect(openNewThreadModal).toHaveBeenCalledTimes(1);
-		expect(openNewThreadModal).toHaveBeenCalledWith();
+	describe('openUpsertThreadModal', () => {
+		it('should be called when upsert thread modal button is clicked', () => {
+			const openNewThreadModal = jest.fn();
+			const props = createTestProps({ openNewThreadModal });
+			const jsx = (<Header {...props} />);
+			const element = shallow(jsx);
+			const button = getSpecWrapper(element, 'header-open-upsert-thread-modal-button');
+			button.simulate('click');
+			expect(openNewThreadModal).toHaveBeenCalledTimes(1);
+			expect(openNewThreadModal).toHaveBeenCalledWith();
+		});
 	});
 });

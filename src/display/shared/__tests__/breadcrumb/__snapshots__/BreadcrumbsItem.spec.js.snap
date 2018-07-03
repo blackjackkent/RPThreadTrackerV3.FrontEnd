@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot if route does not exist 1`] = `""`;
+exports[`rendering snapshots should render valid snapshot if route does not exist 1`] = `""`;
 
-exports[`rendering should render valid snapshot if route is exact 1`] = `
+exports[`rendering snapshots should render valid snapshot if route is exact 1`] = `
 <BreadcrumbItem
   active={true}
   tag="li"
@@ -11,7 +11,7 @@ exports[`rendering should render valid snapshot if route is exact 1`] = `
 </BreadcrumbItem>
 `;
 
-exports[`rendering should render valid snapshot if route is not exact 1`] = `
+exports[`rendering snapshots should render valid snapshot if route is not exact 1`] = `
 <BreadcrumbItem
   tag="li"
 >
