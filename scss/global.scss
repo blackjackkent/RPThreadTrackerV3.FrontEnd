@@ -1,5 +1,6 @@
 .card {	color: $card-body-color;}
 .card a { color: $base-blue; }
+.card a.btn-primary { color: $white; }
 .switch-info > .switch-input:checked ~ .switch-label { background: $base-blue !important; border-color: $dark-blue;}
 .nav-tabs { border-bottom: none; }
 .nav-tabs .nav-link { background: $nav-tab-link-bg; color: $tab-content-color; margin-right: 10px; }

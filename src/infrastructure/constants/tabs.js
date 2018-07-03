@@ -35,6 +35,10 @@ export default {
 		MANAGE_PUBLIC_VIEWS: {
 			tabId: 'manage-public-views',
 			name: 'Manage Public Views'
+		},
+		BROWSER_EXTENSIONS: {
+			tabId: 'browser-extensions',
+			name: 'Browser Extensions'
 		}
 	}
 };

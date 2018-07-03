@@ -9,6 +9,7 @@ import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, openDeletePublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
+import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
@@ -65,7 +66,6 @@ class Tools extends Component {
 	onExportRequest(includeHiatused, includeArchive) {
 		this.props.exportThreads({ includeHiatused, includeArchive });
 	}
-
 	render() {
 		const { activeTab, publicViews } = this.props;
 		const options = Object.values(tabs.TOOLS);
@@ -96,6 +96,7 @@ class Tools extends Component {
 								openDeletePublicViewModal={this.props.openDeletePublicViewModal}
 								publicViews={publicViews}
 							/>
+							<BrowserExtensionsPane />
 						</TabContent>
 					</Col>
 				</Row>
