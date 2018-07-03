@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering should render valid snapshot 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-public-view-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-public-view-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-public-view-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Edit Public View
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertPublicViewForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 2,
+            },
+            Object {
+              "characterId": 3,
+            },
+          ]
+        }
+        columns={
+          Object {
+            "TEST_COLUMN": Object {
+              "key": "column1",
+            },
+          }
+        }
+        handleInputChange={[Function]}
+        tags={
+          Array [
+            "tag1",
+            "tag2",
+          ]
+        }
+        viewToEdit={
+          Object {
+            "id": 1,
+          }
+        }
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Submit Public View
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-public-view-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;
+
+exports[`rendering should render valid snapshot if view is new 1`] = `
+<Modal
+  autoFocus={true}
+  backdrop={true}
+  backdropTransitionTimeout={150}
+  data-spec="upsert-public-view-modal"
+  fade={true}
+  isOpen={true}
+  keyboard={true}
+  modalTransitionTimeout={300}
+  toggle={[MockFunction]}
+  zIndex={1050}
+>
+  <AvForm
+    data-spec="upsert-public-view-modal-form"
+    method="get"
+    model={Object {}}
+    onInvalidSubmit={[Function]}
+    onKeyDown={[Function]}
+    onSubmit={[Function]}
+    onValidSubmit={[Function]}
+    tag={[Function]}
+    validationEvent={
+      Array [
+        "onChange",
+        "onInput",
+      ]
+    }
+  >
+    <ModalHeader
+      data-spec="upsert-public-view-modal-header"
+      tag="h4"
+      toggle={[MockFunction]}
+      wrapTag="div"
+    >
+      Add Public View
+    </ModalHeader>
+    <ModalBody
+      tag="div"
+    >
+      <TooltipForm
+        Renderable="UpsertPublicViewForm"
+        characters={
+          Array [
+            Object {
+              "characterId": 2,
+            },
+            Object {
+              "characterId": 3,
+            },
+          ]
+        }
+        columns={
+          Object {
+            "TEST_COLUMN": Object {
+              "key": "column1",
+            },
+          }
+        }
+        handleInputChange={[Function]}
+        tags={
+          Array [
+            "tag1",
+            "tag2",
+          ]
+        }
+        viewToEdit={Object {}}
+      />
+    </ModalBody>
+    <ModalFooter
+      tag="div"
+    >
+      <Button
+        color="primary"
+        tag="button"
+      >
+        Submit Public View
+      </Button>
+       
+      <Button
+        color="secondary"
+        data-spec="upsert-public-view-modal-close-button"
+        onClick={[MockFunction]}
+        tag="button"
+      >
+        Cancel
+      </Button>
+    </ModalFooter>
+  </AvForm>
+</Modal>
+`;
