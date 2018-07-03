@@ -59,7 +59,10 @@ class UpsertThreadModal extends Component {
 	}
 
 	handleTagAdded(tagValue) {
-		const currentTags = this.state.threadToEdit.threadTags;
+		let currentTags = this.state.threadToEdit.threadTags;
+		if (!currentTags) {
+			currentTags = [];
+		}
 		if (currentTags.filter(t => t.tagText === tagValue).length > 0) {
 			return;
 		}
@@ -73,7 +76,10 @@ class UpsertThreadModal extends Component {
 	}
 
 	handleTagRemoved(tagValue) {
-		const currentTags = this.state.threadToEdit.threadTags;
+		let currentTags = this.state.threadToEdit.threadTags;
+		if (!currentTags) {
+			currentTags = [];
+		}
 		const newTags = currentTags.filter(tag => tag.tagText !== tagValue);
 		this.setState({
 			threadToEdit: Object.assign({}, this.state.threadToEdit, {

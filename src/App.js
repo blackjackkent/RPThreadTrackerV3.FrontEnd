@@ -13,6 +13,7 @@ import Layout from './display/containers/Layout';
 import StaticContainer from './display/containers/StaticContainer';
 import Maintenance from './display/containers/Maintenance';
 import PublicContainer from './display/containers/PublicContainer';
+import AddThreadFromExtensionHandler from './display/containers/AddThreadFromExtensionHandler';
 
 const propTypes = {
 	ui: PropTypes.shape({}).isRequired
@@ -52,6 +53,7 @@ const App = (props) => {
 					name="Public"
 					component={withPageViewTracker(PublicContainer)}
 				/>
+				<Route path="/add-thread" name="AddThreadFromExtensionHandler" component={AddThreadFromExtensionHandler} />
 				<Route component={Layout} />
 			</Switch>
 		</Router>
