@@ -5,8 +5,10 @@ import Breadcrumb from '../../breadcrumb/Breadcrumb';
 // #endregion imports
 
 jest.mock('../../breadcrumb/Breadcrumbs', () => () => 'Breadcrumbs');
+jest.mock('../../LoadingIndicator', () => () => 'LoadingIndicator');
 
 const createTestProps = propOverrides => ({
+	isLoadingIconVisible: false,
 	...propOverrides
 });
 describe('rendering', () => {

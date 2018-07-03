@@ -6,6 +6,9 @@ import Layout from '../Layout';
 
 // #region mocks
 jest.mock('../../../infrastructure/actions', () => ({}));
+jest.mock('../../../infrastructure/selectors', () => ({
+	getIsLoadingIconVisible: () => true
+}));
 jest.mock('../../shared/header/HeaderContainer', () => 'HeaderContainer');
 jest.mock('../../shared/sidebar/Sidebar', () => 'Sidebar');
 jest.mock('../../shared/breadcrumb/Breadcrumb', () => 'Breadcrumb');

@@ -42,6 +42,7 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           ],
         }
       }
+      isLoadingIconVisible={true}
       news={Array []}
       user={
         Object {
@@ -53,7 +54,9 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
     <main
       className="main"
     >
-      <Breadcrumb />
+      <Breadcrumb
+        isLoadingIconVisible={true}
+      />
       <Container
         fluid={true}
         tag="div"
