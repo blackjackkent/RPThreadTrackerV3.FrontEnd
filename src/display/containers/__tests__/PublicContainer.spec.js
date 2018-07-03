@@ -18,10 +18,12 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<PublicContainer {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<PublicContainer {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });

@@ -11,30 +11,36 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<ForgotPasswordForm {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
-	});
-	it('should validate the email field', () => {
-		const props = createTestProps();
-		const jsx = (<ForgotPasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'email-field').find('AvField');
-		expect(field.props().validate.required).toHaveProperty('value', true);
-		expect(field.props().validate.email).toHaveProperty('value', true);
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<ForgotPasswordForm {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });
 
 describe('behavior', () => {
-	it('should handle input change for email', () => {
-		const handleInputChange = jest.fn();
-		const props = createTestProps({ handleInputChange });
-		const jsx = (<ForgotPasswordForm {...props} />);
-		const element = shallow(jsx);
-		const field = getSpecWrapper(element, 'email-field').find('AvField');
-		field.simulate('change');
-		expect(handleInputChange).toHaveBeenCalledTimes(1);
+	describe('validation', () => {
+		it('should validate the email field', () => {
+			const props = createTestProps();
+			const jsx = (<ForgotPasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'email-field').find('AvField');
+			expect(field.props().validate.required).toHaveProperty('value', true);
+			expect(field.props().validate.email).toHaveProperty('value', true);
+		});
+	});
+	describe('handleInputChange', () => {
+		it('should be called when email changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<ForgotPasswordForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'email-field').find('AvField');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
 	});
 });

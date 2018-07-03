@@ -37,7 +37,9 @@ const propTypes = {
 		id: PropTypes.string.isRequired
 	}).isRequired,
 	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	userSettings: PropTypes.shape({}).isRequired
+	userSettings: PropTypes.shape({
+		settingsId: PropTypes.number
+	}).isRequired
 };
 const mapStateToProps = (state) => {
 	const {

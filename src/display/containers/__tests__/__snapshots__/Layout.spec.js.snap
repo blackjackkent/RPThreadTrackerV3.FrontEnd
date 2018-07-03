@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot when loading 1`] = `
+exports[`rendering snapshots should render valid snapshot when loading 1`] = `
 <LoadingIndicator
   data-spec="layout-loader"
   style={
@@ -16,7 +16,7 @@ exports[`rendering should render valid snapshot when loading 1`] = `
 />
 `;
 
-exports[`rendering should render valid snapshot with loading indicator 1`] = `
+exports[`rendering snapshots should render valid snapshot with loading indicator 1`] = `
 <div
   className="app"
   data-spec="layout-app"
