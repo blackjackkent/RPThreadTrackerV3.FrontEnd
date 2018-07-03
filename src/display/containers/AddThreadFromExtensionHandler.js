@@ -11,17 +11,14 @@ import ModalContainer from '../shared/modals/ModalContainer';
 
 import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 
-import { getQuery } from '../../utility';
+import { getThreadDataFromExtensionQuery } from '../../utility';
 // #endregion imports
 
 const propTypes = {
 	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
 	fetchUser: PropTypes.func.isRequired,
-	openUpsertThreadModal: PropTypes.func.isRequired,
-	user: PropTypes.shape({
-		id: PropTypes.string.isRequired
-	}).isRequired
+	openUpsertThreadModal: PropTypes.func.isRequired
 };
 const mapStateToProps = (state) => {
 	const {
@@ -39,28 +36,17 @@ class AddThreadFromExtensionHandler extends Component {
 	constructor() {
 		super();
 		this.state = { hasOpenedModal: false };
-		this.isUserLoaded = this.isUserLoaded.bind(this);
-		this.areCharactersLoaded = this.areCharactersLoaded.bind(this);
+		this.shouldOpenModal = this.shouldOpenModal.bind(this);
 	}
 	componentDidMount() {
-		if (!this.isUserLoaded()) {
-			this.props.fetchUser();
-		}
-		if (!this.areCharactersLoaded()) {
-			this.props.fetchCharacters();
-		}
+		this.props.fetchUser();
+		this.props.fetchCharacters();
 	}
 	componentWillReceiveProps(nextProps) {
 		if (this.shouldOpenModal(nextProps)) {
-			const thread = this.buildThreadToEditFromParams();
+			const thread = getThreadDataFromExtensionQuery(nextProps.sortedCharacters);
 			this.props.openUpsertThreadModal(thread);
 		}
-	}
-	isUserLoaded() {
-		return this.props.user && this.props.user.id;
-	}
-	areCharactersLoaded() {
-		return this.props.sortedCharacters && this.props.sortedCharacters.length;
 	}
 	shouldOpenModal(props) {
 		if (!props.user || !props.user.id) {
@@ -74,23 +60,6 @@ class AddThreadFromExtensionHandler extends Component {
 		}
 		this.setState({ hasOpenedModal: true });
 		return true;
-	}
-	buildThreadToEditFromParams() {
-		const query = getQuery();
-		const { sortedCharacters } = this.props;
-		const threadToEdit = {
-			postId: query.tumblrPostId
-		};
-		if (!sortedCharacters.length) {
-			return threadToEdit;
-		}
-		const character = sortedCharacters.find(c => c.urlIdentifier === query.tumblrBlogShortname);
-		if (!character) {
-			threadToEdit.characterId = sortedCharacters[0].characterId;
-		} else {
-			threadToEdit.characterId = character.characterId;
-		}
-		return threadToEdit;
 	}
 	showLoadingIndicator() {
 		return (
@@ -115,7 +84,7 @@ class AddThreadFromExtensionHandler extends Component {
 		);
 	}
 	render() {
-		if (!this.isUserLoaded(this.props) || !this.areCharactersLoaded(this.props)) {
+		if (!this.state.hasOpenedModal) {
 			return this.showLoadingIndicator();
 		}
 		return this.showLayout();
