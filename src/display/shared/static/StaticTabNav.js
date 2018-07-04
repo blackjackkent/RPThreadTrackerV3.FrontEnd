@@ -20,10 +20,11 @@ const StaticTabNav = (props) => {
 			iconId={o.icon}
 			title={o.name}
 			key={o.tabId}
+			data-spec="static-tab-nav-option"
 		/>
 	));
 	return (
-		<Nav className="flex-column static-tab-nav">
+		<Nav className="flex-column static-tab-nav" data-spec="static-tab-nav">
 			{optionElements}
 		</Nav>
 	);

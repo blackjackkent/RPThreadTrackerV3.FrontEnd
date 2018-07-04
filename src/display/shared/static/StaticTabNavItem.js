@@ -32,6 +32,7 @@ class StaticTabNavItem extends React.Component {
 					href={`#${tabId}`}
 					className={activeTab === tabId ? 'active' : ''}
 					onClick={(e) => { this.onClick(e, tabId); }}
+					data-spec="static-tab-nav-item-navlink"
 				>
 					{title}
 				</NavLink>

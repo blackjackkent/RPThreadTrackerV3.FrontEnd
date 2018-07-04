@@ -9,10 +9,15 @@ const propTypes = {
 const StaticDropdownNav = (props) => {
 	const { activeTab, setActiveTab, options } = props;
 	const optionElements = options.map(o => (
-		<option value={o.tabId} key={o.tabId}>{o.name}</option>
+		<option value={o.tabId} key={o.tabId} data-spec="static-dropdown-nav-option">{o.name}</option>
 	));
 	return (
-		<select className="clean-select" onChange={e => setActiveTab(e.target.value)} value={activeTab}>
+		<select
+			className="clean-select"
+			onChange={e => setActiveTab(e.target.value)}
+			value={activeTab}
+			data-spec="static-dropdown-nav-select"
+		>
 			{optionElements}
 		</select>
 	);

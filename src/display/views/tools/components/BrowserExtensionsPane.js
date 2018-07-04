@@ -14,7 +14,10 @@ const BrowserExtensionsPane = () => (
 			<CardBlock className="card-body">
 				<p>
 					RPThreadTracker QuickAdd is a browser extension for Chrome and Firefox which allows you to quickly{' '}
-					add new Tumblr threads to an RPThreadTracker account.</p><p>While on any Tumblr post page, just click the{' '}
+					add new Tumblr threads to an RPThreadTracker account.
+				</p>
+				<p>
+					While on any Tumblr post page, just click the{' '}
 					extension icon to get a pop-up window of the tracker&apos;s &quot;Add Thread&quot; screen, with the post ID{' '}
 					and blog already in place. Add your thread, close the window, and carry on!
 				</p>
