@@ -160,6 +160,17 @@ describe('behavior', () => {
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [{ tagText: 'Test Tag 2' }] });
 		});
+		it('should instantiate threadTags before attempting remove if it does not exist', () => {
+			const submitUpsertThread = jest.fn();
+			const threadToEdit = { threadId: 1 };
+			const props = createTestProps({ threadToEdit, submitUpsertThread });
+			const jsx = (<UpsertThreadModal {...props} />);
+			const element = shallow(jsx);
+			element.instance().handleTagRemoved('Test Tag 1');
+			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
+			form.prop('onValidSubmit')();
+			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [] });
+		});
 		it('should do nothing if tag does not exist in threadTags', () => {
 			const submitUpsertThread = jest.fn();
 			const threadToEdit = { threadId: 1, threadTags: [{ tagText: 'Test Tag 1' }, { tagText: 'Test Tag 2' }] };
@@ -183,6 +194,17 @@ describe('behavior', () => {
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [{ tagText: 'Test Tag 1' }, { tagText: 'Test Tag 2' }, { tagText: 'Test Tag 3' }] });
+		});
+		it('should instantiate threadTags before adding if array does not exist', () => {
+			const submitUpsertThread = jest.fn();
+			const threadToEdit = { threadId: 1 };
+			const props = createTestProps({ threadToEdit, submitUpsertThread });
+			const jsx = (<UpsertThreadModal {...props} />);
+			const element = shallow(jsx);
+			element.instance().handleTagAdded('Test Tag 1');
+			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
+			form.prop('onValidSubmit')();
+			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [{ tagText: 'Test Tag 1' }] });
 		});
 		it('should do nothing if the tag already exists in threadTags', () => {
 			const submitUpsertThread = jest.fn();

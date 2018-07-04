@@ -11,3 +11,23 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   />
 </div>
 `;
+
+exports[`rendering snapshots should render valid snapshot when loading icon visible 1`] = `
+<div
+  className="breadcrumb-wrapper"
+>
+  <div
+    className="d-lg-none float-right"
+    data-spec="header-loading-indicator"
+  >
+    <Component
+      className="invert"
+    />
+  </div>
+  <Route
+    component={[Function]}
+    isLoadingIconVisible={true}
+    path="/:path"
+  />
+</div>
+`;
