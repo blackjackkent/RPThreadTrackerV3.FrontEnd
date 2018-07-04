@@ -70,14 +70,14 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			const jsx = (<ModalContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('ModalContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with missing character name', () => {
 			const props = createTestProps();
 			const state = createTestState({ characterToEdit: { id: 12, urlIdentifier: 'my-test-character' } });
 			const jsx = (<ModalContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('ModalContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 	});

@@ -28,7 +28,7 @@ describe('rendering', () => {
 			const state = createTestState();
 			markUnreadNews.mockImplementationOnce(() => []);
 			const jsx = (<AsideContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('AsideContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with news', () => {
@@ -40,7 +40,7 @@ describe('rendering', () => {
 				{ PostId: '34567', PostTitle: 'Test Title 3' }
 			]);
 			const jsx = (<AsideContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('AsideContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 	});
@@ -54,7 +54,7 @@ describe('rendering', () => {
 				{ PostId: '34567', PostTitle: 'Test Title 3' }
 			]);
 			const jsx = (<AsideContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('AsideContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element.props().news).toHaveLength(3);
 		});
 	});

@@ -21,7 +21,9 @@ const propTypes = {
 	fetchUser: PropTypes.func.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
 	openUpsertThreadModal: PropTypes.func.isRequired,
-	user: PropTypes.shape({}).isRequired
+	user: PropTypes.shape({
+		id: PropTypes.string
+	}).isRequired
 };
 const mapStateToProps = (state) => {
 	const {
@@ -67,7 +69,7 @@ class AddThreadFromExtensionHandler extends Component {
 	showLoadingIndicator() {
 		return (
 			<LoadingIndicator
-				data-spec="layout-loader"
+				data-spec="extension-handler-loader"
 				style={{
 					width: 50,
 					height: 50,
@@ -84,14 +86,11 @@ class AddThreadFromExtensionHandler extends Component {
 			<div className="app flex-row align-items-center" data-spec="layout-app">
 				<ModalContainer />
 				{this.state.hasOpenedModal && !this.props.isUpsertThreadModalOpen &&
-					<Container>
+					<Container data-spec="extension-handler-success-message">
 						<Row className="justify-content-center">
 							<Col md="6">
 								<Card className="login-box p-4">
 									<CardBlock className="card-body text-center">
-										<span className="clearfix">
-											<h4 className="pt-3">Thread Added!</h4>
-										</span>
 										<p>
 											You can now close this window.
 										</p>
@@ -105,7 +104,7 @@ class AddThreadFromExtensionHandler extends Component {
 		);
 	}
 	render() {
-		if (!this.state.hasOpenedModal) {
+		if (!this.props.user.id || !this.props.sortedCharacters.length) {
 			return this.showLoadingIndicator();
 		}
 		return this.showLayout();
