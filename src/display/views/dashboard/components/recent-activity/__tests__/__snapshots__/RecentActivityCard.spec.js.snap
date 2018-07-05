@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot when threads are loading 1`] = `
+<Card
+  className="recent-activity-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-bolt"
+    />
+     Recent Activity
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <LoadingIndicator
+      style={
+        Object {
+          "height": 50,
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": 50,
+        }
+      }
+    />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has no characters 1`] = `
+<Card
+  className="recent-activity-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-bolt"
+    />
+     Recent Activity
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <NoCharactersMessage />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has no recent activity 1`] = `
+<Card
+  className="recent-activity-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-bolt"
+    />
+     Recent Activity
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <NoRecentActivityMessage />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has no threads 1`] = `
+<Card
+  className="recent-activity-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-bolt"
+    />
+     Recent Activity
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <NoThreadsMessage />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has recent activity 1`] = `
+<Card
+  className="recent-activity-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-bolt"
+    />
+     Recent Activity
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <RecentActivityRow
+      archiveThread={[MockFunction]}
+      key="1"
+      markThreadQueued={[MockFunction]}
+      openUntrackThreadModal={[MockFunction]}
+      threadData={
+        Object {
+          "thread": Object {
+            "threadId": 1,
+            "userTitle": "Recent 1",
+          },
+        }
+      }
+    />
+    <RecentActivityRow
+      archiveThread={[MockFunction]}
+      key="2"
+      markThreadQueued={[MockFunction]}
+      openUntrackThreadModal={[MockFunction]}
+      threadData={
+        Object {
+          "thread": Object {
+            "threadId": 2,
+            "userTitle": "Recent 2",
+          },
+        }
+      }
+    />
+  </CardBlock>
+</Card>
+`;
