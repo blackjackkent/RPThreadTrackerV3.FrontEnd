@@ -1,5 +1,5 @@
 // #region imports
-import _getTdProps from '../components/_getTdProps';
+import _getTdProps from '../_getTdProps';
 // #endregion imports
 
 describe('behavior', () => {

@@ -1,11 +1,11 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../config/tests/helpers.unit';
-import UpsertThreadForm from '../upsert-thread/UpsertThreadForm';
+import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import UpsertThreadForm from '../UpsertThreadForm';
 // #endregion imports
 
-jest.mock('../../shared/character-select/CharacterSelect', () => 'CharacterSelect');
+jest.mock('../../../shared/character-select/CharacterSelect', () => 'CharacterSelect');
 
 const createTestProps = propOverrides => ({
 	threadToEdit: {},

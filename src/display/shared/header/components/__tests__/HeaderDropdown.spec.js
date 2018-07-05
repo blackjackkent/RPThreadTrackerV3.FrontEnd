@@ -1,11 +1,11 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
-import HeaderDropdown from '../components/HeaderDropdown';
+import { getSpecWrapper } from '../../../../../../config/tests/helpers.unit';
+import HeaderDropdown from '../HeaderDropdown';
 // #endregion imports
 
-jest.mock('../components/HeaderDropdownItem', () => 'HeaderDropdownItem');
+jest.mock('../HeaderDropdownItem', () => 'HeaderDropdownItem');
 
 const createTestProps = propOverrides => ({
 	headerDropdownToggle: jest.fn(),

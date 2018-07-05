@@ -1,6 +1,6 @@
 // #region imports
 import { shallow } from 'enzyme';
-import _columns from '../components/_columns';
+import _columns from '../_columns';
 // #endregion imports
 
 describe('data', () => {

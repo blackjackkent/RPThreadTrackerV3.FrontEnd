@@ -1,8 +1,8 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
-import HeaderLogoBlock from '../components/HeaderLogoBlock';
+import { getSpecWrapper } from '../../../../../../config/tests/helpers.unit';
+import HeaderLogoBlock from '../HeaderLogoBlock';
 // #endregion imports
 
 const createTestProps = propOverrides => ({

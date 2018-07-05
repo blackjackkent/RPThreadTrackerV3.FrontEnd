@@ -1,12 +1,12 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import CurrentCharacterTable from '../components/CurrentCharacterTable';
+import CurrentCharacterTable from '../CurrentCharacterTable';
 // #endregion imports
 
 // #region mocks
-jest.mock('../components/_columns', () => ([{ id: 'column1' }, { id: 'column2' }]));
-jest.mock('../components/_getTdProps', () => (jest.fn()));
+jest.mock('../_columns', () => ([{ id: 'column1' }, { id: 'column2' }]));
+jest.mock('../_getTdProps', () => (jest.fn()));
 // #endregion mocks
 
 const createTestProps = propOverrides => ({

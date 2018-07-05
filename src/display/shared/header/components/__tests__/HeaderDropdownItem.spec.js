@@ -1,12 +1,12 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import HeaderButton from '../components/HeaderButton';
+import HeaderDropdownItem from '../HeaderDropdownItem';
 // #endregion imports
 
 const createTestProps = propOverrides => ({
 	onClick: jest.fn(),
-	label: 'Test Button',
+	label: 'Test Item',
 	...propOverrides
 });
 
@@ -14,7 +14,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<HeaderButton {...props} />);
+			const jsx = (<HeaderDropdownItem {...props} />);
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -26,10 +26,19 @@ describe('behavior', () => {
 		it('should be triggered on click', () => {
 			const onClick = jest.fn();
 			const props = createTestProps({ onClick });
-			const jsx = (<HeaderButton {...props} />);
+			const jsx = (<HeaderDropdownItem {...props} />);
 			const element = shallow(jsx);
-			const link = element.find('Button');
+			const link = element.find('span');
 			link.simulate('click');
+			expect(onClick).toHaveBeenCalledTimes(1);
+		});
+		it('should be triggered on keydown', () => {
+			const onClick = jest.fn();
+			const props = createTestProps({ onClick });
+			const jsx = (<HeaderDropdownItem {...props} />);
+			const element = shallow(jsx);
+			const link = element.find('span');
+			link.simulate('keydown');
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 	});

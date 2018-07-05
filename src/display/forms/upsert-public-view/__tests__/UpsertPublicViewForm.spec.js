@@ -1,8 +1,8 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../config/tests/helpers.unit';
-import UpsertPublicViewForm from '../upsert-public-view/UpsertPublicViewForm';
+import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import UpsertPublicViewForm from '../UpsertPublicViewForm';
 // #endregion imports
 
 const createTestProps = propOverrides => ({
