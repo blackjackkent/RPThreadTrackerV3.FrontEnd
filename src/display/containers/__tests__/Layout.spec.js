@@ -49,14 +49,14 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			const jsx = (<Layout {...props} />);
-			const element = shallowWithState(jsx, state).dive('Layout');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with loading indicator', () => {
 			const props = createTestProps();
 			const state = createTestState({ user: { id: '12345' } });
 			const jsx = (<Layout {...props} />);
-			const element = shallowWithState(jsx, state).dive('Layout');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 	});
@@ -65,7 +65,7 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			const jsx = (<Layout {...props} />);
-			const element = shallowWithState(jsx, state).dive('Layout');
+			const element = shallowWithState(jsx, state).dive();
 			expect(getSpecWrapper(element, 'layout-loader')).toHaveLength(1);
 			expect(getSpecWrapper(element, 'layout-app')).toHaveLength(0);
 		});
@@ -73,7 +73,7 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState({ user: { id: '12345' } });
 			const jsx = (<Layout {...props} />);
-			const element = shallowWithState(jsx, state).dive('Layout');
+			const element = shallowWithState(jsx, state).dive();
 			expect(getSpecWrapper(element, 'layout-loader')).toHaveLength(0);
 			expect(getSpecWrapper(element, 'layout-app')).toHaveLength(1);
 		});
@@ -87,7 +87,7 @@ describe('behavior', () => {
 			const props = createTestProps({ fetchUser });
 			const state = createTestState();
 			const jsx = (<Layout {...props} />);
-			shallowWithState(jsx, state).dive('Layout');
+			shallowWithState(jsx, state).dive();
 			expect(fetchUser).toHaveBeenCalledTimes(1);
 		});
 		it('should not retrieve user when user is loaded', () => {
@@ -95,7 +95,7 @@ describe('behavior', () => {
 			const props = createTestProps({ fetchUser });
 			const state = createTestState({ user: { id: '12345' } });
 			const jsx = (<Layout {...props} />);
-			shallowWithState(jsx, state).dive('Layout');
+			shallowWithState(jsx, state).dive();
 			expect(fetchUser).toHaveBeenCalledTimes(0);
 		});
 		it('should retrieve news when news is not loaded', () => {
@@ -103,7 +103,7 @@ describe('behavior', () => {
 			const props = createTestProps({ fetchNews });
 			const state = createTestState();
 			const jsx = (<Layout {...props} />);
-			shallowWithState(jsx, state).dive('Layout');
+			shallowWithState(jsx, state).dive();
 			expect(fetchNews).toHaveBeenCalledTimes(1);
 		});
 		it('should not retrieve news when news is loaded', () => {
@@ -111,7 +111,7 @@ describe('behavior', () => {
 			const props = createTestProps({ fetchNews });
 			const state = createTestState({ news: [{}, {}] });
 			const jsx = (<Layout {...props} />);
-			shallowWithState(jsx, state).dive('Layout');
+			shallowWithState(jsx, state).dive();
 			expect(fetchNews).toHaveBeenCalledTimes(0);
 		});
 		it('should retrieve user settings when user settings are not loaded', () => {
@@ -119,7 +119,7 @@ describe('behavior', () => {
 			const props = createTestProps({ fetchUserSettings });
 			const state = createTestState();
 			const jsx = (<Layout {...props} />);
-			shallowWithState(jsx, state).dive('Layout');
+			shallowWithState(jsx, state).dive();
 			expect(fetchUserSettings).toHaveBeenCalledTimes(1);
 		});
 		it('should not retrieve user settings when user settings are loaded', () => {
@@ -127,7 +127,7 @@ describe('behavior', () => {
 			const props = createTestProps({ fetchUserSettings });
 			const state = createTestState({ userSettings: { settingsId: 54321 } });
 			const jsx = (<Layout {...props} />);
-			shallowWithState(jsx, state).dive('Layout');
+			shallowWithState(jsx, state).dive();
 			expect(fetchUserSettings).toHaveBeenCalledTimes(0);
 		});
 	});

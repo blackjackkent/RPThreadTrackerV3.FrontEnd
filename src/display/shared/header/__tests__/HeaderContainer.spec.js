@@ -44,7 +44,7 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 	});
@@ -53,7 +53,7 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element.props().mobileSidebarToggle).toBeTruthy();
 			expect(element.props().asideToggle).toBeTruthy();
 			expect(element.props().headerDropdownToggle).toBeTruthy();
@@ -66,7 +66,7 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(element.props().isNewsAsideOpen).toBe(true);
 			expect(element.props().isSidebarOpen).toBe(true);
 			expect(element.props().isHeaderDropdownOpen).toBe(true);
@@ -94,7 +94,7 @@ describe('behavior', () => {
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(document.body.classList).toHaveLength(1);
 			expect(document.body.classList).toContain('sidebar-mobile-show');
 
@@ -113,7 +113,7 @@ describe('behavior', () => {
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(document.body.classList).toHaveLength(1);
 			expect(document.body.classList).toContain('sidebar-hidden');
 
@@ -132,7 +132,7 @@ describe('behavior', () => {
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			expect(document.body.classList).toHaveLength(1);
 			expect(document.body.classList).toContain('aside-menu-hidden');
 
@@ -146,7 +146,7 @@ describe('behavior', () => {
 			const props = createTestProps({ toggleSidebar });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().sidebarToggle();
 			expect(toggleSidebar).toHaveBeenCalledTimes(1);
 			expect(toggleSidebar).toHaveBeenCalledWith(false);
@@ -158,7 +158,7 @@ describe('behavior', () => {
 			const props = createTestProps({ toggleNewsAside });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().asideToggle();
 			expect(toggleNewsAside).toHaveBeenCalledTimes(1);
 			expect(toggleNewsAside).toHaveBeenCalledWith(false);
@@ -170,7 +170,7 @@ describe('behavior', () => {
 			const props = createTestProps({ toggleMobileSidebar });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().mobileSidebarToggle();
 			expect(toggleMobileSidebar).toHaveBeenCalledTimes(1);
 			expect(toggleMobileSidebar).toHaveBeenCalledWith(false);
@@ -182,7 +182,7 @@ describe('behavior', () => {
 			const props = createTestProps({ toggleHeaderDropdown });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().headerDropdownToggle();
 			expect(toggleHeaderDropdown).toHaveBeenCalledTimes(1);
 			expect(toggleHeaderDropdown).toHaveBeenCalledWith(false);
@@ -194,7 +194,7 @@ describe('behavior', () => {
 			const props = createTestProps({ openUpsertCharacterModal });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().openUpsertCharacterModal();
 			expect(openUpsertCharacterModal).toHaveBeenCalledTimes(1);
 		});
@@ -205,7 +205,7 @@ describe('behavior', () => {
 			const props = createTestProps({ openUpsertThreadModal });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().openNewThreadModal();
 			expect(openUpsertThreadModal).toHaveBeenCalledTimes(1);
 		});
@@ -216,7 +216,7 @@ describe('behavior', () => {
 			const props = createTestProps({ submitUserLogout });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive('HeaderContainer');
+			const element = shallowWithState(jsx, state).dive();
 			element.instance().logout();
 			expect(submitUserLogout).toHaveBeenCalledTimes(1);
 		});

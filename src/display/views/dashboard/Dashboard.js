@@ -13,19 +13,24 @@ import { generateRandomThread, updateUserSettings, fetchActiveThreads, fetchChar
 import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 
 const propTypes = {
+	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	characterThreadCounts: PropTypes.shape({}).isRequired,
+	fetchActiveThreads: PropTypes.func.isRequired,
+	fetchCharacters: PropTypes.func.isRequired,
+	generateRandomThread: PropTypes.func.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired,
+	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	openUntrackThreadModal: PropTypes.func.isRequired,
+	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	randomThread: PropTypes.shape({}).isRequired,
+	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	updateUserSettings: PropTypes.func.isRequired,
+	upsertThread: PropTypes.func.isRequired,
 	userSettings: PropTypes.shape({
 		id: PropTypes.string
-	}).isRequired,
-	dispatch: PropTypes.func.isRequired,
-	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	randomThread: PropTypes.shape({}).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	characterThreadCounts: PropTypes.shape({}).isRequired
+	}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -60,54 +65,39 @@ class Dashboard extends Component {
 		super(props);
 		this.showDashboardThreadDistributionToggle =
 			this.showDashboardThreadDistributionToggle.bind(this);
-		this.generateRandomThread = this.generateRandomThread.bind(this);
 		this.archiveThread = this.archiveThread.bind(this);
-		this.openUntrackThreadModal = this.openUntrackThreadModal.bind(this);
 		this.markThreadQueued = this.markThreadQueued.bind(this);
 	}
 
 	componentDidMount() {
-		const { dispatch } = this.props;
 		if (!this.props.activeThreads || !this.props.activeThreads.length) {
-			dispatch(fetchActiveThreads());
+			this.props.fetchActiveThreads();
 		}
 		if (!this.props.characters || !this.props.characters.length) {
-			dispatch(fetchCharacters());
+			this.props.fetchCharacters();
 		}
 	}
 
 	showDashboardThreadDistributionToggle() {
-		const { dispatch, userSettings } = this.props;
-		dispatch(updateUserSettings({
+		const { userSettings } = this.props;
+		this.props.updateUserSettings({
 			...userSettings,
 			showDashboardThreadDistribution: !userSettings.showDashboardThreadDistribution
-		}));
-	}
-
-	generateRandomThread() {
-		const { dispatch } = this.props;
-		dispatch(generateRandomThread());
+		});
 	}
 
 	archiveThread(thread) {
-		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
 		};
-		dispatch(upsertThread(updatedThread));
+		this.props.upsertThread(updatedThread);
 	}
 
 	markThreadQueued(thread) {
-		const { dispatch } = this.props;
 		const updatedThread = {
 			...thread, dateMarkedQueued: new Date(Date.now())
 		};
-		dispatch(upsertThread(updatedThread));
-	}
-
-	openUntrackThreadModal(thread) {
-		const { dispatch } = this.props;
-		dispatch(openUntrackThreadModal(thread));
+		this.props.upsertThread(updatedThread);
 	}
 
 	render() {
@@ -128,6 +118,7 @@ class Dashboard extends Component {
 				<Row>
 					<Col>
 						<AtAGlanceCard
+							data-spec="dashboard-at-a-glance-card"
 							showDashboardThreadDistribution={userSettings.showDashboardThreadDistribution}
 							showDashboardThreadDistributionToggle={this.showDashboardThreadDistributionToggle}
 							myTurnThreads={myTurnThreads}
@@ -141,11 +132,12 @@ class Dashboard extends Component {
 				<Row>
 					<Col xs="12" md="6">
 						<RecentActivityCard
+							data-spec="dashboard-recent-activity-card"
 							recentActivityThreads={recentActivityThreads}
 							allThreads={activeThreads}
 							characters={characters}
 							archiveThread={this.archiveThread}
-							openUntrackThreadModal={this.openUntrackThreadModal}
+							openUntrackThreadModal={this.props.openUntrackThreadModal}
 							markThreadQueued={this.markThreadQueued}
 							loadingInProgress={isLoadingIconVisible}
 						/>
@@ -161,7 +153,8 @@ class Dashboard extends Component {
 				<Row>
 					<Col md="6" xs="12">
 						<RandomThreadCard
-							generateRandomThread={this.generateRandomThread}
+							data-spec="dashboard-random-thread-card"
+							generateRandomThread={this.props.generateRandomThread}
 							randomThread={randomThread}
 						/>
 					</Col>
@@ -175,4 +168,11 @@ class Dashboard extends Component {
 }
 
 Dashboard.propTypes = propTypes;
-export default connect(mapStateToProps)(Dashboard);
+export default connect(mapStateToProps, {
+	fetchActiveThreads,
+	fetchCharacters,
+	generateRandomThread,
+	openUntrackThreadModal,
+	updateUserSettings,
+	upsertThread
+})(Dashboard);
