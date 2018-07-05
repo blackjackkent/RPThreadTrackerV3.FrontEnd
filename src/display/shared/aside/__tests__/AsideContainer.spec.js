@@ -44,7 +44,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should pass news as prop', () => {
 			const props = createTestProps();
 			const state = createTestState();

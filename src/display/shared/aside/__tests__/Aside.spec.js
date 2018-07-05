@@ -31,7 +31,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should display blank when no news', () => {
 			const props = createTestProps({
 				news: []

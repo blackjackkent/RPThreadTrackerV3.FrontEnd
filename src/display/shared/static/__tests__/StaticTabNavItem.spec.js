@@ -27,7 +27,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should not have active class if tab is not active', () => {
 			const props = createTestProps();
 			const jsx = (<StaticTabNavItem {...props} />);

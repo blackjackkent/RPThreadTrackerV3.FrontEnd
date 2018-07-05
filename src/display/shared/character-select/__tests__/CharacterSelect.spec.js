@@ -55,7 +55,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should display blank when no characters', () => {
 			const props = createTestProps({
 				characters: []

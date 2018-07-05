@@ -32,7 +32,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should provide character ID as option value', () => {
 			const props = createTestProps();
 			const jsx = (<CharacterSelectItem {...props} />);

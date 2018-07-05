@@ -77,7 +77,7 @@ describe('rendering', () => {
 			expect(field.props().validate.required).toHaveProperty('value', true);
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should populate existing view name', () => {
 			const props = createTestPropsWithView();
 			const jsx = (<UpsertPublicViewForm {...props} />);

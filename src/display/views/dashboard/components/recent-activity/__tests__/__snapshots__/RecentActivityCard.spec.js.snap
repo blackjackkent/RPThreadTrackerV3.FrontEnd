@@ -118,6 +118,7 @@ exports[`rendering snapshots should render valid snapshot when user has recent a
   >
     <RecentActivityRow
       archiveThread={[MockFunction]}
+      data-spec="recent-activity-card-row"
       key="1"
       markThreadQueued={[MockFunction]}
       openUntrackThreadModal={[MockFunction]}
@@ -132,6 +133,7 @@ exports[`rendering snapshots should render valid snapshot when user has recent a
     />
     <RecentActivityRow
       archiveThread={[MockFunction]}
+      data-spec="recent-activity-card-row"
       key="2"
       markThreadQueued={[MockFunction]}
       openUntrackThreadModal={[MockFunction]}

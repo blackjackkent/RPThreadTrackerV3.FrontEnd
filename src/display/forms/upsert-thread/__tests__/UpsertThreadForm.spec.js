@@ -66,7 +66,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should populate existing user title', () => {
 			const props = createTestPropsWithThread();
 			const jsx = (<UpsertThreadForm {...props} />);

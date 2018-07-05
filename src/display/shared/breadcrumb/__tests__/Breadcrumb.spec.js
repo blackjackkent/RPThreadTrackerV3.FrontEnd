@@ -27,7 +27,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should pass props to child', () => {
 			const props = createTestProps({ 'data-random': 'random' });
 			const jsx = (<Breadcrumb {...props} />);

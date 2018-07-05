@@ -38,7 +38,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should populate existing character name', () => {
 			const props = createTestPropsWithCharacter();
 			const jsx = (<UpsertCharacterForm {...props} />);

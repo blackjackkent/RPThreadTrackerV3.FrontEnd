@@ -1,6 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
+import { getSpecWrapper } from '../../../../../../../config/tests/helpers.unit';
 import RecentActivityCard from '../RecentActivityCard';
 // #endregion imports
 
@@ -51,6 +52,13 @@ describe('rendering', () => {
 		it('should render valid snapshot when user has recent activity', () => {
 			const element = shallow(<RecentActivityCard {...createTestPropsRecentActivity()} />);
 			expect(element).toMatchSnapshot();
+		});
+	});
+	describe('content', () => {
+		it('should render item for each thread', () => {
+			const element = shallow(<RecentActivityCard {...createTestPropsRecentActivity()} />);
+			const rows = getSpecWrapper(element, 'recent-activity-card-row');
+			expect(rows).toHaveLength(2);
 		});
 	});
 });

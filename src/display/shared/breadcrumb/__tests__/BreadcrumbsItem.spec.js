@@ -35,7 +35,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should render null if route does not exist', () => {
 			const props = createTestProps({ match: { url: '/test/test3' } });
 			const jsx = (<BreadcrumbsItem {...props} />);

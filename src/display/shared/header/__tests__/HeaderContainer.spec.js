@@ -48,7 +48,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should render method props', () => {
 			const props = createTestProps();
 			const state = createTestState();

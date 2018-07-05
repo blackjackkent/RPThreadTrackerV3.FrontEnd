@@ -25,7 +25,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should display an option for every option in props', () => {
 			const props = createTestProps();
 			const jsx = (<StaticTabNav {...props} />);

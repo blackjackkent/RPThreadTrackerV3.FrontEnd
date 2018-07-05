@@ -23,7 +23,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 	});
-	describe('initial load', () => {
+	describe('content', () => {
 		it('should populate existing username', () => {
 			const props = createTestProps();
 			const jsx = (<UpdateAccountInfoForm {...props} />);
