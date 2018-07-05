@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="dashboard-card-center-message"
+>
+  You do not currently have any threads tracked.
+  <br />
+  Click "Track New Thread" in the header menu
+   
+  to add a thread to your account.
+</div>
+`;

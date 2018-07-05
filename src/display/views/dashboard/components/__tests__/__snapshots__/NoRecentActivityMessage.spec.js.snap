@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="dashboard-card-center-message"
+>
+  You do not owe a reply on any of your threads! Nice job!
+</div>
+`;
