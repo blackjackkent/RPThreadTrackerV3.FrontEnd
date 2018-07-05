@@ -60,7 +60,7 @@ export default [
 	}, {
 		Header: 'URL Identifier',
 		accessor: 'urlIdentifier',
-		Cell: row => <a className={row.original.isOnHiatus ? 'text-muted' : ''} href={row.original.homeUrl}> {row.value} </a>
+		Cell: row => <a className={row.original.isOnHiatus ? 'text-muted' : ''} href={row.original.homeUrl}>{row.value}</a>
 	}, {
 		Header: 'Platform',
 		accessor: 'platformId',
@@ -68,6 +68,6 @@ export default [
 	}, {
 		Header: 'Status',
 		accessor: 'isOnHiatus',
-		Cell: row => <span className={row.original.isOnHiatus ? 'text-muted' : ''}> {row.value ? 'On Hiatus' : 'Active'} </span>
+		Cell: row => <span className={row.value ? 'text-muted' : ''}>{row.value ? 'On Hiatus' : 'Active'}</span>
 	}
 ];

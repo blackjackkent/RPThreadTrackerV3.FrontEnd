@@ -9,50 +9,38 @@ import { openUpsertCharacterModal, fetchCharacters, upsertCharacter, openUntrack
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	dispatch: PropTypes.func.isRequired
+	fetchCharacters: PropTypes.func.isRequired,
+	openUpsertCharacterModal: PropTypes.func.isRequired,
+	upsertCharacter: PropTypes.func.isRequired,
+	openUntrackCharacterModal: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
 	const {
-		characters,
-		characterToEdit
+		characters
 	} = state;
 	return {
-		characters,
-		characterToEdit
+		characters
 	};
 }
 
 class ManageCharacters extends Component {
 	constructor(props) {
 		super(props);
-		this.openUpsertCharacterModal = this.openUpsertCharacterModal.bind(this);
 		this.toggleCharacterIsOnHiatus = this.toggleCharacterIsOnHiatus.bind(this);
-		this.openUntrackCharacterModal = this.openUntrackCharacterModal.bind(this);
 	}
+
 	componentDidMount() {
-		const { dispatch } = this.props;
 		if (!this.props.characters || !this.props.characters.length) {
-			dispatch(fetchCharacters());
+			this.props.fetchCharacters();
 		}
 	}
 
-	openUpsertCharacterModal(character) {
-		const { dispatch } = this.props;
-		dispatch(openUpsertCharacterModal(character));
-	}
-
 	toggleCharacterIsOnHiatus(character) {
-		const { dispatch } = this.props;
 		const updatedCharacter = {
 			...character, isOnHiatus: !character.isOnHiatus
 		};
-		dispatch(upsertCharacter(updatedCharacter));
-	}
-
-	openUntrackCharacterModal(character) {
-		const { dispatch } = this.props;
-		dispatch(openUntrackCharacterModal(character));
+		this.props.upsertCharacter(updatedCharacter);
 	}
 
 	render() {
@@ -64,10 +52,11 @@ class ManageCharacters extends Component {
 				<Row>
 					<Col>
 						<CurrentCharacterTable
+							data-spec="manage-characters-current-character-table"
 							characters={characters}
-							openUpsertCharacterModal={this.openUpsertCharacterModal}
+							openUpsertCharacterModal={this.props.openUpsertCharacterModal}
 							toggleCharacterIsOnHiatus={this.toggleCharacterIsOnHiatus}
-							openUntrackCharacterModal={this.openUntrackCharacterModal}
+							openUntrackCharacterModal={this.props.openUntrackCharacterModal}
 						/>
 					</Col>
 				</Row>
@@ -77,4 +66,9 @@ class ManageCharacters extends Component {
 }
 
 ManageCharacters.propTypes = propTypes;
-export default connect(mapStateToProps)(ManageCharacters);
+export default connect(mapStateToProps, {
+	fetchCharacters,
+	openUntrackCharacterModal,
+	openUpsertCharacterModal,
+	upsertCharacter
+})(ManageCharacters);

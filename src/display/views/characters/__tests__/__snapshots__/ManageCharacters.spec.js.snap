@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="animated fadeIn dashboard-container"
+>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <CurrentCharacterTable
+        characters={
+          Array [
+            Object {
+              "characterId": 1,
+              "characterName": "Character 1",
+            },
+            Object {
+              "characterId": 2,
+              "characterName": "Character 2",
+            },
+          ]
+        }
+        data-spec="manage-characters-current-character-table"
+        openUntrackCharacterModal={[MockFunction]}
+        openUpsertCharacterModal={[MockFunction]}
+        toggleCharacterIsOnHiatus={[Function]}
+      />
+    </Col>
+  </Row>
+</div>
+`;
