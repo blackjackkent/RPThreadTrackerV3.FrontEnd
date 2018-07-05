@@ -9,16 +9,18 @@ const getNullStatusProps = () => ({ thread: { userTitle: 'Test Title' }, status:
 const getNullThreadProps = () => ({ thread: null });
 
 describe('rendering', () => {
-	it('should render valid snapshot when thread is null', () => {
-		const element = shallow(<RandomThreadDisplay threadData={getNullThreadProps()} />);
-		expect(element).toMatchSnapshot();
-	});
-	it('should render valid snapshot without status', () => {
-		const element = shallow(<RandomThreadDisplay threadData={getNullStatusProps()} />);
-		expect(element).toMatchSnapshot();
-	});
-	it('should render valid snapshot with status', () => {
-		const element = shallow(<RandomThreadDisplay threadData={getValidProps()} />);
-		expect(element).toMatchSnapshot();
+	describe('snapshots', () => {
+		it('should render valid snapshot when thread is null', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullThreadProps()} />);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot without status', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getNullStatusProps()} />);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot with status', () => {
+			const element = shallow(<RandomThreadDisplay threadData={getValidProps()} />);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });

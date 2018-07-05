@@ -20,34 +20,26 @@ const createTestProps = propOverrides => ({
 });
 
 describe('rendering', () => {
-	it('should render valid snapshot', () => {
-		const props = createTestProps();
-		const jsx = (<RandomThreadCard {...props} />);
-		const element = shallow(jsx);
-		expect(element).toMatchSnapshot();
-	});
-	it('should render display correctly', () => {
-		const props = createTestProps();
-		const jsx = (<RandomThreadCard {...props} />);
-		const element = shallow(jsx);
-		const display = getSpecWrapper(element, 'random-thread-display');
-		expect(display).toExist();
-		expect(display).toHaveProp({
-			threadData: {
-				thread: { userTitle: 'Test Title' },
-				status: {}
-			}
+	describe('snapshots', () => {
+		it('should render valid snapshot', () => {
+			const props = createTestProps();
+			const jsx = (<RandomThreadCard {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
 		});
 	});
 });
 
 describe('behavior', () => {
-	it('should trigger randomization on button click', () => {
-		const props = createTestProps();
-		const jsx = (<RandomThreadCard {...props} />);
-		const element = shallow(jsx);
-		const button = getSpecWrapper(element, 'random-thread-generator-button');
-		button.simulate('click');
-		expect(props.generateRandomThread).toHaveBeenCalledTimes(1);
+	describe('generateRandomThread', () => {
+		it('should be triggered on button click', () => {
+			const generateRandomThread = jest.fn();
+			const props = createTestProps({ generateRandomThread });
+			const jsx = (<RandomThreadCard {...props} />);
+			const element = shallow(jsx);
+			const button = getSpecWrapper(element, 'random-thread-generator-button');
+			button.simulate('click');
+			expect(generateRandomThread).toHaveBeenCalledTimes(1);
+		});
 	});
 });
