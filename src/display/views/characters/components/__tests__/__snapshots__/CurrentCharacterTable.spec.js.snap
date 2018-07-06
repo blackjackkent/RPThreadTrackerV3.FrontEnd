@@ -152,6 +152,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     pivotValKey="_pivotVal"
     previousText="Previous"
     resizable={true}
+    resolveData={[Function]}
     rowsText="rows"
     showPageJump={true}
     showPageSizeOptions={true}
