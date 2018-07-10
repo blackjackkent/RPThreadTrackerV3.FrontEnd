@@ -50,25 +50,31 @@ class Threads extends Component {
 	}
 	toggleThreadIsArchived(thread) {
 		const updatedThread = {
-			...thread, isArchived: !thread.isArchived
+			...thread, isArchived: !thread.isArchived, dateMarkedQueued: null
 		};
 		this.props.upsertThread(updatedThread);
 	}
 	toggleThreadIsMarkedQueued(thread) {
 		const updatedThread = {
-			...thread, dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now())
+			...thread,
+			dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now()),
+			isArchived: false
 		};
 		this.props.upsertThread(updatedThread);
 	}
 	bulkToggleThreadsAreMarkedQueued(threads) {
 		const updatedThreads = threads.map(t => ({
-			...t, dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now())
+			...t,
+			dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now()),
+			isArchived: false
 		}));
 		this.props.bulkUpdateThreads(updatedThreads);
 	}
 	bulkToggleThreadsAreArchived(threads) {
 		const updatedThreads = threads.map(t => ({
-			...t, isArchived: !t.isArchived
+			...t,
+			isArchived: !t.isArchived,
+			dateMarkedQueued: null
 		}));
 		this.props.bulkUpdateThreads(updatedThreads);
 	}

@@ -55,7 +55,7 @@ class ThreadBulkUpdateControls extends React.Component {
 							onChange={this.handleInputChange}
 						>
 							<option value="">Bulk Actions</option>
-							<option value="toggle-queued">{isQueue ? 'Unmark' : 'Mark'} Selected Threads Queued</option>
+							{!isArchive && <option value="toggle-queued">{isQueue ? 'Unmark' : 'Mark'} Selected Threads Queued</option>}
 							<option value="toggle-archived">{isArchive ? 'Unarchive' : 'Archive'} Selected Threads</option>
 							<option value="untrack">Untrack Selected Threads</option>
 						</Input>
