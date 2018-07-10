@@ -6917,9 +6917,9 @@ react-moment@^0.6.5:
   version "0.6.9"
   resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.6.9.tgz#f13a0ccedaf65b5fb8b1467d9f91c5346d74c3e2"
 
-react-multivalue-text-input@^0.4.0:
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/react-multivalue-text-input/-/react-multivalue-text-input-0.4.0.tgz#b16edec60f9fea0eb3adcc6ae62352bcc72198fd"
+react-multivalue-text-input@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/react-multivalue-text-input/-/react-multivalue-text-input-0.5.0.tgz#51fd7537cdc09fbe251c3ff6c2dd51db536b2bf5"
   dependencies:
     prop-types "^15.6.1"
     react-dom "^16.3.2"
