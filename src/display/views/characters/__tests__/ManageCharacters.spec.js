@@ -6,6 +6,9 @@ import ManageCharacters from '../ManageCharacters';
 
 // #region mocks
 jest.mock('../../../../infrastructure/actions', () => ({}));
+jest.mock('../../../../infrastructure/selectors', () => ({
+	getIsLoadingIconVisible: () => true
+}));
 jest.mock('../components/CurrentCharacterTable', () => 'CurrentCharacterTable');
 // #endregion mocks
 

@@ -33,6 +33,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           ]
         }
         data-spec="manage-characters-current-character-table"
+        isLoadingIconVisible={true}
         openUntrackCharacterModal={[MockFunction]}
         openUpsertCharacterModal={[MockFunction]}
         toggleCharacterIsOnHiatus={[Function]}

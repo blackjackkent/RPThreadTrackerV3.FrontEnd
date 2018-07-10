@@ -14,6 +14,7 @@ const createTestProps = propOverrides => ({
 	openUpsertCharacterModal: jest.fn(),
 	toggleCharacterIsOnHiatus: jest.fn(),
 	openUntrackCharacterModal: jest.fn(),
+	isLoadingIconVisible: true,
 	...propOverrides
 });
 
@@ -21,6 +22,12 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
+			const jsx = (<CurrentCharacterTable {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot when loading icon not visible', () => {
+			const props = createTestProps({ isLoadingIconVisible: false });
 			const jsx = (<CurrentCharacterTable {...props} />);
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
