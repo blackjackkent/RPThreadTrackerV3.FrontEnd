@@ -5,6 +5,7 @@ import RecentActivityRow from './RecentActivityRow';
 import NoThreadsMessage from '../NoThreadsMessage';
 import NoCharactersMessage from '../NoCharactersMessage';
 import NoRecentActivityMessage from '../NoRecentActivityMessage';
+import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
 import LoadingIndicator from '../../../../shared/LoadingIndicator';
 
 const propTypes = {
@@ -40,6 +41,10 @@ const getBlockContent = (
 	}
 	if (characters.length === 0) {
 		return (<NoCharactersMessage />);
+	}
+	const activeCharacters = characters.filter(c => !c.isOnHiatus);
+	if (characters.length > 0 && activeCharacters.length === 0) {
+		return (<NoActiveCharactersMessage />);
 	}
 	if (allThreads.length === 0) {
 		return (<NoThreadsMessage />);

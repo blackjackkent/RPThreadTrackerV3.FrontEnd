@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Card, CardHeader, CardBlock } from 'reactstrap';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
+import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
 import LoadingIndicator from '../../../../shared/LoadingIndicator';
 
 const propTypes = {
@@ -28,7 +29,11 @@ const getBlockContent = (loadingInProgress, characters, characterThreadCounts) =
 	if (characters.length === 0) {
 		return (<NoCharactersMessage />);
 	}
-	return characters.map(character =>
+	const activeCharacters = characters.filter(c => !c.isOnHiatus);
+	if (characters.length > 0 && activeCharacters.length === 0) {
+		return (<NoActiveCharactersMessage />);
+	}
+	return activeCharacters.map(character =>
 		(<YourCharactersCardRow
 			character={character}
 			key={character.characterId}

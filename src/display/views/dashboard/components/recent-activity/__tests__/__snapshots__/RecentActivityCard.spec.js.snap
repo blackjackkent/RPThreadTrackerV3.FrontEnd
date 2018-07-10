@@ -33,6 +33,28 @@ exports[`rendering snapshots should render valid snapshot when threads are loadi
 </Card>
 `;
 
+exports[`rendering snapshots should render valid snapshot when user has no active characters 1`] = `
+<Card
+  className="recent-activity-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-bolt"
+    />
+     Recent Activity
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <NoActiveCharactersMessage />
+  </CardBlock>
+</Card>
+`;
+
 exports[`rendering snapshots should render valid snapshot when user has no characters 1`] = `
 <Card
   className="recent-activity-card"

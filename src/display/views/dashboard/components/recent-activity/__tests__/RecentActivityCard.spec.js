@@ -9,6 +9,7 @@ import RecentActivityCard from '../RecentActivityCard';
 jest.mock('../RecentActivityRow', () => 'RecentActivityRow');
 jest.mock('../../NoThreadsMessage', () => 'NoThreadsMessage');
 jest.mock('../../NoCharactersMessage', () => 'NoCharactersMessage');
+jest.mock('../../NoActiveCharactersMessage', () => 'NoActiveCharactersMessage');
 jest.mock('../../NoRecentActivityMessage', () => 'NoRecentActivityMessage');
 jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
 // #endregion mocks
@@ -25,6 +26,8 @@ const createTestProps = propOverrides => ({
 });
 const createTestPropsLoading = () => createTestProps({ loadingInProgress: true });
 const createTestPropsNoCharacters = () => createTestProps({});
+const createTestPropsNoActiveCharacters = () =>
+	createTestProps({ characters: [{ isOnHiatus: true }, { isOnHiatus: true }] });
 const createTestPropsNoThreads = () => createTestProps({ characters: [{}, {}] });
 const createTestPropsNoRecentActivity = () =>
 	createTestProps({ characters: [{}, {}], allThreads: [{}, {}, {}] });
@@ -39,6 +42,10 @@ describe('rendering', () => {
 		});
 		it('should render valid snapshot when user has no characters', () => {
 			const element = shallow(<RecentActivityCard {...createTestPropsNoCharacters()} />);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot when user has no active characters', () => {
+			const element = shallow(<RecentActivityCard {...createTestPropsNoActiveCharacters()} />);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when user has no threads', () => {
