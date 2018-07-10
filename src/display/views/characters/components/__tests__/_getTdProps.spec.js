@@ -49,5 +49,13 @@ describe('behavior', () => {
 			props.onClick({}, handleOriginal);
 			expect(handleOriginal).toHaveBeenCalledTimes(1);
 		});
+		it('should run successfully if handleOriginal does not exist', () => {
+			const clickedColumn = { id: 'characterName' };
+			const clickedRow = { original: { characterId: 1 } };
+			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn());
+			const props = propsCreator({}, clickedRow, clickedColumn);
+			props.onClick({}, null);
+			expect(true).toBe(true);
+		});
 	});
 });

@@ -114,9 +114,14 @@ const getColumns = (characters, partners, lastPosters) => [
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>
-				{characters.map(character => <option key={character.characterId} value={character.urlIdentifier}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
+				{characters.map(character => <option key={character.characterId} value={character.characterId}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
 			</select>
-		)
+		),
+		filterMethod: (filter, row) => {
+			const characterId = parseInt(filter.value, 10);
+			// eslint-disable-next-line no-underscore-dangle
+			return characterId === row._original.thread.character.characterId;
+		}
 	},
 	{
 		Header: columns.LAST_POSTER.name,
