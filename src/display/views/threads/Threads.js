@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
 
 const propTypes = {
@@ -16,7 +17,8 @@ const propTypes = {
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	openUpsertThreadModal: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
-	threadFilter: PropTypes.shape({}).isRequired
+	threadFilter: PropTypes.shape({}).isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -24,9 +26,11 @@ function mapStateToProps(state) {
 		threadFilter,
 		characters
 	} = state;
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		threadFilter,
-		characters
+		characters,
+		isLoadingIconVisible
 	};
 }
 
@@ -72,7 +76,8 @@ class Threads extends Component {
 		const {
 			characters,
 			Renderable,
-			threadFilter
+			threadFilter,
+			isLoadingIconVisible
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
@@ -89,6 +94,7 @@ class Threads extends Component {
 							threadFilter={threadFilter}
 							toggleThreadIsArchived={this.toggleThreadIsArchived}
 							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
+							isLoadingIconVisible={isLoadingIconVisible}
 						/>
 					</Col>
 				</Row>

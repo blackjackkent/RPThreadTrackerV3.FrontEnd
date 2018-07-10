@@ -24,7 +24,8 @@ const propTypes = {
 	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
 	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
-	tdProps: PropTypes.func.isRequired
+	tdProps: PropTypes.func.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired
 };
 const defaultProps = {
 	isArchive: false,
@@ -103,6 +104,7 @@ class ThreadTable extends React.Component {
 			filteredThreads,
 			columns,
 			isArchive,
+			isLoadingIconVisible,
 			isQueue,
 			bulkToggleThreadsAreMarkedQueued,
 			bulkToggleThreadsAreArchived,
@@ -152,7 +154,7 @@ class ThreadTable extends React.Component {
 					ref={r => this.checkboxTable = r}
 					className="-striped"
 					data={getData(filteredThreads)}
-					noDataText="No Threads Found"
+					noDataText={isLoadingIconVisible ? 'Loading...' : 'No Threads Found'}
 					defaultPageSize={filteredThreads.length > 10 ? 20 : 10}
 					columns={columns}
 					getTdProps={tdProps}

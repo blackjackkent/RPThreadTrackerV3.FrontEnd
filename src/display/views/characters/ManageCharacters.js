@@ -4,11 +4,13 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
+import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import { openUpsertCharacterModal, fetchCharacters, upsertCharacter, openUntrackCharacterModal } from '../../../infrastructure/actions';
 // #endregion imports
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	dispatch: PropTypes.func.isRequired
 };
 
@@ -17,9 +19,11 @@ function mapStateToProps(state) {
 		characters,
 		characterToEdit
 	} = state;
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		characters,
-		characterToEdit
+		characterToEdit,
+		isLoadingIconVisible
 	};
 }
 
@@ -57,7 +61,8 @@ class ManageCharacters extends Component {
 
 	render() {
 		const {
-			characters
+			characters,
+			isLoadingIconVisible
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -68,6 +73,7 @@ class ManageCharacters extends Component {
 							openUpsertCharacterModal={this.openUpsertCharacterModal}
 							toggleCharacterIsOnHiatus={this.toggleCharacterIsOnHiatus}
 							openUntrackCharacterModal={this.openUntrackCharacterModal}
+							isLoadingIconVisible={isLoadingIconVisible}
 						/>
 					</Col>
 				</Row>

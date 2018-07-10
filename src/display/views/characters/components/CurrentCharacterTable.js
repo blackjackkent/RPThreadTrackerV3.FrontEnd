@@ -8,12 +8,14 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	toggleCharacterIsOnHiatus: PropTypes.func.isRequired,
-	openUntrackCharacterModal: PropTypes.func.isRequired
+	openUntrackCharacterModal: PropTypes.func.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired
 };
 
 const CurrentCharacterTable = (props) => {
 	const {
 		characters,
+		isLoadingIconVisible,
 		openUpsertCharacterModal,
 		toggleCharacterIsOnHiatus,
 		openUntrackCharacterModal
@@ -26,7 +28,7 @@ const CurrentCharacterTable = (props) => {
 				columns={columns}
 				defaultSorted={[{ id: 'characterName', desc: true }]}
 				pageSize={10}
-				noDataText="No Characters Found"
+				noDataText={isLoadingIconVisible ? 'Loading...' : 'No Characters Found'}
 				getTdProps={getTdProps(
 					openUntrackCharacterModal,
 					openUpsertCharacterModal,
