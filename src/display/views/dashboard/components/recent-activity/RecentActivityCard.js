@@ -49,6 +49,7 @@ const getBlockContent = (
 	}
 	return recentActivityThreads.map(threadData =>
 		(<RecentActivityRow
+			data-spec="recent-activity-card-row"
 			threadData={threadData}
 			key={threadData.thread.threadId}
 			archiveThread={archiveThread}

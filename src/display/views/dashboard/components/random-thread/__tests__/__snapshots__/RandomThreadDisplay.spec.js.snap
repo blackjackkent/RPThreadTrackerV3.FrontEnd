@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`rendering should render valid snapshot when thread is null 1`] = `
+exports[`rendering snapshots should render valid snapshot when thread is null 1`] = `
 <div
   className="random-thread-result"
   data-spec="random-thread-result"
@@ -11,7 +11,7 @@ exports[`rendering should render valid snapshot when thread is null 1`] = `
 </div>
 `;
 
-exports[`rendering should render valid snapshot with status 1`] = `
+exports[`rendering snapshots should render valid snapshot with status 1`] = `
 <div
   className="random-thread-result"
   data-spec="random-thread-result"
@@ -46,7 +46,7 @@ exports[`rendering should render valid snapshot with status 1`] = `
 </div>
 `;
 
-exports[`rendering should render valid snapshot without status 1`] = `
+exports[`rendering snapshots should render valid snapshot without status 1`] = `
 <div
   className="random-thread-result"
   data-spec="random-thread-result"

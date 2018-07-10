@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="dashboard-card-center-message"
+>
+  You have not yet added any characters to your account.
+  <br />
+  Click "Add Character" in the header menu
+   
+  to add one.
+</div>
+`;
