@@ -12,7 +12,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       className="text-right mb-2"
     />
     <div
-      className="h1  text-right mb-2"
+      className="h1 float-right text-right mb-2"
     >
       <i
         className="icon-list"
@@ -65,7 +65,7 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
       />
     </div>
     <div
-      className="h1  text-right mb-2"
+      className="h1 float-right text-right mb-2"
     >
       <i
         className="icon-list"
