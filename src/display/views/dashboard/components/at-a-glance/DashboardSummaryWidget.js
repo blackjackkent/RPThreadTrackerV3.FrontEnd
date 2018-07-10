@@ -31,7 +31,7 @@ const DashboardSummaryWidget = (props) => {
 						/>
 					}
 				</div>
-				<div className="h1  text-right mb-2">
+				<div className="h1 float-right text-right mb-2">
 					<i data-spec="dashboard-summary-widget-icon" className={icon} />
 				</div>
 				<div className="h4 mb-0" data-spec="dashboard-summary-widget-header">{header}</div>
