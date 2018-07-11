@@ -21,18 +21,20 @@ const DashboardSummaryWidget = (props) => {
 
 	return (
 		<Card {...attributes}>
-			<CardBlock className="card-body">
+			<CardBlock className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
 					{isLoadingIconVisible &&
 						<LoadingIndicator
 							data-spec="dashboard-summary-widget-loading"
-							className="inverse"
-							style={{ width: 25, height: 25, float: 'left' }}
+							className="inverse dashboard-summary-widget-loading-icon"
+							style={{
+								width: 25, height: 25
+							}}
 						/>
 					}
 				</div>
 				<div className="h1 float-right text-right mb-2">
-					<i data-spec="dashboard-summary-widget-icon" className={icon} />
+					<i data-spec="dashboard-summary-widget-icon" className={`${icon} d-sm-none d-md-block`} />
 				</div>
 				<div className="h4 mb-0" data-spec="dashboard-summary-widget-header">{header}</div>
 				<small

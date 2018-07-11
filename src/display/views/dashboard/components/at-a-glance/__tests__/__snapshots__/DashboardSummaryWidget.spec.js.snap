@@ -5,7 +5,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tag="div"
 >
   <CardBlock
-    className="card-body"
+    className="card-body dashboard-summary-widget-card-body"
     tag="div"
   >
     <div
@@ -15,7 +15,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       className="h1 float-right text-right mb-2"
     >
       <i
-        className="icon-list"
+        className="icon-list d-sm-none d-md-block"
         data-spec="dashboard-summary-widget-icon"
       />
     </div>
@@ -46,18 +46,17 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
   tag="div"
 >
   <CardBlock
-    className="card-body"
+    className="card-body dashboard-summary-widget-card-body"
     tag="div"
   >
     <div
       className="text-right mb-2"
     >
       <LoadingIndicator
-        className="inverse"
+        className="inverse dashboard-summary-widget-loading-icon"
         data-spec="dashboard-summary-widget-loading"
         style={
           Object {
-            "float": "left",
             "height": 25,
             "width": 25,
           }
@@ -68,7 +67,7 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
       className="h1 float-right text-right mb-2"
     >
       <i
-        className="icon-list"
+        className="icon-list d-sm-none d-md-block"
         data-spec="dashboard-summary-widget-icon"
       />
     </div>
