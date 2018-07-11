@@ -43,7 +43,7 @@ const Header = (props) => {
 				mobileSidebarToggle={mobileSidebarToggle}
 				sidebarToggle={sidebarToggle}
 			/>
-			<Nav className="d-md-down-none ml-4" navbar>
+			<Nav className="d-none d-sm-flex ml-4" navbar>
 				<HeaderButton
 					data-spec="header-open-upsert-character-modal-button"
 					onClick={() => openUpsertCharacterModal()}
@@ -55,7 +55,11 @@ const Header = (props) => {
 					label="Track New Thread"
 				/>
 				{isLoadingIconVisible &&
-					<div data-spec="header-loading-indicator"><LoadingIndicator className="invert" /></div>
+					<div
+						data-spec="header-loading-indicator"
+					>
+						<LoadingIndicator className="d-md-down-none invert" />
+					</div>
 				}
 			</Nav>
 			<Nav className="ml-auto" navbar>

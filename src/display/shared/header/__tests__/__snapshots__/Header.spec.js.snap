@@ -9,7 +9,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     sidebarToggle={[MockFunction]}
   />
   <Nav
-    className="d-md-down-none ml-4"
+    className="d-none d-sm-flex ml-4"
     navbar={true}
     tag="ul"
   >
@@ -27,7 +27,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       data-spec="header-loading-indicator"
     >
       <LoadingIndicator
-        className="invert"
+        className="d-md-down-none invert"
       />
     </div>
   </Nav>
@@ -65,7 +65,7 @@ exports[`rendering snapshots should render valid snapshot without loading indica
     sidebarToggle={[MockFunction]}
   />
   <Nav
-    className="d-md-down-none ml-4"
+    className="d-none d-sm-flex ml-4"
     navbar={true}
     tag="ul"
   >
