@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import { Row, Col, Button } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 import ThreadTableTagDisplay from './ThreadTableTagDisplay';
 import TagFilterSelect from './TagFilterSelect';

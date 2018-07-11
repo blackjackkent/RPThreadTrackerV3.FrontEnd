@@ -19,6 +19,6 @@ const ThreadRefreshButton = (props) => {
 			</Button>
 		</div>
 	);
-}
+};
 ThreadRefreshButton.propTypes = propTypes;
 export default ThreadRefreshButton;

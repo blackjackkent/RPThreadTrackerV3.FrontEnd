@@ -1,7 +1,6 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../config/tests/helpers.unit';
 import LoadingIndicator from '../LoadingIndicator';
 // #endregion imports
 

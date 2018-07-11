@@ -113,6 +113,7 @@ const UpsertThreadForm = (props) => {
 							values={tagValues}
 							onItemAdded={handleTagAdded}
 							onItemDeleted={handleTagRemoved}
+							shouldAddOnBlur
 							label="Thread Tags"
 							name="threadTags"
 							placeholder="Thread Tags"
