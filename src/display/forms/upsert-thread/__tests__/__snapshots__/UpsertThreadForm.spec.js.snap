@@ -273,6 +273,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           onItemAdded={[MockFunction]}
           onItemDeleted={[MockFunction]}
           placeholder="Thread Tags"
+          shouldAddOnBlur={true}
           values={Array []}
         />
         <small
@@ -563,6 +564,7 @@ exports[`rendering snapshots should render valid snapshot with thread 1`] = `
           onItemAdded={[MockFunction]}
           onItemDeleted={[MockFunction]}
           placeholder="Thread Tags"
+          shouldAddOnBlur={true}
           values={
             Array [
               "tag1",
