@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
-import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal } from '../../../infrastructure/actions';
+import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal, fetchActiveThreads, fetchArchivedThreads } from '../../../infrastructure/actions';
 
 const propTypes = {
 	Renderable: PropTypes.func.isRequired,
@@ -13,6 +13,8 @@ const propTypes = {
 	setFilteredTag: PropTypes.func.isRequired,
 	bulkUpdateThreads: PropTypes.func.isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
+	fetchActiveThreads: PropTypes.func.isRequired,
+	fetchArchivedThreads: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	openUpsertThreadModal: PropTypes.func.isRequired,
@@ -42,6 +44,7 @@ class Threads extends Component {
 		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
 		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
+		this.refreshThreads = this.refreshThreads.bind(this);
 	}
 	componentDidMount() {
 		if (!this.props.characters || !this.props.characters.length) {
@@ -78,6 +81,13 @@ class Threads extends Component {
 		}));
 		this.props.bulkUpdateThreads(updatedThreads);
 	}
+	refreshThreads(isArchivePage) {
+		if (!isArchivePage) {
+			this.props.fetchActiveThreads();
+		} else {
+			this.props.fetchArchivedThreads();
+		}
+	}
 	render() {
 		const {
 			characters,
@@ -101,6 +111,7 @@ class Threads extends Component {
 							toggleThreadIsArchived={this.toggleThreadIsArchived}
 							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
 							isLoadingIconVisible={isLoadingIconVisible}
+							refreshThreads={this.refreshThreads}
 						/>
 					</Col>
 				</Row>
@@ -114,6 +125,8 @@ export default connect(mapStateToProps, {
 	setFilteredTag,
 	bulkUpdateThreads,
 	fetchCharacters,
+	fetchActiveThreads,
+	fetchArchivedThreads,
 	upsertThread,
 	openBulkUntrackThreadsModal,
 	openUpsertThreadModal,

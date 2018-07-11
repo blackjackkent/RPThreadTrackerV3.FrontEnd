@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Button } from 'reactstrap';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 import ThreadTableTagDisplay from './ThreadTableTagDisplay';
 import TagFilterSelect from './TagFilterSelect';
+import ThreadRefreshButton from './ThreadRefreshButton';
 
 const CheckboxTable = checkboxHOC(ReactTable);
 const propTypes = {
@@ -24,6 +25,7 @@ const propTypes = {
 	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
 	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	refreshThreads: PropTypes.func.isRequired,
 	tdProps: PropTypes.func.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired
 };
@@ -110,6 +112,7 @@ class ThreadTable extends React.Component {
 			bulkToggleThreadsAreArchived,
 			openBulkUntrackThreadsModal,
 			tdProps,
+			refreshThreads,
 			setFilteredTag,
 			threadFilter,
 			tags
@@ -132,7 +135,7 @@ class ThreadTable extends React.Component {
 							filteredTag={threadFilter.filteredTag}
 						/>
 					</Col>
-					<Col xs="12" sm="6">
+					<Col xs="12" sm="6" xl="5">
 						<ThreadBulkUpdateControls
 							isArchive={isArchive}
 							isQueue={isQueue}
@@ -147,6 +150,9 @@ class ThreadTable extends React.Component {
 								() => this.executeBulkAction(openBulkUntrackThreadsModal)
 							}
 						/>
+					</Col>
+					<Col xs={{ size: 6, offset: 3 }} sm={{ size: 4, offset: 4 }} xl={{ size: 1, offset: 0 }}>
+						<ThreadRefreshButton isArchive={isArchive} refreshThreads={refreshThreads} />
 					</Col>
 				</Row>
 				<CheckboxTable

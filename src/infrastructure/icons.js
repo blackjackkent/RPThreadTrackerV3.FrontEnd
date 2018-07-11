@@ -17,6 +17,7 @@ import faPowerOff from '@fortawesome/fontawesome-free-solid/faPowerOff';
 import faQuestionCircle from '@fortawesome/fontawesome-free-solid/faQuestionCircle';
 import faRandom from '@fortawesome/fontawesome-free-solid/faRandom';
 import faSearch from '@fortawesome/fontawesome-free-solid/faSearch';
+import faSyncAlt from '@fortawesome/fontawesome-free-solid/faSyncAlt';
 import faTags from '@fortawesome/fontawesome-free-solid/faTags';
 import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 import faTrashAlt from '@fortawesome/fontawesome-free-solid/faTrashAlt';
@@ -45,6 +46,7 @@ const icons = {
 		fontawesome.library.add(faQuestionCircle);
 		fontawesome.library.add(faRandom);
 		fontawesome.library.add(faSearch);
+		fontawesome.library.add(faSyncAlt);
 		fontawesome.library.add(faTags);
 		fontawesome.library.add(faTimes);
 		fontawesome.library.add(faTrashAlt);
