@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<Row
+  tag="div"
+>
+  <Col
+    sm="6"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+    xs="12"
+  >
+    <div>
+      <a
+        href="http://www.mylastpost.com"
+        target="_blank"
+      >
+        Test Title
+      </a>
+    </div>
+    <div
+      className="small "
+    >
+      Last Post by
+       
+      <a
+        href="http://www.mylastpost.com"
+        target="_blank"
+      >
+        last-poster
+      </a>
+    </div>
+  </Col>
+  <Col
+    className="text-right"
+    sm="6"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+    xs="12"
+  >
+    <div>
+      <t
+        ago={false}
+        calendar={false}
+        element="time"
+        filter={[Function]}
+        format="MMMM D, YYYY"
+        fromNow={false}
+        interval={60000}
+        onChange={[Function]}
+        toNow={false}
+        unix={false}
+        utc={false}
+      >
+        1989-06-05 3:14PM
+      </t>
+    </div>
+    <div
+      className="small"
+    >
+      <button
+        data-spec="recent-activity-row-untrack-button"
+        onClick={[Function]}
+      >
+        Untrack
+      </button>
+       •
+       
+      <button
+        data-spec="recent-activity-row-archive-button"
+        onClick={[Function]}
+      >
+        Archive
+      </button>
+       •
+       
+      <button
+        data-spec="recent-activity-row-queue-button"
+        onClick={[Function]}
+      >
+        Mark Queued
+      </button>
+    </div>
+  </Col>
+</Row>
+`;

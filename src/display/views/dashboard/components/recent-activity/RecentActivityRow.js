@@ -37,9 +37,24 @@ const RecentActivityRow = (props) => {
 					</Moment>
 				</div>
 				<div className="small">
-					<button onClick={() => openUntrackThreadModal(threadData.thread)}>Untrack</button> &bull;{' '}
-					<button onClick={() => archiveThread(threadData.thread)}>Archive</button> &bull;{' '}
-					<button onClick={() => markThreadQueued(threadData.thread)}>Mark Queued</button>
+					<button
+						onClick={() => openUntrackThreadModal(threadData.thread)}
+						data-spec="recent-activity-row-untrack-button"
+					>
+						Untrack
+					</button> &bull;{' '}
+					<button
+						onClick={() => archiveThread(threadData.thread)}
+						data-spec="recent-activity-row-archive-button"
+					>
+						Archive
+					</button> &bull;{' '}
+					<button
+						onClick={() => markThreadQueued(threadData.thread)}
+						data-spec="recent-activity-row-queue-button"
+					>
+						Mark Queued
+					</button>
 				</div>
 			</Col>
 		</Row>
