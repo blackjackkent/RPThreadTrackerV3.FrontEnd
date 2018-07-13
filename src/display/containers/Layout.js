@@ -19,6 +19,7 @@ import LoadingIndicator from '../shared/LoadingIndicator';
 
 import Dashboard from '../views/dashboard/Dashboard';
 import Threads from '../views/threads/Threads';
+import AllThreads from '../views/threads/AllThreads';
 import MyTurnThreads from '../views/threads/MyTurnThreads';
 import TheirTurnThreads from '../views/threads/TheirTurnThreads';
 import ArchivedThreads from '../views/threads/ArchivedThreads';
@@ -111,6 +112,13 @@ class Layout extends Component {
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
 								<Route path="threads/*" name="Threads" component={Threads} />
+								<Route
+									path="/threads/all"
+									name="Threads"
+									render={
+										/* istanbul ignore next */
+										() => (<Threads Renderable={AllThreads} />)}
+								/>
 								<Route
 									path="/threads/your-turn"
 									name="Threads"

@@ -74,6 +74,11 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           />
           <Route
             name="Threads"
+            path="/threads/all"
+            render={[Function]}
+          />
+          <Route
+            name="Threads"
             path="/threads/your-turn"
             render={[Function]}
           />

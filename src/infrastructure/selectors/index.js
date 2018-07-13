@@ -6,6 +6,7 @@ export { default as getActiveThreadCharacters } from './threads/active/getActive
 export { default as getActiveThreadPartners } from './threads/active/getActiveThreadPartners';
 export { default as getActiveThreadLastPosters } from './threads/active/getActiveThreadLastPosters';
 export { default as getActiveThreadTags } from './threads/active/getActiveThreadTags';
+export { default as getActiveThreadsForDisplay } from './threads/active/getActiveThreadsForDisplay';
 export { default as getMyTurnFilteredThreads } from './threads/active/my-turn/getMyTurnFilteredThreads';
 export { default as getTheirTurnFilteredThreads } from './threads/active/their-turn/getTheirTurnFilteredThreads';
 export { default as getQueuedFilteredThreads } from './threads/active/queued/getQueuedFilteredThreads';

@@ -14,6 +14,11 @@ export default {
 			class: ''
 		},
 		{
+			name: 'All Threads',
+			url: '/threads/all',
+			icon: 'icon-list'
+		},
+		{
 			name: 'Your Turn',
 			url: '/threads/your-turn',
 			icon: 'icon-pencil'

@@ -18,6 +18,7 @@ jest.mock('../../shared/modals/ModalContainer', () => 'ModalContainer');
 jest.mock('../../shared/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../views/dashboard/Dashboard', () => () => 'Dashboard');
 jest.mock('../../views/threads/Threads', () => () => 'Threads');
+jest.mock('../../views/threads/AllThreads', () => () => 'AllThreads');
 jest.mock('../../views/threads/MyTurnThreads', () => 'MyTurnThreads');
 jest.mock('../../views/threads/TheirTurnThreads', () => 'TheirTurnThreads');
 jest.mock('../../views/threads/ArchivedThreads', () => 'ArchivedThreads');
