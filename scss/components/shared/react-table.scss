@@ -1,5 +1,5 @@
 .ReactTable .rt-thead.-filters {
-	background: $gray-500;
+	background: $gray-850;
 }
 
 .ReactTable .rt-thead.-filters input,
@@ -55,7 +55,11 @@
 }
 
 .ReactTable.-striped .rt-tr.-odd {
-	background: $gray-700
+	background: $gray-900
+}
+
+.ReactTable.-striped .rt-tr.-even {
+	background: $gray-850;
 }
 
 .ReactTable .-pagination {
