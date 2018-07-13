@@ -151,7 +151,7 @@ class ThreadTable extends React.Component {
 							}
 						/>
 					</Col>
-					<Col xs={{ size: 6, offset: 3 }} sm={{ size: 4, offset: 4 }} xl={{ size: 1, offset: 0 }}>
+					<Col xs={{ size: 6, offset: 3 }} sm={{ size: 4, offset: 4 }} xl={{ size: 2, offset: 0 }}>
 						<ThreadRefreshButton isArchive={isArchive} refreshThreads={refreshThreads} />
 					</Col>
 				</Row>

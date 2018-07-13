@@ -43,6 +43,22 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           activeClassName="active"
           ariaCurrent="true"
           className="nav-link"
+          to="/threads/all"
+        >
+          <i
+            className="icon-list"
+          />
+          All Threads
+        </NavLink>
+      </NavItem>
+      <NavItem
+        key="3"
+        tag="li"
+      >
+        <NavLink
+          activeClassName="active"
+          ariaCurrent="true"
+          className="nav-link"
           to="/threads/your-turn"
         >
           <i
@@ -52,7 +68,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </NavLink>
       </NavItem>
       <NavItem
-        key="3"
+        key="4"
         tag="li"
       >
         <NavLink
@@ -68,7 +84,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </NavLink>
       </NavItem>
       <NavItem
-        key="4"
+        key="5"
         tag="li"
       >
         <NavLink
@@ -84,7 +100,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </NavLink>
       </NavItem>
       <NavItem
-        key="5"
+        key="6"
         tag="li"
       >
         <NavLink
@@ -101,7 +117,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </NavItem>
       <li
         className="nav-title"
-        key="6"
+        key="7"
       >
         <span>
           Manage
@@ -109,7 +125,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
          
       </li>
       <NavItem
-        key="7"
+        key="8"
         tag="li"
       >
         <NavLink
@@ -125,7 +141,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </NavLink>
       </NavItem>
       <NavItem
-        key="8"
+        key="9"
         tag="li"
       >
         <NavLink
@@ -141,7 +157,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </NavLink>
       </NavItem>
       <NavItem
-        key="9"
+        key="10"
         tag="li"
       >
         <NavLink
@@ -157,7 +173,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </NavLink>
       </NavItem>
       <NavItem
-        key="10"
+        key="11"
         tag="li"
       >
         <NavLink
