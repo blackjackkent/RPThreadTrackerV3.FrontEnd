@@ -128,7 +128,7 @@ class ThreadTable extends React.Component {
 		return (
 			<div>
 				<Row>
-					<Col xs="12" sm="6">
+					<Col xs="12" sm="6" xl="5">
 						<TagFilterSelect
 							setFilteredTag={setFilteredTag}
 							tags={tags}
