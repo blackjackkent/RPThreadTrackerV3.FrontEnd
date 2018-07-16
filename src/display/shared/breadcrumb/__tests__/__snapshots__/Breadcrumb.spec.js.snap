@@ -17,7 +17,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon visi
   className="breadcrumb-wrapper"
 >
   <div
-    className="d-lg-none float-right"
+    className="float-right"
     data-spec="header-loading-indicator"
   >
     <Component

@@ -1,0 +1,131 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<NavItem
+  tag="li"
+>
+  <Dropdown
+    data-spec="header-dropdown"
+    isOpen={true}
+    tag="div"
+    toggle={[MockFunction]}
+  >
+    <DropdownToggle
+      aria-haspopup={true}
+      className="nav-link dropdown-toggle"
+      color="secondary"
+      data-toggle="dropdown"
+    >
+      <i
+        className="fas fa-user"
+      />
+    </DropdownToggle>
+    <DropdownMenu
+      className="show"
+      data-spec="header-dropdown-menu"
+      right={true}
+      tag="div"
+    >
+      <DropdownItem
+        tag="button"
+        toggle={true}
+      >
+        <span
+          className="text-center"
+        >
+          Logged in as:
+          <br />
+          <strong>
+            test-username
+          </strong>
+        </span>
+      </DropdownItem>
+      <HeaderDropdownItem
+        data-spec="header-dropdown-account-settings-link"
+        label="Account Settings"
+        onClick={[MockFunction]}
+      />
+      <HeaderDropdownItem
+        data-spec="header-dropdown-tools-link"
+        label="Tracker Tools"
+        onClick={[MockFunction]}
+      />
+      <HeaderDropdownItem
+        data-spec="header-dropdown-help-link"
+        label="Help"
+        onClick={[MockFunction]}
+      />
+      <HeaderDropdownItem
+        data-spec="header-dropdown-logout-link"
+        label="Logout"
+        onClick={[MockFunction]}
+      />
+    </DropdownMenu>
+  </Dropdown>
+</NavItem>
+`;
+
+exports[`rendering snapshots should render valid snapshot when dropdown is closed 1`] = `
+<NavItem
+  tag="li"
+>
+  <Dropdown
+    data-spec="header-dropdown"
+    isOpen={false}
+    tag="div"
+    toggle={[MockFunction]}
+  >
+    <DropdownToggle
+      aria-haspopup={true}
+      className="nav-link dropdown-toggle"
+      color="secondary"
+      data-toggle="dropdown"
+    >
+      <i
+        className="fas fa-user"
+      />
+    </DropdownToggle>
+    <DropdownMenu
+      className=""
+      data-spec="header-dropdown-menu"
+      right={true}
+      tag="div"
+    >
+      <DropdownItem
+        tag="button"
+        toggle={true}
+      >
+        <span
+          className="text-center"
+        >
+          Logged in as:
+          <br />
+          <strong>
+            test-username
+          </strong>
+        </span>
+      </DropdownItem>
+      <HeaderDropdownItem
+        data-spec="header-dropdown-account-settings-link"
+        label="Account Settings"
+        onClick={[MockFunction]}
+      />
+      <HeaderDropdownItem
+        data-spec="header-dropdown-tools-link"
+        label="Tracker Tools"
+        onClick={[MockFunction]}
+      />
+      <HeaderDropdownItem
+        data-spec="header-dropdown-help-link"
+        label="Help"
+        onClick={[MockFunction]}
+      />
+      <HeaderDropdownItem
+        data-spec="header-dropdown-logout-link"
+        label="Logout"
+        onClick={[MockFunction]}
+      />
+    </DropdownMenu>
+  </Dropdown>
+</NavItem>
+`;

@@ -9,29 +9,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     sidebarToggle={[MockFunction]}
   />
   <Nav
-    className="d-none d-sm-flex ml-4"
-    navbar={true}
-    tag="ul"
-  >
-    <HeaderButton
-      data-spec="header-open-upsert-character-modal-button"
-      label="Add Character"
-      onClick={[Function]}
-    />
-    <HeaderButton
-      data-spec="header-open-upsert-thread-modal-button"
-      label="Track New Thread"
-      onClick={[Function]}
-    />
-    <div
-      data-spec="header-loading-indicator"
-    >
-      <LoadingIndicator
-        className="d-md-down-none invert"
-      />
-    </div>
-  </Nav>
-  <Nav
     className="ml-auto"
     navbar={true}
     tag="ul"
@@ -40,9 +17,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       asideToggle={[MockFunction]}
       newsUnreadCount={2}
     />
-    <HeaderProfileDropdown
-      headerProfileDropdownToggle={[MockFunction]}
-      isHeaderProfileDropdownOpen={true}
+    <HeaderAddMenuDropdown
+      headerAddMenuDropdownToggle={[MockFunction]}
+      isHeaderAddMenuDropdownOpen={true}
       logout={[MockFunction]}
       openNewThreadModal={[MockFunction]}
       openUpsertCharacterModal={[MockFunction]}
@@ -52,49 +29,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         }
       }
     />
-  </Nav>
-</header>
-`;
-
-exports[`rendering snapshots should render valid snapshot without loading indicator 1`] = `
-<header
-  className="app-header navbar"
->
-  <HeaderLogoBlock
-    mobileSidebarToggle={[MockFunction]}
-    sidebarToggle={[MockFunction]}
-  />
-  <Nav
-    className="d-none d-sm-flex ml-4"
-    navbar={true}
-    tag="ul"
-  >
-    <HeaderButton
-      data-spec="header-open-upsert-character-modal-button"
-      label="Add Character"
-      onClick={[Function]}
-    />
-    <HeaderButton
-      data-spec="header-open-upsert-thread-modal-button"
-      label="Track New Thread"
-      onClick={[Function]}
-    />
-  </Nav>
-  <Nav
-    className="ml-auto"
-    navbar={true}
-    tag="ul"
-  >
-    <HeaderAsideToggle
-      asideToggle={[MockFunction]}
-      newsUnreadCount={2}
-    />
     <HeaderProfileDropdown
       headerProfileDropdownToggle={[MockFunction]}
       isHeaderProfileDropdownOpen={true}
       logout={[MockFunction]}
-      openNewThreadModal={[MockFunction]}
-      openUpsertCharacterModal={[MockFunction]}
+      navigateToHelp={[MockFunction]}
+      navigateToSettings={[MockFunction]}
+      navigateToTools={[MockFunction]}
       user={
         Object {
           "id": "12345",

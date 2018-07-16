@@ -3,14 +3,18 @@
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <Header
   asideToggle={[Function]}
+  headerAddMenuDropdownToggle={[Function]}
   headerProfileDropdownToggle={[Function]}
+  isHeaderAddMenuDropdownOpen={true}
   isHeaderProfileDropdownOpen={true}
-  isLoadingIconVisible={true}
   isMobileSidebarOpen={true}
   isNewsAsideOpen={true}
   isSidebarOpen={true}
   logout={[Function]}
   mobileSidebarToggle={[Function]}
+  navigateToHelp={[Function]}
+  navigateToSettings={[Function]}
+  navigateToTools={[Function]}
   news={
     Array [
       Object {},
@@ -23,6 +27,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   openUpsertThreadModal={[MockFunction]}
   sidebarToggle={[Function]}
   submitUserLogout={[MockFunction]}
+  toggleHeaderAddMenuDropdown={[MockFunction]}
   toggleHeaderProfileDropdown={[MockFunction]}
   toggleMobileSidebar={[MockFunction]}
   toggleNewsAside={[MockFunction]}

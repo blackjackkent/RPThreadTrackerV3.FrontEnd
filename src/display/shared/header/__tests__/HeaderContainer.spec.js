@@ -7,9 +7,10 @@ import HeaderContainer from '../HeaderContainer';
 // #region mocks
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getNewsUnreadCount: () => 1,
-	getIsLoadingIconVisible: () => true
+	getNewsUnreadCount: () => 1
 }));
+const history = require('../../../../infrastructure/history'); // eslint-disable-line import/newline-after-import
+history.default.push = jest.fn();
 jest.mock('../Header', () => 'Header');
 // #endregion mocks
 
@@ -18,6 +19,7 @@ const createTestProps = propOverrides => ({
 	openUpsertThreadModal: jest.fn(),
 	submitUserLogout: jest.fn(),
 	toggleHeaderProfileDropdown: jest.fn(),
+	toggleHeaderAddMenuDropdown: jest.fn(),
 	toggleMobileSidebar: jest.fn(),
 	toggleNewsAside: jest.fn(),
 	toggleSidebar: jest.fn(),
@@ -31,6 +33,7 @@ const createTestState = stateOverrides => ({
 		isNewsAsideOpen: true,
 		isSidebarOpen: true,
 		isHeaderProfileDropdownOpen: true,
+		isHeaderAddMenuDropdownOpen: true,
 		isMobileSidebarOpen: true
 	},
 	news: [{}, {}],
@@ -57,6 +60,7 @@ describe('rendering', () => {
 			expect(element.props().mobileSidebarToggle).toBeTruthy();
 			expect(element.props().asideToggle).toBeTruthy();
 			expect(element.props().headerProfileDropdownToggle).toBeTruthy();
+			expect(element.props().headerAddMenuDropdownToggle).toBeTruthy();
 			expect(element.props().sidebarToggle).toBeTruthy();
 			expect(element.props().openUpsertCharacterModal).toBeTruthy();
 			expect(element.props().openNewThreadModal).toBeTruthy();
@@ -70,11 +74,11 @@ describe('rendering', () => {
 			expect(element.props().isNewsAsideOpen).toBe(true);
 			expect(element.props().isSidebarOpen).toBe(true);
 			expect(element.props().isHeaderProfileDropdownOpen).toBe(true);
+			expect(element.props().isHeaderAddMenuDropdownOpen).toBe(true);
 			expect(element.props().isMobileSidebarOpen).toBe(true);
 			expect(element.props().user).toHaveProperty('id', '12345');
 			expect(element.props().news).toHaveLength(2);
 			expect(element.props().newsUnreadCount).toBe(1);
-			expect(element.props().isLoadingIconVisible).toBe(true);
 			expect(element.props().userSettings).toHaveProperty('settingsId', '54321');
 		});
 	});
@@ -90,7 +94,8 @@ describe('behavior', () => {
 					isMobileSidebarOpen: true,
 					isSidebarOpen: true,
 					isNewsAsideOpen: true,
-					isHeaderProfileDropdownOpen: false
+					isHeaderProfileDropdownOpen: false,
+					isHeaderAddMenuDropdownOpen: false
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
@@ -109,7 +114,8 @@ describe('behavior', () => {
 					isMobileSidebarOpen: false,
 					isSidebarOpen: false,
 					isNewsAsideOpen: true,
-					isHeaderProfileDropdownOpen: false
+					isHeaderProfileDropdownOpen: false,
+					isHeaderAddMenuDropdownOpen: false
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
@@ -128,7 +134,8 @@ describe('behavior', () => {
 					isMobileSidebarOpen: false,
 					isSidebarOpen: true,
 					isNewsAsideOpen: false,
-					isHeaderProfileDropdownOpen: false
+					isHeaderProfileDropdownOpen: false,
+					isHeaderAddMenuDropdownOpen: false
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
@@ -188,6 +195,18 @@ describe('behavior', () => {
 			expect(toggleHeaderProfileDropdown).toHaveBeenCalledWith(false);
 		});
 	});
+	describe('headerAddMenuDropdownToggle', () => {
+		it('should dispatch header add menu dropdown toggle action when headerAddMenuDropdownToggle is called', () => {
+			const toggleHeaderAddMenuDropdown = jest.fn();
+			const props = createTestProps({ toggleHeaderAddMenuDropdown });
+			const state = createTestState();
+			const jsx = (<HeaderContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive();
+			element.instance().headerAddMenuDropdownToggle();
+			expect(toggleHeaderAddMenuDropdown).toHaveBeenCalledTimes(1);
+			expect(toggleHeaderAddMenuDropdown).toHaveBeenCalledWith(false);
+		});
+	});
 	describe('openUpsertCharacterModal', () => {
 		it('should dispatch upsert character modal open action', () => {
 			const openUpsertCharacterModal = jest.fn();
@@ -208,6 +227,42 @@ describe('behavior', () => {
 			const element = shallowWithState(jsx, state).dive();
 			element.instance().openNewThreadModal();
 			expect(openUpsertThreadModal).toHaveBeenCalledTimes(1);
+		});
+	});
+	describe('navigateToSettings', () => {
+		it('should trigger navigation to settings page', () => {
+			history.default.push.mockClear();
+			const props = createTestProps();
+			const state = createTestState();
+			const jsx = (<HeaderContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive();
+			element.props().navigateToSettings();
+			expect(history.default.push).toHaveBeenCalledTimes(1);
+			expect(history.default.push).toHaveBeenLastCalledWith('/settings');
+		});
+	});
+	describe('navigateToTools', () => {
+		it('should trigger navigation to tools page', () => {
+			history.default.push.mockClear();
+			const props = createTestProps();
+			const state = createTestState();
+			const jsx = (<HeaderContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive();
+			element.props().navigateToTools();
+			expect(history.default.push).toHaveBeenCalledTimes(1);
+			expect(history.default.push).toHaveBeenLastCalledWith('/tools');
+		});
+	});
+	describe('navigateToHelp', () => {
+		it('should trigger navigation to help page', () => {
+			history.default.push.mockClear();
+			const props = createTestProps();
+			const state = createTestState();
+			const jsx = (<HeaderContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive();
+			element.props().navigateToHelp();
+			expect(history.default.push).toHaveBeenCalledTimes(1);
+			expect(history.default.push).toHaveBeenLastCalledWith('/help');
 		});
 	});
 	describe('logout', () => {

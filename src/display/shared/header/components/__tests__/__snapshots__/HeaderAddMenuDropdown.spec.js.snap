@@ -17,7 +17,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       data-toggle="dropdown"
     >
       <i
-        className="fas fa-user"
+        className="fas fa-plus-circle"
       />
     </DropdownToggle>
     <DropdownMenu
@@ -26,20 +26,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       right={true}
       tag="div"
     >
-      <DropdownItem
-        tag="button"
-        toggle={true}
-      >
-        <span
-          className="text-center"
-        >
-          Logged in as:
-          <br />
-          <strong>
-            test-username
-          </strong>
-        </span>
-      </DropdownItem>
       <HeaderDropdownItem
         data-spec="header-dropdown-upsert-thread-link"
         label="Track New Thread"
@@ -49,11 +35,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         data-spec="header-dropdown-upsert-character-link"
         label="Add Character"
         onClick={[Function]}
-      />
-      <HeaderDropdownItem
-        data-spec="header-dropdown-logout-link"
-        label="Logout"
-        onClick={[MockFunction]}
       />
     </DropdownMenu>
   </Dropdown>
@@ -77,7 +58,7 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
       data-toggle="dropdown"
     >
       <i
-        className="fas fa-user"
+        className="fas fa-plus-circle"
       />
     </DropdownToggle>
     <DropdownMenu
@@ -86,20 +67,6 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
       right={true}
       tag="div"
     >
-      <DropdownItem
-        tag="button"
-        toggle={true}
-      >
-        <span
-          className="text-center"
-        >
-          Logged in as:
-          <br />
-          <strong>
-            test-username
-          </strong>
-        </span>
-      </DropdownItem>
       <HeaderDropdownItem
         data-spec="header-dropdown-upsert-thread-link"
         label="Track New Thread"
@@ -109,11 +76,6 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
         data-spec="header-dropdown-upsert-character-link"
         label="Add Character"
         onClick={[Function]}
-      />
-      <HeaderDropdownItem
-        data-spec="header-dropdown-logout-link"
-        label="Logout"
-        onClick={[MockFunction]}
       />
     </DropdownMenu>
   </Dropdown>

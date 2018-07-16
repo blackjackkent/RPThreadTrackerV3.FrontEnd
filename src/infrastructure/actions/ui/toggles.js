@@ -14,6 +14,20 @@ export function toggleHeaderProfileDropdown(value) {
 		}
 	};
 }
+export const TOGGLE_HEADER_ADD_MENU_DROPDOWN = 'TOGGLE_HEADER_ADD_MENU_DROPDOWN';
+export function toggleHeaderAddMenuDropdown(value) {
+	return {
+		type: TOGGLE_HEADER_ADD_MENU_DROPDOWN,
+		data: value,
+		analytics: {
+			func: analytics.funcs.EVENT,
+			event: {
+				category: analytics.categories.UI,
+				action: 'Toggled header add menu dropdown'
+			}
+		}
+	};
+}
 export const TOGGLE_MOBILE_SIDEBAR = 'TOGGLE_MOBILE_SIDEBAR';
 export function toggleMobileSidebar(value) {
 	return {

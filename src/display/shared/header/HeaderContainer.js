@@ -3,18 +3,21 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderProfileDropdown, openUpsertCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
-import { getNewsUnreadCount, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderProfileDropdown, toggleHeaderAddMenuDropdown, openUpsertCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
+import { getNewsUnreadCount } from '../../../infrastructure/selectors';
+import history from '../../../infrastructure/history';
 
 const propTypes = {
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
 	isNewsAsideOpen: PropTypes.bool.isRequired,
 	isSidebarOpen: PropTypes.bool.isRequired,
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
+	isHeaderAddMenuDropdownOpen: PropTypes.bool.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openUpsertThreadModal: PropTypes.func.isRequired,
 	submitUserLogout: PropTypes.func.isRequired,
 	toggleHeaderProfileDropdown: PropTypes.func.isRequired,
+	toggleHeaderAddMenuDropdown: PropTypes.func.isRequired,
 	toggleMobileSidebar: PropTypes.func.isRequired,
 	toggleNewsAside: PropTypes.func.isRequired,
 	toggleSidebar: PropTypes.func.isRequired,
@@ -27,19 +30,22 @@ function mapStateToProps(state) {
 		ui, user, news, userSettings
 	} = state;
 	const {
-		isNewsAsideOpen, isSidebarOpen, isHeaderProfileDropdownOpen, isMobileSidebarOpen
+		isNewsAsideOpen,
+		isSidebarOpen,
+		isHeaderProfileDropdownOpen,
+		isHeaderAddMenuDropdownOpen,
+		isMobileSidebarOpen
 	} = ui;
 	const newsUnreadCount = getNewsUnreadCount(state);
-	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		isNewsAsideOpen,
 		isSidebarOpen,
 		isHeaderProfileDropdownOpen,
+		isHeaderAddMenuDropdownOpen,
 		isMobileSidebarOpen,
 		user,
 		news,
 		newsUnreadCount,
-		isLoadingIconVisible,
 		userSettings
 	};
 }
@@ -51,6 +57,7 @@ class HeaderContainer extends Component {
 		this.sidebarToggle = this.sidebarToggle.bind(this);
 		this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
 		this.headerProfileDropdownToggle = this.headerProfileDropdownToggle.bind(this);
+		this.headerAddMenuDropdownToggle = this.headerAddMenuDropdownToggle.bind(this);
 		this.openUpsertCharacterModal = this.openUpsertCharacterModal.bind(this);
 		this.openNewThreadModal = this.openNewThreadModal.bind(this);
 		this.logout = this.logout.bind(this);
@@ -95,6 +102,11 @@ class HeaderContainer extends Component {
 		this.props.toggleHeaderProfileDropdown(!isCurrentlyOpen);
 	}
 
+	headerAddMenuDropdownToggle() {
+		const isCurrentlyOpen = this.props.isHeaderAddMenuDropdownOpen;
+		this.props.toggleHeaderAddMenuDropdown(!isCurrentlyOpen);
+	}
+
 	openUpsertCharacterModal(character) {
 		this.props.openUpsertCharacterModal(character);
 	}
@@ -114,9 +126,13 @@ class HeaderContainer extends Component {
 				mobileSidebarToggle={this.mobileSidebarToggle}
 				asideToggle={this.asideToggle}
 				headerProfileDropdownToggle={this.headerProfileDropdownToggle}
+				headerAddMenuDropdownToggle={this.headerAddMenuDropdownToggle}
 				sidebarToggle={this.sidebarToggle}
 				openUpsertCharacterModal={this.openUpsertCharacterModal}
 				openNewThreadModal={this.openNewThreadModal}
+				navigateToSettings={() => history.push('/settings')}
+				navigateToTools={() => history.push('/tools')}
+				navigateToHelp={() => history.push('/help')}
 				logout={this.logout}
 			/>
 		);
@@ -129,6 +145,7 @@ export default connect(mapStateToProps, {
 	openUpsertThreadModal,
 	submitUserLogout,
 	toggleHeaderProfileDropdown,
+	toggleHeaderAddMenuDropdown,
 	toggleMobileSidebar,
 	toggleNewsAside,
 	toggleSidebar,

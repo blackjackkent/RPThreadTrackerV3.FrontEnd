@@ -10,9 +10,10 @@ jest.mock('../HeaderDropdownItem', () => 'HeaderDropdownItem');
 const createTestProps = propOverrides => ({
 	headerProfileDropdownToggle: jest.fn(),
 	isHeaderProfileDropdownOpen: true,
+	navigateToSettings: jest.fn(),
+	navigateToTools: jest.fn(),
+	navigateToHelp: jest.fn(),
 	logout: jest.fn(),
-	openUpsertCharacterModal: jest.fn(),
-	openNewThreadModal: jest.fn(),
 	user: { id: '12345', userName: 'test-username' },
 	...propOverrides
 });
@@ -51,28 +52,37 @@ describe('rendering', () => {
 });
 
 describe('behavior', () => {
-	describe('openUpsertCharacterModal', () => {
-		it('should be called when upsert character modal link is clicked', () => {
-			const openUpsertCharacterModal = jest.fn();
-			const props = createTestProps({ openUpsertCharacterModal });
+	describe('navigateToSettings', () => {
+		it('should be called when settings link is clicked', () => {
+			const navigateToSettings = jest.fn();
+			const props = createTestProps({ navigateToSettings });
 			const jsx = (<HeaderProfileDropdown {...props} />);
 			const element = shallow(jsx);
-			const button = getSpecWrapper(element, 'header-dropdown-upsert-character-link');
+			const button = getSpecWrapper(element, 'header-dropdown-account-settings-link');
 			button.simulate('click');
-			expect(openUpsertCharacterModal).toHaveBeenCalledTimes(1);
-			expect(openUpsertCharacterModal).toHaveBeenCalledWith();
+			expect(navigateToSettings).toHaveBeenCalledTimes(1);
 		});
 	});
-	describe('openNewThreadModal', () => {
-		it('should be called when upsert thread modal link is clicked', () => {
-			const openNewThreadModal = jest.fn();
-			const props = createTestProps({ openNewThreadModal });
+	describe('navigateToTools', () => {
+		it('should be called when tools link is clicked', () => {
+			const navigateToTools = jest.fn();
+			const props = createTestProps({ navigateToTools });
 			const jsx = (<HeaderProfileDropdown {...props} />);
 			const element = shallow(jsx);
-			const button = getSpecWrapper(element, 'header-dropdown-upsert-thread-link');
+			const button = getSpecWrapper(element, 'header-dropdown-tools-link');
 			button.simulate('click');
-			expect(openNewThreadModal).toHaveBeenCalledTimes(1);
-			expect(openNewThreadModal).toHaveBeenCalledWith();
+			expect(navigateToTools).toHaveBeenCalledTimes(1);
+		});
+	});
+	describe('navigateToHelp', () => {
+		it('should be called when help link is clicked', () => {
+			const navigateToHelp = jest.fn();
+			const props = createTestProps({ navigateToHelp });
+			const jsx = (<HeaderProfileDropdown {...props} />);
+			const element = shallow(jsx);
+			const button = getSpecWrapper(element, 'header-dropdown-help-link');
+			button.simulate('click');
+			expect(navigateToHelp).toHaveBeenCalledTimes(1);
 		});
 	});
 	describe('logout', () => {

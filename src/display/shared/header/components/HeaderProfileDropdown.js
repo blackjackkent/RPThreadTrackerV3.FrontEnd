@@ -8,9 +8,10 @@ import HeaderDropdownItem from './HeaderDropdownItem';
 const propTypes = {
 	headerProfileDropdownToggle: PropTypes.func.isRequired,
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
+	navigateToSettings: PropTypes.func.isRequired,
+	navigateToTools: PropTypes.func.isRequired,
+	navigateToHelp: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
-	openUpsertCharacterModal: PropTypes.func.isRequired,
-	openNewThreadModal: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string
 	}).isRequired
@@ -20,9 +21,10 @@ const HeaderProfileDropdown = (props) => {
 	const {
 		headerProfileDropdownToggle,
 		isHeaderProfileDropdownOpen,
+		navigateToSettings,
+		navigateToTools,
+		navigateToHelp,
 		logout,
-		openUpsertCharacterModal,
-		openNewThreadModal,
 		user
 	} = props;
 
@@ -42,16 +44,20 @@ const HeaderProfileDropdown = (props) => {
 							Logged in as:<br />
 							<strong>{user.userName}</strong>
 						</span>
-					</DropdownItem>
-					<HeaderDropdownItem
-						data-spec="header-dropdown-upsert-thread-link"
-						onClick={() => openNewThreadModal()}
-						label="Track New Thread"
+					</DropdownItem><HeaderDropdownItem
+						data-spec="header-dropdown-account-settings-link"
+						onClick={navigateToSettings}
+						label="Account Settings"
 					/>
 					<HeaderDropdownItem
-						data-spec="header-dropdown-upsert-character-link"
-						onClick={() => openUpsertCharacterModal()}
-						label="Add Character"
+						data-spec="header-dropdown-tools-link"
+						onClick={navigateToTools}
+						label="Tracker Tools"
+					/>
+					<HeaderDropdownItem
+						data-spec="header-dropdown-help-link"
+						onClick={navigateToHelp}
+						label="Help"
 					/>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-logout-link"
