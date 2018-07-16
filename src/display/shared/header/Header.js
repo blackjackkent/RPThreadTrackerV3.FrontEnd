@@ -3,12 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Nav } from 'reactstrap';
 import LoadingIndicator from '../LoadingIndicator';
-import { HeaderLogoBlock, HeaderButton, HeaderAsideToggle, HeaderDropdown } from './components';
+import { HeaderLogoBlock, HeaderButton, HeaderAsideToggle, HeaderProfileDropdown } from './components';
 // #endregion imports
 
 const propTypes = {
 	asideToggle: PropTypes.func.isRequired,
-	headerDropdownToggle: PropTypes.func.isRequired,
+	headerProfileDropdownToggle: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
 	mobileSidebarToggle: PropTypes.func.isRequired,
 	newsUnreadCount: PropTypes.number.isRequired,
@@ -16,7 +16,7 @@ const propTypes = {
 	openNewThreadModal: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
-	isHeaderDropdownOpen: PropTypes.bool.isRequired,
+	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string
 	}).isRequired
@@ -25,7 +25,7 @@ const propTypes = {
 const Header = (props) => {
 	const {
 		asideToggle,
-		headerDropdownToggle,
+		headerProfileDropdownToggle,
 		logout,
 		mobileSidebarToggle,
 		newsUnreadCount,
@@ -33,7 +33,7 @@ const Header = (props) => {
 		openNewThreadModal,
 		sidebarToggle,
 		isLoadingIconVisible,
-		isHeaderDropdownOpen,
+		isHeaderProfileDropdownOpen,
 		user
 	} = props;
 
@@ -67,9 +67,9 @@ const Header = (props) => {
 					asideToggle={asideToggle}
 					newsUnreadCount={newsUnreadCount}
 				/>
-				<HeaderDropdown
-					isHeaderDropdownOpen={isHeaderDropdownOpen}
-					headerDropdownToggle={headerDropdownToggle}
+				<HeaderProfileDropdown
+					isHeaderProfileDropdownOpen={isHeaderProfileDropdownOpen}
+					headerProfileDropdownToggle={headerProfileDropdownToggle}
 					logout={logout}
 					openUpsertCharacterModal={openUpsertCharacterModal}
 					openNewThreadModal={openNewThreadModal}

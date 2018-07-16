@@ -3,8 +3,8 @@
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <Header
   asideToggle={[Function]}
-  headerDropdownToggle={[Function]}
-  isHeaderDropdownOpen={true}
+  headerProfileDropdownToggle={[Function]}
+  isHeaderProfileDropdownOpen={true}
   isLoadingIconVisible={true}
   isMobileSidebarOpen={true}
   isNewsAsideOpen={true}
@@ -23,7 +23,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   openUpsertThreadModal={[MockFunction]}
   sidebarToggle={[Function]}
   submitUserLogout={[MockFunction]}
-  toggleHeaderDropdown={[MockFunction]}
+  toggleHeaderProfileDropdown={[MockFunction]}
   toggleMobileSidebar={[MockFunction]}
   toggleNewsAside={[MockFunction]}
   toggleSidebar={[MockFunction]}

@@ -1,15 +1,15 @@
 import analytics from '../../constants/analytics';
 
-export const TOGGLE_HEADER_DROPDOWN = 'TOGGLE_HEADER_DROPDOWN';
-export function toggleHeaderDropdown(value) {
+export const TOGGLE_HEADER_PROFILE_DROPDOWN = 'TOGGLE_HEADER_PROFILE_DROPDOWN';
+export function toggleHeaderProfileDropdown(value) {
 	return {
-		type: TOGGLE_HEADER_DROPDOWN,
+		type: TOGGLE_HEADER_PROFILE_DROPDOWN,
 		data: value,
 		analytics: {
 			func: analytics.funcs.EVENT,
 			event: {
 				category: analytics.categories.UI,
-				action: 'Toggled header dropdown'
+				action: 'Toggled header profile dropdown'
 			}
 		}
 	};

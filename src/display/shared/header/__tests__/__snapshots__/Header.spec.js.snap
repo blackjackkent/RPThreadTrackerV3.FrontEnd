@@ -40,9 +40,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       asideToggle={[MockFunction]}
       newsUnreadCount={2}
     />
-    <HeaderDropdown
-      headerDropdownToggle={[MockFunction]}
-      isHeaderDropdownOpen={true}
+    <HeaderProfileDropdown
+      headerProfileDropdownToggle={[MockFunction]}
+      isHeaderProfileDropdownOpen={true}
       logout={[MockFunction]}
       openNewThreadModal={[MockFunction]}
       openUpsertCharacterModal={[MockFunction]}
@@ -89,9 +89,9 @@ exports[`rendering snapshots should render valid snapshot without loading indica
       asideToggle={[MockFunction]}
       newsUnreadCount={2}
     />
-    <HeaderDropdown
-      headerDropdownToggle={[MockFunction]}
-      isHeaderDropdownOpen={true}
+    <HeaderProfileDropdown
+      headerProfileDropdownToggle={[MockFunction]}
+      isHeaderProfileDropdownOpen={true}
       logout={[MockFunction]}
       openNewThreadModal={[MockFunction]}
       openUpsertCharacterModal={[MockFunction]}

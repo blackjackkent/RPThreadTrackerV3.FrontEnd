@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import Header from './Header';
-import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderDropdown, openUpsertCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
+import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderProfileDropdown, openUpsertCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
 import { getNewsUnreadCount, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
 	isNewsAsideOpen: PropTypes.bool.isRequired,
 	isSidebarOpen: PropTypes.bool.isRequired,
-	isHeaderDropdownOpen: PropTypes.bool.isRequired,
+	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openUpsertThreadModal: PropTypes.func.isRequired,
 	submitUserLogout: PropTypes.func.isRequired,
-	toggleHeaderDropdown: PropTypes.func.isRequired,
+	toggleHeaderProfileDropdown: PropTypes.func.isRequired,
 	toggleMobileSidebar: PropTypes.func.isRequired,
 	toggleNewsAside: PropTypes.func.isRequired,
 	toggleSidebar: PropTypes.func.isRequired,
@@ -27,14 +27,14 @@ function mapStateToProps(state) {
 		ui, user, news, userSettings
 	} = state;
 	const {
-		isNewsAsideOpen, isSidebarOpen, isHeaderDropdownOpen, isMobileSidebarOpen
+		isNewsAsideOpen, isSidebarOpen, isHeaderProfileDropdownOpen, isMobileSidebarOpen
 	} = ui;
 	const newsUnreadCount = getNewsUnreadCount(state);
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		isNewsAsideOpen,
 		isSidebarOpen,
-		isHeaderDropdownOpen,
+		isHeaderProfileDropdownOpen,
 		isMobileSidebarOpen,
 		user,
 		news,
@@ -50,7 +50,7 @@ class HeaderContainer extends Component {
 		this.asideToggle = this.asideToggle.bind(this);
 		this.sidebarToggle = this.sidebarToggle.bind(this);
 		this.mobileSidebarToggle = this.mobileSidebarToggle.bind(this);
-		this.headerDropdownToggle = this.headerDropdownToggle.bind(this);
+		this.headerProfileDropdownToggle = this.headerProfileDropdownToggle.bind(this);
 		this.openUpsertCharacterModal = this.openUpsertCharacterModal.bind(this);
 		this.openNewThreadModal = this.openNewThreadModal.bind(this);
 		this.logout = this.logout.bind(this);
@@ -90,9 +90,9 @@ class HeaderContainer extends Component {
 		this.props.toggleMobileSidebar(!isCurrentlyOpen);
 	}
 
-	headerDropdownToggle() {
-		const isCurrentlyOpen = this.props.isHeaderDropdownOpen;
-		this.props.toggleHeaderDropdown(!isCurrentlyOpen);
+	headerProfileDropdownToggle() {
+		const isCurrentlyOpen = this.props.isHeaderProfileDropdownOpen;
+		this.props.toggleHeaderProfileDropdown(!isCurrentlyOpen);
 	}
 
 	openUpsertCharacterModal(character) {
@@ -113,7 +113,7 @@ class HeaderContainer extends Component {
 				{...this.props}
 				mobileSidebarToggle={this.mobileSidebarToggle}
 				asideToggle={this.asideToggle}
-				headerDropdownToggle={this.headerDropdownToggle}
+				headerProfileDropdownToggle={this.headerProfileDropdownToggle}
 				sidebarToggle={this.sidebarToggle}
 				openUpsertCharacterModal={this.openUpsertCharacterModal}
 				openNewThreadModal={this.openNewThreadModal}
@@ -128,7 +128,7 @@ export default connect(mapStateToProps, {
 	openUpsertCharacterModal,
 	openUpsertThreadModal,
 	submitUserLogout,
-	toggleHeaderDropdown,
+	toggleHeaderProfileDropdown,
 	toggleMobileSidebar,
 	toggleNewsAside,
 	toggleSidebar,

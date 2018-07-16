@@ -16,12 +16,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       color="secondary"
       data-toggle="dropdown"
     >
-      <span
-        className="d-md-down-none"
-        data-spec="header-dropdown-username"
-      >
-        test-username
-      </span>
+      <i
+        className="fas fa-user"
+      />
     </DropdownToggle>
     <DropdownMenu
       className="show"
@@ -29,6 +26,20 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       right={true}
       tag="div"
     >
+      <DropdownItem
+        tag="button"
+        toggle={true}
+      >
+        <span
+          className="text-center"
+        >
+          Logged in as:
+          <br />
+          <strong>
+            test-username
+          </strong>
+        </span>
+      </DropdownItem>
       <HeaderDropdownItem
         data-spec="header-dropdown-upsert-thread-link"
         label="Track New Thread"
@@ -65,12 +76,9 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
       color="secondary"
       data-toggle="dropdown"
     >
-      <span
-        className="d-md-down-none"
-        data-spec="header-dropdown-username"
-      >
-        test-username
-      </span>
+      <i
+        className="fas fa-user"
+      />
     </DropdownToggle>
     <DropdownMenu
       className=""
@@ -78,6 +86,20 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
       right={true}
       tag="div"
     >
+      <DropdownItem
+        tag="button"
+        toggle={true}
+      >
+        <span
+          className="text-center"
+        >
+          Logged in as:
+          <br />
+          <strong>
+            test-username
+          </strong>
+        </span>
+      </DropdownItem>
       <HeaderDropdownItem
         data-spec="header-dropdown-upsert-thread-link"
         label="Track New Thread"

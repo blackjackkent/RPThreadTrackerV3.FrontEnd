@@ -10,15 +10,15 @@ jest.mock('../components', () => ({
 	HeaderLogoBlock: () => 'HeaderLogoBlock',
 	HeaderButton: () => 'HeaderButton',
 	HeaderAsideToggle: () => 'HeaderAsideToggle',
-	HeaderDropdown: () => 'HeaderDropdown'
+	HeaderProfileDropdown: () => 'HeaderProfileDropdown'
 }));
 jest.mock('../../LoadingIndicator', () => 'LoadingIndicator');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({
 	asideToggle: jest.fn(),
-	headerDropdownToggle: jest.fn(),
-	isHeaderDropdownOpen: true,
+	headerProfileDropdownToggle: jest.fn(),
+	isHeaderProfileDropdownOpen: true,
 	logout: jest.fn(),
 	mobileSidebarToggle: jest.fn(),
 	newsUnreadCount: 2,

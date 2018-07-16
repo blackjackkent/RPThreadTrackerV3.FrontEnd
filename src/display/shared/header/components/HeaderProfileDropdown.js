@@ -1,13 +1,13 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
+import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
 const propTypes = {
-	headerDropdownToggle: PropTypes.func.isRequired,
-	isHeaderDropdownOpen: PropTypes.bool.isRequired,
+	headerProfileDropdownToggle: PropTypes.func.isRequired,
+	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
 	logout: PropTypes.func.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openNewThreadModal: PropTypes.func.isRequired,
@@ -16,10 +16,10 @@ const propTypes = {
 	}).isRequired
 };
 
-const HeaderDropdown = (props) => {
+const HeaderProfileDropdown = (props) => {
 	const {
-		headerDropdownToggle,
-		isHeaderDropdownOpen,
+		headerProfileDropdownToggle,
+		isHeaderProfileDropdownOpen,
 		logout,
 		openUpsertCharacterModal,
 		openNewThreadModal,
@@ -29,19 +29,20 @@ const HeaderDropdown = (props) => {
 	return (
 		<NavItem>
 			<Dropdown
-				isOpen={isHeaderDropdownOpen}
+				isOpen={isHeaderProfileDropdownOpen}
 				data-spec="header-dropdown"
-				toggle={headerDropdownToggle}
+				toggle={headerProfileDropdownToggle}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
-					<span
-						className="d-md-down-none"
-						data-spec="header-dropdown-username"
-					>
-						{user.userName}
-					</span>
+					<i className="fas fa-user" />
 				</DropdownToggle>
-				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderDropdownOpen ? 'show' : ''}>
+				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderProfileDropdownOpen ? 'show' : ''}>
+					<DropdownItem>
+						<span className="text-center">
+							Logged in as:<br />
+							<strong>{user.userName}</strong>
+						</span>
+					</DropdownItem>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-upsert-thread-link"
 						onClick={() => openNewThreadModal()}
@@ -62,5 +63,5 @@ const HeaderDropdown = (props) => {
 		</NavItem>
 	);
 };
-HeaderDropdown.propTypes = propTypes;
-export default HeaderDropdown;
+HeaderProfileDropdown.propTypes = propTypes;
+export default HeaderProfileDropdown;
