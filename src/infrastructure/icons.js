@@ -1,4 +1,5 @@
 import fontawesome from '@fortawesome/fontawesome';
+import faBell from '@fortawesome/fontawesome-free-solid/faBell';
 import faBolt from '@fortawesome/fontawesome-free-solid/faBolt';
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faCog from '@fortawesome/fontawesome-free-solid/faCog';
@@ -29,6 +30,7 @@ import faUser from '@fortawesome/fontawesome-free-solid/faUser';
 
 const icons = {
 	init: () => {
+		fontawesome.library.add(faBell);
 		fontawesome.library.add(faBolt);
 		fontawesome.library.add(faClock);
 		fontawesome.library.add(faCog);

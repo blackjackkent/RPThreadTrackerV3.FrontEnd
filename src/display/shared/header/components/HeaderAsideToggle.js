@@ -22,7 +22,7 @@ const HeaderAsideToggle = (props) => {
 				href="#"
 				onClick={asideToggle}
 			>
-				<i className="icon-bell" />
+				<i className="fas fa-bell" />
 				{
 					newsUnreadCount > 0 &&
 					<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
