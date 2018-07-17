@@ -41,8 +41,7 @@ class ForgotPassword extends Component {
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			forgotPasswordRequest: Object.assign({}, this.state.forgotPasswordRequest, {
 				[name]: value
@@ -76,7 +75,10 @@ class ForgotPassword extends Component {
 			<Card className="mx-4">
 				<CardBlock className="p-4">
 					{loading}
-					<AvForm onValidSubmit={this.handleForgotPasswordSubmit}>
+					<AvForm
+						data-spec="forgot-password-form-container"
+						onValidSubmit={this.handleForgotPasswordSubmit}
+					>
 						<h1>Forgot your password?</h1>
 						<p className="text-muted">
 							Enter your email address below and we will email you a link to reset your password.
