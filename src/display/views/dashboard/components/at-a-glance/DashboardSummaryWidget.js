@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Card, CardBlock, Progress } from 'reactstrap';
+import { navigation } from '../../../../../utility/history';
 import LoadingIndicator from '../../../../shared/LoadingIndicator';
 
 const propTypes = {
 	header: PropTypes.number.isRequired,
+	href: PropTypes.string.isRequired,
 	icon: PropTypes.string.isRequired,
 	children: PropTypes.node.isRequired,
 	isLoadingIconVisible: PropTypes.bool
@@ -16,11 +18,11 @@ const defaultProps = {
 
 const DashboardSummaryWidget = (props) => {
 	const {
-		header, icon, children, isLoadingIconVisible, ...attributes
+		header, icon, children, isLoadingIconVisible, href, ...attributes
 	} = props;
 
 	return (
-		<Card {...attributes}>
+		<Card {...attributes} onClick={() => navigation.navigateTo(href)}>
 			<CardBlock className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
 					{isLoadingIconVisible &&

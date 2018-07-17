@@ -47,6 +47,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <DashboardSummaryWidget
         data-spec="at-a-glance-active-widget"
         header={6}
+        href="/threads/all"
         icon="icon-list"
       >
         Active Threads
@@ -54,6 +55,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <DashboardSummaryWidget
         data-spec="at-a-glance-my-turn-widget"
         header={1}
+        href="/threads/your-turn"
         icon="icon-pencil"
         isLoadingIconVisible={false}
       >
@@ -62,6 +64,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <DashboardSummaryWidget
         data-spec="at-a-glance-their-turn-widget"
         header={2}
+        href="/threads/their-turn"
         icon="icon-check"
         isLoadingIconVisible={false}
       >
@@ -70,6 +73,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <DashboardSummaryWidget
         data-spec="at-a-glance-queued-widget"
         header={3}
+        href="/threads/queued"
         icon="icon-calendar"
         isLoadingIconVisible={false}
       >

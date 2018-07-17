@@ -45,6 +45,7 @@ const AtAGlanceCard = (props) => {
 						data-spec="at-a-glance-active-widget"
 						icon="icon-list"
 						header={activeThreads.length}
+						href="/threads/all"
 					>
 						Active Threads
 					</DashboardSummaryWidget>
@@ -53,6 +54,7 @@ const AtAGlanceCard = (props) => {
 						icon="icon-pencil"
 						header={myTurnThreads.length}
 						isLoadingIconVisible={isLoadingIconVisible}
+						href="/threads/your-turn"
 					>
 						Your Turn
 					</DashboardSummaryWidget>
@@ -61,6 +63,7 @@ const AtAGlanceCard = (props) => {
 						icon="icon-check"
 						header={theirTurnThreads.length}
 						isLoadingIconVisible={isLoadingIconVisible}
+						href="/threads/their-turn"
 					>
 						Their Turn
 					</DashboardSummaryWidget>
@@ -69,6 +72,7 @@ const AtAGlanceCard = (props) => {
 						icon="icon-calendar"
 						header={queuedThreads.length}
 						isLoadingIconVisible={isLoadingIconVisible}
+						href="/threads/queued"
 					>
 						Queued
 					</DashboardSummaryWidget>

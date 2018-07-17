@@ -1,5 +1,6 @@
 .dashboard-container .at-a-glance-card > .card-body { padding: 0; }
-.dashboard-container .at-a-glance-card > .card-body .card { margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; border-right: 1px solid $gray-800; }
+.dashboard-container .at-a-glance-card > .card-body .card {  cursor: pointer; margin-bottom: 0; border: none; border-bottom: 1px solid $gray-800; border-right: 1px solid $gray-800; }
+.dashboard-container .at-a-glance-card > .card-body .card:hover { color: $gray-200; }
 .dashboard-container .dashboard-summary-widget-card-body .lds-css { position: absolute; right: 90px; }
 .dashboard-container .recent-activity-card .row,
 .dashboard-container .your-characters-card .row { padding: 12px 0; border-bottom: 1px solid $gray-800; }
