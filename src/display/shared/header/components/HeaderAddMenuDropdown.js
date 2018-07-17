@@ -6,42 +6,31 @@ import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
 const propTypes = {
-	headerDropdownToggle: PropTypes.func.isRequired,
-	isHeaderDropdownOpen: PropTypes.bool.isRequired,
-	logout: PropTypes.func.isRequired,
+	headerAddMenuDropdownToggle: PropTypes.func.isRequired,
+	isHeaderAddMenuDropdownOpen: PropTypes.bool.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
-	openNewThreadModal: PropTypes.func.isRequired,
-	user: PropTypes.shape({
-		id: PropTypes.string
-	}).isRequired
+	openNewThreadModal: PropTypes.func.isRequired
 };
 
-const HeaderDropdown = (props) => {
+const HeaderAddMenuDropdown = (props) => {
 	const {
-		headerDropdownToggle,
-		isHeaderDropdownOpen,
-		logout,
+		headerAddMenuDropdownToggle,
+		isHeaderAddMenuDropdownOpen,
 		openUpsertCharacterModal,
-		openNewThreadModal,
-		user
+		openNewThreadModal
 	} = props;
 
 	return (
 		<NavItem>
 			<Dropdown
-				isOpen={isHeaderDropdownOpen}
+				isOpen={isHeaderAddMenuDropdownOpen}
 				data-spec="header-dropdown"
-				toggle={headerDropdownToggle}
+				toggle={headerAddMenuDropdownToggle}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
-					<span
-						className="d-md-down-none"
-						data-spec="header-dropdown-username"
-					>
-						{user.userName}
-					</span>
+					<i className="fas fa-plus-circle" />
 				</DropdownToggle>
-				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderDropdownOpen ? 'show' : ''}>
+				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderAddMenuDropdownOpen ? 'show' : ''}>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-upsert-thread-link"
 						onClick={() => openNewThreadModal()}
@@ -52,15 +41,10 @@ const HeaderDropdown = (props) => {
 						onClick={() => openUpsertCharacterModal()}
 						label="Add Character"
 					/>
-					<HeaderDropdownItem
-						data-spec="header-dropdown-logout-link"
-						onClick={logout}
-						label="Logout"
-					/>
 				</DropdownMenu>
 			</Dropdown>
 		</NavItem>
 	);
 };
-HeaderDropdown.propTypes = propTypes;
-export default HeaderDropdown;
+HeaderAddMenuDropdown.propTypes = propTypes;
+export default HeaderAddMenuDropdown;

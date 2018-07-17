@@ -54,11 +54,13 @@ export {
 	SET_MAINTENANCE_MODE_ON
 } from './ui/setMaintenanceModeOn';
 export {
-	TOGGLE_HEADER_DROPDOWN,
+	TOGGLE_HEADER_PROFILE_DROPDOWN,
+	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
 	TOGGLE_SIDEBAR,
-	toggleHeaderDropdown,
+	toggleHeaderProfileDropdown,
+	toggleHeaderAddMenuDropdown,
 	toggleMobileSidebar,
 	toggleNewsAside,
 	toggleSidebar

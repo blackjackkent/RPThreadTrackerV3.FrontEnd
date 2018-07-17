@@ -7,7 +7,7 @@ import 'react-redux-toastr/src/styles/index.scss';
 import 'rc-tooltip/assets/bootstrap.css';
 
 import '../scss/style.scss';
-import history from './infrastructure/history';
+import history from './utility/history';
 import withPageViewTracker from './infrastructure/withPageViewTracker';
 import Layout from './display/containers/Layout';
 import StaticContainer from './display/containers/StaticContainer';

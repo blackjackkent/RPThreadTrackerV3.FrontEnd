@@ -17,7 +17,8 @@ import {
 	SET_ACTIVE_SETTINGS_TAB,
 	SET_ACTIVE_TOOLS_TAB,
 	SUBMIT_USER_LOGOUT,
-	TOGGLE_HEADER_DROPDOWN,
+	TOGGLE_HEADER_PROFILE_DROPDOWN,
+	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
 	TOGGLE_SIDEBAR,
@@ -36,7 +37,8 @@ import {
 const defaultState = {
 	isNewsAsideOpen: false,
 	isSidebarOpen: true,
-	isHeaderDropdownOpen: false,
+	isHeaderProfileDropdownOpen: false,
+	isHeaderAddMenuDropdownOpen: false,
 	isMobileSidebarOpen: false,
 	isMaintenanceMode: false,
 	isUpsertThreadModalOpen: false,
@@ -65,9 +67,13 @@ function ui(state = defaultState, action) {
 			return Object.assign({}, state, {
 				isNewsAsideOpen: action.data
 			});
-		case TOGGLE_HEADER_DROPDOWN:
+		case TOGGLE_HEADER_PROFILE_DROPDOWN:
 			return Object.assign({}, state, {
-				isHeaderDropdownOpen: action.data
+				isHeaderProfileDropdownOpen: action.data
+			});
+		case TOGGLE_HEADER_ADD_MENU_DROPDOWN:
+			return Object.assign({}, state, {
+				isHeaderAddMenuDropdownOpen: action.data
 			});
 		case OPEN_UPSERT_CHARACTER_MODAL:
 			return Object.assign({}, state, {

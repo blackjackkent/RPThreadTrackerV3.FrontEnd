@@ -16,12 +16,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       color="secondary"
       data-toggle="dropdown"
     >
-      <span
-        className="d-md-down-none"
-        data-spec="header-dropdown-username"
-      >
-        test-username
-      </span>
+      <i
+        className="fas fa-plus-circle"
+      />
     </DropdownToggle>
     <DropdownMenu
       className="show"
@@ -38,11 +35,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         data-spec="header-dropdown-upsert-character-link"
         label="Add Character"
         onClick={[Function]}
-      />
-      <HeaderDropdownItem
-        data-spec="header-dropdown-logout-link"
-        label="Logout"
-        onClick={[MockFunction]}
       />
     </DropdownMenu>
   </Dropdown>
@@ -65,12 +57,9 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
       color="secondary"
       data-toggle="dropdown"
     >
-      <span
-        className="d-md-down-none"
-        data-spec="header-dropdown-username"
-      >
-        test-username
-      </span>
+      <i
+        className="fas fa-plus-circle"
+      />
     </DropdownToggle>
     <DropdownMenu
       className=""
@@ -87,11 +76,6 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
         data-spec="header-dropdown-upsert-character-link"
         label="Add Character"
         onClick={[Function]}
-      />
-      <HeaderDropdownItem
-        data-spec="header-dropdown-logout-link"
-        label="Logout"
-        onClick={[MockFunction]}
       />
     </DropdownMenu>
   </Dropdown>

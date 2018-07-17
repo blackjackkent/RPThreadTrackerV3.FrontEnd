@@ -11,7 +11,7 @@ exports[`rendering snapshots should render valid snapshot with new items 1`] = `
     tag="a"
   >
     <i
-      className="icon-bell"
+      className="fas fa-bell"
     />
     <Badge
       color="danger"
@@ -36,7 +36,7 @@ exports[`rendering snapshots should render valid snapshot with no new items 1`] 
     tag="a"
   >
     <i
-      className="icon-bell"
+      className="fas fa-bell"
     />
   </NavLink>
 </NavItem>

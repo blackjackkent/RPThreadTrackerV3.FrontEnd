@@ -4,8 +4,9 @@
 
 .ReactTable .rt-thead.-filters input,
 .ReactTable .rt-thead.-filters select {
-	border: 1px solid $gray-300;
-	background: $white;
+	border: 1px solid $gray-400;
+	background: $gray-500;
+	color: $gray-100;
 }
 
 .ReactTable .rt-thead.-filters .rt-th {

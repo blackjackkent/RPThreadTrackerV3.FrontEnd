@@ -7,9 +7,10 @@ import HeaderContainer from '../HeaderContainer';
 // #region mocks
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getNewsUnreadCount: () => 1,
-	getIsLoadingIconVisible: () => true
+	getNewsUnreadCount: () => 1
 }));
+const history = require('../../../../utility/history'); // eslint-disable-line import/newline-after-import
+history.default.push = jest.fn();
 jest.mock('../Header', () => 'Header');
 // #endregion mocks
 
@@ -17,7 +18,8 @@ const createTestProps = propOverrides => ({
 	openUpsertCharacterModal: jest.fn(),
 	openUpsertThreadModal: jest.fn(),
 	submitUserLogout: jest.fn(),
-	toggleHeaderDropdown: jest.fn(),
+	toggleHeaderProfileDropdown: jest.fn(),
+	toggleHeaderAddMenuDropdown: jest.fn(),
 	toggleMobileSidebar: jest.fn(),
 	toggleNewsAside: jest.fn(),
 	toggleSidebar: jest.fn(),
@@ -30,7 +32,8 @@ const createTestState = stateOverrides => ({
 	ui: {
 		isNewsAsideOpen: true,
 		isSidebarOpen: true,
-		isHeaderDropdownOpen: true,
+		isHeaderProfileDropdownOpen: true,
+		isHeaderAddMenuDropdownOpen: true,
 		isMobileSidebarOpen: true
 	},
 	news: [{}, {}],
@@ -56,7 +59,8 @@ describe('rendering', () => {
 			const element = shallowWithState(jsx, state).dive();
 			expect(element.props().mobileSidebarToggle).toBeTruthy();
 			expect(element.props().asideToggle).toBeTruthy();
-			expect(element.props().headerDropdownToggle).toBeTruthy();
+			expect(element.props().headerProfileDropdownToggle).toBeTruthy();
+			expect(element.props().headerAddMenuDropdownToggle).toBeTruthy();
 			expect(element.props().sidebarToggle).toBeTruthy();
 			expect(element.props().openUpsertCharacterModal).toBeTruthy();
 			expect(element.props().openNewThreadModal).toBeTruthy();
@@ -69,12 +73,12 @@ describe('rendering', () => {
 			const element = shallowWithState(jsx, state).dive();
 			expect(element.props().isNewsAsideOpen).toBe(true);
 			expect(element.props().isSidebarOpen).toBe(true);
-			expect(element.props().isHeaderDropdownOpen).toBe(true);
+			expect(element.props().isHeaderProfileDropdownOpen).toBe(true);
+			expect(element.props().isHeaderAddMenuDropdownOpen).toBe(true);
 			expect(element.props().isMobileSidebarOpen).toBe(true);
 			expect(element.props().user).toHaveProperty('id', '12345');
 			expect(element.props().news).toHaveLength(2);
 			expect(element.props().newsUnreadCount).toBe(1);
-			expect(element.props().isLoadingIconVisible).toBe(true);
 			expect(element.props().userSettings).toHaveProperty('settingsId', '54321');
 		});
 	});
@@ -90,7 +94,8 @@ describe('behavior', () => {
 					isMobileSidebarOpen: true,
 					isSidebarOpen: true,
 					isNewsAsideOpen: true,
-					isHeaderDropdownOpen: false
+					isHeaderProfileDropdownOpen: false,
+					isHeaderAddMenuDropdownOpen: false
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
@@ -109,7 +114,8 @@ describe('behavior', () => {
 					isMobileSidebarOpen: false,
 					isSidebarOpen: false,
 					isNewsAsideOpen: true,
-					isHeaderDropdownOpen: false
+					isHeaderProfileDropdownOpen: false,
+					isHeaderAddMenuDropdownOpen: false
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
@@ -128,7 +134,8 @@ describe('behavior', () => {
 					isMobileSidebarOpen: false,
 					isSidebarOpen: true,
 					isNewsAsideOpen: false,
-					isHeaderDropdownOpen: false
+					isHeaderProfileDropdownOpen: false,
+					isHeaderAddMenuDropdownOpen: false
 				}
 			});
 			const jsx = (<HeaderContainer {...props} />);
@@ -176,16 +183,28 @@ describe('behavior', () => {
 			expect(toggleMobileSidebar).toHaveBeenCalledWith(false);
 		});
 	});
-	describe('headerDropdownToggle', () => {
-		it('should dispatch header dropdown toggle action when headerDropdownToggle is called', () => {
-			const toggleHeaderDropdown = jest.fn();
-			const props = createTestProps({ toggleHeaderDropdown });
+	describe('headerProfileDropdownToggle', () => {
+		it('should dispatch header profile dropdown toggle action when headerProfileDropdownToggle is called', () => {
+			const toggleHeaderProfileDropdown = jest.fn();
+			const props = createTestProps({ toggleHeaderProfileDropdown });
 			const state = createTestState();
 			const jsx = (<HeaderContainer {...props} />);
 			const element = shallowWithState(jsx, state).dive();
-			element.instance().headerDropdownToggle();
-			expect(toggleHeaderDropdown).toHaveBeenCalledTimes(1);
-			expect(toggleHeaderDropdown).toHaveBeenCalledWith(false);
+			element.instance().headerProfileDropdownToggle();
+			expect(toggleHeaderProfileDropdown).toHaveBeenCalledTimes(1);
+			expect(toggleHeaderProfileDropdown).toHaveBeenCalledWith(false);
+		});
+	});
+	describe('headerAddMenuDropdownToggle', () => {
+		it('should dispatch header add menu dropdown toggle action when headerAddMenuDropdownToggle is called', () => {
+			const toggleHeaderAddMenuDropdown = jest.fn();
+			const props = createTestProps({ toggleHeaderAddMenuDropdown });
+			const state = createTestState();
+			const jsx = (<HeaderContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive();
+			element.instance().headerAddMenuDropdownToggle();
+			expect(toggleHeaderAddMenuDropdown).toHaveBeenCalledTimes(1);
+			expect(toggleHeaderAddMenuDropdown).toHaveBeenCalledWith(false);
 		});
 	});
 	describe('openUpsertCharacterModal', () => {

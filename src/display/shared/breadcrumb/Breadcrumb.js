@@ -13,7 +13,7 @@ const propTypes = {
 const Breadcrumb = props => (
 	<div className="breadcrumb-wrapper">
 		{props.isLoadingIconVisible && (
-			<div data-spec="header-loading-indicator" className="d-lg-none float-right">
+			<div data-spec="header-loading-indicator" className="float-right">
 				<LoadingIndicator className="invert" />
 			</div>
 		)}
