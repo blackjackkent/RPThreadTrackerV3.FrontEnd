@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<TabPane
+  tabId="faq"
+  tag="div"
+>
+  <Card
+    tag="div"
+  >
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-question-circle"
+      />
+       FAQ
+    </CardHeader>
+    <CardBlock
+      className="card-body"
+      tag="div"
+    >
+      <p>
+        Coming soon!
+      </p>
+    </CardBlock>
+  </Card>
+</TabPane>
+`;

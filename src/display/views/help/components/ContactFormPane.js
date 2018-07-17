@@ -18,8 +18,7 @@ class ContactFormPane extends React.Component {
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			formData: Object.assign({}, this.state.formData, {
 				[name]: value
@@ -37,7 +36,10 @@ class ContactFormPane extends React.Component {
 						/> Contact Me
 					</CardHeader>
 					<CardBlock className="card-body">
-						<AvForm onValidSubmit={() => submitContactForm(this.state.formData)}>
+						<AvForm
+							data-spec="contact-form-container"
+							onValidSubmit={() => submitContactForm(this.state.formData)}
+						>
 							<p>Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Please feel free to send me a message, or visit the tracker <a target="_blank" rel="noopener noreferrer" href="http://tblrthreadtracker.tumblr.com">support blog</a>.</p>
 							<FormGroup row>
 								<Col md="3">

@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="animated fadeIn static-container help-container"
+>
+  <Row
+    tag="div"
+  >
+    <Col
+      className="d-lg-none text-center"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <StaticDropdownNav
+        activeTab="my-test-tab"
+        data-spec="help-static-dropdown-nav"
+        options={
+          Array [
+            Object {
+              "name": "Tab 1",
+              "tabId": "tab1",
+            },
+            Object {
+              "name": "Tab 2",
+              "tabId": "tab2",
+            },
+          ]
+        }
+        setActiveTab={[MockFunction]}
+      />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      className="d-none d-lg-block"
+      md={3}
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <StaticTabNav
+        activeTab="my-test-tab"
+        data-spec="help-static-tab-nav"
+        options={
+          Array [
+            Object {
+              "name": "Tab 1",
+              "tabId": "tab1",
+            },
+            Object {
+              "name": "Tab 2",
+              "tabId": "tab2",
+            },
+          ]
+        }
+        setActiveTab={[MockFunction]}
+      />
+    </Col>
+    <Col
+      lg="9"
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+      xs="12"
+    >
+      <TabContent
+        activeTab="my-test-tab"
+        tag="div"
+      >
+        <AboutTrackerPane />
+        <SupportGuidesPane />
+        <FAQPane />
+        <ContactFormPane
+          submitContactForm={[MockFunction]}
+        />
+      </TabContent>
+    </Col>
+  </Row>
+</div>
+`;

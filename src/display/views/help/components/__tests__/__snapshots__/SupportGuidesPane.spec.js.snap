@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<TabPane
+  tabId="guides"
+  tag="div"
+>
+  <Card
+    tag="div"
+  >
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-play-circle"
+      />
+       Support Guides
+    </CardHeader>
+    <CardBlock
+      className="card-body"
+      tag="div"
+    >
+      <p>
+        Intro Tutorial: How to Use RPThreadTracker ~
+         
+        <a
+          href="/"
+        >
+          Video 
+          <i
+            className="fas fa-external-link-alt"
+          />
+        </a>
+      </p>
+      <p>
+        How to Manage Queued Tumblr Posts ~
+         
+        <a
+          href="/"
+        >
+          Video 
+          <i
+            className="fas fa-external-link-alt"
+          />
+        </a>
+      </p>
+      <p>
+        How to Use the RPThreadTracker QuickAdd Extension ~
+         
+        <a
+          href="/"
+        >
+          Video 
+          <i
+            className="fas fa-external-link-alt"
+          />
+        </a>
+      </p>
+    </CardBlock>
+  </Card>
+</TabPane>
+`;

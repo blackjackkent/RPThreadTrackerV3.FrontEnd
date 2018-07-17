@@ -36,6 +36,7 @@ const Help = (props) => {
 			<Row>
 				<Col className="d-lg-none text-center">
 					<StaticDropdownNav
+						data-spec="help-static-dropdown-nav"
 						setActiveTab={props.setActiveHelpTab}
 						activeTab={activeTab}
 						options={options}
@@ -46,6 +47,7 @@ const Help = (props) => {
 				<Col className="d-none d-lg-block" md={3}>
 
 					<StaticTabNav
+						data-spec="help-static-tab-nav"
 						setActiveTab={props.setActiveHelpTab}
 						activeTab={activeTab}
 						options={options}
