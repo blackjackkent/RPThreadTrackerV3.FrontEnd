@@ -10,7 +10,7 @@ import LoadingIndicator from '../../shared/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
+	submitUserLogin: PropTypes.func.isRequired,
 	displayLoadingIndicator: PropTypes.bool.isRequired,
 	loginError: PropTypes.string
 };
@@ -39,13 +39,11 @@ class Login extends Component {
 		};
 	}
 	handleLoginSubmit() {
-		const { dispatch } = this.props;
-		dispatch(submitUserLogin(this.state.loginRequest));
+		this.props.submitUserLogin(this.state.loginRequest);
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			loginRequest: Object.assign({}, this.state.loginRequest, {
 				[name]: value
@@ -79,7 +77,10 @@ class Login extends Component {
 			<Card className="login-box p-4">
 				<CardBlock className="card-body">
 					{loading}
-					<AvForm onValidSubmit={this.handleLoginSubmit}>
+					<AvForm
+						data-spec="login-form-container"
+						onValidSubmit={this.handleLoginSubmit}
+					>
 						<h1>Login</h1>
 						<p className="text-muted">Sign in to RPThreadTracker</p>
 						{error}
@@ -102,4 +103,6 @@ class Login extends Component {
 }
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, {
+	submitUserLogin
+})(Login);
