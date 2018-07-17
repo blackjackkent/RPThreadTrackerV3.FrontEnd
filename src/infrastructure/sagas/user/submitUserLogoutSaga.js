@@ -2,7 +2,7 @@ import { takeEvery, call } from 'redux-saga/effects';
 import axios from 'axios';
 import cache from '../../cache';
 import cacheKeys from '../../constants/cacheKeys';
-import { navigation } from '../../history';
+import { navigation } from '../../../utility/history';
 
 import {
 	SUBMIT_USER_LOGOUT

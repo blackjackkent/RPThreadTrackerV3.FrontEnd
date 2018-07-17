@@ -133,6 +133,7 @@
 			"/node_modules/",
 			"/config/",
 			"/src/utility/getQuery",
+			"/src/utility/history",
 			"/e2e/"
 		]
 	}

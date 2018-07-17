@@ -6,6 +6,8 @@ import HeaderProfileDropdown from '../HeaderProfileDropdown';
 // #endregion imports
 
 jest.mock('../HeaderDropdownItem', () => 'HeaderDropdownItem');
+const history = require('../../../../../utility/history'); // eslint-disable-line import/newline-after-import
+history.navigation.navigateTo = jest.fn();
 
 const createTestProps = propOverrides => ({
 	headerProfileDropdownToggle: jest.fn(),
@@ -52,37 +54,40 @@ describe('rendering', () => {
 });
 
 describe('behavior', () => {
-	describe('navigateToSettings', () => {
-		it('should be called when settings link is clicked', () => {
-			const navigateToSettings = jest.fn();
-			const props = createTestProps({ navigateToSettings });
+	describe('settings', () => {
+		it('should trigger navigation to settings page when clicked', () => {
+			history.navigation.navigateTo.mockClear();
+			const props = createTestProps();
 			const jsx = (<HeaderProfileDropdown {...props} />);
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'header-dropdown-account-settings-link');
 			button.simulate('click');
-			expect(navigateToSettings).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/settings');
 		});
 	});
-	describe('navigateToTools', () => {
-		it('should be called when tools link is clicked', () => {
-			const navigateToTools = jest.fn();
-			const props = createTestProps({ navigateToTools });
+	describe('tools', () => {
+		it('should trigger navigation to tools page when clicked', () => {
+			history.navigation.navigateTo.mockClear();
+			const props = createTestProps();
 			const jsx = (<HeaderProfileDropdown {...props} />);
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'header-dropdown-tools-link');
 			button.simulate('click');
-			expect(navigateToTools).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/tools');
 		});
 	});
-	describe('navigateToHelp', () => {
-		it('should be called when help link is clicked', () => {
-			const navigateToHelp = jest.fn();
-			const props = createTestProps({ navigateToHelp });
+	describe('help', () => {
+		it('should trigger navigation to help page when clicked', () => {
+			history.navigation.navigateTo.mockClear();
+			const props = createTestProps();
 			const jsx = (<HeaderProfileDropdown {...props} />);
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'header-dropdown-help-link');
 			button.simulate('click');
-			expect(navigateToHelp).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/help');
 		});
 	});
 	describe('logout', () => {

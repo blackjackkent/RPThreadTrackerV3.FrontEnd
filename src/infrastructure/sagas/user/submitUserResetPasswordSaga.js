@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import { navigation } from '../../history';
+import { navigation } from '../../../utility/history';
 
 import {
 	SUBMIT_USER_RESET_PASSWORD,

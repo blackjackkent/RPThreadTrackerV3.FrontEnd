@@ -9,7 +9,7 @@ jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
 	getNewsUnreadCount: () => 1
 }));
-const history = require('../../../../infrastructure/history'); // eslint-disable-line import/newline-after-import
+const history = require('../../../../utility/history'); // eslint-disable-line import/newline-after-import
 history.default.push = jest.fn();
 jest.mock('../Header', () => 'Header');
 // #endregion mocks
@@ -227,42 +227,6 @@ describe('behavior', () => {
 			const element = shallowWithState(jsx, state).dive();
 			element.instance().openNewThreadModal();
 			expect(openUpsertThreadModal).toHaveBeenCalledTimes(1);
-		});
-	});
-	describe('navigateToSettings', () => {
-		it('should trigger navigation to settings page', () => {
-			history.default.push.mockClear();
-			const props = createTestProps();
-			const state = createTestState();
-			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive();
-			element.props().navigateToSettings();
-			expect(history.default.push).toHaveBeenCalledTimes(1);
-			expect(history.default.push).toHaveBeenLastCalledWith('/settings');
-		});
-	});
-	describe('navigateToTools', () => {
-		it('should trigger navigation to tools page', () => {
-			history.default.push.mockClear();
-			const props = createTestProps();
-			const state = createTestState();
-			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive();
-			element.props().navigateToTools();
-			expect(history.default.push).toHaveBeenCalledTimes(1);
-			expect(history.default.push).toHaveBeenLastCalledWith('/tools');
-		});
-	});
-	describe('navigateToHelp', () => {
-		it('should trigger navigation to help page', () => {
-			history.default.push.mockClear();
-			const props = createTestProps();
-			const state = createTestState();
-			const jsx = (<HeaderContainer {...props} />);
-			const element = shallowWithState(jsx, state).dive();
-			element.props().navigateToHelp();
-			expect(history.default.push).toHaveBeenCalledTimes(1);
-			expect(history.default.push).toHaveBeenLastCalledWith('/help');
 		});
 	});
 	describe('logout', () => {

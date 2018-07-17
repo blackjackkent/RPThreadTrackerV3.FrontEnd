@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
-import { navigation } from '../../../../infrastructure/history';
+import { navigation } from '../../../../utility/history';
 import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
