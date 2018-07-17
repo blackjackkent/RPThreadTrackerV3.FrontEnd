@@ -18,7 +18,7 @@ const getColumns = (columnIds) => {
 		result.push({
 			Header: columnTypes.CHARACTER.name,
 			accessor: columnTypes.CHARACTER.key,
-			Cell: row => <span>{row.value} {row.original.thread.character.characterName && `(${row.original.thread.character.characterName})`}</span>,
+			Cell: row => <span>{row.value}{row.original.thread.character.characterName && ` (${row.original.thread.character.characterName})`}</span>,
 			minWidth: 250
 		});
 	}

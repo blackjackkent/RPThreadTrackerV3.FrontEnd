@@ -110,7 +110,7 @@ describe('data', () => {
 			const cellElement = shallow(cellJsx);
 			expect(cellElement.find('span')).toHaveText('My Character Name');
 		});
-		it('should display character name if it exists', () => {
+		it('should display default for character name if it does not exist', () => {
 			const cellJsx = columnConfig.Cell({ original: { isOnHiatus: true } });
 			const cellElement = shallow(cellJsx);
 			expect(cellElement.find('span')).toHaveText('Unnamed Character');
