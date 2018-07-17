@@ -2,15 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { navigation } from '../../../../infrastructure/history';
 import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
 const propTypes = {
 	headerProfileDropdownToggle: PropTypes.func.isRequired,
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
-	navigateToSettings: PropTypes.func.isRequired,
-	navigateToTools: PropTypes.func.isRequired,
-	navigateToHelp: PropTypes.func.isRequired,
 	logout: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string
@@ -21,9 +19,6 @@ const HeaderProfileDropdown = (props) => {
 	const {
 		headerProfileDropdownToggle,
 		isHeaderProfileDropdownOpen,
-		navigateToSettings,
-		navigateToTools,
-		navigateToHelp,
 		logout,
 		user
 	} = props;
@@ -46,17 +41,17 @@ const HeaderProfileDropdown = (props) => {
 						</span>
 					</DropdownItem><HeaderDropdownItem
 						data-spec="header-dropdown-account-settings-link"
-						onClick={navigateToSettings}
+						onClick={() => navigation.navigateTo('/settings')}
 						label="Account Settings"
 					/>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-tools-link"
-						onClick={navigateToTools}
+						onClick={() => navigation.navigateTo('/tools')}
 						label="Tracker Tools"
 					/>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-help-link"
-						onClick={navigateToHelp}
+						onClick={() => navigation.navigateTo('/help')}
 						label="Help"
 					/>
 					<HeaderDropdownItem

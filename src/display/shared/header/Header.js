@@ -14,9 +14,6 @@ const propTypes = {
 	newsUnreadCount: PropTypes.number.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	openNewThreadModal: PropTypes.func.isRequired,
-	navigateToSettings: PropTypes.func.isRequired,
-	navigateToTools: PropTypes.func.isRequired,
-	navigateToHelp: PropTypes.func.isRequired,
 	sidebarToggle: PropTypes.func.isRequired,
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
 	isHeaderAddMenuDropdownOpen: PropTypes.bool.isRequired,
@@ -35,9 +32,6 @@ const Header = (props) => {
 		newsUnreadCount,
 		openUpsertCharacterModal,
 		openNewThreadModal,
-		navigateToSettings,
-		navigateToTools,
-		navigateToHelp,
 		sidebarToggle,
 		isHeaderProfileDropdownOpen,
 		isHeaderAddMenuDropdownOpen,
@@ -67,9 +61,6 @@ const Header = (props) => {
 					isHeaderProfileDropdownOpen={isHeaderProfileDropdownOpen}
 					headerProfileDropdownToggle={headerProfileDropdownToggle}
 					logout={logout}
-					navigateToSettings={navigateToSettings}
-					navigateToTools={navigateToTools}
-					navigateToHelp={navigateToHelp}
 					user={user}
 				/>
 			</Nav>

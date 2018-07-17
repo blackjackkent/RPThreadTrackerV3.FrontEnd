@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import Header from './Header';
 import { toggleSidebar, toggleNewsAside, toggleMobileSidebar, toggleHeaderProfileDropdown, toggleHeaderAddMenuDropdown, openUpsertCharacterModal, submitUserLogout, updateUserSettings, openUpsertThreadModal } from '../../../infrastructure/actions';
 import { getNewsUnreadCount } from '../../../infrastructure/selectors';
-import history from '../../../infrastructure/history';
 
 const propTypes = {
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
@@ -130,9 +129,6 @@ class HeaderContainer extends Component {
 				sidebarToggle={this.sidebarToggle}
 				openUpsertCharacterModal={this.openUpsertCharacterModal}
 				openNewThreadModal={this.openNewThreadModal}
-				navigateToSettings={() => history.push('/settings')}
-				navigateToTools={() => history.push('/tools')}
-				navigateToHelp={() => history.push('/help')}
 				logout={this.logout}
 			/>
 		);

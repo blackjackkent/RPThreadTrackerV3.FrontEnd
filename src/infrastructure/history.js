@@ -1,3 +1,7 @@
 import { createBrowserHistory } from 'history';
 
-export default createBrowserHistory();
+const browserHistory = createBrowserHistory();
+export default browserHistory;
+export const navigation = {
+	navigateTo: path => browserHistory.push(path)
+};

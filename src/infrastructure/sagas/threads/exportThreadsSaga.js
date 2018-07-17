@@ -11,10 +11,10 @@ import {
 function saveAsBlob(response, filename, contentType) {
 	try {
 		const blob = new Blob([response.data], { type: contentType });
-		if (navigator.msSaveBlob) {
-			navigator.msSaveBlob(blob, filename);
+		if (navigation.msSaveBlob) {
+			navigation.msSaveBlob(blob, filename);
 		} else {
-			const saveBlob = navigator.webkitSaveBlob || navigator.mozSaveBlob || navigator.saveBlob;
+			const saveBlob = navigation.webkitSaveBlob || navigation.mozSaveBlob || navigation.saveBlob;
 			if (saveBlob === undefined) {
 				throw new Error('Not supported');
 			}

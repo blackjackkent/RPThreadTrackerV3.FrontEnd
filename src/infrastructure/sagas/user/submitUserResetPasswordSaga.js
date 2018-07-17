@@ -1,6 +1,6 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import history from '../../history';
+import { navigation } from '../../history';
 
 import {
 	SUBMIT_USER_RESET_PASSWORD,
@@ -11,7 +11,7 @@ import {
 function* submitUserResetPassword(action) {
 	try {
 		yield call(axios.post, `${API_BASE_URL}api/auth/resetpassword`, action.data);
-		history.push('/login');
+		navigation.navigateTo('/login');
 		yield put(submitUserResetPasswordSuccess());
 	} catch (e) {
 		yield put(submitUserResetPasswordFailure(e.response.data));
