@@ -40,6 +40,7 @@ const UpdateAccountInfoForm = (props) => {
 						name="email"
 						placeholder="Email"
 						type="email"
+						title="Update Email option coming soon!"
 						value={user.email}
 						onChange={handleInputChange}
 						validate={validator.email}

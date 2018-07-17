@@ -112,6 +112,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         name="email"
         onChange={[MockFunction]}
         placeholder="Email"
+        title="Update Email option coming soon!"
         type="email"
         validate={
           Object {
