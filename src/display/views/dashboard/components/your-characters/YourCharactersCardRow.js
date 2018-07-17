@@ -7,8 +7,7 @@ const propTypes = {
 		id: PropTypes.number,
 		characterName: PropTypes.string,
 		urlIdentifier: PropTypes.string.isRequired,
-		homeUrl: PropTypes.string.isRequired,
-		isOnHiatus: PropTypes.bool.isRequired
+		homeUrl: PropTypes.string.isRequired
 	}).isRequired,
 	threadCount: PropTypes.number
 };

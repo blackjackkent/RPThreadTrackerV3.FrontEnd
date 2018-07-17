@@ -1,0 +1,163 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot when characters are loading 1`] = `
+<Card
+  className="your-characters-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-users"
+    />
+     Your Characters
+    <div
+      className="float-right"
+    >
+      <Link
+        href="/manage-characters"
+        replace={false}
+        to="/manage-characters"
+      >
+        Manage Characters
+      </Link>
+    </div>
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <LoadingIndicator
+      style={
+        Object {
+          "height": 50,
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": 50,
+        }
+      }
+    />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has active characters 1`] = `
+<Card
+  className="your-characters-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-users"
+    />
+     Your Characters
+    <div
+      className="float-right"
+    >
+      <Link
+        href="/manage-characters"
+        replace={false}
+        to="/manage-characters"
+      >
+        Manage Characters
+      </Link>
+    </div>
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <YourCharactersCardRow
+      character={
+        Object {
+          "characterId": 2,
+        }
+      }
+      data-spec="your-characters-card-row"
+      key="2"
+      threadCount={15}
+    />
+    <YourCharactersCardRow
+      character={
+        Object {
+          "characterId": 3,
+        }
+      }
+      data-spec="your-characters-card-row"
+      key="3"
+      threadCount={30}
+    />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has no active characters 1`] = `
+<Card
+  className="your-characters-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-users"
+    />
+     Your Characters
+    <div
+      className="float-right"
+    >
+      <Link
+        href="/manage-characters"
+        replace={false}
+        to="/manage-characters"
+      >
+        Manage Characters
+      </Link>
+    </div>
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <NoActiveCharactersMessage />
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot when user has no characters 1`] = `
+<Card
+  className="your-characters-card"
+  tag="div"
+>
+  <CardHeader
+    tag="div"
+  >
+    <i
+      className="fas fa-users"
+    />
+     Your Characters
+    <div
+      className="float-right"
+    >
+      <Link
+        href="/manage-characters"
+        replace={false}
+        to="/manage-characters"
+      >
+        Manage Characters
+      </Link>
+    </div>
+  </CardHeader>
+  <CardBlock
+    className="card-body"
+    tag="div"
+  >
+    <NoCharactersMessage />
+  </CardBlock>
+</Card>
+`;

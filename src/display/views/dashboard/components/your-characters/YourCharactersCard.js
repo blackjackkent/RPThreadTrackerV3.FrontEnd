@@ -38,6 +38,7 @@ const getBlockContent = (loadingInProgress, characters, characterThreadCounts) =
 			character={character}
 			key={character.characterId}
 			threadCount={characterThreadCounts[character.characterId]}
+			data-spec="your-characters-card-row"
 		/>));
 };
 
