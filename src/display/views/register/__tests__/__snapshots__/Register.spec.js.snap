@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<Card
+  className="mx-4"
+  tag="div"
+>
+  <CardBlock
+    className="p-4"
+    tag="div"
+  >
+    <span />
+    <AvForm
+      data-spec="registration-form-container"
+      method="get"
+      model={Object {}}
+      onInvalidSubmit={[Function]}
+      onKeyDown={[Function]}
+      onSubmit={[Function]}
+      onValidSubmit={[Function]}
+      tag={[Function]}
+      validationEvent={
+        Array [
+          "onChange",
+          "onInput",
+        ]
+      }
+    >
+      <h1>
+        Register
+      </h1>
+      <p
+        className="text-muted"
+      >
+        Create your RPThreadTracker account
+      </p>
+      <span />
+      <RegisterForm
+        handleInputChange={[Function]}
+      />
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <Button
+            className="px-4"
+            color="primary"
+            tag="button"
+          >
+            Create Account
+          </Button>
+        </Col>
+        <Col
+          className="text-right text-muted"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          Already have an account? 
+          <a
+            href="/login"
+          >
+            Login
+          </a>
+        </Col>
+      </Row>
+    </AvForm>
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot with error message 1`] = `
+<Card
+  className="mx-4"
+  tag="div"
+>
+  <CardBlock
+    className="p-4"
+    tag="div"
+  >
+    <span />
+    <AvForm
+      data-spec="registration-form-container"
+      method="get"
+      model={Object {}}
+      onInvalidSubmit={[Function]}
+      onKeyDown={[Function]}
+      onSubmit={[Function]}
+      onValidSubmit={[Function]}
+      tag={[Function]}
+      validationEvent={
+        Array [
+          "onChange",
+          "onInput",
+        ]
+      }
+    >
+      <h1>
+        Register
+      </h1>
+      <p
+        className="text-muted"
+      >
+        Create your RPThreadTracker account
+      </p>
+      <div
+        className="has-danger"
+      >
+        <p
+          className="form-control-feedback"
+          data-spec="register-server-error"
+        >
+          <span
+            key="An unknown error occurred."
+          >
+            An unknown error occurred.
+            <br />
+          </span>
+        </p>
+      </div>
+      <RegisterForm
+        handleInputChange={[Function]}
+      />
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <Button
+            className="px-4"
+            color="primary"
+            tag="button"
+          >
+            Create Account
+          </Button>
+        </Col>
+        <Col
+          className="text-right text-muted"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          Already have an account? 
+          <a
+            href="/login"
+          >
+            Login
+          </a>
+        </Col>
+      </Row>
+    </AvForm>
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot with loading indicator when login loading 1`] = `
+<Card
+  className="mx-4"
+  tag="div"
+>
+  <CardBlock
+    className="p-4"
+    tag="div"
+  >
+    <LoadingIndicator
+      style={
+        Object {
+          "height": 50,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 50,
+        }
+      }
+    />
+    <AvForm
+      data-spec="registration-form-container"
+      method="get"
+      model={Object {}}
+      onInvalidSubmit={[Function]}
+      onKeyDown={[Function]}
+      onSubmit={[Function]}
+      onValidSubmit={[Function]}
+      tag={[Function]}
+      validationEvent={
+        Array [
+          "onChange",
+          "onInput",
+        ]
+      }
+    >
+      <h1>
+        Register
+      </h1>
+      <p
+        className="text-muted"
+      >
+        Create your RPThreadTracker account
+      </p>
+      <span />
+      <RegisterForm
+        handleInputChange={[Function]}
+      />
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <Button
+            className="px-4"
+            color="primary"
+            tag="button"
+          >
+            Create Account
+          </Button>
+        </Col>
+        <Col
+          className="text-right text-muted"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          Already have an account? 
+          <a
+            href="/login"
+          >
+            Login
+          </a>
+        </Col>
+      </Row>
+    </AvForm>
+  </CardBlock>
+</Card>
+`;
+
+exports[`rendering snapshots should render valid snapshot with loading indicator when registration loading 1`] = `
+<Card
+  className="mx-4"
+  tag="div"
+>
+  <CardBlock
+    className="p-4"
+    tag="div"
+  >
+    <LoadingIndicator
+      style={
+        Object {
+          "height": 50,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": 50,
+        }
+      }
+    />
+    <AvForm
+      data-spec="registration-form-container"
+      method="get"
+      model={Object {}}
+      onInvalidSubmit={[Function]}
+      onKeyDown={[Function]}
+      onSubmit={[Function]}
+      onValidSubmit={[Function]}
+      tag={[Function]}
+      validationEvent={
+        Array [
+          "onChange",
+          "onInput",
+        ]
+      }
+    >
+      <h1>
+        Register
+      </h1>
+      <p
+        className="text-muted"
+      >
+        Create your RPThreadTracker account
+      </p>
+      <span />
+      <RegisterForm
+        handleInputChange={[Function]}
+      />
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <Button
+            className="px-4"
+            color="primary"
+            tag="button"
+          >
+            Create Account
+          </Button>
+        </Col>
+        <Col
+          className="text-right text-muted"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          Already have an account? 
+          <a
+            href="/login"
+          >
+            Login
+          </a>
+        </Col>
+      </Row>
+    </AvForm>
+  </CardBlock>
+</Card>
+`;

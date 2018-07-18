@@ -9,8 +9,8 @@ import LoadingIndicator from '../../shared/LoadingIndicator';
 
 const propTypes = {
 	submitUserRegistration: PropTypes.func.isRequired,
-	isRegistrationLoading: PropTypes.bool.isRequired,
-	isLoginLoading: PropTypes.bool.isRequired,
+	registrationLoading: PropTypes.bool.isRequired,
+	loginLoading: PropTypes.bool.isRequired,
 	registrationErrors: PropTypes.arrayOf(PropTypes.string)
 };
 const defaultProps = {
@@ -22,8 +22,8 @@ const mapStateToProps = (state) => {
 		errors
 	} = state;
 	return {
-		isRegistrationLoading: loading.registrationLoading,
-		isLoginLoading: loading.isLoginLoading,
+		registrationLoading: loading.registrationLoading,
+		loginLoading: loading.loginLoading,
 		registrationErrors: errors.registrationErrors
 	};
 };
@@ -42,8 +42,7 @@ class Register extends Component {
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			registerRequest: Object.assign({}, this.state.registerRequest, {
 				[name]: value
@@ -51,8 +50,8 @@ class Register extends Component {
 		});
 	}
 	render() {
-		const { isRegistrationLoading, isLoginLoading, registrationErrors } = this.props;
-		const displayLoadingIndicator = isRegistrationLoading || isLoginLoading;
+		const { registrationLoading, loginLoading, registrationErrors } = this.props;
+		const displayLoadingIndicator = registrationLoading || loginLoading;
 		let loading = (<span />);
 		if (displayLoadingIndicator) {
 			loading = (
@@ -79,7 +78,10 @@ class Register extends Component {
 			<Card className="mx-4">
 				<CardBlock className="p-4">
 					{loading}
-					<AvForm onValidSubmit={this.handleRegistrationSubmit}>
+					<AvForm
+						data-spec="registration-form-container"
+						onValidSubmit={this.handleRegistrationSubmit}
+					>
 						<h1>Register</h1>
 						<p className="text-muted">Create your RPThreadTracker account</p>
 						{error}
