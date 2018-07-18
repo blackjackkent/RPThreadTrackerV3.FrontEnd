@@ -6,10 +6,7 @@ import { Nav } from 'reactstrap';
 
 const propTypes = {
 	slug: PropTypes.string.isRequired,
-	title: PropTypes.string
-};
-const defaultProps = {
-	title: ''
+	title: PropTypes.string.isRequired
 };
 
 const PublicHeader = (props) => {
@@ -29,5 +26,4 @@ const PublicHeader = (props) => {
 };
 
 PublicHeader.propTypes = propTypes;
-PublicHeader.defaultProps = defaultProps;
 export default PublicHeader;

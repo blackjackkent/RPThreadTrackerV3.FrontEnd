@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
-import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal, fetchActiveThreads, fetchArchivedThreads } from '../../../infrastructure/actions';
+import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal, fetchActiveThreads, fetchArchivedThreads, updateUserSettings } from '../../../infrastructure/actions';
 
 const propTypes = {
 	Renderable: PropTypes.func.isRequired,
@@ -20,18 +20,22 @@ const propTypes = {
 	openUpsertThreadModal: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
 	threadFilter: PropTypes.shape({}).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired
+	isLoadingIconVisible: PropTypes.bool.isRequired,
+	updateUserSettings: PropTypes.func.isRequired,
+	userSettings: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
 		threadFilter,
-		characters
+		characters,
+		userSettings
 	} = state;
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		threadFilter,
 		characters,
+		userSettings,
 		isLoadingIconVisible
 	};
 }
@@ -45,6 +49,7 @@ class Threads extends Component {
 		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
 		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
 		this.refreshThreads = this.refreshThreads.bind(this);
+		this.updateThreadTablePageSize = this.updateThreadTablePageSize.bind(this);
 	}
 	componentDidMount() {
 		if (!this.props.characters || !this.props.characters.length) {
@@ -88,12 +93,17 @@ class Threads extends Component {
 			this.props.fetchArchivedThreads();
 		}
 	}
+	updateThreadTablePageSize(size) {
+		const { userSettings } = this.props;
+		this.props.updateUserSettings({ ...userSettings, threadTablePageSize: size });
+	}
 	render() {
 		const {
 			characters,
 			Renderable,
 			threadFilter,
-			isLoadingIconVisible
+			isLoadingIconVisible,
+			userSettings
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
@@ -112,6 +122,8 @@ class Threads extends Component {
 							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
 							isLoadingIconVisible={isLoadingIconVisible}
 							refreshThreads={this.refreshThreads}
+							threadTablePageSize={userSettings.threadTablePageSize}
+							updateThreadTablePageSize={this.updateThreadTablePageSize}
 						/>
 					</Col>
 				</Row>
@@ -130,5 +142,6 @@ export default connect(mapStateToProps, {
 	upsertThread,
 	openBulkUntrackThreadsModal,
 	openUpsertThreadModal,
-	openUntrackThreadModal
+	openUntrackThreadModal,
+	updateUserSettings
 })(Threads);

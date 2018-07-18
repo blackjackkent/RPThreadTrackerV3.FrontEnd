@@ -1,3 +1,4 @@
+// #region imports
 import {
 	FETCHED_ACTIVE_THREADS_FAILURE,
 	FETCHED_ACTIVE_THREADS_STATUS_FAILURE,
@@ -62,6 +63,7 @@ import {
 	SUBMIT_USER_ACCOUNT_INFO_FAILURE,
 	SUBMIT_USER_ACCOUNT_INFO_SUCCESS
 } from '../actions';
+// #endregion imports
 
 const defaultState = {
 	activeThreadsLoading: false,

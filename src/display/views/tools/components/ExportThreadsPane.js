@@ -17,10 +17,9 @@ class ExportThreadsPane extends Component {
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, checked } = target;
 		this.setState(Object.assign({}, this.state, {
-			[name]: value
+			[name]: checked
 		}));
 	}
 	render() {
@@ -34,7 +33,12 @@ class ExportThreadsPane extends Component {
 						/> Export Threads
 					</CardHeader>
 					<CardBlock className="card-body">
-						<Form action="" method="post" encType="multipart/form-data" className="form-horizontal">
+						<Form
+							action=""
+							method="post"
+							encType="multipart/form-data"
+							className="form-horizontal"
+						>
 							<p>
 								Use the button below to export an Excel file{' '}
 								of your current threads in the database.
@@ -79,6 +83,7 @@ class ExportThreadsPane extends Component {
 						<Row>
 							<Col className="text-right">
 								<Button
+									data-spec="export-threads-form-submit-button"
 									type="submit"
 									color="primary"
 									onClick={

@@ -45,8 +45,7 @@ class ResetPassword extends Component {
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			resetPasswordRequest: Object.assign({}, this.state.resetPasswordRequest, {
 				[name]: value
@@ -85,7 +84,10 @@ class ResetPassword extends Component {
 			<Card className="mx-4">
 				<CardBlock className="p-4">
 					{loading}
-					<AvForm onValidSubmit={this.handleResetPasswordSubmit}>
+					<AvForm
+						data-spec="reset-password-form-container"
+						onValidSubmit={this.handleResetPasswordSubmit}
+					>
 						<h1>Reset Password</h1>
 						<p className="text-muted">
 							Enter your new password below.

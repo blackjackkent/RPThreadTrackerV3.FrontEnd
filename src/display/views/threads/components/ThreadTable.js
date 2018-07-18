@@ -27,11 +27,14 @@ const propTypes = {
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	refreshThreads: PropTypes.func.isRequired,
 	tdProps: PropTypes.func.isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired
+	isLoadingIconVisible: PropTypes.bool.isRequired,
+	threadTablePageSize: PropTypes.number,
+	updateThreadTablePageSize: PropTypes.func.isRequired
 };
 const defaultProps = {
 	isArchive: false,
-	isQueue: false
+	isQueue: false,
+	threadTablePageSize: 10
 };
 
 function getData(filteredThreads) {
@@ -115,6 +118,8 @@ class ThreadTable extends React.Component {
 			refreshThreads,
 			setFilteredTag,
 			threadFilter,
+			threadTablePageSize,
+			updateThreadTablePageSize,
 			tags
 		} = this.props;
 
@@ -161,7 +166,8 @@ class ThreadTable extends React.Component {
 					className="-striped"
 					data={getData(filteredThreads)}
 					noDataText={isLoadingIconVisible ? 'Loading...' : 'No Threads Found'}
-					defaultPageSize={filteredThreads.length > 10 ? 20 : 10}
+					defaultPageSize={threadTablePageSize}
+					onPageSizeChange={pageSize => updateThreadTablePageSize(pageSize)}
 					columns={columns}
 					getTdProps={tdProps}
 					defaultSorted={[
