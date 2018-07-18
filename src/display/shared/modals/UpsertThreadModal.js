@@ -29,19 +29,11 @@ class UpsertThreadModal extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		const threadToEdit = this.getInitialThreadData(nextProps);
-		this.setState({ threadToEdit });
+		this.setState({ threadToEdit: nextProps.threadToEdit });
 	}
 
-	getInitialThreadData(nextProps) {
-		const { threadToEdit, characters } = nextProps;
-		if (!threadToEdit.characterId && characters.length) {
-			threadToEdit.characterId = characters[0].characterId;
-		}
-		return threadToEdit;
-	}
-
-	selectCharacter(characterId) {
+	selectCharacter(e) {
+		const characterId = e.target.value;
 		if (this.state.threadToEdit.characterId !== characterId) {
 			this.setState({ threadToEdit: { ...this.state.threadToEdit, characterId } });
 		}

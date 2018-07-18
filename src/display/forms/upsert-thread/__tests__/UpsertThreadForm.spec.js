@@ -5,7 +5,7 @@ import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
 import UpsertThreadForm from '../UpsertThreadForm';
 // #endregion imports
 
-jest.mock('../../../shared/character-select/CharacterSelect', () => 'CharacterSelect');
+jest.mock('../CharacterSelectItem', () => 'CharacterSelectItem');
 
 const createTestProps = propOverrides => ({
 	threadToEdit: {},
@@ -109,31 +109,24 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const jsx = (<UpsertThreadForm {...props} />);
 			const element = shallow(jsx);
-			const field = getSpecWrapper(element, 'characters-field');
-			expect(field.props().characters).toHaveLength(5);
+			const field = getSpecWrapper(element, 'character-select-field');
+			expect(field.find('option')).toHaveLength(1);
+			expect(field.find('CharacterSelectItem')).toHaveLength(5);
 		});
 		it('should populate existing character ID', () => {
 			const props = createTestPropsWithThread();
 			const jsx = (<UpsertThreadForm {...props} />);
 			const element = shallow(jsx);
-			const field = getSpecWrapper(element, 'characters-field');
-			expect(field.props().selectedCharacterId).toEqual(2);
+			const field = getSpecWrapper(element, 'character-select-field');
+			expect(field.props().value).toEqual(2);
 		});
 		it('should populate character select handler', () => {
 			const selectCharacter = jest.fn();
 			const props = createTestProps({ selectCharacter });
 			const jsx = (<UpsertThreadForm {...props} />);
 			const element = shallow(jsx);
-			const field = getSpecWrapper(element, 'characters-field');
-			expect(field.props().onSelectCharacter).toEqual(selectCharacter);
-		});
-		it('should not include null character value', () => {
-			const selectCharacter = jest.fn();
-			const props = createTestProps({ selectCharacter });
-			const jsx = (<UpsertThreadForm {...props} />);
-			const element = shallow(jsx);
-			const field = getSpecWrapper(element, 'characters-field');
-			expect(field.props().includeNullValue).toBeFalsy();
+			const field = getSpecWrapper(element, 'character-select-field');
+			expect(field.props().onChange).toEqual(selectCharacter);
 		});
 	});
 	describe('tooltips', () => {

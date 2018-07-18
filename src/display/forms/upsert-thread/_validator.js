@@ -9,6 +9,12 @@ export default {
 			errorMessage: 'You must enter a title for your thread.'
 		}
 	},
+	characterId: {
+		required: {
+			value: true,
+			errorMessage: 'You must select a character for your thread.'
+		}
+	},
 	postId: {
 		number: {
 			value: true,

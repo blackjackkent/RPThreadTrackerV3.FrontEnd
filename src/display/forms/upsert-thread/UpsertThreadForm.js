@@ -4,7 +4,7 @@ import { Col, Row, FormGroup } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import MultipleValueTextInput from 'react-multivalue-text-input';
-import CharacterSelect from '../../shared/character-select/CharacterSelect';
+import CharacterSelectItem from './CharacterSelectItem';
 import validator from './_validator';
 import formData from './_formData';
 
@@ -34,19 +34,25 @@ const UpsertThreadForm = (props) => {
 		handleTagRemoved,
 		tagValues
 	} = props;
+	const options = characters.map(c => <CharacterSelectItem key={c.characterId} character={c} />);
 	return (
 		<div>
-			<FormGroup row>{/* character selector */}
+			<Row>
 				<Col>
-					<CharacterSelect
-						characters={characters}
-						selectedCharacterId={threadToEdit.characterId}
-						onSelectCharacter={selectCharacter}
-						includeNullValue={false}
-						data-spec="characters-field"
-					/>
+					<AvField
+						name="characterId"
+						label="Character"
+						type="select"
+						value={threadToEdit.characterId}
+						onChange={selectCharacter}
+						validate={validator.characterId}
+						data-spec="character-select-field"
+					>
+						<option value="">Select Character</option>
+						{options}
+					</AvField>
 				</Col>
-			</FormGroup>
+			</Row>
 			<Row> {/* thread title */}
 				<Col>
 					<AvField

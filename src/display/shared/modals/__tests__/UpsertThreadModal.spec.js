@@ -95,22 +95,10 @@ describe('behavior', () => {
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith(threadToEdit);
 		});
-		it('should set thread to edit with character ID from list if character ID not present on thread', () => {
+		it('should set thread to edit with null character ID if character ID not present on thread', () => {
 			const submitUpsertThread = jest.fn();
 			const threadToEdit = { threadId: 2 };
 			const props = createTestProps({ submitUpsertThread });
-			const jsx = (<UpsertThreadModal {...props} />);
-			const element = shallow(jsx);
-			element.setProps({ threadToEdit });
-			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
-			form.prop('onValidSubmit')();
-			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 2, characterId: 1 });
-		});
-		it('should set thread to edit with null character ID if not present and list empty', () => {
-			const submitUpsertThread = jest.fn();
-			const threadToEdit = { threadId: 2 };
-			const characters = [];
-			const props = createTestProps({ submitUpsertThread, characters });
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.setProps({ threadToEdit });
@@ -220,23 +208,25 @@ describe('behavior', () => {
 	});
 	describe('selectCharacter', () => {
 		it('should set character ID', () => {
+			const event = { target: { value: 5 } };
 			const submitUpsertThread = jest.fn();
 			const threadToEdit = { threadId: 1, characterId: 2 };
 			const props = createTestProps({ threadToEdit, submitUpsertThread });
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
-			element.instance().selectCharacter(1);
+			element.instance().selectCharacter(event);
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
-			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, characterId: 1 });
+			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, characterId: 5 });
 		});
 		it('should do nothing if ID has not changed', () => {
+			const event = { target: { value: 1 } };
 			const submitUpsertThread = jest.fn();
 			const threadToEdit = { threadId: 1, characterId: 1 };
 			const props = createTestProps({ threadToEdit, submitUpsertThread });
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
-			element.instance().selectCharacter(1);
+			element.instance().selectCharacter(event);
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, characterId: 1 });

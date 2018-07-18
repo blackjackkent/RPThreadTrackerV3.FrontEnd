@@ -2,8 +2,7 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <div>
-  <FormGroup
-    row={true}
+  <Row
     tag="div"
   >
     <Col
@@ -18,41 +17,78 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         ]
       }
     >
-      <CharacterSelect
-        characters={
-          Array [
+      <AvField
+        data-spec="character-select-field"
+        label="Character"
+        name="characterId"
+        onChange={[MockFunction]}
+        type="select"
+        validate={
+          Object {
+            "required": Object {
+              "errorMessage": "You must select a character for your thread.",
+              "value": true,
+            },
+          }
+        }
+      >
+        <option
+          value=""
+        >
+          Select Character
+        </option>
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 1,
               "characterName": "Character 1",
               "urlIdentifier": "character-1",
-            },
+            }
+          }
+          key="1"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 2,
               "characterName": "Character 2",
               "urlIdentifier": "character-2",
-            },
+            }
+          }
+          key="2"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 3,
               "characterName": "Character 3",
               "urlIdentifier": "character-3",
-            },
+            }
+          }
+          key="3"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 4,
               "characterName": "Character 4",
               "urlIdentifier": "character-4",
-            },
+            }
+          }
+          key="4"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 5,
               "urlIdentifier": "character-5",
-            },
-          ]
-        }
-        data-spec="characters-field"
-        includeNullValue={false}
-        onSelectCharacter={[MockFunction]}
-      />
+            }
+          }
+          key="5"
+        />
+      </AvField>
     </Col>
-  </FormGroup>
+  </Row>
   <Row
     tag="div"
   >
@@ -289,8 +325,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 
 exports[`rendering snapshots should render valid snapshot with thread 1`] = `
 <div>
-  <FormGroup
-    row={true}
+  <Row
     tag="div"
   >
     <Col
@@ -305,42 +340,79 @@ exports[`rendering snapshots should render valid snapshot with thread 1`] = `
         ]
       }
     >
-      <CharacterSelect
-        characters={
-          Array [
+      <AvField
+        data-spec="character-select-field"
+        label="Character"
+        name="characterId"
+        onChange={[MockFunction]}
+        type="select"
+        validate={
+          Object {
+            "required": Object {
+              "errorMessage": "You must select a character for your thread.",
+              "value": true,
+            },
+          }
+        }
+        value={2}
+      >
+        <option
+          value=""
+        >
+          Select Character
+        </option>
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 1,
               "characterName": "Character 1",
               "urlIdentifier": "character-1",
-            },
+            }
+          }
+          key="1"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 2,
               "characterName": "Character 2",
               "urlIdentifier": "character-2",
-            },
+            }
+          }
+          key="2"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 3,
               "characterName": "Character 3",
               "urlIdentifier": "character-3",
-            },
+            }
+          }
+          key="3"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 4,
               "characterName": "Character 4",
               "urlIdentifier": "character-4",
-            },
+            }
+          }
+          key="4"
+        />
+        <CharacterSelectItem
+          character={
             Object {
               "characterId": 5,
               "urlIdentifier": "character-5",
-            },
-          ]
-        }
-        data-spec="characters-field"
-        includeNullValue={false}
-        onSelectCharacter={[MockFunction]}
-        selectedCharacterId={2}
-      />
+            }
+          }
+          key="5"
+        />
+      </AvField>
     </Col>
-  </FormGroup>
+  </Row>
   <Row
     tag="div"
   >
