@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
 	Row, Col, TabContent
 } from 'reactstrap';
@@ -30,52 +30,43 @@ function mapStateToProps(state) {
 	};
 }
 
-class Settings extends Component {
-	constructor(props) {
-		super(props);
-		this.setActiveTab = this.setActiveTab.bind(this);
-	}
-
-	setActiveTab(tab) {
-		this.props.setActiveSettingsTab(tab);
-	}
-
-	render() {
-		const { activeTab, user } = this.props;
-		const options = Object.values(tabs.SETTINGS);
-		return (
-			<div className="animated fadeIn static-container settings-container">
-				<Row>
-					<Col className="d-lg-none text-center">
-						<StaticDropdownNav
-							setActiveTab={this.setActiveTab}
-							activeTab={activeTab}
-							options={options}
+const Settings = (props) => {
+	const { activeTab, user } = props;
+	const options = Object.values(tabs.SETTINGS);
+	return (
+		<div className="animated fadeIn static-container settings-container">
+			<Row>
+				<Col className="d-lg-none text-center">
+					<StaticDropdownNav
+						data-spec="settings-static-dropdown-nav"
+						setActiveTab={props.setActiveSettingsTab}
+						activeTab={activeTab}
+						options={options}
+					/>
+				</Col>
+			</Row>
+			<Row>
+				<Col className="d-none d-lg-block" md={3}>
+					<StaticTabNav
+						data-spec="settings-static-tab-nav"
+						setActiveTab={props.setActiveSettingsTab}
+						activeTab={activeTab}
+						options={options}
+					/>
+				</Col>
+				<Col xs="12" lg="9">
+					<TabContent activeTab={activeTab}>
+						<ChangePasswordPane submitChangePasswordForm={props.submitUserChangePassword} />
+						<UpdateAccountInfoPane
+							submitAccountInfoForm={props.submitUserAccountInfo}
+							user={user}
 						/>
-					</Col>
-				</Row>
-				<Row>
-					<Col className="d-none d-lg-block" md={3}>
-						<StaticTabNav
-							setActiveTab={this.setActiveTab}
-							activeTab={activeTab}
-							options={options}
-						/>
-					</Col>
-					<Col xs="12" lg="9">
-						<TabContent activeTab={activeTab}>
-							<ChangePasswordPane submitChangePasswordForm={this.props.submitUserChangePassword} />
-							<UpdateAccountInfoPane
-								submitAccountInfoForm={this.props.submitUserAccountInfo}
-								user={user}
-							/>
-						</TabContent>
-					</Col>
-				</Row>
-			</div>
-		);
-	}
-}
+					</TabContent>
+				</Col>
+			</Row>
+		</div>
+	);
+};
 
 Settings.propTypes = propTypes;
 export default connect(mapStateToProps, {

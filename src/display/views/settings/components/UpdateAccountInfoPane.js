@@ -26,8 +26,7 @@ class UpdateAccountInfoPane extends React.Component {
 
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			formData: Object.assign({}, this.state.formData, {
 				[name]: value
@@ -45,7 +44,10 @@ class UpdateAccountInfoPane extends React.Component {
 						/> Change Username/Email
 					</CardHeader>
 					<CardBlock className="card-body">
-						<AvForm onValidSubmit={() => submitAccountInfoForm(this.state.formData)}>
+						<AvForm
+							data-spec="account-info-form-container"
+							onValidSubmit={() => submitAccountInfoForm(this.state.formData)}
+						>
 							<UpdateAccountInfoForm
 								handleInputChange={this.handleInputChange}
 								user={this.state.formData}

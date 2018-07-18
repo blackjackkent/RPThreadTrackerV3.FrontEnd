@@ -17,8 +17,7 @@ class ChangePasswordPane extends React.Component {
 	}
 	handleInputChange(event) {
 		const { target } = event;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
-		const { name } = target;
+		const { name, value } = target;
 		this.setState({
 			formData: Object.assign({}, this.state.formData, {
 				[name]: value
@@ -36,7 +35,10 @@ class ChangePasswordPane extends React.Component {
 						/> Change Password
 					</CardHeader>
 					<CardBlock className="card-body">
-						<AvForm onValidSubmit={() => submitChangePasswordForm(this.state.formData)}>
+						<AvForm
+							data-spec="change-password-form-container"
+							onValidSubmit={() => submitChangePasswordForm(this.state.formData)}
+						>
 							<ChangePasswordForm handleInputChange={this.handleInputChange} />
 							<Row>
 								<Col className="text-right">
