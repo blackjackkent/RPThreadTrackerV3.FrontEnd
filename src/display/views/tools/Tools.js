@@ -4,12 +4,12 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import ExportThreadsPane from './components/ExportThreadsPane';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, openDeletePublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
+import ExportThreadsPane from './components/ExportThreadsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
@@ -46,7 +46,6 @@ function mapStateToProps(state) {
 class Tools extends Component {
 	constructor(props) {
 		super(props);
-		this.setActiveTab = this.setActiveTab.bind(this);
 		this.onExportRequest = this.onExportRequest.bind(this);
 	}
 	componentDidMount() {
@@ -60,9 +59,6 @@ class Tools extends Component {
 			this.props.fetchCharacters();
 		}
 	}
-	setActiveTab(tab) {
-		this.props.setActiveToolsTab(tab);
-	}
 	onExportRequest(includeHiatused, includeArchive) {
 		this.props.exportThreads({ includeHiatused, includeArchive });
 	}
@@ -74,7 +70,8 @@ class Tools extends Component {
 				<Row>
 					<Col className="d-lg-none text-center">
 						<StaticDropdownNav
-							setActiveTab={this.setActiveTab}
+							data-spec="tools-static-dropdown-nav"
+							setActiveTab={this.props.setActiveToolsTab}
 							activeTab={activeTab}
 							options={options}
 						/>
@@ -83,7 +80,8 @@ class Tools extends Component {
 				<Row>
 					<Col className="d-none d-lg-block" md={3}>
 						<StaticTabNav
-							setActiveTab={this.setActiveTab}
+							data-spec="tools-static-tab-nav"
+							setActiveTab={this.props.setActiveToolsTab}
 							activeTab={activeTab}
 							options={options}
 						/>

@@ -1,0 +1,194 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<TabPane
+  tabId="export-threads"
+  tag="div"
+>
+  <Card
+    tag="div"
+  >
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-download"
+      />
+       Export Threads
+    </CardHeader>
+    <CardBlock
+      className="card-body"
+      tag="div"
+    >
+      <Form
+        action=""
+        className="form-horizontal"
+        encType="multipart/form-data"
+        method="post"
+        tag="form"
+      >
+        <p>
+          Use the button below to export an Excel file
+           
+          of your current threads in the database.
+        </p>
+        <FormGroup
+          row={true}
+          tag="div"
+        >
+          <Col
+            md={
+              Object {
+                "offset": 2,
+                "size": 6,
+              }
+            }
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <Label
+              htmlFor="current-password"
+              tag="label"
+            >
+              Include Archived Threads:
+            </Label>
+          </Col>
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <Label
+              className="switch switch-sm switch-text switch-info mb-0"
+              tag="label"
+            >
+              <Input
+                checked={false}
+                className="switch-input"
+                name="includeArchived"
+                onChange={[Function]}
+                tag="p"
+                type="checkbox"
+              />
+              <span
+                className="switch-label"
+                data-off="No"
+                data-on="Yes"
+              />
+              <span
+                className="switch-handle"
+              />
+            </Label>
+          </Col>
+        </FormGroup>
+        <FormGroup
+          row={true}
+          tag="div"
+        >
+          <Col
+            md={
+              Object {
+                "offset": 2,
+                "size": 6,
+              }
+            }
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <Label
+              htmlFor="current-password"
+              tag="label"
+            >
+              Include Characters on Hiatus:
+            </Label>
+          </Col>
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <Label
+              className="switch switch-sm switch-text switch-info mb-0"
+              tag="label"
+            >
+              <Input
+                checked={false}
+                className="switch-input"
+                name="includeHiatused"
+                onChange={[Function]}
+                tag="p"
+                type="checkbox"
+              />
+              <span
+                className="switch-label"
+                data-off="No"
+                data-on="Yes"
+              />
+              <span
+                className="switch-handle"
+              />
+            </Label>
+          </Col>
+        </FormGroup>
+      </Form>
+      <Row
+        tag="div"
+      >
+        <Col
+          className="text-right"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <Button
+            color="primary"
+            data-spec="export-threads-form-submit-button"
+            onClick={[Function]}
+            tag="button"
+            type="submit"
+          >
+            Export
+          </Button>
+        </Col>
+      </Row>
+    </CardBlock>
+  </Card>
+</TabPane>
+`;
