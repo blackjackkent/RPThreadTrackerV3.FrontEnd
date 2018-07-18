@@ -10,7 +10,6 @@ import PublicHeader from './PublicHeader';
 import getColumns from './_columns';
 import { getPublicThreads } from '../../../infrastructure/selectors';
 import Footer from '../../shared/footer/Footer';
-import LoadingIndicator from '../../shared/LoadingIndicator';
 import { legacyPublicSlugs, buildLegacyView } from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
 
@@ -54,20 +53,6 @@ class Public extends Component {
 			threads,
 			slug
 		} = this.props;
-		const columns = getColumns(view.columns);
-		if (!columns || !columns.length) {
-			return (<LoadingIndicator
-				data-spec="layout-loader"
-				style={{
-					width: 50,
-					height: 50,
-					position: 'absolute',
-					top: '50%',
-					left: '50%',
-					transform: 'translate(-50%, -50%)'
-				}}
-			/>);
-		}
 		return (
 			<div className="animated fadeIn">
 				<PublicHeader title={view.name} slug={slug} />

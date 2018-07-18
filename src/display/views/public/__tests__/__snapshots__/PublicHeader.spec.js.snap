@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<header
+  className="app-header navbar public-header"
+>
+  <a
+    className="navbar-brand"
+    href="/"
+  >
+    RPTHREADTRACKER.COM
+  </a>
+  <Nav
+    navbar={true}
+    tag="ul"
+  >
+    <h1
+      className="navbar-brand"
+      href="/public/my-slug"
+    >
+      My Title
+    </h1>
+  </Nav>
+</header>
+`;

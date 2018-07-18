@@ -11,6 +11,11 @@ describe('data', () => {
 			expect(columns).toHaveLength(2);
 		});
 		it('should return empty array when no column IDs provided', () => {
+			const columnIds = null;
+			const columns = _columns(columnIds);
+			expect(columns).toHaveLength(0);
+		});
+		it('should return empty array when empty column IDs provided', () => {
 			const columnIds = [];
 			const columns = _columns(columnIds);
 			expect(columns).toHaveLength(0);
@@ -104,6 +109,68 @@ describe('data', () => {
 			expect(cellElement.find('a')).toHaveText('my-partner-identifier ');
 			expect(cellElement.find('a').props().href).toBe('http://www.url.com');
 			expect(cellElement.find('i')).toHaveClassName('fa-external-link-alt');
+		});
+	});
+	describe('last post date column', () => {
+		it('should be returned when last post date column ID is passed', () => {
+			const columnIds = ['status.LastPostDate'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			expect(column.Header).toBe('Last Post Date');
+			expect(column.accessor).toBe('status.LastPostDate');
+			expect(column.minWidth).toBe(200);
+			expect(column.filterable).toBe(false);
+		});
+		it('should display Awaiting Starter if status does not exist', () => {
+			const columnIds = ['status.LastPostDate'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			const cellJsx = column.Cell({ original: {} });
+			const cellElement = shallow(cellJsx);
+			expect(cellElement.find('span')).toHaveText('Awaiting Starter');
+		});
+		it('should display Not Found if LastPostDate is null', () => {
+			const columnIds = ['status.LastPostDate'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			const cellJsx = column.Cell({ original: { status: {} } });
+			const cellElement = shallow(cellJsx);
+			expect(cellElement.find('span')).toHaveText('Post Not Found');
+		});
+		it('should display formatted date if LastPostDate is present', () => {
+			const columnIds = ['status.LastPostDate'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			const cellJsx = column.Cell({ original: { status: { LastPostDate: '1989-06-05 15:42' } } });
+			const cellElement = shallow(cellJsx);
+			expect(cellElement.find('time')).toHaveText('June 5, 1989 3:42PM');
+		});
+	});
+	describe('tracked partner column', () => {
+		it('should be returned when tracked partner column ID is passed', () => {
+			const columnIds = ['thread.partnerUrlIdentifier'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			expect(column.Header).toBe('Tracked Partner');
+			expect(column.accessor).toBe('thread.partnerUrlIdentifier');
+			expect(column.minWidth).toBe(200);
+			expect(column.filterable).toBe(false);
+		});
+		it('should have cell with empty span if tracked partner does not exist', () => {
+			const columnIds = ['thread.partnerUrlIdentifier'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			const cellJsx = column.Cell({});
+			const cellElement = shallow(cellJsx);
+			expect(cellElement.find('span')).toHaveText('');
+		});
+		it('should have cell with partner shortname if partner does exist', () => {
+			const columnIds = ['thread.partnerUrlIdentifier'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			const cellJsx = column.Cell({ value: 'my-partner' });
+			const cellElement = shallow(cellJsx);
+			expect(cellElement.find('span')).toHaveText('my-partner');
 		});
 	});
 });

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="animated fadeIn"
+>
+  <PublicHeader
+    slug="my-slug"
+    title="Test View"
+  />
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <PublicThreadTable
+        columns={
+          Array [
+            Object {},
+            Object {},
+            Object {},
+            Object {},
+          ]
+        }
+        threads={
+          Array [
+            Object {},
+            Object {},
+            Object {},
+          ]
+        }
+        view={
+          Object {
+            "id": "12345",
+            "name": "Test View",
+          }
+        }
+      />
+    </Col>
+  </Row>
+  <Footer />
+</div>
+`;
