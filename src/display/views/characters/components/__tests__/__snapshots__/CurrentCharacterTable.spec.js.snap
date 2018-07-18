@@ -80,7 +80,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     defaultExpanded={Object {}}
     defaultFilterMethod={[Function]}
     defaultFiltered={Array []}
-    defaultPageSize={20}
+    defaultPageSize={10}
     defaultResized={Array []}
     defaultSortDesc={false}
     defaultSortMethod={[Function]}
@@ -135,7 +135,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     ofText="of"
     onFetchData={[Function]}
     originalKey="_original"
-    pageSize={10}
     pageSizeOptions={
       Array [
         5,
@@ -246,7 +245,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     defaultExpanded={Object {}}
     defaultFilterMethod={[Function]}
     defaultFiltered={Array []}
-    defaultPageSize={20}
+    defaultPageSize={10}
     defaultResized={Array []}
     defaultSortDesc={false}
     defaultSortMethod={[Function]}
@@ -301,7 +300,6 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     ofText="of"
     onFetchData={[Function]}
     originalKey="_original"
-    pageSize={10}
     pageSizeOptions={
       Array [
         5,
