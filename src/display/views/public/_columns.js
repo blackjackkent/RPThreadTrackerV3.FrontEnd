@@ -47,8 +47,11 @@ const getColumns = (columnIds) => {
 			Header: columnTypes.LAST_POST_DATE.name,
 			accessor: columnTypes.LAST_POST_DATE.key,
 			Cell: (row) => {
-				if (!row.original.status) {
+				if (!row.original.status && !row.original.thread.isArchived) {
 					return (<span>Awaiting Starter</span>);
+				}
+				if (!row.original.status && row.original.thread.isArchived) {
+					return (<span>Archived</span>);
 				}
 				return row.original.status.LastPostDate ?
 					(<Moment format="MMMM D, YYYY h:mmA">{row.original.status.LastPostDate}</Moment>) :

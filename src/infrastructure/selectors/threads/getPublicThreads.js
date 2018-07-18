@@ -13,7 +13,7 @@ const getPublicThreads = createSelector(
 			threads,
 			threadsStatus,
 			s => s,
-			false
+			true
 		);
 	}
 );

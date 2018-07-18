@@ -121,13 +121,21 @@ describe('data', () => {
 			expect(column.minWidth).toBe(200);
 			expect(column.filterable).toBe(false);
 		});
-		it('should display Awaiting Starter if status does not exist', () => {
+		it('should display Awaiting Starter if status does not exist and thread is not archived', () => {
 			const columnIds = ['status.LastPostDate'];
 			const columns = _columns(columnIds);
 			const column = columns[0];
-			const cellJsx = column.Cell({ original: {} });
+			const cellJsx = column.Cell({ original: { thread: {} } });
 			const cellElement = shallow(cellJsx);
 			expect(cellElement.find('span')).toHaveText('Awaiting Starter');
+		});
+		it('should display Archived if status does not exist and thread is archived', () => {
+			const columnIds = ['status.LastPostDate'];
+			const columns = _columns(columnIds);
+			const column = columns[0];
+			const cellJsx = column.Cell({ original: { thread: { isArchived: true } } });
+			const cellElement = shallow(cellJsx);
+			expect(cellElement.find('span')).toHaveText('Archived');
 		});
 		it('should display Not Found if LastPostDate is null', () => {
 			const columnIds = ['status.LastPostDate'];

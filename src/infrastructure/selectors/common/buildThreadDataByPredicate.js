@@ -6,7 +6,7 @@ export default (threads, threadsStatus, predicate, includeNullStatus) => {
 		return { thread, status: s };
 	}));
 	if (includeNullStatus) {
-		results = results.concat(threads.filter(t => !t.postId)
+		results = results.concat(threads.filter(t => !t.postId || t.isArchived)
 			.map(t => ({ thread: t, status: null })));
 	}
 	return results;
