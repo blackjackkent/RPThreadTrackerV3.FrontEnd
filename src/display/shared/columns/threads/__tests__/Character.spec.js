@@ -12,8 +12,9 @@ describe('data', () => {
 	});
 	it('should be configured properly', () => {
 		const column = Character();
+		expect(column).toHaveProperty('id', 'thread.character.urlIdentifier');
 		expect(column).toHaveProperty('Header', 'Character');
-		expect(column).toHaveProperty('accessor', 'thread.character.urlIdentifier');
+		expect(column).toHaveProperty('accessor', expect.any(Function));
 		expect(column).toHaveProperty('minWidth', 250);
 		expect(column).toHaveProperty('sortable', true);
 		expect(column).toHaveProperty('resizable', true);
@@ -31,8 +32,10 @@ describe('cell', () => {
 	it('should display cell with character name if character name exists', () => {
 		const column = Character([], false);
 		const cellJsx = column.Cell({
-			original: { thread: { character: { characterName: 'My Character' } } },
-			value: 'my-character-url'
+			value: {
+				urlIdentifier: 'my-character-url',
+				characterName: 'My Character'
+			}
 		});
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('span')).toHaveText('my-character-url (My Character)');
@@ -40,8 +43,9 @@ describe('cell', () => {
 	it('should display cell without character name if character name does not exist', () => {
 		const column = Character([], false);
 		const cellJsx = column.Cell({
-			original: { thread: { character: {} } },
-			value: 'my-character-url'
+			value: {
+				urlIdentifier: 'my-character-url'
+			}
 		});
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('span')).toHaveText('my-character-url');

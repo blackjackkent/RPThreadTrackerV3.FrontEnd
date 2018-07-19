@@ -3,9 +3,13 @@ import columns from '../../../../infrastructure/constants/columns';
 import CharacterSelectItem from '../../CharacterSelectItem';
 
 export default (characters, includeFilter) => ({
+	id: columns.CHARACTER.key,
 	Header: columns.CHARACTER.name,
-	accessor: columns.CHARACTER.key,
-	Cell: row => <span>{row.value}{row.original.thread.character.characterName && ` (${row.original.thread.character.characterName})`}</span>,
+	accessor: row => ({
+		urlIdentifier: row.thread.character.urlIdentifier,
+		characterName: row.thread.character.characterName
+	}),
+	Cell: row => <span>{row.value.urlIdentifier}{row.value.characterName && ` (${row.value.characterName})`}</span>,
 	minWidth: 250,
 	sortable: true,
 	resizable: true,
