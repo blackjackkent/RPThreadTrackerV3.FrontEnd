@@ -4,7 +4,7 @@ import { Col, Row, FormGroup } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import MultipleValueTextInput from 'react-multivalue-text-input';
-import CharacterSelectItem from './CharacterSelectItem';
+import CharacterSelectItem from '../../shared/CharacterSelectItem';
 import validator from './_validator';
 import formData from './_formData';
 

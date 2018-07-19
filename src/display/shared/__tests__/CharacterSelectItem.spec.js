@@ -45,7 +45,7 @@ describe('rendering', () => {
 			const jsx = (<CharacterSelectItem {...props} />);
 			const element = shallow(jsx);
 			const text = element.find('option').text();
-			expect(text).toBe('Test Character');
+			expect(text).toBe('test-character (Test Character)');
 		});
 		it('should render character URL if name unavailable', () => {
 			const props = createTestProps({

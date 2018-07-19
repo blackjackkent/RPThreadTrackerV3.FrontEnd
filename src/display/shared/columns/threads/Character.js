@@ -1,10 +1,11 @@
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
+import CharacterSelectItem from '../../CharacterSelectItem';
 
 export default (characters, includeFilter) => ({
 	Header: columns.CHARACTER.name,
 	accessor: columns.CHARACTER.key,
-	Cell: row => <span>{row.value} {row.original.thread.character.characterName && `(${row.original.thread.character.characterName})`}</span>,
+	Cell: row => <span>{row.value}{row.original.thread.character.characterName && ` (${row.original.thread.character.characterName})`}</span>,
 	minWidth: 250,
 	sortable: true,
 	resizable: true,
@@ -17,7 +18,8 @@ export default (characters, includeFilter) => ({
 			value={filter ? filter.value : ''}
 		>
 			<option value="">Show All</option>
-			{characters.map(character => <option key={character.characterId} value={character.characterId}>{character.urlIdentifier} {character.characterName && `(${character.characterName})`}</option>)}
+			{characters.map(character =>
+				<CharacterSelectItem key={character.characterId} character={character} />)}
 		</select>
 	),
 	filterMethod: (filter, row) => {

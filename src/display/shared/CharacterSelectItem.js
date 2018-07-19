@@ -14,7 +14,7 @@ const CharacterSelectItem = (props) => {
 			value={character.characterId}
 			key={character.characterId}
 		>
-			{character.characterName ? character.characterName : character.urlIdentifier}
+			{character.urlIdentifier}{character.characterName && ` (${character.characterName})`}
 		</option>
 	);
 };

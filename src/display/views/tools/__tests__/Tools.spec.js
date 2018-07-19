@@ -9,7 +9,9 @@ jest.mock('../components/ManagePublicViewsPane', () => 'ManagePublicViewsPane');
 jest.mock('../components/BrowserExtensionsPane', () => 'BrowserExtensionsPane');
 jest.mock('../components/ExportThreadsPane', () => 'ExportThreadsPane');
 jest.mock('../../../../infrastructure/actions', () => ({}));
-jest.mock('../../../../infrastructure/selectors', () => ({}));
+jest.mock('../../../../infrastructure/selectors', () => ({
+	getIsLoadingIconVisible: () => true
+}));
 jest.mock('../../../../infrastructure/constants/tabs', () => ({
 	TOOLS: {
 		TAB1: {

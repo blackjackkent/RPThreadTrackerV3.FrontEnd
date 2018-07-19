@@ -5,11 +5,17 @@ import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
 import AsideNewsRow from '../AsideNewsRow';
 // #endregion imports
 
+const DATE_TO_USE = new Date('June 5, 1989 03:24:00');
+const MockDate = Date;
+global.Date = jest.fn(() => DATE_TO_USE);
+global.Date.UTC = MockDate.UTC;
+global.Date.parse = MockDate.parse;
+global.Date.now = MockDate.now;
 const createTestProps = propOverrides => ({
 	item: {
 		PostUrl: 'testurl',
 		PostTitle: 'testtitle',
-		PostDate: '2018-03-14T01:19:58Z',
+		PostDate: Date.now,
 		isUnread: false
 	},
 	...propOverrides

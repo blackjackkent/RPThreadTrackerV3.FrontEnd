@@ -5,7 +5,7 @@ import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
 import UpsertThreadForm from '../UpsertThreadForm';
 // #endregion imports
 
-jest.mock('../CharacterSelectItem', () => 'CharacterSelectItem');
+jest.mock('../../../shared/CharacterSelectItem', () => 'CharacterSelectItem');
 
 const createTestProps = propOverrides => ({
 	threadToEdit: {},

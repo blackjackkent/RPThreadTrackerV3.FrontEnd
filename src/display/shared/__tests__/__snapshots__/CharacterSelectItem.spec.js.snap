@@ -5,7 +5,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   key="1"
   value={1}
 >
-  Test Character
+  test-character
+   (Test Character)
 </option>
 `;
 

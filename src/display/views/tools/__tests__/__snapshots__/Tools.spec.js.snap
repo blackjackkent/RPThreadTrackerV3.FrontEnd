@@ -96,6 +96,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           onExportRequest={[Function]}
         />
         <ManagePublicViewsPane
+          isLoadingIconVisible={true}
           openDeletePublicViewModal={[MockFunction]}
           openUpsertPublicViewModal={[MockFunction]}
           publicViews={

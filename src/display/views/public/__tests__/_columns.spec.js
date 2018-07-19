@@ -3,6 +3,16 @@ import { shallow } from 'enzyme';
 import _columns from '../_columns';
 // #endregion imports
 
+jest.mock('../../../shared/columns', () => ({
+	EditButton: title => ({ title }),
+	ToggleHiatusButton: () => ({ title: 'ToggleHiatusButton' }),
+	DeleteButton: title => ({ title }),
+	CharacterName: () => ({ title: 'CharacterName' }),
+	UrlIdentifier: () => ({ title: 'UrlIdentifier' }),
+	PlatformId: () => ({ title: 'PlatformId' }),
+	IsOnHiatus: () => ({ title: 'IsOnHiatus' })
+}));
+
 describe('data', () => {
 	describe('column logic', () => {
 		it('should return a column for each valid column ID passed in', () => {
