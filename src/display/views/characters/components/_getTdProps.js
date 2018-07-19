@@ -9,7 +9,7 @@ const getTdProps = (onDeleteTrigger, onEditTrigger, onHiatusTrigger) =>
 				onHiatusTrigger(row.original);
 				return;
 			}
-			if (column.id === 'untrackButton') {
+			if (column.id === 'deleteButton') {
 				onDeleteTrigger(row.original);
 				return;
 			}

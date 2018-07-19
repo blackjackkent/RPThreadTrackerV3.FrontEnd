@@ -53,6 +53,12 @@
 			"error",
 			"as-needed"
 		],
+		"no-confusing-arrow": [
+			"error",
+			{
+				"allowParens": true
+			}
+		],
 		"import/no-extraneous-dependencies": [
 			"error",
 			{

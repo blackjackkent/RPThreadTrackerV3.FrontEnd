@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, openDeletePublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
+import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import ExportThreadsPane from './components/ExportThreadsPane';
@@ -18,6 +19,7 @@ const propTypes = {
 	fetchCharacters: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	fetchTags: PropTypes.func.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
 	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
@@ -34,11 +36,13 @@ function mapStateToProps(state) {
 		publicViews,
 		characters
 	} = state;
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		characters,
 		user,
 		tags,
 		publicViews,
+		isLoadingIconVisible,
 		activeTab: ui.activeToolsTab
 	};
 }
@@ -63,7 +67,7 @@ class Tools extends Component {
 		this.props.exportThreads({ includeHiatused, includeArchive });
 	}
 	render() {
-		const { activeTab, publicViews } = this.props;
+		const { activeTab, publicViews, isLoadingIconVisible } = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
 			<div className="animated fadeIn static-container settings-container">
@@ -93,6 +97,7 @@ class Tools extends Component {
 								openUpsertPublicViewModal={this.props.openUpsertPublicViewModal}
 								openDeletePublicViewModal={this.props.openDeletePublicViewModal}
 								publicViews={publicViews}
+								isLoadingIconVisible={isLoadingIconVisible}
 							/>
 							<BrowserExtensionsPane />
 						</TabContent>

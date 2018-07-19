@@ -5,6 +5,7 @@ import columns from './_columns';
 import getTdProps from './_getTdProps';
 
 const propTypes = {
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
 	openDeletePublicViewModal: PropTypes.func.isRequired
@@ -12,6 +13,7 @@ const propTypes = {
 
 const PublicViewsTable = (props) => {
 	const {
+		isLoadingIconVisible,
 		publicViews,
 		openUpsertPublicViewModal,
 		openDeletePublicViewModal
@@ -28,7 +30,7 @@ const PublicViewsTable = (props) => {
 					openDeletePublicViewModal,
 					openUpsertPublicViewModal
 				)}
-				noDataText="You have not yet created any public views."
+				noDataText={isLoadingIconVisible ? 'Loading...' : 'You have not yet created any public views.'}
 			/>
 		</div>
 	);

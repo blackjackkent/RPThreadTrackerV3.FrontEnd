@@ -4,13 +4,16 @@ import { TabPane, Col, Row, Button, Card, CardHeader, CardBlock } from 'reactstr
 import PublicViewsTable from './public-views/PublicViewsTable';
 
 const propTypes = {
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
 	openDeletePublicViewModal: PropTypes.func.isRequired
 };
 
 const ManagePublicViewsPane = (props) => {
-	const { publicViews, openUpsertPublicViewModal, openDeletePublicViewModal } = props;
+	const {
+		publicViews, openUpsertPublicViewModal, openDeletePublicViewModal, isLoadingIconVisible
+	} = props;
 	return (
 		<TabPane tabId="manage-public-views">
 			<Card>
@@ -49,6 +52,7 @@ const ManagePublicViewsPane = (props) => {
 						publicViews={publicViews}
 						openUpsertPublicViewModal={openUpsertPublicViewModal}
 						openDeletePublicViewModal={openDeletePublicViewModal}
+						isLoadingIconVisible={isLoadingIconVisible}
 					/>
 				</Col>
 			</Row>
