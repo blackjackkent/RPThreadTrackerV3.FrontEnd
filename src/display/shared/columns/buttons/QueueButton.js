@@ -1,7 +1,8 @@
 import React from 'react';
+import columns from '../../../../infrastructure/constants/columns';
 
 export default isQueuePage => ({
-	id: 'queueButton',
+	id: columns.QUEUE_BUTTON.key,
 	Cell: () => (
 		<span>
 			<i title={isQueuePage ? 'Unmark Thread Queued' : 'Mark Thread Queued'} className="fas fa-clock" />

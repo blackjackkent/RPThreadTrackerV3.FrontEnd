@@ -1,4 +1,19 @@
 export default {
+	ARCHIVE_BUTTON: {
+		key: 'archiveButton'
+	},
+	DELETE_BUTTON: {
+		key: 'deleteButton'
+	},
+	EDIT_BUTTON: {
+		key: 'editButton'
+	},
+	QUEUE_BUTTON: {
+		key: 'queueButton'
+	},
+	TOGGLE_HIATUS_BUTTON: {
+		key: 'toggleHiatusButton'
+	},
 	THREAD_TITLE: {
 		key: 'thread.userTitle',
 		name: 'Thread Title'

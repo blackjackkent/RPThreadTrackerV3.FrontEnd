@@ -1,10 +1,11 @@
 import React from 'react';
+import columns from '../../../../infrastructure/constants/columns';
 
 export default () => ({
-	id: 'toggleHiatusButton',
+	id: columns.TOGGLE_HIATUS_BUTTON.key,
 	Cell: row => (
 		<span>
-			<i title={`${row.original.isOnHiatus ? 'Remove from Hiatus' : 'Set On Hiatus'}`} className="fas fa-power-off" />
+			<i title={`${row.original.isOnHiatus ? 'Remove From Hiatus' : 'Set On Hiatus'}`} className="fas fa-power-off" />
 		</span>
 	),
 	width: 30,

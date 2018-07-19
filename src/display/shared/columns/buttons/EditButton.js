@@ -1,7 +1,8 @@
 import React from 'react';
+import columns from '../../../../infrastructure/constants/columns';
 
 export default title => ({
-	id: 'editButton',
+	id: columns.EDIT_BUTTON.key,
 	Cell: () => (
 		<span>
 			<i title={title} className="fas fa-edit" />

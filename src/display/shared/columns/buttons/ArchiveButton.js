@@ -1,10 +1,14 @@
 import React from 'react';
+import columns from '../../../../infrastructure/constants/columns';
 
 export default isArchivePage => ({
-	id: 'archiveButton',
+	id: columns.ARCHIVE_BUTTON.key,
 	Cell: () => (
 		<span>
-			<i title={isArchivePage ? 'Unarchive Thread' : 'Archive Thread'} className="fas fa-lock" />
+			<i
+				title={isArchivePage ? 'Unarchive Thread' : 'Archive Thread'}
+				className={isArchivePage ? 'fas fa-unlock' : 'fas fa-lock'}
+			/>
 		</span>
 	),
 	width: 30,

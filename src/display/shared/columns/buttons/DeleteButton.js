@@ -1,7 +1,8 @@
 import React from 'react';
+import columns from '../../../../infrastructure/constants/columns';
 
 export default title => ({
-	id: 'deleteButton',
+	id: columns.DELETE_BUTTON.key,
 	Cell: () => (
 		<span>
 			<i title={title} className="fas fa-trash-alt" />
