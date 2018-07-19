@@ -61,7 +61,11 @@ import {
 	SUBMIT_USER_CHANGE_PASSWORD_SUCCESS,
 	SUBMIT_USER_ACCOUNT_INFO,
 	SUBMIT_USER_ACCOUNT_INFO_FAILURE,
-	SUBMIT_USER_ACCOUNT_INFO_SUCCESS
+	SUBMIT_USER_ACCOUNT_INFO_SUCCESS,
+	FETCH_PUBLIC_THREADS,
+	FETCHED_PUBLIC_THREADS_FAILURE,
+	FETCHED_PUBLIC_THREADS_STATUS_FAILURE,
+	FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
 } from '../actions';
 // #endregion imports
 
@@ -79,6 +83,7 @@ const defaultState = {
 	forgotPasswordLoading: false,
 	loginLoading: false,
 	publicViewsLoading: false,
+	publicThreadsLoading: false,
 	registrationLoading: false,
 	resetPasswordLoading: false,
 	untrackCharactersLoading: false,
@@ -241,6 +246,19 @@ function loading(state = defaultState, action) {
 			});
 		case FETCHED_PUBLIC_VIEWS_FAILURE:
 		case FETCHED_PUBLIC_VIEWS_SUCCESS:
+			return Object.assign({}, state, {
+				publicViewsLoading: false
+			});
+		// #endregion
+
+		// #region Public Threads
+		case FETCH_PUBLIC_THREADS:
+			return Object.assign({}, state, {
+				publicThreadsLoading: true
+			});
+		case FETCHED_PUBLIC_THREADS_FAILURE:
+		case FETCHED_PUBLIC_THREADS_STATUS_FAILURE:
+		case FETCHED_PUBLIC_THREADS_STATUS_SUCCESS:
 			return Object.assign({}, state, {
 				publicViewsLoading: false
 			});

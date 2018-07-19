@@ -66,7 +66,7 @@ describe('filter', () => {
 		const filterElement = shallow(filterJsx);
 		expect(filterElement.find('select')).toHaveProp('value', '');
 	});
-	it('should set select value to empty string when filter set', () => {
+	it('should set select value to selected value when filter set', () => {
 		const column = Character([]);
 		const filterJsx = column.Filter({ filter: { value: 2 } });
 		const filterElement = shallow(filterJsx);

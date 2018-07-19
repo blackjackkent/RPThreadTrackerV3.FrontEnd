@@ -8,12 +8,13 @@ import { fetchPublicThreads, fetchLegacyPublicThreads } from '../../../infrastru
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
 import getColumns from './_columns';
-import { getPublicThreads } from '../../../infrastructure/selectors';
+import { getPublicThreads, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import Footer from '../../shared/footer/Footer';
 import { legacyPublicSlugs, buildLegacyView } from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
 
 const propTypes = {
+	isLoadingIconVisible: PropTypes.bool.isRequired,
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchLegacyPublicThreads: PropTypes.func.isRequired,
 	slug: PropTypes.string,
@@ -27,9 +28,11 @@ const defaultProps = {
 
 function mapStateToProps(state) {
 	const publicThreads = getPublicThreads(state);
+	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		view: state.publicThreads.view,
-		threads: publicThreads
+		threads: publicThreads,
+		isLoadingIconVisible
 	};
 }
 
@@ -51,7 +54,8 @@ class Public extends Component {
 		const {
 			view,
 			threads,
-			slug
+			slug,
+			isLoadingIconVisible
 		} = this.props;
 		return (
 			<div className="animated fadeIn">
@@ -62,6 +66,7 @@ class Public extends Component {
 							columns={getColumns(view.columns)}
 							threads={threads}
 							view={view}
+							isLoadingIconVisible={isLoadingIconVisible}
 						/>
 					</Col>
 				</Row>

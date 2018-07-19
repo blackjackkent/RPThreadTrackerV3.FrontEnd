@@ -7,7 +7,8 @@ import Public from '../Public';
 // #region mocks
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getPublicThreads: () => [{}, {}, {}]
+	getPublicThreads: () => [{}, {}, {}],
+	getIsLoadingIconVisible: () => false
 }));
 jest.mock('../../../../infrastructure/constants/legacyPublicValues', () => ({
 	buildLegacyView: () => ({

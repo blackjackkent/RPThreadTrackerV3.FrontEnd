@@ -37,6 +37,9 @@ const getIsLoadingIconVisible = createSelector(
 		if (loading.publicViewsLoading) {
 			return true;
 		}
+		if (loading.publicThreadsLoading) {
+			return true;
+		}
 		if (loading.untrackCharactersLoading) {
 			return true;
 		}

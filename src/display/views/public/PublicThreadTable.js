@@ -5,7 +5,8 @@ import ReactTable from 'react-table';
 const propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	view: PropTypes.shape({}).isRequired
+	view: PropTypes.shape({}).isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired
 };
 
 function getData(threads) {
@@ -24,7 +25,8 @@ const PublicThreadTable = (props) => {
 	const {
 		threads,
 		columns,
-		view
+		view,
+		isLoadingIconVisible
 	} = props;
 	return (
 		<div>
@@ -40,6 +42,7 @@ const PublicThreadTable = (props) => {
 					}
 				]}
 				showPaginationTop
+				noDataText={isLoadingIconVisible ? 'Loading...' : 'No Threads Found'}
 			/>
 		</div>
 	);
