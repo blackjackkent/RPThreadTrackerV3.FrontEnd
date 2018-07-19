@@ -59,7 +59,7 @@ class Public extends Component {
 		} = this.props;
 		return (
 			<div className="animated fadeIn">
-				<PublicHeader title={view.name} slug={slug} />
+				<PublicHeader title={view.name} slug={slug} isLoadingIconVisible={isLoadingIconVisible} />
 				<Row>
 					<Col>
 						<ThreadTable

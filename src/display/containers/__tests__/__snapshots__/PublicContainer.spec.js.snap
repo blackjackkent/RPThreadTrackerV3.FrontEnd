@@ -2,33 +2,16 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <div
-  className="app flex-row align-items-center"
+  className="app flex-row"
 >
   <Connect(ReduxToastr) />
   <Container
     className="public-threads-container"
     tag="div"
   >
-    <Row
-      tag="div"
-    >
-      <Col
-        tag="div"
-        widths={
-          Array [
-            "xs",
-            "sm",
-            "md",
-            "lg",
-            "xl",
-          ]
-        }
-      >
-        <Component
-          slug="my-slug"
-        />
-      </Col>
-    </Row>
+    <Component
+      slug="my-slug"
+    />
   </Container>
 </div>
 `;

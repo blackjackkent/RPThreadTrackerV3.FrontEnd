@@ -260,7 +260,7 @@ function loading(state = defaultState, action) {
 		case FETCHED_PUBLIC_THREADS_STATUS_FAILURE:
 		case FETCHED_PUBLIC_THREADS_STATUS_SUCCESS:
 			return Object.assign({}, state, {
-				publicViewsLoading: false
+				publicThreadsLoading: false
 			});
 		// #endregion
 

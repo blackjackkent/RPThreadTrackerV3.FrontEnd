@@ -1,11 +1,11 @@
 .public-threads-container {
 	color: $gray-100;
-	.app-header.navbar.public-header {
+	.public-header {
 		position: relative;
-		margin: 0; padding: 0;
 		margin-bottom: 30px; 
 		margin-top: 10px; 
 		padding: 5px; 
+		border-bottom: 1px solid $base-blue;
 		
 		ul { text-align: right; margin-right: 10px; }
 		.navbar-brand {
@@ -14,7 +14,6 @@
 			height: 50px;
 			margin: 0;
 			padding: 0;
-			margin-left: 10px;
 		}
 		h1 {
 			font-size: 1.5rem;

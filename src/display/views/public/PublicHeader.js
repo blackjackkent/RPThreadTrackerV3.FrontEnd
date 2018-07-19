@@ -1,27 +1,37 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Nav } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
+import LoadingIndicator from '../../shared/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {
 	slug: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired
+	title: PropTypes.string.isRequired,
+	isLoadingIconVisible: PropTypes.bool.isRequired
 };
 
 const PublicHeader = (props) => {
 	const {
 		slug,
-		title
+		title,
+		isLoadingIconVisible
 	} = props;
 
 	return (
-		<header className="app-header navbar public-header">
-			<a href="/" className="navbar-brand">RPTHREADTRACKER.COM</a>
-			<Nav navbar>
+		<Row className="public-header">
+			<Col>
+				<a href="/" className="navbar-brand">RPTHREADTRACKER.COM</a>
+			</Col>
+			<Col className="text-right">
+				{isLoadingIconVisible && (
+					<div data-spec="header-loading-indicator" className="float-right">
+						<LoadingIndicator className="invert" />
+					</div>
+				)}
 				<h1 href={`/public/${slug}`} className="navbar-brand">{title}</h1>
-			</Nav>
-		</header>
+			</Col>
+		</Row>
 	);
 };
 

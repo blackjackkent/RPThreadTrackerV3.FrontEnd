@@ -1,18 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<header
-  className="app-header navbar public-header"
+<Row
+  className="public-header"
+  tag="div"
 >
-  <a
-    className="navbar-brand"
-    href="/"
+  <Col
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
   >
-    RPTHREADTRACKER.COM
-  </a>
-  <Nav
-    navbar={true}
-    tag="ul"
+    <a
+      className="navbar-brand"
+      href="/"
+    >
+      RPTHREADTRACKER.COM
+    </a>
+  </Col>
+  <Col
+    className="text-right"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
   >
     <h1
       className="navbar-brand"
@@ -20,6 +43,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     >
       My Title
     </h1>
-  </Nav>
-</header>
+  </Col>
+</Row>
 `;

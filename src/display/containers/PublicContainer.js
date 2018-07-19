@@ -14,14 +14,10 @@ const defaultProps = {
 };
 
 const PublicContainer = ({ match }) => (
-	<div className="app flex-row align-items-center">
+	<div className="app flex-row">
 		<ReduxToastr />
 		<Container className="public-threads-container">
-			<Row>
-				<Col>
-					<Public slug={match.params.slug} />
-				</Col>
-			</Row>
+			<Public slug={match.params.slug} />
 		</Container>
 	</div>
 );

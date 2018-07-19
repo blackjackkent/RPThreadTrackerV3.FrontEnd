@@ -34,6 +34,7 @@ const PublicThreadTable = (props) => {
 				// eslint-disable-next-line no-return-assign
 				className="-striped"
 				data={getData(threads)}
+				defaultPageSize={20}
 				columns={columns}
 				defaultSorted={[
 					{

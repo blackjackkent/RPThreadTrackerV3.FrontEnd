@@ -5,6 +5,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   className="animated fadeIn"
 >
   <PublicHeader
+    isLoadingIconVisible={false}
     slug="my-slug"
     title="Test View"
   />
