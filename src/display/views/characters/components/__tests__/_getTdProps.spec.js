@@ -16,8 +16,8 @@ describe('behavior', () => {
 		});
 	});
 	describe('onDeleteTrigger', () => {
-		it('should fire when untrackButton column is clicked', () => {
-			const clickedColumn = { id: 'untrackButton' };
+		it('should fire when deleteButton column is clicked', () => {
+			const clickedColumn = { id: 'deleteButton' };
 			const clickedRow = { original: { characterId: 3 } };
 			const onDeleteTrigger = jest.fn();
 			const propsCreator = _getTdProps(onDeleteTrigger, jest.fn(), jest.fn());
