@@ -30,5 +30,14 @@ export default (characters, includeFilter) => ({
 		const characterId = parseInt(filter.value, 10);
 		// eslint-disable-next-line no-underscore-dangle
 		return characterId === row._original.thread.character.characterId;
+	},
+	sortMethod: (a, b) => {
+		if (a.urlIdentifier === b.urlIdentifier) {
+			if (a.characterName === b.characterName) {
+				return 0;
+			}
+			return a.characterName > b.characterName ? 1 : -1;
+		}
+		return a.urlIdentifier > b.urlIdentifier ? 1 : -1;
 	}
 });
