@@ -11,6 +11,6 @@ const getColumns = (characters, partners, lastPosters) => [
 	columns.LastPoster(lastPosters, true),
 	columns.LastPostDate(),
 	columns.DateQueued(),
-	columns.TrackedPartner(partners)
+	columns.TrackedPartner(partners, true)
 ];
 export default getColumns;

@@ -1,6 +1,6 @@
 import { FETCHED_ACTIVE_THREADS_STATUS_CHUNK_SUCCESS, FETCH_ACTIVE_THREADS_STATUS, SUBMIT_USER_LOGOUT, UPDATE_THREAD_SUCCESS } from '../actions';
 
-function activeThreads(state = [], action) {
+function activeThreadsStatus(state = [], action) {
 	switch (action.type) {
 		case FETCH_ACTIVE_THREADS_STATUS:
 			return [];
@@ -14,4 +14,4 @@ function activeThreads(state = [], action) {
 	}
 }
 
-export default activeThreads;
+export default activeThreadsStatus;

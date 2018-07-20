@@ -10,6 +10,6 @@ const getColumns = (characters, partners, lastPosters) => [
 	columns.Character(characters, true),
 	columns.LastPoster(lastPosters, true),
 	columns.LastPostDate(),
-	columns.TrackedPartner(partners)
+	columns.TrackedPartner(partners, true)
 ];
 export default getColumns;

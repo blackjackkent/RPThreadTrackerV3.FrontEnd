@@ -35,10 +35,10 @@ describe('cell', () => {
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('span')).toHaveText('Awaiting Starter');
 	});
-	it('should display Archived if status does not exist and thread is archived', () => {
+	it('should display Awaiting Starter if status does not exist and thread is archived', () => {
 		const cellJsx = column.Cell({ original: { thread: { isArchived: true } } });
 		const cellElement = shallow(cellJsx);
-		expect(cellElement.find('span')).toHaveText('Archived');
+		expect(cellElement.find('span')).toHaveText('Awaiting Starter');
 	});
 	it('should display Not Found if LastPostDate is null', () => {
 		const cellJsx = column.Cell({ original: { status: {} } });

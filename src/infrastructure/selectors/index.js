@@ -17,6 +17,7 @@ export { default as getQueuedThreads } from './threads/active/queued/getQueuedTh
 export { default as getArchivedThreads } from './threads/archived/getArchivedThreads';
 export { default as getArchivedThreadCharacters } from './threads/archived/getArchivedThreadCharacters';
 export { default as getArchivedThreadPartners } from './threads/archived/getArchivedThreadPartners';
+export { default as getArchivedThreadLastPosters } from './threads/archived/getArchivedThreadLastPosters';
 export { default as getArchivedThreadTags } from './threads/archived/getArchivedThreadTags';
 export { default as getArchivedFilteredThreads } from './threads/archived/getArchivedFilteredThreads';
 

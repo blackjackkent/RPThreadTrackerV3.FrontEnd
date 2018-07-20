@@ -18,6 +18,7 @@ export { default as exportThreadsSaga } from './threads/exportThreadsSaga';
 export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsSaga';
 export { default as fetchActiveThreadsStatusSaga } from './threads/fetchActiveThreadsStatusSaga';
 export { default as fetchArchivedThreadsSaga } from './threads/fetchArchivedThreadsSaga';
+export { default as fetchArchivedThreadsStatusSaga } from './threads/fetchArchivedThreadsStatusSaga';
 export { default as fetchTagsSaga } from './threads/fetchTagsSaga';
 export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
 export { default as upsertThreadSaga } from './threads/upsertThreadSaga';

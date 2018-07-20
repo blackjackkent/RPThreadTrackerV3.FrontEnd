@@ -4,7 +4,8 @@ import axios from 'axios';
 import {
 	FETCH_ARCHIVED_THREADS,
 	fetchedArchivedThreadsSuccess,
-	fetchedArchivedThreadsFailure
+	fetchedArchivedThreadsFailure,
+	fetchArchivedThreadsStatus
 } from '../../actions';
 // #endregion imports
 
@@ -13,6 +14,7 @@ function* fetchArchivedThreads() {
 		const response = yield call(axios.get, `${API_BASE_URL}api/thread?isArchived=true`);
 		const threadData = response.data;
 		yield put(fetchedArchivedThreadsSuccess(threadData));
+		yield put(fetchArchivedThreadsStatus(threadData));
 	} catch (e) {
 		yield put(fetchedArchivedThreadsFailure());
 	}

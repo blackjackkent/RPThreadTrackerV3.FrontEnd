@@ -120,6 +120,18 @@ export {
 	fetchedArchivedThreadsSuccess
 } from './threads/fetchArchivedThreads';
 export {
+	FETCH_ARCHIVED_THREADS_STATUS,
+	fetchArchivedThreadsStatus,
+	FETCHED_ARCHIVED_THREADS_STATUS_CHUNK_FAILURE,
+	FETCHED_ARCHIVED_THREADS_STATUS_CHUNK_SUCCESS,
+	FETCHED_ARCHIVED_THREADS_STATUS_FAILURE,
+	FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS,
+	fetchedArchivedThreadsStatusChunkFailure,
+	fetchedArchivedThreadsStatusChunkSuccess,
+	fetchedArchivedThreadsStatusFailure,
+	fetchedArchivedThreadsStatusSuccess
+} from './threads/fetchArchivedThreadsStatus';
+export {
 	GENERATE_RANDOM_THREAD,
 	GENERATED_RANDOM_THREAD_SUCCESS,
 	generatedRandomThreadSuccess,

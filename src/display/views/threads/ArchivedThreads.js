@@ -5,7 +5,7 @@ import getColumns from './components/_archiveColumns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchArchivedThreads } from '../../../infrastructure/actions';
-import { getArchivedFilteredThreads, getArchivedThreadCharacters, getArchivedThreadPartners, getArchivedThreadTags } from '../../../infrastructure/selectors';
+import { getArchivedFilteredThreads, getArchivedThreadCharacters, getArchivedThreadPartners, getArchivedThreadLastPosters, getArchivedThreadTags } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -17,6 +17,7 @@ const propTypes = {
 	toggleThreadIsMarkedQueued: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	partners: PropTypes.arrayOf(PropTypes.string).isRequired,
+	lastPosters: PropTypes.arrayOf(PropTypes.string).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
@@ -26,11 +27,13 @@ function mapStateToProps(state) {
 	const partners = getArchivedThreadPartners(state);
 	const tags = getArchivedThreadTags(state);
 	const filteredThreads = getArchivedFilteredThreads(state);
+	const lastPosters = getArchivedThreadLastPosters(state);
 	return {
 		archivedThreads,
 		filteredThreads,
 		characters,
 		partners,
+		lastPosters,
 		tags
 	};
 }
@@ -52,6 +55,7 @@ class ArchivedThreads extends Component {
 			toggleThreadIsMarkedQueued,
 			characters,
 			partners,
+			lastPosters,
 			tags
 		} = this.props;
 		return (
@@ -60,7 +64,7 @@ class ArchivedThreads extends Component {
 				filteredThreads={filteredThreads}
 				tags={tags}
 				isArchive
-				columns={getColumns(characters, partners)}
+				columns={getColumns(characters, partners, lastPosters)}
 				tdProps={getTdProps(
 					openUntrackThreadModal,
 					openEditThreadModal,

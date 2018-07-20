@@ -1,12 +1,14 @@
 import * as columns from '../../../shared/columns';
 
-const getColumns = (characters, partners) => [
+const getColumns = (characters, partners, lastPosters) => [
 	columns.TagsButton(),
 	columns.DeleteButton('Untrack Thread'),
 	columns.EditButton('Edit Thread'),
 	columns.ArchiveButton(true),
 	columns.ThreadTitle(true),
 	columns.Character(characters, true),
-	columns.TrackedPartner(partners)
+	columns.LastPoster(lastPosters, true),
+	columns.LastPostDate(),
+	columns.TrackedPartner(partners, true)
 ];
 export default getColumns;
