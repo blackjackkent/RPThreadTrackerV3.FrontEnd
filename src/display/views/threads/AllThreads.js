@@ -5,7 +5,7 @@ import getColumns from './components/_columns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
-import { getActiveThreadsForDisplay, getActiveThreadCharacters, getActiveThreadPartners, getActiveThreadLastPosters, getActiveThreadTags } from '../../../infrastructure/selectors';
+import { getAllActiveFilteredThreads, getActiveThreadCharacters, getActiveThreadPartners, getActiveThreadLastPosters, getActiveThreadTags } from '../../../infrastructure/selectors';
 
 const propTypes = {
 	dispatch: PropTypes.func.isRequired,
@@ -23,7 +23,7 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const { activeThreads } = state;
-	const filteredThreads = getActiveThreadsForDisplay(state);
+	const filteredThreads = getAllActiveFilteredThreads(state);
 	const characters = getActiveThreadCharacters(state);
 	const partners = getActiveThreadPartners(state);
 	const lastPosters = getActiveThreadLastPosters(state);

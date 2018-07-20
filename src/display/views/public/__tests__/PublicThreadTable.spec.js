@@ -13,6 +13,7 @@ const createTestProps = propOverrides => ({
 		sortKey: 'test-key',
 		sortDescending: true
 	},
+	isLoadingIconVisible: false,
 	...propOverrides
 });
 
@@ -20,6 +21,11 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const element = shallow(<PublicThreadTable {...createTestProps()} />);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot when loading', () => {
+			const element =
+				shallow(<PublicThreadTable {...createTestProps({ isLoadingIconVisible: true })} />);
 			expect(element).toMatchSnapshot();
 		});
 	});

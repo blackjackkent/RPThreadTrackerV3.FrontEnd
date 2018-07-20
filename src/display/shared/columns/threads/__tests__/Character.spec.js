@@ -19,6 +19,18 @@ describe('data', () => {
 		expect(column).toHaveProperty('sortable', true);
 		expect(column).toHaveProperty('resizable', true);
 	});
+	it('should generate accessor from character props', () => {
+		const column = Character();
+		const value = column.accessor({
+			thread: {
+				character: {
+					characterId: 1, characterName: 'My Character', urlIdentifier: 'my-url-identifier'
+				}
+			}
+		});
+		expect(value).toHaveProperty('characterName', 'My Character');
+		expect(value).toHaveProperty('urlIdentifier', 'my-url-identifier');
+	});
 	it('should allow filtering when includeFilter is true', () => {
 		const column = Character([], true);
 		expect(column).toHaveProperty('filterable', true);

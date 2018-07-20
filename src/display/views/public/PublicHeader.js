@@ -7,8 +7,12 @@ import LoadingIndicator from '../../shared/LoadingIndicator';
 
 const propTypes = {
 	slug: PropTypes.string.isRequired,
-	title: PropTypes.string.isRequired,
+	title: PropTypes.string,
 	isLoadingIconVisible: PropTypes.bool.isRequired
+};
+
+const defaultProps = {
+	title: ''
 };
 
 const PublicHeader = (props) => {
@@ -36,4 +40,5 @@ const PublicHeader = (props) => {
 };
 
 PublicHeader.propTypes = propTypes;
+PublicHeader.defaultProps = defaultProps;
 export default PublicHeader;

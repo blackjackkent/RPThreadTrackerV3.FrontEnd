@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 import ReduxToastr from 'react-redux-toastr';
 import Public from '../views/public/Public';
 // #endregion imports

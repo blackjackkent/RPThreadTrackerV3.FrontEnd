@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	filteredTag: PropTypes.shape({}),
+	filteredTag: PropTypes.string,
 	setFilteredTag: PropTypes.func.isRequired
 };
 
