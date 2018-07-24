@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<ThreadTable
+  archivedThreads={
+    Array [
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+    ]
+  }
+  characters={
+    Array [
+      Object {},
+      Object {},
+    ]
+  }
+  columns="2 2 2"
+  fetchArchivedThreads={[MockFunction]}
+  filteredThreads={
+    Array [
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+      Object {},
+    ]
+  }
+  isArchive={true}
+  lastPosters={
+    Array [
+      "lastposter1",
+      "lastposter2",
+    ]
+  }
+  openEditThreadModal={[MockFunction]}
+  openUntrackThreadModal={[MockFunction]}
+  partners={
+    Array [
+      "partner1",
+      "partner2",
+    ]
+  }
+  tags={
+    Array [
+      Object {},
+      Object {},
+      Object {},
+    ]
+  }
+  tdProps="mockConstructor mockConstructor mockConstructor mockConstructor"
+  toggleThreadIsArchived={[MockFunction]}
+  toggleThreadIsMarkedQueued={[MockFunction]}
+/>
+`;

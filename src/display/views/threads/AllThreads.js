@@ -8,7 +8,7 @@ import { fetchActiveThreads } from '../../../infrastructure/actions';
 import { getAllActiveFilteredThreads, getActiveThreadCharacters, getActiveThreadPartners, getActiveThreadLastPosters, getActiveThreadTags } from '../../../infrastructure/selectors';
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
+	fetchActiveThreads: PropTypes.func.isRequired,
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
@@ -40,9 +40,8 @@ function mapStateToProps(state) {
 
 class MyTurnThreads extends Component {
 	componentDidMount() {
-		const { dispatch } = this.props;
 		if (!this.props.activeThreads || !this.props.activeThreads.length) {
-			dispatch(fetchActiveThreads());
+			this.props.fetchActiveThreads();
 		}
 	}
 
@@ -76,4 +75,6 @@ class MyTurnThreads extends Component {
 }
 
 MyTurnThreads.propTypes = propTypes;
-export default connect(mapStateToProps)(MyTurnThreads);
+export default connect(mapStateToProps, {
+	fetchActiveThreads
+})(MyTurnThreads);

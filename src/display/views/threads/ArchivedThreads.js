@@ -8,7 +8,7 @@ import { fetchArchivedThreads } from '../../../infrastructure/actions';
 import { getArchivedFilteredThreads, getArchivedThreadCharacters, getArchivedThreadPartners, getArchivedThreadLastPosters, getArchivedThreadTags } from '../../../infrastructure/selectors';
 
 const propTypes = {
-	dispatch: PropTypes.func.isRequired,
+	fetchArchivedThreads: PropTypes.func.isRequired,
 	archivedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
@@ -40,9 +40,8 @@ function mapStateToProps(state) {
 
 class ArchivedThreads extends Component {
 	componentDidMount() {
-		const { dispatch } = this.props;
 		if (!this.props.archivedThreads || !this.props.archivedThreads.length) {
-			dispatch(fetchArchivedThreads());
+			this.props.fetchArchivedThreads();
 		}
 	}
 
@@ -77,4 +76,6 @@ class ArchivedThreads extends Component {
 }
 
 ArchivedThreads.propTypes = propTypes;
-export default connect(mapStateToProps)(ArchivedThreads);
+export default connect(mapStateToProps, {
+	fetchArchivedThreads
+})(ArchivedThreads);
