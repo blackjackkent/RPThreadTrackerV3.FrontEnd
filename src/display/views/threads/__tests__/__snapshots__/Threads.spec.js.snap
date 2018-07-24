@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="animated fadeIn threads-container"
+>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <Renderable
+        bulkToggleThreadsAreArchived={[Function]}
+        bulkToggleThreadsAreMarkedQueued={[Function]}
+        characters={
+          Array [
+            Object {},
+            Object {},
+            Object {},
+          ]
+        }
+        isLoadingIconVisible={true}
+        openBulkUntrackThreadsModal={[MockFunction]}
+        openEditThreadModal={[MockFunction]}
+        openUntrackThreadModal={[MockFunction]}
+        refreshThreads={[Function]}
+        setFilteredTag={[MockFunction]}
+        threadFilter={
+          Object {
+            "tag": "test",
+          }
+        }
+        threadTablePageSize={50}
+        toggleThreadIsArchived={[Function]}
+        toggleThreadIsMarkedQueued={[Function]}
+        updateThreadTablePageSize={[Function]}
+      />
+    </Col>
+  </Row>
+</div>
+`;
