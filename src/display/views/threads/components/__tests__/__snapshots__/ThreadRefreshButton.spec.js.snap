@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="thread-refresh-button"
+>
+  <Button
+    color="primary"
+    data-spec="thread-refresh-button-submit"
+    onClick={[Function]}
+    tag="button"
+  >
+    Refresh 
+    <i
+      className="fas fa-sync-alt"
+    />
+  </Button>
+</div>
+`;

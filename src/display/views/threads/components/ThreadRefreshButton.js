@@ -14,6 +14,7 @@ const ThreadRefreshButton = (props) => {
 			<Button
 				color="primary"
 				onClick={() => refreshThreads(isArchive)}
+				data-spec="thread-refresh-button-submit"
 			>
 				Refresh <i className="fas fa-sync-alt" />
 			</Button>

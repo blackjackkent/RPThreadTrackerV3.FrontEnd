@@ -27,7 +27,7 @@ describe('behavior', () => {
 			expect(onDeleteTrigger).toHaveBeenLastCalledWith({ characterId: 3 });
 		});
 	});
-	describe('onDeleteTrigger', () => {
+	describe('onHiatusTrigger', () => {
 		it('should fire when toggleHiatusButton column is clicked', () => {
 			const clickedColumn = { id: 'toggleHiatusButton' };
 			const clickedRow = { original: { characterId: 4 } };
