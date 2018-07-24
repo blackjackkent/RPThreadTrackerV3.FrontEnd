@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<FormGroup
+  className="tag-filter-select"
+  tag="div"
+>
+  <Input
+    className="clean-select"
+    id="tag"
+    name="tag"
+    onChange={[Function]}
+    tag="p"
+    type="select"
+  >
+    <option
+      value=""
+    >
+      Filter by Tag
+    </option>
+    <option
+      key="1"
+      value="tag1"
+    >
+      tag1
+    </option>
+    <option
+      key="2"
+      value="tag2"
+    >
+      tag2
+    </option>
+  </Input>
+</FormGroup>
+`;
+
+exports[`rendering snapshots should render valid snapshot with tag selected 1`] = `
+<FormGroup
+  className="tag-filter-select"
+  tag="div"
+>
+  <Input
+    className="clean-select"
+    id="tag"
+    name="tag"
+    onChange={[Function]}
+    tag="p"
+    type="select"
+    value="tag1"
+  >
+    <option
+      value=""
+    >
+      Filter by Tag
+    </option>
+    <option
+      key="1"
+      value="tag1"
+    >
+      tag1
+    </option>
+    <option
+      key="2"
+      value="tag2"
+    >
+      tag2
+    </option>
+  </Input>
+</FormGroup>
+`;

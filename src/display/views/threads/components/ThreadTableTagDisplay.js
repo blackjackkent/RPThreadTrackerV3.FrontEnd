@@ -35,5 +35,4 @@ const ThreadTableTagDisplay = (props) => {
 };
 
 ThreadTableTagDisplay.propTypes = propTypes;
-
 export default ThreadTableTagDisplay;

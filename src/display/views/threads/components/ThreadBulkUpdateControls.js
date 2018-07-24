@@ -45,9 +45,13 @@ class ThreadBulkUpdateControls extends React.Component {
 		} = this.props;
 		return (
 			<div className="thread-bulk-update-controls">
-				<Form onSubmit={this.submitBulkAction}>
+				<Form
+					onSubmit={this.submitBulkAction}
+					data-spec="thread-bulk-update-controls-form"
+				>
 					<InputGroup>
 						<Input
+							data-spec="thread-bulk-update-controls-select"
 							type="select"
 							name="tag"
 							id="tag"
@@ -59,7 +63,13 @@ class ThreadBulkUpdateControls extends React.Component {
 							<option value="toggle-archived">{isArchive ? 'Unarchive' : 'Archive'} Selected Threads</option>
 							<option value="untrack">Untrack Selected Threads</option>
 						</Input>
-						<Button color="primary" disabled={selectedThreadCount === 0}>Submit</Button>
+						<Button
+							data-spec="thread-bulk-update-controls-submit-button"
+							color="primary"
+							disabled={selectedThreadCount === 0}
+						>
+							Submit
+						</Button>
 					</InputGroup>
 				</Form>
 			</div>

@@ -15,17 +15,15 @@ const defaultProps = {
 const TagFilterSelect = (props) => {
 	const { tags, filteredTag, setFilteredTag } = props;
 	const options = [];
-	if (tags) {
-		for (let i = 0; i < tags.length; i++) {
-			const element = (
-				<option
-					value={tags[i].tagText}
-					key={tags[i].threadTagId}
-				>
-					{tags[i].tagText}
-				</option>);
-			options.push(element);
-		}
+	for (let i = 0; i < tags.length; i++) {
+		const element = (
+			<option
+				value={tags[i].tagText}
+				key={tags[i].threadTagId}
+			>
+				{tags[i].tagText}
+			</option>);
+		options.push(element);
 	}
 	return (
 		<FormGroup className="tag-filter-select">
