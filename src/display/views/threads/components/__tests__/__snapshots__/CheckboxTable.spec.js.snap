@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div>
+  <RTSelectTable
+    SelectAllInputComponent={[Function]}
+    SelectInputComponent={[Function]}
+    SubComponent={[Function]}
+    className="-striped"
+    columns={
+      Array [
+        Object {
+          "key": "column1",
+        },
+        Object {
+          "key": "column2",
+        },
+      ]
+    }
+    data={
+      Array [
+        Object {
+          "_id": 1,
+          "testProp": "test1",
+        },
+        Object {
+          "_id": 2,
+          "testProp": "test2",
+        },
+        Object {
+          "_id": 3,
+          "testProp": "test3",
+        },
+      ]
+    }
+    defaultFilterMethod={[MockFunction]}
+    defaultPageSize={10}
+    defaultSorted={
+      Array [
+        Object {
+          "desc": true,
+          "id": "status.LastPostDate",
+        },
+      ]
+    }
+    getTdProps={[Function]}
+    isSelected={[Function]}
+    keyField="_id"
+    noDataText="No Data Text"
+    onPageSizeChange={[MockFunction]}
+    selectAll={false}
+    selectType="checkbox"
+    showPaginationTop={true}
+    toggleAll={[Function]}
+    toggleSelection={[Function]}
+  />
+</div>
+`;
