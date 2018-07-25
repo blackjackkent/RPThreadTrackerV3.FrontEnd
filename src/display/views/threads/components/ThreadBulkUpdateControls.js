@@ -6,6 +6,7 @@ const propTypes = {
 	isArchive: PropTypes.bool.isRequired,
 	isQueue: PropTypes.bool.isRequired,
 	selectedThreadCount: PropTypes.number.isRequired,
+	executeBulkAction: PropTypes.func.isRequired,
 	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
 	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired
@@ -20,14 +21,20 @@ class ThreadBulkUpdateControls extends React.Component {
 	}
 	submitBulkAction(e) {
 		e.preventDefault();
+		const {
+			executeBulkAction,
+			bulkToggleThreadsAreArchived,
+			bulkToggleThreadsAreMarkedQueued,
+			openBulkUntrackThreadsModal
+		} = this.props;
 		if (this.state.action === 'toggle-queued') {
-			this.props.bulkToggleThreadsAreMarkedQueued();
+			executeBulkAction(bulkToggleThreadsAreMarkedQueued);
 		}
 		if (this.state.action === 'toggle-archived') {
-			this.props.bulkToggleThreadsAreArchived();
+			executeBulkAction(bulkToggleThreadsAreArchived);
 		}
 		if (this.state.action === 'untrack') {
-			this.props.openBulkUntrackThreadsModal();
+			executeBulkAction(openBulkUntrackThreadsModal);
 		}
 	}
 	handleInputChange(event) {
