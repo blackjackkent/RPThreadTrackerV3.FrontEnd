@@ -22,6 +22,7 @@ const ThreadTableTagDisplay = (props) => {
 	} else {
 		rows.push((
 			<span
+				key="-1"
 				className="tag-display-wrapper"
 			>
 				There are no tags assigned to this thread.

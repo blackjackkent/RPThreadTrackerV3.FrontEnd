@@ -9,6 +9,7 @@ const createTestProps = propOverrides => ({
 	isArchive: false,
 	isQueue: false,
 	selectedThreadCount: 5,
+	executeBulkAction: jest.fn(),
 	bulkToggleThreadsAreMarkedQueued: jest.fn(),
 	bulkToggleThreadsAreArchived: jest.fn(),
 	openBulkUntrackThreadsModal: jest.fn(),
@@ -57,42 +58,48 @@ describe('behavior', () => {
 	describe('handleInputChange/submitBulkAction', () => {
 		it('should trigger mark-queued bulk action when mark-queued option selected', () => {
 			const bulkToggleThreadsAreMarkedQueued = jest.fn();
+			const executeBulkAction = jest.fn();
 			const changeEvent = { target: { value: 'toggle-queued' } };
 			const submitEvent = { preventDefault: jest.fn() };
-			const props = createTestProps({ bulkToggleThreadsAreMarkedQueued });
+			const props = createTestProps({ bulkToggleThreadsAreMarkedQueued, executeBulkAction });
 			const jsx = (<ThreadBulkUpdateControls {...props} />);
 			const element = shallow(jsx);
 			const select = getSpecWrapper(element, 'thread-bulk-update-controls-select');
 			const form = getSpecWrapper(element, 'thread-bulk-update-controls-form');
 			select.simulate('change', changeEvent);
 			form.simulate('submit', submitEvent);
-			expect(bulkToggleThreadsAreMarkedQueued).toHaveBeenCalledTimes(1);
+			expect(executeBulkAction).toHaveBeenCalledTimes(1);
+			expect(executeBulkAction).toHaveBeenLastCalledWith(bulkToggleThreadsAreMarkedQueued);
 		});
 		it('should trigger archive bulk action when archive option selected', () => {
 			const bulkToggleThreadsAreArchived = jest.fn();
+			const executeBulkAction = jest.fn();
 			const changeEvent = { target: { value: 'toggle-archived' } };
 			const submitEvent = { preventDefault: jest.fn() };
-			const props = createTestProps({ bulkToggleThreadsAreArchived });
+			const props = createTestProps({ bulkToggleThreadsAreArchived, executeBulkAction });
 			const jsx = (<ThreadBulkUpdateControls {...props} />);
 			const element = shallow(jsx);
 			const select = getSpecWrapper(element, 'thread-bulk-update-controls-select');
 			const form = getSpecWrapper(element, 'thread-bulk-update-controls-form');
 			select.simulate('change', changeEvent);
 			form.simulate('submit', submitEvent);
-			expect(bulkToggleThreadsAreArchived).toHaveBeenCalledTimes(1);
+			expect(executeBulkAction).toHaveBeenCalledTimes(1);
+			expect(executeBulkAction).toHaveBeenLastCalledWith(bulkToggleThreadsAreArchived);
 		});
 		it('should trigger untrack bulk action when untrack option selected', () => {
 			const openBulkUntrackThreadsModal = jest.fn();
+			const executeBulkAction = jest.fn();
 			const changeEvent = { target: { value: 'untrack' } };
 			const submitEvent = { preventDefault: jest.fn() };
-			const props = createTestProps({ openBulkUntrackThreadsModal });
+			const props = createTestProps({ openBulkUntrackThreadsModal, executeBulkAction });
 			const jsx = (<ThreadBulkUpdateControls {...props} />);
 			const element = shallow(jsx);
 			const select = getSpecWrapper(element, 'thread-bulk-update-controls-select');
 			const form = getSpecWrapper(element, 'thread-bulk-update-controls-form');
 			select.simulate('change', changeEvent);
 			form.simulate('submit', submitEvent);
-			expect(openBulkUntrackThreadsModal).toHaveBeenCalledTimes(1);
+			expect(executeBulkAction).toHaveBeenCalledTimes(1);
+			expect(executeBulkAction).toHaveBeenLastCalledWith(openBulkUntrackThreadsModal);
 		});
 	});
 });

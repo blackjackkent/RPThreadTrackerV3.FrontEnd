@@ -27,6 +27,7 @@ exports[`rendering snapshots should render valid snapshot with no tags 1`] = `
 >
   <span
     className="tag-display-wrapper"
+    key="-1"
   >
     There are no tags assigned to this thread.
   </span>
