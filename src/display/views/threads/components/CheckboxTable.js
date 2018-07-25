@@ -43,7 +43,8 @@ class CheckboxTable extends React.Component {
 		} else {
 			selection.push(row);
 		}
-		this.setState({ selection });
+		const selectAll = selection.length === this.props.data.length;
+		this.setState({ selection, selectAll });
 		this.props.onSelectionChanged(selection);
 	}
 	toggleAll() {
@@ -93,8 +94,10 @@ class CheckboxTable extends React.Component {
 		return (
 			<div>
 				<CheckboxTableHOC
-					// eslint-disable-next-line no-return-assign
-					ref={r => this.checkboxTable = r}
+					ref={
+						/* istanbul ignore next */
+						r => this.checkboxTable = r // eslint-disable-line no-return-assign
+					}
 					className="-striped"
 					data={data}
 					noDataText={noDataText}
