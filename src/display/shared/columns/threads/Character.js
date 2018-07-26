@@ -1,5 +1,6 @@
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
+import { sortCharacters } from '../../../../utility';
 import CharacterSelectItem from '../../CharacterSelectItem';
 
 export default (characters, includeFilter) => ({
@@ -31,13 +32,5 @@ export default (characters, includeFilter) => ({
 		// eslint-disable-next-line no-underscore-dangle
 		return characterId === row._original.thread.character.characterId;
 	},
-	sortMethod: (a, b) => {
-		if (a.urlIdentifier === b.urlIdentifier) {
-			if (a.characterName === b.characterName) {
-				return 0;
-			}
-			return a.characterName > b.characterName ? 1 : -1;
-		}
-		return a.urlIdentifier > b.urlIdentifier ? 1 : -1;
-	}
+	sortMethod: sortCharacters
 });
