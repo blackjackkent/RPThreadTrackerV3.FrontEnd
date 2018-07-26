@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { sortByObjectProperty } from '../../../utility';
+import { sortCharacters } from '../../../utility';
 
 const getAllCharacters = state => state.characters;
 const getCharactersSortedByIdentifier = createSelector(
@@ -8,7 +8,7 @@ const getCharactersSortedByIdentifier = createSelector(
 		if (!characters.length) {
 			return [];
 		}
-		const sorted = sortByObjectProperty(characters, 'urlIdentifier');
+		const sorted = characters.sort(sortCharacters);
 		return sorted;
 	}
 );
