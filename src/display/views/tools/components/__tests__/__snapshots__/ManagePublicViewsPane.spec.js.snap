@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<TabPane
+  tabId="manage-public-views"
+  tag="div"
+>
+  <Card
+    tag="div"
+  >
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-eye"
+      />
+       Manage Public Views
+    </CardHeader>
+    <CardBlock
+      className="card-body"
+      tag="div"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          className="text-center"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <p>
+            <Button
+              color="primary"
+              data-spec="create-public-view-button"
+              onClick={[Function]}
+              tag="button"
+            >
+              Create New Public View
+            </Button>
+          </p>
+        </Col>
+      </Row>
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <p
+            className="text-center"
+          >
+            Public views allow you to customize a display of your current threads and share them with others.
+          </p>
+        </Col>
+      </Row>
+    </CardBlock>
+  </Card>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <PublicViewsTable
+        isLoadingIconVisible={true}
+        openDeletePublicViewModal={[MockFunction]}
+        openUpsertPublicViewModal={[MockFunction]}
+        publicViews={
+          Array [
+            Object {},
+            Object {},
+          ]
+        }
+      />
+    </Col>
+  </Row>
+</TabPane>
+`;

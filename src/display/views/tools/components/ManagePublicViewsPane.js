@@ -28,6 +28,7 @@ const ManagePublicViewsPane = (props) => {
 							<p>
 								<Button
 									color="primary"
+									data-spec="create-public-view-button"
 									onClick={
 										() => openUpsertPublicViewModal({})}
 								>
