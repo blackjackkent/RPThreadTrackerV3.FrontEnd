@@ -29,6 +29,7 @@ const UpsertPublicViewForm = (props) => {
 		columns
 	} = props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
+		.filter(i => columns[i].name)
 		.map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
 	const characterOptions = characters.map(c => (
 		<option value={c.characterId} key={c.characterId}>
