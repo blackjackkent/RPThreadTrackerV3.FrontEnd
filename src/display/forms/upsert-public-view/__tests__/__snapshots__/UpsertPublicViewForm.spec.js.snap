@@ -488,6 +488,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           helpMessage={
             <span>
               The characters whose threads should be displayed to visitors in this public view.
+               
+              (Leave unselected to display threads for all characters.)
             </span>
           }
           label="Characters"
@@ -497,14 +499,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           onChange={[MockFunction]}
           onFocus={[MockFunction]}
           type="select"
-          validate={
-            Object {
-              "required": Object {
-                "errorMessage": "You must select characters for your public thread table.",
-                "value": true,
-              },
-            }
-          }
         >
           <option
             key="1"
@@ -609,7 +603,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <span>
               The public view will only include threads with these tags.
                
-              (Leave unselected to display all threads.)
+              (Leave unselected to display threads with all tags.)
             </span>
           }
           label="Tags"
@@ -1149,6 +1143,8 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
           helpMessage={
             <span>
               The characters whose threads should be displayed to visitors in this public view.
+               
+              (Leave unselected to display threads for all characters.)
             </span>
           }
           label="Characters"
@@ -1158,14 +1154,6 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
           onChange={[MockFunction]}
           onFocus={[MockFunction]}
           type="select"
-          validate={
-            Object {
-              "required": Object {
-                "errorMessage": "You must select characters for your public thread table.",
-                "value": true,
-              },
-            }
-          }
           value={
             Array [
               1,
@@ -1277,7 +1265,7 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
             <span>
               The public view will only include threads with these tags.
                
-              (Leave unselected to display all threads.)
+              (Leave unselected to display threads with all tags.)
             </span>
           }
           label="Tags"

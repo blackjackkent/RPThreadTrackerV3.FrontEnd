@@ -315,13 +315,6 @@ describe('behavior', () => {
 			const field = getSpecWrapper(element, 'sort-key-field');
 			expect(field.props().validate.required).toHaveProperty('value', true);
 		});
-		it('should validate view characters field', () => {
-			const props = createTestProps();
-			const jsx = (<UpsertPublicViewForm {...props} />);
-			const element = shallow(jsx);
-			const field = getSpecWrapper(element, 'view-characters-field');
-			expect(field.props().validate.required).toHaveProperty('value', true);
-		});
 	});
 	describe('handleInputChange', () => {
 		it('should be called when view name changes', () => {

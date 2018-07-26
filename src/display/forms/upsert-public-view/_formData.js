@@ -32,7 +32,8 @@ export default {
 	characterIds: {
 		helpMessage: (
 			<span>
-				The characters whose threads should be displayed to visitors in this public view.
+				The characters whose threads should be displayed to visitors in this public view.{' '}
+				(Leave unselected to display threads for all characters.)
 			</span>
 		),
 		tooltip: (
@@ -43,7 +44,7 @@ export default {
 		helpMessage: (
 			<span>
 				The public view will only include threads with these tags.{' '}
-				(Leave unselected to display all threads.)
+				(Leave unselected to display threads with all tags.)
 			</span>
 		),
 		tooltip: (
