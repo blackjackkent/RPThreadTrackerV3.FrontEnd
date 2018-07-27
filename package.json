@@ -136,6 +136,7 @@
 			"/src/utility/getQuery",
 			"/src/utility/history",
 			"/e2e/"
-		]
+		],
+		"testURL": "http://localhost/"
 	}
 }

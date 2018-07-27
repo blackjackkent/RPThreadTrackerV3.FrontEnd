@@ -22,5 +22,6 @@
 	"collectCoverage": true,
 	"collectCoverageFrom": [
 		"**/src/**/*.{js|jsx}"
-	]
+	],
+	"testURL": "http://localhost/"
 }
