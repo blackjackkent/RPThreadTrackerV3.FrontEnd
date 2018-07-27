@@ -28,7 +28,7 @@ export default (lastPosters, includeFilter) => ({
 			value={filter ? filter.value : ''}
 		>
 			<option value="">Show All</option>
-			{lastPosters.map(lp => <option key={lp} value={lp}>{lp}</option>)}
+			{lastPosters.sort().map(lp => <option key={lp} value={lp}>{lp}</option>)}
 		</select>
 	)
 });

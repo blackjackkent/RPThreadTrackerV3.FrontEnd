@@ -23,7 +23,7 @@ export default (characters, includeFilter) => ({
 			value={filter ? filter.value : ''}
 		>
 			<option value="">Show All</option>
-			{characters.map(character =>
+			{characters.sort(sortCharacters).map(character =>
 				<CharacterSelectItem key={character.characterId} character={character} />)}
 		</select>
 	),

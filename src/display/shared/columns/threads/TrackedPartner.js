@@ -17,7 +17,7 @@ export default (partners, includeFilter) => ({
 			value={filter ? filter.value : ''}
 		>
 			<option value="">Show All</option>
-			{partners.map(p => <option key={p} value={p}>{p}</option>)}
+			{partners.sort().map(p => <option key={p} value={p}>{p}</option>)}
 		</select>
 	)
 });
