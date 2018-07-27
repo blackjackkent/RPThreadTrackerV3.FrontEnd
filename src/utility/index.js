@@ -4,3 +4,4 @@ export { default as flattenArrayOfArrays } from './flattenArrayOfArrays';
 export { default as filterDuplicatesFromArray } from './filterDuplicatesFromArray';
 export { default as getValuesFromMultiSelect } from './getValuesFromMultiSelect';
 export { default as sortCharacters } from './sortCharacters';
+export { default as sortTags } from './sortTags';
