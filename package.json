@@ -133,6 +133,7 @@
 		"coveragePathIgnorePatterns": [
 			"/node_modules/",
 			"/config/",
+			"/src/index",
 			"/src/utility/getQuery",
 			"/src/utility/history",
 			"/e2e/"

@@ -8,7 +8,6 @@ jest.mock('../_routes', () => ({
 	'/test': 'Test Page',
 	'/test/test2': 'Test 2 Page'
 }));
-import routes from '../_routes'; // eslint-disable-line
 
 const createTestProps = propOverrides => ({
 	...propOverrides

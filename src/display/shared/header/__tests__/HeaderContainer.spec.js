@@ -9,8 +9,6 @@ jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
 	getNewsUnreadCount: () => 1
 }));
-const history = require('../../../../utility/history'); // eslint-disable-line import/newline-after-import
-history.default.push = jest.fn();
 jest.mock('../Header', () => 'Header');
 // #endregion mocks
 

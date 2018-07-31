@@ -1,16 +1,11 @@
 // #region imports
 import React from 'react';
-import { getSpecWrapper, shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { getSpecWrapper, shallowWithState, initMockDateNow } from '../../../../../config/tests/helpers.unit';
 import Dashboard from '../Dashboard';
 // #endregion imports
 
 // #region mocks
-const DATE_TO_USE = new Date('June 5, 1989 03:24:00');
-const MockDate = Date;
-global.Date = jest.fn(() => DATE_TO_USE);
-global.Date.UTC = MockDate.UTC;
-global.Date.parse = MockDate.parse;
-global.Date.now = MockDate.now;
+initMockDateNow();
 jest.mock('../components/at-a-glance/AtAGlanceCard', () => 'AtAGlanceCard');
 jest.mock('../components/recent-activity/RecentActivityCard', () => 'RecentActivityCard');
 jest.mock('../components/your-characters/YourCharactersCard', () => 'YourCharactersCard');

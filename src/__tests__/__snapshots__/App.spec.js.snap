@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot when in maintenance mode 1`] = `
+<Router
+  history={Object {}}
+>
+  <Route
+    component={[Function]}
+    name="Maintenance"
+    path="*"
+  />
+</Router>
+`;
+
+exports[`rendering snapshots should render valid snapshot when not in maintenance mode 1`] = `
+<Router
+  history={Object {}}
+>
+  <Switch>
+    <Route
+      component={[Function]}
+      name="Maintenance"
+      path="/maintenance"
+    />
+    <Route
+      component={[Function]}
+      key="/login"
+      path="/login"
+    />
+    <Route
+      component={[Function]}
+      key="/forgotpassword"
+      path="/forgotpassword"
+    />
+    <Route
+      component={[Function]}
+      key="/resetpassword"
+      path="/resetpassword"
+    />
+    <Route
+      component={[Function]}
+      key="/register"
+      path="/register"
+    />
+    <Route
+      component={[Function]}
+      name="Public"
+      path="/public/:slug"
+    />
+    <Route
+      component={[Function]}
+      name="AddThreadFromExtensionHandler"
+      path="/add-thread"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</Router>
+`;

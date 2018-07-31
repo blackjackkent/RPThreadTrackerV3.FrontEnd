@@ -1,14 +1,9 @@
 
 import React from 'react';
-import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState, initMockDateNow } from '../../../../../config/tests/helpers.unit';
 import Threads from '../Threads';
 
-const DATE_TO_USE = new Date('June 5, 1989 03:24:00');
-const MockDate = Date;
-global.Date = jest.fn(() => DATE_TO_USE);
-global.Date.UTC = MockDate.UTC;
-global.Date.parse = MockDate.parse;
-global.Date.now = MockDate.now;
+initMockDateNow();
 jest.mock('../../../../infrastructure/selectors', () => ({
 	getIsLoadingIconVisible: () => true
 }));

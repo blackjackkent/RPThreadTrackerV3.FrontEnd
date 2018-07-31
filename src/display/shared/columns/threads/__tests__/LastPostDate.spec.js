@@ -1,15 +1,10 @@
 // #region imports
 import { shallow } from 'enzyme';
+import { initMockDateNow } from '../../../../../../config/tests/helpers.unit';
 import LastPostDate from '../LastPostDate';
 // #endregion imports
 
-const DATE_TO_USE = new Date('June 5, 1989 03:24:00');
-const MockDate = Date;
-global.Date = jest.fn(() => DATE_TO_USE);
-global.Date.UTC = MockDate.UTC;
-global.Date.parse = MockDate.parse;
-global.Date.now = MockDate.now;
-
+initMockDateNow();
 describe('data', () => {
 	const column = LastPostDate();
 	it('should be defined', () => {

@@ -1,13 +1,13 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as history from '../../../../../../utility/history';
 import DashboardSummaryWidget from '../DashboardSummaryWidget';
 // #endregion imports
 
 // #region mocks
 jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
-const history = require('../../../../../../utility/history'); // eslint-disable-line import/newline-after-import
-history.navigation.navigateTo = jest.fn();
+jest.mock('../../../../../../utility/history', () => ({ navigation: { navigateTo: jest.fn() } }));
 // #endregion mocks
 
 const createTestProps = propOverrides => ({
