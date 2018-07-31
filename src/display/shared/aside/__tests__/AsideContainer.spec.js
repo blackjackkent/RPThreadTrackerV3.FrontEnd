@@ -1,6 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import * as selectors from '../../../../infrastructure/selectors'; //eslint-disable-line
 import AsideContainer from '../AsideContainer';
 // #endregion imports
 
@@ -8,7 +9,6 @@ import AsideContainer from '../AsideContainer';
 jest.mock('../../../../infrastructure/selectors', () => ({
 	markUnreadNews: jest.fn()
 }));
-import { markUnreadNews } from '../../../../infrastructure/selectors'; //eslint-disable-line
 jest.mock('../Aside', () => 'Aside');
 // #endregion mocks
 
@@ -21,12 +21,17 @@ const createTestState = stateOverrides => ({
 	...stateOverrides
 });
 
+beforeEach(() => {
+	jest.restoreAllMocks();
+	jest.spyOn(selectors, 'markUnreadNews');
+});
+
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			markUnreadNews.mockImplementationOnce(() => []);
+			selectors.markUnreadNews.mockReturnValue([]);
 			const jsx = (<AsideContainer {...props} />);
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
@@ -34,7 +39,7 @@ describe('rendering', () => {
 		it('should render valid snapshot with news', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			markUnreadNews.mockImplementationOnce(() => [
+			selectors.markUnreadNews.mockReturnValue([
 				{ PostId: '12345', PostTitle: 'Test Title' },
 				{ PostId: '23456', PostTitle: 'Test Title 2' },
 				{ PostId: '34567', PostTitle: 'Test Title 3' }
@@ -48,7 +53,7 @@ describe('rendering', () => {
 		it('should pass news as prop', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			markUnreadNews.mockImplementationOnce(() => [
+			selectors.markUnreadNews.mockReturnValue([
 				{ PostId: '12345', PostTitle: 'Test Title' },
 				{ PostId: '23456', PostTitle: 'Test Title 2' },
 				{ PostId: '34567', PostTitle: 'Test Title 3' }

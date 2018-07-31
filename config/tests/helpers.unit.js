@@ -15,3 +15,13 @@ export const shallowWithState = (component, state) => {
 	};
 	return shallow(component, { context });
 };
+
+export const initMockDateNow = () => {
+	const DATE_TO_USE = new Date('June 5, 1989 03:24:00');
+	const MockDate = Date;
+	global.Date = jest.fn(() => DATE_TO_USE);
+	global.Date.UTC = MockDate.UTC;
+	global.Date.parse = MockDate.parse;
+	global.Date.now = MockDate.now;
+	return DATE_TO_USE;
+};

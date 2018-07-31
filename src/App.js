@@ -56,7 +56,7 @@ const App = (props) => {
 				<Route
 					path="/add-thread"
 					name="AddThreadFromExtensionHandler"
-					component={AddThreadFromExtensionHandler}
+					component={withPageViewTracker(AddThreadFromExtensionHandler)}
 				/>
 				<Route component={Layout} />
 			</Switch>
