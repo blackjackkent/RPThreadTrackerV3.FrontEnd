@@ -22,10 +22,9 @@ export function untrackCharacterFailure(data) {
 	};
 }
 export const UNTRACK_CHARACTER_SUCCESS = 'UNTRACK_CHARACTER_SUCCESS';
-export function untrackCharacterSuccess(data) {
+export function untrackCharacterSuccess() {
 	return {
-		type: UNTRACK_CHARACTER_SUCCESS,
-		data
+		type: UNTRACK_CHARACTER_SUCCESS
 	};
 }
 

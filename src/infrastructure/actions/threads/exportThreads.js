@@ -15,16 +15,14 @@ export function exportThreads(data) {
 	};
 }
 export const EXPORT_THREADS_FAILURE = 'EXPORT_THREADS_FAILURE';
-export function exportThreadsFailure(data) {
+export function exportThreadsFailure() {
 	return {
-		type: EXPORT_THREADS_FAILURE,
-		data
+		type: EXPORT_THREADS_FAILURE
 	};
 }
 export const EXPORT_THREADS_SUCCESS = 'EXPORT_THREADS_SUCCESS';
-export function exportThreadsSuccess(data) {
+export function exportThreadsSuccess() {
 	return {
-		type: EXPORT_THREADS_SUCCESS,
-		data
+		type: EXPORT_THREADS_SUCCESS
 	};
 }

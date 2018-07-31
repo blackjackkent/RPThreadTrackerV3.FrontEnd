@@ -6,10 +6,9 @@ export function fetchPublicThreadsStatus(data) {
 	};
 }
 export const FETCHED_PUBLIC_THREADS_STATUS_FAILURE = 'FETCHED_PUBLIC_THREADS_STATUS_FAILURE';
-export function fetchedPublicThreadsStatusFailure(data) {
+export function fetchedPublicThreadsStatusFailure() {
 	return {
-		type: FETCHED_PUBLIC_THREADS_STATUS_FAILURE,
-		data
+		type: FETCHED_PUBLIC_THREADS_STATUS_FAILURE
 	};
 }
 export const FETCHED_PUBLIC_THREADS_STATUS_SUCCESS = 'FETCHED_PUBLIC_THREADS_STATUS_SUCCESS';
@@ -20,10 +19,9 @@ export function fetchedPublicThreadsStatusSuccess(data) {
 	};
 }
 export const FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE = 'FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE';
-export function fetchedPublicThreadsStatusChunkFailure(data) {
+export function fetchedPublicThreadsStatusChunkFailure() {
 	return {
-		type: FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE,
-		data
+		type: FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE
 	};
 }
 export const FETCHED_PUBLIC_THREADS_STATUS_CHUNK_SUCCESS = 'FETCHED_PUBLIC_THREADS_STATUS_CHUNK_SUCCESS';
