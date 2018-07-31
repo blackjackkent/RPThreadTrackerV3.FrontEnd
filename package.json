@@ -134,6 +134,10 @@
 			"/node_modules/",
 			"/config/",
 			"/src/index",
+			"/src/infrastructure/getStore",
+			"/src/infrastructure/icons",
+			"/src/infrastructure/initSagas",
+			"/src/infrastructure/network",
 			"/src/utility/getQuery",
 			"/src/utility/history",
 			"/e2e/"

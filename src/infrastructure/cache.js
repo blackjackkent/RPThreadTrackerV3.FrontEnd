@@ -11,7 +11,6 @@ export default {
 			return null;
 		}
 		const data = ls.get(baseKey);
-		console.log(data);
 		if (data && Object.prototype.hasOwnProperty.call(data, key)) {
 			return data[key];
 		}

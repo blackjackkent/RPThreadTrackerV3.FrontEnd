@@ -22,8 +22,7 @@ const createTestState = stateOverrides => ({
 });
 
 beforeEach(() => {
-	jest.restoreAllMocks();
-	jest.spyOn(selectors, 'markUnreadNews');
+	jest.resetAllMocks();
 });
 
 describe('rendering', () => {

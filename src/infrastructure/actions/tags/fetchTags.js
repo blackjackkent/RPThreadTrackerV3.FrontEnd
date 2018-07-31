@@ -5,10 +5,9 @@ export function fetchTags() {
 	};
 }
 export const FETCHED_TAGS_FAILURE = 'FETCHED_TAGS_FAILURE';
-export function fetchedTagsFailure(data) {
+export function fetchedTagsFailure() {
 	return {
-		type: FETCHED_TAGS_FAILURE,
-		data
+		type: FETCHED_TAGS_FAILURE
 	};
 }
 export const FETCHED_TAGS_SUCCESS = 'FETCHED_TAGS_SUCCESS';
