@@ -4,9 +4,10 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPublicThreads, fetchLegacyPublicThreads } from '../../../infrastructure/actions';
+import { fetchPublicThreads, fetchLegacyPublicThreads, setPublicThreadFilter } from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
+import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
 import { getPublicThreads, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import Footer from '../../shared/footer/Footer';
@@ -19,7 +20,9 @@ const propTypes = {
 	fetchLegacyPublicThreads: PropTypes.func.isRequired,
 	slug: PropTypes.string,
 	view: PropTypes.shape({}).isRequired,
-	fetchPublicThreads: PropTypes.func.isRequired
+	fetchPublicThreads: PropTypes.func.isRequired,
+	setPublicThreadFilter: PropTypes.func.isRequired,
+	publicThreadFilter: PropTypes.string.isRequired
 };
 
 const defaultProps = {
@@ -32,7 +35,8 @@ function mapStateToProps(state) {
 	return {
 		view: state.publicThreads.view,
 		threads: publicThreads,
-		isLoadingIconVisible
+		isLoadingIconVisible,
+		publicThreadFilter: state.publicThreadFilter
 	};
 }
 
@@ -60,6 +64,10 @@ class Public extends Component {
 		return (
 			<div className="animated fadeIn">
 				<PublicHeader title={view.name} slug={slug} isLoadingIconVisible={isLoadingIconVisible} />
+				<PublicThreadFilterSelect
+					setPublicThreadFilter={this.props.setPublicThreadFilter}
+					publicThreadFilter={this.props.publicThreadFilter}
+				/>
 				<Row>
 					<Col>
 						<ThreadTable
@@ -80,5 +88,6 @@ Public.propTypes = propTypes;
 Public.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	fetchPublicThreads,
-	fetchLegacyPublicThreads
+	fetchLegacyPublicThreads,
+	setPublicThreadFilter
 })(Public);

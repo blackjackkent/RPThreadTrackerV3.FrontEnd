@@ -338,6 +338,10 @@ export {
 	fetchPublicViews
 } from './public/fetchPublicViews';
 export {
+	SET_PUBLIC_THREAD_FILTER,
+	setPublicThreadFilter
+} from './public/setPublicThreadFilter';
+export {
 	UPSERT_PUBLIC_VIEW_FAILURE,
 	UPSERT_PUBLIC_VIEW_SUCCESS,
 	UPSERT_PUBLIC_VIEW,
