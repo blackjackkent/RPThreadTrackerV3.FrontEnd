@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<div
+  className="thread-table-sub-component"
+>
+  <div
+    className="thread-table-tag-display"
+  >
+    <span
+      className="tag-display-wrapper"
+      key="1"
+    >
+      #
+      tag1
+    </span>
+    <span
+      className="tag-display-wrapper"
+      key="2"
+    >
+      #
+      tag2
+    </span>
+  </div>
+</div>
+`;
+
+exports[`rendering snapshots should render valid snapshot with no tags 1`] = `
+<div
+  className="thread-table-sub-component"
+>
+  <div
+    className="thread-table-tag-display"
+  >
+    <span
+      className="tag-display-wrapper"
+      key="-1"
+    >
+      There are no tags assigned to this thread.
+    </span>
+  </div>
+</div>
+`;

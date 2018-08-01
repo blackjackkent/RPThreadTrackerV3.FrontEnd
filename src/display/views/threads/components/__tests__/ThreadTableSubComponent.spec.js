@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import ThreadTableTagDisplay from '../ThreadTableTagDisplay';
+import ThreadTableSubComponent from '../ThreadTableSubComponent';
 // #endregion imports
 
 const createTestProps = propOverrides => ({
@@ -12,13 +12,13 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<ThreadTableTagDisplay {...props} />);
+			const jsx = (<ThreadTableSubComponent {...props} />);
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with no tags', () => {
 			const props = createTestProps({ tags: [] });
-			const jsx = (<ThreadTableTagDisplay {...props} />);
+			const jsx = (<ThreadTableSubComponent {...props} />);
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});

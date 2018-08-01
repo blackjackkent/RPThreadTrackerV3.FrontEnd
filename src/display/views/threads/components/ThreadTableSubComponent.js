@@ -2,11 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
+	description: PropTypes.string,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
+const defaultProps = {
+	description: ''
+};
 
-const ThreadTableTagDisplay = (props) => {
-	const { tags } = props;
+const ThreadTableSubComponent = (props) => {
+	const { tags, description } = props;
 	const rows = [];
 	if (tags && tags.length) {
 		for (let i = 0; i < tags.length; i++) {
@@ -29,11 +33,19 @@ const ThreadTableTagDisplay = (props) => {
 			</span>));
 	}
 	return (
-		<div className="thread-table-tag-display thread-table-sub-component">
-			{rows}
+		<div className="thread-table-sub-component">
+			{description &&
+				<div className="thread-table-description-display">
+					{description}
+				</div>
+			}
+			<div className="thread-table-tag-display">
+				{rows}
+			</div>
 		</div>
 	);
 };
 
-ThreadTableTagDisplay.propTypes = propTypes;
-export default ThreadTableTagDisplay;
+ThreadTableSubComponent.propTypes = propTypes;
+ThreadTableSubComponent.defaultProps = defaultProps;
+export default ThreadTableSubComponent;

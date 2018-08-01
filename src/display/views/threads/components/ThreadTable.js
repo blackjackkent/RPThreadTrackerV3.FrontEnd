@@ -4,7 +4,7 @@ import { Row, Col } from 'reactstrap';
 import defaultFilter from './_defaultFilter';
 import CheckboxTable from './CheckboxTable';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
-import ThreadTableTagDisplay from './ThreadTableTagDisplay';
+import ThreadTableSubComponent from './ThreadTableSubComponent';
 import TagFilterSelect from './TagFilterSelect';
 import ThreadRefreshButton from './ThreadRefreshButton';
 
@@ -119,7 +119,8 @@ class ThreadTable extends React.Component {
 					defaultFilterMethod={defaultFilter}
 					showPaginationTop
 					SubComponent={row =>
-						(<ThreadTableTagDisplay
+						(<ThreadTableSubComponent
+							description={row.original.thread.description}
 							tags={row.original.thread.threadTags}
 						/>)}
 					onSelectionChanged={this.onSelectionChanged}

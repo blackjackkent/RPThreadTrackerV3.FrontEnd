@@ -6,7 +6,7 @@ export default () => ({
 	Expander: () =>
 		(
 			<div>
-				<i className="fas fa-tags" />
+				<i className="fas fa-info-circle" />
 			</div>
 		),
 	style: {
