@@ -21,6 +21,7 @@ jest.mock('../../../../infrastructure/constants/legacyPublicValues', () => ({
 }));
 jest.mock('../PublicThreadTable', () => 'PublicThreadTable');
 jest.mock('../PublicHeader', () => 'PublicHeader');
+jest.mock('../PublicThreadFilterSelect', () => 'PublicThreadFilterSelect');
 jest.mock('../_columns', () => () => [{}, {}, {}, {}]);
 jest.mock('../../../shared/footer/Footer', () => 'Footer');
 jest.mock('../../../shared/LoadingIndicator', () => 'LoadingIndicator');
@@ -33,6 +34,7 @@ const createTestProps = propOverrides => ({
 	fetchLegacyPublicThreads: jest.fn(),
 	slug: 'my-slug',
 	fetchPublicThreads: jest.fn(),
+	setPublicThreadFilter: jest.fn(),
 	...propOverrides
 });
 
@@ -44,6 +46,7 @@ const createTestState = stateOverrides => ({
 			id: '12345'
 		}
 	},
+	publicThreadFilter: 'ALL',
 	...stateOverrides
 });
 
