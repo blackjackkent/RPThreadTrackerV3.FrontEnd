@@ -68,6 +68,20 @@
 					"**/config/**"
 				]
 			}
+		],
+		"jsx-a11y/label-has-for": [
+			"error",
+			{
+				"components": [
+					"Label"
+				],
+				"required": {
+					"every": [
+						"id"
+					]
+				},
+				"allowChildren": false
+			}
 		]
 	}
 }

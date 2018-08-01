@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, FormGroup } from 'reactstrap';
+import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import MultipleValueTextInput from 'react-multivalue-text-input';
@@ -111,6 +111,24 @@ const UpsertThreadForm = (props) => {
 					</Tooltip>
 				</Col>
 			</Row>
+			{/* description */}
+			<Row>
+				<Col>
+					<div className="form-group">
+						<Label htmlFor="description">Thread Description (Optional)</Label>
+						<Input
+							type="textarea"
+							name="description"
+							id="description"
+							rows="3"
+							onChange={handleInputChange}
+							maxLength="250"
+							defaultValue={threadToEdit.description}
+							data-spec="description-field"
+						/>
+					</div>
+				</Col>
+			</Row>
 			{/* tags */}
 			<Row>
 				<Col>
@@ -120,7 +138,7 @@ const UpsertThreadForm = (props) => {
 							onItemAdded={handleTagAdded}
 							onItemDeleted={handleTagRemoved}
 							shouldAddOnBlur
-							label="Thread Tags"
+							label="Thread Tags (Optional)"
 							name="threadTags"
 							placeholder="Thread Tags"
 							className="form-control"

@@ -7,7 +7,7 @@ import ThreadTable from '../ThreadTable';
 jest.mock('../_defaultFilter', () => jest.fn());
 jest.mock('../CheckboxTable', () => 'CheckboxTable');
 jest.mock('../ThreadBulkUpdateControls', () => 'ThreadBulkUpdateControls');
-jest.mock('../ThreadTableTagDisplay', () => 'ThreadTableTagDisplay');
+jest.mock('../ThreadTableSubComponent', () => 'ThreadTableSubComponent');
 jest.mock('../TagFilterSelect', () => 'TagFilterSelect');
 jest.mock('../ThreadRefreshButton', () => 'ThreadRefreshButton');
 
