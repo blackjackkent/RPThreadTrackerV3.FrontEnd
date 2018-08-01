@@ -10,6 +10,7 @@ import characters from './characters';
 import errors from './errors';
 import loading from './loading';
 import news from './news';
+import publicThreadFilter from './publicThreadFilter';
 import publicThreads from './publicThreads';
 import publicThreadsStatus from './publicThreadsStatus';
 import publicViews from './publicViews';
@@ -33,6 +34,7 @@ export default combineReducers({
 	errors,
 	loading,
 	news,
+	publicThreadFilter,
 	publicThreads,
 	publicThreadsStatus,
 	publicViews,
