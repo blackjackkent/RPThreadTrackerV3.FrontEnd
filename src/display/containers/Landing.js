@@ -54,7 +54,7 @@ const Landing = () => {
 							<p className="lead">Lots of blogs? No problem! Track all your threads in one filterable view.</p>
 						</div>
 						<div className="col-12 col-md-6 col-lg-4 feature-item">
-							<p className="feature-icon"><span className="fas fa-users" /></p>
+							<p className="feature-icon"><span className="fas fa-share-alt" /></p>
 							<h3 className="feature-heading">Share Your Status</h3>
 							<p className="lead">Create customized public tables to let your partners know which threads you&apos;re working on.</p>
 						</div>

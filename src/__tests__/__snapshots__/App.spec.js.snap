@@ -54,6 +54,11 @@ exports[`rendering snapshots should render valid snapshot when not in maintenanc
     />
     <Route
       component={[Function]}
+      name="Landing"
+      path="/landing"
+    />
+    <Route
+      component={[Function]}
     />
   </Switch>
 </Router>
