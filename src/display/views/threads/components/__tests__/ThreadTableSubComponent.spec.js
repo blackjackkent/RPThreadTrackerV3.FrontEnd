@@ -22,5 +22,11 @@ describe('rendering', () => {
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
+		it('should render valid snapshot with description', () => {
+			const props = createTestProps({ description: 'Test description.' });
+			const jsx = (<ThreadTableSubComponent {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });
