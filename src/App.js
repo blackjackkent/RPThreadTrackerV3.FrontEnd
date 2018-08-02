@@ -10,6 +10,7 @@ import '../scss/style.scss';
 import history from './utility/history';
 import withPageViewTracker from './infrastructure/withPageViewTracker';
 import Layout from './display/containers/Layout';
+import Landing from './display/containers/Landing';
 import StaticContainer from './display/containers/StaticContainer';
 import Maintenance from './display/containers/Maintenance';
 import PublicContainer from './display/containers/PublicContainer';
@@ -57,6 +58,11 @@ const App = (props) => {
 					path="/add-thread"
 					name="AddThreadFromExtensionHandler"
 					component={withPageViewTracker(AddThreadFromExtensionHandler)}
+				/>
+				<Route
+					path="/landing"
+					name="Landing"
+					component={withPageViewTracker(Landing)}
 				/>
 				<Route component={Layout} />
 			</Switch>
