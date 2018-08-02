@@ -45,7 +45,8 @@ const createTestPropsWithThread = propOverrides => createTestProps({
 		userTitle: 'Test Thread',
 		postId: '12345',
 		characterId: 2,
-		partnerUrlIdentifier: 'my-partner'
+		partnerUrlIdentifier: 'my-partner',
+		description: 'Test Description'
 	},
 	tagValues: ['tag1', 'tag2', 'tag3'],
 	...propOverrides
@@ -195,6 +196,15 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadForm {...props} />);
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'partner-url-identifier-field');
+			field.simulate('change');
+			expect(handleInputChange).toHaveBeenCalledTimes(1);
+		});
+		it('should be called when description changes', () => {
+			const handleInputChange = jest.fn();
+			const props = createTestProps({ handleInputChange });
+			const jsx = (<UpsertThreadForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'description-field');
 			field.simulate('change');
 			expect(handleInputChange).toHaveBeenCalledTimes(1);
 		});

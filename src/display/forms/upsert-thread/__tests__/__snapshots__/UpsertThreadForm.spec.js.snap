@@ -286,6 +286,43 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         ]
       }
     >
+      <div
+        className="form-group"
+      >
+        <Label
+          htmlFor="description"
+          tag="label"
+        >
+          Thread Description (Optional)
+        </Label>
+        <Input
+          data-spec="description-field"
+          id="description"
+          maxLength="250"
+          name="description"
+          onChange={[MockFunction]}
+          rows="3"
+          tag="p"
+          type="textarea"
+        />
+      </div>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
       <FormGroup
         tag="div"
       >
@@ -303,7 +340,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               ×
             </span>
           }
-          label="Thread Tags"
+          label="Thread Tags (Optional)"
           labelClassName="form-control-label"
           name="threadTags"
           onItemAdded={[MockFunction]}
@@ -613,6 +650,44 @@ exports[`rendering snapshots should render valid snapshot with thread 1`] = `
         ]
       }
     >
+      <div
+        className="form-group"
+      >
+        <Label
+          htmlFor="description"
+          tag="label"
+        >
+          Thread Description (Optional)
+        </Label>
+        <Input
+          data-spec="description-field"
+          defaultValue="Test Description"
+          id="description"
+          maxLength="250"
+          name="description"
+          onChange={[MockFunction]}
+          rows="3"
+          tag="p"
+          type="textarea"
+        />
+      </div>
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
       <FormGroup
         tag="div"
       >
@@ -630,7 +705,7 @@ exports[`rendering snapshots should render valid snapshot with thread 1`] = `
               ×
             </span>
           }
-          label="Thread Tags"
+          label="Thread Tags (Optional)"
           labelClassName="form-control-label"
           name="threadTags"
           onItemAdded={[MockFunction]}
