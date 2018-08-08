@@ -26,4 +26,4 @@
       name: app
   deploy:
     - provider: Environment
-      name: RPThreadTrackerV3-FrontEnd-Dev
+      name: RPThreadTrackerV3-FrontEnd-Linux
