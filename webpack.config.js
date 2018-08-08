@@ -99,7 +99,8 @@ module.exports = (env = {}) => {
 			new CopyWebpackPlugin(
 				[
 					{ from: './public/img', to: 'img' },
-					{ from: './web.config', to: 'web.config' }
+					{ from: './web.config', to: 'web.config' },
+					{ from: './.htaccess', to: '.htaccess', toType: 'file' }
 				],
 				{ copyUnmodified: false }
 			),
