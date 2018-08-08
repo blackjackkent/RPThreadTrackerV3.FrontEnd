@@ -1,30 +1,29 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin')
 
-const extractCSS = new ExtractTextPlugin('[name].fonts.css');
-const extractSCSS = new ExtractTextPlugin('[name].styles.css');
+const extractCSS = new MiniCssExtractPlugin({ filename: '[name].fonts.css' });
+const extractSCSS = new MiniCssExtractPlugin({ filename: '[name].styles.css' });
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const SRC_DIR = path.resolve(__dirname, 'src');
 
 module.exports = (env = {}) => {
 	const config = require(`./config/config.${Object.keys(env)[0]}.json`);
-	console.log(config);
 	return {
 		entry: ['babel-polyfill', `${SRC_DIR}/index.js`],
 		output: {
 			path: BUILD_DIR,
 			publicPath: '/',
-			filename: '[name].bundle.js'
+			filename: '[name].[hash].bundle.js',
+			chunkFilename: '[name].[hash].bundle.js'
 		},
-		// watch: true,
 		devtool: env.prod ? 'source-map' : 'cheap-module-eval-source-map',
 		devServer: {
 			contentBase: BUILD_DIR,
-			//   port: 9001,
 			compress: true,
 			hot: true,
 			open: true,
@@ -49,25 +48,20 @@ module.exports = (env = {}) => {
 				},
 				{
 					test: /\.(scss)$/,
-					use: ['css-hot-loader'].concat(extractSCSS.extract({
-						fallback: 'style-loader',
-						use: [
-							{
-								loader: 'css-loader',
-								options: { alias: { '../img': '../public/img' } }
-							},
-							{
-								loader: 'sass-loader'
-							}
-						]
-					}))
+					use: ['css-hot-loader'].concat([
+						'style-loader', // or MiniCssExtractPlugin.loader
+						{ loader: 'css-loader', options: { sourceMap: true, importLoaders: 1, alias: { '../img': '../public/img' } } },
+						{ loader: 'sass-loader', options: { sourceMap: true } }
+					])
 				},
 				{
 					test: /\.css$/,
-					use: extractCSS.extract({
-						fallback: 'style-loader',
-						use: 'css-loader'
-					})
+					use: [
+						{
+							loader: MiniCssExtractPlugin.loader
+						},
+						'css-loader'
+					]
 				},
 				{
 					test: /\.(png|jpg|jpeg|gif|ico)$/,
@@ -82,7 +76,7 @@ module.exports = (env = {}) => {
 					]
 				},
 				{
-					test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+					test: /\.(woff|woff2|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 					loader: 'file-loader',
 					options: {
 						name: './fonts/[name].[hash].[ext]'
@@ -95,7 +89,6 @@ module.exports = (env = {}) => {
 				TUMBLR_CLIENT_BASE_URL: JSON.stringify(config.TUMBLR_CLIENT_BASE_URL)
 			}),
 			new webpack.HotModuleReplacementPlugin(),
-			// new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
 			new webpack.NamedModulesPlugin(),
 			extractCSS,
 			extractSCSS,
@@ -109,7 +102,14 @@ module.exports = (env = {}) => {
 					{ from: './web.config', to: 'web.config' }
 				],
 				{ copyUnmodified: false }
-			)
-		]
+			),
+			new CompressionPlugin()
+		],
+		optimization: {
+			splitChunks: {
+				chunks: 'all'
+			},
+			minimize: true
+		}
 	};
 };
