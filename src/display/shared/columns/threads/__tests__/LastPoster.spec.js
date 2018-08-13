@@ -11,7 +11,7 @@ describe('data', () => {
 	it('should be configured properly', () => {
 		const column = LastPoster();
 		expect(column).toHaveProperty('Header', 'Last Poster');
-		expect(column).toHaveProperty('accessor', 'status.LastPosterUrlIdentifier');
+		expect(column).toHaveProperty('accessor', 'status.lastPosterUrlIdentifier');
 		expect(column).toHaveProperty('minWidth', 250);
 		expect(column).toHaveProperty('sortable', true);
 		expect(column).toHaveProperty('resizable', true);
@@ -29,7 +29,7 @@ describe('cell', () => {
 	it('should display link with correct href, text, and icon if last poster exists', () => {
 		const column = LastPoster([], false);
 		const cellJsx = column.Cell({
-			original: { status: { LastPostUrl: 'http://www.url.com' } },
+			original: { status: { lastPostUrl: 'http://www.url.com' } },
 			value: 'my-partner-url'
 		});
 		const cellElement = shallow(cellJsx);

@@ -21,14 +21,14 @@ const RandomThreadDisplay = (props) => {
 			{threadData.status &&
 				<div>
 					<p data-spec="random-thread-title">
-						<a href={threadData.status.LastPostUrl}>
+						<a href={threadData.status.lastPostUrl}>
 							{threadData.thread.userTitle}{' '}
 							<i className="fas fa-external-link-alt" />
 						</a>
 					</p>
 					<div className="small" data-spec="random-thread-subtitle">
 						Last Post by{' '}
-						<a href={threadData.status.LastPostUrl}>{threadData.status.LastPosterUrlIdentifier}</a>
+						<a href={threadData.status.lastPostUrl}>{threadData.status.lastPosterUrlIdentifier}</a>
 					</div>
 				</div>
 			}

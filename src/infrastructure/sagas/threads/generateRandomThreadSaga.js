@@ -8,7 +8,7 @@ import {
 
 function* generateRandomThread() {
 	let validThreads = yield select(getMyTurnThreads);
-	validThreads = validThreads.filter(t => !t.status || t.status.LastPostUrl);
+	validThreads = validThreads.filter(t => !t.status || t.status.lastPostUrl);
 	const threadData = validThreads[Math.floor(Math.random() * validThreads.length)];
 	yield put(generatedRandomThreadSuccess(threadData));
 }

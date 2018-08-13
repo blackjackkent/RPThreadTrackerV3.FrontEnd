@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import RandomThreadDisplay from '../RandomThreadDisplay';
 // #endregion imports
 
-const getValidProps = () => ({ thread: { userTitle: 'Test Title' }, status: { LastPostUrl: 'testurl', LastPosterUrlIdentifier: 'demouser' } });
+const getValidProps = () => ({ thread: { userTitle: 'Test Title' }, status: { lastPostUrl: 'testurl', lastPosterUrlIdentifier: 'demouser' } });
 const getNullStatusProps = () => ({ thread: { userTitle: 'Test Title' }, status: null });
 const getNullThreadProps = () => ({ thread: null });
 

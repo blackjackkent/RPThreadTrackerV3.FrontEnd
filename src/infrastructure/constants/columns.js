@@ -23,11 +23,11 @@ export default {
 		name: 'Character'
 	},
 	LAST_POSTER: {
-		key: 'status.LastPosterUrlIdentifier',
+		key: 'status.lastPosterUrlIdentifier',
 		name: 'Last Poster'
 	},
 	LAST_POST_DATE: {
-		key: 'status.LastPostDate',
+		key: 'status.lastPostDate',
 		name: 'Last Post Date'
 	},
 	TRACKED_PARTNER: {

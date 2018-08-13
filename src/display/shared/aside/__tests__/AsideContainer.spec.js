@@ -39,9 +39,9 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			selectors.markUnreadNews.mockReturnValue([
-				{ PostId: '12345', PostTitle: 'Test Title' },
-				{ PostId: '23456', PostTitle: 'Test Title 2' },
-				{ PostId: '34567', PostTitle: 'Test Title 3' }
+				{ postId: '12345', postTitle: 'Test Title' },
+				{ postId: '23456', postTitle: 'Test Title 2' },
+				{ postId: '34567', postTitle: 'Test Title 3' }
 			]);
 			const jsx = (<AsideContainer {...props} />);
 			const element = shallowWithState(jsx, state).dive();
@@ -53,9 +53,9 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const state = createTestState();
 			selectors.markUnreadNews.mockReturnValue([
-				{ PostId: '12345', PostTitle: 'Test Title' },
-				{ PostId: '23456', PostTitle: 'Test Title 2' },
-				{ PostId: '34567', PostTitle: 'Test Title 3' }
+				{ postId: '12345', postTitle: 'Test Title' },
+				{ postId: '23456', postTitle: 'Test Title 2' },
+				{ postId: '34567', postTitle: 'Test Title 3' }
 			]);
 			const jsx = (<AsideContainer {...props} />);
 			const element = shallowWithState(jsx, state).dive();

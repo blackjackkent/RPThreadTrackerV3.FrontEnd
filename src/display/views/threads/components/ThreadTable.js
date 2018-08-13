@@ -112,7 +112,7 @@ class ThreadTable extends React.Component {
 					getTdProps={tdProps}
 					defaultSorted={[
 						{
-							id: 'status.LastPostDate',
+							id: 'status.lastPostDate',
 							desc: true
 						}
 					]}

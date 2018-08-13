@@ -11,7 +11,7 @@ const getQueuedFilteredThreads = createSelector(
 		if (!threads.length || !threadsStatus.length) {
 			return [];
 		}
-		const results = buildThreadDataByPredicate(threads, threadsStatus, s => s.IsQueued);
+		const results = buildThreadDataByPredicate(threads, threadsStatus, s => s.isQueued);
 		return filterThreadsByTag(results, tag);
 	}
 );

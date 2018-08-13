@@ -9,7 +9,7 @@ export default (lastPosters, includeFilter) => ({
 			{row.value &&
 				<a
 					target="_blank"
-					href={row.original.status && row.original.status.LastPostUrl}
+					href={row.original.status && row.original.status.lastPostUrl}
 				>
 					{row.value} <i className="fas fa-external-link-alt" />
 				</a>

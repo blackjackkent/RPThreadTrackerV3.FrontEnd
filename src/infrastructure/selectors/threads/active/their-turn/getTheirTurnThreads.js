@@ -12,7 +12,7 @@ const getTheirTurnThreads = createSelector(
 		return buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => !s.IsCallingCharactersTurn && !s.IsQueued
+			s => !s.isCallingCharactersTurn && !s.isQueued
 		);
 	}
 );

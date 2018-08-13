@@ -8,9 +8,9 @@ import AsideNewsRow from '../AsideNewsRow';
 initMockDateNow();
 const createTestProps = propOverrides => ({
 	item: {
-		PostUrl: 'testurl',
-		PostTitle: 'testtitle',
-		PostDate: Date.now,
+		postUrl: 'testurl',
+		postTitle: 'testtitle',
+		postDate: Date.now,
 		isUnread: false
 	},
 	...propOverrides

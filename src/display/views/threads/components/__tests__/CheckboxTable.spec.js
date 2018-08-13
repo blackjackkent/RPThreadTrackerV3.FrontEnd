@@ -12,7 +12,7 @@ const createTestProps = propOverrides => ({
 		{ _id: 3, testProp: 'test3' }
 	],
 	defaultFilterMethod: jest.fn(),
-	defaultSorted: [{ id: 'status.LastPostDate', desc: true }],
+	defaultSorted: [{ id: 'status.lastPostDate', desc: true }],
 	getTdProps: () => ({}),
 	noDataText: 'No Data Text',
 	onSelectionChanged: jest.fn(),

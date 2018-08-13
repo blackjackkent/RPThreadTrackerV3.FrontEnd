@@ -9,8 +9,8 @@ export default () => ({
 		if (!row.original.status) {
 			return (<span>Awaiting Starter</span>);
 		}
-		return row.original.status.LastPostDate ?
-			(<Moment format="MMMM D, YYYY h:mmA">{row.original.status.LastPostDate}</Moment>) :
+		return row.original.status.lastPostDate ?
+			(<Moment format="MMMM D, YYYY h:mmA">{row.original.status.lastPostDate}</Moment>) :
 			(<span>Post Not Found</span>);
 	},
 	minWidth: 200,
