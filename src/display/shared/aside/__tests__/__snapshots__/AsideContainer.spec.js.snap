@@ -11,16 +11,16 @@ exports[`rendering snapshots should render valid snapshot with news 1`] = `
   news={
     Array [
       Object {
-        "PostId": "12345",
-        "PostTitle": "Test Title",
+        "postId": "12345",
+        "postTitle": "Test Title",
       },
       Object {
-        "PostId": "23456",
-        "PostTitle": "Test Title 2",
+        "postId": "23456",
+        "postTitle": "Test Title 2",
       },
       Object {
-        "PostId": "34567",
-        "PostTitle": "Test Title 3",
+        "postId": "34567",
+        "postTitle": "Test Title 3",
       },
     ]
   }
