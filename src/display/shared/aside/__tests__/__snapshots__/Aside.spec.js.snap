@@ -38,8 +38,8 @@ exports[`rendering snapshots should render valid snapshot with items 1`] = `
   <AsideNewsRow
     item={
       Object {
-        "PostId": "12345",
-        "PostTitle": "Test Title",
+        "postId": "12345",
+        "postTitle": "Test Title",
       }
     }
     key="12345"
@@ -47,8 +47,8 @@ exports[`rendering snapshots should render valid snapshot with items 1`] = `
   <AsideNewsRow
     item={
       Object {
-        "PostId": "23456",
-        "PostTitle": "Test Title 2",
+        "postId": "23456",
+        "postTitle": "Test Title 2",
       }
     }
     key="23456"
@@ -56,8 +56,8 @@ exports[`rendering snapshots should render valid snapshot with items 1`] = `
   <AsideNewsRow
     item={
       Object {
-        "PostId": "34567",
-        "PostTitle": "Test Title 3",
+        "postId": "34567",
+        "postTitle": "Test Title 3",
       }
     }
     key="34567"

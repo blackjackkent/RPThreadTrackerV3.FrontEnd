@@ -39,7 +39,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       Array [
         Object {
           "desc": true,
-          "id": "status.LastPostDate",
+          "id": "status.lastPostDate",
         },
       ]
     }

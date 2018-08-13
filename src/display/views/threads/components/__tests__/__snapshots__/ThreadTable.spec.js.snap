@@ -137,7 +137,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       Array [
         Object {
           "desc": true,
-          "id": "status.LastPostDate",
+          "id": "status.lastPostDate",
         },
       ]
     }
@@ -287,7 +287,7 @@ exports[`rendering snapshots should render valid snapshot when items are selecte
       Array [
         Object {
           "desc": true,
-          "id": "status.LastPostDate",
+          "id": "status.lastPostDate",
         },
       ]
     }
@@ -437,7 +437,7 @@ exports[`rendering snapshots should render valid snapshot when loading 1`] = `
       Array [
         Object {
           "desc": true,
-          "id": "status.LastPostDate",
+          "id": "status.lastPostDate",
         },
       ]
     }
