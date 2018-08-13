@@ -9,7 +9,7 @@ const getQueuedThreads = createSelector(
 		if (!threads.length || !threadsStatus.length) {
 			return [];
 		}
-		return buildThreadDataByPredicate(threads, threadsStatus, s => s && s.IsQueued);
+		return buildThreadDataByPredicate(threads, threadsStatus, s => s && s.isQueued);
 	}
 );
 export default getQueuedThreads;

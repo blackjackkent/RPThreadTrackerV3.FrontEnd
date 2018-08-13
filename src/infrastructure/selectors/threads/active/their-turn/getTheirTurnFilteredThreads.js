@@ -15,7 +15,7 @@ const getTheirTurnFilteredThreads = createSelector(
 		const results = buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => s && !s.IsCallingCharactersTurn && !s.IsQueued
+			s => s && !s.isCallingCharactersTurn && !s.isQueued
 		);
 		return filterThreadsByTag(results, tag);
 	}

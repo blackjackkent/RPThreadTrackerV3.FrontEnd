@@ -15,13 +15,13 @@ const AsideNewsRow = (props) => {
 		<div>
 			<div className="callout callout-danger m-0 py-3">
 				<div>
-					<a href={item.PostUrl}>
-						{item.PostTitle}
+					<a href={item.postUrl}>
+						{item.postTitle}
 					</a>
 				</div>
 				<small className="mr-3">
 					<Moment format="MMMM D, YYYY">
-						{item.PostDate}
+						{item.postDate}
 					</Moment>
 				</small>
 				<Badge data-spec="news-item-badge" color="danger" className={item.isUnread ? 'float-right' : 'd-none'} > New</Badge>

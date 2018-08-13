@@ -18,22 +18,22 @@ const RecentActivityRow = (props) => {
 		<Row>
 			<Col xs="12" sm="6">
 				<div>
-					<a target="_blank" href={threadData.status.LastPostUrl}>{threadData.thread.userTitle}</a>
+					<a target="_blank" href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a>
 				</div>
 				<div className="small ">
 					Last Post by{' '}
 					<a
 						target="_blank"
-						href={threadData.status.LastPostUrl}
+						href={threadData.status.lastPostUrl}
 					>
-						{threadData.status.LastPosterUrlIdentifier}
+						{threadData.status.lastPosterUrlIdentifier}
 					</a>
 				</div>
 			</Col>
 			<Col sm="6" xs="12" className="text-right">
 				<div>
 					<Moment format="MMMM D, YYYY">
-						{threadData.status.LastPostDate}
+						{threadData.status.lastPostDate}
 					</Moment>
 				</div>
 				<div className="small">

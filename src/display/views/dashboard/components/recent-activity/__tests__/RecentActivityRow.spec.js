@@ -6,7 +6,7 @@ import RecentActivityRow from '../RecentActivityRow';
 // #endregion imports
 
 const createTestProps = propOverrides => ({
-	threadData: { status: { LastPostUrl: 'http://www.mylastpost.com', LastPosterUrlIdentifier: 'last-poster', LastPostDate: '1989-06-05 3:14PM' }, thread: { userTitle: 'Test Title' } },
+	threadData: { status: { lastPostUrl: 'http://www.mylastpost.com', lastPosterUrlIdentifier: 'last-poster', lastPostDate: '1989-06-05 3:14PM' }, thread: { userTitle: 'Test Title' } },
 	archiveThread: jest.fn(),
 	openUntrackThreadModal: jest.fn(),
 	markThreadQueued: jest.fn(),

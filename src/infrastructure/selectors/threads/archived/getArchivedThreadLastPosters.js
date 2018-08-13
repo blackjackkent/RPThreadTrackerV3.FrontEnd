@@ -8,7 +8,7 @@ const getArchivedThreadLastPosters = createSelector(
 		if (!threadsStatus || threadsStatus.length < 1) {
 			return [];
 		}
-		const lastPosters = threadsStatus.map(s => s.LastPosterUrlIdentifier);
+		const lastPosters = threadsStatus.map(s => s.lastPosterUrlIdentifier);
 		return filterDuplicatesFromArray(lastPosters);
 	}
 );

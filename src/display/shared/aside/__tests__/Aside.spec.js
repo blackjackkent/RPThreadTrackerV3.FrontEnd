@@ -21,9 +21,9 @@ describe('rendering', () => {
 		it('should render valid snapshot with items', () => {
 			const props = createTestProps({
 				news: [
-					{ PostId: '12345', PostTitle: 'Test Title' },
-					{ PostId: '23456', PostTitle: 'Test Title 2' },
-					{ PostId: '34567', PostTitle: 'Test Title 3' }
+					{ postId: '12345', postTitle: 'Test Title' },
+					{ postId: '23456', postTitle: 'Test Title 2' },
+					{ postId: '34567', postTitle: 'Test Title 3' }
 				]
 			});
 			const jsx = (<Aside {...props} />);
@@ -44,9 +44,9 @@ describe('rendering', () => {
 		it('should display news', () => {
 			const props = createTestProps({
 				news: [
-					{ PostId: '12345', PostTitle: 'Test Title' },
-					{ PostId: '23456', PostTitle: 'Test Title 2' },
-					{ PostId: '34567', PostTitle: 'Test Title 3' }
+					{ postId: '12345', postTitle: 'Test Title' },
+					{ postId: '23456', postTitle: 'Test Title 2' },
+					{ postId: '34567', postTitle: 'Test Title 3' }
 				]
 			});
 			const jsx = (<Aside {...props} />);

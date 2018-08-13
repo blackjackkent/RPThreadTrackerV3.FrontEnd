@@ -16,8 +16,8 @@ describe('data', () => {
 			const columnIds = [
 				'thread.userTitle',
 				'thread.character.urlIdentifier',
-				'status.LastPosterUrlIdentifier',
-				'status.LastPostDate',
+				'status.lastPosterUrlIdentifier',
+				'status.lastPostDate',
 				'thread.partnerUrlIdentifier',
 				'invalidColumn'
 			];

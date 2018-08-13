@@ -101,7 +101,7 @@
 	},
 	"scripts": {
 		"dev": "webpack -d --progress --watch --profile --json > compilation-stats.json --env.dev",
-		"start": "webpack-dev-server --progress --colors --inline --env.dev --history-api-fallback",
+		"start": "webpack-dev-server --progress --colors --inline --env.dev --history-api-fallback --mode=development",
 		"build": "webpack -p --progress --env.prod",
 		"build:serve": "yarn clean && yarn build && http-serve ./build --gzip -f /",
 		"clean": "rimraf ./build",

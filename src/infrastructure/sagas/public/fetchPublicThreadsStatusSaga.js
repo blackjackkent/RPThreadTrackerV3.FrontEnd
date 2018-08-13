@@ -19,13 +19,13 @@ function* fetchPublicThreadsStatusChunk(chunk, view) {
 		const threads = response.data;
 		let result = [];
 		if (view.turnFilter && view.turnFilter.includeMyTurn) {
-			result = result.concat(threads.filter(t => t.IsCallingCharactersTurn && !t.IsQueued));
+			result = result.concat(threads.filter(t => t.isCallingCharactersTurn && !t.isQueued));
 		}
 		if (view.turnFilter && view.turnFilter.includeTheirTurn) {
-			result = result.concat(threads.filter(t => !t.IsCallingCharactersTurn && !t.IsQueued));
+			result = result.concat(threads.filter(t => !t.isCallingCharactersTurn && !t.isQueued));
 		}
 		if (view.turnFilter && view.turnFilter.includeQueued) {
-			result = result.concat(threads.filter(t => t.IsQueued));
+			result = result.concat(threads.filter(t => t.isQueued));
 		}
 		yield put(fetchedPublicThreadsStatusChunkSuccess(result));
 	} catch (e) {
