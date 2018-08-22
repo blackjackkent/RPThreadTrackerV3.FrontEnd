@@ -75,11 +75,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           >
             <Label
               className="switch switch-sm switch-text switch-info mb-0"
+              htmlFor="include-archived-switch"
               tag="label"
             >
               <Input
                 checked={false}
                 className="switch-input"
+                id="include-archived-switch"
                 name="includeArchived"
                 onChange={[Function]}
                 tag="p"
@@ -139,11 +141,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           >
             <Label
               className="switch switch-sm switch-text switch-info mb-0"
+              htmlFor="include-hiatused-switch"
               tag="label"
             >
               <Input
                 checked={false}
                 className="switch-input"
+                id="include-hiatued-switch"
                 name="includeHiatused"
                 onChange={[Function]}
                 tag="p"

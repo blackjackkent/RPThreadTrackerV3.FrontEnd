@@ -8,6 +8,7 @@ import App from '../App';
 jest.mock('../utility/history', () => ({}));
 jest.mock('../infrastructure/withPageViewTracker', () => WrappedComponent => WrappedComponent);
 jest.mock('../display/containers/Layout', () => () => 'Layout');
+jest.mock('../display/containers/Landing', () => () => 'Landing');
 jest.mock('../display/containers/StaticContainer', () => () => 'StaticContainer');
 jest.mock('../display/containers/Maintenance', () => () => 'Maintenance');
 jest.mock('../display/containers/PublicContainer', () => () => 'PublicContainer');

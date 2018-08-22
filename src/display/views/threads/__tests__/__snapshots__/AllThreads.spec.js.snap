@@ -33,6 +33,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       Object {},
     ]
   }
+  isAllThreads={true}
   lastPosters={
     Array [
       "lastposter1",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import getColumns from './components/_columns';
+import getColumns from './components/_allThreadsColumns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
 import { fetchActiveThreads } from '../../../infrastructure/actions';
@@ -62,6 +62,7 @@ class MyTurnThreads extends Component {
 				{...this.props}
 				filteredThreads={filteredThreads}
 				tags={tags}
+				isAllThreads
 				columns={getColumns(characters, partners, lastPosters)}
 				tdProps={getTdProps(
 					openUntrackThreadModal,

@@ -27,11 +27,15 @@ const AtAGlanceCard = (props) => {
 		<Card className="at-a-glance-card">
 			<CardHeader data-spec="at-a-glance-card-header">
 				<i className="fas fa-search" data-spec="at-a-glance-card-icon" /> At a Glance
-				<Label className="switch switch-sm switch-text switch-info float-right mb-0">
+				<Label
+					htmlFor="at-a-glance-switch"
+					className="switch switch-sm switch-text switch-info float-right mb-0"
+				>
 					<Input
 						data-spec="at-a-glance-card-toggle"
 						type="checkbox"
 						className="switch-input"
+						id="at-a-glance-switch"
 						checked={showDashboardThreadDistribution}
 						onChange={showDashboardThreadDistributionToggle}
 					/>

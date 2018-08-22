@@ -57,6 +57,57 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 </div>
 `;
 
+exports[`rendering snapshots should render valid snapshot on all threads page 1`] = `
+<div
+  className="thread-bulk-update-controls"
+>
+  <Form
+    data-spec="thread-bulk-update-controls-form"
+    onSubmit={[Function]}
+    tag="form"
+  >
+    <InputGroup
+      tag="div"
+    >
+      <Input
+        className="clean-select"
+        data-spec="thread-bulk-update-controls-select"
+        id="tag"
+        name="tag"
+        onChange={[Function]}
+        tag="p"
+        type="select"
+      >
+        <option
+          value=""
+        >
+          Bulk Actions
+        </option>
+        <option
+          value="toggle-archived"
+        >
+          Archive
+           Selected Threads
+        </option>
+        <option
+          value="untrack"
+        >
+          Untrack Selected Threads
+        </option>
+      </Input>
+      <Button
+        color="primary"
+        data-spec="thread-bulk-update-controls-submit-button"
+        disabled={false}
+        tag="button"
+      >
+        Submit
+      </Button>
+    </InputGroup>
+  </Form>
+</div>
+`;
+
 exports[`rendering snapshots should render valid snapshot on archive page 1`] = `
 <div
   className="thread-bulk-update-controls"
