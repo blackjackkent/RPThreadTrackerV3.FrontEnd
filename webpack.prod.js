@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const common = require('./webpack.common.js');
 const config = require('./config/config.prod.json');
-
+process.traceDeprecation = true;
 module.exports = merge(common, {
 	mode: 'production',
 	devtool: 'source-map',
