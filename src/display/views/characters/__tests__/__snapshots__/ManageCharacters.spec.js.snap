@@ -36,6 +36,12 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         isLoadingIconVisible={true}
         openUntrackCharacterModal={[MockFunction]}
         openUpsertCharacterModal={[MockFunction]}
+        threadCounts={
+          Object {
+            "15": 20,
+            "5": 10,
+          }
+        }
         toggleCharacterIsOnHiatus={[Function]}
       />
     </Col>
