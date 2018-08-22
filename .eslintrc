@@ -65,7 +65,8 @@
 				"devDependencies": [
 					"**/*.test.js",
 					"**/*.spec.js",
-					"**/config/**"
+					"**/config/**",
+					"**/*webpack*"
 				]
 			}
 		],
