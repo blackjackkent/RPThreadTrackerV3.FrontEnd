@@ -60,10 +60,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     columns={
       Array [
         Object {
-          "id": "column1",
-        },
-        Object {
-          "id": "column2",
+          "15": 20,
+          "5": 10,
         },
       ]
     }
@@ -77,6 +75,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         },
       ]
     }
+    data-spec="character-react-table"
     defaultExpanded={Object {}}
     defaultFilterMethod={[Function]}
     defaultFiltered={Array []}
@@ -225,10 +224,8 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     columns={
       Array [
         Object {
-          "id": "column1",
-        },
-        Object {
-          "id": "column2",
+          "15": 20,
+          "5": 10,
         },
       ]
     }
@@ -242,6 +239,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
         },
       ]
     }
+    data-spec="character-react-table"
     defaultExpanded={Object {}}
     defaultFilterMethod={[Function]}
     defaultFiltered={Array []}

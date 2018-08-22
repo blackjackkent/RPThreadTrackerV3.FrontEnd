@@ -4,27 +4,34 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
-import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
-import { openUpsertCharacterModal, fetchCharacters, upsertCharacter, openUntrackCharacterModal } from '../../../infrastructure/actions';
+import { getIsLoadingIconVisible, getThreadCountsByCharacter } from '../../../infrastructure/selectors';
+import { openUpsertCharacterModal, fetchCharacters, fetchActiveThreads, upsertCharacter, openUntrackCharacterModal } from '../../../infrastructure/actions';
 // #endregion imports
 
 const propTypes = {
+	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	fetchActiveThreads: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	upsertCharacter: PropTypes.func.isRequired,
-	openUntrackCharacterModal: PropTypes.func.isRequired
+	openUntrackCharacterModal: PropTypes.func.isRequired,
+	threadCounts: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
-		characters
+		characters,
+		activeThreads
 	} = state;
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
+	const threadCounts = getThreadCountsByCharacter(state);
 	return {
 		characters,
-		isLoadingIconVisible
+		activeThreads,
+		isLoadingIconVisible,
+		threadCounts
 	};
 }
 
@@ -38,6 +45,9 @@ class ManageCharacters extends Component {
 		if (!this.props.characters || !this.props.characters.length) {
 			this.props.fetchCharacters();
 		}
+		if (!this.props.activeThreads || !this.props.activeThreads.length) {
+			this.props.fetchActiveThreads();
+		}
 	}
 
 	toggleCharacterIsOnHiatus(character) {
@@ -50,7 +60,8 @@ class ManageCharacters extends Component {
 	render() {
 		const {
 			characters,
-			isLoadingIconVisible
+			isLoadingIconVisible,
+			threadCounts
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -63,6 +74,7 @@ class ManageCharacters extends Component {
 							toggleCharacterIsOnHiatus={this.toggleCharacterIsOnHiatus}
 							openUntrackCharacterModal={this.props.openUntrackCharacterModal}
 							isLoadingIconVisible={isLoadingIconVisible}
+							threadCounts={threadCounts}
 						/>
 					</Col>
 				</Row>
@@ -73,6 +85,7 @@ class ManageCharacters extends Component {
 
 ManageCharacters.propTypes = propTypes;
 export default connect(mapStateToProps, {
+	fetchActiveThreads,
 	fetchCharacters,
 	openUntrackCharacterModal,
 	openUpsertCharacterModal,

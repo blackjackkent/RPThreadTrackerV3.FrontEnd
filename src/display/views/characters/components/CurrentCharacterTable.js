@@ -9,7 +9,8 @@ const propTypes = {
 	openUpsertCharacterModal: PropTypes.func.isRequired,
 	toggleCharacterIsOnHiatus: PropTypes.func.isRequired,
 	openUntrackCharacterModal: PropTypes.func.isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired
+	isLoadingIconVisible: PropTypes.bool.isRequired,
+	threadCounts: PropTypes.shape({}).isRequired
 };
 
 const CurrentCharacterTable = (props) => {
@@ -18,14 +19,16 @@ const CurrentCharacterTable = (props) => {
 		isLoadingIconVisible,
 		openUpsertCharacterModal,
 		toggleCharacterIsOnHiatus,
-		openUntrackCharacterModal
+		openUntrackCharacterModal,
+		threadCounts
 	} = props;
 	return (
 		<div className="current-characters-table">
 			<ReactTable
+				data-spec="character-react-table"
 				className="-striped"
 				data={characters}
-				columns={columns}
+				columns={columns(threadCounts)}
 				defaultSorted={[{ id: 'characterName', desc: true }]}
 				defaultPageSize={10}
 				noDataText={isLoadingIconVisible ? 'Loading...' : 'No Characters Found'}

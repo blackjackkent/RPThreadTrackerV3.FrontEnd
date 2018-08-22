@@ -14,6 +14,7 @@ export { default as DateQueued } from './threads/DateQueued';
 
 export { default as CharacterName } from './characters/CharacterName';
 export { default as UrlIdentifier } from './characters/UrlIdentifier';
+export { default as ThreadCount } from './characters/ThreadCount';
 export { default as PlatformId } from './characters/PlatformId';
 export { default as IsOnHiatus } from './characters/IsOnHiatus';
 
