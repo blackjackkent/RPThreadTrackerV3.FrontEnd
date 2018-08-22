@@ -16,6 +16,7 @@ const propTypes = {
 	isArchive: PropTypes.bool,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	isQueue: PropTypes.bool,
+	isAllThreads: PropTypes.bool,
 	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	refreshThreads: PropTypes.func.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
@@ -28,6 +29,7 @@ const propTypes = {
 const defaultProps = {
 	isArchive: false,
 	isQueue: false,
+	isAllThreads: false,
 	threadTablePageSize: 10
 };
 
@@ -66,6 +68,7 @@ class ThreadTable extends React.Component {
 			isArchive,
 			isLoadingIconVisible,
 			isQueue,
+			isAllThreads,
 			bulkToggleThreadsAreMarkedQueued,
 			bulkToggleThreadsAreArchived,
 			openBulkUntrackThreadsModal,
@@ -91,6 +94,7 @@ class ThreadTable extends React.Component {
 						<ThreadBulkUpdateControls
 							isArchive={isArchive}
 							isQueue={isQueue}
+							isAllThreads={isAllThreads}
 							selectedThreadCount={this.state.selectedItems.length}
 							executeBulkAction={this.executeBulkAction}
 							bulkToggleThreadsAreMarkedQueued={bulkToggleThreadsAreMarkedQueued}

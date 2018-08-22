@@ -5,6 +5,7 @@ import { Form, Button, InputGroup, Input } from 'reactstrap';
 const propTypes = {
 	isArchive: PropTypes.bool.isRequired,
 	isQueue: PropTypes.bool.isRequired,
+	isAllThreads: PropTypes.bool.isRequired,
 	selectedThreadCount: PropTypes.number.isRequired,
 	executeBulkAction: PropTypes.func.isRequired,
 	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
@@ -48,6 +49,7 @@ class ThreadBulkUpdateControls extends React.Component {
 		const {
 			isArchive,
 			isQueue,
+			isAllThreads,
 			selectedThreadCount
 		} = this.props;
 		return (
@@ -66,7 +68,7 @@ class ThreadBulkUpdateControls extends React.Component {
 							onChange={this.handleInputChange}
 						>
 							<option value="">Bulk Actions</option>
-							{!isArchive && <option value="toggle-queued">{isQueue ? 'Unmark' : 'Mark'} Selected Threads Queued</option>}
+							{!isArchive && !isAllThreads && <option value="toggle-queued">{isQueue ? 'Unmark' : 'Mark'} Selected Threads Queued</option>}
 							<option value="toggle-archived">{isArchive ? 'Unarchive' : 'Archive'} Selected Threads</option>
 							<option value="untrack">Untrack Selected Threads</option>
 						</Input>

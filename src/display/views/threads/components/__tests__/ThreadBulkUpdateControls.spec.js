@@ -8,6 +8,7 @@ import ThreadBulkUpdateControls from '../ThreadBulkUpdateControls';
 const createTestProps = propOverrides => ({
 	isArchive: false,
 	isQueue: false,
+	isAllThreads: false,
 	selectedThreadCount: 5,
 	executeBulkAction: jest.fn(),
 	bulkToggleThreadsAreMarkedQueued: jest.fn(),
@@ -31,6 +32,12 @@ describe('rendering', () => {
 		});
 		it('should render valid snapshot on queue page', () => {
 			const props = createTestProps({ isQueue: true });
+			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const element = shallow(jsx);
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot on all threads page', () => {
+			const props = createTestProps({ isAllThreads: true });
 			const jsx = (<ThreadBulkUpdateControls {...props} />);
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();

@@ -48,10 +48,14 @@ class ExportThreadsPane extends Component {
 									<Label htmlFor="current-password">Include Archived Threads:</Label>
 								</Col>
 								<Col>
-									<Label className="switch switch-sm switch-text switch-info mb-0">
+									<Label
+										htmlFor="include-archived-switch"
+										className="switch switch-sm switch-text switch-info mb-0"
+									>
 										<Input
 											type="checkbox"
 											className="switch-input"
+											id="include-archived-switch"
 											checked={this.state.includeArchived}
 											onChange={this.handleInputChange}
 											name="includeArchived"
@@ -66,10 +70,14 @@ class ExportThreadsPane extends Component {
 									<Label htmlFor="current-password">Include Characters on Hiatus:</Label>
 								</Col>
 								<Col>
-									<Label className="switch switch-sm switch-text switch-info mb-0">
+									<Label
+										htmlFor="include-hiatused-switch"
+										className="switch switch-sm switch-text switch-info mb-0"
+									>
 										<Input
 											type="checkbox"
 											className="switch-input"
+											id="include-hiatued-switch"
 											checked={this.state.includeHiatused}
 											onChange={this.handleInputChange}
 											name="includeHiatused"
