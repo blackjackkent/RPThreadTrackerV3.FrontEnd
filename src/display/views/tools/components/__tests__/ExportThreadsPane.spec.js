@@ -37,6 +37,7 @@ describe('behavior', () => {
 			const props = createTestProps({ onExportRequest });
 			const element = shallow(<ExportThreadsPane {...props} />);
 			element.instance().handleInputChange(event);
+			element.update();
 			const button = getSpecWrapper(element, 'export-threads-form-submit-button');
 			button.simulate('click');
 			expect(onExportRequest).toHaveBeenCalledTimes(1);
@@ -48,6 +49,7 @@ describe('behavior', () => {
 			const props = createTestProps({ onExportRequest });
 			const element = shallow(<ExportThreadsPane {...props} />);
 			element.instance().handleInputChange(event);
+			element.update();
 			const button = getSpecWrapper(element, 'export-threads-form-submit-button');
 			button.simulate('click');
 			expect(onExportRequest).toHaveBeenCalledTimes(1);

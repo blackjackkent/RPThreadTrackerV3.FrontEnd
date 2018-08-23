@@ -67,6 +67,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, userTitle: 'My Thread' });
@@ -78,6 +79,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, isArchived: true });
@@ -144,6 +146,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleTagRemoved('Test Tag 1');
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [{ tagText: 'Test Tag 2' }] });
@@ -155,6 +158,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleTagRemoved('Test Tag 1');
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [] });
@@ -179,6 +183,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleTagAdded('Test Tag 3');
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [{ tagText: 'Test Tag 1' }, { tagText: 'Test Tag 2' }, { tagText: 'Test Tag 3' }] });
@@ -190,6 +195,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleTagAdded('Test Tag 1');
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, threadTags: [{ tagText: 'Test Tag 1' }] });
@@ -215,6 +221,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertThreadModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().selectCharacter(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-thread-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertThread).toHaveBeenLastCalledWith({ threadId: 1, characterId: 5 });

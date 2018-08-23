@@ -57,6 +57,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertCharacterModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-character-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertCharacter).toHaveBeenCalledTimes(1);
@@ -69,6 +70,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertCharacterModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-character-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertCharacter).toHaveBeenCalledTimes(1);

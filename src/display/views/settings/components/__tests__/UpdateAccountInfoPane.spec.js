@@ -58,6 +58,7 @@ describe('behavior', () => {
 			const props = createTestProps({ submitAccountInfoForm });
 			const element = shallow(<UpdateAccountInfoPane {...props} />);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'account-info-form-container');
 			form.props().onValidSubmit();
 			expect(submitAccountInfoForm).toHaveBeenCalledTimes(1);

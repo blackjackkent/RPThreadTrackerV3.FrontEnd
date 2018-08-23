@@ -63,6 +63,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertPublicViewModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-public-view-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
@@ -75,6 +76,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertPublicViewModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-public-view-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
@@ -88,6 +90,7 @@ describe('behavior', () => {
 			const jsx = (<UpsertPublicViewModal {...props} />);
 			const element = shallow(jsx);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'upsert-public-view-modal-form');
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
