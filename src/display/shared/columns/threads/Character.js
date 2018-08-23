@@ -16,17 +16,21 @@ export default (characters, includeFilter) => ({
 	resizable: true,
 	filterable: includeFilter,
 	// eslint-disable-next-line react/prop-types
-	Filter: ({ filter, onChange }) => (
-		<select
-			onChange={event => onChange(event.target.value)}
-			style={{ width: '100%' }}
-			value={filter ? filter.value : ''}
-		>
-			<option value="">Show All</option>
-			{characters.sort(sortCharacters).map(character =>
-				<CharacterSelectItem key={character.characterId} character={character} />)}
-		</select>
-	),
+	Filter: ({ filter, onChange }) => {
+		const options = characters
+			.sort(sortCharacters)
+			.map(character => <CharacterSelectItem key={character.characterId} character={character} />);
+		return (
+			<select
+				onChange={event => onChange(event.target.value)}
+				style={{ width: '100%' }}
+				value={filter ? filter.value : ''}
+			>
+				<option value="">Show All</option>
+				{options}
+			</select>
+		);
+	},
 	filterMethod: (filter, row) => {
 		const characterId = parseInt(filter.value, 10);
 		// eslint-disable-next-line no-underscore-dangle

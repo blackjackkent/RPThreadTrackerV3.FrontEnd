@@ -54,13 +54,17 @@ class ThreadTable extends React.Component {
 		this.executeBulkAction = this.executeBulkAction.bind(this);
 		this.onSelectionChanged = this.onSelectionChanged.bind(this);
 	}
+
 	onSelectionChanged(selectedItems) {
 		this.setState({ selectedItems });
 	}
+
 	executeBulkAction(func) {
-		const items = this.state.selectedItems.map(t => t.thread);
+		const { selectedItems } = this.state;
+		const items = selectedItems.map(t => t.thread);
 		func(items);
 	}
+
 	render() {
 		const {
 			filteredThreads,
@@ -80,6 +84,7 @@ class ThreadTable extends React.Component {
 			updateThreadTablePageSize,
 			tags
 		} = this.props;
+		const { selectedItems } = this.state;
 		return (
 			<div>
 				<Row>
@@ -95,7 +100,7 @@ class ThreadTable extends React.Component {
 							isArchive={isArchive}
 							isQueue={isQueue}
 							isAllThreads={isAllThreads}
-							selectedThreadCount={this.state.selectedItems.length}
+							selectedThreadCount={selectedItems.length}
 							executeBulkAction={this.executeBulkAction}
 							bulkToggleThreadsAreMarkedQueued={bulkToggleThreadsAreMarkedQueued}
 							bulkToggleThreadsAreArchived={bulkToggleThreadsAreArchived}
@@ -122,11 +127,12 @@ class ThreadTable extends React.Component {
 					]}
 					defaultFilterMethod={defaultFilter}
 					showPaginationTop
-					SubComponent={row =>
-						(<ThreadTableSubComponent
+					SubComponent={row => (
+						<ThreadTableSubComponent
 							description={row.original.thread.description}
 							tags={row.original.thread.threadTags}
-						/>)}
+						/>
+					)}
 					onSelectionChanged={this.onSelectionChanged}
 				/>
 			</div>

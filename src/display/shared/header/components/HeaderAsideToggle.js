@@ -24,10 +24,12 @@ const HeaderAsideToggle = (props) => {
 			>
 				<i className="fas fa-bell" />
 				{
-					newsUnreadCount > 0 &&
-					<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
-						{newsUnreadCount}
-					</Badge>
+					newsUnreadCount > 0
+					&& (
+						<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
+							{newsUnreadCount}
+						</Badge>
+					)
 				}
 			</NavLink>
 		</NavItem>

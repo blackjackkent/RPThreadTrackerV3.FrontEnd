@@ -1,11 +1,13 @@
 // #region imports
 import React, { Component } from 'react';
-import { Row, Col, Card, CardBlock, Button } from 'reactstrap';
+import {
+	Row, Col, Card, CardBlock, Button
+} from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LoginForm from '../../forms/login/LoginForm';
-import { submitUserLogin } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 // #endregion imports
 
@@ -38,18 +40,23 @@ class Login extends Component {
 			loginRequest: {}
 		};
 	}
+
 	handleLoginSubmit() {
-		this.props.submitUserLogin(this.state.loginRequest);
+		const { submitUserLogin } = this.props;
+		const { loginRequest } = this.state;
+		submitUserLogin(loginRequest);
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState({
-			loginRequest: Object.assign({}, this.state.loginRequest, {
+		this.setState(prevState => ({
+			loginRequest: Object.assign({}, prevState.loginRequest, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const { displayLoadingIndicator, loginError } = this.props;
 		let loading = (<span />);
@@ -104,5 +111,5 @@ class Login extends Component {
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	submitUserLogin
+	submitUserLogin: actions.submitUserLogin
 })(Login);

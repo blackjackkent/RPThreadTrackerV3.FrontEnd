@@ -28,16 +28,18 @@ const getBlockContent = (
 	markThreadQueued
 ) => {
 	if (loadingInProgress) {
-		return (<LoadingIndicator
-			style={{
-				width: 50,
-				height: 50,
-				position: 'absolute',
-				top: '50%',
-				left: '50%',
-				transform: 'translate(-50%, -50%)'
-			}}
-		/>);
+		return (
+			<LoadingIndicator
+				style={{
+					width: 50,
+					height: 50,
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)'
+				}}
+			/>
+		);
 	}
 	if (characters.length === 0) {
 		return (<NoCharactersMessage />);
@@ -52,15 +54,16 @@ const getBlockContent = (
 	if (recentActivityThreads.length === 0) {
 		return (<NoRecentActivityMessage />);
 	}
-	return recentActivityThreads.map(threadData =>
-		(<RecentActivityRow
+	return recentActivityThreads.map(threadData => (
+		<RecentActivityRow
 			data-spec="recent-activity-card-row"
 			threadData={threadData}
 			key={threadData.thread.threadId}
 			archiveThread={archiveThread}
 			openUntrackThreadModal={openUntrackThreadModal}
 			markThreadQueued={markThreadQueued}
-		/>));
+		/>
+	));
 };
 
 const RecentActivityCard = (props) => {

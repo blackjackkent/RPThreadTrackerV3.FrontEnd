@@ -20,12 +20,14 @@ const withPageViewTracker = (WrappedComponent, options = {}) => {
 
 	const HOC = class extends PureComponent {
 		componentDidMount() {
-			const page = this.props.location.pathname;
+			const { location } = this.props;
+			const page = location.pathname;
 			trackPage(page);
 		}
 
 		componentWillReceiveProps(nextProps) {
-			const currentPage = this.props.location.pathname;
+			const { location } = this.props;
+			const currentPage = location.pathname;
 			const nextPage = nextProps.location.pathname;
 
 			if (currentPage !== nextPage) {

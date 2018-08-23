@@ -28,4 +28,3 @@ export function upsertCharacterSuccess(character) {
 		data: character
 	};
 }
-

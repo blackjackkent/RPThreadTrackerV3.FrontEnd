@@ -24,7 +24,7 @@ const AsideNewsRow = (props) => {
 						{item.postDate}
 					</Moment>
 				</small>
-				<Badge data-spec="news-item-badge" color="danger" className={item.isUnread ? 'float-right' : 'd-none'} > New</Badge>
+				<Badge data-spec="news-item-badge" color="danger" className={item.isUnread ? 'float-right' : 'd-none'}> New</Badge>
 			</div>
 			<hr className="mx-3 my-0" />
 		</div>

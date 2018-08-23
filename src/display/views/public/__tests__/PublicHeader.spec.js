@@ -18,8 +18,9 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when loading icon is visible', () => {
-			const element =
-				shallow(<PublicHeader {...createTestProps({ isLoadingIconVisible: true })} />);
+			const element = shallow(
+				<PublicHeader {...createTestProps({ isLoadingIconVisible: true })} />
+			);
 			expect(element).toMatchSnapshot();
 		});
 	});

@@ -20,6 +20,7 @@ const RandomThreadCard = (props) => {
 			</CardHeader>
 			<CardBlock className="card-body">
 				<button
+					type="button"
 					className="btn btn-primary"
 					onClick={generateRandomThread}
 					data-spec="random-thread-generator-button"

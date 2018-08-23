@@ -1,11 +1,13 @@
 // #region imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Container, Row, Col, Card, CardBlock } from 'reactstrap';
+import {
+	Container, Row, Col, Card, CardBlock
+} from 'reactstrap';
 import PropTypes from 'prop-types';
 
-import { fetchCharacters, fetchUser, openUpsertThreadModal } from '../../infrastructure/actions';
-import { getCharactersSortedByIdentifier } from '../../infrastructure/selectors';
+import * as actions from '../../infrastructure/actions';
+import * as selectors from '../../infrastructure/selectors';
 
 import LoadingIndicator from '../shared/LoadingIndicator';
 import ModalContainer from '../shared/modals/ModalContainer';
@@ -30,7 +32,7 @@ const mapStateToProps = (state) => {
 		user,
 		ui
 	} = state;
-	const sortedCharacters = getCharactersSortedByIdentifier(state);
+	const sortedCharacters = selectors.getCharactersSortedByIdentifier(state);
 	return {
 		user,
 		sortedCharacters,
@@ -43,29 +45,36 @@ class AddThreadFromExtensionHandler extends Component {
 		this.state = { hasOpenedModal: false };
 		this.shouldOpenModal = this.shouldOpenModal.bind(this);
 	}
+
 	componentDidMount() {
-		this.props.fetchUser();
-		this.props.fetchCharacters();
+		const { fetchUser, fetchCharacters } = this.props;
+		fetchUser();
+		fetchCharacters();
 	}
+
 	componentWillReceiveProps(nextProps) {
+		const { openUpsertThreadModal } = this.props;
 		if (this.shouldOpenModal(nextProps.user, nextProps.sortedCharacters)) {
 			const thread = getThreadDataFromExtensionQuery(nextProps.sortedCharacters);
-			this.props.openUpsertThreadModal(thread);
+			openUpsertThreadModal(thread);
 		}
 	}
+
 	shouldOpenModal(user, characters) {
+		const { hasOpenedModal } = this.state;
 		if (!user || !user.id) {
 			return false;
 		}
 		if (!characters || !characters.length) {
 			return false;
 		}
-		if (this.state.hasOpenedModal) {
+		if (hasOpenedModal) {
 			return false;
 		}
 		this.setState({ hasOpenedModal: true });
 		return true;
 	}
+
 	showLoadingIndicator() {
 		return (
 			<LoadingIndicator
@@ -81,30 +90,37 @@ class AddThreadFromExtensionHandler extends Component {
 			/>
 		);
 	}
+
 	showLayout() {
+		const { isUpsertThreadModalOpen } = this.props;
+		const { hasOpenedModal } = this.state;
 		return (
 			<div className="app flex-row align-items-center" data-spec="layout-app">
 				<ModalContainer />
-				{this.state.hasOpenedModal && !this.props.isUpsertThreadModalOpen &&
-					<Container data-spec="extension-handler-success-message">
-						<Row className="justify-content-center">
-							<Col md="6">
-								<Card className="login-box p-4">
-									<CardBlock className="card-body text-center">
-										<p>
-											You can now close this window.
-										</p>
-									</CardBlock>
-								</Card>
-							</Col>
-						</Row>
-					</Container>
+				{hasOpenedModal && !isUpsertThreadModalOpen
+					&& (
+						<Container data-spec="extension-handler-success-message">
+							<Row className="justify-content-center">
+								<Col md="6">
+									<Card className="login-box p-4">
+										<CardBlock className="card-body text-center">
+											<p>
+												You can now close this window.
+											</p>
+										</CardBlock>
+									</Card>
+								</Col>
+							</Row>
+						</Container>
+					)
 				}
 			</div>
 		);
 	}
+
 	render() {
-		if (!this.props.user.id || !this.props.sortedCharacters.length) {
+		const { user, sortedCharacters } = this.props;
+		if (!user.id || !sortedCharacters.length) {
 			return this.showLoadingIndicator();
 		}
 		return this.showLayout();
@@ -113,7 +129,7 @@ class AddThreadFromExtensionHandler extends Component {
 
 AddThreadFromExtensionHandler.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	fetchCharacters,
-	fetchUser,
-	openUpsertThreadModal
+	fetchCharacters: actions.fetchCharacters,
+	fetchUser: actions.fetchUser,
+	openUpsertThreadModal: actions.openUpsertThreadModal
 })(withPageViewTracker(AddThreadFromExtensionHandler));

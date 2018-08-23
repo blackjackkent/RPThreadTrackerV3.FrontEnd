@@ -4,12 +4,12 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPublicThreads, fetchLegacyPublicThreads, setPublicThreadFilter } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
-import { getPublicThreads, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
+import * as selectors from '../../../infrastructure/selectors';
 import Footer from '../../shared/footer/Footer';
 import { legacyPublicSlugs, buildLegacyView } from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
@@ -30,8 +30,8 @@ const defaultProps = {
 };
 
 function mapStateToProps(state) {
-	const publicThreads = getPublicThreads(state);
-	const isLoadingIconVisible = getIsLoadingIconVisible(state);
+	const publicThreads = selectors.getPublicThreads(state);
+	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
 	return {
 		view: state.publicThreads.view,
 		threads: publicThreads,
@@ -42,31 +42,36 @@ function mapStateToProps(state) {
 
 class Public extends Component {
 	componentDidMount() {
-		const { slug } = this.props;
+		const { slug, fetchPublicThreads } = this.props;
 		if (legacyPublicSlugs.includes(slug)) {
 			this.fetchLegacyView(slug);
 			return;
 		}
-		this.props.fetchPublicThreads(this.props.slug);
+		fetchPublicThreads(slug);
 	}
+
 	fetchLegacyView(slug) {
 		const query = getQuery();
+		const { fetchLegacyPublicThreads } = this.props;
 		const view = buildLegacyView(query, slug);
-		this.props.fetchLegacyPublicThreads(view);
+		fetchLegacyPublicThreads(view);
 	}
+
 	render() {
 		const {
 			view,
 			threads,
 			slug,
-			isLoadingIconVisible
+			isLoadingIconVisible,
+			setPublicThreadFilter,
+			publicThreadFilter
 		} = this.props;
 		return (
 			<div className="animated fadeIn">
 				<PublicHeader title={view.name} slug={slug} isLoadingIconVisible={isLoadingIconVisible} />
 				<PublicThreadFilterSelect
-					setPublicThreadFilter={this.props.setPublicThreadFilter}
-					publicThreadFilter={this.props.publicThreadFilter}
+					setPublicThreadFilter={setPublicThreadFilter}
+					publicThreadFilter={publicThreadFilter}
 				/>
 				<Row>
 					<Col>
@@ -79,7 +84,7 @@ class Public extends Component {
 					</Col>
 				</Row>
 				<Footer />
-			</div >
+			</div>
 		);
 	}
 }
@@ -87,7 +92,7 @@ class Public extends Component {
 Public.propTypes = propTypes;
 Public.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	fetchPublicThreads,
-	fetchLegacyPublicThreads,
-	setPublicThreadFilter
+	fetchPublicThreads: actions.fetchPublicThreads,
+	fetchLegacyPublicThreads: actions.fetchLegacyPublicThreads,
+	setPublicThreadFilter: actions.setPublicThreadFilter
 })(Public);

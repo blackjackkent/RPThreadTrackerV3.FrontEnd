@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
-import { Card, CardBlock, Button, Row, Col } from 'reactstrap';
-import { submitUserForgotPassword } from '../../../infrastructure/actions';
+import {
+	Card, CardBlock, Button, Row, Col
+} from 'reactstrap';
+import * as actions from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 import ForgotPasswordForm from '../../forms/forgot-password/ForgotPasswordForm';
 
@@ -36,18 +38,23 @@ class ForgotPassword extends Component {
 			forgotPasswordRequest: {}
 		};
 	}
+
 	handleForgotPasswordSubmit() {
-		this.props.submitUserForgotPassword(this.state.forgotPasswordRequest);
+		const { submitUserForgotPassword } = this.props;
+		const { forgotPasswordRequest } = this.state;
+		submitUserForgotPassword(forgotPasswordRequest);
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState({
-			forgotPasswordRequest: Object.assign({}, this.state.forgotPasswordRequest, {
+		this.setState(prevState => ({
+			forgotPasswordRequest: Object.assign({}, prevState.forgotPasswordRequest, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const { displayLoadingIndicator, forgotPasswordError } = this.props;
 		let loading = (<span />);
@@ -103,5 +110,5 @@ class ForgotPassword extends Component {
 ForgotPassword.propTypes = propTypes;
 ForgotPassword.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	submitUserForgotPassword
+	submitUserForgotPassword: actions.submitUserForgotPassword
 })(ForgotPassword);

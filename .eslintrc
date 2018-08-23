@@ -31,7 +31,15 @@
 			"error",
 			"tab"
 		],
+		"react/destructuring-assignment": [
+			"error",
+			"always",
+			{
+				"ignoreClassFields": true
+			}
+		],
 		"react/jsx-filename-extension": "off",
+		"react/jsx-one-expression-per-line": "off",
 		"react/sort-comp": [
 			"error",
 			{

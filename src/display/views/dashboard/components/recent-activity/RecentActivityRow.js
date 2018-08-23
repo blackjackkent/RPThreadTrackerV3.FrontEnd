@@ -18,12 +18,13 @@ const RecentActivityRow = (props) => {
 		<Row>
 			<Col xs="12" sm="6">
 				<div>
-					<a target="_blank" href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a>
+					<a target="_blank" rel="noopener noreferrer" href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a>
 				</div>
 				<div className="small ">
 					Last Post by{' '}
 					<a
 						target="_blank"
+						rel="noopener noreferrer"
 						href={threadData.status.lastPostUrl}
 					>
 						{threadData.status.lastPosterUrlIdentifier}
@@ -38,18 +39,21 @@ const RecentActivityRow = (props) => {
 				</div>
 				<div className="small">
 					<button
+						type="button"
 						onClick={() => openUntrackThreadModal(threadData.thread)}
 						data-spec="recent-activity-row-untrack-button"
 					>
 						Untrack
 					</button> &bull;{' '}
 					<button
+						type="button"
 						onClick={() => archiveThread(threadData.thread)}
 						data-spec="recent-activity-row-archive-button"
 					>
 						Archive
 					</button> &bull;{' '}
 					<button
+						type="button"
 						onClick={() => markThreadQueued(threadData.thread)}
 						data-spec="recent-activity-row-queue-button"
 					>

@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChangePasswordPane from './components/ChangePasswordPane';
 import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
-import { setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import tabs from '../../../infrastructure/constants/tabs';
@@ -31,7 +31,9 @@ function mapStateToProps(state) {
 }
 
 const Settings = (props) => {
-	const { activeTab, user } = props;
+	const {
+		activeTab, user, setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo
+	} = props;
 	const options = Object.values(tabs.SETTINGS);
 	return (
 		<div className="animated fadeIn static-container settings-container">
@@ -39,7 +41,7 @@ const Settings = (props) => {
 				<Col className="d-lg-none text-center">
 					<StaticDropdownNav
 						data-spec="settings-static-dropdown-nav"
-						setActiveTab={props.setActiveSettingsTab}
+						setActiveTab={setActiveSettingsTab}
 						activeTab={activeTab}
 						options={options}
 					/>
@@ -49,16 +51,16 @@ const Settings = (props) => {
 				<Col className="d-none d-lg-block" md={3}>
 					<StaticTabNav
 						data-spec="settings-static-tab-nav"
-						setActiveTab={props.setActiveSettingsTab}
+						setActiveTab={setActiveSettingsTab}
 						activeTab={activeTab}
 						options={options}
 					/>
 				</Col>
 				<Col xs="12" lg="9">
 					<TabContent activeTab={activeTab}>
-						<ChangePasswordPane submitChangePasswordForm={props.submitUserChangePassword} />
+						<ChangePasswordPane submitChangePasswordForm={submitUserChangePassword} />
 						<UpdateAccountInfoPane
-							submitAccountInfoForm={props.submitUserAccountInfo}
+							submitAccountInfoForm={submitUserAccountInfo}
 							user={user}
 						/>
 					</TabContent>
@@ -70,7 +72,7 @@ const Settings = (props) => {
 
 Settings.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	submitUserChangePassword,
-	setActiveSettingsTab,
-	submitUserAccountInfo
+	submitUserChangePassword: actions.submitUserChangePassword,
+	setActiveSettingsTab: actions.setActiveSettingsTab,
+	submitUserAccountInfo: actions.submitUserAccountInfo
 })(Settings);

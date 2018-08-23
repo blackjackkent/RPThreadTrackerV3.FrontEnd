@@ -42,4 +42,3 @@ export { default as deletePublicViewSaga } from './public/deletePublicViewSaga';
 
 export { default as analyticsSaga } from './analyticsSaga';
 export { default as toastrSaga } from './toastrSaga';
-

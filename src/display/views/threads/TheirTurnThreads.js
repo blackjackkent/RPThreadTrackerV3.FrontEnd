@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import getColumns from './components/_columns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
-import { fetchActiveThreads } from '../../../infrastructure/actions';
-import { getTheirTurnFilteredThreads, getActiveThreadCharacters, getActiveThreadPartners, getActiveThreadLastPosters, getActiveThreadTags } from '../../../infrastructure/selectors';
+import * as actions from '../../../infrastructure/actions';
+import * as selectors from '../../../infrastructure/selectors';
 
 const propTypes = {
 	fetchActiveThreads: PropTypes.func.isRequired,
@@ -23,11 +23,11 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const { activeThreads } = state;
-	const characters = getActiveThreadCharacters(state);
-	const partners = getActiveThreadPartners(state);
-	const lastPosters = getActiveThreadLastPosters(state);
-	const tags = getActiveThreadTags(state);
-	const filteredThreads = getTheirTurnFilteredThreads(state);
+	const characters = selectors.getActiveThreadCharacters(state);
+	const partners = selectors.getActiveThreadPartners(state);
+	const lastPosters = selectors.getActiveThreadLastPosters(state);
+	const tags = selectors.getActiveThreadTags(state);
+	const filteredThreads = selectors.getTheirTurnFilteredThreads(state);
 	return {
 		activeThreads,
 		filteredThreads,
@@ -40,8 +40,9 @@ function mapStateToProps(state) {
 
 class TheirTurnThreads extends Component {
 	componentDidMount() {
-		if (!this.props.activeThreads || !this.props.activeThreads.length) {
-			this.props.fetchActiveThreads();
+		const { activeThreads, fetchActiveThreads } = this.props;
+		if (!activeThreads || !activeThreads.length) {
+			fetchActiveThreads();
 		}
 	}
 
@@ -76,5 +77,5 @@ class TheirTurnThreads extends Component {
 
 TheirTurnThreads.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	fetchActiveThreads
+	fetchActiveThreads: actions.fetchActiveThreads
 })(TheirTurnThreads);

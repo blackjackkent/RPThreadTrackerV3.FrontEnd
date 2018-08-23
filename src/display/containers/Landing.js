@@ -35,7 +35,7 @@ const Landing = () => {
 						<div className="col-12">
 							<p className="buttons">
 								<a href="/register" className="btn btn-primary">Sign Up Now</a>
-								<button className="btn btn-primary">
+								<button type="button" className="btn btn-primary">
 									Watch Intro Video
 									<span className="fas fa-play-circle" />
 								</button>

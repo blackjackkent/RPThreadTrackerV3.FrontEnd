@@ -3,12 +3,11 @@ import React from 'react';
 export default () => ({
 	expander: true,
 	width: 30,
-	Expander: () =>
-		(
-			<div>
-				<i className="fas fa-info-circle" />
-			</div>
-		),
+	Expander: () => (
+		<div>
+			<i className="fas fa-info-circle" />
+		</div>
+	),
 	style: {
 		cursor: 'pointer',
 		textAlign: 'center',

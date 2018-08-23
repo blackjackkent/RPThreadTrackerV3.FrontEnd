@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TabPane, Row, Button, Col, Card, CardHeader, CardBlock } from 'reactstrap';
+import {
+	TabPane, Row, Button, Col, Card, CardHeader, CardBlock
+} from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
 
@@ -19,22 +21,24 @@ class UpdateAccountInfoPane extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		const { user } = nextProps;
-		this.setState({
-			formData: Object.assign({}, this.state.formData, user)
-		});
+		this.setState(prevState => ({
+			formData: Object.assign({}, prevState.formData, user)
+		}));
 	}
 
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState({
-			formData: Object.assign({}, this.state.formData, {
+		this.setState(prevState => ({
+			formData: Object.assign({}, prevState.formData, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const { submitAccountInfoForm } = this.props;
+		const { formData } = this.state;
 		return (
 			<TabPane tabId="change-username">
 				<Card>
@@ -46,11 +50,11 @@ class UpdateAccountInfoPane extends React.Component {
 					<CardBlock className="card-body">
 						<AvForm
 							data-spec="account-info-form-container"
-							onValidSubmit={() => submitAccountInfoForm(this.state.formData)}
+							onValidSubmit={() => submitAccountInfoForm(formData)}
 						>
 							<UpdateAccountInfoForm
 								handleInputChange={this.handleInputChange}
-								user={this.state.formData}
+								user={formData}
 							/>
 							<Row>
 								<Col className="text-right">

@@ -1,4 +1,6 @@
-import { takeEvery, put, call, all } from 'redux-saga/effects';
+import {
+	takeEvery, put, call, all
+} from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	UPSERT_PUBLIC_VIEW,

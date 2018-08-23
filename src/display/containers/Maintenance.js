@@ -1,5 +1,7 @@
 import React from 'react';
-import { Container, Row, Col, Card, CardBlock } from 'reactstrap';
+import {
+	Container, Row, Col, Card, CardBlock
+} from 'reactstrap';
 
 const Maintenance = () => (
 	<div className="app flex-row align-items-center">

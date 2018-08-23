@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import getColumns from './components/_archiveColumns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
-import { fetchArchivedThreads } from '../../../infrastructure/actions';
-import { getArchivedFilteredThreads, getArchivedThreadCharacters, getArchivedThreadPartners, getArchivedThreadLastPosters, getArchivedThreadTags } from '../../../infrastructure/selectors';
+import * as actions from '../../../infrastructure/actions';
+import * as selectors from '../../../infrastructure/selectors';
 
 const propTypes = {
 	fetchArchivedThreads: PropTypes.func.isRequired,
@@ -23,11 +23,11 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const { archivedThreads } = state;
-	const characters = getArchivedThreadCharacters(state);
-	const partners = getArchivedThreadPartners(state);
-	const tags = getArchivedThreadTags(state);
-	const filteredThreads = getArchivedFilteredThreads(state);
-	const lastPosters = getArchivedThreadLastPosters(state);
+	const characters = selectors.getArchivedThreadCharacters(state);
+	const partners = selectors.getArchivedThreadPartners(state);
+	const tags = selectors.getArchivedThreadTags(state);
+	const filteredThreads = selectors.getArchivedFilteredThreads(state);
+	const lastPosters = selectors.getArchivedThreadLastPosters(state);
 	return {
 		archivedThreads,
 		filteredThreads,
@@ -40,8 +40,9 @@ function mapStateToProps(state) {
 
 class ArchivedThreads extends Component {
 	componentDidMount() {
-		if (!this.props.archivedThreads || !this.props.archivedThreads.length) {
-			this.props.fetchArchivedThreads();
+		const { archivedThreads, fetchArchivedThreads } = this.props;
+		if (!archivedThreads || !archivedThreads.length) {
+			fetchArchivedThreads();
 		}
 	}
 
@@ -77,5 +78,5 @@ class ArchivedThreads extends Component {
 
 ArchivedThreads.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	fetchArchivedThreads
+	fetchArchivedThreads: actions.fetchArchivedThreads
 })(ArchivedThreads);

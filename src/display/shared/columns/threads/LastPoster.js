@@ -6,13 +6,16 @@ export default (lastPosters, includeFilter) => ({
 	accessor: columns.LAST_POSTER.key,
 	Cell: row => (
 		<span>
-			{row.value &&
-				<a
-					target="_blank"
-					href={row.original.status && row.original.status.lastPostUrl}
-				>
-					{row.value} <i className="fas fa-external-link-alt" />
-				</a>
+			{row.value
+				&& (
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href={row.original.status && row.original.status.lastPostUrl}
+					>
+						{row.value} <i className="fas fa-external-link-alt" />
+					</a>
+				)
 			}
 		</span>
 	),

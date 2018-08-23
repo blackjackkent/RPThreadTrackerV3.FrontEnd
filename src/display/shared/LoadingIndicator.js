@@ -9,24 +9,27 @@ const defaultProps = {
 	style: { width: 50, height: 50 },
 	className: ''
 };
-const LoadingIndicator = props => (
-	<div className="lds-css ng-scope" style={props.style}>
-		<div className={`lds-spinner ${props.className}`} style={{ width: '100%', height: '100%' }}>
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
-			<div />
+const LoadingIndicator = (props) => {
+	const { style, className } = props;
+	return (
+		<div className="lds-css ng-scope" style={style}>
+			<div className={`lds-spinner ${className}`} style={{ width: '100%', height: '100%' }}>
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+				<div />
+			</div>
 		</div>
-	</div>
-);
+	);
+};
 LoadingIndicator.propTypes = propTypes;
 LoadingIndicator.defaultProps = defaultProps;
 export default LoadingIndicator;

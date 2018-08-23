@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { getCharactersSortedByIdentifier, getTagsSortedByTagText } from '../../../infrastructure/selectors';
-import { closeDeletePublicViewModal, deletePublicView, closeUpsertPublicViewModal, closeUpsertCharacterModal, untrackThread, closeUntrackThreadModal, closeBulkUntrackThreadsModal, bulkUntrackThreads, closeUpsertThreadModal, closeUntrackCharacterModal, untrackCharacter, upsertThread, upsertCharacter, upsertPublicView } from '../../../infrastructure/actions';
+import * as selectors from '../../../infrastructure/selectors';
+import * as actions from '../../../infrastructure/actions';
 import columns from '../../../infrastructure/constants/columns';
 import UpsertCharacterModal from './UpsertCharacterModal';
 import UpsertThreadModal from './UpsertThreadModal';
@@ -48,8 +48,8 @@ function mapStateToProps(state) {
 		bulkThreadsToEdit,
 		viewToEdit
 	} = state;
-	const sortedCharacters = getCharactersSortedByIdentifier(state);
-	const sortedTags = getTagsSortedByTagText(state);
+	const sortedCharacters = selectors.getCharactersSortedByIdentifier(state);
+	const sortedTags = selectors.getTagsSortedByTagText(state);
 	return {
 		isUpsertCharacterModalOpen: ui.isUpsertCharacterModalOpen,
 		isUntrackThreadModalOpen: ui.isUntrackThreadModalOpen,
@@ -69,39 +69,53 @@ function mapStateToProps(state) {
 
 const ModalContainer = (props) => {
 	const {
-		isUpsertThreadModalOpen,
-		isUpsertCharacterModalOpen,
-		isUntrackThreadModalOpen,
-		isBulkUntrackThreadsModalOpen,
-		isUntrackCharacterModalOpen,
-		isUpsertPublicViewModalOpen,
-		isDeletePublicViewModalOpen,
-		characterToEdit,
-		threadToEdit,
 		bulkThreadsToEdit,
-		viewToEdit,
+		bulkUntrackThreads,
+		characterToEdit,
+		closeBulkUntrackThreadsModal,
+		closeDeletePublicViewModal,
+		closeUntrackCharacterModal,
+		closeUntrackThreadModal,
+		closeUpsertCharacterModal,
+		closeUpsertPublicViewModal,
+		closeUpsertThreadModal,
+		deletePublicView,
+		isBulkUntrackThreadsModalOpen,
+		isDeletePublicViewModalOpen,
+		isUntrackCharacterModalOpen,
+		isUntrackThreadModalOpen,
+		isUpsertCharacterModalOpen,
+		isUpsertPublicViewModalOpen,
+		isUpsertThreadModalOpen,
 		sortedCharacters,
-		sortedTags
+		sortedTags,
+		threadToEdit,
+		untrackCharacter,
+		untrackThread,
+		upsertCharacter,
+		upsertPublicView,
+		upsertThread,
+		viewToEdit
 	} = props;
 	return (
 		<div>
 			<UpsertThreadModal
 				isUpsertThreadModalOpen={isUpsertThreadModalOpen}
-				closeUpsertThreadModal={props.closeUpsertThreadModal}
+				closeUpsertThreadModal={closeUpsertThreadModal}
 				threadToEdit={threadToEdit}
-				submitUpsertThread={props.upsertThread}
+				submitUpsertThread={upsertThread}
 				characters={sortedCharacters}
 			/>
 			<UpsertCharacterModal
 				isUpsertCharacterModalOpen={isUpsertCharacterModalOpen}
-				closeUpsertCharacterModal={props.closeUpsertCharacterModal}
-				submitUpsertCharacter={props.upsertCharacter}
+				closeUpsertCharacterModal={closeUpsertCharacterModal}
+				submitUpsertCharacter={upsertCharacter}
 				characterToEdit={characterToEdit}
 			/>
 			<UpsertPublicViewModal
 				isUpsertPublicViewModalOpen={isUpsertPublicViewModalOpen}
-				submitUpsertPublicView={props.upsertPublicView}
-				closeUpsertPublicViewModal={props.closeUpsertPublicViewModal}
+				submitUpsertPublicView={upsertPublicView}
+				closeUpsertPublicViewModal={closeUpsertPublicViewModal}
 				viewToEdit={viewToEdit}
 				characters={sortedCharacters}
 				tags={sortedTags}
@@ -109,9 +123,9 @@ const ModalContainer = (props) => {
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isUntrackThreadModalOpen}
-				submitCallback={props.untrackThread}
+				submitCallback={untrackThread}
 				submitButtonText="Untrack"
-				closeCallback={props.closeUntrackThreadModal}
+				closeCallback={closeUntrackThreadModal}
 				closeButtonText="Cancel"
 				data={threadToEdit}
 				headerText="Confirm Thread Untracking"
@@ -121,9 +135,9 @@ const ModalContainer = (props) => {
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkUntrackThreadsModalOpen}
-				submitCallback={props.bulkUntrackThreads}
+				submitCallback={bulkUntrackThreads}
 				submitButtonText="Untrack"
-				closeCallback={props.closeBulkUntrackThreadsModal}
+				closeCallback={closeBulkUntrackThreadsModal}
 				closeButtonText="Cancel"
 				data={bulkThreadsToEdit}
 				headerText="Confirm Thread Untracking"
@@ -131,26 +145,27 @@ const ModalContainer = (props) => {
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isUntrackCharacterModalOpen}
-				submitCallback={props.untrackCharacter}
+				submitCallback={untrackCharacter}
 				submitButtonText="Untrack"
-				closeCallback={props.closeUntrackCharacterModal}
+				closeCallback={closeUntrackCharacterModal}
 				closeButtonText="Cancel"
 				data={characterToEdit}
 				headerText="Confirm Character Untracking"
-				bodyText={
+				bodyText={(
 					<span>Are you sure you want to untrack{' '}
 						<strong>
 							{characterToEdit.characterName
 								? characterToEdit.characterName
 								: characterToEdit.urlIdentifier}
 						</strong>? This will also untrack all threads associated with this character.
-					</span>}
+					</span>
+				)}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isDeletePublicViewModalOpen}
-				submitCallback={props.deletePublicView}
+				submitCallback={deletePublicView}
 				submitButtonText="Delete"
-				closeCallback={props.closeDeletePublicViewModal}
+				closeCallback={closeDeletePublicViewModal}
 				closeButtonText="Cancel"
 				data={viewToEdit}
 				headerText="Confirm Public View Deletion"
@@ -162,18 +177,18 @@ const ModalContainer = (props) => {
 
 ModalContainer.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	closeUpsertThreadModal,
-	closeUntrackThreadModal,
-	closeUpsertCharacterModal,
-	untrackThread,
-	closeBulkUntrackThreadsModal,
-	bulkUntrackThreads,
-	upsertThread,
-	upsertCharacter,
-	untrackCharacter,
-	closeUntrackCharacterModal,
-	upsertPublicView,
-	closeUpsertPublicViewModal,
-	closeDeletePublicViewModal,
-	deletePublicView
+	bulkUntrackThreads: actions.bulkUntrackThreads,
+	closeBulkUntrackThreadsModal: actions.closeBulkUntrackThreadsModal,
+	closeDeletePublicViewModal: actions.closeDeletePublicViewModal,
+	closeUntrackCharacterModal: actions.closeUntrackCharacterModal,
+	closeUntrackThreadModal: actions.closeUntrackThreadModal,
+	closeUpsertCharacterModal: actions.closeUpsertCharacterModal,
+	closeUpsertPublicViewModal: actions.closeUpsertPublicViewModal,
+	closeUpsertThreadModal: actions.closeUpsertThreadModal,
+	deletePublicView: actions.deletePublicView,
+	untrackCharacter: actions.untrackCharacter,
+	untrackThread: actions.untrackThread,
+	upsertCharacter: actions.upsertCharacter,
+	upsertPublicView: actions.upsertPublicView,
+	upsertThread: actions.upsertThread
 })(ModalContainer);

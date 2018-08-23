@@ -4,8 +4,8 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
-import { getIsLoadingIconVisible, getThreadCountsByCharacter } from '../../../infrastructure/selectors';
-import { openUpsertCharacterModal, fetchCharacters, fetchActiveThreads, upsertCharacter, openUntrackCharacterModal } from '../../../infrastructure/actions';
+import * as selectors from '../../../infrastructure/selectors';
+import * as actions from '../../../infrastructure/actions';
 // #endregion imports
 
 const propTypes = {
@@ -25,8 +25,8 @@ function mapStateToProps(state) {
 		characters,
 		activeThreads
 	} = state;
-	const isLoadingIconVisible = getIsLoadingIconVisible(state);
-	const threadCounts = getThreadCountsByCharacter(state);
+	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
+	const threadCounts = selectors.getThreadCountsByCharacter(state);
 	return {
 		characters,
 		activeThreads,
@@ -42,26 +42,32 @@ class ManageCharacters extends Component {
 	}
 
 	componentDidMount() {
-		if (!this.props.characters || !this.props.characters.length) {
-			this.props.fetchCharacters();
+		const {
+			characters, activeThreads, fetchCharacters, fetchActiveThreads
+		} = this.props;
+		if (!characters || !characters.length) {
+			fetchCharacters();
 		}
-		if (!this.props.activeThreads || !this.props.activeThreads.length) {
-			this.props.fetchActiveThreads();
+		if (!activeThreads || !activeThreads.length) {
+			fetchActiveThreads();
 		}
 	}
 
 	toggleCharacterIsOnHiatus(character) {
+		const { upsertCharacter } = this.props;
 		const updatedCharacter = {
 			...character, isOnHiatus: !character.isOnHiatus
 		};
-		this.props.upsertCharacter(updatedCharacter);
+		upsertCharacter(updatedCharacter);
 	}
 
 	render() {
 		const {
 			characters,
 			isLoadingIconVisible,
-			threadCounts
+			threadCounts,
+			openUpsertCharacterModal,
+			openUntrackCharacterModal
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -70,24 +76,24 @@ class ManageCharacters extends Component {
 						<CurrentCharacterTable
 							data-spec="manage-characters-current-character-table"
 							characters={characters}
-							openUpsertCharacterModal={this.props.openUpsertCharacterModal}
+							openUpsertCharacterModal={openUpsertCharacterModal}
 							toggleCharacterIsOnHiatus={this.toggleCharacterIsOnHiatus}
-							openUntrackCharacterModal={this.props.openUntrackCharacterModal}
+							openUntrackCharacterModal={openUntrackCharacterModal}
 							isLoadingIconVisible={isLoadingIconVisible}
 							threadCounts={threadCounts}
 						/>
 					</Col>
 				</Row>
-			</div >
+			</div>
 		);
 	}
 }
 
 ManageCharacters.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	fetchActiveThreads,
-	fetchCharacters,
-	openUntrackCharacterModal,
-	openUpsertCharacterModal,
-	upsertCharacter
+	fetchActiveThreads: actions.fetchActiveThreads,
+	fetchCharacters: actions.fetchCharacters,
+	openUntrackCharacterModal: actions.openUntrackCharacterModal,
+	openUpsertCharacterModal: actions.openUpsertCharacterModal,
+	upsertCharacter: actions.upsertCharacter
 })(ManageCharacters);

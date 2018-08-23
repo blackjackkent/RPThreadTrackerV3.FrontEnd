@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TabPane, Col, Row, Button, Card, CardHeader, CardBlock } from 'reactstrap';
+import {
+	TabPane, Col, Row, Button, Card, CardHeader, CardBlock
+} from 'reactstrap';
 import PublicViewsTable from './public-views/PublicViewsTable';
 
 const propTypes = {

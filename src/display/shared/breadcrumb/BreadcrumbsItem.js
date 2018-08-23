@@ -14,14 +14,15 @@ class BreadcrumbsItem extends React.Component {
 	findRouteName(url) {
 		return routes[url];
 	}
+
 	render() {
 		const { match } = this.props;
 		const routeName = this.findRouteName(match.url);
 		if (routeName) {
 			return (
-				match.isExact ?
-					(<BreadcrumbItem active>{routeName}</BreadcrumbItem>) :
-					(
+				match.isExact
+					? (<BreadcrumbItem active>{routeName}</BreadcrumbItem>)
+					: (
 						<BreadcrumbItem>
 							<Link href={match.url} to={match.url}>{routeName}</Link>
 						</BreadcrumbItem>

@@ -1,4 +1,9 @@
-import { FETCHED_USER_SETTINGS_SUCCESS, UPDATED_USER_SETTINGS_SUCCESS, UPDATE_USER_SETTINGS, SUBMIT_USER_LOGOUT } from '../actions';
+import {
+	FETCHED_USER_SETTINGS_SUCCESS,
+	SUBMIT_USER_LOGOUT,
+	UPDATE_USER_SETTINGS,
+	UPDATED_USER_SETTINGS_SUCCESS
+} from '../actions';
 
 const defaultState = { showDashboardThreadDistribution: false };
 function userSettings(state = defaultState, action) {

@@ -25,14 +25,16 @@ const DashboardSummaryWidget = (props) => {
 		<Card {...attributes} onClick={() => navigation.navigateTo(href)}>
 			<CardBlock className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
-					{isLoadingIconVisible &&
-						<LoadingIndicator
-							data-spec="dashboard-summary-widget-loading"
-							className="inverse dashboard-summary-widget-loading-icon"
-							style={{
-								width: 25, height: 25
-							}}
-						/>
+					{isLoadingIconVisible
+						&& (
+							<LoadingIndicator
+								data-spec="dashboard-summary-widget-loading"
+								className="inverse dashboard-summary-widget-loading-icon"
+								style={{
+									width: 25, height: 25
+								}}
+							/>
+						)
 					}
 				</div>
 				<div className="h1 float-right text-right mb-2">

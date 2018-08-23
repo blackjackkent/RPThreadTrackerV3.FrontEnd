@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, Label, Input, CardBlock, CardGroup } from 'reactstrap';
+import {
+	Card, CardHeader, Label, Input, CardBlock, CardGroup
+} from 'reactstrap';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {

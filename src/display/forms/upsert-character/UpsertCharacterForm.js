@@ -1,7 +1,9 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
+import {
+	Col, Row, FormGroup, Label, Input
+} from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import validator from './_validator';
