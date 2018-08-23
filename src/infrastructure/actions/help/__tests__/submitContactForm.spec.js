@@ -1,6 +1,6 @@
 import * as actions from '../submitContactForm';
 
-describe('untrackCharacter', () => {
+describe('submitContactForm', () => {
 	it('should create action with type, data, and analytics', () => {
 		const form = { message: 'Test message.' };
 		const action = actions.submitContactForm(form);

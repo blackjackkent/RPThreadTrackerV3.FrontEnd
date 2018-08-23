@@ -1,10 +1,9 @@
 import analytics from '../../constants/analytics';
 
 export const CLOSE_UPSERT_CHARACTER_MODAL = 'CLOSE_UPSERT_CHARACTER_MODAL';
-export function closeUpsertCharacterModal(character) {
+export function closeUpsertCharacterModal() {
 	return {
-		type: CLOSE_UPSERT_CHARACTER_MODAL,
-		character
+		type: CLOSE_UPSERT_CHARACTER_MODAL
 	};
 }
 export const OPEN_UPSERT_CHARACTER_MODAL = 'OPEN_UPSERT_CHARACTER_MODAL';
