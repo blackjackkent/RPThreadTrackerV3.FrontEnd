@@ -21,6 +21,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     <div>
       <a
         href="http://www.mylastpost.com"
+        rel="noopener noreferrer"
         target="_blank"
       >
         Test Title
@@ -33,6 +34,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
        
       <a
         href="http://www.mylastpost.com"
+        rel="noopener noreferrer"
         target="_blank"
       >
         last-poster
@@ -77,6 +79,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <button
         data-spec="recent-activity-row-untrack-button"
         onClick={[Function]}
+        type="button"
       >
         Untrack
       </button>
@@ -85,6 +88,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <button
         data-spec="recent-activity-row-archive-button"
         onClick={[Function]}
+        type="button"
       >
         Archive
       </button>
@@ -93,6 +97,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <button
         data-spec="recent-activity-row-queue-button"
         onClick={[Function]}
+        type="button"
       >
         Mark Queued
       </button>

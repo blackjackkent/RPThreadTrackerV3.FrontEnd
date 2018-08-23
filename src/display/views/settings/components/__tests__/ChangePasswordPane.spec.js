@@ -39,6 +39,7 @@ describe('behavior', () => {
 			const props = createTestProps({ submitChangePasswordForm });
 			const element = shallow(<ChangePasswordPane {...props} />);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'change-password-form-container');
 			form.props().onValidSubmit();
 			expect(submitChangePasswordForm).toHaveBeenCalledTimes(1);

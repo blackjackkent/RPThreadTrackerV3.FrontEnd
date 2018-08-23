@@ -35,6 +35,7 @@ exports[`rendering snapshots should render valid snapshot when character name is
   >
     <a
       href="http://my-test-character.tumblr.com"
+      rel="noopener noreferrer"
       target="_blank"
     >
       my-test-character
@@ -95,6 +96,7 @@ exports[`rendering snapshots should render valid snapshot when character name no
   >
     <a
       href="http://my-test-character.tumblr.com"
+      rel="noopener noreferrer"
       target="_blank"
     >
       my-test-character
@@ -155,6 +157,7 @@ exports[`rendering snapshots should render valid snapshot when thread count equa
   >
     <a
       href="http://my-test-character.tumblr.com"
+      rel="noopener noreferrer"
       target="_blank"
     >
       my-test-character
@@ -215,6 +218,7 @@ exports[`rendering snapshots should render valid snapshot when thread count is >
   >
     <a
       href="http://my-test-character.tumblr.com"
+      rel="noopener noreferrer"
       target="_blank"
     >
       my-test-character

@@ -37,6 +37,7 @@ describe('behavior', () => {
 			const props = createTestProps({ submitContactForm });
 			const element = shallow(<ContactFormPane {...props} />);
 			element.instance().handleInputChange(event);
+			element.update();
 			const form = getSpecWrapper(element, 'contact-form-container');
 			form.props().onValidSubmit();
 			expect(submitContactForm).toHaveBeenCalledTimes(1);
