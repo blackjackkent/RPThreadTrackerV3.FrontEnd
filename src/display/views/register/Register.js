@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardBlock, Button, Row, Col } from 'reactstrap';
+import {
+	Card, CardBlock, Button, Row, Col
+} from 'reactstrap';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
-import { submitUserRegistration } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 import RegisterForm from '../../forms/register/RegisterForm';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 
@@ -37,18 +39,23 @@ class Register extends Component {
 			registerRequest: {}
 		};
 	}
+
 	handleRegistrationSubmit() {
-		this.props.submitUserRegistration(this.state.registerRequest);
+		const { submitUserRegistration } = this.props;
+		const { registerRequest } = this.state;
+		submitUserRegistration(registerRequest);
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState({
-			registerRequest: Object.assign({}, this.state.registerRequest, {
+		this.setState(prevState => ({
+			registerRequest: Object.assign({}, prevState.registerRequest, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const { registrationLoading, loginLoading, registrationErrors } = this.props;
 		const displayLoadingIndicator = registrationLoading || loginLoading;
@@ -104,5 +111,5 @@ class Register extends Component {
 Register.propTypes = propTypes;
 Register.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	submitUserRegistration
+	submitUserRegistration: actions.submitUserRegistration
 })(Register);

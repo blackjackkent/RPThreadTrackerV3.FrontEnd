@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import AboutTrackerPane from './components/AboutTrackerPane';
 import SupportGuidesPane from './components/SupportGuidesPane';
 import ContactFormPane from './components/ContactFormPane';
-import { setActiveHelpTab, submitContactForm } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 import tabs from '../../../infrastructure/constants/tabs';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
@@ -29,7 +29,7 @@ function mapStateToProps(state) {
 }
 
 const Help = (props) => {
-	const { activeTab } = props;
+	const { activeTab, setActiveHelpTab, submitContactForm } = props;
 	const options = Object.values(tabs.HELP);
 	return (
 		<div className="animated fadeIn static-container help-container">
@@ -37,7 +37,7 @@ const Help = (props) => {
 				<Col className="d-lg-none text-center">
 					<StaticDropdownNav
 						data-spec="help-static-dropdown-nav"
-						setActiveTab={props.setActiveHelpTab}
+						setActiveTab={setActiveHelpTab}
 						activeTab={activeTab}
 						options={options}
 					/>
@@ -48,7 +48,7 @@ const Help = (props) => {
 
 					<StaticTabNav
 						data-spec="help-static-tab-nav"
-						setActiveTab={props.setActiveHelpTab}
+						setActiveTab={setActiveHelpTab}
 						activeTab={activeTab}
 						options={options}
 					/>
@@ -58,7 +58,7 @@ const Help = (props) => {
 						<AboutTrackerPane />
 						<SupportGuidesPane />
 						<FAQPane />
-						<ContactFormPane submitContactForm={props.submitContactForm} />
+						<ContactFormPane submitContactForm={submitContactForm} />
 					</TabContent>
 				</Col>
 			</Row>
@@ -68,6 +68,6 @@ const Help = (props) => {
 
 Help.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	setActiveHelpTab,
-	submitContactForm
+	setActiveHelpTab: actions.setActiveHelpTab,
+	submitContactForm: actions.submitContactForm
 })(Help);

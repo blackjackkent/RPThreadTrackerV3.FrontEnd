@@ -9,8 +9,8 @@ import RecentActivityCard from './components/recent-activity/RecentActivityCard'
 import YourCharactersCard from './components/your-characters/YourCharactersCard';
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
-import { generateRandomThread, updateUserSettings, fetchActiveThreads, fetchCharacters, upsertThread, openUntrackThreadModal } from '../../../infrastructure/actions';
-import { getMyTurnThreads, getTheirTurnThreads, getQueuedThreads, getRecentActivity, getThreadCountsByCharacter, getIsLoadingIconVisible } from '../../../infrastructure/selectors';
+import * as actions from '../../../infrastructure/actions';
+import * as selectors from '../../../infrastructure/selectors';
 
 const propTypes = {
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -40,12 +40,12 @@ function mapStateToProps(state) {
 		activeThreads,
 		randomThread
 	} = state;
-	const myTurnThreads = getMyTurnThreads(state);
-	const theirTurnThreads = getTheirTurnThreads(state);
-	const queuedThreads = getQueuedThreads(state);
-	const recentActivityThreads = getRecentActivity(state);
-	const characterThreadCounts = getThreadCountsByCharacter(state);
-	const isLoadingIconVisible = getIsLoadingIconVisible(state);
+	const myTurnThreads = selectors.getMyTurnThreads(state);
+	const theirTurnThreads = selectors.getTheirTurnThreads(state);
+	const queuedThreads = selectors.getQueuedThreads(state);
+	const recentActivityThreads = selectors.getRecentActivity(state);
+	const characterThreadCounts = selectors.getThreadCountsByCharacter(state);
+	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
 	return {
 		characters,
 		userSettings,
@@ -63,41 +63,46 @@ function mapStateToProps(state) {
 class Dashboard extends Component {
 	constructor(props) {
 		super(props);
-		this.showDashboardThreadDistributionToggle =
-			this.showDashboardThreadDistributionToggle.bind(this);
+		// eslint-disable-next-line max-len
+		this.showDashboardThreadDistributionToggle = this.showDashboardThreadDistributionToggle.bind(this);
 		this.archiveThread = this.archiveThread.bind(this);
 		this.markThreadQueued = this.markThreadQueued.bind(this);
 	}
 
 	componentDidMount() {
-		if (!this.props.activeThreads || !this.props.activeThreads.length) {
-			this.props.fetchActiveThreads();
+		const {
+			activeThreads, fetchActiveThreads, characters, fetchCharacters
+		} = this.props;
+		if (!activeThreads || !activeThreads.length) {
+			fetchActiveThreads();
 		}
-		if (!this.props.characters || !this.props.characters.length) {
-			this.props.fetchCharacters();
+		if (!characters || !characters.length) {
+			fetchCharacters();
 		}
 	}
 
 	showDashboardThreadDistributionToggle() {
-		const { userSettings } = this.props;
-		this.props.updateUserSettings({
+		const { userSettings, updateUserSettings } = this.props;
+		updateUserSettings({
 			...userSettings,
 			showDashboardThreadDistribution: !userSettings.showDashboardThreadDistribution
 		});
 	}
 
 	archiveThread(thread) {
+		const { upsertThread } = this.props;
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived
 		};
-		this.props.upsertThread(updatedThread);
+		upsertThread(updatedThread);
 	}
 
 	markThreadQueued(thread) {
+		const { upsertThread } = this.props;
 		const updatedThread = {
 			...thread, dateMarkedQueued: new Date(Date.now())
 		};
-		this.props.upsertThread(updatedThread);
+		upsertThread(updatedThread);
 	}
 
 	render() {
@@ -111,7 +116,9 @@ class Dashboard extends Component {
 			recentActivityThreads,
 			randomThread,
 			isLoadingIconVisible,
-			characterThreadCounts
+			characterThreadCounts,
+			openUntrackThreadModal,
+			generateRandomThread
 		} = this.props;
 		return (
 			<div className="animated fadeIn dashboard-container">
@@ -137,7 +144,7 @@ class Dashboard extends Component {
 							allThreads={activeThreads}
 							characters={characters}
 							archiveThread={this.archiveThread}
-							openUntrackThreadModal={this.props.openUntrackThreadModal}
+							openUntrackThreadModal={openUntrackThreadModal}
 							markThreadQueued={this.markThreadQueued}
 							loadingInProgress={isLoadingIconVisible}
 						/>
@@ -154,7 +161,7 @@ class Dashboard extends Component {
 					<Col md="6" xs="12">
 						<RandomThreadCard
 							data-spec="dashboard-random-thread-card"
-							generateRandomThread={this.props.generateRandomThread}
+							generateRandomThread={generateRandomThread}
 							randomThread={randomThread}
 						/>
 					</Col>
@@ -162,17 +169,17 @@ class Dashboard extends Component {
 						<TrackerSupportCard />
 					</Col>
 				</Row>
-			</div >
+			</div>
 		);
 	}
 }
 
 Dashboard.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	fetchActiveThreads,
-	fetchCharacters,
-	generateRandomThread,
-	openUntrackThreadModal,
-	updateUserSettings,
-	upsertThread
+	fetchActiveThreads: actions.fetchActiveThreads,
+	fetchCharacters: actions.fetchCharacters,
+	generateRandomThread: actions.generateRandomThread,
+	openUntrackThreadModal: actions.openUntrackThreadModal,
+	updateUserSettings: actions.updateUserSettings,
+	upsertThread: actions.upsertThread
 })(Dashboard);

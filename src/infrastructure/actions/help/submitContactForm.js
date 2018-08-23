@@ -26,4 +26,3 @@ export function submitContactFormSuccess() {
 		type: SUBMIT_CONTACT_FORM_SUCCESS
 	};
 }
-

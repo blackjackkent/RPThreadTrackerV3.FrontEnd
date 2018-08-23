@@ -7,14 +7,13 @@ export default (threadData, threadFilter) => {
 		case publicThreadFilterKeys.QUEUED:
 			return threadData.filter(t => !t.thread.isArchived && t.status && t.status.isQueued);
 		case publicThreadFilterKeys.PARTNERS_TURN:
-			return threadData.filter(t =>
-				!t.thread.isArchived
+			return threadData.filter(t => !t.thread.isArchived
 				&& t.status
 				&& !t.status.isCallingCharactersTurn
 				&& !t.status.isQueued);
 		case publicThreadFilterKeys.MY_TURN:
-			return threadData.filter(t =>
-				!t.thread.isArchived && (!t.status || t.status.isCallingCharactersTurn));
+			return threadData.filter(t => !t.thread.isArchived
+				&& (!t.status || t.status.isCallingCharactersTurn));
 		default:
 			return threadData;
 	}

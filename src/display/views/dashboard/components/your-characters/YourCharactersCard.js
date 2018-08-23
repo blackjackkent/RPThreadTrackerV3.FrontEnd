@@ -15,16 +15,18 @@ const propTypes = {
 
 const getBlockContent = (loadingInProgress, characters, characterThreadCounts) => {
 	if (loadingInProgress) {
-		return (<LoadingIndicator
-			style={{
-				width: 50,
-				height: 50,
-				position: 'absolute',
-				top: '50%',
-				left: '50%',
-				transform: 'translate(-50%, -50%)'
-			}}
-		/>);
+		return (
+			<LoadingIndicator
+				style={{
+					width: 50,
+					height: 50,
+					position: 'absolute',
+					top: '50%',
+					left: '50%',
+					transform: 'translate(-50%, -50%)'
+				}}
+			/>
+		);
 	}
 	if (characters.length === 0) {
 		return (<NoCharactersMessage />);
@@ -33,13 +35,14 @@ const getBlockContent = (loadingInProgress, characters, characterThreadCounts) =
 	if (characters.length > 0 && activeCharacters.length === 0) {
 		return (<NoActiveCharactersMessage />);
 	}
-	return activeCharacters.map(character =>
-		(<YourCharactersCardRow
+	return activeCharacters.map(character => (
+		<YourCharactersCardRow
 			character={character}
 			key={character.characterId}
 			threadCount={characterThreadCounts[character.characterId]}
 			data-spec="your-characters-card-row"
-		/>));
+		/>
+	));
 };
 
 const YourCharactersCard = (props) => {

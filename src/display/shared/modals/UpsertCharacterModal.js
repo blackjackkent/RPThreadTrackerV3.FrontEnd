@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import {
+	Modal, ModalHeader, ModalBody, ModalFooter, Button
+} from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpsertCharacterForm from '../../forms/upsert-character/UpsertCharacterForm';
 import TooltipForm from '../../forms/TooltipForm';
@@ -29,12 +31,13 @@ class UpsertCharacterModal extends React.Component {
 		const { target } = event;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const { name } = target;
-		this.setState({
-			characterToEdit: Object.assign({}, this.state.characterToEdit, {
+		this.setState(prevState => ({
+			characterToEdit: Object.assign({}, prevState.characterToEdit, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const {
 			isUpsertCharacterModalOpen,
@@ -42,6 +45,7 @@ class UpsertCharacterModal extends React.Component {
 			closeUpsertCharacterModal,
 			characterToEdit
 		} = this.props;
+		const { characterToEdit: requestData } = this.state;
 		return (
 			<Modal
 				data-spec="upsert-character-modal"
@@ -51,7 +55,7 @@ class UpsertCharacterModal extends React.Component {
 			>
 				<AvForm
 					data-spec="upsert-character-modal-form"
-					onValidSubmit={() => submitUpsertCharacter(this.state.characterToEdit)}
+					onValidSubmit={() => submitUpsertCharacter(requestData)}
 				>
 					<ModalHeader data-spec="upsert-character-modal-header" toggle={closeUpsertCharacterModal}>{characterToEdit.characterId ? 'Edit Character' : 'Add Character'}</ModalHeader>
 					<ModalBody>

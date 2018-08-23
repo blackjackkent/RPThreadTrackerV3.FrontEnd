@@ -262,7 +262,7 @@ const UpsertPublicViewForm = (props) => {
 					</Tooltip>
 				</Col>
 			</Row>
-		</div >
+		</div>
 	);
 };
 

@@ -5,7 +5,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
-import { fetchCharacters, setFilteredTag, upsertThread, openUntrackThreadModal, bulkUpdateThreads, openBulkUntrackThreadsModal, openUpsertThreadModal, fetchActiveThreads, fetchArchivedThreads, updateUserSettings } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 
 const propTypes = {
 	Renderable: PropTypes.func.isRequired,
@@ -51,59 +51,77 @@ class Threads extends Component {
 		this.refreshThreads = this.refreshThreads.bind(this);
 		this.updateThreadTablePageSize = this.updateThreadTablePageSize.bind(this);
 	}
+
 	componentDidMount() {
-		if (!this.props.characters || !this.props.characters.length) {
-			this.props.fetchCharacters();
+		const { characters, fetchCharacters } = this.props;
+		if (!characters || !characters.length) {
+			fetchCharacters();
 		}
 	}
+
 	toggleThreadIsArchived(thread) {
+		const { upsertThread } = this.props;
 		const updatedThread = {
 			...thread, isArchived: !thread.isArchived, dateMarkedQueued: null
 		};
-		this.props.upsertThread(updatedThread);
+		upsertThread(updatedThread);
 	}
+
 	toggleThreadIsMarkedQueued(thread) {
+		const { upsertThread } = this.props;
 		const updatedThread = {
 			...thread,
 			dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now()),
 			isArchived: false
 		};
-		this.props.upsertThread(updatedThread);
+		upsertThread(updatedThread);
 	}
+
 	bulkToggleThreadsAreMarkedQueued(threads) {
+		const { bulkUpdateThreads } = this.props;
 		const updatedThreads = threads.map(t => ({
 			...t,
 			dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now()),
 			isArchived: false
 		}));
-		this.props.bulkUpdateThreads(updatedThreads);
+		bulkUpdateThreads(updatedThreads);
 	}
+
 	bulkToggleThreadsAreArchived(threads) {
+		const { bulkUpdateThreads } = this.props;
 		const updatedThreads = threads.map(t => ({
 			...t,
 			isArchived: !t.isArchived,
 			dateMarkedQueued: null
 		}));
-		this.props.bulkUpdateThreads(updatedThreads);
+		bulkUpdateThreads(updatedThreads);
 	}
+
 	refreshThreads(isArchivePage) {
+		const { fetchActiveThreads, fetchArchivedThreads } = this.props;
 		if (!isArchivePage) {
-			this.props.fetchActiveThreads();
+			fetchActiveThreads();
 		} else {
-			this.props.fetchArchivedThreads();
+			fetchArchivedThreads();
 		}
 	}
+
 	updateThreadTablePageSize(size) {
-		const { userSettings } = this.props;
-		this.props.updateUserSettings({ ...userSettings, threadTablePageSize: size });
+		const { userSettings, updateUserSettings } = this.props;
+		updateUserSettings({ ...userSettings, threadTablePageSize: size });
 	}
+
 	render() {
 		const {
 			characters,
 			Renderable,
 			threadFilter,
 			isLoadingIconVisible,
-			userSettings
+			userSettings,
+			openBulkUntrackThreadsModal,
+			openUntrackThreadModal,
+			openUpsertThreadModal,
+			setFilteredTag
 		} = this.props;
 		return (
 			<div className="animated fadeIn threads-container">
@@ -112,11 +130,11 @@ class Threads extends Component {
 						<Renderable
 							bulkToggleThreadsAreArchived={this.bulkToggleThreadsAreArchived}
 							bulkToggleThreadsAreMarkedQueued={this.bulkToggleThreadsAreMarkedQueued}
-							openBulkUntrackThreadsModal={this.props.openBulkUntrackThreadsModal}
+							openBulkUntrackThreadsModal={openBulkUntrackThreadsModal}
 							characters={characters}
-							openUntrackThreadModal={this.props.openUntrackThreadModal}
-							openEditThreadModal={this.props.openUpsertThreadModal}
-							setFilteredTag={this.props.setFilteredTag}
+							openUntrackThreadModal={openUntrackThreadModal}
+							openEditThreadModal={openUpsertThreadModal}
+							setFilteredTag={setFilteredTag}
 							threadFilter={threadFilter}
 							toggleThreadIsArchived={this.toggleThreadIsArchived}
 							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
@@ -127,21 +145,21 @@ class Threads extends Component {
 						/>
 					</Col>
 				</Row>
-			</div >
+			</div>
 		);
 	}
 }
 
 Threads.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	setFilteredTag,
-	bulkUpdateThreads,
-	fetchCharacters,
-	fetchActiveThreads,
-	fetchArchivedThreads,
-	upsertThread,
-	openBulkUntrackThreadsModal,
-	openUpsertThreadModal,
-	openUntrackThreadModal,
-	updateUserSettings
+	setFilteredTag: actions.setFilteredTag,
+	bulkUpdateThreads: actions.bulkUpdateThreads,
+	fetchCharacters: actions.fetchCharacters,
+	fetchActiveThreads: actions.fetchActiveThreads,
+	fetchArchivedThreads: actions.fetchArchivedThreads,
+	upsertThread: actions.upsertThread,
+	openBulkUntrackThreadsModal: actions.openBulkUntrackThreadsModal,
+	openUpsertThreadModal: actions.openUpsertThreadModal,
+	openUntrackThreadModal: actions.openUntrackThreadModal,
+	updateUserSettings: actions.updateUserSettings
 })(Threads);

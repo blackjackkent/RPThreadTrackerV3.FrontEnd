@@ -6,8 +6,8 @@ import { Container } from 'reactstrap';
 import PropTypes from 'prop-types';
 import ReduxToastr from 'react-redux-toastr';
 
-import { fetchUser, fetchNews, fetchUserSettings } from '../../infrastructure/actions';
-import { getIsLoadingIconVisible } from '../../infrastructure/selectors';
+import * as actions from '../../infrastructure/actions';
+import * as selectors from '../../infrastructure/selectors';
 
 import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
@@ -50,7 +50,7 @@ const mapStateToProps = (state) => {
 		news,
 		userSettings
 	} = state;
-	const isLoadingIconVisible = getIsLoadingIconVisible(state);
+	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
 	return {
 		user,
 		news,
@@ -64,26 +64,35 @@ class Layout extends Component {
 		this.isUserLoaded = this.isUserLoaded.bind(this);
 		this.isNewsLoaded = this.isNewsLoaded.bind(this);
 	}
+
 	componentDidMount() {
+		const { fetchUser, fetchNews, fetchUserSettings } = this.props;
 		if (!this.isUserLoaded()) {
-			this.props.fetchUser();
+			fetchUser();
 		}
 		if (!this.isNewsLoaded()) {
-			this.props.fetchNews();
+			fetchNews();
 		}
 		if (!this.areUserSettingsLoaded()) {
-			this.props.fetchUserSettings();
+			fetchUserSettings();
 		}
 	}
+
 	isUserLoaded() {
-		return this.props.user && this.props.user.id;
+		const { user } = this.props;
+		return user && user.id;
 	}
+
 	isNewsLoaded() {
-		return this.props.news && this.props.news.length;
+		const { news } = this.props;
+		return news && news.length;
 	}
+
 	areUserSettingsLoaded() {
-		return this.props.userSettings && this.props.userSettings.settingsId;
+		const { userSettings } = this.props;
+		return userSettings && userSettings.settingsId;
 	}
+
 	showLoadingIndicator() {
 		return (
 			<LoadingIndicator
@@ -99,7 +108,9 @@ class Layout extends Component {
 			/>
 		);
 	}
+
 	showLayout() {
+		const { isLoadingIconVisible } = this.props;
 		return (
 			<div className="app" data-spec="layout-app">
 				<ReduxToastr />
@@ -107,7 +118,7 @@ class Layout extends Component {
 				<div className="app-body">
 					<Sidebar {...this.props} />
 					<main className="main">
-						<Breadcrumb isLoadingIconVisible={this.props.isLoadingIconVisible} />
+						<Breadcrumb isLoadingIconVisible={isLoadingIconVisible} />
 						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
@@ -162,6 +173,7 @@ class Layout extends Component {
 			</div>
 		);
 	}
+
 	render() {
 		if (!this.isUserLoaded()) {
 			return this.showLoadingIndicator();
@@ -172,7 +184,7 @@ class Layout extends Component {
 
 Layout.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	fetchUser,
-	fetchNews,
-	fetchUserSettings
+	fetchUser: actions.fetchUser,
+	fetchNews: actions.fetchNews,
+	fetchUserSettings: actions.fetchUserSettings
 })(withPageViewTracker(Layout));

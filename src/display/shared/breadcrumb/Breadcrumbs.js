@@ -25,6 +25,7 @@ class Breadcrumbs extends React.Component {
 		});
 		return paths;
 	}
+
 	render() {
 		const { location: { pathname } } = this.props;
 		const paths = this.getPaths(pathname);

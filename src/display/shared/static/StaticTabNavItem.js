@@ -16,10 +16,13 @@ class StaticTabNavItem extends React.Component {
 		super();
 		this.onClick = this.onClick.bind(this);
 	}
+
 	onClick(e, tabId) {
 		e.preventDefault();
-		this.props.setActiveTab(tabId);
+		const { setActiveTab } = this.props;
+		setActiveTab(tabId);
 	}
+
 	render() {
 		const {
 			tabId,

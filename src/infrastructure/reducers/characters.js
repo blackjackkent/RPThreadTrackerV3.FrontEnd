@@ -1,4 +1,6 @@
-import { FETCH_CHARACTERS, FETCHED_CHARACTERS_SUCCESS, FETCHED_CHARACTERS_FAILURE, SUBMIT_USER_LOGOUT } from '../actions';
+import {
+	FETCH_CHARACTERS, FETCHED_CHARACTERS_SUCCESS, FETCHED_CHARACTERS_FAILURE, SUBMIT_USER_LOGOUT
+} from '../actions';
 
 function characters(state = [], action) {
 	switch (action.type) {

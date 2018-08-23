@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
-import { Card, CardBlock, Button, Row, Col } from 'reactstrap';
-import { submitUserResetPassword } from '../../../infrastructure/actions';
+import {
+	Card, CardBlock, Button, Row, Col
+} from 'reactstrap';
+import * as actions from '../../../infrastructure/actions';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
 import { getQuery } from '../../../utility';
@@ -40,18 +42,23 @@ class ResetPassword extends Component {
 			}
 		};
 	}
+
 	handleResetPasswordSubmit() {
-		this.props.submitUserResetPassword(this.state.resetPasswordRequest);
+		const { submitUserResetPassword } = this.props;
+		const { resetPasswordRequest } = this.state;
+		submitUserResetPassword(resetPasswordRequest);
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState({
-			resetPasswordRequest: Object.assign({}, this.state.resetPasswordRequest, {
+		this.setState(prevState => ({
+			resetPasswordRequest: Object.assign({}, prevState.resetPasswordRequest, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const { displayLoadingIndicator, resetPasswordError } = this.props;
 		let loading = (<span />);
@@ -112,5 +119,5 @@ class ResetPassword extends Component {
 ResetPassword.propTypes = propTypes;
 ResetPassword.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
-	submitUserResetPassword
+	submitUserResetPassword: actions.submitUserResetPassword
 })(ResetPassword);

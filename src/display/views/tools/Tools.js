@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
-import { setActiveToolsTab, fetchTags, exportThreads, fetchPublicViews, openUpsertPublicViewModal, openDeletePublicViewModal, fetchCharacters } from '../../../infrastructure/actions';
+import * as actions from '../../../infrastructure/actions';
 import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
@@ -52,22 +52,36 @@ class Tools extends Component {
 		super(props);
 		this.onExportRequest = this.onExportRequest.bind(this);
 	}
+
 	componentDidMount() {
-		if (!this.props.tags || !this.props.tags.length) {
-			this.props.fetchTags();
+		const {
+			tags, publicViews, characters, fetchTags, fetchPublicViews, fetchCharacters
+		} = this.props;
+		if (!tags || !tags.length) {
+			fetchTags();
 		}
-		if (!this.props.publicViews || !this.props.publicViews.length) {
-			this.props.fetchPublicViews();
+		if (!publicViews || !publicViews.length) {
+			fetchPublicViews();
 		}
-		if (!this.props.characters || !this.props.characters.length) {
-			this.props.fetchCharacters();
+		if (!characters || !characters.length) {
+			fetchCharacters();
 		}
 	}
+
 	onExportRequest(includeHiatused, includeArchive) {
-		this.props.exportThreads({ includeHiatused, includeArchive });
+		const { exportThreads } = this.props;
+		exportThreads({ includeHiatused, includeArchive });
 	}
+
 	render() {
-		const { activeTab, publicViews, isLoadingIconVisible } = this.props;
+		const {
+			activeTab,
+			publicViews,
+			isLoadingIconVisible,
+			setActiveToolsTab,
+			openUpsertPublicViewModal,
+			openDeletePublicViewModal
+		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
 			<div className="animated fadeIn static-container settings-container">
@@ -75,7 +89,7 @@ class Tools extends Component {
 					<Col className="d-lg-none text-center">
 						<StaticDropdownNav
 							data-spec="tools-static-dropdown-nav"
-							setActiveTab={this.props.setActiveToolsTab}
+							setActiveTab={setActiveToolsTab}
 							activeTab={activeTab}
 							options={options}
 						/>
@@ -85,7 +99,7 @@ class Tools extends Component {
 					<Col className="d-none d-lg-block" md={3}>
 						<StaticTabNav
 							data-spec="tools-static-tab-nav"
-							setActiveTab={this.props.setActiveToolsTab}
+							setActiveTab={setActiveToolsTab}
 							activeTab={activeTab}
 							options={options}
 						/>
@@ -94,8 +108,8 @@ class Tools extends Component {
 						<TabContent activeTab={activeTab}>
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
 							<ManagePublicViewsPane
-								openUpsertPublicViewModal={this.props.openUpsertPublicViewModal}
-								openDeletePublicViewModal={this.props.openDeletePublicViewModal}
+								openUpsertPublicViewModal={openUpsertPublicViewModal}
+								openDeletePublicViewModal={openDeletePublicViewModal}
 								publicViews={publicViews}
 								isLoadingIconVisible={isLoadingIconVisible}
 							/>
@@ -110,11 +124,11 @@ class Tools extends Component {
 
 Tools.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	exportThreads,
-	setActiveToolsTab,
-	fetchTags,
-	fetchPublicViews,
-	openUpsertPublicViewModal,
-	openDeletePublicViewModal,
-	fetchCharacters
+	exportThreads: actions.exportThreads,
+	setActiveToolsTab: actions.setActiveToolsTab,
+	fetchTags: actions.fetchTags,
+	fetchPublicViews: actions.fetchPublicViews,
+	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
+	openDeletePublicViewModal: actions.openDeletePublicViewModal,
+	fetchCharacters: actions.fetchCharacters
 })(Tools);

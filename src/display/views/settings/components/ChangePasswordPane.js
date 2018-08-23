@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { TabPane, Col, Row, Button, Card, CardHeader, CardBlock } from 'reactstrap';
+import {
+	TabPane, Col, Row, Button, Card, CardHeader, CardBlock
+} from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
 
@@ -15,17 +17,20 @@ class ChangePasswordPane extends React.Component {
 			formData: {}
 		};
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState({
-			formData: Object.assign({}, this.state.formData, {
+		this.setState(prevState => ({
+			formData: Object.assign({}, prevState.formData, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const { submitChangePasswordForm } = this.props;
+		const { formData } = this.state;
 		return (
 			<TabPane tabId="change-password">
 				<Card>
@@ -37,7 +42,7 @@ class ChangePasswordPane extends React.Component {
 					<CardBlock className="card-body">
 						<AvForm
 							data-spec="change-password-form-container"
-							onValidSubmit={() => submitChangePasswordForm(this.state.formData)}
+							onValidSubmit={() => submitChangePasswordForm(formData)}
 						>
 							<ChangePasswordForm handleInputChange={this.handleInputChange} />
 							<Row>

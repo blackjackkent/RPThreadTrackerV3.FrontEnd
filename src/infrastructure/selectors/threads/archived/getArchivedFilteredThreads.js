@@ -1,8 +1,7 @@
 import { createSelector } from 'reselect';
 import { filterThreadsByTag, buildThreadDataByPredicate } from '../../common';
 
-const filteredTag = state =>
-	(state.threadFilter ? state.threadFilter.filteredTag : null);
+const filteredTag = state => (state.threadFilter ? state.threadFilter.filteredTag : null);
 const getAllArchivedThreads = state => state.archivedThreads;
 const getAllArchivedThreadStatus = state => state.archivedThreadsStatus;
 const getAllArchivedFilteredThreads = createSelector(

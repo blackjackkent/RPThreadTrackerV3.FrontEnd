@@ -29,10 +29,10 @@ class CheckboxTable extends React.Component {
 		this.isSelected = this.isSelected.bind(this);
 		this.clearSelection = this.clearSelection.bind(this);
 	}
+
 	toggleSelection(key, shift, row) {
-		let selection = [
-			...this.state.selection
-		];
+		let { selection } = this.state;
+		const { data, onSelectionChanged } = this.props;
 		// eslint-disable-next-line no-underscore-dangle
 		const keyIndex = selection.findIndex(s => s._id === key);
 		if (keyIndex >= 0) {
@@ -43,14 +43,16 @@ class CheckboxTable extends React.Component {
 		} else {
 			selection.push(row);
 		}
-		const selectAll = selection.length === this.props.data.length;
+		const selectAll = selection.length === data.length;
 		this.setState({ selection, selectAll });
-		this.props.onSelectionChanged(selection);
+		onSelectionChanged(selection);
 	}
+
 	toggleAll() {
-		const selectAll = !this.state.selectAll;
+		const { onSelectionChanged } = this.props;
+		const { selectAll } = this.state;
 		const selection = [];
-		if (selectAll) {
+		if (!selectAll) {
 			const wrappedInstance = this.checkboxTable.getWrappedInstance();
 			const currentRecords = wrappedInstance.getResolvedState().sortedData;
 			currentRecords.forEach((item) => {
@@ -58,17 +60,22 @@ class CheckboxTable extends React.Component {
 				selection.push(item._original);
 			});
 		}
-		this.setState({ selectAll, selection });
-		this.props.onSelectionChanged(selection);
+		this.setState({ selectAll: !selectAll, selection });
+		onSelectionChanged(selection);
 	}
+
 	isSelected(key) {
+		const { selection } = this.state;
 		// eslint-disable-next-line no-underscore-dangle
-		return this.state.selection.findIndex(s => s._id === key) > -1;
+		return selection.findIndex(s => s._id === key) > -1;
 	}
+
 	clearSelection() {
+		const { onSelectionChanged } = this.props;
 		this.setState({ selectAll: false, selection: [] });
-		this.props.onSelectionChanged([]);
+		onSelectionChanged([]);
 	}
+
 	render() {
 		const { toggleSelection, toggleAll, isSelected } = this;
 		const { selectAll } = this.state;

@@ -1,7 +1,7 @@
 import columns from '../../../../infrastructure/constants/columns';
 
-const getTdProps = (onDeleteTrigger, onEditTrigger, onArchiveTrigger, onQueueTrigger) =>
-	(state, row, column) => ({
+const getTdProps = (onDeleteTrigger, onEditTrigger, onArchiveTrigger, onQueueTrigger) => {
+	const generateTdProps = (state, row, column) => ({
 		onClick: (e, handleOriginal) => {
 			if (column.id === columns.DELETE_BUTTON.key) {
 				onDeleteTrigger(row.original.thread);
@@ -24,4 +24,6 @@ const getTdProps = (onDeleteTrigger, onEditTrigger, onArchiveTrigger, onQueueTri
 			}
 		}
 	});
+	return generateTdProps;
+};
 export default getTdProps;

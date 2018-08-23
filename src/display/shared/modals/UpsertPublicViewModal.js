@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import {
+	Modal, ModalHeader, ModalBody, ModalFooter, Button
+} from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpsertPublicViewForm from '../../forms/upsert-public-view/UpsertPublicViewForm';
 import TooltipForm from '../../forms/TooltipForm';
@@ -37,24 +39,26 @@ class UpsertCharacterModal extends React.Component {
 		}
 		const { name } = target;
 		if (target.type === 'checkbox') {
-			let { turnFilter } = this.state.viewToEdit;
+			const { viewToEdit } = this.state;
+			let { turnFilter } = viewToEdit;
 			if (!turnFilter) {
 				turnFilter = {};
 			}
 			turnFilter[name] = value;
-			this.setState({
-				viewToEdit: Object.assign({}, this.state.viewToEdit, {
+			this.setState(prevState => ({
+				viewToEdit: Object.assign({}, prevState.viewToEdit, {
 					turnFilter
 				})
-			});
+			}));
 			return;
 		}
-		this.setState({
-			viewToEdit: Object.assign({}, this.state.viewToEdit, {
+		this.setState(prevState => ({
+			viewToEdit: Object.assign({}, prevState.viewToEdit, {
 				[name]: value
 			})
-		});
+		}));
 	}
+
 	render() {
 		const {
 			isUpsertPublicViewModalOpen,
@@ -65,6 +69,7 @@ class UpsertCharacterModal extends React.Component {
 			tags,
 			columns
 		} = this.props;
+		const { viewToEdit: requestData } = this.state;
 		return (
 			<Modal
 				data-spec="upsert-public-view-modal"
@@ -74,7 +79,7 @@ class UpsertCharacterModal extends React.Component {
 			>
 				<AvForm
 					data-spec="upsert-public-view-modal-form"
-					onValidSubmit={() => submitUpsertPublicView(this.state.viewToEdit)}
+					onValidSubmit={() => submitUpsertPublicView(requestData)}
 				>
 					<ModalHeader data-spec="upsert-public-view-modal-header" toggle={closeUpsertPublicViewModal}>{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}</ModalHeader>
 					<ModalBody>

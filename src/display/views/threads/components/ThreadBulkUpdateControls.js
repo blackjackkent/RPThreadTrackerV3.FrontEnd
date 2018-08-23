@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Button, InputGroup, Input } from 'reactstrap';
+import {
+	Form, Button, InputGroup, Input
+} from 'reactstrap';
 
 const propTypes = {
 	isArchive: PropTypes.bool.isRequired,
@@ -20,6 +22,7 @@ class ThreadBulkUpdateControls extends React.Component {
 		this.submitBulkAction = this.submitBulkAction.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
+
 	submitBulkAction(e) {
 		e.preventDefault();
 		const {
@@ -28,16 +31,18 @@ class ThreadBulkUpdateControls extends React.Component {
 			bulkToggleThreadsAreMarkedQueued,
 			openBulkUntrackThreadsModal
 		} = this.props;
-		if (this.state.action === 'toggle-queued') {
+		const { action } = this.state;
+		if (action === 'toggle-queued') {
 			executeBulkAction(bulkToggleThreadsAreMarkedQueued);
 		}
-		if (this.state.action === 'toggle-archived') {
+		if (action === 'toggle-archived') {
 			executeBulkAction(bulkToggleThreadsAreArchived);
 		}
-		if (this.state.action === 'untrack') {
+		if (action === 'untrack') {
 			executeBulkAction(openBulkUntrackThreadsModal);
 		}
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { value } = target;
@@ -45,6 +50,7 @@ class ThreadBulkUpdateControls extends React.Component {
 			action: value
 		});
 	}
+
 	render() {
 		const {
 			isArchive,

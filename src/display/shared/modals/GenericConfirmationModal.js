@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
+import {
+	Modal, ModalHeader, ModalBody, ModalFooter, Button
+} from 'reactstrap';
 
 const propTypes = {
 	isModalOpen: PropTypes.bool.isRequired,

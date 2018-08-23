@@ -26,13 +26,18 @@ const createTestProps = propOverrides => ({
 });
 const createTestPropsLoading = () => createTestProps({ loadingInProgress: true });
 const createTestPropsNoCharacters = () => createTestProps({});
-const createTestPropsNoActiveCharacters = () =>
-	createTestProps({ characters: [{ isOnHiatus: true }, { isOnHiatus: true }] });
+const createTestPropsNoActiveCharacters = () => createTestProps({
+	characters: [{ isOnHiatus: true }, { isOnHiatus: true }]
+});
 const createTestPropsNoThreads = () => createTestProps({ characters: [{}, {}] });
-const createTestPropsNoRecentActivity = () =>
-	createTestProps({ characters: [{}, {}], allThreads: [{}, {}, {}] });
-const createTestPropsRecentActivity = () =>
-	createTestProps({ characters: [{}, {}], allThreads: [{}, {}, {}], recentActivityThreads: [{ thread: { threadId: 1, userTitle: 'Recent 1' } }, { thread: { threadId: 2, userTitle: 'Recent 2' } }] });
+const createTestPropsNoRecentActivity = () => createTestProps({
+	characters: [{}, {}], allThreads: [{}, {}, {}]
+});
+const createTestPropsRecentActivity = () => createTestProps({
+	characters: [{}, {}],
+	allThreads: [{}, {}, {}],
+	recentActivityThreads: [{ thread: { threadId: 1, userTitle: 'Recent 1' } }, { thread: { threadId: 2, userTitle: 'Recent 2' } }]
+});
 
 describe('rendering', () => {
 	describe('snapshots', () => {
@@ -53,7 +58,7 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when user has no recent activity', () => {
-			const element = shallow(<RecentActivityCard	{...createTestPropsNoRecentActivity()} />);
+			const element = shallow(<RecentActivityCard {...createTestPropsNoRecentActivity()} />);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when user has recent activity', () => {

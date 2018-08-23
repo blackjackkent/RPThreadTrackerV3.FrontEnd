@@ -20,13 +20,13 @@ const createTestProps = propOverrides => ({
 });
 const createTestPropsLoading = () => createTestProps({ loadingInProgress: true });
 const createTestPropsNoCharacters = () => createTestProps({});
-const createTestPropsNoActiveCharacters = () =>
-	createTestProps({ characters: [{ isOnHiatus: true }, { isOnHiatus: true }] });
-const createTestPropsCharacters = () =>
-	createTestProps({
-		characters: [{ characterId: 2 }, { characterId: 3 }],
-		characterThreadCounts: { 2: 15, 3: 30 }
-	});
+const createTestPropsNoActiveCharacters = () => createTestProps({
+	characters: [{ isOnHiatus: true }, { isOnHiatus: true }]
+});
+const createTestPropsCharacters = () => createTestProps({
+	characters: [{ characterId: 2 }, { characterId: 3 }],
+	characterThreadCounts: { 2: 15, 3: 30 }
+});
 
 
 describe('rendering', () => {

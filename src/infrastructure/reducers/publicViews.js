@@ -1,4 +1,6 @@
-import { FETCH_PUBLIC_VIEWS, FETCHED_PUBLIC_VIEWS_FAILURE, FETCHED_PUBLIC_VIEWS_SUCCESS, SUBMIT_USER_LOGOUT } from '../actions';
+import {
+	FETCH_PUBLIC_VIEWS, FETCHED_PUBLIC_VIEWS_FAILURE, FETCHED_PUBLIC_VIEWS_SUCCESS, SUBMIT_USER_LOGOUT
+} from '../actions';
 
 function publicViews(state = [], action) {
 	switch (action.type) {

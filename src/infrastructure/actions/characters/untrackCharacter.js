@@ -27,4 +27,3 @@ export function untrackCharacterSuccess() {
 		type: UNTRACK_CHARACTER_SUCCESS
 	};
 }
-

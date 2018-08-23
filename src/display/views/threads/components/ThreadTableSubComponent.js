@@ -34,10 +34,12 @@ const ThreadTableSubComponent = (props) => {
 	}
 	return (
 		<div className="thread-table-sub-component">
-			{description &&
-				<div className="thread-table-description-display">
-					{description}
-				</div>
+			{description
+				&& (
+					<div className="thread-table-description-display">
+						{description}
+					</div>
+				)
 			}
 			<div className="thread-table-tag-display">
 				{rows}

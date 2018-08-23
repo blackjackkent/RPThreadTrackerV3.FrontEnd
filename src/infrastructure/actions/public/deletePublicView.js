@@ -27,4 +27,3 @@ export function deletePublicViewSuccess() {
 		type: DELETE_PUBLIC_VIEW_SUCCESS
 	};
 }
-

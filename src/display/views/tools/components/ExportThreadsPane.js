@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { TabPane, Form, FormGroup, Col, Label, Row, Input, Button, Card, CardHeader, CardBlock } from 'reactstrap';
+import {
+	TabPane, Form, FormGroup, Col, Label, Row, Input, Button, Card, CardHeader, CardBlock
+} from 'reactstrap';
 
 const propTypes = {
 	onExportRequest: PropTypes.func.isRequired
@@ -15,15 +17,18 @@ class ExportThreadsPane extends Component {
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
+
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, checked } = target;
-		this.setState(Object.assign({}, this.state, {
+		this.setState(prevState => Object.assign({}, prevState, {
 			[name]: checked
 		}));
 	}
+
 	render() {
 		const { onExportRequest } = this.props;
+		const { includeArchived, includeHiatused } = this.state;
 		return (
 			<TabPane tabId="export-threads">
 				<Card>
@@ -56,7 +61,7 @@ class ExportThreadsPane extends Component {
 											type="checkbox"
 											className="switch-input"
 											id="include-archived-switch"
-											checked={this.state.includeArchived}
+											checked={includeArchived}
 											onChange={this.handleInputChange}
 											name="includeArchived"
 										/>
@@ -78,7 +83,7 @@ class ExportThreadsPane extends Component {
 											type="checkbox"
 											className="switch-input"
 											id="include-hiatued-switch"
-											checked={this.state.includeHiatused}
+											checked={includeHiatused}
 											onChange={this.handleInputChange}
 											name="includeHiatused"
 										/>
@@ -95,7 +100,7 @@ class ExportThreadsPane extends Component {
 									type="submit"
 									color="primary"
 									onClick={
-										() => onExportRequest(this.state.includeHiatused, this.state.includeArchived)}
+										() => onExportRequest(includeHiatused, includeArchived)}
 								>
 									Export
 								</Button>

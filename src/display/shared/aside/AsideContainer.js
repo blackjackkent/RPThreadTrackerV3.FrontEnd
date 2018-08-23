@@ -15,7 +15,10 @@ function mapStateToProps(state) {
 	return { news: labeledNewsItems };
 }
 
-const AsideContainer = props => <Aside news={props.news} />;
+const AsideContainer = (props) => {
+	const { news } = props;
+	return (<Aside news={news} />);
+};
 
 AsideContainer.propTypes = propTypes;
 export default connect(mapStateToProps)(AsideContainer);

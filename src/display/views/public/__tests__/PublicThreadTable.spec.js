@@ -24,8 +24,9 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when loading', () => {
-			const element =
-				shallow(<PublicThreadTable {...createTestProps({ isLoadingIconVisible: true })} />);
+			const element =	shallow(
+				<PublicThreadTable {...createTestProps({ isLoadingIconVisible: true })} />
+			);
 			expect(element).toMatchSnapshot();
 		});
 	});
