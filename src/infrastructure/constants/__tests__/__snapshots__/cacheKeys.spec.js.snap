@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`object structure should have expected values 1`] = `
+Object {
+  "ACCESS_TOKEN": "accessToken",
+  "REFRESH_TOKEN": "refreshToken",
+}
+`;
