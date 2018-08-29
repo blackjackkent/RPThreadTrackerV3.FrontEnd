@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`object structure should have expected values 1`] = `
+Object {
+  "categories": Object {
+    "ACCOUNT": "Account",
+    "CHARACTER": "Character",
+    "PUBLIC": "Public",
+    "THREAD": "Thread",
+    "UI": "UI",
+  },
+  "funcs": Object {
+    "EVENT": "event",
+    "MODALVIEW": "modalview",
+    "OUTBOUND_LINK": "outboundLink",
+    "PAGEVIEW": "pageview",
+    "TIMING": "timing",
+  },
+}
+`;

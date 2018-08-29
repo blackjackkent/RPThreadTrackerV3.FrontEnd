@@ -5,7 +5,7 @@ function randomThread(state = {}, action) {
 		case GENERATED_RANDOM_THREAD_SUCCESS:
 			return action.data;
 		case SUBMIT_USER_LOGOUT:
-			return [];
+			return {};
 		default:
 			return state;
 	}

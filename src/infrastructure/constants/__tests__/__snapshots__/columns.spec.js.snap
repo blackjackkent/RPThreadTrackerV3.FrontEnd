@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`object structure should have expected values 1`] = `
+Object {
+  "ARCHIVE_BUTTON": Object {
+    "key": "archiveButton",
+  },
+  "CHARACTER": Object {
+    "key": "thread.character.urlIdentifier",
+    "name": "Character",
+  },
+  "DATE_QUEUED": Object {
+    "key": "thread.dateMarkedQueued",
+    "name": "Date Queued",
+  },
+  "DELETE_BUTTON": Object {
+    "key": "deleteButton",
+  },
+  "EDIT_BUTTON": Object {
+    "key": "editButton",
+  },
+  "LAST_POSTER": Object {
+    "key": "status.lastPosterUrlIdentifier",
+    "name": "Last Poster",
+  },
+  "LAST_POST_DATE": Object {
+    "key": "status.lastPostDate",
+    "name": "Last Post Date",
+  },
+  "QUEUE_BUTTON": Object {
+    "key": "queueButton",
+  },
+  "THREAD_TITLE": Object {
+    "key": "thread.userTitle",
+    "name": "Thread Title",
+  },
+  "TOGGLE_HIATUS_BUTTON": Object {
+    "key": "toggleHiatusButton",
+  },
+  "TRACKED_PARTNER": Object {
+    "key": "thread.partnerUrlIdentifier",
+    "name": "Tracked Partner",
+  },
+}
+`;

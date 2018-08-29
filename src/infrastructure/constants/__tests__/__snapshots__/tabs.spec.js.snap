@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`object structure should have expected values 1`] = `
+Object {
+  "HELP": Object {
+    "ABOUT": Object {
+      "name": "About RPThreadTracker",
+      "tabId": "about",
+    },
+    "CONTACT": Object {
+      "name": "Contact Me",
+      "tabId": "contact",
+    },
+    "FAQ": Object {
+      "name": "FAQ",
+      "tabId": "faq",
+    },
+    "GUIDES": Object {
+      "name": "Usage Guides",
+      "tabId": "guides",
+    },
+  },
+  "SETTINGS": Object {
+    "CHANGE_PASSWORD": Object {
+      "name": "Change Password",
+      "tabId": "change-password",
+    },
+    "CHANGE_USERNAME": Object {
+      "name": "Change Username/Email",
+      "tabId": "change-username",
+    },
+  },
+  "TOOLS": Object {
+    "BROWSER_EXTENSIONS": Object {
+      "name": "Browser Extensions",
+      "tabId": "browser-extensions",
+    },
+    "EXPORT_THREADS": Object {
+      "name": "Export Threads",
+      "tabId": "export-threads",
+    },
+    "MANAGE_PUBLIC_VIEWS": Object {
+      "name": "Manage Public Views",
+      "tabId": "manage-public-views",
+    },
+  },
+}
+`;
