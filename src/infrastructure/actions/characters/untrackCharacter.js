@@ -15,10 +15,9 @@ export function untrackCharacter(data) {
 	};
 }
 export const UNTRACK_CHARACTER_FAILURE = 'UNTRACK_CHARACTER_FAILURE';
-export function untrackCharacterFailure(data) {
+export function untrackCharacterFailure() {
 	return {
-		type: UNTRACK_CHARACTER_FAILURE,
-		data
+		type: UNTRACK_CHARACTER_FAILURE
 	};
 }
 export const UNTRACK_CHARACTER_SUCCESS = 'UNTRACK_CHARACTER_SUCCESS';

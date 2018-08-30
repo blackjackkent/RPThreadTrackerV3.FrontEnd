@@ -13,10 +13,8 @@ describe('untrackCharacter', () => {
 });
 describe('untrackCharacterFailure', () => {
 	it('should create action with type and data', () => {
-		const errorMessage = 'There was an error.';
-		const action = actions.untrackCharacterFailure(errorMessage);
+		const action = actions.untrackCharacterFailure();
 		expect(action.type).toBe('UNTRACK_CHARACTER_FAILURE');
-		expect(action.data).toBe(errorMessage);
 	});
 });
 describe('untrackCharacterSuccess', () => {

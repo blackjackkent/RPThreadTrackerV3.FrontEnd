@@ -1,5 +1,7 @@
 import { shallow } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
+import { expectSaga } from 'redux-saga-test-plan';
+import { throwError } from 'redux-saga-test-plan/providers'
 
 export const DATA_SPEC_ATTRIBUTE_NAME = 'data-spec';
 
@@ -25,3 +27,26 @@ export const initMockDateNow = () => {
 	global.Date.now = MockDate.now;
 	return DATE_TO_USE;
 };
+
+export class SagaTestWrapper {
+	constructor(sagaGenerator) {
+		this.saga = expectSaga(sagaGenerator);
+	}
+
+	setup(matcher, result) {
+		this.saga.provide([[matcher, result]]);
+	}
+
+	setupError(matcher, errorMessage) {
+		this.saga.provide([[matcher, throwError(new Error(errorMessage))]])
+	}
+
+	expectPut(action) {
+		this.saga.put(action);
+	}
+
+	execute(action) {
+		this.saga.dispatch(action);
+		return this.saga.silentRun();
+	}
+}
