@@ -15,10 +15,9 @@ export function upsertCharacter(data) {
 	};
 }
 export const UPSERT_CHARACTER_FAILURE = 'UPSERT_CHARACTER_FAILURE';
-export function upsertCharacterFailure(data) {
+export function upsertCharacterFailure() {
 	return {
-		type: UPSERT_CHARACTER_FAILURE,
-		data
+		type: UPSERT_CHARACTER_FAILURE
 	};
 }
 export const UPSERT_CHARACTER_SUCCESS = 'UPSERT_CHARACTER_SUCCESS';

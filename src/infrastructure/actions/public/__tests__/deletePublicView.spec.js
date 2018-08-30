@@ -13,10 +13,8 @@ describe('deletePublicView', () => {
 });
 describe('deletePublicViewFailure', () => {
 	it('should create action with type and data', () => {
-		const errorMessage = 'There was an error.';
-		const action = actions.deletePublicViewFailure(errorMessage);
+		const action = actions.deletePublicViewFailure();
 		expect(action.type).toBe('DELETE_PUBLIC_VIEW_FAILURE');
-		expect(action.data).toBe(errorMessage);
 	});
 });
 describe('deletePublicViewSuccess', () => {

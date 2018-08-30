@@ -21,11 +21,9 @@ describe('upsertCharacter', () => {
 	});
 });
 describe('upsertCharacterFailure', () => {
-	it('should create action with type and data', () => {
-		const errorMessage = 'There was an error.';
-		const action = actions.upsertCharacterFailure(errorMessage);
+	it('should create action with type', () => {
+		const action = actions.upsertCharacterFailure();
 		expect(action.type).toBe('UPSERT_CHARACTER_FAILURE');
-		expect(action.data).toBe(errorMessage);
 	});
 });
 describe('upsertCharacterSuccess', () => {

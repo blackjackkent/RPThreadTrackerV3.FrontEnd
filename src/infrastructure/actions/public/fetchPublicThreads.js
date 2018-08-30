@@ -6,10 +6,9 @@ export function fetchPublicThreads(data) {
 	};
 }
 export const FETCHED_PUBLIC_THREADS_FAILURE = 'FETCHED_PUBLIC_THREADS_FAILURE';
-export function fetchedPublicThreadsFailure(data) {
+export function fetchedPublicThreadsFailure() {
 	return {
-		type: FETCHED_PUBLIC_THREADS_FAILURE,
-		data
+		type: FETCHED_PUBLIC_THREADS_FAILURE
 	};
 }
 export const FETCHED_PUBLIC_THREADS_SUCCESS = 'FETCHED_PUBLIC_THREADS_SUCCESS';
