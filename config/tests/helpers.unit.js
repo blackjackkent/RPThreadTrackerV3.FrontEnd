@@ -41,8 +41,18 @@ export class SagaTestWrapper {
 		this.saga.provide([[matcher, throwError(new Error(errorMessage))]])
 	}
 
+	setupFn(fn) {
+		this.saga.provide({
+			call(effect, next) { return fn(effect, next); }
+		});
+	}
+
 	expectPut(action) {
 		this.saga.put(action);
+	}
+
+	expectCall(fn) {
+		this.saga.call.fn(fn);
 	}
 
 	execute(action) {

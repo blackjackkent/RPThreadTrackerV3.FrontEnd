@@ -15,10 +15,9 @@ export function upsertPublicView(data) {
 	};
 }
 export const UPSERT_PUBLIC_VIEW_FAILURE = 'UPSERT_PUBLIC_VIEW_FAILURE';
-export function upsertPublicViewFailure(data) {
+export function upsertPublicViewFailure() {
 	return {
-		type: UPSERT_PUBLIC_VIEW_FAILURE,
-		data
+		type: UPSERT_PUBLIC_VIEW_FAILURE
 	};
 }
 export const UPSERT_PUBLIC_VIEW_SUCCESS = 'UPSERT_PUBLIC_VIEW_SUCCESS';
