@@ -12,10 +12,9 @@ export function fetchedPublicThreadsStatusFailure() {
 	};
 }
 export const FETCHED_PUBLIC_THREADS_STATUS_SUCCESS = 'FETCHED_PUBLIC_THREADS_STATUS_SUCCESS';
-export function fetchedPublicThreadsStatusSuccess(data) {
+export function fetchedPublicThreadsStatusSuccess() {
 	return {
-		type: FETCHED_PUBLIC_THREADS_STATUS_SUCCESS,
-		data
+		type: FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
 	};
 }
 export const FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE = 'FETCHED_PUBLIC_THREADS_STATUS_CHUNK_FAILURE';

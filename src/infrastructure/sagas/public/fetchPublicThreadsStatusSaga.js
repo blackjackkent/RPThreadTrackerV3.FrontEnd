@@ -13,11 +13,7 @@ import {
 
 function* fetchPublicThreadsStatusChunk(chunk, view) {
 	try {
-		const response = yield call(axios.post, `${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk, {
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
+		const response = yield call(axios.post, `${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk);
 		const threads = response.data;
 		let result = [];
 		if (view.turnFilter && view.turnFilter.includeMyTurn) {

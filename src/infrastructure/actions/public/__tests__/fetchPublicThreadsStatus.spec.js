@@ -15,11 +15,9 @@ describe('fetchedPublicThreadsStatusFailure', () => {
 	});
 });
 describe('fetchedPublicThreadsStatusSuccess', () => {
-	it('should create action with type and data', () => {
-		const threads = [{}, {}, {}];
-		const action = actions.fetchedPublicThreadsStatusSuccess(threads);
+	it('should create action with type', () => {
+		const action = actions.fetchedPublicThreadsStatusSuccess();
 		expect(action.type).toBe('FETCHED_PUBLIC_THREADS_STATUS_SUCCESS');
-		expect(action.data).toBe(threads);
 	});
 });
 describe('fetchedPublicThreadsStatusChunkFailure', () => {
