@@ -28,6 +28,18 @@ export const initMockDateNow = () => {
 	return DATE_TO_USE;
 };
 
+export const initExportWindowValues = () => {
+	Object.defineProperty(global.navigator, 'msSaveBlob', { value: undefined, writable: true });
+	Object.defineProperty(global.navigator, 'webkitSaveBlob', { value: undefined, writable: true });
+	Object.defineProperty(global.navigator, 'mozSaveBlob', { value: undefined, writable: true });
+	Object.defineProperty(global.navigator, 'saveBlob', { value: undefined, writable: true });
+	global.window.URL = null;
+	global.window.webkitURL = null;
+	global.window.mozURL = null;
+	global.window.msURL = null;
+	global.document.createElement = jest.fn();
+};
+
 export class SagaTestWrapper {
 	constructor(sagaGenerator) {
 		this.saga = expectSaga(sagaGenerator);
