@@ -21,11 +21,9 @@ describe('upsertThread', () => {
 	});
 });
 describe('upsertThreadFailure', () => {
-	it('should create action with type and data', () => {
-		const errorMessage = 'There was an error.';
-		const action = actions.upsertThreadFailure(errorMessage);
+	it('should create action with type', () => {
+		const action = actions.upsertThreadFailure();
 		expect(action.type).toBe('UPSERT_THREAD_FAILURE');
-		expect(action.data).toBe(errorMessage);
 	});
 });
 describe('upsertThreadSuccess', () => {
