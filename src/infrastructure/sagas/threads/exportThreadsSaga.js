@@ -11,15 +11,14 @@ import {
 function saveAsBlob(response, filename, contentType) {
 	try {
 		const blob = new Blob([response.data], { type: contentType });
-		if (navigator.msSaveBlob) {
-			navigator.msSaveBlob(blob, filename);
-		} else {
-			const saveBlob = navigator.webkitSaveBlob || navigator.mozSaveBlob || navigator.saveBlob;
-			if (saveBlob === undefined) {
-				throw new Error('Not supported');
-			}
-			saveBlob(blob, filename);
+		const saveBlob = navigator.msSaveBlob
+			|| navigator.webkitSaveBlob
+			|| navigator.mozSaveBlob
+			|| navigator.saveBlob;
+		if (saveBlob === undefined) {
+			throw new Error('Not supported');
 		}
+		saveBlob(blob, filename);
 		return true;
 	} catch (e) {
 		return false;
@@ -48,13 +47,15 @@ function saveWithSimClick(response, contentType, urlCreator, filename) {
 function saveWithWindowOpen(response, octetStreamMime, urlCreator) {
 	const blob = new Blob([response.data], { type: octetStreamMime });
 	const url = urlCreator.createObjectURL(blob);
-	window.location = url;
+	window.location.assign(url);
 }
 
 function attemptFileSave(response) {
 	const octetStreamMime = 'application/octet-stream';
 	const { headers } = response;
+	// istanbul ignore next
 	const filename = headers['x-filename'] || `${Date.now()}.xlsx`;
+	// istanbul ignore next
 	const contentType = headers['content-type'] || octetStreamMime;
 	const saveAsBlobSuccess = saveAsBlob(response, filename, contentType);
 	if (saveAsBlobSuccess) {
@@ -80,6 +81,7 @@ function* exportThreads(action) {
 		yield attemptFileSave(response);
 		yield put(exportThreadsSuccess());
 	} catch (e) {
+		console.log(e);
 		yield put(exportThreadsFailure());
 	}
 }
