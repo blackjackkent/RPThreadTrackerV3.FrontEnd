@@ -81,7 +81,6 @@ function* exportThreads(action) {
 		yield attemptFileSave(response);
 		yield put(exportThreadsSuccess());
 	} catch (e) {
-		console.log(e);
 		yield put(exportThreadsFailure());
 	}
 }

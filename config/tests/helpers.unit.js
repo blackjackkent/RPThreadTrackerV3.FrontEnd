@@ -49,6 +49,14 @@ export class SagaTestWrapper {
 		this.saga.provide([[matcher, result]]);
 	}
 
+	setupAll(setupArray) {
+		const data = [];
+		for (let i = 0; i < setupArray.length; i++) {
+			data.push([setupArray[i].matcher, setupArray[i].result]);
+		}
+		this.saga.provide(data);
+	}
+
 	setupError(matcher, errorMessage) {
 		this.saga.provide([[matcher, throwError(new Error(errorMessage))]])
 	}

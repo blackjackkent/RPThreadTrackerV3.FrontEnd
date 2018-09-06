@@ -12,10 +12,8 @@ describe('untrackThread', () => {
 });
 describe('untrackThreadFailure', () => {
 	it('should create action with type and data', () => {
-		const data = 'Error message';
-		const action = actions.untrackThreadFailure(data);
+		const action = actions.untrackThreadFailure();
 		expect(action.type).toBe('UNTRACK_THREAD_FAILURE');
-		expect(action.data).toBe(data);
 	});
 });
 describe('untrackThreadSuccess', () => {

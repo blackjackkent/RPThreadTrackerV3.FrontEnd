@@ -15,10 +15,9 @@ export function untrackThread(data) {
 	};
 }
 export const UNTRACK_THREAD_FAILURE = 'UNTRACK_THREAD_FAILURE';
-export function untrackThreadFailure(data) {
+export function untrackThreadFailure() {
 	return {
-		type: UNTRACK_THREAD_FAILURE,
-		data
+		type: UNTRACK_THREAD_FAILURE
 	};
 }
 export const UNTRACK_THREAD_SUCCESS = 'UNTRACK_THREAD_SUCCESS';

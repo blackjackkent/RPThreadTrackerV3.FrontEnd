@@ -10,9 +10,6 @@ const link = {
 	setAttribute: jest.fn(),
 	dispatchEvent: jest.fn()
 };
-const event = {
-	initMouseEvent: jest.fn()
-};
 beforeEach(() => {
 	initExportWindowValues();
 	jest.resetAllMocks();
