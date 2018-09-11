@@ -11,7 +11,7 @@ import {
 function* submitUserLogout() {
 	try {
 		const refreshToken = cache.get(cacheKeys.REFRESH_TOKEN);
-		yield call(axios.post, `${API_BASE_URL}api/auth/revoke`, { RefreshToken: refreshToken });
+		yield call(axios.post, `${API_BASE_URL}api/auth/revoke`, { refreshToken });
 		cache.clear();
 		navigation.navigateTo('/login');
 	} catch (e) {

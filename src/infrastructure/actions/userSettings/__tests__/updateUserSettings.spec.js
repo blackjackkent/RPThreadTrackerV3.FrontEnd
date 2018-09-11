@@ -13,11 +13,9 @@ describe('updateUserSettings', () => {
 	});
 });
 describe('updatedUserSettingsFailure', () => {
-	it('should create action with type and data', () => {
-		const errorMessage = 'There was an error.';
-		const action = actions.updatedUserSettingsFailure(errorMessage);
+	it('should create action with type', () => {
+		const action = actions.updatedUserSettingsFailure();
 		expect(action.type).toBe('UPDATED_USER_SETTINGS_FAILURE');
-		expect(action.data).toBe(errorMessage);
 	});
 });
 describe('updatedUserSettingsSuccess', () => {

@@ -16,10 +16,9 @@ export function updateUserSettings(data, shouldSkipViewUpdate) {
 	};
 }
 export const UPDATED_USER_SETTINGS_FAILURE = 'UPDATED_USER_SETTINGS_FAILURE';
-export function updatedUserSettingsFailure(data) {
+export function updatedUserSettingsFailure() {
 	return {
-		type: UPDATED_USER_SETTINGS_FAILURE,
-		data
+		type: UPDATED_USER_SETTINGS_FAILURE
 	};
 }
 export const UPDATED_USER_SETTINGS_SUCCESS = 'UPDATED_USER_SETTINGS_SUCCESS';
