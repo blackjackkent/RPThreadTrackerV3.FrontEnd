@@ -57,8 +57,12 @@ export class SagaTestWrapper {
 		this.saga.provide(data);
 	}
 
-	setupError(matcher, errorMessage) {
-		this.saga.provide([[matcher, throwError(new Error(errorMessage))]])
+	setupError(matcher, errorMessage, response) {
+		const error = new Error(errorMessage);
+		if (response) {
+			error.response = response;
+		}
+		this.saga.provide([[matcher, throwError(error)]]);
 	}
 
 	setupFn(fn) {
