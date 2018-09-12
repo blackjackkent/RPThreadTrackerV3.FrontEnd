@@ -78,6 +78,7 @@
 				]
 			}
 		],
+		"require-yield": "off",
 		"jsx-a11y/label-has-for": [
 			"error",
 			{
