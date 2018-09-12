@@ -12,7 +12,7 @@ function trackModalView(action) {
 	ReactGA.modalview(action.analytics.path);
 }
 
-function handleAnalytics(action) {
+function* handleAnalytics(action) {
 	try {
 		if (!action.analytics) {
 			return;

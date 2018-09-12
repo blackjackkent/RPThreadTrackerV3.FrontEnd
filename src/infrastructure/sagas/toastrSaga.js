@@ -25,68 +25,68 @@ import {
 	EXPORT_THREADS_FAILURE
 } from '../actions';
 
-function displayActiveThreadsCountMessage(action) {
+function* displayActiveThreadsCountMessage(action) {
 	const threadData = action.data;
 	if (threadData && threadData.threads && threadData.threads.length > 100) {
 		toastr.light('Retrieving more than 100 threads; loading may take several minutes. Archive some threads to reduce loading time.', { status: 'info' });
 	}
 }
 
-function displayUntrackThreadError() {
+function* displayUntrackThreadError() {
 	toastr.error('There was a problem untracking your thread.');
 }
 
-function displayUntrackThreadSuccess() {
+function* displayUntrackThreadSuccess() {
 	toastr.success('Successfully untracked thread.');
 }
 
-function displayUpdateThreadError() {
+function* displayUpdateThreadError() {
 	toastr.error('There was a problem updating your thread.');
 }
 
-function displayUpdateCharacterError() {
+function* displayUpdateCharacterError() {
 	toastr.error('There was a problem updating your character.');
 }
 
-function displayUpdateThreadSuccess(action) {
+function* displayUpdateThreadSuccess(action) {
 	const thread = action.data;
 	toastr.success(`Successfully updated thread with title ${thread.userTitle}.`);
 }
 
-function displayUpdateCharacterSuccess(action) {
+function* displayUpdateCharacterSuccess(action) {
 	const character = action.data;
 	toastr.success(`Successfully updated character ${character.characterName ? character.characterName : character.urlIdentifier}`);
 }
 
-function displayUntrackCharacterSuccess() {
+function* displayUntrackCharacterSuccess() {
 	toastr.success('Successfully untracked character.');
 }
 
-function displayUntrackCharacterError() {
+function* displayUntrackCharacterError() {
 	toastr.error('There was a problem untracking your character.');
 }
 
-function displayForgotPasswordSuccess() {
+function* displayForgotPasswordSuccess() {
 	toastr.success('Please check your email for a link to reset your password.');
 }
 
-function displayResetPasswordSuccess() {
+function* displayResetPasswordSuccess() {
 	toastr.success('Success. You can now log in with your updated password');
 }
 
-function displaySubmitContactFormSuccess() {
+function* displaySubmitContactFormSuccess() {
 	toastr.success('Thanks! Your message has been submitted and we\'ll get back to you as soon as possible.');
 }
 
-function displaySubmitContactFormError() {
+function* displaySubmitContactFormError() {
 	toastr.error('There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.');
 }
 
-function displayUserChangePasswordError(action) {
+function* displayUserChangePasswordError(action) {
 	const errors = action.data;
 	const messages = [];
 	for (let i = 0; i < errors.length; i++) {
-		messages.push(<span>{errors[i]}<br /></span>);
+		messages.push(<span key={errors[i]}>{errors[i]}<br /></span>);
 	}
 	const message = (
 		<span>
@@ -97,15 +97,15 @@ function displayUserChangePasswordError(action) {
 	toastr.error('', { component: () => message });
 }
 
-function displayUserChangePasswordSuccess() {
+function* displayUserChangePasswordSuccess() {
 	toastr.success('Your password was successfully updated.');
 }
 
-function displayUserAccountInfoError(action) {
+function* displayUserAccountInfoError(action) {
 	const errors = action.data;
 	const messages = [];
 	for (let i = 0; i < errors.length; i++) {
-		messages.push(<span>{errors[i]}<br /></span>);
+		messages.push(<span key={errors[i]}>{errors[i]}<br /></span>);
 	}
 	const message = (
 		<span>
@@ -116,20 +116,20 @@ function displayUserAccountInfoError(action) {
 	toastr.error('', { component: () => message });
 }
 
-function displayUserAccountInfoSuccess() {
+function* displayUserAccountInfoSuccess() {
 	toastr.success('Your account information was successfully updated.');
 }
 
-function displayUpdatePublicViewError() {
+function* displayUpdatePublicViewError() {
 	toastr.error('There was a problem updating your public view.');
 }
 
-function displayUpdatePublicViewSuccess(action) {
+function* displayUpdatePublicViewSuccess(action) {
 	const view = action.data;
 	toastr.success(`Successfully updated public view ${view.name}`);
 }
 
-function displayExportThreadsError() {
+function* displayExportThreadsError() {
 	toastr.error('There was a problem exporting your threads.');
 }
 

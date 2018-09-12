@@ -45,5 +45,17 @@ describe('saga behavior', () => {
 				shouldSkipViewUpdate: true
 			});
 		});
+		it('should do nothing on successful PUT when shouldSkipViewUpdate is true', () => {
+			const data = { email: 'test@test.com' };
+			const saga = new SagaTestWrapper(updateUserSettingsSaga);
+			saga.setup(call(axios.put, 'http://test-site/api/profilesettings', data), {});
+			return saga.execute({
+				type: actions.UPDATE_USER_SETTINGS,
+				data,
+				shouldSkipViewUpdate: true
+			}).then((result) => {
+				expect(result.effects.put).toBeUndefined();
+			});
+		});
 	});
 });
