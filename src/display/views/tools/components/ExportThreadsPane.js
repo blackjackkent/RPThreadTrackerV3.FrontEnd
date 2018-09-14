@@ -82,7 +82,7 @@ class ExportThreadsPane extends Component {
 										<Input
 											type="checkbox"
 											className="switch-input"
-											id="include-hiatued-switch"
+											id="include-hiatused-switch"
 											checked={includeHiatused}
 											onChange={this.handleInputChange}
 											name="includeHiatused"

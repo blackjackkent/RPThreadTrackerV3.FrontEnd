@@ -147,7 +147,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               <Input
                 checked={false}
                 className="switch-input"
-                id="include-hiatued-switch"
+                id="include-hiatused-switch"
                 name="includeHiatused"
                 onChange={[Function]}
                 tag="p"
