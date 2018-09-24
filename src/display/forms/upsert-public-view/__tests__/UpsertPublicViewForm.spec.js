@@ -2,9 +2,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import * as api from '../../../../infrastructure/api';
 import UpsertPublicViewForm from '../UpsertPublicViewForm';
 // #endregion imports
 
+jest.mock('../../../../infrastructure/api', () => ({
+	isValidSlug: jest.fn()
+}));
+jest.mock('lodash', () => ({
+	debounce: jest.fn(cb => cb)
+}));
 const createTestProps = propOverrides => ({
 	viewToEdit: {},
 	characters: [{
@@ -42,6 +49,7 @@ const createTestProps = propOverrides => ({
 
 const createTestPropsWithView = propOverrides => createTestProps({
 	viewToEdit: {
+		id: '12345',
 		name: 'Test View',
 		slug: 'test-slug',
 		columns: ['column1', 'column2'],
@@ -67,14 +75,6 @@ describe('rendering', () => {
 			const jsx = (<UpsertPublicViewForm {...props} />);
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
-		});
-		it('should validate the view name field', () => {
-			const props = createTestProps();
-			const jsx = (<UpsertPublicViewForm {...props} />);
-			const element = shallow(jsx);
-			const field = getSpecWrapper(element, 'view-name-field');
-			expect(field.props().validate.maxLength).toHaveProperty('value', 256);
-			expect(field.props().validate.required).toHaveProperty('value', true);
 		});
 	});
 	describe('content', () => {
@@ -293,6 +293,14 @@ describe('rendering', () => {
 
 describe('behavior', () => {
 	describe('validation', () => {
+		it('should validate the view name field', () => {
+			const props = createTestProps();
+			const jsx = (<UpsertPublicViewForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'view-name-field');
+			expect(field.props().validate.maxLength).toHaveProperty('value', 256);
+			expect(field.props().validate.required).toHaveProperty('value', true);
+		});
 		it('should validate view slug field', () => {
 			const props = createTestProps();
 			const jsx = (<UpsertPublicViewForm {...props} />);
@@ -300,6 +308,33 @@ describe('behavior', () => {
 			const field = getSpecWrapper(element, 'view-slug-field');
 			expect(field.props().validate.required).toHaveProperty('value', true);
 			expect(field.props().validate.pattern).toHaveProperty('value', /^[A-z\d-]+$/);
+		});
+		it('should mark view slug field invalid when API call indicates invalid slug', async () => {
+			api.isValidSlug.mockImplementationOnce(() => Promise.reject());
+			const callback = jest.fn();
+			const props = createTestProps();
+			const jsx = (<UpsertPublicViewForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'view-slug-field');
+			const validationFunction = field.props().validate.async;
+			try {
+				await validationFunction('test-slug', { viewId: '12345' }, null, callback);
+			} catch (e) {
+				expect(callback).toHaveBeenCalledTimes(1);
+				expect(callback).toHaveBeenLastCalledWith('This slug is reserved, invalid, or already in use.');
+			}
+		});
+		it('should mark view slug field valid when API call indicates valid slug', async () => {
+			api.isValidSlug.mockImplementationOnce(() => Promise.resolve());
+			const callback = jest.fn();
+			const props = createTestProps();
+			const jsx = (<UpsertPublicViewForm {...props} />);
+			const element = shallow(jsx);
+			const field = getSpecWrapper(element, 'view-slug-field');
+			const validationFunction = field.props().validate.async;
+			await validationFunction('test-slug', { viewId: '12345' }, null, callback);
+			expect(callback).toHaveBeenCalledTimes(1);
+			expect(callback).toHaveBeenLastCalledWith(true);
 		});
 		it('should validate view columns field', () => {
 			const props = createTestProps();

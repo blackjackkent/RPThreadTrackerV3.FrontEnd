@@ -1,3 +1,6 @@
+import { debounce } from 'lodash';
+import { isValidSlug } from '../../../infrastructure/api';
+
 export default {
 	name: {
 		maxLength: {
@@ -17,7 +20,14 @@ export default {
 		required: {
 			value: true,
 			errorMessage: 'You must enter a slug for your public view.'
-		}
+		},
+		async: debounce((value, ctx, input, cb) => {
+			const slug = value;
+			const { viewId } = ctx;
+			isValidSlug(slug, viewId)
+				.then(() => cb(true))
+				.catch(() => { console.log(cb); cb('This slug is reserved, invalid, or already in use.'); });
+		}, 300)
 	},
 	columns: {
 		required: {
