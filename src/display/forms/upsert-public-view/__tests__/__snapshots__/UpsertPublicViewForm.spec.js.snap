@@ -2,6 +2,10 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <div>
+  <AvField
+    name="viewId"
+    type="hidden"
+  />
   <Row
     tag="div"
   >
@@ -120,6 +124,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           type="text"
           validate={
             Object {
+              "async": [Function],
               "pattern": Object {
                 "errorMessage": "Slugs can only contain letters, numbers, and dashes.",
                 "value": /\\^\\[A-z\\\\d-\\]\\+\\$/,
@@ -647,6 +652,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 
 exports[`rendering snapshots should render valid snapshot with view 1`] = `
 <div>
+  <AvField
+    name="viewId"
+    type="hidden"
+    value="12345"
+  />
   <Row
     tag="div"
   >
@@ -766,6 +776,7 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
           type="text"
           validate={
             Object {
+              "async": [Function],
               "pattern": Object {
                 "errorMessage": "Slugs can only contain letters, numbers, and dashes.",
                 "value": /\\^\\[A-z\\\\d-\\]\\+\\$/,

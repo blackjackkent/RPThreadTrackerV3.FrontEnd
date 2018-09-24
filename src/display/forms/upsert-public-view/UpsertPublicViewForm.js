@@ -39,6 +39,7 @@ const UpsertPublicViewForm = (props) => {
 	const tagOptions = tags.map(t => (<option value={t} key={t}>{t}</option>));
 	return (
 		<div>
+			<AvField type="hidden" name="viewId" value={viewToEdit.id} />
 			<Row> {/* view name */}
 				<Col>
 					<AvField
