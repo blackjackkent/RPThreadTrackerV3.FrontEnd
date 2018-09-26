@@ -20,9 +20,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       className="card-body"
       tag="div"
     >
-      <h3>
+      <h4>
         Why am I seeing a "Not Found" error for my post?
-      </h3>
+      </h4>
       <p>
         The following are several potential causes/fixes for this issue:
       </p>
@@ -58,7 +58,23 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           an ask, so I can post an announcement if I haven’t already.
         </li>
       </ul>
-      <h3>
+      <hr />
+      <h4>
+        Why can't I track open starters on Tumblr?
+      </h4>
+      <p>
+        Unfortunately, due to the way Tumblr structures its information, RPThreadTracker cannot
+         
+        distinguish between different "branches" from an original post; Tumblr considers
+         
+        them all part of the same thread of interaction so the tracker can't monitor them individually.
+         
+        In order to track separate threads from an open starter you will have to move each interaction
+         
+         to its own base post and then track that.
+      </p>
+      <hr />
+      <h4>
         Why doesn't the 
         <a
           href="/tools"
@@ -66,7 +82,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           Export Threads
         </a>
          tool include post dates and whose turn it is?
-      </h3>
+      </h4>
       <p>
         The export tool is intended as a way to download a full list of your threads during a period when
          
