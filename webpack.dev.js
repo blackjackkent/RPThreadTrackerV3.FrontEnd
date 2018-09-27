@@ -16,6 +16,16 @@ module.exports = merge(common, {
 		open: true,
 		overlay: true
 	},
+	module: {
+		rules: [
+			{
+				test: /\.css$/,
+				use: [
+					'css-loader'
+				]
+			}
+		]
+	},
 	plugins: [
 		new webpack.DefinePlugin({
 			API_BASE_URL: JSON.stringify(config.API_BASE_URL),
