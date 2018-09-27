@@ -1,11 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-
-const extractCSS = new MiniCssExtractPlugin({ filename: '[name].fonts.css' });
-const extractSCSS = new MiniCssExtractPlugin({ filename: '[name].styles.css' });
 
 const BUILD_DIR = path.resolve(__dirname, 'build');
 const SRC_DIR = path.resolve(__dirname, 'src');
@@ -44,15 +40,6 @@ module.exports = {
 				])
 			},
 			{
-				test: /\.css$/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader
-					},
-					'css-loader'
-				]
-			},
-			{
 				test: /\.(png|jpg|jpeg|gif|ico)$/,
 				use: [
 					{
@@ -73,8 +60,6 @@ module.exports = {
 	},
 	plugins: [
 		new webpack.NamedModulesPlugin(),
-		extractCSS,
-		extractSCSS,
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: './public/index.html'
