@@ -22,9 +22,9 @@ module.exports = merge(common, {
 					},
 					'css-loader'
 				]
-			},
+			}
 		]
-	}
+	},
 	plugins: [
 		new webpack.DefinePlugin({
 			API_BASE_URL: JSON.stringify(config.API_BASE_URL),

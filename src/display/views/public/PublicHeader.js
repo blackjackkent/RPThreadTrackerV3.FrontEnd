@@ -1,5 +1,6 @@
 // #region imports
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import LoadingIndicator from '../../shared/LoadingIndicator';
@@ -25,7 +26,7 @@ const PublicHeader = (props) => {
 	return (
 		<Row className="public-header">
 			<Col>
-				<a href="/" className="navbar-brand">RPTHREADTRACKER.COM</a>
+				<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER.COM</Link>
 			</Col>
 			<Col className="text-right">
 				{isLoadingIconVisible && (

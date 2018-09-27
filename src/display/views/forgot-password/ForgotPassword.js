@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
@@ -97,7 +98,7 @@ class ForgotPassword extends Component {
 								<Button color="primary" className="px-4">Request</Button>
 							</Col>
 							<Col xs="6" className="text-right text-muted">
-								<span className="pull-right"><a href="/login">Back to Login</a></span>
+								<span className="pull-right"><Link href="/login" to="/login">Back to Login</Link></span>
 
 							</Col>
 						</Row>

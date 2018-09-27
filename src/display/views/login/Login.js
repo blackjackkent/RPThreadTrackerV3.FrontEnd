@@ -1,5 +1,6 @@
 // #region imports
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import {
 	Row, Col, Card, CardBlock, Button
 } from 'reactstrap';
@@ -98,8 +99,8 @@ class Login extends Component {
 
 							</Col>
 							<Col xs="6" className="text-right text-muted">
-								<a href="/register">Sign up</a> &bull; {' '}
-								<a href="/forgotpassword">Forgot password?</a>
+								<Link href="/register" to="/register">Sign up</Link> &bull; {' '}
+								<Link href="/forgotpassword" to="/forgotpassword">Forgot password?</Link>
 							</Col>
 						</Row>
 					</AvForm>
