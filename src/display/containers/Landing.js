@@ -1,5 +1,6 @@
 // #region imports
 import React from 'react';
+import { Link } from 'react-router-dom';
 // #endregion imports
 
 const Landing = () => {
@@ -29,10 +30,10 @@ const Landing = () => {
 					<div className="nav-button ml-auto">
 						<ul className="nav navbar-nav navbar-right">
 							<li className="nav-item">
-								<a className="nav-link" href="/login">Login</a>
+								<Link className="nav-link" href="/login" to="/login">Login</Link>
 							</li>
 							<li>
-								<a type="button" className="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Sign Up</a>
+								<Link href="/register" to="/register" type="button" className="btn btn-custom navbar-btn btn-rounded waves-effect waves-light">Sign Up</Link>
 							</li>
 						</ul>
 					</div>
@@ -48,7 +49,7 @@ const Landing = () => {
 									<h1 className="home-title">Never lose track of your roleplay threads again!</h1>
 									<p className="padding-t-15 home-desc">RPThreadTracker is a free web application that monitors your Tumblr collaborative writing threads and lets you know which ones are your turn.</p>
 									<p className="jumbotron-buttons">
-										<a href="#" className="btn btn-custom margin-t-20">Get Started</a>
+										<Link href="/register" to="/register" className="btn btn-custom margin-t-20">Get Started</Link>
 										<button type="button" className="btn btn-primary margin-t-20">
 											Watch Intro Video
 											<span className="fas fa-play-circle" />
@@ -75,7 +76,8 @@ const Landing = () => {
 								<i className="pe-7s-diamond text-custom" />
 								<h4 className="padding-t-15">Track Your Posts</h4>
 								<p className="padding-t-15 text-muted">
-									Add a post ID for one post in the thread, and the app will keep track of whose turn it is.
+									Add a post ID for one post in the thread, and the app will keep track of whose{' '}
+									turn it is.
 								</p>
 							</div>
 						</div>
@@ -99,21 +101,30 @@ const Landing = () => {
 							<div className="features-box text-center">
 								<i className="pe-7s-science text-custom" />
 								<h4 className="padding-t-15">Manage Multiple Characters</h4>
-								<p className="padding-t-15 text-muted">Lots of blogs? No problem! Track all your threads in one place or filter the list by character.</p>
+								<p className="padding-t-15 text-muted">
+									Lots of blogs? No problem! Track all your threads in one place or filter{' '}
+									the list by character.
+								</p>
 							</div>
 						</div>
 						<div className="col-lg-4 margin-t-20">
 							<div className="features-box text-center">
 								<i className="pe-7s-news-paper text-custom" />
 								<h4 className="padding-t-15">Share Your Status</h4>
-								<p className="padding-t-15 text-muted">Create customized public tables to let your partners know which threads you're working on.</p>
+								<p className="padding-t-15 text-muted">
+									Create customized public tables to let your partners know which threads{' '}
+									you&apos;re working on.
+								</p>
 							</div>
 						</div>
 						<div className="col-lg-4 margin-t-20">
 							<div className="features-box text-center">
 								<i className="pe-7s-plane text-custom" />
 								<h4 className="padding-t-15">Add Threads Easily From Your Browser</h4>
-								<p className="padding-t-15 text-muted">With the RPThreadTracker Quick-Add browser extension, you can track threads rapidly and without hassle.</p>
+								<p className="padding-t-15 text-muted">
+									With the RPThreadTracker Quick-Add browser extension, you can track new threads{' '}
+									rapidly and without hassle directly from Tumblr.
+								</p>
 							</div>
 						</div>
 					</div>
@@ -126,7 +137,13 @@ const Landing = () => {
 						<div className="col-lg-12 text-center">
 							<h2 className="text-white">Free Your Mind For Your Writing</h2>
 							<p className="padding-t-15 home-desc">Lorem ipsum dolor sit amet, consectetur adipisicing eli.Lorem ipsum dolor sit amet, consectetur adipisicing eli.</p>
-							<a href="#" className="btn btn-custom margin-t-30 waves-effect waves-light">Sign Up</a>
+							<Link
+								href="/register"
+								to="/register"
+								className="btn btn-custom margin-t-30 waves-effect waves-light"
+							>
+								Sign Up
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -144,12 +161,12 @@ const Landing = () => {
 									<li className="">Sed ut perspiciatis unde omnis iste natus error sit.</li>
 									<li className="">Submit Your Orgnization.</li>
 								</ul>
-								<a href="#" className="btn btn-custom margin-t-30 waves-effect waves-light">Learn More <i className="mdi mdi-arrow-right" /></a>
+								<a href="/" className="btn btn-custom margin-t-30 waves-effect waves-light">Learn More <i className="mdi mdi-arrow-right" /></a>
 							</div>
 						</div>
 						<div className="col-lg-7">
 							<div className="features-img features-right text-right">
-								<img src="img/landing/devices.png" className="img-fluid" />
+								<img src="img/landing/devices.png" alt="devices" className="img-fluid" />
 							</div>
 						</div>
 					</div>
@@ -195,7 +212,7 @@ const Landing = () => {
 							</div>
 						</div>
 						<div className="text-center mx-auto">
-							<a href="#" className="btn btn-custom waves-light waves-effect margin-t-50">Get Started <i className="mdi mdi-arrow-right" /></a>
+							<a href="/" className="btn btn-custom waves-light waves-effect margin-t-50">Get Started <i className="mdi mdi-arrow-right" /></a>
 						</div>
 					</div>
 				</div>
@@ -214,7 +231,7 @@ const Landing = () => {
 							<div className="testimonial-box margin-t-30">
 								<img src="images/testimonials/user-1.jpg" alt="" className="img-fluid d-block img-thumbnail rounded-circle" />
 								<div className="bg-gray testimonial-decs">
-									<h5 className="text-muted text-center"><b>"</b>I have been using this template for all my company needs for the last 3 years and couldn’t be happier with their service and expertise.</h5>
+									<h5 className="text-muted text-center"><b>&quot;</b>I have been using this template for all my company needs for the last 3 years and couldn&apos;t be happier with their service and expertise.</h5>
 								</div>
 								<h5 className="text-center text-uppercase padding-t-15">Ruben Reed -<span className="text-muted text-capitalize">Charleston</span></h5>
 							</div>
@@ -223,7 +240,7 @@ const Landing = () => {
 							<div className="testimonial-box margin-t-30">
 								<img src="images/testimonials/user-3.jpg" alt="" className="img-fluid d-block img-thumbnail rounded-circle" />
 								<div className="bg-gray testimonial-decs">
-									<h5 className="text-muted text-center"><b>"</b>I have been using this template for all my company needs for the last 3 years and couldn’t be happier with their service and expertise.</h5>
+									<h5 className="text-muted text-center"><b>&quot;</b>I have been using this template for all my company needs for the last 3 years and couldn&apos;t be happier with their service and expertise.</h5>
 								</div>
 								<h5 className="text-center text-uppercase padding-t-15">Michael P. Howlett -<span className="text-muted text-capitalize">Worcester</span></h5>
 							</div>
@@ -232,7 +249,7 @@ const Landing = () => {
 							<div className="testimonial-box margin-t-30">
 								<img src="images/testimonials/user-2.jpg" alt="" className="img-fluid d-block img-thumbnail rounded-circle" />
 								<div className="bg-gray testimonial-decs">
-									<h5 className="text-muted text-center"><b>"</b>I have been using this template for all my company needs for the last 3 years and couldn’t be happier with their service and expertise.</h5>
+									<h5 className="text-muted text-center"><b>&quot;</b>I have been using this template for all my company needs for the last 3 years and couldn&apos;t be happier with their service and expertise.</h5>
 								</div>
 								<h5 className="text-center text-uppercase padding-t-15">Theresa D. Sinclair -<span className="text-muted text-capitalize">Lynchburg</span></h5>
 							</div>
@@ -248,7 +265,7 @@ const Landing = () => {
 							<h1 className="get-started-title text-white">Let&apos;s Get Started</h1>
 
 							<p className="section-subtitle font-secondary text-white text-center padding-t-30">Etiam sed.Interdum consequat proin vestibulum class at a euismod mus luctus quam.Lorem ipsum dolor sit amet, consectetur adipisicing eli.class at a euismod mus luctus quam.</p>
-							<a href="#" className="btn btn-bg-white waves-effect margin-t-20">Get Started <i className="mdi mdi-arrow-right" /></a>
+							<a href="/" className="btn btn-bg-white waves-effect margin-t-20">Get Started <i className="mdi mdi-arrow-right" /></a>
 						</div>
 					</div>
 				</div>
@@ -316,11 +333,11 @@ const Landing = () => {
 					<div className="row">
 						<div className="col-lg-6">
 							<ul className="list-inline social margin-t-20">
-								<li className="list-inline-item"><a href="" className="social-icon"><i className="mdi mdi-facebook" /></a></li>
-								<li className="list-inline-item"><a href="" className="social-icon"><i className="mdi mdi-twitter" /></a></li>
-								<li className="list-inline-item"><a href="" className="social-icon"><i className="mdi mdi-linkedin" /></a></li>
-								<li className="list-inline-item"><a href="" className="social-icon"><i className="mdi mdi-google-plus" /></a></li>
-								<li className="list-inline-item"><a href="" className="social-icon"><i className="mdi mdi-dribbble" /></a></li>
+								<li className="list-inline-item"><a href="/" className="social-icon"><i className="mdi mdi-facebook" /></a></li>
+								<li className="list-inline-item"><a href="/" className="social-icon"><i className="mdi mdi-twitter" /></a></li>
+								<li className="list-inline-item"><a href="/" className="social-icon"><i className="mdi mdi-linkedin" /></a></li>
+								<li className="list-inline-item"><a href="/" className="social-icon"><i className="mdi mdi-google-plus" /></a></li>
+								<li className="list-inline-item"><a href="/" className="social-icon"><i className="mdi mdi-dribbble" /></a></li>
 							</ul>
 						</div>
 						<div className="col-lg-3 text-white margin-t-30">
@@ -339,10 +356,10 @@ const Landing = () => {
 							<h5>REXZA</h5>
 							<div className="text-muted margin-t-20">
 								<ul className="list-unstyled footer-list">
-									<li><a href="#">Home</a></li>
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Careers</a></li>
-									<li><a href="#">Contact us</a></li>
+									<li><a href="/">Home</a></li>
+									<li><a href="/">About us</a></li>
+									<li><a href="/">Careers</a></li>
+									<li><a href="/">Contact us</a></li>
 								</ul>
 							</div>
 						</div>
@@ -350,10 +367,10 @@ const Landing = () => {
 							<h5>Information</h5>
 							<div className="text-muted margin-t-20">
 								<ul className="list-unstyled footer-list">
-									<li><a href="#">Terms &amp; Condition</a></li>
-									<li><a href="#">About us</a></li>
-									<li><a href="#">Jobs</a></li>
-									<li><a href="#">Bookmarks</a></li>
+									<li><a href="/">Terms &amp; Condition</a></li>
+									<li><a href="/">About us</a></li>
+									<li><a href="/">Jobs</a></li>
+									<li><a href="/">Bookmarks</a></li>
 								</ul>
 							</div>
 						</div>
@@ -361,20 +378,23 @@ const Landing = () => {
 							<h5>Support</h5>
 							<div className="text-muted margin-t-20">
 								<ul className="list-unstyled footer-list">
-									<li><a href="">FAQ</a></li>
-									<li><a href="">Contact</a></li>
-									<li><a href="">Disscusion</a></li>
+									<li><a href="/">FAQ</a></li>
+									<li><a href="/">Contact</a></li>
+									<li><a href="/">Disscusion</a></li>
 								</ul>
 							</div>
 						</div>
 						<div className="col-lg-3 margin-t-20">
 							<h5>Subscribe</h5>
 							<div className="text-muted margin-t-20">
-								<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean ligula eget dolor.</p>
+								<p>
+									Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean ligula{' '}
+									eget dolor.
+								</p>
 							</div>
 							<form className="form subscribe">
 								<input placeholder="Email" className="form-control" required />
-								<a href="#" className="submit"><i className="pe-7s-paper-plane" /></a>
+								<a href="/" className="submit"><i className="pe-7s-paper-plane" /></a>
 							</form>
 						</div>
 					</div>
@@ -386,7 +406,7 @@ const Landing = () => {
 						<div className="footer-alt-border" />
 						<div className="footer-alt">
 							<div className="float-left pull-none ">
-								<p className="copy-rights text-muted">2018 © Rexza - Themesbrand</p>
+								<a href="http://www.rpthreadtracker.com">RPThreadTracker</a> &copy; {currentYear} <a href="http://blackjack-software.com">Blackjack Software</a>
 							</div>
 							<div className="float-right pull-none ">
 								<img src="images/payment.png" alt="payment-img" height="36" />

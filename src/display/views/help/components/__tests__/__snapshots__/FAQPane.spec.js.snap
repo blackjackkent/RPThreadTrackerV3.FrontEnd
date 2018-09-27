@@ -76,11 +76,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <hr />
       <h4>
         Why doesn't the 
-        <a
+        <Link
           href="/tools"
+          replace={false}
+          to="/tools"
         >
           Export Threads
-        </a>
+        </Link>
          tool include post dates and whose turn it is?
       </h4>
       <p>
