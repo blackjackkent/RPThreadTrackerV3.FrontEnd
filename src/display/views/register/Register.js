@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
 	Card, CardBlock, Button, Row, Col
@@ -98,7 +99,7 @@ class Register extends Component {
 								<Button color="primary" className="px-4">Create Account</Button>
 							</Col>
 							<Col xs="6" className="text-right text-muted">
-								Already have an account? <a href="/login">Login</a>
+								Already have an account? <Link href="/login" to="/login">Login</Link>
 							</Col>
 						</Row>
 					</AvForm>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
 	TabPane, Card, CardHeader, CardBlock
 } from 'reactstrap';
@@ -47,7 +48,7 @@ const FAQPane = () => (
 					In order to track separate threads from an open starter you will have to move each interaction{' '} to its own base post and then track that.
 				</p>
 				<hr />
-				<h4>Why doesn&apos;t the <a href="/tools">Export Threads</a> tool include post dates and whose turn it is?</h4>
+				<h4>Why doesn&apos;t the <Link href="/tools" to="/tools">Export Threads</Link> tool include post dates and whose turn it is?</h4>
 				<p>
 					The export tool is intended as a way to download a full list of your threads during a period when{' '}
 					the Tracker isn&apos;t performing its usual function for some reason (i.e. during a Tumblr outage),{' '}
