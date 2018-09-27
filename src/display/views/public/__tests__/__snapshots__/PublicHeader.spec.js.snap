@@ -17,12 +17,14 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       ]
     }
   >
-    <a
+    <Link
       className="navbar-brand"
       href="/"
+      replace={false}
+      to="/"
     >
       RPTHREADTRACKER.COM
-    </a>
+    </Link>
   </Col>
   <Col
     className="text-right"
@@ -64,12 +66,14 @@ exports[`rendering snapshots should render valid snapshot when loading icon is v
       ]
     }
   >
-    <a
+    <Link
       className="navbar-brand"
       href="/"
+      replace={false}
+      to="/"
     >
       RPTHREADTRACKER.COM
-    </a>
+    </Link>
   </Col>
   <Col
     className="text-right"

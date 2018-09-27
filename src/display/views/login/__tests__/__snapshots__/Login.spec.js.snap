@@ -76,18 +76,22 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           }
           xs="6"
         >
-          <a
+          <Link
             href="/register"
+            replace={false}
+            to="/register"
           >
             Sign up
-          </a>
+          </Link>
            • 
            
-          <a
+          <Link
             href="/forgotpassword"
+            replace={false}
+            to="/forgotpassword"
           >
             Forgot password?
-          </a>
+          </Link>
         </Col>
       </Row>
     </AvForm>
@@ -180,18 +184,22 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
           }
           xs="6"
         >
-          <a
+          <Link
             href="/register"
+            replace={false}
+            to="/register"
           >
             Sign up
-          </a>
+          </Link>
            • 
            
-          <a
+          <Link
             href="/forgotpassword"
+            replace={false}
+            to="/forgotpassword"
           >
             Forgot password?
-          </a>
+          </Link>
         </Col>
       </Row>
     </AvForm>
@@ -285,18 +293,22 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           }
           xs="6"
         >
-          <a
+          <Link
             href="/register"
+            replace={false}
+            to="/register"
           >
             Sign up
-          </a>
+          </Link>
            • 
            
-          <a
+          <Link
             href="/forgotpassword"
+            replace={false}
+            to="/forgotpassword"
           >
             Forgot password?
-          </a>
+          </Link>
         </Col>
       </Row>
     </AvForm>

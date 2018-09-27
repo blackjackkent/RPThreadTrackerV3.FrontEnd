@@ -26,7 +26,7 @@ export default {
 			const { viewId } = ctx;
 			isValidSlug(slug, viewId)
 				.then(() => cb(true))
-				.catch(() => { console.log(cb); cb('This slug is reserved, invalid, or already in use.'); });
+				.catch(() => cb('This slug is reserved, invalid, or already in use.'));
 		}, 300)
 	},
 	columns: {
