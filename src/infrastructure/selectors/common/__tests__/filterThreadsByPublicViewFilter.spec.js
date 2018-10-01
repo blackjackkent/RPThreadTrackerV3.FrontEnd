@@ -60,7 +60,7 @@ describe('behavior', () => {
 	it('should filter my threads', () => {
 		const threads = getThreads();
 		const result = filterThreadsByPublicViewFilter(threads, 'My Turn');
-		expect(result).toHaveLength(3);
+		expect(result).toHaveLength(2);
 	});
 	it('should return all threads with invalid filter', () => {
 		const threads = getThreads();

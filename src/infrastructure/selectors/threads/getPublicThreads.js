@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 import { buildThreadDataByPredicate, filterThreadsByPublicViewFilter } from '../common';
+import filters from '../../constants/filters';
 
 const publicThreadFilter = state => state.publicThreadFilter;
 const getAllPublicThreads = state => state.publicThreads.threads;
@@ -13,7 +14,7 @@ const getPublicThreads = createSelector(
 		const threadData = buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => s,
+			filters.ALL,
 			true
 		);
 		return filterThreadsByPublicViewFilter(threadData, filter);
