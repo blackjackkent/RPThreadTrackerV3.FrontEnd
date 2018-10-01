@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import filters from '../../constants/filters';
 import { buildThreadDataByPredicate } from '../common';
 
 function sortByLastPostDate(a, b) {
@@ -15,7 +16,7 @@ const getRecentActivity = createSelector(
 		let results = buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => s.isCallingCharactersTurn && !s.isQueued
+			filters.MY_TURN
 		);
 		results = results.sort(sortByLastPostDate);
 		return results.slice(0, 5);

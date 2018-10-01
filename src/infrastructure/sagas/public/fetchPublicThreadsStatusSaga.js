@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 import axios from 'axios';
 
+import filters from '../../constants/filters';
 import {
 	FETCH_PUBLIC_THREADS_STATUS,
 	fetchedPublicThreadsStatusSuccess,
@@ -17,13 +18,13 @@ function* fetchPublicThreadsStatusChunk(chunk, view) {
 		const threads = response.data;
 		let result = [];
 		if (view.turnFilter && view.turnFilter.includeMyTurn) {
-			result = result.concat(threads.filter(t => t.isCallingCharactersTurn && !t.isQueued));
+			result = result.concat(threads.filter(filters.MY_TURN));
 		}
 		if (view.turnFilter && view.turnFilter.includeTheirTurn) {
-			result = result.concat(threads.filter(t => !t.isCallingCharactersTurn && !t.isQueued));
+			result = result.concat(threads.filter(filters.THEIR_TURN));
 		}
 		if (view.turnFilter && view.turnFilter.includeQueued) {
-			result = result.concat(threads.filter(t => t.isQueued));
+			result = result.concat(threads.filter(filters.QUEUED));
 		}
 		yield put(fetchedPublicThreadsStatusChunkSuccess(result));
 	} catch (e) {
