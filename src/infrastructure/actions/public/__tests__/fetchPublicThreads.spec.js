@@ -2,10 +2,12 @@ import * as actions from '../fetchPublicThreads';
 
 describe('fetchPublicThreads', () => {
 	it('should create action with type and data', () => {
-		const view = { slug: 'test-view' };
-		const action = actions.fetchPublicThreads(view);
+		const action = actions.fetchPublicThreads('test-slug', 'test-user');
 		expect(action.type).toBe('FETCH_PUBLIC_THREADS');
-		expect(action.data).toBe(view);
+		expect(action.data).toEqual({
+			slug: 'test-slug',
+			username: 'test-user'
+		});
 	});
 });
 describe('fetchedPublicThreadsFailure', () => {

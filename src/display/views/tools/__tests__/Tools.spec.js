@@ -31,6 +31,7 @@ jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav')
 const createTestProps = propOverrides => ({
 	fetchCharacters: jest.fn(),
 	fetchTags: jest.fn(),
+	fetchUser: jest.fn(),
 	fetchPublicViews: jest.fn(),
 	setActiveToolsTab: jest.fn(),
 	exportThreads: jest.fn(),
@@ -41,7 +42,7 @@ const createTestProps = propOverrides => ({
 
 const createTestState = stateOverrides => ({
 	ui: { activeToolsTab: 'my-test-tab' },
-	user: { id: '12345' },
+	user: { id: '12345', userName: 'test-user' },
 	tags: ['tag1', 'tag2', 'tag3'],
 	publicViews: [{}, {}, {}, {}],
 	characters: [{}, {}],
@@ -129,6 +130,22 @@ describe('behavior', () => {
 			const jsx = (<Tools {...props} />);
 			shallowWithState(jsx, state).dive();
 			expect(fetchCharacters).toHaveBeenCalledTimes(0);
+		});
+		it('should retrieve user when user is not loaded', () => {
+			const fetchUser = jest.fn();
+			const props = createTestProps({ fetchUser });
+			const state = createTestState({ user: {} });
+			const jsx = (<Tools {...props} />);
+			shallowWithState(jsx, state).dive();
+			expect(fetchUser).toHaveBeenCalledTimes(1);
+		});
+		it('should not retrieve user when user is loaded', () => {
+			const fetchUser = jest.fn();
+			const props = createTestProps({ fetchUser });
+			const state = createTestState({ user: { id: '12345', userName: 'my-user' } });
+			const jsx = (<Tools {...props} />);
+			shallowWithState(jsx, state).dive();
+			expect(fetchUser).toHaveBeenCalledTimes(0);
 		});
 	});
 	describe('onExportRequest', () => {

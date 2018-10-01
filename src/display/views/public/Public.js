@@ -19,6 +19,7 @@ const propTypes = {
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchLegacyPublicThreads: PropTypes.func.isRequired,
 	slug: PropTypes.string,
+	username: PropTypes.string,
 	view: PropTypes.shape({}).isRequired,
 	fetchPublicThreads: PropTypes.func.isRequired,
 	setPublicThreadFilter: PropTypes.func.isRequired,
@@ -26,7 +27,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-	slug: ''
+	slug: '',
+	username: ''
 };
 
 function mapStateToProps(state) {
@@ -42,12 +44,12 @@ function mapStateToProps(state) {
 
 class Public extends Component {
 	componentDidMount() {
-		const { slug, fetchPublicThreads } = this.props;
+		const { slug, username, fetchPublicThreads } = this.props;
 		if (legacyPublicSlugs.includes(slug)) {
 			this.fetchLegacyView(slug);
 			return;
 		}
-		fetchPublicThreads(slug);
+		fetchPublicThreads(slug, username);
 	}
 
 	fetchLegacyView(slug) {

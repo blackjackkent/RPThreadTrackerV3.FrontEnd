@@ -97,6 +97,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             Object {},
           ]
         }
+        username="test-user"
       />
     </Col>
   </Row>

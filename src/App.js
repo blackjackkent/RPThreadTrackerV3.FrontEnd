@@ -49,7 +49,7 @@ const App = (props) => {
 					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
 				}
 				<Route
-					path="/public/:slug"
+					path="/public/:username/:slug"
 					name="Public"
 					component={PublicContainer}
 				/>

@@ -1,8 +1,11 @@
 export const FETCH_PUBLIC_THREADS = 'FETCH_PUBLIC_THREADS';
-export function fetchPublicThreads(data) {
+export function fetchPublicThreads(slug, username) {
 	return {
 		type: FETCH_PUBLIC_THREADS,
-		data
+		data: {
+			slug,
+			username
+		}
 	};
 }
 export const FETCHED_PUBLIC_THREADS_FAILURE = 'FETCHED_PUBLIC_THREADS_FAILURE';

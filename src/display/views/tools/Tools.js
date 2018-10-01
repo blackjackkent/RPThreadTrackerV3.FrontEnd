@@ -19,13 +19,19 @@ const propTypes = {
 	fetchCharacters: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	fetchTags: PropTypes.func.isRequired,
+	fetchUser: PropTypes.func.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
 	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
-	openDeletePublicViewModal: PropTypes.func.isRequired
+	openDeletePublicViewModal: PropTypes.func.isRequired,
+	username: PropTypes.string
+};
+
+const defaultProps = {
+	username: ''
 };
 
 function mapStateToProps(state) {
@@ -39,7 +45,7 @@ function mapStateToProps(state) {
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		characters,
-		user,
+		username: user.userName,
 		tags,
 		publicViews,
 		isLoadingIconVisible,
@@ -55,7 +61,14 @@ class Tools extends Component {
 
 	componentDidMount() {
 		const {
-			tags, publicViews, characters, fetchTags, fetchPublicViews, fetchCharacters
+			tags,
+			publicViews,
+			characters,
+			username,
+			fetchTags,
+			fetchPublicViews,
+			fetchCharacters,
+			fetchUser
 		} = this.props;
 		if (!tags || !tags.length) {
 			fetchTags();
@@ -65,6 +78,9 @@ class Tools extends Component {
 		}
 		if (!characters || !characters.length) {
 			fetchCharacters();
+		}
+		if (!username) {
+			fetchUser();
 		}
 	}
 
@@ -80,7 +96,8 @@ class Tools extends Component {
 			isLoadingIconVisible,
 			setActiveToolsTab,
 			openUpsertPublicViewModal,
-			openDeletePublicViewModal
+			openDeletePublicViewModal,
+			username
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
@@ -112,6 +129,7 @@ class Tools extends Component {
 								openDeletePublicViewModal={openDeletePublicViewModal}
 								publicViews={publicViews}
 								isLoadingIconVisible={isLoadingIconVisible}
+								username={username}
 							/>
 							<BrowserExtensionsPane />
 						</TabContent>
@@ -123,6 +141,7 @@ class Tools extends Component {
 }
 
 Tools.propTypes = propTypes;
+Tools.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	exportThreads: actions.exportThreads,
 	setActiveToolsTab: actions.setActiveToolsTab,
@@ -130,5 +149,6 @@ export default connect(mapStateToProps, {
 	fetchPublicViews: actions.fetchPublicViews,
 	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
 	openDeletePublicViewModal: actions.openDeletePublicViewModal,
-	fetchCharacters: actions.fetchCharacters
+	fetchCharacters: actions.fetchCharacters,
+	fetchUser: actions.fetchUser
 })(Tools);

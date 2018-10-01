@@ -9,7 +9,7 @@ jest.mock('../../../../../shared/columns', () => ({
 
 describe('data', () => {
 	it('should populate the required columns', () => {
-		const columns = _columns;
+		const columns = _columns();
 		expect(columns).toHaveLength(4);
 		expect(columns).toContainEqual({ title: 'Edit Public View' });
 		expect(columns).toContainEqual({ title: 'Delete Public View' });
