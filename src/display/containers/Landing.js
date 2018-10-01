@@ -1,6 +1,7 @@
 // #region imports
 import React from 'react';
 import { Link } from 'react-router-dom';
+import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 // #endregion imports
 
 const Landing = () => {
@@ -419,4 +420,4 @@ const Landing = () => {
 		</div>
 	);
 };
-export default Landing;
+export default withPageViewTracker(Landing);

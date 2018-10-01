@@ -2,6 +2,7 @@ import React from 'react';
 import {
 	Container, Row, Col, Card, CardBlock
 } from 'reactstrap';
+import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 
 const Maintenance = () => (
 	<div className="app flex-row align-items-center">
@@ -30,4 +31,4 @@ const Maintenance = () => (
 	</div>
 );
 
-export default Maintenance;
+export default withPageViewTracker(Maintenance);

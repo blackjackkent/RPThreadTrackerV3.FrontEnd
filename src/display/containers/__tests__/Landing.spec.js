@@ -5,6 +5,8 @@ import { initMockDateNow } from '../../../../config/tests/helpers.unit';
 import Landing from '../Landing';
 // #endregion imports
 
+jest.mock('../../../infrastructure/withPageViewTracker', () => WrappedComponent => WrappedComponent);
+
 initMockDateNow();
 describe('rendering', () => {
 	describe('snapshots', () => {

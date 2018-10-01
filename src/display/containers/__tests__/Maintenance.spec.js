@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import Maintenance from '../Maintenance';
 // #endregion imports
 
+jest.mock('../../../infrastructure/withPageViewTracker', () => WrappedComponent => WrappedComponent);
+
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {

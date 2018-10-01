@@ -6,6 +6,7 @@ import PublicContainer from '../PublicContainer';
 
 // #region mocks
 jest.mock('../../views/public/Public', () => () => 'Public');
+jest.mock('../../../infrastructure/withPageViewTracker', () => WrappedComponent => WrappedComponent);
 // #endregion mocks
 
 const createTestProps = propOverrides => ({
