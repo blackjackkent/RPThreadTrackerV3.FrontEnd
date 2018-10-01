@@ -45,7 +45,7 @@ exports[`rendering snapshots should render valid snapshot when not in maintenanc
     <Route
       component={[Function]}
       name="Public"
-      path="/public/:slug"
+      path="/public/:username/:slug"
     />
     <Route
       component={[Function]}

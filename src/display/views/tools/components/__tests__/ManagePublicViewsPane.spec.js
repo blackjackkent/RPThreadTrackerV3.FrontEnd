@@ -10,6 +10,7 @@ jest.mock('../public-views/PublicViewsTable', () => 'PublicViewsTable');
 const createTestProps = propOverrides => ({
 	isLoadingIconVisible: true,
 	publicViews: [{}, {}],
+	username: 'test-user',
 	openUpsertPublicViewModal: jest.fn(),
 	openDeletePublicViewModal: jest.fn(),
 	...propOverrides

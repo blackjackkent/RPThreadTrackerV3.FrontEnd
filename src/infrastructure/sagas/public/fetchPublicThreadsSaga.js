@@ -13,8 +13,8 @@ import {
 
 function* fetchPublicThreads(action) {
 	try {
-		const slug = action.data;
-		const response = yield call(axios.get, `${API_BASE_URL}api/publicthread/${slug}`);
+		const { slug, username } = action.data;
+		const response = yield call(axios.get, `${API_BASE_URL}api/publicthread/${username}/${slug}`);
 		yield all([
 			put(fetchedPublicThreadsSuccess(response.data)),
 			put(fetchPublicThreadsStatus(response.data))

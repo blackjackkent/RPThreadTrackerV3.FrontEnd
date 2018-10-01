@@ -5,7 +5,7 @@ import PublicViewsTable from '../PublicViewsTable';
 // #endregion imports
 
 // #region mocks
-jest.mock('../_columns', () => ([{ id: 'column1' }, { id: 'column2' }]));
+jest.mock('../_columns', () => () => ([{ id: 'column1' }, { id: 'column2' }]));
 jest.mock('../_getTdProps', () => (jest.fn()));
 // #endregion mocks
 
@@ -14,6 +14,7 @@ const createTestProps = propOverrides => ({
 	publicViews: [{ publicViewId: 1 }, { publicViewId: 2 }],
 	openUpsertPublicViewModal: jest.fn(),
 	openDeletePublicViewModal: jest.fn(),
+	username: 'test-user',
 	...propOverrides
 });
 

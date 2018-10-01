@@ -5,6 +5,7 @@ import columns from './_columns';
 import getTdProps from './_getTdProps';
 
 const propTypes = {
+	username: PropTypes.string.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
@@ -16,14 +17,15 @@ const PublicViewsTable = (props) => {
 		isLoadingIconVisible,
 		publicViews,
 		openUpsertPublicViewModal,
-		openDeletePublicViewModal
+		openDeletePublicViewModal,
+		username
 	} = props;
 	return (
 		<div className="public-views-table">
 			<ReactTable
 				className="-striped"
 				data={publicViews}
-				columns={columns}
+				columns={columns(username)}
 				defaultSorted={[{ id: 'name' }]}
 				pageSize={10}
 				getTdProps={getTdProps(

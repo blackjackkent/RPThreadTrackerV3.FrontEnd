@@ -33,6 +33,7 @@ jest.mock('../../../../utility', () => ({
 const createTestProps = propOverrides => ({
 	fetchLegacyPublicThreads: jest.fn(),
 	slug: 'my-slug',
+	username: 'test-user',
 	fetchPublicThreads: jest.fn(),
 	setPublicThreadFilter: jest.fn(),
 	...propOverrides
@@ -71,7 +72,7 @@ describe('behavior', () => {
 			const jsx = (<Public {...props} />);
 			shallowWithState(jsx, state).dive();
 			expect(fetchPublicThreads).toHaveBeenCalledTimes(1);
-			expect(fetchPublicThreads).toHaveBeenLastCalledWith('my-slug');
+			expect(fetchPublicThreads).toHaveBeenLastCalledWith('my-slug', 'test-user');
 		});
 		it('should fetch public threads if slug is legacy', () => {
 			const fetchLegacyPublicThreads = jest.fn();

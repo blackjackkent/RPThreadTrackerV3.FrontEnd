@@ -18,7 +18,7 @@ const PublicContainer = ({ match }) => (
 	<div className="app flex-row">
 		<ReduxToastr />
 		<Container className="public-threads-container">
-			<Public slug={match.params.slug} />
+			<Public slug={match.params.slug} username={match.params.username} />
 		</Container>
 	</div>
 );

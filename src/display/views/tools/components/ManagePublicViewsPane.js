@@ -6,15 +6,23 @@ import {
 import PublicViewsTable from './public-views/PublicViewsTable';
 
 const propTypes = {
+	username: PropTypes.string,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
 	openDeletePublicViewModal: PropTypes.func.isRequired
 };
+const defaultProps = {
+	username: ''
+};
 
 const ManagePublicViewsPane = (props) => {
 	const {
-		publicViews, openUpsertPublicViewModal, openDeletePublicViewModal, isLoadingIconVisible
+		publicViews,
+		openUpsertPublicViewModal,
+		openDeletePublicViewModal,
+		isLoadingIconVisible,
+		username
 	} = props;
 	return (
 		<TabPane tabId="manage-public-views">
@@ -56,6 +64,7 @@ const ManagePublicViewsPane = (props) => {
 						openUpsertPublicViewModal={openUpsertPublicViewModal}
 						openDeletePublicViewModal={openDeletePublicViewModal}
 						isLoadingIconVisible={isLoadingIconVisible}
+						username={username}
 					/>
 				</Col>
 			</Row>
@@ -63,4 +72,5 @@ const ManagePublicViewsPane = (props) => {
 	);
 };
 ManagePublicViewsPane.propTypes = propTypes;
+ManagePublicViewsPane.defaultProps = defaultProps;
 export default ManagePublicViewsPane;
