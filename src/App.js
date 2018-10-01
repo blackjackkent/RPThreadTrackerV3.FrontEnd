@@ -8,7 +8,6 @@ import 'rc-tooltip/assets/bootstrap.css';
 
 import '../scss/style.scss';
 import history from './utility/history';
-import withPageViewTracker from './infrastructure/withPageViewTracker';
 import Layout from './display/containers/Layout';
 import Landing from './display/containers/Landing';
 import StaticContainer from './display/containers/StaticContainer';
@@ -34,7 +33,7 @@ const App = (props) => {
 	if (ui.isMaintenanceMode) {
 		return (
 			<Router history={history}>
-				<Route path="*" name="Maintenance" component={withPageViewTracker(Maintenance)} />
+				<Route path="*" name="Maintenance" component={Maintenance} />
 			</Router>
 		);
 	}
@@ -44,25 +43,25 @@ const App = (props) => {
 				<Route
 					path="/maintenance"
 					name="Maintenance"
-					component={withPageViewTracker(Maintenance)}
+					component={Maintenance}
 				/>
 				{
-					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={withPageViewTracker(StaticContainer)} />)
+					['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
 				}
 				<Route
 					path="/public/:slug"
 					name="Public"
-					component={withPageViewTracker(PublicContainer)}
+					component={PublicContainer}
 				/>
 				<Route
 					path="/add-thread"
 					name="AddThreadFromExtensionHandler"
-					component={withPageViewTracker(AddThreadFromExtensionHandler)}
+					component={AddThreadFromExtensionHandler}
 				/>
 				<Route
 					path="/landing"
 					name="Landing"
-					component={withPageViewTracker(Landing)}
+					component={Landing}
 				/>
 				<Route component={Layout} />
 			</Switch>

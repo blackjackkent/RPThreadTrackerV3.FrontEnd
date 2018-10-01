@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { Container } from 'reactstrap';
 import ReduxToastr from 'react-redux-toastr';
 import Public from '../views/public/Public';
+import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 // #endregion imports
 
 const propTypes = {
@@ -23,4 +24,4 @@ const PublicContainer = ({ match }) => (
 );
 PublicContainer.propTypes = propTypes;
 PublicContainer.defaultProps = defaultProps;
-export default PublicContainer;
+export default withPageViewTracker(PublicContainer);
