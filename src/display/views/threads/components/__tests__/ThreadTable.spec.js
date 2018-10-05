@@ -29,7 +29,7 @@ const createTestProps = propOverrides => ({
 	tags: [{ tagText: 'tag1' }, { tagText: 'tag2' }],
 	tdProps: jest.fn(),
 	threadFilter: { filteredTag: 'tag3' },
-	threadTablePageSize: 10,
+	threadTablePageSize: 50,
 	updateThreadTablePageSize: jest.fn(),
 	...propOverrides
 });
@@ -49,6 +49,17 @@ describe('rendering', () => {
 		});
 		it('should render valid snapshot when items are selected', () => {
 			const props = createTestProps({ isLoadingIconVisible: true });
+			const jsx = (<ThreadTable {...props} />);
+			const element = shallow(jsx);
+			element.instance().onSelectionChanged([
+				{ thread: { threadId: 1 } },
+				{ thread: { threadId: 2 } }
+			]);
+			element.update();
+			expect(element).toMatchSnapshot();
+		});
+		it('should render valid snapshot when threadTablePageSize not provided', () => {
+			const props = createTestProps({ threadTablePageSize: null });
 			const jsx = (<ThreadTable {...props} />);
 			const element = shallow(jsx);
 			element.instance().onSelectionChanged([

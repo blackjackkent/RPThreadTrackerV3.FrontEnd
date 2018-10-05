@@ -5,7 +5,7 @@ import {
 	UPDATED_USER_SETTINGS_SUCCESS
 } from '../actions';
 
-const defaultState = { showDashboardThreadDistribution: false };
+const defaultState = { showDashboardThreadDistribution: false, threadTablePageSize: 10 };
 function userSettings(state = defaultState, action) {
 	switch (action.type) {
 		case FETCHED_USER_SETTINGS_SUCCESS:
