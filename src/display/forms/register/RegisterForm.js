@@ -13,7 +13,9 @@ const propTypes = {
 };
 
 const RegisterForm = (props) => {
-	const { handleInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
+	const {
+		handleInputChange, tooltipDisplayData, showTooltip, hideTooltip
+	} = props;
 	return (
 		<div>
 			<div data-spec="username-field">

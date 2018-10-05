@@ -7,6 +7,7 @@ import {
 	Card, CardBlock, Button, Row, Col
 } from 'reactstrap';
 import * as actions from '../../../infrastructure/actions';
+import TooltipForm from '../../forms/TooltipForm';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
 import { getQuery } from '../../../utility';
@@ -101,7 +102,10 @@ class ResetPassword extends Component {
 							Enter your new password below.
 						</p>
 						{error}
-						<ResetPasswordForm handleInputChange={this.handleInputChange} />
+						<TooltipForm
+							Renderable={ResetPasswordForm}
+							handleInputChange={this.handleInputChange}
+						/>
 						<Row>
 							<Col xs="6">
 								<Button color="primary" className="px-4">Request</Button>
