@@ -53,24 +53,55 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   <div
     data-spec="password-field"
   >
-    <AvField
-      name="password"
-      onChange={[MockFunction]}
-      placeholder="Password"
-      type="password"
-      validate={
+    <Tooltip
+      align={
         Object {
-          "minLength": Object {
-            "errorMessage": "Your password must be longer than 6 characters.",
-            "value": 6,
-          },
-          "required": Object {
-            "errorMessage": "You must enter a password.",
-            "value": true,
-          },
+          "offset": Array [
+            0,
+            10,
+          ],
         }
       }
-    />
+      arrowContent={null}
+      data-spec="password-tooltip"
+      destroyTooltipOnHide={false}
+      mouseEnterDelay={0}
+      mouseLeaveDelay={0.1}
+      overlay="Password must contain an uppercase character, a lowercase character, a numeric digit, and a symbol."
+      overlayStyle={
+        Object {
+          "width": 300,
+        }
+      }
+      placement="top"
+      prefixCls="rc-tooltip"
+      trigger={
+        Array [
+          "hover",
+        ]
+      }
+    >
+      <AvField
+        name="password"
+        onBlur={[MockFunction]}
+        onChange={[MockFunction]}
+        onFocus={[MockFunction]}
+        placeholder="Password"
+        type="password"
+        validate={
+          Object {
+            "minLength": Object {
+              "errorMessage": "Your password must be longer than 6 characters.",
+              "value": 6,
+            },
+            "required": Object {
+              "errorMessage": "You must enter a password.",
+              "value": true,
+            },
+          }
+        }
+      />
+    </Tooltip>
   </div>
   <div
     data-spec="confirm-password-field"

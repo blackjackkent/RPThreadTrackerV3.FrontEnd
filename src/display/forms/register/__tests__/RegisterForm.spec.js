@@ -7,6 +7,9 @@ import RegisterForm from '../RegisterForm';
 
 const createTestProps = propOverrides => ({
 	handleInputChange: jest.fn(),
+	tooltipDisplayData: {},
+	showTooltip: jest.fn(),
+	hideTooltip: jest.fn(),
 	...propOverrides
 });
 
@@ -55,6 +58,20 @@ describe('behavior', () => {
 			const field = getSpecWrapper(element, 'confirm-password-field').find('AvField');
 			expect(field.props().validate.required).toHaveProperty('value', true);
 			expect(field.props().validate.match).toHaveProperty('value', 'password');
+		});
+	});
+	describe('tooltips', () => {
+		it('should be rendered on password field when visible', () => {
+			const props = createTestProps({ tooltipDisplayData: { password: true } });
+			const props2 = createTestProps();
+			const jsx = (<RegisterForm {...props} />);
+			const jsx2 = (<RegisterForm {...props2} />);
+			const element = shallow(jsx);
+			const element2 = shallow(jsx2);
+			const field = getSpecWrapper(element, 'password-tooltip');
+			const field2 = getSpecWrapper(element2, 'password-tooltip');
+			expect(field.props().visible).toBeTruthy();
+			expect(field2.props().visible).toBeFalsy();
 		});
 	});
 	describe('handleInputChange', () => {
