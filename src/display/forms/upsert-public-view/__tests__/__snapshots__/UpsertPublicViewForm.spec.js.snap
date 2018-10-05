@@ -86,6 +86,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             Will be rendered as 
             <em>
               http://www.rpthreadtracker.com/public/
+              {
+              your-username
+              }
+              /
               <strong>
                 {
                 slug
@@ -738,6 +742,10 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
             Will be rendered as 
             <em>
               http://www.rpthreadtracker.com/public/
+              {
+              your-username
+              }
+              /
               <strong>
                 {
                 slug
