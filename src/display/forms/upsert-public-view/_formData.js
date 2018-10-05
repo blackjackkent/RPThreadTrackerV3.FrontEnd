@@ -16,7 +16,7 @@ export default {
 			</span>
 		),
 		tooltip: (
-			<span>Will be rendered as <em>http://www.rpthreadtracker.com/public/<strong>{'{'}slug{'}'}</strong></em>.</span>
+			<span>Will be rendered as <em>http://www.rpthreadtracker.com/public/{'{'}your-username{'}'}/<strong>{'{'}slug{'}'}</strong></em>.</span>
 		)
 	},
 	columns: {
