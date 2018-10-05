@@ -41,7 +41,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       tag="div"
     >
       <TooltipForm
-        Renderable="UpsertCharacterForm"
+        Renderable={[Function]}
         characterToEdit={
           Object {
             "characterId": 1,
@@ -114,7 +114,7 @@ exports[`rendering snapshots should render valid snapshot if character is new 1`
       tag="div"
     >
       <TooltipForm
-        Renderable="UpsertCharacterForm"
+        Renderable={[Function]}
         characterToEdit={Object {}}
         handleInputChange={[Function]}
       />

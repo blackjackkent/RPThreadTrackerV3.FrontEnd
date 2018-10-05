@@ -7,6 +7,9 @@ import ChangePasswordForm from '../ChangePasswordForm';
 
 const createTestProps = propOverrides => ({
 	handleInputChange: jest.fn(),
+	tooltipDisplayData: {},
+	showTooltip: jest.fn(),
+	hideTooltip: jest.fn(),
 	...propOverrides
 });
 

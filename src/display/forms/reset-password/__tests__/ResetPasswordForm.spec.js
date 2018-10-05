@@ -7,6 +7,9 @@ import ResetPasswordForm from '../ResetPasswordForm';
 
 const createTestProps = propOverrides => ({
 	handleInputChange: jest.fn(),
+	tooltipDisplayData: {},
+	showTooltip: jest.fn(),
+	hideTooltip: jest.fn(),
 	...propOverrides
 });
 

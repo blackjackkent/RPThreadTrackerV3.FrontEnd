@@ -4,6 +4,7 @@ import {
 	TabPane, Col, Row, Button, Card, CardHeader, CardBlock
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
+import TooltipForm from '../../../forms/TooltipForm';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
 
 const propTypes = {
@@ -44,7 +45,10 @@ class ChangePasswordPane extends React.Component {
 							data-spec="change-password-form-container"
 							onValidSubmit={() => submitChangePasswordForm(formData)}
 						>
-							<ChangePasswordForm handleInputChange={this.handleInputChange} />
+							<TooltipForm
+								Renderable={ChangePasswordForm}
+								handleInputChange={this.handleInputChange}
+							/>
 							<Row>
 								<Col className="text-right">
 									<Button type="submit" color="primary">
