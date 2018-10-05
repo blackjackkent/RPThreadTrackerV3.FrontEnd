@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import * as actions from '../../../infrastructure/actions';
 import RegisterForm from '../../forms/register/RegisterForm';
+import TooltipForm from '../../forms/TooltipForm';
 import LoadingIndicator from '../../shared/LoadingIndicator';
 
 const propTypes = {
@@ -93,7 +94,10 @@ class Register extends Component {
 						<h1>Register</h1>
 						<p className="text-muted">Create your RPThreadTracker account</p>
 						{error}
-						<RegisterForm handleInputChange={this.handleInputChange} />
+						<TooltipForm
+							Renderable={RegisterForm}
+							handleInputChange={this.handleInputChange}
+						/>
 						<Row>
 							<Col xs="6">
 								<Button color="primary" className="px-4">Create Account</Button>

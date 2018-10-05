@@ -35,7 +35,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         Create your RPThreadTracker account
       </p>
       <span />
-      <RegisterForm
+      <TooltipForm
+        Renderable="RegisterForm"
         handleInputChange={[Function]}
       />
       <Row
@@ -140,7 +141,8 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
           </span>
         </p>
       </div>
-      <RegisterForm
+      <TooltipForm
+        Renderable="RegisterForm"
         handleInputChange={[Function]}
       />
       <Row
@@ -241,7 +243,8 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
         Create your RPThreadTracker account
       </p>
       <span />
-      <RegisterForm
+      <TooltipForm
+        Renderable="RegisterForm"
         handleInputChange={[Function]}
       />
       <Row
@@ -342,7 +345,8 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
         Create your RPThreadTracker account
       </p>
       <span />
-      <RegisterForm
+      <TooltipForm
+        Renderable="RegisterForm"
         handleInputChange={[Function]}
       />
       <Row

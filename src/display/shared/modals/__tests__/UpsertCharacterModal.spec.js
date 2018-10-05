@@ -6,7 +6,7 @@ import UpsertCharacterModal from '../UpsertCharacterModal';
 // #endregion imports
 
 // #region mocks
-jest.mock('../../../forms/upsert-character/UpsertCharacterForm', () => 'UpsertCharacterForm');
+jest.mock('../../../forms/upsert-character/UpsertCharacterForm', () => () => 'UpsertCharacterForm');
 jest.mock('../../../forms/TooltipForm', () => 'TooltipForm');
 // #endregion mocks
 
