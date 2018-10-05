@@ -115,7 +115,7 @@ class ThreadTable extends React.Component {
 					className="-striped"
 					data={getData(filteredThreads)}
 					noDataText={isLoadingIconVisible ? 'Loading...' : 'No Threads Found'}
-					defaultPageSize={threadTablePageSize}
+					defaultPageSize={threadTablePageSize || 10}
 					onPageSizeChange={updateThreadTablePageSize}
 					columns={columns}
 					getTdProps={tdProps}

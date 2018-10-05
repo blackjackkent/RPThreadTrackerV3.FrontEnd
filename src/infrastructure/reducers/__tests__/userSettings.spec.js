@@ -3,6 +3,7 @@ import * as actions from '../../actions';
 
 const getState = overrides => ({
 	showDashboardThreadDistribution: false,
+	threadTablePageSize: 10,
 	...overrides
 });
 
@@ -26,7 +27,7 @@ describe('action handling', () => {
 			data: { settingsId: '12345', showDashboardThreadDistribution: false }
 		};
 		const result = userSettings(getState(), action);
-		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false });
+		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false, threadTablePageSize: 10 });
 	});
 	it('should handle UPDATED_USER_SETTINGS_SUCCESS when skipping view update', () => {
 		const action = {
@@ -43,7 +44,7 @@ describe('action handling', () => {
 			data: { settingsId: '12345', showDashboardThreadDistribution: false }
 		};
 		const result = userSettings(getState(), action);
-		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false });
+		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false, threadTablePageSize: 10 });
 	});
 	it('should handle UPDATE_USER_SETTINGS when skipping view update', () => {
 		const action = {
@@ -60,7 +61,7 @@ describe('action handling', () => {
 			data: { settingsId: '12345', showDashboardThreadDistribution: false }
 		};
 		const result = userSettings(getState(), action);
-		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false });
+		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false, threadTablePageSize: 10 });
 	});
 	it('should handle SUBMIT_USER_LOGOUT', () => {
 		const action = {
