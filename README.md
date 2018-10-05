@@ -5,7 +5,7 @@
 >
 > If you are looking for the Tumblr thread status microservice API, please see [http://www.github.com/blackjackkent/RPThreadTracker.BackEnd.TumblrClient](http://www.github.com/blackjackkent/RPThreadTracker.BackEnd.TumblrClient).
 
-[![Build status](https://ci.appveyor.com/api/projects/status/8w7bl77131e87x4c?svg=true)](https://ci.appveyor.com/project/blackjackkent/rpthreadtrackerv3-backend)
+[![Build status](https://ci.appveyor.com/api/projects/status/r4fylvaq1gmepf82?svg=true)](https://ci.appveyor.com/project/blackjackkent/rpthreadtrackerv3-frontend)
 [![codecov](https://codecov.io/gh/blackjackkent/RPThreadTrackerV3.FrontEnd/branch/development/graph/badge.svg)](https://codecov.io/gh/blackjackkent/RPThreadTrackerV3.FrontEnd)
 
 This is a React/Redux Javascript application which makes up the client-side portion of RPThreadTracker V3, a web application for members of the Tumblr collaborative writing community.
