@@ -105,6 +105,7 @@
 	"scripts": {
 		"start": "webpack-dev-server --history-api-fallback --config webpack.dev.js",
 		"build": "yarn clean && webpack --config webpack.prod.js",
+		"build:staging": "yarn clean && webpack --config webpack.staging.js",
 		"build:serve": "yarn clean && yarn build && http-serve ./build --gzip -f /",
 		"profile": "webpack --watch --profile --json > compilation-stats.json --config webpack.prod.js",
 		"clean": "rimraf ./build",
