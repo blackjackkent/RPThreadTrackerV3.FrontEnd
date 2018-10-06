@@ -14,7 +14,7 @@ const SupportGuidesPane = () => (
 			<CardBlock className="card-body">
 				<p>
 					Intro Tutorial: How to Use RPThreadTracker ~{' '}
-					<a href="https://youtu.be/Jcbv3aNQVDg">Video <i className="fas fa-external-link-alt" /></a>
+					<a href="https://youtu.be/R7psA53V-9E">Video <i className="fas fa-external-link-alt" /></a>
 				</p>
 			</CardBlock>
 		</Card>
