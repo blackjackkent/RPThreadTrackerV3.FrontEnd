@@ -80,10 +80,18 @@ describe('action handling', () => {
 			const result = loading(initialState, action);
 			expect(result.archivedThreadsLoading).toBe(false);
 		});
-		it('should handle FETCHED_ARCHIVED_THREADS_SUCCESS', () => {
-			const initialState = getState({ archivedThreadsLoading: true });
+		it('should handle FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS', () => {
+			const initialState = getState({ activeThreadsLoading: true });
 			const action = {
-				type: actions.FETCHED_ARCHIVED_THREADS_SUCCESS
+				type: actions.FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS
+			};
+			const result = loading(initialState, action);
+			expect(result.archivedThreadsLoading).toBe(false);
+		});
+		it('should handle FETCHED_ARCHIVED_THREADS_STATUS_FAILURE', () => {
+			const initialState = getState({ activeThreadsLoading: true });
+			const action = {
+				type: actions.FETCHED_ARCHIVED_THREADS_STATUS_FAILURE
 			};
 			const result = loading(initialState, action);
 			expect(result.archivedThreadsLoading).toBe(false);
