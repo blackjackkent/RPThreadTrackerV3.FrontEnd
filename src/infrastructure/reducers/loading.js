@@ -4,7 +4,8 @@ import {
 	FETCHED_ACTIVE_THREADS_STATUS_FAILURE,
 	FETCHED_ACTIVE_THREADS_STATUS_SUCCESS,
 	FETCHED_ARCHIVED_THREADS_FAILURE,
-	FETCHED_ARCHIVED_THREADS_SUCCESS,
+	FETCHED_ARCHIVED_THREADS_STATUS_FAILURE,
+	FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS,
 	FETCH_ACTIVE_THREADS,
 	FETCH_ARCHIVED_THREADS,
 	FETCH_CHARACTERS,
@@ -105,20 +106,19 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				activeThreadsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Archived Threads
 		case FETCH_ARCHIVED_THREADS:
 			return Object.assign({}, state, {
 				archivedThreadsLoading: true
 			});
 		case FETCHED_ARCHIVED_THREADS_FAILURE:
-		case FETCHED_ARCHIVED_THREADS_SUCCESS:
+		case FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS:
+		case FETCHED_ARCHIVED_THREADS_STATUS_FAILURE:
 			return Object.assign({}, state, {
 				archivedThreadsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Bulk Untrack Threads
 		case BULK_UNTRACK_THREADS:
 			return Object.assign({}, state, {
@@ -129,8 +129,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				bulkUpsertThreadsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Bulk Update Threads
 		case BULK_UPDATE_THREADS:
 			return Object.assign({}, state, {
@@ -141,8 +140,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				bulkUpsertThreadsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Change Account Info
 		case SUBMIT_USER_ACCOUNT_INFO:
 			return Object.assign({}, state, {
@@ -153,8 +151,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				changeAccountInfoLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Change Password
 		case SUBMIT_USER_CHANGE_PASSWORD:
 			return Object.assign({}, state, {
@@ -165,8 +162,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				changePasswordLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Characters
 		case FETCH_CHARACTERS:
 			return Object.assign({}, state, {
@@ -177,8 +173,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				charactersLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Contact Form
 		case SUBMIT_CONTACT_FORM:
 			return Object.assign({}, state, {
@@ -189,8 +184,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				contactFormLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Delete Public View
 		case DELETE_PUBLIC_VIEW:
 			return Object.assign({}, state, {
@@ -201,8 +195,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				deletePublicViewLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Export Threads
 		case EXPORT_THREADS:
 			return Object.assign({}, state, {
@@ -213,8 +206,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				exportThreadsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Forgot Password
 		case SUBMIT_USER_FORGOT_PASSWORD_SUCCESS:
 		case SUBMIT_USER_FORGOT_PASSWORD_FAILURE:
@@ -225,8 +217,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				forgotPasswordLoading: true
 			});
-			// #endregion
-
+		// #endregion
 		// #region Login
 		case SUBMIT_USER_LOGIN_SUCCESS:
 		case SUBMIT_USER_LOGIN_FAILURE:
@@ -237,8 +228,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				loginLoading: true
 			});
-			// #endregion
-
+		// #endregion
 		// #region Public Views
 		case FETCH_PUBLIC_VIEWS:
 			return Object.assign({}, state, {
@@ -249,8 +239,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				publicViewsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Public Threads
 		case FETCH_PUBLIC_THREADS:
 			return Object.assign({}, state, {
@@ -262,8 +251,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				publicThreadsLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Registration
 		case SUBMIT_USER_REGISTRATION_FAILURE:
 		case SUBMIT_USER_REGISTRATION_SUCCESS:
@@ -274,8 +262,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				registrationLoading: true
 			});
-			// #endregion
-
+		// #endregion
 		// #region Reset Password
 		case SUBMIT_USER_RESET_PASSWORD_FAILURE:
 		case SUBMIT_USER_RESET_PASSWORD_SUCCESS:
@@ -286,8 +273,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				resetPasswordLoading: true
 			});
-			// #endregion
-
+		// #endregion
 		// #region Untrack Character
 		case UNTRACK_CHARACTER:
 			return Object.assign({}, state, {
@@ -298,8 +284,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				untrackCharactersLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Untrack Thread
 		case UNTRACK_THREAD:
 			return Object.assign({}, state, {
@@ -310,8 +295,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				untrackThreadLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Upsert Character
 		case UPSERT_CHARACTER:
 			return Object.assign({}, state, {
@@ -322,8 +306,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				upsertCharactersLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Upsert Public View
 		case UPSERT_PUBLIC_VIEW:
 			return Object.assign({}, state, {
@@ -334,8 +317,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				upsertPublicViewLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		// #region Upsert Thread
 		case UPSERT_THREAD:
 			return Object.assign({}, state, {
@@ -346,8 +328,7 @@ function loading(state = defaultState, action) {
 			return Object.assign({}, state, {
 				upsertThreadLoading: false
 			});
-			// #endregion
-
+		// #endregion
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;
 		default:
