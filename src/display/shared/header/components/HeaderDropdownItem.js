@@ -16,12 +16,14 @@ const HeaderDropdownItem = (props) => {
 	} = props;
 
 	return (
-		<DropdownItem className="hidden-lg-up">
+		<DropdownItem
+			className="hidden-lg-up"
+			onKeyDown={onClick}
+			onClick={onClick}
+		>
 			<span
 				role="button"
 				tabIndex="-1"
-				onKeyDown={onClick}
-				onClick={onClick}
 			>
 				{label}
 			</span>

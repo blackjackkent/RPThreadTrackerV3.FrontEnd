@@ -28,8 +28,7 @@ describe('behavior', () => {
 			const props = createTestProps({ onClick });
 			const jsx = (<HeaderDropdownItem {...props} />);
 			const element = shallow(jsx);
-			const link = element.find('span');
-			link.simulate('click');
+			element.simulate('click');
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 		it('should be triggered on keydown', () => {
@@ -37,8 +36,7 @@ describe('behavior', () => {
 			const props = createTestProps({ onClick });
 			const jsx = (<HeaderDropdownItem {...props} />);
 			const element = shallow(jsx);
-			const link = element.find('span');
-			link.simulate('keydown');
+			element.simulate('keydown');
 			expect(onClick).toHaveBeenCalledTimes(1);
 		});
 	});
