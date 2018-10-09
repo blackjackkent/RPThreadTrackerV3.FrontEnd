@@ -13,7 +13,7 @@ const AsideNewsRow = (props) => {
 	const { item } = props;
 	return (
 		<div>
-			<div className="callout callout-danger m-0 py-3">
+			<div className={`callout m-0 py-3 ${item.isUnread ? 'callout-danger' : 'callout-secondary'}`}>
 				<div>
 					<a href={item.postUrl}>
 						{item.postTitle}
