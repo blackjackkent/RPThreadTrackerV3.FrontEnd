@@ -9,6 +9,6 @@ export default styled.footer`
 	.light-theme & {
 		background: ${colors.GRAY_100};
 		color: ${colors.GRAY_800};
-		border-top: 1px solid ${colors.GRAY_200};
+		border-top: none;
 	}
 `;

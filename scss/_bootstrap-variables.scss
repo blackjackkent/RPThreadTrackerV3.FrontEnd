@@ -2,62 +2,40 @@
 //
 // Color system
 //
-$white : #fff;
-$gray-100 : #ddd;
-$gray-200 : #bbb;
-$gray-300 : #999;
-$gray-400 : #777;
-$gray-500 : #666;
-$gray-600 : #555;
-$gray-700 : #444;
-$gray-800 : #333;
-$gray-850 : #222;
-$gray-900 : #111;
-$black : #000 !default;
-$blue : #418ce4;
-$indigo : #6610f2 !default;
-$purple : #6f42c1 !default;
-$pink : #e83e8c !default;
-$red : #f86c6b;
-$orange : #f8cb00;
-$yellow : #ffc107 !default;
-$green : #4dbd74;
-$teal : #20c997 !default;
-$cyan : #63c2de;
-$colors: ( blue : $blue, indigo : $indigo, purple : $purple, pink : $pink, red : $red, orange : $orange, yellow : $yellow, green : $green, teal : $teal, cyan : $cyan, white : $white, gray : $gray-600, gray-dark : $gray-800);
-$theme-colors: ( primary : $blue, secondary : $gray-300, success : $green, info : $cyan, warning : $yellow, danger : $red, light : $gray-100, dark : $gray-800);
+$white: #fff;
+$gray-100: #ddd;
+$gray-200: #bbb;
+$gray-300: #999;
+$gray-400: #777;
+$gray-500: #666;
+$gray-600: #555;
+$gray-700: #444;
+$gray-800: #333;
+$gray-850: #222;
+$gray-900: #111;
+$black: #000 !default;
+$blue: #418ce4;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #e83e8c !default;
+$red: #f86c6b;
+$orange: #f8cb00;
+$yellow: #ffc107 !default;
+$green: #4dbd74;
+$teal: #20c997 !default;
+$cyan: #63c2de;
+$colors: ( blue: $blue, indigo: $indigo, purple: $purple, pink: $pink, red: $red, orange: $orange, yellow: $yellow, green: $green, teal: $teal, cyan: $cyan, white: $white, gray: $gray-600, gray-dark: $gray-800);
+$theme-colors: ( primary: $blue, secondary: $gray-300, success: $green, info: $cyan, warning: $yellow, danger: $red, light: $gray-100, dark: $gray-800);
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
-$enable-transitions : true;
-$enable-rounded : false;
+$enable-transitions: true;
+$enable-rounded: false;
 // Typography
 //
 // Font, line-height, and color for body text, headings, and more.
-$font-size-base : 0.875rem;
-// Breadcrumbs
-$breadcrumb-bg : $gray-900;
-$breadcrumb-divider-color : $gray-100;
-$breadcrumb-active-color : $gray-100;
-$breadcrumb-borders: ( bottom: ( size : 1px, style : solid, color : $gray-600)) !default;
-// Cards
-$card-bg: $gray-900;
-$card-border-color : $gray-800;
-$card-cap-bg : $black;
+$font-size-base: 0.875rem;
 // Dropdowns
-$dropdown-padding-y : 0;
-$dropdown-border-color : $gray-200;
-$dropdown-divider-bg : $gray-100;
-// Buttons
-$btn-secondary-border : $gray-300;
-// Progress bars
-$progress-bg : $gray-100;
-// Tables
-$table-bg-accent : $gray-100;
-$table-bg-hover : $gray-100;
-// Forms
-$input-group-addon-bg : $gray-100;
-$input-border-color : $gray-200;
-$input-group-addon-border-color : $gray-200;
-// HR
-$hr-border-color: $gray-600;
+$dropdown-padding-y: 0;
+$dropdown-border-color: $gray-200;
+$dropdown-divider-bg: $gray-100;
