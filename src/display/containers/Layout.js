@@ -13,7 +13,7 @@ import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
 import Breadcrumb from '../shared/breadcrumb/Breadcrumb';
 import AsideContainer from '../shared/aside/AsideContainer';
-import Footer from '../shared/footer/Footer';
+import FooterContainer from '../shared/footer/FooterContainer';
 import ModalContainer from '../shared/modals/ModalContainer';
 import LoadingIndicator from '../shared/LoadingIndicator';
 
@@ -168,7 +168,7 @@ class Layout extends Component {
 					</main>
 					<AsideContainer />
 				</div>
-				<Footer />
+				<FooterContainer />
 				<ModalContainer />
 			</div>
 		);
