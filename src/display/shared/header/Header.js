@@ -2,9 +2,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Nav } from 'reactstrap';
+import styled from 'styled-components';
 import {
 	HeaderLogoBlock, HeaderAsideToggle, HeaderProfileDropdown, HeaderAddMenuDropdown
 } from './components';
+import colors from '../../../infrastructure/constants/colors';
 // #endregion imports
 
 const propTypes = {
@@ -24,6 +26,28 @@ const propTypes = {
 	}).isRequired
 };
 
+const Style = styled.header`
+	&.app-header.navbar {
+		background-color: ${colors.BASE_BLUE};
+		border-bottom: 1px solid ${colors.DARK_BLUE};
+		.navbar-brand {
+			background-color: ${colors.BASE_BLUE};
+			border: none;
+		}
+		.navbar-toggler {
+			color: ${colors.WHITE}
+		}
+		.navbar-nav {
+			.nav-link {
+				color: ${colors.WHITE}
+				&:hover {
+					color: ${colors.GRAY_100}
+				}
+			}
+		}
+	}
+`;
+
 const Header = (props) => {
 	const {
 		asideToggle,
@@ -41,7 +65,7 @@ const Header = (props) => {
 	} = props;
 
 	return (
-		<header className="app-header navbar">
+		<Style className="app-header navbar">
 			<HeaderLogoBlock
 				mobileSidebarToggle={mobileSidebarToggle}
 				sidebarToggle={sidebarToggle}
@@ -66,7 +90,7 @@ const Header = (props) => {
 					user={user}
 				/>
 			</Nav>
-		</header>
+		</Style>
 	);
 };
 

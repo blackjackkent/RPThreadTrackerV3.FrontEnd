@@ -1,92 +1,56 @@
 // core overrides
-$base-blue: 			#418ce4;
-$light-blue:			#95C6FF;
-$dark-blue: 			#3A7DCC;
-
+$base-blue: #418ce4;
+$light-blue: #95C6FF;
+$dark-blue: #3A7DCC;
 $grid-gutter-width: 30px !default;
-
-$input-btn-padding-y:       .5rem !default;
-$input-btn-padding-x:       .75rem !default;
-$input-btn-line-height:     1.25 !default;
-
-$input-btn-padding-y-sm:    .25rem !default;
-$input-btn-padding-x-sm:    .5rem !default;
-$input-btn-line-height-sm:  1.5 !default;
-
-$input-btn-padding-y-lg:    .5rem !default;
-$input-btn-padding-x-lg:    1rem !default;
-$input-btn-line-height-lg:  1.5 !default;
-
-$navbar-bg:				$base-blue;
-$navbar-border: (
-	bottom: (
-		size:			1px,
-		style:			solid,
-		color:			$dark-blue
-	)
-);
-$navbar-brand-bg:		$base-blue;
-$navbar-brand-border: (
-	bottom: (
-	  	color:			transparent
-	)
-);
-$navbar-color:			$gray-100;
-$navbar-active-color:	$white;
-$navbar-hover-color:	$light-blue;
-$navbar-disabled-color:	$white;
+$input-btn-padding-y: .5rem !default;
+$input-btn-padding-x: .75rem !default;
+$input-btn-line-height: 1.25 !default;
+$input-btn-padding-y-sm: .25rem !default;
+$input-btn-padding-x-sm: .5rem !default;
+$input-btn-line-height-sm: 1.5 !default;
+$input-btn-padding-y-lg: .5rem !default;
+$input-btn-padding-x-lg: 1rem !default;
+$input-btn-line-height-lg: 1.5 !default;
+$navbar-active-color: $white;
+$navbar-hover-color: $light-blue;
+$navbar-disabled-color: $white;
 .navbar-toggler {
-	padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
-	font-size: $navbar-toggler-font-size;
-	line-height: 1;
-	background: transparent; // remove default button style
-	border: $border-width solid transparent; // remove default button style
-	@include border-radius($navbar-toggler-border-radius);
+    padding: $navbar-toggler-padding-y $navbar-toggler-padding-x;
+    font-size: $navbar-toggler-font-size;
+    line-height: 1;
+    background: transparent; // remove default button style
+    border: $border-width solid transparent; // remove default button style
+    @include border-radius($navbar-toggler-border-radius);
+    @include hover-focus {
+        text-decoration: none;
+    }
+}
 
-	@include hover-focus {
-	  text-decoration: none;
-	}
-  }
-
-$navbar-toggler-padding-y:           .25rem !default;
-$navbar-toggler-padding-x:           .75rem !default;
-$navbar-toggler-font-size:           $font-size-lg !default;
-$navbar-toggler-border-radius:       $btn-border-radius !default;
-
-$sidebar-color:                       $gray-400;
-$sidebar-bg:                          $white;
-$sidebar-borders: (
-	right: (
-		size:			1px,
-		style:			solid,
-		color:			$gray-200
-	)
-);
-$sidebar-nav-color:                   $gray-600;
-$sidebar-nav-title-color:             $gray-600;
-$sidebar-nav-link-color:              $gray-600;
-$sidebar-nav-link-icon-color:         $gray-600;
-$sidebar-nav-link-hover-color:        $white;
-$sidebar-nav-link-hover-bg:           $dark-blue;
-$sidebar-nav-link-hover-icon-color:   $white;
-$sidebar-nav-link-active-color:       $gray-600;
-$sidebar-nav-link-active-bg:          darken($sidebar-bg, 5%);
-$sidebar-nav-link-active-icon-color:  $light-blue;
-$aside-menu-color:                    $gray-100;
-$aside-menu-bg:                       $gray-900;
-$footer-bg:                           $gray-900;
-$footer-color:                        $gray-100;
-$footer-borders: (
-	top: (
-	  size:                             1px,
-	  style:                            solid,
-	  color:                            $gray-600
-	)
-  ) !default;
-
+$navbar-toggler-padding-y: .25rem !default;
+$navbar-toggler-padding-x: .75rem !default;
+$navbar-toggler-font-size: $font-size-lg !default;
+$navbar-toggler-border-radius: $btn-border-radius !default;
+$sidebar-color: $gray-400;
+$sidebar-bg: $white;
+$sidebar-borders: ( right: ( size: 1px, style: solid, color: $gray-200));
+$sidebar-nav-color: $gray-600;
+$sidebar-nav-title-color: $gray-600;
+$sidebar-nav-link-color: $gray-600;
+$sidebar-nav-link-icon-color: $gray-600;
+$sidebar-nav-link-hover-color: $white;
+$sidebar-nav-link-hover-bg: $dark-blue;
+$sidebar-nav-link-hover-icon-color: $white;
+$sidebar-nav-link-active-color: $gray-600;
+$sidebar-nav-link-active-bg: darken($sidebar-bg, 5%);
+$sidebar-nav-link-active-icon-color: $light-blue;
+$aside-menu-color: $gray-100;
+$aside-menu-bg: $gray-900;
+$footer-bg: $gray-900;
+$footer-color: $gray-100;
+$footer-borders: ( top: ( size: 1px, style: solid, color: $gray-600)) !default;
 $card-body-color: $gray-100;
-$progress-bar-color:            $base-blue;
-
+$progress-bar-color: $base-blue;
 $tab-content-bg: $gray-700;
 $tab-content-color: $card-body-color;
 $tab-content-border-color: $card-border-color;
