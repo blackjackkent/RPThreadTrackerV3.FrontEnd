@@ -11,7 +11,7 @@ import * as selectors from '../../infrastructure/selectors';
 
 import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
-import Breadcrumb from '../shared/breadcrumb/Breadcrumb';
+import BreadcrumbWrapper from '../shared/breadcrumb/BreadcrumbWrapper';
 import AsideContainer from '../shared/aside/AsideContainer';
 import FooterContainer from '../shared/footer/FooterContainer';
 import ModalContainer from '../shared/modals/ModalContainer';
@@ -118,7 +118,7 @@ class Layout extends Component {
 				<div className="app-body">
 					<Sidebar {...this.props} />
 					<main className="main">
-						<Breadcrumb isLoadingIconVisible={isLoadingIconVisible} />
+						<BreadcrumbWrapper isLoadingIconVisible={isLoadingIconVisible} />
 						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />

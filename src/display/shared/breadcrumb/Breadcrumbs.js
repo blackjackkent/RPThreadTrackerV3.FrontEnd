@@ -2,7 +2,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Breadcrumb } from 'reactstrap';
+import Breadcrumb from '../styled/Breadcrumb';
 import BreadcrumbsItem from './BreadcrumbsItem';
 // #endregion imports
 

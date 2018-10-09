@@ -3,6 +3,14 @@ body {
     height: 100vh;
 }
 
+body {
+    background: #333;
+}
+
+body.light-theme {
+    background: #fafafa;
+}
+
 .form-control-feedback {
     color: #f00;
 }
