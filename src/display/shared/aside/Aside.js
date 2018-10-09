@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AsideNewsRow from './AsideNewsRow';
+import Style from './_styles';
 // #endregion imports
 
 const propTypes = {
@@ -11,7 +12,7 @@ const propTypes = {
 const Aside = (props) => {
 	const { news } = props;
 	return (
-		<aside className="aside-menu">
+		<Style className="aside-menu">
 			<div className="callout m-0 py-2 text-center text-uppercase">
 				<small><b>RPThreadTracker News</b></small>
 			</div>
@@ -19,7 +20,7 @@ const Aside = (props) => {
 			{
 				news.length ? news.map(item => <AsideNewsRow item={item} key={item.postId} />) : ''
 			}
-		</aside>
+		</Style>
 	);
 };
 
