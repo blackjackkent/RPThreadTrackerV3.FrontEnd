@@ -30,7 +30,8 @@ import {
 	SET_MAINTENANCE_MODE_ON,
 	OPEN_DELETE_PUBLIC_VIEW_MODAL,
 	CLOSE_DELETE_PUBLIC_VIEW_MODAL,
-	DELETE_PUBLIC_VIEW
+	DELETE_PUBLIC_VIEW,
+	LOAD_SITE_THEME_SUCCESS
 } from '../actions';
 // #endregion imports
 
@@ -50,7 +51,8 @@ const defaultState = {
 	isDeletePublicViewModalOpen: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
-	activeToolsTab: 'export-threads'
+	activeToolsTab: 'export-threads',
+	useLightTheme: false
 };
 
 function ui(state = defaultState, action) {
@@ -153,6 +155,10 @@ function ui(state = defaultState, action) {
 		case SET_MAINTENANCE_MODE_ON:
 			return Object.assign({}, state, {
 				isMaintenanceMode: true
+			});
+		case LOAD_SITE_THEME_SUCCESS:
+			return Object.assign({}, state, {
+				useLightTheme: action.data
 			});
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;
