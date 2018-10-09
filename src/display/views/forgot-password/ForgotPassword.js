@@ -8,7 +8,7 @@ import {
 } from 'reactstrap';
 import * as actions from '../../../infrastructure/actions';
 import Card from '../../shared/styled/Card';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 import ForgotPasswordForm from '../../forms/forgot-password/ForgotPasswordForm';
 
 const propTypes = {

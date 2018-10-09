@@ -6,7 +6,7 @@ import DashboardSummaryWidget from '../DashboardSummaryWidget';
 // #endregion imports
 
 // #region mocks
-jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../../../../utility/history', () => ({ navigation: { navigateTo: jest.fn() } }));
 // #endregion mocks
 

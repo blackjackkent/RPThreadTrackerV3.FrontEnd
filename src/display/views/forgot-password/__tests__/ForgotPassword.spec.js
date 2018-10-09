@@ -5,7 +5,7 @@ import ForgotPassword from '../ForgotPassword';
 // #endregion imports
 
 // #region mocks
-jest.mock('../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../forms/forgot-password/ForgotPasswordForm', () => 'ForgotPasswordForm');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 // #endregion mocks

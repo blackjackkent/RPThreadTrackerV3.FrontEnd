@@ -15,7 +15,7 @@ import BreadcrumbWrapper from '../shared/breadcrumb/BreadcrumbWrapper';
 import AsideContainer from '../shared/aside/AsideContainer';
 import FooterContainer from '../shared/footer/FooterContainer';
 import ModalContainer from '../shared/modals/ModalContainer';
-import LoadingIndicator from '../shared/LoadingIndicator';
+import LoadingIndicator from '../shared/loading/LoadingIndicator';
 
 import Dashboard from '../views/dashboard/Dashboard';
 import Threads from '../views/threads/Threads';

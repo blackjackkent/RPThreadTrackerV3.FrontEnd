@@ -2,11 +2,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Nav } from 'reactstrap';
-import styled from 'styled-components';
 import {
 	HeaderLogoBlock, HeaderAsideToggle, HeaderProfileDropdown, HeaderAddMenuDropdown
 } from './components';
-import colors from '../../../infrastructure/constants/colors';
+import Style from './_styles';
 // #endregion imports
 
 const propTypes = {
@@ -26,27 +25,6 @@ const propTypes = {
 	}).isRequired
 };
 
-const Style = styled.header`
-	&.app-header.navbar {
-		background-color: ${colors.BASE_BLUE};
-		border-bottom: 1px solid ${colors.DARK_BLUE};
-		.navbar-brand {
-			background-color: ${colors.BASE_BLUE};
-			border: none;
-		}
-		.navbar-toggler {
-			color: ${colors.WHITE}
-		}
-		.navbar-nav {
-			.nav-link {
-				color: ${colors.WHITE}
-				&:hover {
-					color: ${colors.GRAY_100}
-				}
-			}
-		}
-	}
-`;
 
 const Header = (props) => {
 	const {

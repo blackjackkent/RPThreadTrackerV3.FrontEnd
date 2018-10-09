@@ -6,7 +6,7 @@ import Card from '../../../../shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
-import LoadingIndicator from '../../../../shared/LoadingIndicator';
+import LoadingIndicator from '../../../../shared/loading/LoadingIndicator';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
