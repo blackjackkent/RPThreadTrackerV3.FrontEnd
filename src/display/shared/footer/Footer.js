@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Style from './_styles';
 
 const propTypes = {
 	useLightTheme: PropTypes.bool.isRequired,
@@ -10,7 +11,7 @@ const Footer = (props) => {
 	const currentYear = (new Date()).getFullYear();
 	const { useLightTheme, toggleTheme } = props;
 	return (
-		<footer className="app-footer">
+		<Style className="app-footer">
 			<a href="http://www.rpthreadtracker.com">RPThreadTracker</a>{' '}
 			&copy; {currentYear} <a href="http://blackjack-software.com">Blackjack Software</a> |{' '}
 			Switch to{' '}
@@ -18,7 +19,7 @@ const Footer = (props) => {
 				{useLightTheme ? 'dark theme' : 'light theme'}
 			</button>
 			<span className="float-right">Powered by <a href="http://coreui.io">CoreUI</a></span>
-		</footer>
+		</Style>
 	);
 };
 
