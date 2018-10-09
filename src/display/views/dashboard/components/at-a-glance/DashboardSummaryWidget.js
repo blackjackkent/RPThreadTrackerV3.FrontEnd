@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardBlock, Progress } from 'reactstrap';
+import { CardBlock, Progress } from 'reactstrap';
+import Card from '../../../../shared/styled/Card';
 import { navigation } from '../../../../../utility/history';
 import LoadingIndicator from '../../../../shared/LoadingIndicator';
 

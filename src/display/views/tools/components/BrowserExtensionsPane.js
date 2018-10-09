@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-	TabPane, Card, CardHeader, CardBlock, Row, Col
+	TabPane, CardHeader, CardBlock, Row, Col
 } from 'reactstrap';
+import Card from '../../../shared/styled/Card';
 
 const BrowserExtensionsPane = () => (
 	<TabPane tabId="browser-extensions">

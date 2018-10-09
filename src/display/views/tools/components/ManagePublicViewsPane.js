@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Col, Row, Button, Card, CardHeader, CardBlock
+	TabPane, Col, Row, Button, CardHeader, CardBlock
 } from 'reactstrap';
 import PublicViewsTable from './public-views/PublicViewsTable';
+import Card from '../../../shared/styled/Card';
 
 const propTypes = {
 	username: PropTypes.string,

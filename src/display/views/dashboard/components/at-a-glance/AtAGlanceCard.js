@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Card, CardHeader, Label, Input, CardBlock, CardGroup
+import { 
+	CardHeader, Input, CardBlock, CardGroup
 } from 'reactstrap';
+import Card from '../../../../shared/styled/Card';
+import SwitchLabel from '../../../../shared/styled/SwitchLabel';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {
@@ -29,7 +31,7 @@ const AtAGlanceCard = (props) => {
 		<Card className="at-a-glance-card">
 			<CardHeader data-spec="at-a-glance-card-header">
 				<i className="fas fa-search" data-spec="at-a-glance-card-icon" /> At a Glance
-				<Label
+				<SwitchLabel
 					htmlFor="at-a-glance-switch"
 					className="switch switch-sm switch-text switch-info float-right mb-0"
 				>
@@ -43,7 +45,7 @@ const AtAGlanceCard = (props) => {
 					/>
 					<span className="switch-label" data-on="On" data-off="Off" />
 					<span className="switch-handle" />
-				</Label>
+				</SwitchLabel>
 			</CardHeader>
 			<CardBlock data-spec="at-a-glance-card-body" className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
 				<CardGroup>

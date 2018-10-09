@@ -1,28 +1,8 @@
-html, body { height: 100vh; }
-.card {	color: $card-body-color;}
-.card a { color: $base-blue; }
-.card a.btn-primary { color: $white; }
-.switch-info > .switch-input:checked ~ .switch-label { background: $base-blue !important; border-color: $dark-blue;}
-.nav-tabs { border-bottom: none; }
-.nav-tabs .nav-link { background: $nav-tab-link-bg; color: $tab-content-color; margin-right: 10px; }
-.nav-tabs .nav-link,
-.nav-tabs .nav-link:hover,
-.nav-tabs .nav-link.active,
-.nav-tabs .nav-link.active:focus
-	{ border-color: $tab-content-border-color; border-bottom: none; }
-.nav-tabs .nav-link.active, .nav-tabs .nav-link.active:focus { background: $tab-content-bg; color: $light-blue; }
-.tab-content { background: none; color: $tab-content-color; border: none; border-top: none; }
-.form-control-feedback { color: #f00; }
+html,
+body {
+    height: 100vh;
+}
 
-.clean-select, .clean-select:focus {
-	padding: 4px 7px;
-	height: 28px;
-	font-size: 12px;
-	line-height: 1.5;
-	color: $gray-100;
-	background-color: $gray-500;
-	background-image: none;
-	border: 1px solid $gray-400;
-	border-radius: 4px;
-	transition: border 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), background 0.2s cubic-bezier(0.645, 0.045, 0.355, 1), box-shadow 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+.form-control-feedback {
+    color: #f00;
 }
