@@ -9,6 +9,9 @@ export default styled(Breadcrumb)`
 	a {
 		color: ${colors.LIGHT_BLUE}
 	}
+	.breadcrumb-item::before {
+		color: ${colors.GRAY_100}
+	}
 	.light-theme & {
 		background-color: ${colors.GRAY_100}
 		a {
