@@ -10,7 +10,7 @@ import PropTypes from 'prop-types';
 import LoginForm from '../../forms/login/LoginForm';
 import * as actions from '../../../infrastructure/actions';
 import Card from '../../shared/styled/Card';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {

@@ -5,7 +5,7 @@ import Login from '../Login';
 // #endregion imports
 
 // #region mocks
-jest.mock('../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../forms/login/LoginForm', () => 'LoginForm');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 // #endregion mocks

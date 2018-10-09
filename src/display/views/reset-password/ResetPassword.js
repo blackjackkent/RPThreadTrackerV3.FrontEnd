@@ -9,7 +9,7 @@ import {
 import * as actions from '../../../infrastructure/actions';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
 import { getQuery } from '../../../utility';
 

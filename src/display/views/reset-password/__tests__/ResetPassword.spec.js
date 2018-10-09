@@ -5,7 +5,7 @@ import ResetPassword from '../ResetPassword';
 // #endregion imports
 
 // #region mocks
-jest.mock('../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../forms/reset-password/ResetPasswordForm', () => 'ResetPasswordForm');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../utility', () => ({

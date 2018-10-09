@@ -10,7 +10,7 @@ import * as actions from '../../../infrastructure/actions';
 import RegisterForm from '../../forms/register/RegisterForm';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 
 const propTypes = {
 	submitUserRegistration: PropTypes.func.isRequired,
