@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormGroup, Input } from 'reactstrap';
 import PropTypes from 'prop-types';
+import CleanSelect from '../../../shared/styled/CleanSelect';
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -27,17 +28,19 @@ const TagFilterSelect = (props) => {
 	}
 	return (
 		<FormGroup className="tag-filter-select">
-			<Input
-				type="select"
-				name="tag"
-				id="tag"
-				className="clean-select"
-				value={filteredTag}
-				onChange={e => setFilteredTag(e.target.value)}
-			>
-				<option value="">Filter by Tag</option>
-				{options}
-			</Input>
+			<CleanSelect>
+				<Input
+					type="select"
+					name="tag"
+					id="tag"
+					className="clean-select"
+					value={filteredTag}
+					onChange={e => setFilteredTag(e.target.value)}
+				>
+					<option value="">Filter by Tag</option>
+					{options}
+				</Input>
+			</CleanSelect>
 		</FormGroup>
 	);
 };

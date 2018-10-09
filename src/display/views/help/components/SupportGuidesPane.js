@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-	TabPane, Card, CardHeader, CardBlock
+	TabPane, CardHeader, CardBlock
 } from 'reactstrap';
+import Card from '../../../shared/styled/Card';
 
 const SupportGuidesPane = () => (
 	<TabPane tabId="guides">

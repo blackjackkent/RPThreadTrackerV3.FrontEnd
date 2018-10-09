@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Col, Row, Button, Card, CardHeader, CardBlock
+	TabPane, Col, Row, Button, CardHeader, CardBlock
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
+import Card from '../../../shared/styled/Card';
 import TooltipForm from '../../../forms/TooltipForm';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
 

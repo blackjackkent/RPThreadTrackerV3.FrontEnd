@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBlock } from 'reactstrap';
+import Card from '../../../../shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
 import NoThreadsMessage from '../NoThreadsMessage';
 import NoCharactersMessage from '../NoCharactersMessage';

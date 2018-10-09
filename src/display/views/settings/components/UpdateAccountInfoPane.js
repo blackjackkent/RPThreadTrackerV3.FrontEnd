@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Row, Button, Col, Card, CardHeader, CardBlock
+	TabPane, Row, Button, Col, CardHeader, CardBlock
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
+import Card from '../../../shared/styled/Card';
 import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
 
 const propTypes = {

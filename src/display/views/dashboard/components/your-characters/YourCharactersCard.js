@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Card, CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBlock } from 'reactstrap';
+import Card from '../../../../shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
