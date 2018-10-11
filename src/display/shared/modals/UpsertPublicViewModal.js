@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	Modal, ModalHeader, ModalBody, ModalFooter, Button
+	ModalHeader, ModalBody, ModalFooter, Button
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpsertPublicViewForm from '../../forms/upsert-public-view/UpsertPublicViewForm';
 import TooltipForm from '../../forms/TooltipForm';
 import { getValuesFromMultiSelect } from '../../../utility';
+import Modal from '../styled/Modal';
 
 const propTypes = {
 	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,

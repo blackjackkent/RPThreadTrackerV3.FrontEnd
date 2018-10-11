@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from 'react-table';
+import ReactTable from '../../shared/styled/ReactTable';
 
 const propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
