@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
+import ReactTable from '../../../shared/styled/ReactTable';
 
 const CheckboxTableHOC = checkboxHOC(ReactTable);
 const propTypes = {
