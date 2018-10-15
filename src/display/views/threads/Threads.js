@@ -4,6 +4,7 @@ import {
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Style from './_styles';
 import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import * as actions from '../../../infrastructure/actions';
 
@@ -124,7 +125,7 @@ class Threads extends Component {
 			setFilteredTag
 		} = this.props;
 		return (
-			<div className="animated fadeIn threads-container">
+			<Style className="animated fadeIn threads-container">
 				<Row>
 					<Col>
 						<Renderable
@@ -145,7 +146,7 @@ class Threads extends Component {
 						/>
 					</Col>
 				</Row>
-			</div>
+			</Style>
 		);
 	}
 }

@@ -9,6 +9,15 @@ export default styled.footer`
 	a {
 		color: ${colors.LIGHT_BLUE}
 	}
+	button {
+		background: none; 
+		border: none; 
+		color: ${colors.BASE_BLUE};
+		display: inline;
+		outline: none;
+		margin: 0;
+		padding: 0;
+	}
 	.light-theme & {
 		background: ${colors.GRAY_100};
 		color: ${colors.GRAY_800};
