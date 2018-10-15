@@ -9,6 +9,7 @@ import RecentActivityCard from './components/recent-activity/RecentActivityCard'
 import YourCharactersCard from './components/your-characters/YourCharactersCard';
 import TrackerSupportCard from './components/tracker-support/TrackerSupportCard';
 import RandomThreadCard from './components/random-thread/RandomThreadCard';
+import Style from './_styles';
 import * as actions from '../../../infrastructure/actions';
 import * as selectors from '../../../infrastructure/selectors';
 
@@ -121,7 +122,7 @@ class Dashboard extends Component {
 			generateRandomThread
 		} = this.props;
 		return (
-			<div className="animated fadeIn dashboard-container">
+			<Style className="animated fadeIn dashboard-container">
 				<Row>
 					<Col>
 						<AtAGlanceCard
@@ -169,7 +170,7 @@ class Dashboard extends Component {
 						<TrackerSupportCard />
 					</Col>
 				</Row>
-			</div>
+			</Style>
 		);
 	}
 }

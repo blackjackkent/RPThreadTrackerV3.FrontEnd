@@ -70,7 +70,7 @@ class ManageCharacters extends Component {
 			openUntrackCharacterModal
 		} = this.props;
 		return (
-			<div className="animated fadeIn dashboard-container">
+			<div className="animated fadeIn">
 				<Row>
 					<Col>
 						<CurrentCharacterTable
