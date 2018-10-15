@@ -1,5 +1,8 @@
-.landing-page {
-    width: 100%;
+import styled from 'styled-components';
+import colors from '../../../infrastructure/constants/colors';
+
+export default styled.div`
+	width: 100%;
     height: 100%;
     font-family: 'Nunito Sans', sans-serif;
     overflow-x: hidden !important;
@@ -107,7 +110,7 @@
         padding: 100px 0;
     }
     .section-title-border {
-        background-color: $base-blue;
+        background-color: ${colors.BASE_BLUE};
         width: 50px;
         height: 2px;
         margin-right: auto;
@@ -121,7 +124,7 @@
     }
     /*----BACKGROUND COLOR-----*/
     .bg-custom {
-        background-color: $base-blue;
+        background-color: ${colors.BASE_BLUE};
     }
     .bg-gray {
         background-color: #f7f7f7;
@@ -143,7 +146,7 @@
         color: #fff !important;
     }
     .text-custom {
-        color: $base-blue !important;
+        color: ${colors.BASE_BLUE} !important;
     }
     .text-gray {
         color: #777 !important;
@@ -160,8 +163,8 @@
         border-radius: 30px;
     }
     .btn-custom {
-        background-color: $base-blue !important;
-        border: 1px solid $base-blue !important;
+        background-color: ${colors.BASE_BLUE} !important;
+        border: 1px solid ${colors.BASE_BLUE} !important;
         color: #fff;
         transition: all 0.3s;
         font-size: 14px;
@@ -175,8 +178,8 @@
     .btn-custom:focus,
     .btn-custom:hover,
     .open>.dropdown-toggle.btn-custom {
-        background-color: $base-blue !important;
-        border: 1px solid $base-blue !important;
+        background-color: ${colors.BASE_BLUE} !important;
+        border: 1px solid ${colors.BASE_BLUE} !important;
         color: #f3f3f3 !important;
         transition: all 0.5s;
     }
@@ -279,7 +282,7 @@
     .navbar-custom.navbar-white .navbar-nav li a:hover,
     .navbar-custom.navbar-white .navbar-nav li a:focus,
     .navbar-custom.navbar-white .navbar-nav li a:active {
-        color: $base-blue !important;
+        color: ${colors.BASE_BLUE} !important;
     }
     .navbar-custom.navbar-white .navbar-nav li a,
     .navbar-custom.navbar-white .navbar-brand,
@@ -310,9 +313,9 @@
         position: relative;
     }
     .play-btn {
-        border: 2px solid $base-blue;
+        border: 2px solid ${colors.BASE_BLUE};
         border-radius: 50%;
-        color: $base-blue !important;
+        color: ${colors.BASE_BLUE} !important;
         width: 60px;
         height: 60px;
         display: block;
@@ -434,7 +437,7 @@
     .features-item-list li:before {
         content: "";
         border-radius: 50%;
-        background-color: $base-blue;
+        background-color: ${colors.BASE_BLUE};
         width: 7px;
         height: 7px;
         position: absolute;
@@ -524,7 +527,7 @@
         top: 83px;
         color: #fff;
         z-index: 9;
-        background-color: $base-blue;
+        background-color: ${colors.BASE_BLUE};
     }
     .process-left-icon-1 i {
         left: 63%;
@@ -608,7 +611,7 @@
         padding: 30px 0;
     }
     .social-icon:hover i {
-        color: $base-blue;
+        color: ${colors.BASE_BLUE};
         transition: all 0.5s;
     }
     .footer {
@@ -788,5 +791,8 @@
             max-height: 200px;
             overflow-y: auto;
         }
-    }
-}
+	}
+	.light-theme & {
+		background: ${colors.GRAY_900};
+	}
+`;

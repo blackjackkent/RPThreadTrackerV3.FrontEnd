@@ -10,7 +10,7 @@ import '../scss/style.scss';
 import history from './utility/history';
 import * as actions from './infrastructure/actions';
 import Layout from './display/containers/Layout';
-import Landing from './display/containers/Landing';
+import LandingContainer from './display/containers/LandingContainer';
 import StaticContainer from './display/containers/StaticContainer';
 import Maintenance from './display/containers/Maintenance';
 import PublicContainer from './display/containers/PublicContainer';
@@ -78,7 +78,7 @@ class App extends React.Component {
 					<Route
 						path="/landing"
 						name="Landing"
-						component={Landing}
+						component={LandingContainer}
 					/>
 					<Route component={Layout} />
 				</Switch>
