@@ -1,13 +1,18 @@
 // #region imports
 import React from 'react';
 import { Link } from 'react-router-dom';
-import withPageViewTracker from '../../infrastructure/withPageViewTracker';
+import PropTypes from 'prop-types';
+import Style from './_styles';
 // #endregion imports
 
-const Landing = () => {
-	const currentYear = (new Date()).getFullYear();
+const propTypes = {
+	currentYear: PropTypes.number.isRequired
+};
+
+const Landing = (props) => {
+	const { currentYear } = props;
 	return (
-		<div className="landing-page">
+		<Style className="landing-page">
 			<nav className="navbar navbar-expand-lg fixed-top navbar-custom sticky sticky-dark">
 				<div className="container">
 					<a className="navbar-brand logo text-uppercase" href="index.html">RPThreadTracker</a>
@@ -417,7 +422,8 @@ const Landing = () => {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Style>
 	);
 };
-export default withPageViewTracker(Landing);
+Landing.propTypes = propTypes;
+export default Landing;
