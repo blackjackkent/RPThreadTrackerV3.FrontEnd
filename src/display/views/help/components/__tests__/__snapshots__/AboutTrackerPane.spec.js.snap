@@ -5,9 +5,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tabId="about"
   tag="div"
 >
-  <Card
-    tag="div"
-  >
+  <Styled(Card)>
     <CardHeader
       tag="div"
     >
@@ -36,6 +34,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         .
       </p>
     </CardBlock>
-  </Card>
+  </Styled(Card)>
 </TabPane>
 `;

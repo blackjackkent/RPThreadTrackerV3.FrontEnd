@@ -8,6 +8,7 @@ jest.mock('../_routes', () => ({
 	'/test': 'Test Page',
 	'/test/test2': 'Test 2 Page'
 }));
+jest.mock('../../styled/BreadcrumbItem', () => 'BreadcrumbItem');
 
 const createTestProps = propOverrides => ({
 	...propOverrides

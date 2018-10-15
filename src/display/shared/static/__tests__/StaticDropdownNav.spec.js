@@ -5,6 +5,8 @@ import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
 import StaticDropdownNav from '../StaticDropdownNav';
 // #endregion imports
 
+jest.mock('../../styled/CleanSelect', () => 'CleanSelect');
+
 const createTestProps = propOverrides => ({
 	activeTab: 'test-tab',
 	setActiveTab: jest.fn(),

@@ -2,16 +2,10 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <Modal
-  autoFocus={true}
   backdrop={true}
-  backdropTransitionTimeout={150}
   data-spec="upsert-public-view-modal"
-  fade={true}
   isOpen={true}
-  keyboard={true}
-  modalTransitionTimeout={300}
   toggle={[MockFunction]}
-  zIndex={1050}
 >
   <AvForm
     data-spec="upsert-public-view-modal-form"
@@ -98,16 +92,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 
 exports[`rendering snapshots should render valid snapshot if view is new 1`] = `
 <Modal
-  autoFocus={true}
   backdrop={true}
-  backdropTransitionTimeout={150}
   data-spec="upsert-public-view-modal"
-  fade={true}
   isOpen={true}
-  keyboard={true}
-  modalTransitionTimeout={300}
   toggle={[MockFunction]}
-  zIndex={1050}
 >
   <AvForm
     data-spec="upsert-public-view-modal-form"

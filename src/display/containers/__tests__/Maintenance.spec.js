@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import Maintenance from '../Maintenance';
 // #endregion imports
 
+jest.mock('../../shared/styled/Card', () => 'Card');
 jest.mock('../../../infrastructure/withPageViewTracker', () => WrappedComponent => WrappedComponent);
 
 describe('rendering', () => {

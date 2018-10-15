@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import Sidebar from '../Sidebar';
 // #endregion imports
 
+jest.mock('../_styles', () => 'Style');
+
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
