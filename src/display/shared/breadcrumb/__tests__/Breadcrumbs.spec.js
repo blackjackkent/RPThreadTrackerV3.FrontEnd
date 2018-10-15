@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import Breadcrumbs from '../Breadcrumbs';
 // #endregion imports
 
+jest.mock('../../styled/Breadcrumb', () => 'Breadcrumb');
 jest.mock('../BreadcrumbsItem', () => () => 'BreadcrumbsItem');
 
 const createTestProps = propOverrides => ({

@@ -1,8 +1,10 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoadingIndicator from '../loading/LoadingIndicator';
+import LoadingIndicator from '../LoadingIndicator';
 // #endregion imports
+
+jest.mock('../_styles', () => 'Style');
 
 const createTestProps = propOverrides => ({
 	...propOverrides

@@ -4,7 +4,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 <Nav
   className="flex-column static-tab-nav"
   data-spec="static-tab-nav"
-  tag="ul"
 >
   <StaticTabNavItem
     activeTab="test-tab"

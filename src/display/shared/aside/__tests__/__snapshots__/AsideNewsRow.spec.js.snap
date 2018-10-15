@@ -3,7 +3,7 @@
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <div>
   <div
-    className="callout callout-danger m-0 py-3"
+    className="callout m-0 py-3 callout-secondary"
   >
     <div>
       <a
@@ -48,7 +48,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 exports[`rendering snapshots should render valid snapshot when unread 1`] = `
 <div>
   <div
-    className="callout callout-danger m-0 py-3"
+    className="callout m-0 py-3 callout-danger"
   >
     <div>
       <a

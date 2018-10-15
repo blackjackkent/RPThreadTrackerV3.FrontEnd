@@ -5,6 +5,8 @@ import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
 import GenericConfirmationModal from '../GenericConfirmationModal';
 // #endregion imports
 
+jest.mock('../../styled/Modal', () => 'Modal');
+
 const createTestProps = propOverrides => ({
 	isModalOpen: true,
 	submitCallback: jest.fn(),

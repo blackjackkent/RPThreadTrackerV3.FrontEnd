@@ -5,16 +5,13 @@ exports[`rendering snapshots should render valid snapshot if route does not exis
 exports[`rendering snapshots should render valid snapshot if route is exact 1`] = `
 <BreadcrumbItem
   active={true}
-  tag="li"
 >
   Test 2 Page
 </BreadcrumbItem>
 `;
 
 exports[`rendering snapshots should render valid snapshot if route is not exact 1`] = `
-<BreadcrumbItem
-  tag="li"
->
+<BreadcrumbItem>
   <Link
     href="/test/test2"
     replace={false}

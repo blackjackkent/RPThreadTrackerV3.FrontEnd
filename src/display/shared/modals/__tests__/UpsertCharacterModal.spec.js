@@ -8,6 +8,7 @@ import UpsertCharacterModal from '../UpsertCharacterModal';
 // #region mocks
 jest.mock('../../../forms/upsert-character/UpsertCharacterForm', () => () => 'UpsertCharacterForm');
 jest.mock('../../../forms/TooltipForm', () => 'TooltipForm');
+jest.mock('../../styled/Modal', () => 'Modal');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({
