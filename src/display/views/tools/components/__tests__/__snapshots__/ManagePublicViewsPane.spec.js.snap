@@ -5,9 +5,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tabId="manage-public-views"
   tag="div"
 >
-  <Card
-    tag="div"
-  >
+  <Styled(Card)>
     <CardHeader
       tag="div"
     >
@@ -71,7 +69,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </Col>
       </Row>
     </CardBlock>
-  </Card>
+  </Styled(Card)>
   <Row
     tag="div"
   >

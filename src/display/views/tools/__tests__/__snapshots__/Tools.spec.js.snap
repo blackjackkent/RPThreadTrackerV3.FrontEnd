@@ -88,9 +88,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
       xs="12"
     >
-      <TabContent
+      <Styled(TabContent)
         activeTab="my-test-tab"
-        tag="div"
       >
         <ExportThreadsPane
           onExportRequest={[Function]}
@@ -110,7 +109,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           username="test-user"
         />
         <BrowserExtensionsPane />
-      </TabContent>
+      </Styled(TabContent)>
     </Col>
   </Row>
 </div>

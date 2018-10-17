@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { 
+import {
 	CardHeader, Input, CardBlock, CardGroup
 } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<div
+<styled.div
   className="public-views-table"
 >
   <ReactTable
@@ -162,11 +162,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     style={Object {}}
     subRowsKey="_subRows"
   />
-</div>
+</styled.div>
 `;
 
 exports[`rendering snapshots should render valid snapshot when loading icon not visible 1`] = `
-<div
+<styled.div
   className="public-views-table"
 >
   <ReactTable
@@ -327,5 +327,5 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     style={Object {}}
     subRowsKey="_subRows"
   />
-</div>
+</styled.div>
 `;
