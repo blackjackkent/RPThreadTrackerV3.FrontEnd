@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Card
+<Styled(Card)
   className="at-a-glance-card"
-  tag="div"
 >
   <CardHeader
     data-spec="at-a-glance-card-header"
@@ -14,10 +13,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       data-spec="at-a-glance-card-icon"
     />
      At a Glance
-    <Label
+    <Styled(Label)
       className="switch switch-sm switch-text switch-info float-right mb-0"
       htmlFor="at-a-glance-switch"
-      tag="label"
     >
       <Input
         checked={true}
@@ -36,7 +34,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <span
         className="switch-handle"
       />
-    </Label>
+    </Styled(Label)>
   </CardHeader>
   <CardBlock
     className="card-body"
@@ -83,5 +81,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </DashboardSummaryWidget>
     </CardGroup>
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

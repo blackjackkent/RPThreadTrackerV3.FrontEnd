@@ -9,7 +9,6 @@ jest.mock('../../../infrastructure/actions', () => ({}));
 jest.mock('../../../infrastructure/selectors', () => ({
 	getCharactersSortedByIdentifier: state => state.sortedCharacters
 }));
-jest.mock('../../shared/styled/Card', () => 'Card');
 jest.mock('../../shared/modals/ModalContainer', () => 'ModalContainer');
 jest.mock('../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../infrastructure/withPageViewTracker', () => Component => Component);

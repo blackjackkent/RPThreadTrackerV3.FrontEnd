@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Card
+<Styled(Card)
   className="login-box p-4"
-  tag="div"
 >
   <CardBlock
     className="card-body"
@@ -96,13 +95,12 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </Row>
     </AvForm>
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with error message 1`] = `
-<Card
+<Styled(Card)
   className="login-box p-4"
-  tag="div"
 >
   <CardBlock
     className="card-body"
@@ -204,13 +202,12 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
       </Row>
     </AvForm>
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with loading indicator 1`] = `
-<Card
+<Styled(Card)
   className="login-box p-4"
-  tag="div"
 >
   <CardBlock
     className="card-body"
@@ -313,5 +310,5 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
       </Row>
     </AvForm>
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

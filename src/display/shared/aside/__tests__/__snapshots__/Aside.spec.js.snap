@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Style
+<styled.aside
   className="aside-menu"
 >
   <div
@@ -16,11 +16,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   <hr
     className="mx-3 my-0"
   />
-</Style>
+</styled.aside>
 `;
 
 exports[`rendering snapshots should render valid snapshot with items 1`] = `
-<Style
+<styled.aside
   className="aside-menu"
 >
   <div
@@ -62,5 +62,5 @@ exports[`rendering snapshots should render valid snapshot with items 1`] = `
     }
     key="34567"
   />
-</Style>
+</styled.aside>
 `;

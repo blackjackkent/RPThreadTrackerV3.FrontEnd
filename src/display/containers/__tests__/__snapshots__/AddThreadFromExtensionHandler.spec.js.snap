@@ -43,7 +43,7 @@ exports[`rendering snapshots should render valid snapshot if user and characters
           ]
         }
       >
-        <Card
+        <Styled(Card)
           className="login-box p-4"
         >
           <CardBlock
@@ -54,7 +54,7 @@ exports[`rendering snapshots should render valid snapshot if user and characters
               You can now close this window.
             </p>
           </CardBlock>
-        </Card>
+        </Styled(Card)>
       </Col>
     </Row>
   </Container>

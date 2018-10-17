@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Card
+<Styled(Card)
   className="random-thread-generator-card"
   data-spec="random-thread-generator-card"
-  tag="div"
 >
   <CardHeader
     data-spec="random-thread-generator-header"
@@ -40,5 +39,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

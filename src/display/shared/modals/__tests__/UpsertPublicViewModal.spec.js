@@ -8,7 +8,6 @@ import UpsertPublicViewModal from '../UpsertPublicViewModal';
 // #region mocks
 jest.mock('../../../forms/upsert-public-view/UpsertPublicViewForm', () => 'UpsertPublicViewForm');
 jest.mock('../../../forms/TooltipForm', () => 'TooltipForm');
-jest.mock('../../styled/Modal', () => 'Modal');
 jest.mock('../../../../utility', () => ({
 	getValuesFromMultiSelect: target => target.multiValues
 }));

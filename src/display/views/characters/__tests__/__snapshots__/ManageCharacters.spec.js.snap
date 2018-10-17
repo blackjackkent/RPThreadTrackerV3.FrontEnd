@@ -2,7 +2,7 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <div
-  className="animated fadeIn dashboard-container"
+  className="animated fadeIn"
 >
   <Row
     tag="div"

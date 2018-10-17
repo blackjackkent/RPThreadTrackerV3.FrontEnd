@@ -5,6 +5,7 @@ import Register from '../Register';
 // #endregion imports
 
 // #region mocks
+jest.mock('../../../forms/TooltipForm', () => 'TooltipForm');
 jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../forms/register/RegisterForm', () => 'RegisterForm');
 jest.mock('../../../../infrastructure/actions', () => ({}));

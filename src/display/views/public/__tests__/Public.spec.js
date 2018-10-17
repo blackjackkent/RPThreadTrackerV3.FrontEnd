@@ -23,7 +23,7 @@ jest.mock('../PublicThreadTable', () => 'PublicThreadTable');
 jest.mock('../PublicHeader', () => 'PublicHeader');
 jest.mock('../PublicThreadFilterSelect', () => 'PublicThreadFilterSelect');
 jest.mock('../_columns', () => () => [{}, {}, {}, {}]);
-jest.mock('../../../shared/footer/Footer', () => 'Footer');
+jest.mock('../../../shared/footer/FooterContainer', () => 'FooterContainer');
 jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../../utility', () => ({
 	getQuery: () => ({})

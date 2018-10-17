@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Modal
+<Styled(Modal)
   backdrop={true}
   data-spec="upsert-character-modal"
   isOpen={true}
@@ -64,11 +64,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </Button>
     </ModalFooter>
   </AvForm>
-</Modal>
+</Styled(Modal)>
 `;
 
 exports[`rendering snapshots should render valid snapshot if character is new 1`] = `
-<Modal
+<Styled(Modal)
   backdrop={true}
   data-spec="upsert-character-modal"
   isOpen={true}
@@ -127,5 +127,5 @@ exports[`rendering snapshots should render valid snapshot if character is new 1`
       </Button>
     </ModalFooter>
   </AvForm>
-</Modal>
+</Styled(Modal)>
 `;

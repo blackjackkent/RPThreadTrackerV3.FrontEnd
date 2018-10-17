@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Style
+<styled.footer
   className="app-footer"
 >
   <a
@@ -40,11 +40,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       CoreUI
     </a>
   </span>
-</Style>
+</styled.footer>
 `;
 
 exports[`rendering snapshots should render valid snapshot when light theme 1`] = `
-<Style
+<styled.footer
   className="app-footer"
 >
   <a
@@ -83,5 +83,5 @@ exports[`rendering snapshots should render valid snapshot when light theme 1`] =
       CoreUI
     </a>
   </span>
-</Style>
+</styled.footer>
 `;

@@ -10,7 +10,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     }
   }
 >
-  <Style
+  <styled.div
     className="lds-spinner "
     style={
       Object {
@@ -31,7 +31,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     <div />
     <div />
     <div />
-  </Style>
+  </styled.div>
 </div>
 `;
 
@@ -46,7 +46,7 @@ exports[`rendering snapshots should render valid snapshot with passed props 1`] 
     }
   }
 >
-  <Style
+  <styled.div
     className="lds-spinner my-test-class"
     style={
       Object {
@@ -67,6 +67,6 @@ exports[`rendering snapshots should render valid snapshot with passed props 1`] 
     <div />
     <div />
     <div />
-  </Style>
+  </styled.div>
 </div>
 `;

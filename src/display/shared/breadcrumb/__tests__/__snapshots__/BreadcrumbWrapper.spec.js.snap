@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Style
+<styled.div
   className="breadcrumb-wrapper"
 >
   <Route
@@ -9,11 +9,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     isLoadingIconVisible={false}
     path="/:path"
   />
-</Style>
+</styled.div>
 `;
 
 exports[`rendering snapshots should render valid snapshot when loading icon visible 1`] = `
-<Style
+<styled.div
   className="breadcrumb-wrapper"
 >
   <div
@@ -29,5 +29,5 @@ exports[`rendering snapshots should render valid snapshot when loading icon visi
     isLoadingIconVisible={true}
     path="/:path"
   />
-</Style>
+</styled.div>
 `;

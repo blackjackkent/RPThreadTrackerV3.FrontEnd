@@ -4,8 +4,6 @@ import { shallow } from 'enzyme';
 import LoadingIndicator from '../LoadingIndicator';
 // #endregion imports
 
-jest.mock('../_styles', () => 'Style');
-
 const createTestProps = propOverrides => ({
 	...propOverrides
 });

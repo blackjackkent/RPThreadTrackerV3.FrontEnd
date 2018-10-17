@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Style
+<styled.header
   className="app-header navbar"
 >
   <HeaderLogoBlock
@@ -40,5 +40,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
     />
   </Nav>
-</Style>
+</styled.header>
 `;

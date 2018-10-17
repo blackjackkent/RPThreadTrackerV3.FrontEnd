@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot when threads are loading 1`] = `
-<Card
+<Styled(Card)
   className="recent-activity-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -30,13 +29,12 @@ exports[`rendering snapshots should render valid snapshot when threads are loadi
       }
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has no active characters 1`] = `
-<Card
+<Styled(Card)
   className="recent-activity-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -52,13 +50,12 @@ exports[`rendering snapshots should render valid snapshot when user has no activ
   >
     <NoActiveCharactersMessage />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has no characters 1`] = `
-<Card
+<Styled(Card)
   className="recent-activity-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -74,13 +71,12 @@ exports[`rendering snapshots should render valid snapshot when user has no chara
   >
     <NoCharactersMessage />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has no recent activity 1`] = `
-<Card
+<Styled(Card)
   className="recent-activity-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -96,13 +92,12 @@ exports[`rendering snapshots should render valid snapshot when user has no recen
   >
     <NoRecentActivityMessage />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has no threads 1`] = `
-<Card
+<Styled(Card)
   className="recent-activity-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -118,13 +113,12 @@ exports[`rendering snapshots should render valid snapshot when user has no threa
   >
     <NoThreadsMessage />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has recent activity 1`] = `
-<Card
+<Styled(Card)
   className="recent-activity-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -169,5 +163,5 @@ exports[`rendering snapshots should render valid snapshot when user has recent a
       }
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

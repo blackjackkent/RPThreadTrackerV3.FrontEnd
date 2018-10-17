@@ -5,7 +5,6 @@ import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
 import BreadcrumbWrapper from '../BreadcrumbWrapper';
 // #endregion imports
 
-jest.mock('../_styles', () => 'Style');
 jest.mock('../Breadcrumbs', () => () => 'Breadcrumbs');
 jest.mock('../../loading/LoadingIndicator', () => () => 'LoadingIndicator');
 
