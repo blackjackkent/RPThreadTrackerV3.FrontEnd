@@ -6,7 +6,6 @@ import StaticTabNav from '../StaticTabNav';
 // #endregion imports
 
 jest.mock('../StaticTabNavItem', () => 'StaticTabNavItem');
-jest.mock('../../styled/Nav', () => 'Nav');
 
 const createTestProps = propOverrides => ({
 	activeTab: 'test-tab',

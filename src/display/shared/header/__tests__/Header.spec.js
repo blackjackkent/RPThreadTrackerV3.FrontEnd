@@ -11,7 +11,6 @@ jest.mock('../components', () => ({
 	HeaderProfileDropdown: () => 'HeaderProfileDropdown',
 	HeaderAddMenuDropdown: () => 'HeaderAddMenuDropdown'
 }));
-jest.mock('../_styles', () => 'Style');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({

@@ -94,12 +94,6 @@ exports[`rendering snapshots should render valid snapshot when loading icon is v
     >
       <LoadingIndicator
         className="invert"
-        style={
-          Object {
-            "height": 50,
-            "width": 50,
-          }
-        }
       />
     </div>
     <h1

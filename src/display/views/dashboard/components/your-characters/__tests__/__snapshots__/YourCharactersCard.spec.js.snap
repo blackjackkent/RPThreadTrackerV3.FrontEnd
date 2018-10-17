@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot when characters are loading 1`] = `
-<Card
+<Styled(Card)
   className="your-characters-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -41,13 +40,12 @@ exports[`rendering snapshots should render valid snapshot when characters are lo
       }
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has active characters 1`] = `
-<Card
+<Styled(Card)
   className="your-characters-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -93,13 +91,12 @@ exports[`rendering snapshots should render valid snapshot when user has active c
       threadCount={30}
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has no active characters 1`] = `
-<Card
+<Styled(Card)
   className="your-characters-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -126,13 +123,12 @@ exports[`rendering snapshots should render valid snapshot when user has no activ
   >
     <NoActiveCharactersMessage />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot when user has no characters 1`] = `
-<Card
+<Styled(Card)
   className="your-characters-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -159,5 +155,5 @@ exports[`rendering snapshots should render valid snapshot when user has no chara
   >
     <NoCharactersMessage />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

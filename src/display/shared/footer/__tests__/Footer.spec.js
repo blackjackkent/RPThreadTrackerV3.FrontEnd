@@ -6,8 +6,6 @@ import Footer from '../Footer';
 // #endregion imports
 
 initMockDateNow();
-jest.mock('../_styles', () => 'Style');
-
 const createTestProps = propOverrides => ({
 	useLightTheme: false,
 	toggleTheme: jest.fn(),

@@ -2,59 +2,8 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <div>
-  <ReactTable
-    AggregatedComponent={[Function]}
-    ExpanderComponent={[Function]}
-    FilterComponent={[Function]}
-    LoadingComponent={[Function]}
-    NoDataComponent={[Function]}
-    PadRowComponent={[Function]}
-    PaginationComponent={[Function]}
-    PivotValueComponent={[Function]}
-    ResizerComponent={[Function]}
-    TableComponent={[Function]}
-    TbodyComponent={[Function]}
-    TdComponent={[Function]}
-    TfootComponent={[Function]}
-    ThComponent={[Function]}
-    TheadComponent={[Function]}
-    TrComponent={[Function]}
-    TrGroupComponent={[Function]}
-    aggregatedKey="_aggregated"
+  <Styled(ReactTable)
     className="-striped"
-    collapseOnDataChange={true}
-    collapseOnPageChange={true}
-    collapseOnSortingChange={true}
-    column={
-      Object {
-        "Aggregated": undefined,
-        "Cell": undefined,
-        "Expander": undefined,
-        "Filter": undefined,
-        "Footer": undefined,
-        "Header": undefined,
-        "Pivot": undefined,
-        "PivotValue": undefined,
-        "aggregate": undefined,
-        "className": "",
-        "filterAll": false,
-        "filterMethod": undefined,
-        "filterable": undefined,
-        "footerClassName": "",
-        "footerStyle": Object {},
-        "getFooterProps": [Function],
-        "getHeaderProps": [Function],
-        "getProps": [Function],
-        "headerClassName": "",
-        "headerStyle": Object {},
-        "minWidth": 100,
-        "resizable": undefined,
-        "show": true,
-        "sortMethod": undefined,
-        "sortable": undefined,
-        "style": Object {},
-      }
-    }
     columns={
       Array [
         Object {},
@@ -80,13 +29,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         },
       ]
     }
-    defaultExpanded={Object {}}
-    defaultFilterMethod={[Function]}
-    defaultFiltered={Array []}
     defaultPageSize={20}
-    defaultResized={Array []}
-    defaultSortDesc={false}
-    defaultSortMethod={[Function]}
     defaultSorted={
       Array [
         Object {
@@ -95,134 +38,16 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         },
       ]
     }
-    expanderDefaults={
-      Object {
-        "filterable": false,
-        "resizable": false,
-        "sortable": false,
-        "width": 35,
-      }
-    }
-    filterable={false}
-    freezeWhenExpanded={false}
-    getLoadingProps={[Function]}
-    getNoDataProps={[Function]}
-    getPaginationProps={[Function]}
-    getProps={[Function]}
-    getResizerProps={[Function]}
-    getTableProps={[Function]}
-    getTbodyProps={[Function]}
-    getTdProps={[Function]}
-    getTfootProps={[Function]}
-    getTfootTdProps={[Function]}
-    getTfootTrProps={[Function]}
-    getTheadFilterProps={[Function]}
-    getTheadFilterThProps={[Function]}
-    getTheadFilterTrProps={[Function]}
-    getTheadGroupProps={[Function]}
-    getTheadGroupThProps={[Function]}
-    getTheadGroupTrProps={[Function]}
-    getTheadProps={[Function]}
-    getTheadThProps={[Function]}
-    getTheadTrProps={[Function]}
-    getTrGroupProps={[Function]}
-    getTrProps={[Function]}
-    groupedByPivotKey="_groupedByPivot"
-    indexKey="_index"
-    loading={false}
-    loadingText="Loading..."
-    multiSort={true}
-    nestingLevelKey="_nestingLevel"
-    nextText="Next"
     noDataText="No Threads Found"
-    ofText="of"
-    onFetchData={[Function]}
-    originalKey="_original"
-    pageSizeOptions={
-      Array [
-        5,
-        10,
-        20,
-        25,
-        50,
-        100,
-      ]
-    }
-    pageText="Page"
-    pivotDefaults={Object {}}
-    pivotIDKey="_pivotID"
-    pivotValKey="_pivotVal"
-    previousText="Previous"
-    resizable={true}
-    resolveData={[Function]}
-    rowsText="rows"
-    showPageJump={true}
-    showPageSizeOptions={true}
-    showPagination={true}
-    showPaginationBottom={true}
     showPaginationTop={true}
-    sortable={true}
-    style={Object {}}
-    subRowsKey="_subRows"
   />
 </div>
 `;
 
 exports[`rendering snapshots should render valid snapshot when loading 1`] = `
 <div>
-  <ReactTable
-    AggregatedComponent={[Function]}
-    ExpanderComponent={[Function]}
-    FilterComponent={[Function]}
-    LoadingComponent={[Function]}
-    NoDataComponent={[Function]}
-    PadRowComponent={[Function]}
-    PaginationComponent={[Function]}
-    PivotValueComponent={[Function]}
-    ResizerComponent={[Function]}
-    TableComponent={[Function]}
-    TbodyComponent={[Function]}
-    TdComponent={[Function]}
-    TfootComponent={[Function]}
-    ThComponent={[Function]}
-    TheadComponent={[Function]}
-    TrComponent={[Function]}
-    TrGroupComponent={[Function]}
-    aggregatedKey="_aggregated"
+  <Styled(ReactTable)
     className="-striped"
-    collapseOnDataChange={true}
-    collapseOnPageChange={true}
-    collapseOnSortingChange={true}
-    column={
-      Object {
-        "Aggregated": undefined,
-        "Cell": undefined,
-        "Expander": undefined,
-        "Filter": undefined,
-        "Footer": undefined,
-        "Header": undefined,
-        "Pivot": undefined,
-        "PivotValue": undefined,
-        "aggregate": undefined,
-        "className": "",
-        "filterAll": false,
-        "filterMethod": undefined,
-        "filterable": undefined,
-        "footerClassName": "",
-        "footerStyle": Object {},
-        "getFooterProps": [Function],
-        "getHeaderProps": [Function],
-        "getProps": [Function],
-        "headerClassName": "",
-        "headerStyle": Object {},
-        "minWidth": 100,
-        "resizable": undefined,
-        "show": true,
-        "sortMethod": undefined,
-        "sortable": undefined,
-        "style": Object {},
-      }
-    }
     columns={
       Array [
         Object {},
@@ -248,13 +73,7 @@ exports[`rendering snapshots should render valid snapshot when loading 1`] = `
         },
       ]
     }
-    defaultExpanded={Object {}}
-    defaultFilterMethod={[Function]}
-    defaultFiltered={Array []}
     defaultPageSize={20}
-    defaultResized={Array []}
-    defaultSortDesc={false}
-    defaultSortMethod={[Function]}
     defaultSorted={
       Array [
         Object {
@@ -263,75 +82,8 @@ exports[`rendering snapshots should render valid snapshot when loading 1`] = `
         },
       ]
     }
-    expanderDefaults={
-      Object {
-        "filterable": false,
-        "resizable": false,
-        "sortable": false,
-        "width": 35,
-      }
-    }
-    filterable={false}
-    freezeWhenExpanded={false}
-    getLoadingProps={[Function]}
-    getNoDataProps={[Function]}
-    getPaginationProps={[Function]}
-    getProps={[Function]}
-    getResizerProps={[Function]}
-    getTableProps={[Function]}
-    getTbodyProps={[Function]}
-    getTdProps={[Function]}
-    getTfootProps={[Function]}
-    getTfootTdProps={[Function]}
-    getTfootTrProps={[Function]}
-    getTheadFilterProps={[Function]}
-    getTheadFilterThProps={[Function]}
-    getTheadFilterTrProps={[Function]}
-    getTheadGroupProps={[Function]}
-    getTheadGroupThProps={[Function]}
-    getTheadGroupTrProps={[Function]}
-    getTheadProps={[Function]}
-    getTheadThProps={[Function]}
-    getTheadTrProps={[Function]}
-    getTrGroupProps={[Function]}
-    getTrProps={[Function]}
-    groupedByPivotKey="_groupedByPivot"
-    indexKey="_index"
-    loading={false}
-    loadingText="Loading..."
-    multiSort={true}
-    nestingLevelKey="_nestingLevel"
-    nextText="Next"
     noDataText="Loading..."
-    ofText="of"
-    onFetchData={[Function]}
-    originalKey="_original"
-    pageSizeOptions={
-      Array [
-        5,
-        10,
-        20,
-        25,
-        50,
-        100,
-      ]
-    }
-    pageText="Page"
-    pivotDefaults={Object {}}
-    pivotIDKey="_pivotID"
-    pivotValKey="_pivotVal"
-    previousText="Previous"
-    resizable={true}
-    resolveData={[Function]}
-    rowsText="rows"
-    showPageJump={true}
-    showPageSizeOptions={true}
-    showPagination={true}
-    showPaginationBottom={true}
     showPaginationTop={true}
-    sortable={true}
-    style={Object {}}
-    subRowsKey="_subRows"
   />
 </div>
 `;

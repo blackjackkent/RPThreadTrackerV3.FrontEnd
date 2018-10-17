@@ -4,7 +4,6 @@ import { shallow } from 'enzyme';
 import Aside from '../Aside';
 // #endregion imports
 
-jest.mock('../_styles', () => 'Style');
 jest.mock('../AsideNewsRow', () => 'AsideNewsRow');
 
 const createTestProps = propOverrides => ({

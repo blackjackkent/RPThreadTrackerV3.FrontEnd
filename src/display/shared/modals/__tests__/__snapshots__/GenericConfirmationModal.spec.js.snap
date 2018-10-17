@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Modal
+<Styled(Modal)
   backdrop={true}
   data-spec="generic-confirmation-modal"
   isOpen={true}
@@ -43,11 +43,11 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       Cancel
     </Button>
   </ModalFooter>
-</Modal>
+</Styled(Modal)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with non-default props 1`] = `
-<Modal
+<Styled(Modal)
   backdrop={true}
   data-spec="generic-confirmation-modal"
   isOpen={true}
@@ -89,5 +89,5 @@ exports[`rendering snapshots should render valid snapshot with non-default props
       Test Cancel
     </Button>
   </ModalFooter>
-</Modal>
+</Styled(Modal)>
 `;
