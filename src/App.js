@@ -17,7 +17,8 @@ import PublicContainer from './display/containers/PublicContainer';
 import AddThreadFromExtensionHandler from './display/containers/AddThreadFromExtensionHandler';
 
 const propTypes = {
-	ui: PropTypes.shape({}).isRequired,
+	isMaintenanceMode: PropTypes.bool.isRequired,
+	useLightTheme: PropTypes.bool.isRequired,
 	loadSiteTheme: PropTypes.func.isRequired
 };
 
@@ -26,28 +27,30 @@ function mapStateToProps(state) {
 		ui
 	} = state;
 	return {
-		ui
+		useLightTheme: ui.useLightTheme,
+		isMaintenanceMode: ui.isMaintenanceMode
 	};
 }
 
 class App extends React.Component {
 	componentDidMount() {
-		const { loadSiteTheme } = this.props;
+		const { loadSiteTheme, useLightTheme } = this.props;
 		loadSiteTheme();
-		this.loadBodyClasses(this.props);
+		this.loadBodyClasses(useLightTheme);
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.loadBodyClasses(nextProps);
+		const { useLightTheme } = nextProps;
+		this.loadBodyClasses(useLightTheme);
 	}
 
-	loadBodyClasses(props) {
-		document.body.classList.toggle('light-theme', props.ui.useLightTheme);
+	loadBodyClasses(useLightTheme) {
+		document.body.classList.toggle('light-theme', useLightTheme);
 	}
 
 	render() {
-		const { ui } = this.props;
-		if (ui.isMaintenanceMode) {
+		const { isMaintenanceMode } = this.props;
+		if (isMaintenanceMode) {
 			return (
 				<Router history={history}>
 					<Route path="*" name="Maintenance" component={Maintenance} />

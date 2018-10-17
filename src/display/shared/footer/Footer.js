@@ -15,9 +15,9 @@ const Footer = (props) => {
 			<a href="http://www.rpthreadtracker.com">RPThreadTracker</a>{' '}
 			&copy; {currentYear} <a href="http://blackjack-software.com">Blackjack Software</a> |{' '}
 			Switch to{' '}
-			<button 
-				type="button" 
-				onKeyPress={toggleTheme} 
+			<button
+				type="button"
+				onKeyPress={toggleTheme}
 				onClick={toggleTheme}
 				data-spec="footer-theme-toggle-button"
 			>

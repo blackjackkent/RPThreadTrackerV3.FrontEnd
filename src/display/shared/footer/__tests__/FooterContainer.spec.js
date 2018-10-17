@@ -1,7 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallow } from 'enzyme';
-import { getSpecWrapper, shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '../../../../../config/tests/helpers.unit';
 import FooterContainer from '../FooterContainer';
 // #endregion imports
 
