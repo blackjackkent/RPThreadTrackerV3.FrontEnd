@@ -10,7 +10,7 @@ jest.mock('../../../infrastructure/selectors', () => ({
 	getCharactersSortedByIdentifier: state => state.sortedCharacters
 }));
 jest.mock('../../shared/modals/ModalContainer', () => 'ModalContainer');
-jest.mock('../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../infrastructure/withPageViewTracker', () => Component => Component);
 jest.mock('../../../utility', () => ({
 	getThreadDataFromExtensionQuery: () => ({ characterId: 3, postId: '13579' })

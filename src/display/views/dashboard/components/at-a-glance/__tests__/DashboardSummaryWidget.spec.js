@@ -6,7 +6,7 @@ import DashboardSummaryWidget from '../DashboardSummaryWidget';
 // #endregion imports
 
 // #region mocks
-jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../../../../../utility/history', () => ({ navigation: { navigateTo: jest.fn() } }));
 // #endregion mocks
 
@@ -41,7 +41,7 @@ describe('behavior', () => {
 			const props = createTestProps();
 			const jsx = (<DashboardSummaryWidget {...props}>Test</DashboardSummaryWidget>);
 			const element = shallow(jsx);
-			element.find('Card').props().onClick();
+			element.find('Styled(Card)').props().onClick();
 			expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
 			expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/my-path');
 		});

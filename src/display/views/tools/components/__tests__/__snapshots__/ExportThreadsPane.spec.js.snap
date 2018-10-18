@@ -5,9 +5,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tabId="export-threads"
   tag="div"
 >
-  <Card
-    tag="div"
-  >
+  <Styled(Card)>
     <CardHeader
       tag="div"
     >
@@ -73,10 +71,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               ]
             }
           >
-            <Label
+            <Styled(Label)
               className="switch switch-sm switch-text switch-info mb-0"
               htmlFor="include-archived-switch"
-              tag="label"
             >
               <Input
                 checked={false}
@@ -95,7 +92,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               <span
                 className="switch-handle"
               />
-            </Label>
+            </Styled(Label)>
           </Col>
         </FormGroup>
         <FormGroup
@@ -139,10 +136,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               ]
             }
           >
-            <Label
+            <Styled(Label)
               className="switch switch-sm switch-text switch-info mb-0"
               htmlFor="include-hiatused-switch"
-              tag="label"
             >
               <Input
                 checked={false}
@@ -161,7 +157,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               <span
                 className="switch-handle"
               />
-            </Label>
+            </Styled(Label)>
           </Col>
         </FormGroup>
       </Form>
@@ -193,6 +189,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </Col>
       </Row>
     </CardBlock>
-  </Card>
+  </Styled(Card)>
 </TabPane>
 `;

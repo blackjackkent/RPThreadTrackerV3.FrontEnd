@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Nav
-} from 'reactstrap';
+import Nav from '../styled/Nav';
 import StaticTabNavItem from './StaticTabNavItem';
 
 const propTypes = {

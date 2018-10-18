@@ -10,7 +10,8 @@ import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
 import * as selectors from '../../../infrastructure/selectors';
-import Footer from '../../shared/footer/Footer';
+import FooterContainer from '../../shared/footer/FooterContainer';
+import Style from './_styles';
 import { legacyPublicSlugs, buildLegacyView } from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
 
@@ -69,7 +70,7 @@ class Public extends Component {
 			publicThreadFilter
 		} = this.props;
 		return (
-			<div className="animated fadeIn">
+			<Style className="animated fadeIn">
 				<PublicHeader title={view.name} slug={slug} isLoadingIconVisible={isLoadingIconVisible} />
 				<PublicThreadFilterSelect
 					setPublicThreadFilter={setPublicThreadFilter}
@@ -85,8 +86,8 @@ class Public extends Component {
 						/>
 					</Col>
 				</Row>
-				<Footer />
-			</div>
+				<FooterContainer />
+			</Style>
 		);
 	}
 }

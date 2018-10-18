@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<div
+<styled.div
   className="animated fadeIn"
 >
   <PublicHeader
@@ -54,6 +54,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
     </Col>
   </Row>
-  <Footer />
-</div>
+  <FooterContainer />
+</styled.div>
 `;

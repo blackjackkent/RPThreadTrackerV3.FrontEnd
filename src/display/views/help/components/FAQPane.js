@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-	TabPane, Card, CardHeader, CardBlock
+	TabPane, CardHeader, CardBlock
 } from 'reactstrap';
+import Card from '../../../shared/styled/Card';
 
 const FAQPane = () => (
 	<TabPane tabId="faq">

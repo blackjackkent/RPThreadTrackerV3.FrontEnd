@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-	Card, CardBlock, Button, Row, Col
+	CardBlock, Button, Row, Col
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import * as actions from '../../../infrastructure/actions';
 import RegisterForm from '../../forms/register/RegisterForm';
 import TooltipForm from '../../forms/TooltipForm';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import Card from '../../shared/styled/Card';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 
 const propTypes = {
 	submitUserRegistration: PropTypes.func.isRequired,

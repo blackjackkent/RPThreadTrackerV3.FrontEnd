@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {

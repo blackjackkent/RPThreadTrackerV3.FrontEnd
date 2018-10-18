@@ -1,25 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<select
-  className="clean-select"
-  data-spec="static-dropdown-nav-select"
-  onChange={[Function]}
-  value="test-tab"
->
-  <option
-    data-spec="static-dropdown-nav-option"
-    key="mock-option-1"
-    value="mock-option-1"
+<styled.span>
+  <select
+    className="clean-select"
+    data-spec="static-dropdown-nav-select"
+    onChange={[Function]}
+    value="test-tab"
   >
-    Mock Option 1
-  </option>
-  <option
-    data-spec="static-dropdown-nav-option"
-    key="mock-option-2"
-    value="mock-option-2"
-  >
-    Mock Option 2
-  </option>
-</select>
+    <option
+      data-spec="static-dropdown-nav-option"
+      key="mock-option-1"
+      value="mock-option-1"
+    >
+      Mock Option 1
+    </option>
+    <option
+      data-spec="static-dropdown-nav-option"
+      key="mock-option-2"
+      value="mock-option-2"
+    >
+      Mock Option 2
+    </option>
+  </select>
+</styled.span>
 `;

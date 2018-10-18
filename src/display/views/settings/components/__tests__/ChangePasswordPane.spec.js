@@ -5,6 +5,7 @@ import { getSpecWrapper } from '../../../../../../config/tests/helpers.unit';
 import ChangePasswordPane from '../ChangePasswordPane';
 // #endregion imports
 
+jest.mock('../../../../forms/TooltipForm', () => 'TooltipForm');
 jest.mock('../../../../forms/change-password/ChangePasswordForm', () => 'ChangePasswordForm');
 
 const createTestProps = propOverrides => ({

@@ -11,11 +11,11 @@ jest.mock('../../../infrastructure/selectors', () => ({
 }));
 jest.mock('../../shared/header/HeaderContainer', () => 'HeaderContainer');
 jest.mock('../../shared/sidebar/Sidebar', () => 'Sidebar');
-jest.mock('../../shared/breadcrumb/Breadcrumb', () => 'Breadcrumb');
+jest.mock('../../shared/breadcrumb/BreadcrumbWrapper', () => 'BreadcrumbWrapper');
 jest.mock('../../shared/aside/AsideContainer', () => 'AsideContainer');
-jest.mock('../../shared/footer/Footer', () => 'Footer');
+jest.mock('../../shared/footer/FooterContainer', () => 'FooterContainer');
 jest.mock('../../shared/modals/ModalContainer', () => 'ModalContainer');
-jest.mock('../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 jest.mock('../../views/dashboard/Dashboard', () => () => 'Dashboard');
 jest.mock('../../views/threads/Threads', () => () => 'Threads');
 jest.mock('../../views/threads/AllThreads', () => () => 'AllThreads');

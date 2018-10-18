@@ -88,9 +88,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
       xs="12"
     >
-      <TabContent
+      <Styled(TabContent)
         activeTab="my-test-tab"
-        tag="div"
       >
         <AboutTrackerPane />
         <SupportGuidesPane />
@@ -98,7 +97,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         <ContactFormPane
           submitContactForm={[MockFunction]}
         />
-      </TabContent>
+      </Styled(TabContent)>
     </Col>
   </Row>
 </div>

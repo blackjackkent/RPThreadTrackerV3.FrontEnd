@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Nav
+<Styled(Nav)
   className="flex-column static-tab-nav"
   data-spec="static-tab-nav"
-  tag="ul"
 >
   <StaticTabNavItem
     activeTab="test-tab"
@@ -24,5 +23,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     tabId="mock-option-2"
     title="Mock Option 2"
   />
-</Nav>
+</Styled(Nav)>
 `;

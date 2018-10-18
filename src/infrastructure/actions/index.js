@@ -54,6 +54,14 @@ export {
 	SET_MAINTENANCE_MODE_ON
 } from './ui/setMaintenanceModeOn';
 export {
+	loadSiteTheme,
+	setSiteTheme,
+	loadSiteThemeSuccess,
+	LOAD_SITE_THEME,
+	SET_SITE_THEME,
+	LOAD_SITE_THEME_SUCCESS
+} from './ui/theme';
+export {
 	TOGGLE_HEADER_PROFILE_DROPDOWN,
 	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,

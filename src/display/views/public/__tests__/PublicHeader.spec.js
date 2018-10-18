@@ -4,6 +4,8 @@ import { shallow } from 'enzyme';
 import PublicHeader from '../PublicHeader';
 // #endregion imports
 
+jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
+
 const createTestProps = propOverrides => ({
 	isLoadingIconVisible: false,
 	slug: 'my-slug',

@@ -15,6 +15,7 @@ const getState = overrides => ({
 	isUntrackCharacterModalOpen: false,
 	isUpsertPublicViewModalOpen: false,
 	isDeletePublicViewModalOpen: false,
+	useLightTheme: false,
 	activeHelpTab: 'about',
 	activeSettingsTab: 'change-password',
 	activeToolsTab: 'export-threads',
@@ -317,6 +318,14 @@ describe('action handling', () => {
 		const result2 = ui(getState({ isMaintenanceMode: true }), action);
 		expect(result.isMaintenanceMode).toBe(true);
 		expect(result2.isMaintenanceMode).toBe(true);
+	});
+	it('should handle LOAD_SITE_THEME_SUCCESS', () => {
+		const action = {
+			type: actions.LOAD_SITE_THEME_SUCCESS,
+			data: true
+		};
+		const result = ui(getState(), action);
+		expect(result.useLightTheme).toBe(true);
 	});
 	it('should handle SUBMIT_USER_LOGOUT', () => {
 		const action = {

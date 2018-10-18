@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<div
+<styled.div
   className="sidebar"
 >
   <nav
@@ -190,5 +190,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </NavItem>
     </Nav>
   </nav>
-</div>
+</styled.div>
 `;

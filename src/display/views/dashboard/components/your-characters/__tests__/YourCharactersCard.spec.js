@@ -9,7 +9,7 @@ import YourCharactersCard from '../YourCharactersCard';
 jest.mock('../YourCharactersCardRow', () => 'YourCharactersCardRow');
 jest.mock('../../NoCharactersMessage', () => 'NoCharactersMessage');
 jest.mock('../../NoActiveCharactersMessage', () => 'NoActiveCharactersMessage');
-jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({

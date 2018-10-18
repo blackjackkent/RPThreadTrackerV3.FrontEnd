@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	Modal, ModalHeader, ModalBody, ModalFooter, Button
+	ModalHeader, ModalBody, ModalFooter, Button
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpsertCharacterForm from '../../forms/upsert-character/UpsertCharacterForm';
 import TooltipForm from '../../forms/TooltipForm';
+import Modal from '../styled/Modal';
 
 const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,

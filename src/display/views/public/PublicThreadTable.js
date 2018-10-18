@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
+import ReactTableContainer from '../../shared/styled/ReactTableContainer';
 
 const propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -29,7 +30,7 @@ const PublicThreadTable = (props) => {
 		isLoadingIconVisible
 	} = props;
 	return (
-		<div>
+		<ReactTableContainer>
 			<ReactTable
 				// eslint-disable-next-line no-return-assign
 				className="-striped"
@@ -45,7 +46,7 @@ const PublicThreadTable = (props) => {
 				showPaginationTop
 				noDataText={isLoadingIconVisible ? 'Loading...' : 'No Threads Found'}
 			/>
-		</div>
+		</ReactTableContainer>
 	);
 };
 PublicThreadTable.propTypes = propTypes;

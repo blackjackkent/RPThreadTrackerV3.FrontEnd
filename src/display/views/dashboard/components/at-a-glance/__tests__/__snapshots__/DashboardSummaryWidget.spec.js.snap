@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Card
+<Styled(Card)
   onClick={[Function]}
-  tag="div"
 >
   <CardBlock
     className="card-body dashboard-summary-widget-card-body"
@@ -39,13 +38,12 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       value="100"
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with loading indicator 1`] = `
-<Card
+<Styled(Card)
   onClick={[Function]}
-  tag="div"
 >
   <CardBlock
     className="card-body dashboard-summary-widget-card-body"
@@ -92,5 +90,5 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
       value="100"
     />
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

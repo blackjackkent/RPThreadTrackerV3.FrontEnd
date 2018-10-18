@@ -54,7 +54,7 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
     <main
       className="main"
     >
-      <Breadcrumb
+      <BreadcrumbWrapper
         isLoadingIconVisible={true}
       />
       <Container
@@ -127,7 +127,7 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
     </main>
     <AsideContainer />
   </div>
-  <Footer />
+  <FooterContainer />
   <ModalContainer />
 </div>
 `;

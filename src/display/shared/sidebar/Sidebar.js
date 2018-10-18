@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { Nav, NavItem } from 'reactstrap';
 import classNames from 'classnames';
 import nav from './_nav';
+import Style from './_styles';
 
 class Sidebar extends Component {
 	render() {
@@ -36,13 +37,13 @@ class Sidebar extends Component {
 
 		// sidebar-nav root
 		return (
-			<div className="sidebar">
+			<Style className="sidebar">
 				<nav className="sidebar-nav">
 					<Nav>
 						{navList(nav.items)}
 					</Nav>
 				</nav>
-			</div>
+			</Style>
 		);
 	}
 }

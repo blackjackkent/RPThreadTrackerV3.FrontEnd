@@ -1,21 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot with empty string 1`] = `
-<Breadcrumb
-  tag="ol"
->
+<Styled(Breadcrumb)>
   <Route
     component={[Function]}
     key="0"
     path="/"
   />
-</Breadcrumb>
+</Styled(Breadcrumb)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with more than one segment path 1`] = `
-<Breadcrumb
-  tag="ol"
->
+<Styled(Breadcrumb)>
   <Route
     component={[Function]}
     key="0"
@@ -31,13 +27,11 @@ exports[`rendering snapshots should render valid snapshot with more than one seg
     key="2"
     path="/test/test2"
   />
-</Breadcrumb>
+</Styled(Breadcrumb)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with one segment path 1`] = `
-<Breadcrumb
-  tag="ol"
->
+<Styled(Breadcrumb)>
   <Route
     component={[Function]}
     key="0"
@@ -48,17 +42,15 @@ exports[`rendering snapshots should render valid snapshot with one segment path 
     key="1"
     path="/test"
   />
-</Breadcrumb>
+</Styled(Breadcrumb)>
 `;
 
 exports[`rendering snapshots should render valid snapshot with root path 1`] = `
-<Breadcrumb
-  tag="ol"
->
+<Styled(Breadcrumb)>
   <Route
     component={[Function]}
     key="0"
     path="/"
   />
-</Breadcrumb>
+</Styled(Breadcrumb)>
 `;

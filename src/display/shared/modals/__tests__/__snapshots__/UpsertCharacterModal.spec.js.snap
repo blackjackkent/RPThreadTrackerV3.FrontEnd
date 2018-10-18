@@ -1,17 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Modal
-  autoFocus={true}
+<Styled(Modal)
   backdrop={true}
-  backdropTransitionTimeout={150}
   data-spec="upsert-character-modal"
-  fade={true}
   isOpen={true}
-  keyboard={true}
-  modalTransitionTimeout={300}
   toggle={[MockFunction]}
-  zIndex={1050}
 >
   <AvForm
     data-spec="upsert-character-modal-form"
@@ -70,21 +64,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </Button>
     </ModalFooter>
   </AvForm>
-</Modal>
+</Styled(Modal)>
 `;
 
 exports[`rendering snapshots should render valid snapshot if character is new 1`] = `
-<Modal
-  autoFocus={true}
+<Styled(Modal)
   backdrop={true}
-  backdropTransitionTimeout={150}
   data-spec="upsert-character-modal"
-  fade={true}
   isOpen={true}
-  keyboard={true}
-  modalTransitionTimeout={300}
   toggle={[MockFunction]}
-  zIndex={1050}
 >
   <AvForm
     data-spec="upsert-character-modal-form"
@@ -139,5 +127,5 @@ exports[`rendering snapshots should render valid snapshot if character is new 1`
       </Button>
     </ModalFooter>
   </AvForm>
-</Modal>
+</Styled(Modal)>
 `;
