@@ -1,9 +1,10 @@
 import React from 'react';
 import {
-	Row, Col, TabPane, Button, FormGroup, Input, Label, Card, CardHeader, CardBlock
+	Row, Col, TabPane, Button, FormGroup, Input, Label, CardHeader, CardBlock
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import PropTypes from 'prop-types';
+import Card from '../../../shared/styled/Card';
 
 const propTypes = {
 	submitContactForm: PropTypes.func.isRequired

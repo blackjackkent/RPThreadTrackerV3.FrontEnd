@@ -1,7 +1,8 @@
 import React from 'react';
 import {
-	Container, Row, Col, Card, CardBlock
+	Container, Row, Col, CardBlock
 } from 'reactstrap';
+import Card from '../shared/styled/Card';
 import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 
 const Maintenance = () => (

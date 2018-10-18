@@ -5,6 +5,7 @@ import { Nav } from 'reactstrap';
 import {
 	HeaderLogoBlock, HeaderAsideToggle, HeaderProfileDropdown, HeaderAddMenuDropdown
 } from './components';
+import Style from './_styles';
 // #endregion imports
 
 const propTypes = {
@@ -24,6 +25,7 @@ const propTypes = {
 	}).isRequired
 };
 
+
 const Header = (props) => {
 	const {
 		asideToggle,
@@ -41,7 +43,7 @@ const Header = (props) => {
 	} = props;
 
 	return (
-		<header className="app-header navbar">
+		<Style className="app-header navbar">
 			<HeaderLogoBlock
 				mobileSidebarToggle={mobileSidebarToggle}
 				sidebarToggle={sidebarToggle}
@@ -66,7 +68,7 @@ const Header = (props) => {
 					user={user}
 				/>
 			</Nav>
-		</header>
+		</Style>
 	);
 };
 

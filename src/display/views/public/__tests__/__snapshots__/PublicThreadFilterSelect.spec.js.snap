@@ -5,40 +5,42 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   className="public-view-filter-select"
   tag="div"
 >
-  <Input
-    className="clean-select"
-    id="tag"
-    name="tag"
-    onChange={[Function]}
-    tag="p"
-    type="select"
-    value="ALL"
-  >
-    <option
-      value="All"
+  <styled.span>
+    <Input
+      className="clean-select"
+      id="tag"
+      name="tag"
+      onChange={[Function]}
+      tag="p"
+      type="select"
+      value="ALL"
     >
-      Show All
-    </option>
-    <option
-      value="My Turn"
-    >
-      Show Only My Turn
-    </option>
-    <option
-      value="Partner's Turn"
-    >
-      Show Only Partner's Turn
-    </option>
-    <option
-      value="Queued"
-    >
-      Show Only Currently Queued
-    </option>
-    <option
-      value="Archived"
-    >
-      Show Only Archived
-    </option>
-  </Input>
+      <option
+        value="All"
+      >
+        Show All
+      </option>
+      <option
+        value="My Turn"
+      >
+        Show Only My Turn
+      </option>
+      <option
+        value="Partner's Turn"
+      >
+        Show Only Partner's Turn
+      </option>
+      <option
+        value="Queued"
+      >
+        Show Only Currently Queued
+      </option>
+      <option
+        value="Archived"
+      >
+        Show Only Archived
+      </option>
+    </Input>
+  </styled.span>
 </FormGroup>
 `;

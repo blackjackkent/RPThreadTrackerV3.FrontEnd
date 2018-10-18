@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import {
-	Card, CardBlock, Button, Row, Col
+	CardBlock, Button, Row, Col
 } from 'reactstrap';
 import * as actions from '../../../infrastructure/actions';
 import TooltipForm from '../../forms/TooltipForm';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import Card from '../../shared/styled/Card';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
 import { getQuery } from '../../../utility';
 

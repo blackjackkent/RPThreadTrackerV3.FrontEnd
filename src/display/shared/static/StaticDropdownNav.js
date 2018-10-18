@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import CleanSelect from '../styled/CleanSelect';
 
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
@@ -12,14 +13,16 @@ const StaticDropdownNav = (props) => {
 		<option value={o.tabId} key={o.tabId} data-spec="static-dropdown-nav-option">{o.name}</option>
 	));
 	return (
-		<select
-			className="clean-select"
-			onChange={e => setActiveTab(e.target.value)}
-			value={activeTab}
-			data-spec="static-dropdown-nav-select"
-		>
-			{optionElements}
-		</select>
+		<CleanSelect>
+			<select
+				className="clean-select"
+				onChange={e => setActiveTab(e.target.value)}
+				value={activeTab}
+				data-spec="static-dropdown-nav-select"
+			>
+				{optionElements}
+			</select>
+		</CleanSelect>
 	);
 };
 StaticDropdownNav.propTypes = propTypes;

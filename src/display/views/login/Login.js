@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
-	Row, Col, Card, CardBlock, Button
+	Row, Col, CardBlock, Button
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LoginForm from '../../forms/login/LoginForm';
 import * as actions from '../../../infrastructure/actions';
-import LoadingIndicator from '../../shared/LoadingIndicator';
+import Card from '../../shared/styled/Card';
+import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {

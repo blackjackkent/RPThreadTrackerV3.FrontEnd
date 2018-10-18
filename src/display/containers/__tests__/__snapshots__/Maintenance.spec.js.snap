@@ -24,9 +24,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           ]
         }
       >
-        <Card
+        <Styled(Card)
           className="login-box p-4"
-          tag="div"
         >
           <CardBlock
             className="card-body"
@@ -63,7 +62,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               for further information and updates.
             </p>
           </CardBlock>
-        </Card>
+        </Styled(Card)>
       </Col>
     </Row>
   </Container>

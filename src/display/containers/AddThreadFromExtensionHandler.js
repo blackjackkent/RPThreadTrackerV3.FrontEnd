@@ -2,14 +2,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-	Container, Row, Col, Card, CardBlock
+	Container, Row, Col, CardBlock
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import * as actions from '../../infrastructure/actions';
 import * as selectors from '../../infrastructure/selectors';
 
-import LoadingIndicator from '../shared/LoadingIndicator';
+import Card from '../shared/styled/Card';
+import LoadingIndicator from '../shared/loading/LoadingIndicator';
 import ModalContainer from '../shared/modals/ModalContainer';
 
 import withPageViewTracker from '../../infrastructure/withPageViewTracker';

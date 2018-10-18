@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 import axios from 'axios';
 import cache from '../../cache';
+import cacheKeys from '../../constants/cacheKeys';
 import { navigation } from '../../../utility/history';
 
 import {
@@ -15,8 +16,8 @@ import {
 function* submitUserLogin(action) {
 	try {
 		const response = yield call(axios.post, `${API_BASE_URL}api/auth/token`, action.data);
-		cache.set('accessToken', response.data.token.token);
-		cache.set('refreshToken', response.data.refreshToken.token);
+		cache.set(cacheKeys.ACCESS_TOKEN, response.data.token.token);
+		cache.set(cacheKeys.REFRESH_TOKEN, response.data.refreshToken.token);
 		navigation.navigateTo('/dashboard');
 		yield put(submitUserLoginSuccess());
 	} catch (e) {

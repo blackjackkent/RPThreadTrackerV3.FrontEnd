@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<Card
+<Styled(Card)
   className="patreon-card"
-  tag="div"
 >
   <CardHeader
     tag="div"
@@ -52,5 +51,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </form>
     </div>
   </CardBlock>
-</Card>
+</Styled(Card)>
 `;

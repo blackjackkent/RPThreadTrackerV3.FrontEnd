@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from 'react-table';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
+import ReactTable from 'react-table';
+import ReactTableContainer from '../../../shared/styled/ReactTableContainer';
 
 const CheckboxTableHOC = checkboxHOC(ReactTable);
 const propTypes = {
@@ -99,7 +100,7 @@ class CheckboxTable extends React.Component {
 			selectType: 'checkbox'
 		};
 		return (
-			<div>
+			<ReactTableContainer>
 				<CheckboxTableHOC
 					ref={
 						/* istanbul ignore next */
@@ -118,7 +119,7 @@ class CheckboxTable extends React.Component {
 					SubComponent={SubComponent}
 					{...checkboxProps}
 				/>
-			</div>
+			</ReactTableContainer>
 		);
 	}
 }

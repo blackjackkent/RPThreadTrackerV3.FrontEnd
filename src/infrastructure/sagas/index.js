@@ -13,6 +13,9 @@ export { default as submitUserAccountInfoSaga } from './user/submitUserAccountIn
 // UserSettings
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
 export { default as updateUserSettingsSaga } from './userSettings/updateUserSettingsSaga';
+// UI
+export { default as loadSiteThemeSaga } from './ui/loadSiteThemeSaga';
+export { default as setSiteThemeSaga } from './ui/setSiteThemeSaga';
 // Threads
 export { default as exportThreadsSaga } from './threads/exportThreadsSaga';
 export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsSaga';

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBlock } from 'reactstrap';
+import Card from '../../../../shared/styled/Card';
 
 const TrackerSupportCard = () => (
 	<Card className="patreon-card">

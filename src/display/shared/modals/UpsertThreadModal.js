@@ -2,11 +2,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-	Modal, ModalHeader, ModalBody, ModalFooter, Button
+	ModalHeader, ModalBody, ModalFooter, Button
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import TooltipForm from '../../forms/TooltipForm';
 import UpsertThreadForm from '../../forms/upsert-thread/UpsertThreadForm';
+import Modal from '../styled/Modal';
 // #endregion imports
 
 const propTypes = {

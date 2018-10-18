@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Form, FormGroup, Col, Label, Row, Input, Button, Card, CardHeader, CardBlock
+	TabPane, Form, FormGroup, Col, Label, Row, Input, Button, CardHeader, CardBlock
 } from 'reactstrap';
+import Card from '../../../shared/styled/Card';
+import SwitchLabel from '../../../shared/styled/SwitchLabel';
 
 const propTypes = {
 	onExportRequest: PropTypes.func.isRequired
@@ -53,7 +55,7 @@ class ExportThreadsPane extends Component {
 									<Label htmlFor="current-password">Include Archived Threads:</Label>
 								</Col>
 								<Col>
-									<Label
+									<SwitchLabel
 										htmlFor="include-archived-switch"
 										className="switch switch-sm switch-text switch-info mb-0"
 									>
@@ -67,7 +69,7 @@ class ExportThreadsPane extends Component {
 										/>
 										<span className="switch-label" data-on="Yes" data-off="No" />
 										<span className="switch-handle" />
-									</Label>
+									</SwitchLabel>
 								</Col>
 							</FormGroup>
 							<FormGroup row>
@@ -75,7 +77,7 @@ class ExportThreadsPane extends Component {
 									<Label htmlFor="current-password">Include Characters on Hiatus:</Label>
 								</Col>
 								<Col>
-									<Label
+									<SwitchLabel
 										htmlFor="include-hiatused-switch"
 										className="switch switch-sm switch-text switch-info mb-0"
 									>
@@ -89,7 +91,7 @@ class ExportThreadsPane extends Component {
 										/>
 										<span className="switch-label" data-on="Yes" data-off="No" />
 										<span className="switch-handle" />
-									</Label>
+									</SwitchLabel>
 								</Col>
 							</FormGroup>
 						</Form>

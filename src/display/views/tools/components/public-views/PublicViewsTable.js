@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import columns from './_columns';
 import getTdProps from './_getTdProps';
+import ReactTableContainer from '../../../../shared/styled/ReactTableContainer';
 
 const propTypes = {
 	username: PropTypes.string.isRequired,
@@ -21,7 +22,7 @@ const PublicViewsTable = (props) => {
 		username
 	} = props;
 	return (
-		<div className="public-views-table">
+		<ReactTableContainer className="public-views-table">
 			<ReactTable
 				className="-striped"
 				data={publicViews}
@@ -34,7 +35,7 @@ const PublicViewsTable = (props) => {
 				)}
 				noDataText={isLoadingIconVisible ? 'Loading...' : 'You have not yet created any public views.'}
 			/>
-		</div>
+		</ReactTableContainer>
 	);
 };
 PublicViewsTable.propTypes = propTypes;

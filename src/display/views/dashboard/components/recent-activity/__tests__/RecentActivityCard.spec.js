@@ -11,7 +11,7 @@ jest.mock('../../NoThreadsMessage', () => 'NoThreadsMessage');
 jest.mock('../../NoCharactersMessage', () => 'NoCharactersMessage');
 jest.mock('../../NoActiveCharactersMessage', () => 'NoActiveCharactersMessage');
 jest.mock('../../NoRecentActivityMessage', () => 'NoRecentActivityMessage');
-jest.mock('../../../../../shared/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('../../../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({

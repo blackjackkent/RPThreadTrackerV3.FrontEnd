@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<footer
+<styled.footer
   className="app-footer"
 >
   <a
@@ -9,7 +9,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     RPThreadTracker
   </a>
-   © 
+   
+  © 
   1989
    
   <a
@@ -17,6 +18,18 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     Blackjack Software
   </a>
+   |
+   
+  Switch to
+   
+  <button
+    data-spec="footer-theme-toggle-button"
+    onClick={[MockFunction]}
+    onKeyPress={[MockFunction]}
+    type="button"
+  >
+    light theme
+  </button>
   <span
     className="float-right"
   >
@@ -27,5 +40,48 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       CoreUI
     </a>
   </span>
-</footer>
+</styled.footer>
+`;
+
+exports[`rendering snapshots should render valid snapshot when light theme 1`] = `
+<styled.footer
+  className="app-footer"
+>
+  <a
+    href="http://www.rpthreadtracker.com"
+  >
+    RPThreadTracker
+  </a>
+   
+  © 
+  1989
+   
+  <a
+    href="http://blackjack-software.com"
+  >
+    Blackjack Software
+  </a>
+   |
+   
+  Switch to
+   
+  <button
+    data-spec="footer-theme-toggle-button"
+    onClick={[MockFunction]}
+    onKeyPress={[MockFunction]}
+    type="button"
+  >
+    dark theme
+  </button>
+  <span
+    className="float-right"
+  >
+    Powered by 
+    <a
+      href="http://coreui.io"
+    >
+      CoreUI
+    </a>
+  </span>
+</styled.footer>
 `;

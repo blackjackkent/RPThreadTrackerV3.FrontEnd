@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	Row, Col, TabContent
+	Row, Col
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -9,6 +9,7 @@ import SupportGuidesPane from './components/SupportGuidesPane';
 import ContactFormPane from './components/ContactFormPane';
 import * as actions from '../../../infrastructure/actions';
 import tabs from '../../../infrastructure/constants/tabs';
+import TabContent from '../../shared/styled/TabContent';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import FAQPane from './components/FAQPane';
