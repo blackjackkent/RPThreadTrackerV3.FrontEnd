@@ -4,6 +4,7 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CurrentCharacterTable from './components/CurrentCharacterTable';
+import Style from './_styles';
 import * as selectors from '../../../infrastructure/selectors';
 import * as actions from '../../../infrastructure/actions';
 // #endregion imports
@@ -70,7 +71,7 @@ class ManageCharacters extends Component {
 			openUntrackCharacterModal
 		} = this.props;
 		return (
-			<div className="animated fadeIn">
+			<Style className="animated fadeIn">
 				<Row>
 					<Col>
 						<CurrentCharacterTable
@@ -84,7 +85,7 @@ class ManageCharacters extends Component {
 						/>
 					</Col>
 				</Row>
-			</div>
+			</Style>
 		);
 	}
 }

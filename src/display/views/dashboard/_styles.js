@@ -81,12 +81,10 @@ export default styled.div`
 
 	.light-theme & {
 		.at-a-glance-card > .card-body .card {  
-			border-bottom: 1px solid ${colors.GRAY_100}; 
-			border-right: 1px solid ${colors.GRAY_100}; 
+			border-color: ${colors.GRAY_100}
 		}
 		.recent-activity-card .row,
 		.your-characters-card .row { 
-			border-bottom: 1px solid ${colors.GRAY_100}; 
 		}
 		.random-thread-result { 
 			padding: 10px; 
@@ -96,7 +94,6 @@ export default styled.div`
 		@media (min-width: 768px) {
 			// above 768px
 			.at-a-glance-card > .card-body .card { 
-				border-left: 1px solid ${colors.GRAY_200};
 			}
 		}
 	}
