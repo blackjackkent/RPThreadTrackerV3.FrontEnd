@@ -153,9 +153,9 @@ const lightTheme = `
 		}
 		.rt-thead.-header .rt-th,
 		.rt-thead .rt-td {
-			border: 1px solid ${colors.GRAY_300};
+			border: 1px solid ${colors.GRAY_250};
 			background: ${colors.GRAY_200};
-			border-left: 1px solid ${colors.GRAY_300};
+			border-left: 1px solid ${colors.GRAY_250};
 		}
 		.rt-thead .rt-th:last-child,
 		.rt-thead .rt-td:last-child {
