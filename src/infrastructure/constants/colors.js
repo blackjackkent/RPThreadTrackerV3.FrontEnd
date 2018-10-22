@@ -3,6 +3,7 @@ export default {
 	GRAY_050: '#f6f6f6',
 	GRAY_100: '#ddd',
 	GRAY_200: '#bbb',
+	GRAY_250: '#aaa',
 	GRAY_300: '#999',
 	GRAY_400: '#777',
 	GRAY_500: '#666',
