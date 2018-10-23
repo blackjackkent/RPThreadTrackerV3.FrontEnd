@@ -13,5 +13,4 @@ RUN yarn
 RUN npm rebuild node-sass
 
 # start app
-# CMD ["yarn", "start"]
-CMD ["ls"]
+CMD ["yarn", "start"]
