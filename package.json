@@ -105,6 +105,7 @@
 	},
 	"scripts": {
 		"start": "webpack-dev-server --history-api-fallback --config webpack.dev.js",
+		"start:docker": "yarn start --host 0.0.0.0",
 		"build": "yarn clean && webpack --config webpack.prod.js",
 		"build:staging": "yarn clean && webpack --config webpack.staging.js",
 		"build:serve": "yarn clean && yarn build && http-serve ./build --gzip -f /",

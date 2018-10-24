@@ -20,6 +20,10 @@ module.exports = merge(common, {
 		open: true,
 		overlay: true
 	},
+	watchOptions: {
+		poll: true,
+		ignored: /node_modules/
+	},
 	module: {
 		rules: [
 			{
