@@ -68,11 +68,9 @@ class App extends React.Component {
 					{
 						['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
 					}
-					<Route
-						path="/public/:username/:slug"
-						name="Public"
-						component={PublicContainer}
-					/>
+					{
+						['/public/:username/:slug', '/public/:slug'].map(path => <Route key={path} path={path} component={PublicContainer} />)
+					}
 					<Route
 						path="/add-thread"
 						name="AddThreadFromExtensionHandler"

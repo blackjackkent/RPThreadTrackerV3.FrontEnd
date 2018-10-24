@@ -64,6 +64,7 @@ import {
 	SUBMIT_USER_ACCOUNT_INFO_FAILURE,
 	SUBMIT_USER_ACCOUNT_INFO_SUCCESS,
 	FETCH_PUBLIC_THREADS,
+	FETCH_LEGACY_PUBLIC_THREADS,
 	FETCHED_PUBLIC_THREADS_FAILURE,
 	FETCHED_PUBLIC_THREADS_STATUS_FAILURE,
 	FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
@@ -242,6 +243,7 @@ function loading(state = defaultState, action) {
 		// #endregion
 		// #region Public Threads
 		case FETCH_PUBLIC_THREADS:
+		case FETCH_LEGACY_PUBLIC_THREADS:
 			return Object.assign({}, state, {
 				publicThreadsLoading: true
 			});

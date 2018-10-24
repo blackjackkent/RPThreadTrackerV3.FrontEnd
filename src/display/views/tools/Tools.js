@@ -8,6 +8,7 @@ import TabContent from '../../shared/styled/TabContent';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import * as actions from '../../../infrastructure/actions';
+import Style from './_styles';
 import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
@@ -102,7 +103,7 @@ class Tools extends Component {
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
-			<div className="animated fadeIn static-container settings-container">
+			<Style className="animated fadeIn static-container settings-container">
 				<Row>
 					<Col className="d-lg-none text-center">
 						<StaticDropdownNav
@@ -136,7 +137,7 @@ class Tools extends Component {
 						</TabContent>
 					</Col>
 				</Row>
-			</div>
+			</Style>
 		);
 	}
 }

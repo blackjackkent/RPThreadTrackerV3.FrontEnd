@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
-<div
+<styled.div
   className="animated fadeIn static-container settings-container"
 >
   <Row
@@ -112,5 +112,5 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       </Styled(TabContent)>
     </Col>
   </Row>
-</div>
+</styled.div>
 `;

@@ -405,6 +405,13 @@ describe('action handling', () => {
 			const result = loading(getState(), action);
 			expect(result.publicThreadsLoading).toBe(true);
 		});
+		it('should handle FETCH_LEGACY_PUBLIC_THREADS', () => {
+			const action = {
+				type: actions.FETCH_LEGACY_PUBLIC_THREADS
+			};
+			const result = loading(getState(), action);
+			expect(result.publicThreadsLoading).toBe(true);
+		});
 		it('should handle FETCHED_PUBLIC_THREADS_FAILURE', () => {
 			const initialState = getState({ publicThreadsLoading: true });
 			const action = {
