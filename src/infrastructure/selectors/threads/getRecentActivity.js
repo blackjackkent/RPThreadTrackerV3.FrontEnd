@@ -3,12 +3,15 @@ import filters from '../../constants/filters';
 import { buildThreadDataByPredicate, shouldProcessThreads } from '../common';
 
 function sortByLastPostDate(a, b) {
+	/* istanbul ignore if */
 	if (!a.status && !b.status) {
 		return 0;
 	}
+	/* istanbul ignore if */
 	if (!a.status) {
 		return 1;
 	}
+	/* istanbul ignore if */
 	if (!b.status) {
 		return -1;
 	}

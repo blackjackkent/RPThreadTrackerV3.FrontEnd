@@ -23,8 +23,38 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
          
         <a
           href="https://youtu.be/R7psA53V-9E"
+          rel="noopener noreferrer"
+          target="_blank"
         >
           Video 
+          <i
+            className="fas fa-external-link-alt"
+          />
+        </a>
+      </p>
+      <p>
+        How to Manage Public Views ~
+         
+        <a
+          href="http://tblrthreadtracker.tumblr.com/post/178908061196/guide-to-managing-public-views-in-rpthreadtracker"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Text Guide 
+          <i
+            className="fas fa-external-link-alt"
+          />
+        </a>
+      </p>
+      <p>
+        How to Mark Tumblr Threads as Queued ~ 
+         
+        <a
+          href="http://tblrthreadtracker.tumblr.com/post/179393749936/how-to-mark-tumblr-threads-as-queued-on"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Text Guide 
           <i
             className="fas fa-external-link-alt"
           />

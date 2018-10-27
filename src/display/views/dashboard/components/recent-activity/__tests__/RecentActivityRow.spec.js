@@ -19,6 +19,13 @@ describe('rendering', () => {
 			const element = shallow(<RecentActivityRow {...createTestProps()} />);
 			expect(element).toMatchSnapshot();
 		});
+		it('should render valid snapshot with null status', () => {
+			const props = createTestProps({
+				threadData: { status: null, thread: { userTitle: 'Test Title' } }
+			});
+			const element = shallow(<RecentActivityRow {...props} />);
+			expect(element).toMatchSnapshot();
+		});
 	});
 });
 
