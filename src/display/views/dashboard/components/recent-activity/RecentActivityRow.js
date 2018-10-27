@@ -18,24 +18,33 @@ const RecentActivityRow = (props) => {
 		<Row>
 			<Col xs="12" sm="6">
 				<div>
-					<a target="_blank" rel="noopener noreferrer" href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a>
+					{threadData.status && <a target="_blank" rel="noopener noreferrer" href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a>}
+					{!threadData.status && <span>{threadData.thread.userTitle}</span>}
 				</div>
 				<div className="small ">
-					Last Post by{' '}
-					<a
-						target="_blank"
-						rel="noopener noreferrer"
-						href={threadData.status.lastPostUrl}
-					>
-						{threadData.status.lastPosterUrlIdentifier}
-					</a>
+					{threadData.status && (
+						<span>Last Post by{' '}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href={threadData.status.lastPostUrl}
+							>
+								{threadData.status.lastPosterUrlIdentifier}
+							</a>
+						</span>
+					)}
 				</div>
 			</Col>
 			<Col sm="6" xs="12" className="text-right">
 				<div>
-					<Moment format="MMMM D, YYYY">
-						{threadData.status.lastPostDate}
-					</Moment>
+					{threadData.status && (
+						<Moment format="MMMM D, YYYY">
+							{threadData.status.lastPostDate}
+						</Moment>
+					)}
+					{!threadData.status && !threadData.thread.postId && (
+						<span>Awaiting Starter</span>
+					)}
 				</div>
 				<div className="small">
 					<button
