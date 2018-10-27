@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 import filters from '../../../../constants/filters';
-import { filterThreadsByTag, buildThreadDataByPredicate } from '../../../common';
+import { filterThreadsByTag, buildThreadDataByPredicate, shouldProcessThreads } from '../../../common';
 
 const filteredTag = state => (state.threadFilter ? state.threadFilter.filteredTag : null);
 const getAllActiveThreads = state => state.activeThreads;
@@ -8,7 +8,7 @@ const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getAllActiveFilteredThreads = createSelector(
 	[getAllActiveThreads, getAllActiveThreadStatus, filteredTag],
 	(threads, threadsStatus, tag) => {
-		if (!threads.length || !threadsStatus.length) {
+		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];
 		}
 		const results = buildThreadDataByPredicate(

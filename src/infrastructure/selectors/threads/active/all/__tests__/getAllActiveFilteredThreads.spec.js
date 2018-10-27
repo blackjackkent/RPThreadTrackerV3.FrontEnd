@@ -5,7 +5,8 @@ import getAllActiveFilteredThreads from '../getAllActiveFilteredThreads';
 
 jest.mock('../../../../common', () => ({
 	filterThreadsByTag: jest.fn(),
-	buildThreadDataByPredicate: jest.fn()
+	buildThreadDataByPredicate: jest.fn(),
+	shouldProcessThreads: jest.fn()
 }));
 jest.mock('../../../../../constants/filters', () => ({
 	ALL: jest.fn()
@@ -51,23 +52,17 @@ beforeEach(() => {
 });
 
 describe('behavior', () => {
-	it('should return empty array when no threads on state', () => {
+	it('should return empty array when shouldProcessThreads is false', () => {
 		const state = {
 			activeThreads: { threads: [] },
 			activeThreadsStatus: [{}, {}, {}]
 		};
-		const result = getAllActiveFilteredThreads(state);
-		expect(result).toEqual([]);
-	});
-	it('should return empty array when no statuses on state', () => {
-		const state = {
-			activeThreads: { threads: [{}, {}, {}] },
-			activeThreadsStatus: []
-		};
+		common.shouldProcessThreads.mockReturnValue(false);
 		const result = getAllActiveFilteredThreads(state);
 		expect(result).toEqual([]);
 	});
 	it('should return all items when no threadFilter on state', () => {
+		common.shouldProcessThreads.mockReturnValue(true);
 		when(common.buildThreadDataByPredicate)
 			.calledWith(
 				expect.arrayContaining(getThreads()),
