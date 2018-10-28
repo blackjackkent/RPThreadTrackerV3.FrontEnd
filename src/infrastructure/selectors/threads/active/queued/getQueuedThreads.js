@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
-import { buildThreadDataByPredicate } from '../../../common';
+import { buildThreadDataByPredicate, shouldProcessThreads } from '../../../common';
 
 const getAllActiveThreads = state => state.activeThreads;
 const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getQueuedThreads = createSelector(
 	[getAllActiveThreads, getAllActiveThreadStatus],
 	(threads, threadsStatus) => {
-		if (!threads.length || !threadsStatus.length) {
+		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];
 		}
 		return buildThreadDataByPredicate(threads, threadsStatus, s => s && s.isQueued);

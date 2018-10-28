@@ -30,15 +30,17 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     <div
       className="small "
     >
-      Last Post by
-       
-      <a
-        href="http://www.mylastpost.com"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        last-poster
-      </a>
+      <span>
+        Last Post by
+         
+        <a
+          href="http://www.mylastpost.com"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          last-poster
+        </a>
+      </span>
     </div>
   </Col>
   <Col
@@ -72,6 +74,86 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         1989-06-05 3:14PM
       </t>
+    </div>
+    <div
+      className="small"
+    >
+      <button
+        data-spec="recent-activity-row-untrack-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Untrack
+      </button>
+       •
+       
+      <button
+        data-spec="recent-activity-row-archive-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Archive
+      </button>
+       •
+       
+      <button
+        data-spec="recent-activity-row-queue-button"
+        onClick={[Function]}
+        type="button"
+      >
+        Mark Queued
+      </button>
+    </div>
+  </Col>
+</Row>
+`;
+
+exports[`rendering snapshots should render valid snapshot with null status 1`] = `
+<Row
+  tag="div"
+>
+  <Col
+    sm="6"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+    xs="12"
+  >
+    <div>
+      <span>
+        Test Title
+      </span>
+    </div>
+    <div
+      className="small "
+    />
+  </Col>
+  <Col
+    className="text-right"
+    sm="6"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+    xs="12"
+  >
+    <div>
+      <span>
+        Awaiting Starter
+      </span>
     </div>
     <div
       className="small"

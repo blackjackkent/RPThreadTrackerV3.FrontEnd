@@ -1,0 +1,6 @@
+codecov:
+  branch: development
+coverage:
+  status:
+    project: yes
+    patch: no

@@ -5,7 +5,8 @@ import getPublicThreads from '../getPublicThreads';
 
 jest.mock('../../common', () => ({
 	buildThreadDataByPredicate: jest.fn(),
-	filterThreadsByPublicViewFilter: jest.fn()
+	filterThreadsByPublicViewFilter: jest.fn(),
+	shouldProcessThreads: jest.fn()
 }));
 jest.mock('../../../constants/filters', () => ({
 	ALL: jest.fn()
@@ -47,24 +48,21 @@ const getFilterOutput = () => [
 	{ thread: { threadId: 7 }, status: { postId: 7 } }
 ];
 
+beforeEach(() => {
+	jest.resetAllMocks();
+});
 describe('behavior', () => {
-	it('should return empty array when no threads on state', () => {
+	it('should return empty array when shouldProcessThreads is false', () => {
 		const state = {
 			publicThreads: { threads: [] },
 			publicThreadsStatus: [{}, {}, {}]
 		};
-		const result = getPublicThreads(state);
-		expect(result).toEqual([]);
-	});
-	it('should return empty array when no statuses on state', () => {
-		const state = {
-			publicThreads: { threads: [{}, {}, {}] },
-			publicThreadsStatus: []
-		};
+		common.shouldProcessThreads.mockReturnValue(false);
 		const result = getPublicThreads(state);
 		expect(result).toEqual([]);
 	});
 	it('should return top five items by date', () => {
+		common.shouldProcessThreads.mockReturnValue(true);
 		when(common.buildThreadDataByPredicate)
 			.calledWith(
 				expect.arrayContaining(getThreads()),
