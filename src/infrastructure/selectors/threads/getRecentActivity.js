@@ -31,7 +31,7 @@ const getRecentActivity = createSelector(
 			filters.MY_TURN,
 			true
 		);
-		results = results.filter(t => t.thread.status || !t.thread.postId);
+		results = results.filter(t => t.status || !t.thread.postId);
 		results = results.sort(sortByLastPostDate);
 		return results.slice(0, 5);
 	}
