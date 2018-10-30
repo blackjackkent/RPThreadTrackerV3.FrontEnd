@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { filterDuplicatesFromArray } from '../../../../utility';
+import { getAllActiveThreads } from '../../common';
 
-const getAllActiveThreads = state => state.activeThreads;
 const getActiveThreadCharacters = createSelector(
 	[getAllActiveThreads],
 	(threads) => {

@@ -14,7 +14,6 @@ export { default as getMyTurnThreads } from './threads/active/my-turn/getMyTurnT
 export { default as getTheirTurnThreads } from './threads/active/their-turn/getTheirTurnThreads';
 export { default as getQueuedThreads } from './threads/active/queued/getQueuedThreads';
 
-export { default as getArchivedThreads } from './threads/archived/getArchivedThreads';
 export { default as getArchivedThreadCharacters } from './threads/archived/getArchivedThreadCharacters';
 export { default as getArchivedThreadPartners } from './threads/archived/getArchivedThreadPartners';
 export { default as getArchivedThreadLastPosters } from './threads/archived/getArchivedThreadLastPosters';

@@ -1,6 +1,8 @@
 import { createSelector } from 'reselect';
 import filters from '../../constants/filters';
-import { buildThreadDataByPredicate, shouldProcessThreads } from '../common';
+import {
+	buildThreadDataByPredicate, shouldProcessThreads, getAllActiveThreads, getAllActiveThreadStatus
+} from '../common';
 
 function sortByLastPostDate(a, b) {
 	/* istanbul ignore if */
@@ -17,8 +19,6 @@ function sortByLastPostDate(a, b) {
 	}
 	return new Date(b.status.lastPostDate) - new Date(a.status.lastPostDate);
 }
-const getAllActiveThreads = state => state.activeThreads;
-const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getRecentActivity = createSelector(
 	[getAllActiveThreads, getAllActiveThreadStatus],
 	(threads, threadsStatus) => {

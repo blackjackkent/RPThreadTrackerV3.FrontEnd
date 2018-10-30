@@ -1,10 +1,10 @@
 
 import { createSelector } from 'reselect';
 import { flattenArrayOfArrays, filterDuplicatesFromArray, sortTags } from '../../../../utility';
+import { getAllArchivedThreads } from '../../common';
 
-const getArchivedThreads = state => state.archivedThreads;
 const getArchivedThreadTags = createSelector(
-	[getArchivedThreads],
+	[getAllArchivedThreads],
 	(threads) => {
 		if (!threads.length) {
 			return [];

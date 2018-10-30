@@ -1,12 +1,16 @@
 import { createSelector } from 'reselect';
-import { buildThreadDataByPredicate, filterThreadsByPublicViewFilter, shouldProcessThreads } from '../common';
+import {
+	buildThreadDataByPredicate,
+	filterThreadsByPublicViewFilter,
+	shouldProcessThreads,
+	getAllPublicThreads,
+	getAllPublicThreadsStatus,
+	getPublicThreadFilter
+} from '../common';
 import filters from '../../constants/filters';
 
-const publicThreadFilter = state => state.publicThreadFilter;
-const getAllPublicThreads = state => state.publicThreads.threads;
-const getAllPublicThreadsStatus = state => state.publicThreadsStatus;
 const getPublicThreads = createSelector(
-	[getAllPublicThreads, getAllPublicThreadsStatus, publicThreadFilter],
+	[getAllPublicThreads, getAllPublicThreadsStatus, getPublicThreadFilter],
 	(threads, threadsStatus, filter) => {
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];

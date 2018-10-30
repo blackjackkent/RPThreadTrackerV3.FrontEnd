@@ -1,8 +1,12 @@
 import { createSelector } from 'reselect';
-import { buildThreadDataByPredicate, shouldProcessThreads } from '../../../common';
+import {
+	buildThreadDataByPredicate,
+	shouldProcessThreads,
+	getAllActiveThreads,
+	getAllActiveThreadStatus
+} from '../../../common';
+import filters from '../../../../constants/filters';
 
-const getAllActiveThreads = state => state.activeThreads;
-const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getTheirTurnThreads = createSelector(
 	[getAllActiveThreads, getAllActiveThreadStatus],
 	(threads, threadsStatus) => {
@@ -12,7 +16,7 @@ const getTheirTurnThreads = createSelector(
 		return buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => !s.isCallingCharactersTurn && !s.isQueued
+			filters.THEIR_TURN
 		);
 	}
 );
