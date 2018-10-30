@@ -1,5 +1,6 @@
 // News
-export { default as getNewsUnreadCount, markUnreadNews } from './news/getNews';
+export { default as getNewsUnreadCount } from './news/getNewsUnreadCount';
+export { default as markUnreadNews } from './news/markUnreadNews';
 
 // Threads
 export { default as getActiveThreadCharacters } from './threads/active/getActiveThreadCharacters';

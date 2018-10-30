@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { sortCharacters } from '../../../utility';
+import { getAllCharacters } from '../common';
 
-const getAllCharacters = state => state.characters;
 const getCharactersSortedByIdentifier = createSelector(
 	[getAllCharacters],
 	(characters) => {

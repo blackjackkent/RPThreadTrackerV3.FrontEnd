@@ -11,5 +11,9 @@ export {
 	getAllPublicThreads,
 	getAllPublicThreadStatus,
 	getPublicThreadFilter,
-	getAllCharacters
+	getAllCharacters,
+	getNews,
+	getUserSettings,
+	getTags,
+	getLoading
 } from './commonState';

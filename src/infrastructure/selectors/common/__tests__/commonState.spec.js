@@ -7,7 +7,11 @@ import {
 	getPublicThreadFilter,
 	getAllPublicThreads,
 	getAllPublicThreadStatus,
-	getAllCharacters
+	getAllCharacters,
+	getNews,
+	getUserSettings,
+	getTags,
+	getLoading
 } from '../commonState';
 
 describe('getAllActiveThreads', () => {
@@ -130,5 +134,55 @@ describe('getAllCharacters', () => {
 		const result = getAllCharacters(state);
 		// Assert
 		expect(result).toHaveLength(3);
+	});
+});
+describe('getNews', () => {
+	it('should return news from state', () => {
+		// Arrange
+		const state = {
+			news: [{}, {}, {}]
+		};
+		// Act
+		const result = getNews(state);
+		// Assert
+		expect(result).toHaveLength(3);
+	});
+});
+describe('getUserSettings', () => {
+	it('should return user settings from state', () => {
+		// Arrange
+		const state = {
+			userSettings: { settingsId: 1 }
+		};
+		// Act
+		const result = getUserSettings(state);
+		// Assert
+		expect(result).toBe(state.userSettings);
+	});
+});
+describe('getTags', () => {
+	it('should return tags from state', () => {
+		// Arrange
+		const state = {
+			tags: ['tag1', 'tag2', 'tag3']
+		};
+		// Act
+		const result = getTags(state);
+		// Assert
+		expect(result).toHaveLength(3);
+	});
+});
+describe('getLoading', () => {
+	it('should return loading condition from state', () => {
+		// Arrange
+		const state = {
+			loading: {
+				isLoadingTest1: true
+			}
+		};
+		// Act
+		const result = getLoading(state);
+		// Assert
+		expect(result.isLoadingTest1).toBe(true);
 	});
 });
