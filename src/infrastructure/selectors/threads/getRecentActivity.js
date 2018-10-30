@@ -1,8 +1,5 @@
 import { createSelector } from 'reselect';
-import filters from '../../constants/filters';
-import {
-	buildThreadDataByPredicate, shouldProcessThreads, getAllActiveThreads, getAllActiveThreadStatus
-} from '../common';
+import getMyTurnThreads from './active/my-turn/getMyTurnThreads';
 
 function sortByLastPostDate(a, b) {
 	/* istanbul ignore if */
@@ -20,18 +17,9 @@ function sortByLastPostDate(a, b) {
 	return new Date(b.status.lastPostDate) - new Date(a.status.lastPostDate);
 }
 const getRecentActivity = createSelector(
-	[getAllActiveThreads, getAllActiveThreadStatus],
-	(threads, threadsStatus) => {
-		if (!shouldProcessThreads(threads, threadsStatus)) {
-			return [];
-		}
-		let results = buildThreadDataByPredicate(
-			threads,
-			threadsStatus,
-			filters.MY_TURN,
-			true
-		);
-		results = results.filter(t => t.thread.status || !t.thread.postId);
+	[getMyTurnThreads],
+	(threads) => {
+		let results = threads.filter(t => t.thread.status || !t.thread.postId);
 		results = results.sort(sortByLastPostDate);
 		return results.slice(0, 5);
 	}

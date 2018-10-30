@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import filters from '../../../constants/filters';
 import {
 	filterThreadsByTag,
 	buildThreadDataByPredicate,
@@ -17,7 +18,7 @@ const getAllArchivedFilteredThreads = createSelector(
 		const results = buildThreadDataByPredicate(
 			threads,
 			threadsStatus,
-			s => s,
+			filters.ALL,
 			true
 		);
 		return filterThreadsByTag(results, tag);

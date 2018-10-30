@@ -1,18 +1,16 @@
 import { when } from 'jest-when';
-import * as common from '../../common';
-import * as filters from '../../../constants/filters';
-import getPublicThreads from '../getPublicThreads';
+import * as common from '../../../../common';
+import * as filters from '../../../../../constants/filters';
+import getQueuedThreads from '../getQueuedThreads';
 
-jest.mock('../../common', () => ({
+jest.mock('../../../../common', () => ({
 	buildThreadDataByPredicate: jest.fn(),
-	filterThreadsByPublicViewFilter: jest.fn(),
 	shouldProcessThreads: jest.fn(),
-	getAllPublicThreads: jest.fn(),
-	getAllPublicThreadStatus: jest.fn(),
-	getPublicThreadFilter: jest.fn()
+	getAllActiveThreads: jest.fn(),
+	getAllActiveThreadStatus: jest.fn()
 }));
-jest.mock('../../../constants/filters', () => ({
-	ALL: jest.fn()
+jest.mock('../../../../../constants/filters', () => ({
+	QUEUED: jest.fn()
 }));
 
 const getThreads = () => [
@@ -42,12 +40,6 @@ const getAggregateOutput = () => [
 	{ thread: { threadId: 6 }, status: { postId: 6 } },
 	{ thread: { threadId: 7 }, status: { postId: 7 } }
 ];
-const getFilterOutput = () => [
-	{ thread: { threadId: 1 }, status: { postId: 1 } },
-	{ thread: { threadId: 3 }, status: { postId: 3 } },
-	{ thread: { threadId: 5 }, status: { postId: 5 } },
-	{ thread: { threadId: 7 }, status: { postId: 7 } }
-];
 
 beforeEach(() => {
 	jest.resetAllMocks();
@@ -56,12 +48,12 @@ describe('behavior', () => {
 	it('should return empty array when shouldProcessThreads is false', () => {
 		// Arrange
 		const state = {
-			publicThreads: { threads: [] },
-			publicThreadsStatus: [{}, {}, {}]
+			activeThreads: { threads: [] },
+			activeThreadsStatus: [{}, {}, {}]
 		};
 		common.shouldProcessThreads.mockReturnValue(false);
 		// Act
-		const result = getPublicThreads.resultFunc(state.publicThreads, state.publicThreadsStatus, 'test-filter');
+		const result = getQueuedThreads.resultFunc(state.activeThreads, state.activeThreadsStatus);
 		// Assert
 		expect(result).toEqual([]);
 	});
@@ -72,21 +64,13 @@ describe('behavior', () => {
 			.calledWith(
 				expect.arrayContaining(getThreads()),
 				expect.arrayContaining(getStatuses()),
-				filters.ALL,
-				true
+				filters.QUEUED
 			)
 			.mockReturnValue(getAggregateOutput());
-		when(common.filterThreadsByPublicViewFilter)
-			.calledWith(
-				expect.arrayContaining(getAggregateOutput()),
-				'test-filter'
-			)
-			.mockReturnValue(getFilterOutput());
 		// Act
-		const result = getPublicThreads.resultFunc(getThreads(), getStatuses(), 'test-filter');
+		const result = getQueuedThreads.resultFunc(getThreads(), getStatuses());
 		// Assert
 		expect(common.buildThreadDataByPredicate).toHaveBeenCalled();
-		expect(common.filterThreadsByPublicViewFilter).toHaveBeenCalled();
-		expect(result).toEqual(getFilterOutput());
+		expect(result).toEqual(getAggregateOutput());
 	});
 });

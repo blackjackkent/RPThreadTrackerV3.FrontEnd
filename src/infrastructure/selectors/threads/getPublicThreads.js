@@ -4,13 +4,13 @@ import {
 	filterThreadsByPublicViewFilter,
 	shouldProcessThreads,
 	getAllPublicThreads,
-	getAllPublicThreadsStatus,
+	getAllPublicThreadStatus,
 	getPublicThreadFilter
 } from '../common';
 import filters from '../../constants/filters';
 
 const getPublicThreads = createSelector(
-	[getAllPublicThreads, getAllPublicThreadsStatus, getPublicThreadFilter],
+	[getAllPublicThreads, getAllPublicThreadStatus, getPublicThreadFilter],
 	(threads, threadsStatus, filter) => {
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];

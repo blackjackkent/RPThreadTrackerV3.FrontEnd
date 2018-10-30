@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import filters from '../../../../constants/filters';
+import filters from '../../../constants/filters';
 import {
 	filterThreadsByTag,
 	buildThreadDataByPredicate,
@@ -7,9 +7,9 @@ import {
 	getAllActiveThreads,
 	getAllActiveThreadStatus,
 	getFilteredTag
-} from '../../../common';
+} from '../../common';
 
-const getAllActiveFilteredThreads = createSelector(
+const getActiveFilteredThreads = createSelector(
 	[getAllActiveThreads, getAllActiveThreadStatus, getFilteredTag],
 	(threads, threadsStatus, tag) => {
 		if (!shouldProcessThreads(threads, threadsStatus)) {
@@ -24,4 +24,4 @@ const getAllActiveFilteredThreads = createSelector(
 		return filterThreadsByTag(results, tag);
 	}
 );
-export default getAllActiveFilteredThreads;
+export default getActiveFilteredThreads;

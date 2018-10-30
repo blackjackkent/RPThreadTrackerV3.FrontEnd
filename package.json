@@ -152,7 +152,8 @@
 		"testURL": "http://localhost/",
 		"coverageReporters": [
 			"json",
-			"html"
+			"html",
+			"text"
 		]
 	}
 }

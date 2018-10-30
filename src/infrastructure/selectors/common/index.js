@@ -9,7 +9,7 @@ export {
 	getAllArchivedThreadStatus,
 	getFilteredTag,
 	getAllPublicThreads,
-	getAllPublicThreadsStatus,
+	getAllPublicThreadStatus,
 	getPublicThreadFilter,
 	getAllCharacters
 } from './commonState';
