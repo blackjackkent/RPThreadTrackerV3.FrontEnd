@@ -19,7 +19,7 @@ function sortByLastPostDate(a, b) {
 const getRecentActivity = createSelector(
 	[getMyTurnThreads],
 	(threads) => {
-		let results = threads.filter(t => t.thread.status || !t.thread.postId);
+		let results = threads.filter(t => t.status || !t.thread.postId);
 		results = results.sort(sortByLastPostDate);
 		return results.slice(0, 5);
 	}
