@@ -1,9 +1,9 @@
 import { when } from 'jest-when';
 import * as utility from '../../../../../utility';
-import getActiveThreadTags from '../getActiveThreadTags';
+import getArchivedThreadTags from '../getArchivedThreadTags';
 
 jest.mock('../../../common', () => ({
-	getAllActiveThreads: jest.fn()
+	getAllArchivedThreads: jest.fn()
 }));
 jest.mock('../../../../../utility', () => ({
 	filterDuplicatesFromArray: jest.fn(),
@@ -36,7 +36,7 @@ const getSortedTags = () => [
 describe('behavior', () => {
 	it('should return empty array when thread list is empty', () => {
 		// Act
-		const result = getActiveThreadTags.resultFunc([]);
+		const result = getArchivedThreadTags.resultFunc([]);
 		// Assert
 		expect(result).toHaveLength(0);
 	});
@@ -53,7 +53,7 @@ describe('behavior', () => {
 			)
 			.mockReturnValue(getDeduplicatedTags());
 		// Act
-		const result = getActiveThreadTags.resultFunc(getThreads());
+		const result = getArchivedThreadTags.resultFunc(getThreads());
 		// Assert
 		expect(utility.flattenArrayOfArrays).toHaveBeenCalled();
 		expect(utility.filterDuplicatesFromArray).toHaveBeenCalled();

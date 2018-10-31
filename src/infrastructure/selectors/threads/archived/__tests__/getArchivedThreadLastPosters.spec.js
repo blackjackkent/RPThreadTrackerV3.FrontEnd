@@ -1,19 +1,19 @@
 import { when } from 'jest-when';
 import * as utility from '../../../../../utility';
-import getActiveThreadPartners from '../getActiveThreadPartners';
+import getArchivedThreadLastPosters from '../getArchivedThreadLastPosters';
 
 jest.mock('../../../common', () => ({
-	getAllActiveThreads: jest.fn()
+	getAllArchivedThreadStatus: jest.fn()
 }));
 jest.mock('../../../../../utility', () => ({
 	filterDuplicatesFromArray: jest.fn()
 }));
 
-const getThreads = () => [
-	{ partnerUrlIdentifier: 'partner1' },
-	{ partnerUrlIdentifier: 'partner2' },
-	{ partnerUrlIdentifier: 'partner2' },
-	{ partnerUrlIdentifier: 'partner3' }
+const getThreadStatuses = () => [
+	{ lastPosterUrlIdentifier: 'partner1' },
+	{ lastPosterUrlIdentifier: 'partner2' },
+	{ lastPosterUrlIdentifier: 'partner2' },
+	{ lastPosterUrlIdentifier: 'partner3' }
 ];
 const getPartners = () => [
 	'partner1',
@@ -28,13 +28,13 @@ const getFilterOutput = () => [
 ];
 
 describe('behavior', () => {
-	it('should return empty array when thread list is empty', () => {
+	it('should return empty array when thread status list is empty', () => {
 		// Act
-		const result = getActiveThreadPartners.resultFunc([]);
+		const result = getArchivedThreadLastPosters.resultFunc([]);
 		// Assert
 		expect(result).toHaveLength(0);
 	});
-	it('should return filtered characters when thread list not empty', () => {
+	it('should return filtered characters when thread status list not empty', () => {
 		// Arrange
 		when(utility.filterDuplicatesFromArray)
 			.calledWith(
@@ -42,7 +42,7 @@ describe('behavior', () => {
 			)
 			.mockReturnValue(getFilterOutput());
 		// Act
-		const result = getActiveThreadPartners.resultFunc(getThreads());
+		const result = getArchivedThreadLastPosters.resultFunc(getThreadStatuses());
 		// Assert
 		expect(utility.filterDuplicatesFromArray).toHaveBeenCalled();
 		expect(result).toEqual(getFilterOutput());

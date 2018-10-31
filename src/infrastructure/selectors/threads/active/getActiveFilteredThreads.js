@@ -4,13 +4,13 @@ import {
 	filterThreadsByTag,
 	buildThreadDataByPredicate,
 	shouldProcessThreads,
-	getAllArchivedThreadStatus,
-	getAllArchivedThreads,
+	getAllActiveThreads,
+	getAllActiveThreadStatus,
 	getFilteredTag
 } from '../../common';
 
-const getAllArchivedFilteredThreads = createSelector(
-	[getAllArchivedThreads, getAllArchivedThreadStatus, getFilteredTag],
+const getActiveFilteredThreads = createSelector(
+	[getAllActiveThreads, getAllActiveThreadStatus, getFilteredTag],
 	(threads, threadsStatus, tag) => {
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];
@@ -24,4 +24,4 @@ const getAllArchivedFilteredThreads = createSelector(
 		return filterThreadsByTag(results, tag);
 	}
 );
-export default getAllArchivedFilteredThreads;
+export default getActiveFilteredThreads;

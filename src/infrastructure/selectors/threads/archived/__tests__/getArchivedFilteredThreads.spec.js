@@ -1,19 +1,20 @@
 import { when } from 'jest-when';
-import * as common from '../../common';
-import * as filters from '../../../constants/filters';
-import getPublicThreads from '../getPublicThreads';
+import * as common from '../../../common';
+import * as filters from '../../../../constants/filters';
+import getArchivedFilteredThreads from '../getArchivedFilteredThreads';
 
-jest.mock('../../common', () => ({
+jest.mock('../../../common', () => ({
+	filterThreadsByTag: jest.fn(),
 	buildThreadDataByPredicate: jest.fn(),
-	filterThreadsByPublicViewFilter: jest.fn(),
 	shouldProcessThreads: jest.fn(),
-	getAllPublicThreads: jest.fn(),
-	getAllPublicThreadStatus: jest.fn(),
-	getPublicThreadFilter: jest.fn()
+	getAllArchivedThreadStatus: jest.fn(),
+	getAllArchivedThreads: jest.fn(),
+	getFilteredTag: jest.fn()
 }));
-jest.mock('../../../constants/filters', () => ({
+jest.mock('../../../../constants/filters', () => ({
 	ALL: jest.fn()
 }));
+
 
 const getThreads = () => [
 	{ threadId: 1 },
@@ -56,12 +57,12 @@ describe('behavior', () => {
 	it('should return empty array when shouldProcessThreads is false', () => {
 		// Arrange
 		const state = {
-			publicThreads: { threads: [] },
-			publicThreadsStatus: [{}, {}, {}]
+			archivedThreads: { threads: [] },
+			archivedThreadsStatus: [{}, {}, {}]
 		};
 		common.shouldProcessThreads.mockReturnValue(false);
 		// Act
-		const result = getPublicThreads.resultFunc(state.publicThreads, state.publicThreadsStatus, 'test-filter');
+		const result = getArchivedFilteredThreads.resultFunc(state.archivedThreads, state.archivedThreadsStatus, 'test-tag');
 		// Assert
 		expect(result).toEqual([]);
 	});
@@ -76,17 +77,17 @@ describe('behavior', () => {
 				true
 			)
 			.mockReturnValue(getAggregateOutput());
-		when(common.filterThreadsByPublicViewFilter)
+		when(common.filterThreadsByTag)
 			.calledWith(
 				expect.arrayContaining(getAggregateOutput()),
-				'test-filter'
+				'test-tag'
 			)
 			.mockReturnValue(getFilterOutput());
 		// Act
-		const result = getPublicThreads.resultFunc(getThreads(), getStatuses(), 'test-filter');
+		const result = getArchivedFilteredThreads.resultFunc(getThreads(), getStatuses(), 'test-tag');
 		// Assert
 		expect(common.buildThreadDataByPredicate).toHaveBeenCalled();
-		expect(common.filterThreadsByPublicViewFilter).toHaveBeenCalled();
+		expect(common.filterThreadsByTag).toHaveBeenCalled();
 		expect(result).toEqual(getFilterOutput());
 	});
 });

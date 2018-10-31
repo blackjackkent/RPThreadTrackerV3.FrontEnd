@@ -2,48 +2,49 @@ import { when } from 'jest-when';
 import * as utility from '../../../../../utility';
 import getActiveThreadLastPosters from '../getActiveThreadLastPosters';
 
+jest.mock('../../../common', () => ({
+	getAllActiveThreadStatus: jest.fn()
+}));
 jest.mock('../../../../../utility', () => ({
-	filterDuplicatesFromArray: jest.fn(arr => arr)
+	filterDuplicatesFromArray: jest.fn()
 }));
 
-const getThreadsStatuses = () => [
-	{ postId: 1, lastPosterUrlIdentifier: 'test-character-1' },
-	{ postId: 2, lastPosterUrlIdentifier: 'test-character-2' },
-	{ postId: 3, lastPosterUrlIdentifier: 'test-character-1' },
-	{ postId: 4, lastPosterUrlIdentifier: 'test-character-3' }
+const getThreadStatuses = () => [
+	{ lastPosterUrlIdentifier: 'partner1' },
+	{ lastPosterUrlIdentifier: 'partner2' },
+	{ lastPosterUrlIdentifier: 'partner2' },
+	{ lastPosterUrlIdentifier: 'partner3' }
 ];
-
-const getPosterList = () => [
-	'test-character-1',
-	'test-character-2',
-	'test-character-1',
-	'test-character-3'
+const getPartners = () => [
+	'partner1',
+	'partner2',
+	'partner2',
+	'partner3'
 ];
-
 const getFilterOutput = () => [
-	'test-character-1',
-	'test-character-2',
-	'test-character-3'
+	'partner1',
+	'partner2',
+	'partner3'
 ];
 
 describe('behavior', () => {
-	it('should return an empty array if no statuses on state', () => {
-		const state = {
-			activeThreadsStatus: []
-		};
-		const result = getActiveThreadLastPosters(state);
-		expect(result).toEqual([]);
+	it('should return empty array when thread status list is empty', () => {
+		// Act
+		const result = getActiveThreadLastPosters.resultFunc([]);
+		// Assert
+		expect(result).toHaveLength(0);
 	});
-	it('should return poster URL list without duplicates', () => {
+	it('should return filtered characters when thread status list not empty', () => {
+		// Arrange
 		when(utility.filterDuplicatesFromArray)
 			.calledWith(
-				expect.arrayContaining(getPosterList())
+				expect.arrayContaining(getPartners())
 			)
 			.mockReturnValue(getFilterOutput());
-		const state = {
-			activeThreadsStatus: getThreadsStatuses()
-		};
-		const result = getActiveThreadLastPosters(state);
+		// Act
+		const result = getActiveThreadLastPosters.resultFunc(getThreadStatuses());
+		// Assert
+		expect(utility.filterDuplicatesFromArray).toHaveBeenCalled();
 		expect(result).toEqual(getFilterOutput());
 	});
 });

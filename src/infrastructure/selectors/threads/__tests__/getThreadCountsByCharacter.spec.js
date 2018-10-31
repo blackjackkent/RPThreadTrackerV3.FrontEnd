@@ -1,5 +1,10 @@
 import getThreadCountsByCharacter from '../getThreadCountsByCharacter';
 
+jest.mock('../../common', () => ({
+	getAllCharacters: jest.fn(),
+	getAllActiveThreads: jest.fn()
+}));
+
 const getThreads = () => [
 	{
 		threadId: 1,
@@ -29,27 +34,21 @@ const getCharacters = () => [
 
 describe('behavior', () => {
 	it('should return empty object if no threads on state', () => {
-		const state = {
-			activeThreads: [],
-			characters: getCharacters()
-		};
-		const result = getThreadCountsByCharacter(state);
+		// Act
+		const result = getThreadCountsByCharacter.resultFunc([], getCharacters());
+		// Assert
 		expect(result).toEqual({});
 	});
 	it('should return empty object if no characters on state', () => {
-		const state = {
-			activeThreads: getThreads(),
-			characters: {}
-		};
-		const result = getThreadCountsByCharacter(state);
+		// Act
+		const result = getThreadCountsByCharacter.resultFunc(getThreads(), []);
+		// Assert
 		expect(result).toEqual({});
 	});
 	it('should return mapping object of character IDs to thread counts', () => {
-		const state = {
-			activeThreads: getThreads(),
-			characters: getCharacters()
-		};
-		const result = getThreadCountsByCharacter(state);
+		// Act
+		const result = getThreadCountsByCharacter.resultFunc(getThreads(), getCharacters());
+		// Assert
 		expect(result).toEqual({
 			1: 2,
 			2: 1
