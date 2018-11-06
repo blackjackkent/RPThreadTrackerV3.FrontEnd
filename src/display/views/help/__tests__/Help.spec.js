@@ -13,11 +13,11 @@ jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/constants/tabs', () => ({
 	HELP: {
 		TAB1: {
-			tabId: 'tab1',
+			href: '/help/tab1',
 			name: 'Tab 1'
 		},
 		TAB2: {
-			tabId: 'tab2',
+			href: '/help/tab2',
 			name: 'Tab 2'
 		}
 	}
@@ -29,11 +29,14 @@ jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav')
 const createTestProps = propOverrides => ({
 	setActiveHelpTab: jest.fn(),
 	submitContactForm: jest.fn(),
+	match: {
+		url: '/help/tab1',
+		params: { tabId: 'tab1' }
+	},
 	...propOverrides
 });
 
 const createTestState = stateOverrides => ({
-	ui: { activeHelpTab: 'my-test-tab' },
 	...stateOverrides
 });
 

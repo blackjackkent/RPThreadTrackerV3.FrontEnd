@@ -16,9 +16,6 @@ const getState = overrides => ({
 	isUpsertPublicViewModalOpen: false,
 	isDeletePublicViewModalOpen: false,
 	useLightTheme: false,
-	activeHelpTab: 'about',
-	activeSettingsTab: 'change-password',
-	activeToolsTab: 'export-threads',
 	...overrides
 });
 
@@ -285,30 +282,6 @@ describe('action handling', () => {
 		const result2 = ui(getState({ isDeletePublicViewModalOpen: true }), action);
 		expect(result.isDeletePublicViewModalOpen).toBe(false);
 		expect(result2.isDeletePublicViewModalOpen).toBe(false);
-	});
-	it('should handle SET_ACTIVE_HELP_TAB', () => {
-		const action = {
-			type: actions.SET_ACTIVE_HELP_TAB,
-			data: 'test-tab-help'
-		};
-		const result = ui(getState(), action);
-		expect(result.activeHelpTab).toEqual('test-tab-help');
-	});
-	it('should handle SET_ACTIVE_SETTINGS_TAB', () => {
-		const action = {
-			type: actions.SET_ACTIVE_SETTINGS_TAB,
-			data: 'test-tab-settings'
-		};
-		const result = ui(getState(), action);
-		expect(result.activeSettingsTab).toEqual('test-tab-settings');
-	});
-	it('should handle SET_ACTIVE_TOOLS_TAB', () => {
-		const action = {
-			type: actions.SET_ACTIVE_TOOLS_TAB,
-			data: 'test-tab-tools'
-		};
-		const result = ui(getState(), action);
-		expect(result.activeToolsTab).toEqual('test-tab-tools');
 	});
 	it('should handle SET_MAINTENANCE_MODE_ON', () => {
 		const action = {

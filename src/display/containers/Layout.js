@@ -165,10 +165,10 @@ class Layout extends Component {
 
 								<Route path="/settings/:tabId" name="Settings" component={Settings} />
 								<Redirect from="/settings" to="/settings/change-password" />
-								
+
 								<Route path="/help/:tabId" name="Help" component={Help} />
 								<Redirect from="/help" to="/help/about" />
-								
+
 								<Redirect from="/" to="/dashboard" />
 							</Switch>
 						</Container>

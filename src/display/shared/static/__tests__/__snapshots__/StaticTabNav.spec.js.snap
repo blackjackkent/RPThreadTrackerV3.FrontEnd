@@ -6,21 +6,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   data-spec="static-tab-nav"
 >
   <StaticTabNavItem
-    activeTab="test-tab"
     data-spec="static-tab-nav-option"
-    iconId="icon1"
-    key="mock-option-1"
-    setActiveTab={[MockFunction]}
-    tabId="mock-option-1"
+    href="/test/mock-option-1"
+    key="/test/mock-option-1"
     title="Mock Option 1"
   />
   <StaticTabNavItem
-    activeTab="test-tab"
     data-spec="static-tab-nav-option"
-    iconId="icon2"
-    key="mock-option-2"
-    setActiveTab={[MockFunction]}
-    tabId="mock-option-2"
+    href="/test/mock-option-2"
+    key="/test/mock-option-2"
     title="Mock Option 2"
   />
 </Styled(Nav)>

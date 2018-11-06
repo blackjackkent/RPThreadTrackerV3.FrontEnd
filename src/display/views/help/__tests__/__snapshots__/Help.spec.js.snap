@@ -21,21 +21,20 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
     >
       <StaticDropdownNav
-        activeTab="my-test-tab"
+        activeTab="/help/tab1"
         data-spec="help-static-dropdown-nav"
         options={
           Array [
             Object {
+              "href": "/help/tab1",
               "name": "Tab 1",
-              "tabId": "tab1",
             },
             Object {
+              "href": "/help/tab2",
               "name": "Tab 2",
-              "tabId": "tab2",
             },
           ]
         }
-        setActiveTab={[MockFunction]}
       />
     </Col>
   </Row>
@@ -57,21 +56,19 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
     >
       <StaticTabNav
-        activeTab="my-test-tab"
         data-spec="help-static-tab-nav"
         options={
           Array [
             Object {
+              "href": "/help/tab1",
               "name": "Tab 1",
-              "tabId": "tab1",
             },
             Object {
+              "href": "/help/tab2",
               "name": "Tab 2",
-              "tabId": "tab2",
             },
           ]
         }
-        setActiveTab={[MockFunction]}
       />
     </Col>
     <Col
@@ -89,7 +86,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       xs="12"
     >
       <Styled(TabContent)
-        activeTab="my-test-tab"
+        activeTab="tab1"
       >
         <AboutTrackerPane />
         <SupportGuidesPane />

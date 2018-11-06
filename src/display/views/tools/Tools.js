@@ -16,7 +16,6 @@ import ExportThreadsPane from './components/ExportThreadsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
-	activeTab: PropTypes.string.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -24,7 +23,6 @@ const propTypes = {
 	fetchUser: PropTypes.func.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
-	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
@@ -39,7 +37,6 @@ const defaultProps = {
 
 function mapStateToProps(state) {
 	const {
-		ui,
 		user,
 		tags,
 		publicViews,
@@ -51,8 +48,7 @@ function mapStateToProps(state) {
 		username: user.userName,
 		tags,
 		publicViews,
-		isLoadingIconVisible,
-		activeTab: ui.activeToolsTab
+		isLoadingIconVisible
 	};
 }
 
@@ -94,10 +90,8 @@ class Tools extends Component {
 
 	render() {
 		const {
-			activeTab,
 			publicViews,
 			isLoadingIconVisible,
-			setActiveToolsTab,
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
 			username,
@@ -110,8 +104,7 @@ class Tools extends Component {
 					<Col className="d-lg-none text-center">
 						<StaticDropdownNav
 							data-spec="tools-static-dropdown-nav"
-							setActiveTab={setActiveToolsTab}
-							activeTab={activeTab}
+							activeTab={match.url}
 							options={options}
 						/>
 					</Col>
@@ -146,7 +139,6 @@ Tools.propTypes = propTypes;
 Tools.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	exportThreads: actions.exportThreads,
-	setActiveToolsTab: actions.setActiveToolsTab,
 	fetchTags: actions.fetchTags,
 	fetchPublicViews: actions.fetchPublicViews,
 	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
