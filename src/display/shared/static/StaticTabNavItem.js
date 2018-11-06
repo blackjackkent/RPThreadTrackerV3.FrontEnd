@@ -1,48 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import {
-	NavItem, NavLink
+	NavItem
 } from 'reactstrap';
 
 const propTypes = {
-	tabId: PropTypes.string.isRequired,
-	activeTab: PropTypes.string.isRequired,
-	setActiveTab: PropTypes.func.isRequired,
+	href: PropTypes.string.isRequired,
+	isActive: PropTypes.bool.isRequired,
 	title: PropTypes.string.isRequired
 };
 
-class StaticTabNavItem extends React.Component {
-	constructor() {
-		super();
-		this.onClick = this.onClick.bind(this);
-	}
+const StaticTabNavItem = (props) => {
+	const {
+		href,
+		title
+	} = props;
+	return (
+		<NavItem>
 
-	onClick(e, tabId) {
-		e.preventDefault();
-		const { setActiveTab } = this.props;
-		setActiveTab(tabId);
-	}
-
-	render() {
-		const {
-			tabId,
-			activeTab,
-			title
-		} = this.props;
-		return (
-			<NavItem>
-				<NavLink
-					href={`#${tabId}`}
-					className={activeTab === tabId ? 'active' : ''}
-					onClick={(e) => { this.onClick(e, tabId); }}
-					data-spec="static-tab-nav-item-navlink"
-				>
-					{title}
-				</NavLink>
-			</NavItem>
-		);
-	}
-}
+			<NavLink
+				to={href}
+				activeClassName="active"
+				data-spec="static-tab-nav-item-navlink"
+			>
+				{title}
+			</NavLink>
+		</NavItem>
+	);
+};
 StaticTabNavItem.propTypes = propTypes;
 
 export default StaticTabNavItem;

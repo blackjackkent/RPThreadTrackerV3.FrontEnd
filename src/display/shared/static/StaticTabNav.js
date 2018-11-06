@@ -4,20 +4,15 @@ import Nav from '../styled/Nav';
 import StaticTabNavItem from './StaticTabNavItem';
 
 const propTypes = {
-	activeTab: PropTypes.string.isRequired,
-	setActiveTab: PropTypes.func.isRequired,
 	options: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 const StaticTabNav = (props) => {
-	const { activeTab, setActiveTab, options } = props;
+	const { options } = props;
 	const optionElements = options.map(o => (
 		<StaticTabNavItem
-			tabId={o.tabId}
-			activeTab={activeTab}
-			setActiveTab={setActiveTab}
-			iconId={o.icon}
+			href={o.href}
 			title={o.name}
-			key={o.tabId}
+			key={o.href}
 			data-spec="static-tab-nav-option"
 		/>
 	));

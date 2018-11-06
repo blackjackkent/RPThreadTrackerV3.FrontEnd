@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
 	Row, Col
 } from 'reactstrap';
+import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TabContent from '../../shared/styled/TabContent';
@@ -29,7 +30,8 @@ const propTypes = {
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
 	openDeletePublicViewModal: PropTypes.func.isRequired,
-	username: PropTypes.string
+	username: PropTypes.string,
+	match: PropTypes.shape({}).isRequired
 };
 
 const defaultProps = {
@@ -99,7 +101,8 @@ class Tools extends Component {
 			setActiveToolsTab,
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
-			username
+			username,
+			match
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
@@ -118,22 +121,31 @@ class Tools extends Component {
 					<Col className="d-none d-lg-block" md={3}>
 						<StaticTabNav
 							data-spec="tools-static-tab-nav"
-							setActiveTab={setActiveToolsTab}
-							activeTab={activeTab}
 							options={options}
 						/>
 					</Col>
 					<Col xs="12" lg="9">
-						<TabContent activeTab={activeTab}>
-							<ExportThreadsPane onExportRequest={this.onExportRequest} />
-							<ManagePublicViewsPane
-								openUpsertPublicViewModal={openUpsertPublicViewModal}
-								openDeletePublicViewModal={openDeletePublicViewModal}
-								publicViews={publicViews}
-								isLoadingIconVisible={isLoadingIconVisible}
-								username={username}
+						<TabContent activeTab={match.params.tabId}>
+							<Route
+								path="/tools/export"
+								render={() => <ExportThreadsPane onExportRequest={this.onExportRequest} />}
 							/>
-							<BrowserExtensionsPane />
+							<Route
+								path="/tools/public"
+								render={() => (
+									<ManagePublicViewsPane
+										openUpsertPublicViewModal={openUpsertPublicViewModal}
+										openDeletePublicViewModal={openDeletePublicViewModal}
+										publicViews={publicViews}
+										isLoadingIconVisible={isLoadingIconVisible}
+										username={username}
+									/>
+								)}
+							/>
+							<Route
+								path="/tools/extensions"
+								render={() => <BrowserExtensionsPane />}
+							/>
 						</TabContent>
 					</Col>
 				</Row>
