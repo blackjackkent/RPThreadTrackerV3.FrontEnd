@@ -17,7 +17,8 @@ import FAQPane from './components/FAQPane';
 const propTypes = {
 	activeTab: PropTypes.string.isRequired,
 	setActiveHelpTab: PropTypes.func.isRequired,
-	submitContactForm: PropTypes.func.isRequired
+	submitContactForm: PropTypes.func.isRequired,
+	match: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -30,7 +31,7 @@ function mapStateToProps(state) {
 }
 
 const Help = (props) => {
-	const { activeTab, setActiveHelpTab, submitContactForm } = props;
+	const { activeTab, setActiveHelpTab, submitContactForm, match } = props;
 	const options = Object.values(tabs.HELP);
 	return (
 		<div className="animated fadeIn static-container help-container">
@@ -49,13 +50,11 @@ const Help = (props) => {
 
 					<StaticTabNav
 						data-spec="help-static-tab-nav"
-						setActiveTab={setActiveHelpTab}
-						activeTab={activeTab}
 						options={options}
 					/>
 				</Col>
 				<Col xs="12" lg="9">
-					<TabContent activeTab={activeTab}>
+					<TabContent activeTab={match.params.tabId}>
 						<AboutTrackerPane />
 						<SupportGuidesPane />
 						<FAQPane />

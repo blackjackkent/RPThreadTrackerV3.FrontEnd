@@ -7,7 +7,6 @@ import {
 
 const propTypes = {
 	href: PropTypes.string.isRequired,
-	isActive: PropTypes.bool.isRequired,
 	title: PropTypes.string.isRequired
 };
 

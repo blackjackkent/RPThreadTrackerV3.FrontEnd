@@ -17,7 +17,8 @@ const propTypes = {
 	user: PropTypes.shape({}).isRequired,
 	setActiveSettingsTab: PropTypes.func.isRequired,
 	submitUserChangePassword: PropTypes.func.isRequired,
-	submitUserAccountInfo: PropTypes.func.isRequired
+	submitUserAccountInfo: PropTypes.func.isRequired,
+	match: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -33,7 +34,7 @@ function mapStateToProps(state) {
 
 const Settings = (props) => {
 	const {
-		activeTab, user, setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo
+		activeTab, user, setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo, match
 	} = props;
 	const options = Object.values(tabs.SETTINGS);
 	return (
@@ -52,13 +53,11 @@ const Settings = (props) => {
 				<Col className="d-none d-lg-block" md={3}>
 					<StaticTabNav
 						data-spec="settings-static-tab-nav"
-						setActiveTab={setActiveSettingsTab}
-						activeTab={activeTab}
 						options={options}
 					/>
 				</Col>
 				<Col xs="12" lg="9">
-					<TabContent activeTab={activeTab}>
+					<TabContent activeTab={match.params.tabId}>
 						<ChangePasswordPane submitChangePasswordForm={submitUserChangePassword} />
 						<UpdateAccountInfoPane
 							submitAccountInfoForm={submitUserAccountInfo}

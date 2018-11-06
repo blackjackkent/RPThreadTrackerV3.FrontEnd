@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
 	Row, Col
 } from 'reactstrap';
-import { Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import TabContent from '../../shared/styled/TabContent';
@@ -126,26 +125,15 @@ class Tools extends Component {
 					</Col>
 					<Col xs="12" lg="9">
 						<TabContent activeTab={match.params.tabId}>
-							<Route
-								path="/tools/export"
-								render={() => <ExportThreadsPane onExportRequest={this.onExportRequest} />}
+							<ExportThreadsPane onExportRequest={this.onExportRequest} />
+							<ManagePublicViewsPane
+								openUpsertPublicViewModal={openUpsertPublicViewModal}
+								openDeletePublicViewModal={openDeletePublicViewModal}
+								publicViews={publicViews}
+								isLoadingIconVisible={isLoadingIconVisible}
+								username={username}
 							/>
-							<Route
-								path="/tools/public"
-								render={() => (
-									<ManagePublicViewsPane
-										openUpsertPublicViewModal={openUpsertPublicViewModal}
-										openDeletePublicViewModal={openDeletePublicViewModal}
-										publicViews={publicViews}
-										isLoadingIconVisible={isLoadingIconVisible}
-										username={username}
-									/>
-								)}
-							/>
-							<Route
-								path="/tools/extensions"
-								render={() => <BrowserExtensionsPane />}
-							/>
+							<BrowserExtensionsPane />
 						</TabContent>
 					</Col>
 				</Row>
