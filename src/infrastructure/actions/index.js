@@ -42,14 +42,6 @@ export {
 	openUpsertThreadModal
 } from './ui/upsertThreadModal';
 export {
-	SET_ACTIVE_HELP_TAB,
-	SET_ACTIVE_SETTINGS_TAB,
-	SET_ACTIVE_TOOLS_TAB,
-	setActiveHelpTab,
-	setActiveSettingsTab,
-	setActiveToolsTab
-} from './ui/activeTabs';
-export {
 	setMaintenanceModeOn,
 	SET_MAINTENANCE_MODE_ON
 } from './ui/setMaintenanceModeOn';

@@ -32,7 +32,7 @@ class ExportThreadsPane extends Component {
 		const { onExportRequest } = this.props;
 		const { includeArchived, includeHiatused } = this.state;
 		return (
-			<TabPane tabId="export-threads">
+			<TabPane tabId="export">
 				<Card>
 					<CardHeader>
 						<i

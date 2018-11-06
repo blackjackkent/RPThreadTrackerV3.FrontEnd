@@ -5,27 +5,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tag="li"
 >
   <NavLink
-    className=""
+    activeClassName="active"
+    ariaCurrent="true"
     data-spec="static-tab-nav-item-navlink"
-    href="#mock-tab"
-    onClick={[Function]}
-    tag="a"
-  >
-    Mock Tab
-  </NavLink>
-</NavItem>
-`;
-
-exports[`rendering snapshots should render valid snapshot if tab is active 1`] = `
-<NavItem
-  tag="li"
->
-  <NavLink
-    className="active"
-    data-spec="static-tab-nav-item-navlink"
-    href="#active-tab"
-    onClick={[Function]}
-    tag="a"
+    to="/test/mock-tab"
   >
     Mock Tab
   </NavLink>

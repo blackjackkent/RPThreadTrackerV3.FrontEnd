@@ -15,22 +15,16 @@ import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import FAQPane from './components/FAQPane';
 
 const propTypes = {
-	activeTab: PropTypes.string.isRequired,
-	setActiveHelpTab: PropTypes.func.isRequired,
-	submitContactForm: PropTypes.func.isRequired
+	submitContactForm: PropTypes.func.isRequired,
+	match: PropTypes.shape({}).isRequired
 };
 
-function mapStateToProps(state) {
-	const {
-		ui
-	} = state;
-	return {
-		activeTab: ui.activeHelpTab
-	};
+function mapStateToProps() {
+	return {};
 }
 
 const Help = (props) => {
-	const { activeTab, setActiveHelpTab, submitContactForm } = props;
+	const { submitContactForm, match } = props;
 	const options = Object.values(tabs.HELP);
 	return (
 		<div className="animated fadeIn static-container help-container">
@@ -38,8 +32,7 @@ const Help = (props) => {
 				<Col className="d-lg-none text-center">
 					<StaticDropdownNav
 						data-spec="help-static-dropdown-nav"
-						setActiveTab={setActiveHelpTab}
-						activeTab={activeTab}
+						activeTab={match.url}
 						options={options}
 					/>
 				</Col>
@@ -49,13 +42,11 @@ const Help = (props) => {
 
 					<StaticTabNav
 						data-spec="help-static-tab-nav"
-						setActiveTab={setActiveHelpTab}
-						activeTab={activeTab}
 						options={options}
 					/>
 				</Col>
 				<Col xs="12" lg="9">
-					<TabContent activeTab={activeTab}>
+					<TabContent activeTab={match.params.tabId}>
 						<AboutTrackerPane />
 						<SupportGuidesPane />
 						<FAQPane />

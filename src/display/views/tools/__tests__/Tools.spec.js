@@ -15,11 +15,11 @@ jest.mock('../../../../infrastructure/selectors', () => ({
 jest.mock('../../../../infrastructure/constants/tabs', () => ({
 	TOOLS: {
 		TAB1: {
-			tabId: 'tab1',
+			href: '/tools/tab1',
 			name: 'Tab 1'
 		},
 		TAB2: {
-			tabId: 'tab2',
+			tabId: '/tools/tab2',
 			name: 'Tab 2'
 		}
 	}
@@ -37,11 +37,14 @@ const createTestProps = propOverrides => ({
 	exportThreads: jest.fn(),
 	openUpsertPublicViewModal: jest.fn(),
 	openDeletePublicViewModal: jest.fn(),
+	match: {
+		url: '/tools/tab1',
+		params: { tabId: 'tab1' }
+	},
 	...propOverrides
 });
 
 const createTestState = stateOverrides => ({
-	ui: { activeToolsTab: 'my-test-tab' },
 	user: { id: '12345', userName: 'test-user' },
 	tags: ['tag1', 'tag2', 'tag3'],
 	publicViews: [{}, {}, {}, {}],

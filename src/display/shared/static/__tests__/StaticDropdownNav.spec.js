@@ -2,13 +2,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import * as history from '../../../../utility/history';
 import StaticDropdownNav from '../StaticDropdownNav';
 // #endregion imports
 
+jest.mock('../../../../utility/history', () => ({
+	navigation: {
+		navigateTo: jest.fn()
+	}
+}));
+
 const createTestProps = propOverrides => ({
-	activeTab: 'test-tab',
-	setActiveTab: jest.fn(),
-	options: [{ tabId: 'mock-option-1', name: 'Mock Option 1' }, { tabId: 'mock-option-2', name: 'Mock Option 2' }],
+	activeTab: '/test/mock-option-2',
+	options: [{ href: '/test/mock-option-1', name: 'Mock Option 1' }, { href: '/test/mock-option-2', name: 'Mock Option 2' }],
 	...propOverrides
 });
 describe('rendering', () => {
@@ -33,16 +39,15 @@ describe('rendering', () => {
 
 describe('behavior', () => {
 	describe('setActiveTab', () => {
-		it('should be triggered with selected value on change', () => {
-			const setActiveTab = jest.fn();
-			const mockEvent = { target: { value: 'test-tab-3' } };
-			const props = createTestProps({ setActiveTab });
+		it('should trigger navigation with selected value on change', () => {
+			const mockEvent = { target: { value: '/test/mock-option-1' } };
+			const props = createTestProps();
 			const jsx = (<StaticDropdownNav {...props} />);
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'static-dropdown-nav-select');
 			field.simulate('change', mockEvent);
-			expect(setActiveTab).toHaveBeenCalledTimes(1);
-			expect(setActiveTab).toHaveBeenLastCalledWith('test-tab-3');
+			expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+			expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/test/mock-option-1');
 		});
 	});
 });

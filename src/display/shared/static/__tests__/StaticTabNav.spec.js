@@ -8,11 +8,9 @@ import StaticTabNav from '../StaticTabNav';
 jest.mock('../StaticTabNavItem', () => 'StaticTabNavItem');
 
 const createTestProps = propOverrides => ({
-	activeTab: 'test-tab',
-	setActiveTab: jest.fn(),
 	options: [
-		{ tabId: 'mock-option-1', name: 'Mock Option 1', icon: 'icon1' },
-		{ tabId: 'mock-option-2', name: 'Mock Option 2', icon: 'icon2' }
+		{ href: '/test/mock-option-1', name: 'Mock Option 1' },
+		{ href: '/test/mock-option-2', name: 'Mock Option 2' }
 	],
 	...propOverrides
 });

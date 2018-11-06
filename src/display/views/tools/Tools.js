@@ -16,7 +16,6 @@ import ExportThreadsPane from './components/ExportThreadsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
-	activeTab: PropTypes.string.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	fetchCharacters: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -24,12 +23,12 @@ const propTypes = {
 	fetchUser: PropTypes.func.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
-	setActiveToolsTab: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
 	openDeletePublicViewModal: PropTypes.func.isRequired,
-	username: PropTypes.string
+	username: PropTypes.string,
+	match: PropTypes.shape({}).isRequired
 };
 
 const defaultProps = {
@@ -38,7 +37,6 @@ const defaultProps = {
 
 function mapStateToProps(state) {
 	const {
-		ui,
 		user,
 		tags,
 		publicViews,
@@ -50,8 +48,7 @@ function mapStateToProps(state) {
 		username: user.userName,
 		tags,
 		publicViews,
-		isLoadingIconVisible,
-		activeTab: ui.activeToolsTab
+		isLoadingIconVisible
 	};
 }
 
@@ -93,13 +90,12 @@ class Tools extends Component {
 
 	render() {
 		const {
-			activeTab,
 			publicViews,
 			isLoadingIconVisible,
-			setActiveToolsTab,
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
-			username
+			username,
+			match
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
@@ -108,8 +104,7 @@ class Tools extends Component {
 					<Col className="d-lg-none text-center">
 						<StaticDropdownNav
 							data-spec="tools-static-dropdown-nav"
-							setActiveTab={setActiveToolsTab}
-							activeTab={activeTab}
+							activeTab={match.url}
 							options={options}
 						/>
 					</Col>
@@ -118,13 +113,11 @@ class Tools extends Component {
 					<Col className="d-none d-lg-block" md={3}>
 						<StaticTabNav
 							data-spec="tools-static-tab-nav"
-							setActiveTab={setActiveToolsTab}
-							activeTab={activeTab}
 							options={options}
 						/>
 					</Col>
 					<Col xs="12" lg="9">
-						<TabContent activeTab={activeTab}>
+						<TabContent activeTab={match.params.tabId}>
 							<ExportThreadsPane onExportRequest={this.onExportRequest} />
 							<ManagePublicViewsPane
 								openUpsertPublicViewModal={openUpsertPublicViewModal}
@@ -146,7 +139,6 @@ Tools.propTypes = propTypes;
 Tools.defaultProps = defaultProps;
 export default connect(mapStateToProps, {
 	exportThreads: actions.exportThreads,
-	setActiveToolsTab: actions.setActiveToolsTab,
 	fetchTags: actions.fetchTags,
 	fetchPublicViews: actions.fetchPublicViews,
 	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
