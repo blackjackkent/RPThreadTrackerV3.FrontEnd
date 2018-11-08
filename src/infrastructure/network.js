@@ -22,7 +22,7 @@ function onTokenRefreshed(token) {
 }
 function refreshAccessToken(error) {
 	return axios
-		.post(`${API_BASE_URL}/api/auth/refresh`, { RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN) })
+		.post(`${API_BASE_URL}api/auth/refresh`, { RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN) })
 		.then(({ data }) => {
 			cache.set(cacheKeys.ACCESS_TOKEN, data.token.token);
 			cache.set(cacheKeys.REFRESH_TOKEN, data.refreshToken.token);
