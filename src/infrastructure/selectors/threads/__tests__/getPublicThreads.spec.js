@@ -6,7 +6,10 @@ import getPublicThreads from '../getPublicThreads';
 jest.mock('../../common', () => ({
 	buildThreadDataByPredicate: jest.fn(),
 	filterThreadsByPublicViewFilter: jest.fn(),
-	shouldProcessThreads: jest.fn()
+	shouldProcessThreads: jest.fn(),
+	getAllPublicThreads: jest.fn(),
+	getAllPublicThreadStatus: jest.fn(),
+	getPublicThreadFilter: jest.fn()
 }));
 jest.mock('../../../constants/filters', () => ({
 	ALL: jest.fn()
@@ -30,7 +33,6 @@ const getStatuses = () => [
 	{ postId: 6 },
 	{ postId: 7 }
 ];
-
 const getAggregateOutput = () => [
 	{ thread: { threadId: 1 }, status: { postId: 1 } },
 	{ thread: { threadId: 2 }, status: { postId: 2 } },
@@ -40,7 +42,6 @@ const getAggregateOutput = () => [
 	{ thread: { threadId: 6 }, status: { postId: 6 } },
 	{ thread: { threadId: 7 }, status: { postId: 7 } }
 ];
-
 const getFilterOutput = () => [
 	{ thread: { threadId: 1 }, status: { postId: 1 } },
 	{ thread: { threadId: 3 }, status: { postId: 3 } },
@@ -53,15 +54,19 @@ beforeEach(() => {
 });
 describe('behavior', () => {
 	it('should return empty array when shouldProcessThreads is false', () => {
+		// Arrange
 		const state = {
 			publicThreads: { threads: [] },
 			publicThreadsStatus: [{}, {}, {}]
 		};
 		common.shouldProcessThreads.mockReturnValue(false);
-		const result = getPublicThreads(state);
+		// Act
+		const result = getPublicThreads.resultFunc(state.publicThreads, state.publicThreadsStatus, 'test-filter');
+		// Assert
 		expect(result).toEqual([]);
 	});
-	it('should return top five items by date', () => {
+	it('should return threads when shouldProcessThreads is true', () => {
+		// Arrange
 		common.shouldProcessThreads.mockReturnValue(true);
 		when(common.buildThreadDataByPredicate)
 			.calledWith(
@@ -74,15 +79,12 @@ describe('behavior', () => {
 		when(common.filterThreadsByPublicViewFilter)
 			.calledWith(
 				expect.arrayContaining(getAggregateOutput()),
-				'My Turn'
+				'test-filter'
 			)
 			.mockReturnValue(getFilterOutput());
-		const state = {
-			publicThreads: { threads: getThreads() },
-			publicThreadsStatus: getStatuses(),
-			publicThreadFilter: 'My Turn'
-		};
-		const result = getPublicThreads(state);
+		// Act
+		const result = getPublicThreads.resultFunc(getThreads(), getStatuses(), 'test-filter');
+		// Assert
 		expect(common.buildThreadDataByPredicate).toHaveBeenCalled();
 		expect(common.filterThreadsByPublicViewFilter).toHaveBeenCalled();
 		expect(result).toEqual(getFilterOutput());

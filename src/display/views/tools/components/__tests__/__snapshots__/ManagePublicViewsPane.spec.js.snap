@@ -2,7 +2,7 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <TabPane
-  tabId="manage-public-views"
+  tabId="public"
   tag="div"
 >
   <Styled(Card)>

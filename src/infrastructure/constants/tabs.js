@@ -1,43 +1,43 @@
 export default {
 	HELP: {
 		ABOUT: {
-			tabId: 'about',
+			href: '/help/about',
 			name: 'About RPThreadTracker'
 		},
 		FAQ: {
-			tabId: 'faq',
+			href: '/help/faq',
 			name: 'FAQ'
 		},
 		GUIDES: {
-			tabId: 'guides',
+			href: '/help/guides',
 			name: 'Usage Guides'
 		},
 		CONTACT: {
-			tabId: 'contact',
+			href: '/help/contact',
 			name: 'Contact Me'
 		}
 	},
 	SETTINGS: {
 		CHANGE_PASSWORD: {
-			tabId: 'change-password',
+			href: '/settings/change-password',
 			name: 'Change Password'
 		},
 		CHANGE_USERNAME: {
-			tabId: 'change-username',
+			href: '/settings/change-username',
 			name: 'Change Username/Email'
 		}
 	},
 	TOOLS: {
 		EXPORT_THREADS: {
-			tabId: 'export-threads',
+			href: '/tools/export',
 			name: 'Export Threads'
 		},
 		MANAGE_PUBLIC_VIEWS: {
-			tabId: 'manage-public-views',
+			href: '/tools/public',
 			name: 'Manage Public Views'
 		},
 		BROWSER_EXTENSIONS: {
-			tabId: 'browser-extensions',
+			href: '/tools/extensions',
 			name: 'Browser Extensions'
 		}
 	}

@@ -50,6 +50,14 @@ describe('buildLegacyView', () => {
 		const result = legacyPublicValues.buildLegacyView(queryData, 'archived');
 		expect(result.turnFilter.includeArchived).toBe(true);
 	});
+	it('should set turnfilter for allthreads slug', () => {
+		const queryData = getQueryData();
+		const result = legacyPublicValues.buildLegacyView(queryData, 'allthreads');
+		expect(result.turnFilter.includeMyTurn).toBe(true);
+		expect(result.turnFilter.includeTheirTurn).toBe(true);
+		expect(result.turnFilter.includeArchived).toBe(true);
+		expect(result.turnFilter.includeQueued).toBe(true);
+	});
 	it('should set sort by user title', () => {
 		const queryData = getQueryData({ currentOrderBy: 'UserTitle' });
 		const result = legacyPublicValues.buildLegacyView(queryData);

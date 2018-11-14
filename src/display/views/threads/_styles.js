@@ -18,7 +18,8 @@ export default styled.div`
 	}
 	.thread-bulk-update-controls,
 	.tag-filter-select,
-	.thread-refresh-button {
+	.thread-refresh-button,
+	.public-tool-banner {
 		text-align: center;
 		margin-bottom: 10px;
 		background: ${colors.GRAY_900};
@@ -46,6 +47,9 @@ export default styled.div`
 		.tag-filter-select,
 		.thread-refresh-button {
 			background: none;
+		}
+		.public-tool-banner {
+			background: ${colors.GRAY_100}
 		}
 	}
 `;

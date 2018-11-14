@@ -2,7 +2,7 @@
 
 exports[`rendering snapshots should render valid snapshot 1`] = `
 <TabPane
-  tabId="browser-extensions"
+  tabId="extensions"
   tag="div"
 >
   <Styled(Card)>

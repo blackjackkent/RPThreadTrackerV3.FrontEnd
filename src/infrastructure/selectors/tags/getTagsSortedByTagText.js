@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
+import { getTags } from '../common';
 
-const getAllTags = state => state.tags;
 const getTagsSortedByTagText = createSelector(
-	[getAllTags],
+	[getTags],
 	(tags) => {
 		if (!tags.length) {
 			return [];

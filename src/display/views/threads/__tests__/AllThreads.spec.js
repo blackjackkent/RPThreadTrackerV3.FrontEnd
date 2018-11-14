@@ -10,7 +10,7 @@ jest.mock('../components/_getTdProps', () => (fn1, fn2, fn3, fn4) => `${fn1.name
 jest.mock('../components/ThreadTable', () => 'ThreadTable');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getAllActiveFilteredThreads: () => [{}, {}, {}, {}, {}, {}, {}],
+	getActiveFilteredThreads: () => [{}, {}, {}, {}, {}, {}, {}],
 	getActiveThreadCharacters: () => [{}, {}],
 	getActiveThreadPartners: () => ['partner1', 'partner2'],
 	getActiveThreadLastPosters: () => ['lastposter1', 'lastposter2'],

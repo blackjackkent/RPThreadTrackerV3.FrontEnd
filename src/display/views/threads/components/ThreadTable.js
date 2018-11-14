@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import defaultFilter from './_defaultFilter';
 import CheckboxTable from './CheckboxTable';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
@@ -109,6 +110,14 @@ class ThreadTable extends React.Component {
 					</Col>
 					<Col xs={{ size: 6, offset: 3 }} sm={{ size: 4, offset: 4 }} xl={{ size: 2, offset: 0 }}>
 						<ThreadRefreshButton isArchive={isArchive} refreshThreads={refreshThreads} />
+					</Col>
+				</Row>
+				<Row>
+					<Col>
+						<p className="public-tool-banner">
+							Want to share this view publicly? Check out the new{' '}
+							<Link href="/tools/public" to="/tools/public">Public Views tool</Link>.
+						</p>
 					</Col>
 				</Row>
 				<CheckboxTable

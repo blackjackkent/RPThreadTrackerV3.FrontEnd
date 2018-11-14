@@ -158,10 +158,17 @@ class Layout extends Component {
 										/* istanbul ignore next */
 										() => (<Threads Renderable={QueuedThreads} />)}
 								/>
-								<Route path="/tools" name="Tools" component={Tools} />
-								<Route path="/settings" name="Settings" component={Settings} />
 								<Route path="/manage-characters" name="Characters" component={ManageCharacters} />
-								<Route path="/help" name="Help" component={Help} />
+
+								<Route path="/tools/:tabId" name="Tools" component={Tools} />
+								<Redirect from="/tools" to="/tools/export" />
+
+								<Route path="/settings/:tabId" name="Settings" component={Settings} />
+								<Redirect from="/settings" to="/settings/change-password" />
+
+								<Route path="/help/:tabId" name="Help" component={Help} />
+								<Redirect from="/help" to="/help/about" />
+
 								<Redirect from="/" to="/dashboard" />
 							</Switch>
 						</Container>

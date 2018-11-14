@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
+import { getNews, getUserSettings } from '../common';
 
-const getNews = state => state.news;
-const getUserSettings = state => state.userSettings;
 const markUnreadNews = createSelector(
 	[getNews, getUserSettings],
 	(news, userSettings) => {
@@ -12,9 +11,4 @@ const markUnreadNews = createSelector(
 		}));
 	}
 );
-const getNewsUnreadCount = createSelector(
-	[markUnreadNews],
-	news => news.filter(n => n.isUnread).length
-);
-export { markUnreadNews };
-export default getNewsUnreadCount;
+export default markUnreadNews;

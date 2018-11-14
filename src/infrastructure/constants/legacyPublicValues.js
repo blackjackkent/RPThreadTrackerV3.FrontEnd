@@ -6,6 +6,7 @@ export const legacyPublicSlugs = [
 	'myturn',
 	'archived',
 	'queued',
+	'allthreads',
 	'legacy'
 ];
 
@@ -27,16 +28,16 @@ function getSortKey(orderBy) {
 
 export function buildLegacyView(queryData, slug) {
 	const turnFilter = {};
-	if (slug === 'yourturn') {
+	if (slug === 'yourturn' || slug === 'allthreads') {
 		turnFilter.includeMyTurn = true;
 	}
-	if (slug === 'theirturn') {
+	if (slug === 'theirturn' || slug === 'allthreads') {
 		turnFilter.includeTheirTurn = true;
 	}
-	if (slug === 'queued') {
+	if (slug === 'queued' || slug === 'allthreads') {
 		turnFilter.includeQueued = true;
 	}
-	if (slug === 'archived') {
+	if (slug === 'archived' || slug === 'allthreads') {
 		turnFilter.includeArchived = true;
 	}
 	return {

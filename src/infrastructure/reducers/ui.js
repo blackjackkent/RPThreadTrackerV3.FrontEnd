@@ -13,9 +13,6 @@ import {
 	OPEN_UPSERT_CHARACTER_MODAL,
 	OPEN_UPSERT_PUBLIC_VIEW_MODAL,
 	OPEN_UPSERT_THREAD_MODAL,
-	SET_ACTIVE_HELP_TAB,
-	SET_ACTIVE_SETTINGS_TAB,
-	SET_ACTIVE_TOOLS_TAB,
 	SUBMIT_USER_LOGOUT,
 	TOGGLE_HEADER_PROFILE_DROPDOWN,
 	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
@@ -49,9 +46,6 @@ const defaultState = {
 	isUntrackCharacterModalOpen: false,
 	isUpsertPublicViewModalOpen: false,
 	isDeletePublicViewModalOpen: false,
-	activeHelpTab: 'about',
-	activeSettingsTab: 'change-password',
-	activeToolsTab: 'export-threads',
 	useLightTheme: false
 };
 
@@ -139,18 +133,6 @@ function ui(state = defaultState, action) {
 		case DELETE_PUBLIC_VIEW:
 			return Object.assign({}, state, {
 				isDeletePublicViewModalOpen: false
-			});
-		case SET_ACTIVE_HELP_TAB:
-			return Object.assign({}, state, {
-				activeHelpTab: action.data
-			});
-		case SET_ACTIVE_SETTINGS_TAB:
-			return Object.assign({}, state, {
-				activeSettingsTab: action.data
-			});
-		case SET_ACTIVE_TOOLS_TAB:
-			return Object.assign({}, state, {
-				activeToolsTab: action.data
 			});
 		case SET_MAINTENANCE_MODE_ON:
 			return Object.assign({}, state, {

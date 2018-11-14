@@ -5,7 +5,7 @@ import {
 import Card from '../../../shared/styled/Card';
 
 const BrowserExtensionsPane = () => (
-	<TabPane tabId="browser-extensions">
+	<TabPane tabId="extensions">
 		<Card>
 			<CardHeader>
 				<i

@@ -1,12 +1,13 @@
 // News
-export { default as getNewsUnreadCount, markUnreadNews } from './news/getNews';
+export { default as getNewsUnreadCount } from './news/getNewsUnreadCount';
+export { default as markUnreadNews } from './news/markUnreadNews';
 
 // Threads
 export { default as getActiveThreadCharacters } from './threads/active/getActiveThreadCharacters';
 export { default as getActiveThreadPartners } from './threads/active/getActiveThreadPartners';
 export { default as getActiveThreadLastPosters } from './threads/active/getActiveThreadLastPosters';
 export { default as getActiveThreadTags } from './threads/active/getActiveThreadTags';
-export { default as getAllActiveFilteredThreads } from './threads/active/all/getAllActiveFilteredThreads';
+export { default as getActiveFilteredThreads } from './threads/active/getActiveFilteredThreads';
 export { default as getMyTurnFilteredThreads } from './threads/active/my-turn/getMyTurnFilteredThreads';
 export { default as getTheirTurnFilteredThreads } from './threads/active/their-turn/getTheirTurnFilteredThreads';
 export { default as getQueuedFilteredThreads } from './threads/active/queued/getQueuedFilteredThreads';
@@ -14,7 +15,6 @@ export { default as getMyTurnThreads } from './threads/active/my-turn/getMyTurnT
 export { default as getTheirTurnThreads } from './threads/active/their-turn/getTheirTurnThreads';
 export { default as getQueuedThreads } from './threads/active/queued/getQueuedThreads';
 
-export { default as getArchivedThreads } from './threads/archived/getArchivedThreads';
 export { default as getArchivedThreadCharacters } from './threads/archived/getArchivedThreadCharacters';
 export { default as getArchivedThreadPartners } from './threads/archived/getArchivedThreadPartners';
 export { default as getArchivedThreadLastPosters } from './threads/archived/getArchivedThreadLastPosters';

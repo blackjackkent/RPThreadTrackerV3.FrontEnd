@@ -1,0 +1,13 @@
+export const getAllActiveThreads = state => state.activeThreads;
+export const getAllActiveThreadStatus = state => state.activeThreadsStatus;
+export const getAllArchivedThreads = state => state.archivedThreads;
+export const getAllArchivedThreadStatus = state => state.archivedThreadsStatus;
+export const getFilteredTag = state => (state.threadFilter ? state.threadFilter.filteredTag : null);
+export const getPublicThreadFilter = state => state.publicThreadFilter;
+export const getAllPublicThreads = state => state.publicThreads.threads;
+export const getAllPublicThreadStatus = state => state.publicThreadsStatus;
+export const getAllCharacters = state => state.characters;
+export const getNews = state => state.news;
+export const getUserSettings = state => state.userSettings;
+export const getTags = state => state.tags;
+export const getLoading = state => state.loading;

@@ -11,11 +11,11 @@ jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/constants/tabs', () => ({
 	SETTINGS: {
 		TAB1: {
-			tabId: 'tab1',
+			href: '/settings/tab1',
 			name: 'Tab 1'
 		},
 		TAB2: {
-			tabId: 'tab2',
+			href: '/settings/tab2',
 			name: 'Tab 2'
 		}
 	}
@@ -28,11 +28,14 @@ const createTestProps = propOverrides => ({
 	setActiveSettingsTab: jest.fn(),
 	submitUserChangePassword: jest.fn(),
 	submitUserAccountInfo: jest.fn(),
+	match: {
+		url: '/settings/tab1',
+		params: { tabId: 'tab1' }
+	},
 	...propOverrides
 });
 
 const createTestState = stateOverrides => ({
-	ui: { activeSettingsTab: 'my-test-tab' },
 	user: { id: '12345' },
 	...stateOverrides
 });
