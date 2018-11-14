@@ -46,7 +46,7 @@ function mapStateToProps(state) {
 class Public extends Component {
 	componentDidMount() {
 		const { slug, username, fetchPublicThreads } = this.props;
-		if (legacyPublicSlugs.includes(slug)) {
+		if (legacyPublicSlugs.includes(slug) && !username) {
 			this.fetchLegacyView(slug);
 			return;
 		}

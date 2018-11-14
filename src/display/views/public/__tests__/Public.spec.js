@@ -74,9 +74,9 @@ describe('behavior', () => {
 			expect(fetchPublicThreads).toHaveBeenCalledTimes(1);
 			expect(fetchPublicThreads).toHaveBeenLastCalledWith('my-slug', 'test-user');
 		});
-		it('should fetch public threads if slug is legacy', () => {
+		it('should fetch public threads if slug is legacy and no username', () => {
 			const fetchLegacyPublicThreads = jest.fn();
-			const props = createTestProps({ fetchLegacyPublicThreads, slug: 'invalidslug' });
+			const props = createTestProps({ fetchLegacyPublicThreads, slug: 'invalidslug', username: null });
 			const state = createTestState();
 			const jsx = (<Public {...props} />);
 			shallowWithState(jsx, state).dive();
