@@ -97,6 +97,37 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
     </Col>
   </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <p
+        className="public-tool-banner"
+      >
+        Want to share this view publicly? Check out the new
+         
+        <Link
+          href="/tools/public"
+          replace={false}
+          to="/tools/public"
+        >
+          Public Views tool
+        </Link>
+        .
+      </p>
+    </Col>
+  </Row>
   <CheckboxTable
     SubComponent={[Function]}
     className="-striped"
@@ -246,6 +277,37 @@ exports[`rendering snapshots should render valid snapshot when items are selecte
         isArchive={true}
         refreshThreads={[MockFunction]}
       />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <p
+        className="public-tool-banner"
+      >
+        Want to share this view publicly? Check out the new
+         
+        <Link
+          href="/tools/public"
+          replace={false}
+          to="/tools/public"
+        >
+          Public Views tool
+        </Link>
+        .
+      </p>
     </Col>
   </Row>
   <CheckboxTable
@@ -399,6 +461,37 @@ exports[`rendering snapshots should render valid snapshot when loading 1`] = `
       />
     </Col>
   </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <p
+        className="public-tool-banner"
+      >
+        Want to share this view publicly? Check out the new
+         
+        <Link
+          href="/tools/public"
+          replace={false}
+          to="/tools/public"
+        >
+          Public Views tool
+        </Link>
+        .
+      </p>
+    </Col>
+  </Row>
   <CheckboxTable
     SubComponent={[Function]}
     className="-striped"
@@ -548,6 +641,37 @@ exports[`rendering snapshots should render valid snapshot when threadTablePageSi
         isArchive={true}
         refreshThreads={[MockFunction]}
       />
+    </Col>
+  </Row>
+  <Row
+    tag="div"
+  >
+    <Col
+      tag="div"
+      widths={
+        Array [
+          "xs",
+          "sm",
+          "md",
+          "lg",
+          "xl",
+        ]
+      }
+    >
+      <p
+        className="public-tool-banner"
+      >
+        Want to share this view publicly? Check out the new
+         
+        <Link
+          href="/tools/public"
+          replace={false}
+          to="/tools/public"
+        >
+          Public Views tool
+        </Link>
+        .
+      </p>
     </Col>
   </Row>
   <CheckboxTable

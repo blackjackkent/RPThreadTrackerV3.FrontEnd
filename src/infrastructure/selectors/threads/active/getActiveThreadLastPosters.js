@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 import { filterDuplicatesFromArray } from '../../../../utility';
+import { getAllActiveThreadStatus } from '../../common';
 
-const getAllActiveThreadStatus = state => state.activeThreadsStatus;
 const getActiveThreadLastPosters = createSelector(
 	[getAllActiveThreadStatus],
 	(threadsStatus) => {

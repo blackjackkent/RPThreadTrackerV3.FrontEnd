@@ -13,27 +13,24 @@ import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
-	activeTab: PropTypes.string.isRequired,
 	user: PropTypes.shape({}).isRequired,
-	setActiveSettingsTab: PropTypes.func.isRequired,
 	submitUserChangePassword: PropTypes.func.isRequired,
-	submitUserAccountInfo: PropTypes.func.isRequired
+	submitUserAccountInfo: PropTypes.func.isRequired,
+	match: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
 	const {
-		ui,
 		user
 	} = state;
 	return {
-		user,
-		activeTab: ui.activeSettingsTab
+		user
 	};
 }
 
 const Settings = (props) => {
 	const {
-		activeTab, user, setActiveSettingsTab, submitUserChangePassword, submitUserAccountInfo
+		user, submitUserChangePassword, submitUserAccountInfo, match
 	} = props;
 	const options = Object.values(tabs.SETTINGS);
 	return (
@@ -42,8 +39,7 @@ const Settings = (props) => {
 				<Col className="d-lg-none text-center">
 					<StaticDropdownNav
 						data-spec="settings-static-dropdown-nav"
-						setActiveTab={setActiveSettingsTab}
-						activeTab={activeTab}
+						activeTab={match.url}
 						options={options}
 					/>
 				</Col>
@@ -52,13 +48,11 @@ const Settings = (props) => {
 				<Col className="d-none d-lg-block" md={3}>
 					<StaticTabNav
 						data-spec="settings-static-tab-nav"
-						setActiveTab={setActiveSettingsTab}
-						activeTab={activeTab}
 						options={options}
 					/>
 				</Col>
 				<Col xs="12" lg="9">
-					<TabContent activeTab={activeTab}>
+					<TabContent activeTab={match.params.tabId}>
 						<ChangePasswordPane submitChangePasswordForm={submitUserChangePassword} />
 						<UpdateAccountInfoPane
 							submitAccountInfoForm={submitUserAccountInfo}

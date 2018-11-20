@@ -4,44 +4,44 @@ exports[`object structure should have expected values 1`] = `
 Object {
   "HELP": Object {
     "ABOUT": Object {
+      "href": "/help/about",
       "name": "About RPThreadTracker",
-      "tabId": "about",
     },
     "CONTACT": Object {
+      "href": "/help/contact",
       "name": "Contact Me",
-      "tabId": "contact",
     },
     "FAQ": Object {
+      "href": "/help/faq",
       "name": "FAQ",
-      "tabId": "faq",
     },
     "GUIDES": Object {
+      "href": "/help/guides",
       "name": "Usage Guides",
-      "tabId": "guides",
     },
   },
   "SETTINGS": Object {
     "CHANGE_PASSWORD": Object {
+      "href": "/settings/change-password",
       "name": "Change Password",
-      "tabId": "change-password",
     },
     "CHANGE_USERNAME": Object {
+      "href": "/settings/change-username",
       "name": "Change Username/Email",
-      "tabId": "change-username",
     },
   },
   "TOOLS": Object {
     "BROWSER_EXTENSIONS": Object {
+      "href": "/tools/extensions",
       "name": "Browser Extensions",
-      "tabId": "browser-extensions",
     },
     "EXPORT_THREADS": Object {
+      "href": "/tools/export",
       "name": "Export Threads",
-      "tabId": "export-threads",
     },
     "MANAGE_PUBLIC_VIEWS": Object {
+      "href": "/tools/public",
       "name": "Manage Public Views",
-      "tabId": "manage-public-views",
     },
   },
 }

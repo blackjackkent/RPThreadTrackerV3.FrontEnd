@@ -21,21 +21,20 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
     >
       <StaticDropdownNav
-        activeTab="my-test-tab"
+        activeTab="/settings/tab1"
         data-spec="settings-static-dropdown-nav"
         options={
           Array [
             Object {
+              "href": "/settings/tab1",
               "name": "Tab 1",
-              "tabId": "tab1",
             },
             Object {
+              "href": "/settings/tab2",
               "name": "Tab 2",
-              "tabId": "tab2",
             },
           ]
         }
-        setActiveTab={[MockFunction]}
       />
     </Col>
   </Row>
@@ -57,21 +56,19 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       }
     >
       <StaticTabNav
-        activeTab="my-test-tab"
         data-spec="settings-static-tab-nav"
         options={
           Array [
             Object {
+              "href": "/settings/tab1",
               "name": "Tab 1",
-              "tabId": "tab1",
             },
             Object {
+              "href": "/settings/tab2",
               "name": "Tab 2",
-              "tabId": "tab2",
             },
           ]
         }
-        setActiveTab={[MockFunction]}
       />
     </Col>
     <Col
@@ -89,7 +86,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       xs="12"
     >
       <Styled(TabContent)
-        activeTab="my-test-tab"
+        activeTab="tab1"
       >
         <ChangePasswordPane
           submitChangePasswordForm={[MockFunction]}

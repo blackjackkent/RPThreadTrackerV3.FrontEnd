@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
+import { getLoading } from '../common';
 
-const getLoading = state => state.loading;
 const getIsLoadingIconVisible = createSelector(
 	[getLoading],
 	(loading) => {

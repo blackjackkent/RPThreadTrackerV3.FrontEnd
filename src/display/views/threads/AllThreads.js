@@ -23,7 +23,7 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const { activeThreads } = state;
-	const filteredThreads = selectors.getAllActiveFilteredThreads(state);
+	const filteredThreads = selectors.getActiveFilteredThreads(state);
 	const characters = selectors.getActiveThreadCharacters(state);
 	const partners = selectors.getActiveThreadPartners(state);
 	const lastPosters = selectors.getActiveThreadLastPosters(state);

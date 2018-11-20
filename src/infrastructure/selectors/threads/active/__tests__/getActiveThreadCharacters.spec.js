@@ -2,49 +2,49 @@ import { when } from 'jest-when';
 import * as utility from '../../../../../utility';
 import getActiveThreadCharacters from '../getActiveThreadCharacters';
 
+jest.mock('../../../common', () => ({
+	getAllActiveThreads: jest.fn()
+}));
 jest.mock('../../../../../utility', () => ({
-	filterDuplicatesFromArray: jest.fn(arr => arr)
+	filterDuplicatesFromArray: jest.fn()
 }));
 
 const getThreads = () => [
-	{ threadId: 1, character: { characterId: 1, urlIdentifier: 'test-character-1' } },
-	{ threadId: 2, character: { characterId: 2, characterName: 'Test Character 2' } },
-	{ threadId: 3, character: { characterId: 1, urlIdentifier: 'test-character-1' } },
-	{ threadId: 4, character: { characterId: 3, urlIdentifier: 'test-character-3' } }
+	{ character: { characterId: 1 } },
+	{ character: { characterId: 2 } },
+	{ character: { characterId: 2 } },
+	{ character: { characterId: 3 } }
 ];
-
-const getCharacterObjects = () => [
-	{ characterId: 1, urlIdentifier: 'test-character-1' },
-	{ characterId: 2, characterName: 'Test Character 2' },
-	{ characterId: 1, urlIdentifier: 'test-character-1' },
-	{ characterId: 3, urlIdentifier: 'test-character-3' }
+const getCharacters = () => [
+	{ characterId: 1 },
+	{ characterId: 2 },
+	{ characterId: 2 },
+	{ characterId: 3 }
 ];
-
 const getFilterOutput = () => [
-	{ characterId: 1, urlIdentifier: 'test-character-1' },
-	{ characterId: 2, characterName: 'Test Character 2' },
-	{ characterId: 3, urlIdentifier: 'test-character-3' }
+	{ character: { characterId: 1 } },
+	{ character: { characterId: 2 } },
+	{ character: { characterId: 3 } }
 ];
 
 describe('behavior', () => {
-	it('should return an empty array if no threads on state', () => {
-		const state = {
-			activeThreads: []
-		};
-		const result = getActiveThreadCharacters(state);
-		expect(result).toEqual([]);
+	it('should return empty array when threads list is empty', () => {
+		// Act
+		const result = getActiveThreadCharacters.resultFunc([]);
+		// Assert
+		expect(result).toHaveLength(0);
 	});
-	it('should return character list without duplicates', () => {
+	it('should return filtered characters when threads list not empty', () => {
+		// Arrange
 		when(utility.filterDuplicatesFromArray)
 			.calledWith(
-				expect.arrayContaining(getCharacterObjects()),
-				'characterId'
+				expect.arrayContaining(getCharacters())
 			)
 			.mockReturnValue(getFilterOutput());
-		const state = {
-			activeThreads: getThreads()
-		};
-		const result = getActiveThreadCharacters(state);
+		// Act
+		const result = getActiveThreadCharacters.resultFunc(getThreads());
+		// Assert
+		expect(utility.filterDuplicatesFromArray).toHaveBeenCalled();
 		expect(result).toEqual(getFilterOutput());
 	});
 });

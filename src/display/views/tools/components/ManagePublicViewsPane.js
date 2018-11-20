@@ -26,7 +26,7 @@ const ManagePublicViewsPane = (props) => {
 		username
 	} = props;
 	return (
-		<TabPane tabId="manage-public-views">
+		<TabPane tabId="public">
 			<Card>
 				<CardHeader>
 					<i

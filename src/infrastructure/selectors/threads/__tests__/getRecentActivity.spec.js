@@ -1,40 +1,13 @@
-import { when } from 'jest-when';
-import * as common from '../../common';
-import * as filters from '../../../constants/filters';
 import getRecentActivity from '../getRecentActivity';
 
 jest.mock('../../common', () => ({
 	buildThreadDataByPredicate: jest.fn(),
 	shouldProcessThreads: jest.fn()
 }));
+jest.mock('../active/my-turn/getMyTurnThreads', () => () => ([]));
 jest.mock('../../../constants/filters', () => ({
 	MY_TURN: jest.fn()
 }));
-
-const getThreads = () => [
-	{ threadId: 1 },
-	{ threadId: 2 },
-	{ threadId: 3 },
-	{ threadId: 4 },
-	{ threadId: 5 },
-	{ threadId: 6 },
-	{ threadId: 7 }
-];
-const getStatuses = () => [
-	{ lastPostDate: new Date(2018, 3, 3) },
-	{ lastPostDate: new Date(2018, 3, 2) },
-	{ lastPostDate: new Date(2018, 3, 5) },
-	{ lastPostDate: new Date(2018, 3, 7) },
-	{ lastPostDate: new Date(2018, 3, 1) },
-	{ lastPostDate: new Date(2018, 3, 6) },
-	{ lastPostDate: new Date(2018, 3, 4) }
-];
-
-const getStatusesWithNulls = () => [
-	{ lastPostDate: new Date(2018, 3, 3) },
-	{ lastPostDate: new Date(2018, 3, 2) },
-	{ lastPostDate: new Date(2018, 3, 5) }
-];
 
 const getAggregateOutput = () => [
 	{ thread: { threadId: 1 }, status: { lastPostDate: new Date(2018, 3, 3) } },
@@ -45,7 +18,6 @@ const getAggregateOutput = () => [
 	{ thread: { threadId: 6 }, status: { lastPostDate: new Date(2018, 3, 6) } },
 	{ thread: { threadId: 7 }, status: { lastPostDate: new Date(2018, 3, 4) } }
 ];
-
 const getAggregateOutputWithNulls = () => [
 	{ thread: { threadId: 1 }, status: null },
 	{ thread: { threadId: 2 }, status: null },
@@ -60,29 +32,16 @@ beforeEach(() => {
 	jest.resetAllMocks();
 });
 describe('behavior', () => {
-	it('should return empty array when shouldProcessThreads is false', () => {
-		common.shouldProcessThreads.mockReturnValue(false);
-		const state = {
-			activeThreads: [],
-			activeThreadsStatus: [{}, {}, {}]
-		};
-		const result = getRecentActivity(state);
+	it('should return empty array when no threads provided', () => {
+		// Act
+		const result = getRecentActivity.resultFunc([]);
+		// Assert
 		expect(result).toEqual([]);
 	});
 	it('should return top five items by date', () => {
-		common.shouldProcessThreads.mockReturnValue(true);
-		when(common.buildThreadDataByPredicate)
-			.calledWith(
-				expect.arrayContaining(getThreads()),
-				expect.arrayContaining(getStatuses()),
-				filters.MY_TURN
-			)
-			.mockReturnValue(getAggregateOutput());
-		const state = {
-			activeThreads: getThreads(),
-			activeThreadsStatus: getStatuses()
-		};
-		const result = getRecentActivity(state);
+		// Act
+		const result = getRecentActivity.resultFunc(getAggregateOutput());
+		// Assert
 		expect(result).toHaveLength(5);
 		expect(result[0].thread.threadId).toBe(4);
 		expect(result[1].thread.threadId).toBe(6);
@@ -91,19 +50,9 @@ describe('behavior', () => {
 		expect(result[4].thread.threadId).toBe(1);
 	});
 	it('should handle null values', () => {
-		common.shouldProcessThreads.mockReturnValue(true);
-		when(common.buildThreadDataByPredicate)
-			.calledWith(
-				expect.arrayContaining(getThreads()),
-				expect.arrayContaining(getStatusesWithNulls()),
-				filters.MY_TURN
-			)
-			.mockReturnValue(getAggregateOutputWithNulls());
-		const state = {
-			activeThreads: getThreads(),
-			activeThreadsStatus: getStatusesWithNulls()
-		};
-		const result = getRecentActivity(state);
+		// Act
+		const result = getRecentActivity.resultFunc(getAggregateOutputWithNulls());
+		// Assert
 		expect(result).toHaveLength(5);
 		expect(result[0].thread.threadId).toBe(5);
 		expect(result[1].thread.threadId).toBe(3);

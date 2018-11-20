@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
+import { getAllCharacters, getAllActiveThreads } from '../common';
 
-const getAllActiveThreads = state => state.activeThreads;
-const getAllCharacters = state => state.characters;
 const getTheirTurnThreads = createSelector(
 	[getAllActiveThreads, getAllCharacters],
 	(threads, characters) => {

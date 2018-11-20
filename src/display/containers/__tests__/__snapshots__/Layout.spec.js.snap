@@ -99,23 +99,38 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           />
           <Route
             component={[Function]}
-            name="Tools"
-            path="/tools"
-          />
-          <Route
-            component={[Function]}
-            name="Settings"
-            path="/settings"
-          />
-          <Route
-            component={[Function]}
             name="Characters"
             path="/manage-characters"
           />
           <Route
             component={[Function]}
+            name="Tools"
+            path="/tools/:tabId"
+          />
+          <Redirect
+            from="/tools"
+            push={false}
+            to="/tools/export"
+          />
+          <Route
+            component={[Function]}
+            name="Settings"
+            path="/settings/:tabId"
+          />
+          <Redirect
+            from="/settings"
+            push={false}
+            to="/settings/change-password"
+          />
+          <Route
+            component={[Function]}
             name="Help"
-            path="/help"
+            path="/help/:tabId"
+          />
+          <Redirect
+            from="/help"
+            push={false}
+            to="/help/about"
           />
           <Redirect
             from="/"

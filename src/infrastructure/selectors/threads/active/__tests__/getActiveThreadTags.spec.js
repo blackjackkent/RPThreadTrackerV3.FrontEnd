@@ -2,6 +2,9 @@ import { when } from 'jest-when';
 import * as utility from '../../../../../utility';
 import getActiveThreadTags from '../getActiveThreadTags';
 
+jest.mock('../../../common', () => ({
+	getAllActiveThreads: jest.fn()
+}));
 jest.mock('../../../../../utility', () => ({
 	filterDuplicatesFromArray: jest.fn(),
 	flattenArrayOfArrays: jest.fn(),
@@ -9,48 +12,52 @@ jest.mock('../../../../../utility', () => ({
 }));
 
 const getThreads = () => [
-	{ threadId: 2, threadTags: ['tag2', 'tag3'] },
-	{ threadId: 1, threadTags: ['tag1', 'tag2'] },
-	{ threadId: 3, threadTags: ['tag3', 'tag4'] },
-	{ threadId: 4, threadTags: ['tag5', 'tag6'] }
+	{ threadTags: ['tag5', 'tag2'] },
+	{ threadTags: ['tag2', 'tag3'] },
+	{ threadTags: ['tag3', 'tag4'] },
+	{ threadTags: ['tag4', 'tag1'] }
 ];
-
-const getFlattenedListOfTags = () => [
-	'tag2', 'tag3', 'tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6'
+const getTags = () => [
+	['tag5', 'tag2'],
+	['tag2', 'tag3'],
+	['tag3', 'tag4'],
+	['tag4', 'tag1']
 ];
-
-const getDeduplicatedListOfTags = () => [
-	'tag2', 'tag3', 'tag1', 'tag4', 'tag5', 'tag6'
+const getFlattenedTags = () => [
+	'tag5', 'tag2', 'tag2', 'tag3', 'tag3', 'tag4', 'tag4', 'tag1'
 ];
-
-const getFilterOutput = () => [
-	'tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6'
+const getDeduplicatedTags = () => [
+	'tag5', 'tag2', 'tag3', 'tag4', 'tag1'
+];
+const getSortedTags = () => [
+	'tag1', 'tag2', 'tag3', 'tag4', 'tag5'
 ];
 
 describe('behavior', () => {
-	it('should return an empty array if no threads on state', () => {
-		const state = {
-			activeThreads: []
-		};
-		const result = getActiveThreadTags(state);
-		expect(result).toEqual([]);
+	it('should return empty array when thread list is empty', () => {
+		// Act
+		const result = getActiveThreadTags.resultFunc([]);
+		// Assert
+		expect(result).toHaveLength(0);
 	});
-	it('should return tag list without duplicates', () => {
+	it('should return filtered tags when thread list not empty', () => {
+		// Arrange
 		when(utility.flattenArrayOfArrays)
 			.calledWith(
-				expect.any(Array)
+				expect.arrayContaining(getTags())
 			)
-			.mockReturnValue(getFlattenedListOfTags());
+			.mockReturnValue(getFlattenedTags());
 		when(utility.filterDuplicatesFromArray)
 			.calledWith(
-				expect.arrayContaining(getFlattenedListOfTags()),
-				'tagText'
+				expect.arrayContaining(getFlattenedTags())
 			)
-			.mockReturnValue(getDeduplicatedListOfTags());
-		const state = {
-			activeThreads: getThreads()
-		};
-		const result = getActiveThreadTags(state);
-		expect(result).toEqual(getFilterOutput());
+			.mockReturnValue(getDeduplicatedTags());
+		// Act
+		const result = getActiveThreadTags.resultFunc(getThreads());
+		// Assert
+		expect(utility.flattenArrayOfArrays).toHaveBeenCalled();
+		expect(utility.filterDuplicatesFromArray).toHaveBeenCalled();
+		expect(utility.sortTags).toHaveBeenCalledTimes(9);
+		expect(result).toEqual(getSortedTags());
 	});
 });

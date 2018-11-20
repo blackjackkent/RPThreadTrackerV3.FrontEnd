@@ -1,4 +1,9 @@
-import getNewsUnreadCount, { markUnreadNews } from '../getNews';
+import markUnreadNews from '../markUnreadNews';
+
+jest.mock('../../common', () => ({
+	getNews: jest.fn(),
+	getUserSettings: jest.fn()
+}));
 
 const getNews = () => [
 	{
@@ -25,35 +30,22 @@ const getNews = () => [
 
 describe('markUnreadNews', () => {
 	it('should mark all items if no lastNewsReadDate', () => {
-		const state = {
-			userSettings: {},
-			news: getNews()
-		};
-		const result = markUnreadNews(state);
+		// Act
+		const result = markUnreadNews.resultFunc(getNews(), {});
+		// Assert
 		expect(result).toHaveLength(5);
 		expect(result.filter(n => n.isUnread)).toHaveLength(5);
 	});
 	it('should mark items with date greater than lastNewsReadDate', () => {
-		const state = {
-			userSettings: {
-				lastNewsReadDate: new Date(2018, 2, 28)
-			},
-			news: getNews()
+		// Arrange
+		const userSettings = {
+			lastNewsReadDate: new Date(2018, 2, 28)
 		};
-		const result = markUnreadNews(state);
+		const news = getNews();
+		// Act
+		const result = markUnreadNews.resultFunc(news, userSettings);
+		// Assert
 		expect(result).toHaveLength(5);
 		expect(result.filter(n => n.isUnread)).toHaveLength(3);
-	});
-});
-describe('getNewsUnreadCount', () => {
-	it('should return count of marked items', () => {
-		const state = {
-			userSettings: {
-				lastNewsReadDate: new Date(2018, 2, 28)
-			},
-			news: getNews()
-		};
-		const result = getNewsUnreadCount(state);
-		expect(result).toBe(3);
 	});
 });
