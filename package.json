@@ -82,7 +82,7 @@
 		"query-string": "^5.0.1",
 		"rc-tooltip": "^3.7.0",
 		"react": "^15.6.2",
-		"react-chartjs-2": "2.6.1",
+		"react-chartjs-2": "2.7.4",
 		"react-dom": "^15.6.1",
 		"react-ga": "^2.5.0",
 		"react-moment": "^0.6.5",
