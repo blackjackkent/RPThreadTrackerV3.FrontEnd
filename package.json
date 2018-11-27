@@ -53,7 +53,7 @@
 		"sass-loader": "^6.0.6",
 		"source-list-map": "^2.0.1",
 		"style-loader": "^0.18.2",
-		"uglify-js": "^3.0.28",
+		"uglify-js": "^3.4.9",
 		"url-loader": "^1.0.1",
 		"webpack-cli": "^3.1.0",
 		"webpack-merge": "^4.1.4"
