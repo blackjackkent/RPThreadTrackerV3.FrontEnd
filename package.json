@@ -83,7 +83,7 @@
 		"react": "^15.6.2",
 		"react-dom": "^15.6.1",
 		"react-ga": "^2.5.0",
-		"react-moment": "^0.6.5",
+		"react-moment": "^0.8.4",
 		"react-multivalue-text-input": "^0.5.0",
 		"react-redux": "^5.0.6",
 		"react-redux-toastr": "^7.1.7",
