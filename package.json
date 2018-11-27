@@ -51,7 +51,7 @@
 		"redux-test-utils": "^0.2.2",
 		"rimraf": "^2.6.2",
 		"sass-loader": "^6.0.6",
-		"source-list-map": "^2.0.0",
+		"source-list-map": "^2.0.1",
 		"style-loader": "^0.18.2",
 		"uglify-js": "^3.0.28",
 		"url-loader": "^1.0.1",
