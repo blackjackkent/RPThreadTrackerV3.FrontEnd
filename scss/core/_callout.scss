@@ -8,14 +8,6 @@
   @if $enable-rounded {
     border-radius: .25rem;
   }
-
-  .chart-wrapper {
-    position: absolute;
-    top: 18px;
-    left: 50%;
-    float: right;
-    width: 60%;
-  }
 }
 
 .callout-bordered {
