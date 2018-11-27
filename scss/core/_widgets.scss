@@ -17,16 +17,6 @@
     @include border-radius($card-border-radius $card-border-radius 0 0);
   }
 
-  .chart-wrapper {
-    height: 90px;
-    margin: -90px 0 0;
-
-    canvas {
-      width: 100% !important;
-      height: 90px !important;
-    }
-  }
-
   ul {
     padding: 10px 0;
     list-style: none;
