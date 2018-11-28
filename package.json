@@ -77,7 +77,7 @@
 		"lodash": "^4.17.10",
 		"promise": "^8.0.1",
 		"prop-types": "^15.6.0",
-		"query-string": "^5.0.1",
+		"query-string": "^6.2.0",
 		"rc-tooltip": "^3.7.0",
 		"react": "^15.6.2",
 		"react-dom": "^15.6.1",
