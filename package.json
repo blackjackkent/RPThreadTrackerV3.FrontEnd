@@ -39,13 +39,11 @@
 		"jest-environment-enzyme": "^5.0.0",
 		"jest-environment-node": "^23.1.0",
 		"jest-enzyme": "^5.0.0",
-		"jest-puppeteer": "^3.0.1",
 		"jest-when": "^1.1.0",
 		"json-server": "^0.12.0",
 		"mini-css-extract-plugin": "^0.4.1",
 		"mkdirp": "^0.5.1",
 		"node-sass": "^4.9.2",
-		"puppeteer": "^1.4.0",
 		"react-test-renderer": "~15",
 		"redux-saga-test-plan": "^3.7.0",
 		"redux-test-utils": "^0.2.2",
@@ -114,8 +112,7 @@
 		"test": "jest",
 		"test:watch": "jest --watch --coverage",
 		"test:coverage": "jest --coverage",
-		"test:ci": "yarn lint && jest --config=\"./config/tests/jest.config.json\" && codecov",
-		"test:e2e": "cross-env JEST_PUPPETEER_CONFIG=\"config/tests/puppeteer.config.js\" jest --config=\"./config/tests/jest.e2e.config.json\" --runInBand"
+		"test:ci": "yarn lint && jest --config=\"./config/tests/jest.config.json\" && codecov"
 	},
 	"engines": {
 		"node": ">= 8.9.1",

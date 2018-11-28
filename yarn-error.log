@@ -1,25 +1,17 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js test src/infrastructure/selectors/threads/active --watch --coverage
+  C:\Program Files\nodejs\node.exe C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js test:ci
 
 PATH: 
-  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\rwills\bin;C:\Program Files\Docker\Docker\Resources\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\WiFi\bin;C:\Program Files\Common Files\Intel\WirelessCommon;C:\Program Files\dotnet;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\WinMerge;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio;C:\Users\rwills\AppData\Local\Android\Sdk\platform-tools;C:\Users\rwills\AppData\Local\Android\Sdk\tools;C:\Users\rwills\AppData\Local\Android\Sdk\tools\bin;C:\Program Files\nodejs;C:\Program Files (x86)\Yarn\bin;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Pandoc;C:\Program Files\Microsoft VS Code\bin;C:\Program Files\7-Zip;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\GitExtensions;C:\Users\rwills\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Microsoft VS Code\bin;C:\Users\rwills\AppData\Roaming\npm;C:\Users\rwills\AppData\Local\Yarn\bin;C:\Users\rwills\AppData\Local\Programs\Fiddler;C:\Users\rwills\.dotnet\tools;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps
+  C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\rosalindwills\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Yarn\bin;C:\ProgramData\Oracle\Java\javapath;C:\Perl64\site\bin;C:\Perl64\bin;C:\Program Files\Java\jdk1.7.0_51\bin;C:\Program Files (x86)\EasyPHP-DevServer-13.1VC11\binaries\php\php_runningversion;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Intel\iCLS Client;C:\Program Files\Intel\iCLS Client;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0;C:\Program Files\Microsoft SQL Server\110\Tools\Binn;C:\Program Files (x86)\Ant\apache-ant-1.9.3\bin;C:\Program Files (x86)\Cobertura\bin;C:\cygwin64\bin;C:\Users\rosalindwills\Downloads\Downloaded Applications\ffmpeg\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn;C:\Program Files\Microsoft SQL Server\120\Tools\Binn;C:\Program Files\Microsoft SQL Server\120\DTS\Binn;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\ManagementStudio;C:\Program Files (x86)\Microsoft SQL Server\120\DTS\Binn;C:\Program Files\Apache Software Foundation\apache-maven-3.2.3\bin;C:\Program Files\MongoDB 2.6 Standard\bin;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit;C:\Program Files\Google\Cloud SDK\google-cloud-sdk\bin;C:\Program Files\PostgreSQL\9.4\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit;%USERPROFILE%\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm;C:\Program Files\Microsoft SQL Server\130\Tools\Binn;C:\Program Files (x86)\GitExtensions;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\NuGet\Visual Studio 2015;C:\Program Files (x86)\Skype\Phone;C:\Program Files\dotnet;C:\Program Files (x86)\Microsoft Emulator Manager\1.0;C:\Program Files\PuTTY;C:\ProgramData\chocolatey\bin;C:\Users\rosalindwills\AppData\Local\Programs\Python\Python36-32;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\WINDOWS\system32\config\systemprofile\.dnx\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\nodejs;C:\Users\rosalindwills\.windows-build-tools\python27;C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\npm\node_modules\npm-lifecycle\node-gyp-bin;C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\windows-build-tools\node_modules\.bin;C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\.bin;C:\Users\rosalindwills\.dnx\bin;C:\Ruby22-x64\bin;C:\RailsInstaller\Ruby2.1.0\bin;C:\Users\rosalindwills\AppData\Local\Microsoft\WindowsApps;C:\Program Files\dig;C:\Users\rosalindwills\AppData\Local\atom\bin;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files (x86)\Nmap;C:\Users\rosalindwills\AppData\Local\Programs\Fiddler;C:\Users\rosalindwills\AppData\Local\Microsoft\WindowsApps;C:\Users\rosalindwills\AppData\Roaming\npm;C:\Users\rosalindwills\.dotnet\tools
 
 Yarn version: 
-  1.7.0
+  1.3.2
 
 Node version: 
-  10.5.0
+  10.8.0
 
 Platform: 
   win32 x64
-
-Trace: 
-  SyntaxError: C:\Users\rwills\Documents\_GitHub\RPThreadTrackerV3.FrontEnd\package.json: Unexpected token } in JSON at position 4876
-      at JSON.parse (<anonymous>)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:1130:59
-      at Generator.next (<anonymous>)
-      at step (C:\Program Files (x86)\Yarn\lib\cli.js:98:30)
-      at C:\Program Files (x86)\Yarn\lib\cli.js:109:13
 
 npm manifest: 
   {
@@ -63,13 +55,11 @@ npm manifest:
   		"jest-environment-enzyme": "^5.0.0",
   		"jest-environment-node": "^23.1.0",
   		"jest-enzyme": "^5.0.0",
-  		"jest-puppeteer": "^3.0.1",
   		"jest-when": "^1.1.0",
   		"json-server": "^0.12.0",
   		"mini-css-extract-plugin": "^0.4.1",
   		"mkdirp": "^0.5.1",
   		"node-sass": "^4.9.2",
-  		"puppeteer": "^1.4.0",
   		"react-test-renderer": "~15",
   		"redux-saga-test-plan": "^3.7.0",
   		"redux-test-utils": "^0.2.2",
@@ -83,15 +73,14 @@ npm manifest:
   		"webpack-merge": "^4.1.4"
   	},
   	"dependencies": {
-  		"@fortawesome/fontawesome": "^1.1.3",
+  		"@fortawesome/fontawesome": "^1.1.8",
   		"@fortawesome/fontawesome-free-regular": "^5.0.6",
   		"@fortawesome/fontawesome-free-solid": "^5.0.6",
   		"availity-reactstrap-validation": "^2.0.2",
   		"axios": "^0.16.2",
   		"babel-polyfill": "^6.26.0",
-  		"bootstrap": "^4.0.0-alpha.6",
+  		"bootstrap": "^4.1.3",
   		"chalk": "^2.3.0",
-  		"chart.js": "2.6.0",
   		"classnames": "^2.2.5",
   		"dot-prop-immutable": "^1.3.1",
   		"faker": "^4.1.0",
@@ -106,7 +95,6 @@ npm manifest:
   		"query-string": "^5.0.1",
   		"rc-tooltip": "^3.7.0",
   		"react": "^15.6.2",
-  		"react-chartjs-2": "2.6.1",
   		"react-dom": "^15.6.1",
   		"react-ga": "^2.5.0",
   		"react-moment": "^0.6.5",
@@ -119,9 +107,9 @@ npm manifest:
   		"reactstrap": "^4.8.0",
   		"redux": "^3.7.2",
   		"redux-logger": "^3.0.6",
-  		"redux-saga": "^0.15.6",
+  		"redux-saga": "^0.16.2",
   		"redux-thunk": "^2.2.0",
-  		"reselect": "^3.0.1",
+  		"reselect": "^4.0.0",
   		"simple-line-icons": "^2.4.1",
   		"styled-components": "^3.4.9",
   		"webpack": "^4.16.5",
@@ -141,7 +129,6 @@ npm manifest:
   		"test:watch": "jest --watch --coverage",
   		"test:coverage": "jest --coverage",
   		"test:ci": "yarn lint && jest --config=\"./config/tests/jest.config.json\" && codecov",
-  		"test:e2e": "cross-env JEST_PUPPETEER_CONFIG=\"config/tests/puppeteer.config.js\" jest --config=\"./config/tests/jest.e2e.config.json\" --runInBand"
   	},
   	"engines": {
   		"node": ">= 8.9.1",
@@ -176,8 +163,9 @@ npm manifest:
   		"testURL": "http://localhost/",
   		"coverageReporters": [
   			"json",
-  			"html"
-  		],
+  			"html",
+  			"text"
+  		]
   	}
   }
 
@@ -259,6 +247,10 @@ Lockfile:
     version "0.1.2"
     resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.2.tgz#d6aa075058f0c984d6e2ebcbc0052c1f7f9bea72"
   
+  "@fortawesome/fontawesome-common-types@^0.1.7":
+    version "0.1.7"
+    resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-0.1.7.tgz#4336c4b06d0b5608ff1215464b66fcf9f4795284"
+  
   "@fortawesome/fontawesome-free-regular@^5.0.6":
     version "5.0.6"
     resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free-regular/-/fontawesome-free-regular-5.0.6.tgz#fafc624025a247c1a1bbb5080b9902a490cd79f5"
@@ -271,11 +263,11 @@ Lockfile:
     dependencies:
       "@fortawesome/fontawesome-common-types" "^0.1.2"
   
-  "@fortawesome/fontawesome@^1.1.3":
-    version "1.1.3"
-    resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.3.tgz#7a4844345cbc7fb238f5f1788af73bd302ee9b80"
+  "@fortawesome/fontawesome@^1.1.8":
+    version "1.1.8"
+    resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome/-/fontawesome-1.1.8.tgz#75fe66a60f95508160bb16bd781ad7d89b280f5b"
     dependencies:
-      "@fortawesome/fontawesome-common-types" "^0.1.2"
+      "@fortawesome/fontawesome-common-types" "^0.1.7"
   
   "@types/node@*":
     version "9.4.6"
@@ -1583,9 +1575,9 @@ Lockfile:
     dependencies:
       hoek "4.x.x"
   
-  bootstrap@^4.0.0-alpha.6:
-    version "4.0.0"
-    resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.0.0.tgz#ceb03842c145fcc1b9b4e15da2a05656ba68469a"
+  bootstrap@^4.1.3:
+    version "4.1.3"
+    resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.1.3.tgz#0eb371af2c8448e8c210411d0cb824a6409a12be"
   
   boxen@^1.2.1:
     version "1.3.0"
@@ -1923,26 +1915,6 @@ Lockfile:
     version "0.5.0"
     resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.5.0.tgz#fe3ac73c00c3d865ffcc02a0682e2c20b6a06029"
   
-  chart.js@2.6.0:
-    version "2.6.0"
-    resolved "https://registry.yarnpkg.com/chart.js/-/chart.js-2.6.0.tgz#308f9a4b0bfed5a154c14f5deb1d9470d22abe71"
-    dependencies:
-      chartjs-color "^2.1.0"
-      moment "^2.10.6"
-  
-  chartjs-color-string@^0.5.0:
-    version "0.5.0"
-    resolved "https://registry.yarnpkg.com/chartjs-color-string/-/chartjs-color-string-0.5.0.tgz#8d3752d8581d86687c35bfe2cb80ac5213ceb8c1"
-    dependencies:
-      color-name "^1.0.0"
-  
-  chartjs-color@^2.1.0:
-    version "2.2.0"
-    resolved "https://registry.yarnpkg.com/chartjs-color/-/chartjs-color-2.2.0.tgz#84a2fb755787ed85c39dd6dd8c7b1d88429baeae"
-    dependencies:
-      chartjs-color-string "^0.5.0"
-      color-convert "^0.5.3"
-  
   cheerio@^1.0.0-rc.2:
     version "1.0.0-rc.2"
     resolved "https://registry.yarnpkg.com/cheerio/-/cheerio-1.0.0-rc.2.tgz#4b9f53a81b27e4d5dac31c0ffd0cfa03cc6830db"
@@ -2122,10 +2094,6 @@ Lockfile:
     dependencies:
       map-visit "^1.0.0"
       object-visit "^1.0.0"
-  
-  color-convert@^0.5.3:
-    version "0.5.3"
-    resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
   
   color-convert@^1.3.0, color-convert@^1.9.0:
     version "1.9.1"
@@ -6297,10 +6265,6 @@ Lockfile:
     dependencies:
       minimist "0.0.8"
   
-  moment@^2.10.6:
-    version "2.20.1"
-    resolved "https://registry.yarnpkg.com/moment/-/moment-2.20.1.tgz#d6eb1a46cbcc14a2b2f9434112c1ff8907f313fd"
-  
   moment@^2.18.1:
     version "2.22.1"
     resolved "https://registry.yarnpkg.com/moment/-/moment-2.22.1.tgz#529a2e9bf973f259c9643d237fda84de3a26e8ad"
@@ -7693,13 +7657,6 @@ Lockfile:
       minimist "^1.2.0"
       strip-json-comments "~2.0.1"
   
-  react-chartjs-2@2.6.1:
-    version "2.6.1"
-    resolved "https://registry.yarnpkg.com/react-chartjs-2/-/react-chartjs-2-2.6.1.tgz#d6499780f5dcac934b5c293e68d9650c98145873"
-    dependencies:
-      lodash "^4.17.4"
-      prop-types "^15.5.8"
-  
   react-dom@^15.6.1:
     version "15.6.2"
     resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
@@ -7981,9 +7938,9 @@ Lockfile:
       object-assign "^4.1.0"
       util-inspect "^0.1.8"
   
-  redux-saga@^0.15.6:
-    version "0.15.6"
-    resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.15.6.tgz#8638dc522de6c6c0a496fe8b2b5466287ac2dc4d"
+  redux-saga@^0.16.2:
+    version "0.16.2"
+    resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.16.2.tgz#993662e86bc945d8509ac2b8daba3a8c615cc971"
   
   redux-test-utils@^0.2.2:
     version "0.2.2"
@@ -8222,9 +8179,9 @@ Lockfile:
     version "1.0.0"
     resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   
-  reselect@^3.0.1:
-    version "3.0.1"
-    resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
+  reselect@^4.0.0:
+    version "4.0.0"
+    resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.0.0.tgz#f2529830e5d3d0e021408b246a206ef4ea4437f7"
   
   resolve-cwd@^2.0.0:
     version "2.0.0"
@@ -8751,13 +8708,7 @@ Lockfile:
       jsbn "~0.1.0"
       tweetnacl "~0.14.0"
   
-  ssri@^5.0.0:
-    version "5.2.1"
-    resolved "https://registry.yarnpkg.com/ssri/-/ssri-5.2.1.tgz#8b6eb873688759bd3c75a88dee74593d179bb73c"
-    dependencies:
-      safe-buffer "^5.1.1"
-  
-  ssri@^5.2.4:
+  ssri@^5.0.0, ssri@^5.2.4:
     version "5.3.0"
     resolved "https://registry.yarnpkg.com/ssri/-/ssri-5.3.0.tgz#ba3872c9c6d33a0704a7d71ff045e5ec48999d06"
     dependencies:
@@ -8875,8 +8826,8 @@ Lockfile:
       safe-buffer "~5.1.0"
   
   stringstream@~0.0.4, stringstream@~0.0.5:
-    version "0.0.5"
-    resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.5.tgz#4e484cd4de5a0bbbee18e46307710a8a81621878"
+    version "0.0.6"
+    resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.6.tgz#7880225b0d4ad10e30927d167a1d6f2fd3b33a72"
   
   strip-ansi@^3.0.0, strip-ansi@^3.0.1:
     version "3.0.1"
@@ -9970,3 +9921,11 @@ Lockfile:
       validator "^9.0.0"
     optionalDependencies:
       commander "^2.7.1"
+
+Trace: 
+  SyntaxError: C:\Users\rosalindwills\Documents\_Programming\Personal Projects\RPThreadTrackerV3.FrontEnd\package.json: Unexpected token } in JSON at position 3785
+      at JSON.parse (<anonymous>)
+      at C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:770:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:92:30)
+      at C:\Users\rosalindwills\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:103:13

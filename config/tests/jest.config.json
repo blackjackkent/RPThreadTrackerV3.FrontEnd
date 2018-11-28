@@ -9,8 +9,7 @@
 		"enzymeAdapter": "react15"
 	},
 	"testPathIgnorePatterns": [
-		"/node_modules/",
-		"/e2e/"
+		"/node_modules/"
 	],
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",
@@ -22,8 +21,7 @@
 		"/src/infrastructure/initSagas",
 		"/src/infrastructure/network",
 		"/src/utility/getQuery",
-		"/src/utility/history",
-		"/e2e/"
+		"/src/utility/history"
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [

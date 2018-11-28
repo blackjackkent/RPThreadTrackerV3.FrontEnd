@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import { expectSaga } from 'redux-saga-test-plan';
-import { throwError } from 'redux-saga-test-plan/providers'
+import { throwError } from 'redux-saga-test-plan/providers';
 
 export const DATA_SPEC_ATTRIBUTE_NAME = 'data-spec';
 
