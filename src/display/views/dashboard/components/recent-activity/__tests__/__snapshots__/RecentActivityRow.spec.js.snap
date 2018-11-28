@@ -62,15 +62,19 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <t
         ago={false}
         calendar={false}
+        decimal={false}
         element="time"
         filter={[Function]}
-        format="MMMM D, YYYY"
+        format="MMMM D, YYYY h:mm"
         fromNow={false}
         interval={60000}
         onChange={[Function]}
+        titleFormat=""
         toNow={false}
+        unit={null}
         unix={false}
         utc={false}
+        withTitle={false}
       >
         1989-06-05 3:14PM
       </t>
