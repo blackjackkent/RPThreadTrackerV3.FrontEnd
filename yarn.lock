@@ -2212,11 +2212,12 @@ css-color-keywords@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/css-color-keywords/-/css-color-keywords-1.0.0.tgz#fea2616dc676b2962686b3af8dbdbe180b244e05"
 
-css-hot-loader@^1.3.0:
-  version "1.3.7"
-  resolved "https://registry.yarnpkg.com/css-hot-loader/-/css-hot-loader-1.3.7.tgz#e08a2343d3f5e22043da50d86bbb4310f535be0e"
+css-hot-loader@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/css-hot-loader/-/css-hot-loader-1.4.2.tgz#6fa7ae7b8e309bb8be3b7b586efd702073c68611"
   dependencies:
     loader-utils "^1.1.0"
+    lodash "^4.17.5"
     normalize-url "^1.9.1"
 
 css-loader@^1.0.1:
