@@ -6,7 +6,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 >
   <NavLink
     activeClassName="active"
-    ariaCurrent="true"
+    aria-current="page"
     data-spec="static-tab-nav-item-navlink"
     to="/test/mock-tab"
   >
