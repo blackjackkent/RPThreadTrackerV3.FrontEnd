@@ -27,6 +27,9 @@ export default styled.header`
 			padding: 10px 20px;
 			display: block;
 		}
+		.btn-secondary:focus {
+			box-shadow:none;
+		}
 		.nav-link {
 			color: ${colors.WHITE}
 			border: 0;

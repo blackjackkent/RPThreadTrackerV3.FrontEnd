@@ -12,6 +12,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     className="ml-auto"
     navbar={true}
     tag="ul"
+    vertical={false}
   >
     <HeaderAsideToggle
       asideToggle={[MockFunction]}

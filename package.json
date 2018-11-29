@@ -9,14 +9,15 @@
 	"private": true,
 	"homepage": "https://www.rpthreadtracker.com",
 	"devDependencies": {
+		"@babel/cli": "^7.1.5",
 		"@babel/core": "^7.1.6",
-		"babel-cli": "^6.26.0",
+		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+		"@babel/preset-env": "^7.1.6",
+		"@babel/preset-react": "^7.0.0",
+		"babel-core": "^7.0.0-bridge.0",
 		"babel-eslint": "^10.0.1",
-		"babel-jest": "^23.6.0",
 		"babel-loader": "^8.0.4",
 		"babel-plugin-transform-object-rest-spread": "^6.26.0",
-		"babel-preset-env": "^1.7.0",
-		"babel-preset-react": "^6.24.1",
 		"codecov": "^3.1.0",
 		"compression-webpack-plugin": "^2.0.0",
 		"copy-webpack-plugin": "^4.6.0",
@@ -96,10 +97,10 @@
 	},
 	"scripts": {
 		"start": "webpack-dev-server --history-api-fallback --config webpack.dev.js",
-		"start:docker": "yarn start --host 0.0.0.0",
-		"build": "yarn clean && webpack --config webpack.prod.js",
-		"build:staging": "yarn clean && webpack --config webpack.staging.js",
-		"build:serve": "yarn clean && yarn build && http-serve ./build --gzip -f /",
+		"start:docker": "npm run start --host 0.0.0.0",
+		"build": "npm run clean && webpack --config webpack.prod.js",
+		"build:staging": "npm run clean && webpack --config webpack.staging.js",
+		"build:serve": "npm run clean && npm run build && http-serve ./build --gzip -f /",
 		"profile": "webpack --watch --profile --json > compilation-stats.json --config webpack.prod.js",
 		"clean": "rimraf ./build",
 		"lint": "eslint src/",
@@ -107,7 +108,7 @@
 		"test": "jest",
 		"test:watch": "jest --watch --coverage",
 		"test:coverage": "jest --coverage",
-		"test:ci": "yarn lint && jest --config=\"./config/tests/jest.config.json\" && codecov"
+		"test:ci": "npm run lint && jest --config=\"./config/tests/jest.config.json\" && codecov"
 	},
 	"engines": {
 		"node": ">= 8.9.1",

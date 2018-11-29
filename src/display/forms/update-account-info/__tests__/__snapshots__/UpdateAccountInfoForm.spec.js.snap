@@ -23,6 +23,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <Label
         htmlFor="username"
         tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
       >
         Username:
       </Label>
@@ -88,6 +97,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <Label
         htmlFor="email"
         tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
       >
         Email:
       </Label>

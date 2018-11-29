@@ -31,7 +31,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         unix={false}
         utc={false}
         withTitle={false}
-      />
+      >
+        <Component />
+      </t>
     </small>
     <Badge
       className="d-none"
@@ -80,7 +82,9 @@ exports[`rendering snapshots should render valid snapshot when unread 1`] = `
         unix={false}
         utc={false}
         withTitle={false}
-      />
+      >
+        <Component />
+      </t>
     </small>
     <Badge
       className="float-right"

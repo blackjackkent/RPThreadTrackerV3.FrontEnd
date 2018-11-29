@@ -48,7 +48,6 @@ exports[`rendering snapshots should render valid snapshot if user and characters
         >
           <CardBlock
             className="card-body text-center"
-            tag="div"
           >
             <p>
               You can now close this window.

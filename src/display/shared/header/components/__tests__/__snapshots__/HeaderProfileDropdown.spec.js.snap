@@ -5,16 +5,20 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tag="li"
 >
   <Dropdown
+    active={false}
+    addonType={false}
     data-spec="header-dropdown"
+    direction="down"
+    inNavbar={false}
     isOpen={true}
-    tag="div"
+    nav={false}
+    setActiveFromChild={false}
     toggle={[MockFunction]}
   >
     <DropdownToggle
       aria-haspopup={true}
       className="nav-link dropdown-toggle"
       color="secondary"
-      data-toggle="dropdown"
     >
       <i
         className="fas fa-user"
@@ -23,6 +27,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     <DropdownMenu
       className="show"
       data-spec="header-dropdown-menu"
+      flip={true}
       right={true}
       tag="div"
     >
@@ -70,16 +75,20 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
   tag="li"
 >
   <Dropdown
+    active={false}
+    addonType={false}
     data-spec="header-dropdown"
+    direction="down"
+    inNavbar={false}
     isOpen={false}
-    tag="div"
+    nav={false}
+    setActiveFromChild={false}
     toggle={[MockFunction]}
   >
     <DropdownToggle
       aria-haspopup={true}
       className="nav-link dropdown-toggle"
       color="secondary"
-      data-toggle="dropdown"
     >
       <i
         className="fas fa-user"
@@ -88,6 +97,7 @@ exports[`rendering snapshots should render valid snapshot when dropdown is close
     <DropdownMenu
       className=""
       data-spec="header-dropdown-menu"
+      flip={true}
       right={true}
       tag="div"
     >
