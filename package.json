@@ -88,7 +88,7 @@
 		"react-table": "^6.8.6",
 		"react-transition-group": "^1.2.0",
 		"reactstrap": "^4.8.0",
-		"redux": "^3.7.2",
+		"redux": "^4.0.1",
 		"redux-logger": "^3.0.6",
 		"redux-saga": "^0.16.2",
 		"reselect": "^4.0.0",
