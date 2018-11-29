@@ -14,8 +14,7 @@
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",
 		"/config/",
-		"/src/index",
-		"/src/infrastructure/reducers/index",
+		"/src/.*index",
 		"/src/infrastructure/getStore",
 		"/src/infrastructure/icons",
 		"/src/infrastructure/initSagas",

@@ -19,7 +19,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           id="tag"
           name="tag"
           onChange={[Function]}
-          tag="p"
           type="select"
         >
           <option
@@ -78,7 +77,6 @@ exports[`rendering snapshots should render valid snapshot on all threads page 1`
           id="tag"
           name="tag"
           onChange={[Function]}
-          tag="p"
           type="select"
         >
           <option
@@ -131,7 +129,6 @@ exports[`rendering snapshots should render valid snapshot on archive page 1`] = 
           id="tag"
           name="tag"
           onChange={[Function]}
-          tag="p"
           type="select"
         >
           <option
@@ -184,7 +181,6 @@ exports[`rendering snapshots should render valid snapshot on queue page 1`] = `
           id="tag"
           name="tag"
           onChange={[Function]}
-          tag="p"
           type="select"
         >
           <option

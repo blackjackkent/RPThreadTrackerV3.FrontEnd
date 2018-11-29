@@ -16,7 +16,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     </CardHeader>
     <CardBlock
       className="card-body"
-      tag="div"
     >
       <Row
         tag="div"
