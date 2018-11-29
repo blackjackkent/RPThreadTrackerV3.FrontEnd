@@ -23,7 +23,7 @@
 		"cross-env": "^5.2.0",
 		"css-hot-loader": "^1.4.2",
 		"css-loader": "^1.0.1",
-		"enzyme": "^3.3.0",
+		"enzyme": "^3.7.0",
 		"enzyme-adapter-react-15": "^1.0.5",
 		"eslint": "^5.4.0",
 		"eslint-config-airbnb": "^17.1.0",
