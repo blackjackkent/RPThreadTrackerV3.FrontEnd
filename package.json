@@ -74,7 +74,7 @@
 		"local-storage": "^1.4.2",
 		"lodash": "^4.17.10",
 		"promise": "^8.0.2",
-		"prop-types": "^15.6.0",
+		"prop-types": "^15.6.2",
 		"query-string": "^6.2.0",
 		"rc-tooltip": "^3.7.0",
 		"react": "^15.6.2",
