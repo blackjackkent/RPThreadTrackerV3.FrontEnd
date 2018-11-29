@@ -14,7 +14,6 @@ exports[`rendering snapshots should render valid snapshot when threads are loadi
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <LoadingIndicator
       style={
@@ -46,7 +45,6 @@ exports[`rendering snapshots should render valid snapshot when user has no activ
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <NoActiveCharactersMessage />
   </CardBlock>
@@ -67,7 +65,6 @@ exports[`rendering snapshots should render valid snapshot when user has no chara
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <NoCharactersMessage />
   </CardBlock>
@@ -88,7 +85,6 @@ exports[`rendering snapshots should render valid snapshot when user has no recen
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <NoRecentActivityMessage />
   </CardBlock>
@@ -109,7 +105,6 @@ exports[`rendering snapshots should render valid snapshot when user has no threa
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <NoThreadsMessage />
   </CardBlock>
@@ -130,7 +125,6 @@ exports[`rendering snapshots should render valid snapshot when user has recent a
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <RecentActivityRow
       archiveThread={[MockFunction]}

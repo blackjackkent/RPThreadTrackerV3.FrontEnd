@@ -16,7 +16,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     </CardHeader>
     <CardBlock
       className="card-body"
-      tag="div"
     >
       <p>
         RPThreadTracker allows users to track thread-based roleplay interactions and collaborative writing and stay up-to-date on which interactions they owe a reply on. Currently the app supports only roleplays on Tumblr, but will expand to support other platforms in the future.

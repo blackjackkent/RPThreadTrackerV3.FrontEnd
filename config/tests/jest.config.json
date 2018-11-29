@@ -6,7 +6,7 @@
 	"setupTestFrameworkScriptFile": "<rootDir>/node_modules/jest-enzyme/lib/index.js",
 	"testEnvironment": "enzyme",
 	"testEnvironmentOptions": {
-		"enzymeAdapter": "react15"
+		"enzymeAdapter": "react16"
 	},
 	"testPathIgnorePatterns": [
 		"/node_modules/"
@@ -14,8 +14,7 @@
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",
 		"/config/",
-		"/src/index",
-		"/src/infrastructure/reducers/index",
+		"/src/.*index",
 		"/src/infrastructure/getStore",
 		"/src/infrastructure/icons",
 		"/src/infrastructure/initSagas",

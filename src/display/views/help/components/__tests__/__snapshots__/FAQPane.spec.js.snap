@@ -16,7 +16,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     </CardHeader>
     <CardBlock
       className="card-body"
-      tag="div"
     >
       <h4>
         Why am I seeing a "Not Found" error for my post?

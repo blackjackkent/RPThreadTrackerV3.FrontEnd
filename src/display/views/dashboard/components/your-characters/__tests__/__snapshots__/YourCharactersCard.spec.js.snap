@@ -25,7 +25,6 @@ exports[`rendering snapshots should render valid snapshot when characters are lo
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <LoadingIndicator
       style={
@@ -68,7 +67,6 @@ exports[`rendering snapshots should render valid snapshot when user has active c
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <YourCharactersCardRow
       character={
@@ -119,7 +117,6 @@ exports[`rendering snapshots should render valid snapshot when user has no activ
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <NoActiveCharactersMessage />
   </CardBlock>
@@ -151,7 +148,6 @@ exports[`rendering snapshots should render valid snapshot when user has no chara
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <NoCharactersMessage />
   </CardBlock>
