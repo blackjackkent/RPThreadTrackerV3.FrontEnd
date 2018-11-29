@@ -2759,6 +2759,13 @@ enzyme-matchers@^5.0.0:
     circular-json-es6 "^2.0.1"
     deep-equal-ident "^1.1.1"
 
+enzyme-matchers@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/enzyme-matchers/-/enzyme-matchers-6.1.2.tgz#cd70e45dbcff34d47406797998d55d06ceb822de"
+  dependencies:
+    circular-json-es6 "^2.0.1"
+    deep-equal-ident "^1.1.1"
+
 enzyme-to-json@^3.3.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.1.tgz#64239dcd417e2fb552f4baa6632de4744b9b5b93"
@@ -4759,6 +4766,12 @@ jest-environment-enzyme@^5.0.0:
     jest-environment-jsdom "^22.4.1"
     jest-enzyme "^5.0.0"
 
+jest-environment-enzyme@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/jest-environment-enzyme/-/jest-environment-enzyme-6.1.2.tgz#2612805a3cc0fa6934f9c3e62cf6255077d1b16b"
+  dependencies:
+    jest-environment-jsdom "^22.4.1"
+
 jest-environment-jsdom@^22.4.1:
   version "22.4.1"
   resolved "https://registry.yarnpkg.com/jest-environment-jsdom/-/jest-environment-jsdom-22.4.1.tgz#754f408872441740100d3917e5ec40c74de6447f"
@@ -4788,6 +4801,14 @@ jest-enzyme@^5.0.0:
     enzyme-matchers "^5.0.0"
     enzyme-to-json "^3.3.0"
     jest-environment-enzyme "^5.0.0"
+
+jest-enzyme@^6.1.2:
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/jest-enzyme/-/jest-enzyme-6.1.2.tgz#89da43da19b4d8ddbfb49e153c2884f22954d330"
+  dependencies:
+    enzyme-matchers "^6.1.2"
+    enzyme-to-json "^3.3.0"
+    jest-environment-enzyme "^6.1.2"
 
 jest-get-type@^22.1.0:
   version "22.1.0"
