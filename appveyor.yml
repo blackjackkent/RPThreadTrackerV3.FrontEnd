@@ -1,22 +1,23 @@
 -
   version: '1.0.{build}'
-  image: Visual Studio 2017
+  image: ubuntu
   environment:
-    nodejs_version: "8"
+    nodejs_version: "10"
   branches:
     only:
     - development
+  cache:
+    - '~/.config/yarn/global'
   init:
     - cmd: git config --global core.autocrlf true
   install:
-    # Get the latest stable version of Node.js or io.js
-    - ps: Install-Product node $env:nodejs_version
+    - sh: nvm install $nodejs_version
     # install modules
     - yarn
   test_script:
     # Output useful info for debugging.
     - node --version
-    - yarn version
+    - yarn -v
     # run tests
     - yarn test:ci
   build_script:
@@ -35,23 +36,24 @@
     - ps: ./send.ps1 failure $env:WEBHOOK_URL
 -
   version: '1.0.{build}'
-  image: Visual Studio 2017
+  image: ubuntu
   environment:
-    nodejs_version: "8"
+    nodejs_version: "10"
   branches:
     only:
     - production
+  cache:
+    - '~/.config/yarn/global'
   init:
     - cmd: git config --global core.autocrlf true
   install:
-    # Get the latest stable version of Node.js or io.js
-    - ps: Install-Product node $env:nodejs_version
+    - sh: nvm install $nodejs_version
     # install modules
     - yarn
   test_script:
     # Output useful info for debugging.
     - node --version
-    - yarn version
+    - yarn -v
     # run tests
     - yarn test:ci
   build_script:
