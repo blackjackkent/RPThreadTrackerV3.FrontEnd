@@ -16,7 +16,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     </CardHeader>
     <CardBlock
       className="card-body"
-      tag="div"
     >
       <AvForm
         data-spec="contact-form-container"
@@ -65,6 +64,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <Label
               htmlFor="textarea-input"
               tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
               Message
             </Label>
@@ -89,7 +97,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               onChange={[Function]}
               placeholder="Enter your message here..."
               rows="9"
-              tag="p"
               type="textarea"
             />
           </Col>

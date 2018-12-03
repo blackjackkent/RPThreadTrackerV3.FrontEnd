@@ -9,6 +9,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     <Nav
       tag="ul"
+      vertical={false}
     >
       <NavItem
         key="0"
@@ -16,7 +17,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/dashboard"
         >
@@ -41,7 +42,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/threads/all"
         >
@@ -57,7 +58,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/threads/your-turn"
         >
@@ -73,7 +74,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/threads/their-turn"
         >
@@ -89,7 +90,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/threads/archived"
         >
@@ -105,7 +106,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/threads/queued"
         >
@@ -130,7 +131,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/manage-characters"
         >
@@ -146,7 +147,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/tools"
         >
@@ -162,7 +163,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/settings"
         >
@@ -178,7 +179,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         <NavLink
           activeClassName="active"
-          ariaCurrent="true"
+          aria-current="page"
           className="nav-link"
           to="/help"
         >

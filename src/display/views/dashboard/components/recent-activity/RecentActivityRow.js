@@ -38,7 +38,7 @@ const RecentActivityRow = (props) => {
 			<Col sm="6" xs="12" className="text-right">
 				<div>
 					{threadData.status && (
-						<Moment format="MMMM D, YYYY">
+						<Moment format="MMMM D, YYYY h:mm">
 							{threadData.status.lastPostDate}
 						</Moment>
 					)}

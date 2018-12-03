@@ -292,6 +292,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         <Label
           htmlFor="description"
           tag="label"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
         >
           Thread Description (Optional)
         </Label>
@@ -302,7 +311,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           name="description"
           onChange={[MockFunction]}
           rows="3"
-          tag="p"
           type="textarea"
         />
       </div>
@@ -656,6 +664,15 @@ exports[`rendering snapshots should render valid snapshot with thread 1`] = `
         <Label
           htmlFor="description"
           tag="label"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
         >
           Thread Description (Optional)
         </Label>
@@ -667,7 +684,6 @@ exports[`rendering snapshots should render valid snapshot with thread 1`] = `
           name="description"
           onChange={[MockFunction]}
           rows="3"
-          tag="p"
           type="textarea"
         />
       </div>

@@ -23,7 +23,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         data-spec="at-a-glance-card-toggle"
         id="at-a-glance-switch"
         onChange={[MockFunction]}
-        tag="p"
         type="checkbox"
       />
       <span
@@ -39,7 +38,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   <CardBlock
     className="card-body"
     data-spec="at-a-glance-card-body"
-    tag="div"
   >
     <CardGroup
       tag="div"

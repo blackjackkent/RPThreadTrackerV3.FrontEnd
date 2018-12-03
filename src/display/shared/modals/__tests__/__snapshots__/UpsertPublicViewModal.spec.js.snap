@@ -24,8 +24,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     }
   >
     <ModalHeader
+      charCode={215}
+      closeAriaLabel="Close"
       data-spec="upsert-public-view-modal-header"
-      tag="h4"
+      tag="h5"
       toggle={[MockFunction]}
       wrapTag="div"
     >
@@ -114,8 +116,10 @@ exports[`rendering snapshots should render valid snapshot if view is new 1`] = `
     }
   >
     <ModalHeader
+      charCode={215}
+      closeAriaLabel="Close"
       data-spec="upsert-public-view-modal-header"
-      tag="h4"
+      tag="h5"
       toggle={[MockFunction]}
       wrapTag="div"
     >

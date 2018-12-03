@@ -17,50 +17,6 @@ beforeEach(() => {
 	jest.resetAllMocks();
 });
 describe('saga behavior', () => {
-	describe('FETCHED_ACTIVE_THREADS_SUCCESS', () => {
-		it('should display a warning if user has over 100 threads', () => {
-			const threads = [];
-			for (let i = 0; i < 101; i++) {
-				threads.push({});
-			}
-			const action = {
-				type: actions.FETCHED_ACTIVE_THREADS_SUCCESS,
-				data: { threads }
-			};
-			const saga = new SagaTestWrapper(toastrSaga);
-			return saga.execute(action)
-				.then(() => {
-					expect(toastr.light).toHaveBeenCalledTimes(1);
-					expect(toastr.light).toHaveBeenLastCalledWith('Retrieving more than 100 threads; loading may take several minutes. Archive some threads to reduce loading time.', { status: 'info' });
-				});
-		});
-		it('should display no warning if user has 100 threads or less', () => {
-			const threads = [];
-			for (let i = 0; i < 100; i++) {
-				threads.push({});
-			}
-			const action = {
-				type: actions.FETCHED_ACTIVE_THREADS_SUCCESS,
-				data: { threads }
-			};
-			const saga = new SagaTestWrapper(toastrSaga);
-			return saga.execute(action)
-				.then(() => {
-					expect(toastr.light).toHaveBeenCalledTimes(0);
-				});
-		});
-		it('should display no warning if action has no data', () => {
-			const action = {
-				type: actions.FETCHED_ACTIVE_THREADS_SUCCESS,
-				data: null
-			};
-			const saga = new SagaTestWrapper(toastrSaga);
-			return saga.execute(action)
-				.then(() => {
-					expect(toastr.light).toHaveBeenCalledTimes(0);
-				});
-		});
-	});
 	describe('UNTRACK_THREAD_SUCCESS', () => {
 		it('should display success message', () => {
 			const action = {

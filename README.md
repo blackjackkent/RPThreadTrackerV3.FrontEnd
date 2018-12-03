@@ -10,16 +10,49 @@
 
 This is a React/Redux Javascript application which makes up the client-side portion of RPThreadTracker V3, a web application for members of the Tumblr collaborative writing community.
 
+## Running the Application Locally
+
+You will need to have NodeJS and NPM installed on your local machine to run this application.
+
+1. Create a fork of this repository to your own GitHub account (<https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd/fork>).
+2. Clone the forked repository to your local machine.
+3. Check out a new feature branch in your local copy of the code.
+4. Install NPM dependencies with `npm install` or `yarn`.
+5. Run the application with `npm run start` or `yarn start`.
+
+The application uses [Webpack Dev Server](https://github.com/webpack/webpack-dev-server) to run its code locally. It may take a few minutes to build, and will rebuild (more quickly) when changes are made to the code while it is running.
+
+Once running, the application will be available at `http://localhost:8080`.
+
+## Running Unit Tests
+
+The application uses [Jest](https://jestjs.io/) and associated libraries for unit testing across all parts of the application. Any changes to the code should be appropriately unit tested to maintain code coverage. Test files should be placed in a `__tests__` folder adjacent to the file under test, with the naming convention `fileUnderTest.spec.js`.
+
+You can run all unit tests and view code coverage for the entire application at any time with the command
+
+```
+npm run test:ci
+OR
+yarn test:ci
+```
+You can also test individual files with the command 
+```
+npm run test src/path/to/my/__tests__/fileUnderTest.spec.js
+OR
+yarn test src/path/to/my/__tests__/fileUnderTest.spec.js
+```
+
+## External Dependencies
+
+This application communicates with a back-end API for Tracker account information and a Tumblr client microservice. The URLs for these services are set for development purposes in the file `src/config/config.dev.json`, and by default are set to a remote staging server URL in both cases. If you are running these services locally, you can update the values in `config.dev.json`, then stop and restart the application.
+
+## Submitting a Change
+
+1. Commit your changes to your feature branch and push it to your forked repository.
+2. Open a pull request to the repository at https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd.
+
 ## Meta
 
 Rosalind Wills - [@blackjackkent](https://twitter.com/blackjackkent) – rosalind@blackjack-software.com
 
 [https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd](https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd/)
-
-## Contributing
-
-1. Fork it (<https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request

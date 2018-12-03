@@ -18,16 +18,22 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       <t
         ago={false}
         calendar={false}
+        decimal={false}
         element="time"
         filter={[Function]}
         format="MMMM D, YYYY"
         fromNow={false}
         interval={60000}
         onChange={[Function]}
+        titleFormat=""
         toNow={false}
+        unit={null}
         unix={false}
         utc={false}
-      />
+        withTitle={false}
+      >
+        <Component />
+      </t>
     </small>
     <Badge
       className="d-none"
@@ -63,16 +69,22 @@ exports[`rendering snapshots should render valid snapshot when unread 1`] = `
       <t
         ago={false}
         calendar={false}
+        decimal={false}
         element="time"
         filter={[Function]}
         format="MMMM D, YYYY"
         fromNow={false}
         interval={60000}
         onChange={[Function]}
+        titleFormat=""
         toNow={false}
+        unit={null}
         unix={false}
         utc={false}
-      />
+        withTitle={false}
+      >
+        <Component />
+      </t>
     </small>
     <Badge
       className="float-right"

@@ -1,4 +1,4 @@
 {
-	"API_BASE_URL": "https://rpthreadtrackerv3-backend-docker.azurewebsites.net/",
-	"TUMBLR_CLIENT_BASE_URL": "https://rpthreadtrackerv3-backend-tumblrclient-linux.azurewebsites.net/"
+	"API_BASE_URL": "https://rpthreadtrackerv3-backend-staging.azurewebsites.net/",
+	"TUMBLR_CLIENT_BASE_URL": "https://rpthreadtrackerv3-tumblrclient-staging.azurewebsites.net/"
 }

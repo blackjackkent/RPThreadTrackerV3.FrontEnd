@@ -16,7 +16,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     </CardHeader>
     <CardBlock
       className="card-body"
-      tag="div"
     >
       <Form
         action=""
@@ -55,6 +54,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <Label
               htmlFor="current-password"
               tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
               Include Archived Threads:
             </Label>
@@ -81,7 +89,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
                 id="include-archived-switch"
                 name="includeArchived"
                 onChange={[Function]}
-                tag="p"
                 type="checkbox"
               />
               <span
@@ -120,6 +127,15 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <Label
               htmlFor="current-password"
               tag="label"
+              widths={
+                Array [
+                  "xs",
+                  "sm",
+                  "md",
+                  "lg",
+                  "xl",
+                ]
+              }
             >
               Include Characters on Hiatus:
             </Label>
@@ -146,7 +162,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
                 id="include-hiatused-switch"
                 name="includeHiatused"
                 onChange={[Function]}
-                tag="p"
                 type="checkbox"
               />
               <span

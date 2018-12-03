@@ -6,7 +6,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 >
   <CardBlock
     className="card-body dashboard-summary-widget-card-body"
-    tag="div"
   >
     <div
       className="text-right mb-2"
@@ -47,7 +46,6 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
 >
   <CardBlock
     className="card-body dashboard-summary-widget-card-body"
-    tag="div"
   >
     <div
       className="text-right mb-2"

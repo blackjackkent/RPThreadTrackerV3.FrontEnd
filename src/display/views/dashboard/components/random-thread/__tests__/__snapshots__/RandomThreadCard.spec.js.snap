@@ -17,7 +17,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   </CardHeader>
   <CardBlock
     className="card-body"
-    tag="div"
   >
     <button
       className="btn btn-primary"

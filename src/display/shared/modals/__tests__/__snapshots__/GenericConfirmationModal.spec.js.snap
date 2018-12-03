@@ -8,8 +8,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   toggle={[MockFunction]}
 >
   <ModalHeader
+    charCode={215}
+    closeAriaLabel="Close"
     data-spec="generic-confirmation-modal-header"
-    tag="h4"
+    tag="h5"
     toggle={[MockFunction]}
     wrapTag="div"
   >
@@ -54,8 +56,10 @@ exports[`rendering snapshots should render valid snapshot with non-default props
   toggle={[MockFunction]}
 >
   <ModalHeader
+    charCode={215}
+    closeAriaLabel="Close"
     data-spec="generic-confirmation-modal-header"
-    tag="h4"
+    tag="h5"
     toggle={[MockFunction]}
     wrapTag="div"
   >

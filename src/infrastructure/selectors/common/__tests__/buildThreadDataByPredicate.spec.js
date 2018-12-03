@@ -15,25 +15,32 @@ const getThreads = () => [
 	{
 		threadId: 'd',
 		postId: 4
+	},
+	{
+		threadId: 'e',
+		postId: 1
 	}
 ];
 const getStatuses = () => [
 	{
+		threadId: 'a',
 		postId: 1,
 		isCallingCharactersTurn: true
 	},
 	{
+		threadId: 'b',
 		postId: 2,
 		isCallingCharactersTurn: true
 	},
 	{
+		threadId: 'd',
 		postId: 4,
 		isCallingCharactersTurn: false
 	}
 ];
 
 describe('behavior', () => {
-	it('should return matching threads when includeNullStatus is false', () => {
+	it('should return matching threads by postId and threadId when includeNullStatus is false', () => {
 		const threads = getThreads();
 		const statuses = getStatuses();
 		const result = buildThreadDataByPredicate(
@@ -46,6 +53,7 @@ describe('behavior', () => {
 				postId: 1
 			},
 			status: {
+				threadId: 'a',
 				postId: 1,
 				isCallingCharactersTurn: true
 			}
@@ -56,6 +64,7 @@ describe('behavior', () => {
 				postId: 2
 			},
 			status: {
+				threadId: 'b',
 				postId: 2,
 				isCallingCharactersTurn: true
 			}
@@ -74,6 +83,7 @@ describe('behavior', () => {
 				postId: 1
 			},
 			status: {
+				threadId: 'a',
 				postId: 1,
 				isCallingCharactersTurn: true
 			}
@@ -84,6 +94,7 @@ describe('behavior', () => {
 				postId: 2
 			},
 			status: {
+				threadId: 'b',
 				postId: 2,
 				isCallingCharactersTurn: true
 			}
