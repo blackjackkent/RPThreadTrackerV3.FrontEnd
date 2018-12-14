@@ -2,8 +2,6 @@ import {
 	takeLatest, put, call, all
 } from 'redux-saga/effects';
 import axios from 'axios';
-
-import filters from '../../constants/filters';
 import {
 	FETCH_PUBLIC_THREADS_STATUS,
 	fetchedPublicThreadsStatusSuccess,
@@ -12,21 +10,11 @@ import {
 	fetchedPublicThreadsStatusChunkFailure
 } from '../../actions';
 
-function* fetchPublicThreadsStatusChunk(chunk, view) {
+function* fetchPublicThreadsStatusChunk(chunk) {
 	try {
 		const response = yield call(axios.post, `${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk);
 		const threads = response.data;
-		let result = [];
-		if (view.turnFilter && view.turnFilter.includeMyTurn) {
-			result = result.concat(threads.filter(filters.MY_TURN));
-		}
-		if (view.turnFilter && view.turnFilter.includeTheirTurn) {
-			result = result.concat(threads.filter(filters.THEIR_TURN));
-		}
-		if (view.turnFilter && view.turnFilter.includeQueued) {
-			result = result.concat(threads.filter(filters.QUEUED));
-		}
-		yield put(fetchedPublicThreadsStatusChunkSuccess(result));
+		yield put(fetchedPublicThreadsStatusChunkSuccess(threads));
 	} catch (e) {
 		yield put(fetchedPublicThreadsStatusChunkFailure());
 	}
@@ -40,7 +28,7 @@ function* fetchPublicThreadsStatus(action) {
 			chunks.push(requests.slice(i, i + 10));
 		}
 		const tasks = [];
-		chunks.map(c => tasks.push(call(fetchPublicThreadsStatusChunk, c, action.data.view)));
+		chunks.map(c => tasks.push(call(fetchPublicThreadsStatusChunk, c)));
 		yield all(tasks);
 		yield put(fetchedPublicThreadsStatusSuccess());
 	} catch (e) {

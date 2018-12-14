@@ -68,6 +68,5 @@ const Settings = (props) => {
 Settings.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	submitUserChangePassword: actions.submitUserChangePassword,
-	setActiveSettingsTab: actions.setActiveSettingsTab,
 	submitUserAccountInfo: actions.submitUserAccountInfo
 })(Settings);
