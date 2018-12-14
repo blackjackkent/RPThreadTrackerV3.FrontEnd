@@ -2,22 +2,25 @@ import { createSelector } from 'reselect';
 import {
 	buildThreadDataByPredicate,
 	filterThreadsByPublicViewFilter,
+	filterPublicStatusesByTurnFilter,
 	shouldProcessThreads,
 	getAllPublicThreads,
 	getAllPublicThreadStatus,
-	getPublicThreadFilter
+	getPublicThreadFilter,
+	getPublicThreadsView
 } from '../common';
 import filters from '../../constants/filters';
 
 const getPublicThreads = createSelector(
-	[getAllPublicThreads, getAllPublicThreadStatus, getPublicThreadFilter],
-	(threads, threadsStatus, filter) => {
+	[getAllPublicThreads, getAllPublicThreadStatus, getPublicThreadFilter, getPublicThreadsView],
+	(threads, threadsStatus, filter, view) => {
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];
 		}
+		const filteredStatuses = filterPublicStatusesByTurnFilter(threadsStatus, threads, view);
 		const threadData = buildThreadDataByPredicate(
 			threads,
-			threadsStatus,
+			filteredStatuses,
 			filters.ALL,
 			true
 		);

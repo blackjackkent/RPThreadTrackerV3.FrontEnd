@@ -5,6 +5,7 @@ export const getAllArchivedThreadStatus = state => state.archivedThreadsStatus;
 export const getFilteredTag = state => (state.threadFilter ? state.threadFilter.filteredTag : null);
 export const getPublicThreadFilter = state => state.publicThreadFilter;
 export const getAllPublicThreads = state => state.publicThreads.threads;
+export const getPublicThreadsView = state => state.publicThreads.view;
 export const getAllPublicThreadStatus = state => state.publicThreadsStatus;
 export const getAllCharacters = state => state.characters;
 export const getNews = state => state.news;
