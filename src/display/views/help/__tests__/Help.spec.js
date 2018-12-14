@@ -27,7 +27,6 @@ jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav')
 // #endregion mocks
 
 const createTestProps = propOverrides => ({
-	setActiveHelpTab: jest.fn(),
 	submitContactForm: jest.fn(),
 	match: {
 		url: '/help/tab1',

@@ -5,6 +5,7 @@ import {
 	getAllArchivedThreadStatus,
 	getFilteredTag,
 	getPublicThreadFilter,
+	getPublicThreadsView,
 	getAllPublicThreads,
 	getAllPublicThreadStatus,
 	getAllCharacters,
@@ -110,6 +111,20 @@ describe('getAllPublicThreads', () => {
 		const result = getAllPublicThreads(state);
 		// Assert
 		expect(result).toHaveLength(3);
+	});
+});
+describe('getPublicThreadsView', () => {
+	it('should return view from publicThreads state', () => {
+		// Arrange
+		const state = {
+			publicThreads: {
+				view: { id: '12345' }
+			}
+		};
+		// Act
+		const result = getPublicThreadsView(state);
+		// Assert
+		expect(result.id).toBe('12345');
 	});
 });
 describe('getAllPublicThreadStatus', () => {

@@ -7,9 +7,6 @@ import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
 global.TUMBLR_CLIENT_BASE_URL = 'http://test-site/';
 
 const responseItems = [];
-const myTurnResponseItems = [];
-const theirTurnResponseItems = [];
-const queuedResponseItems = [];
 
 const initResponseData = () => {
 	for (let i = 0; i < 5; i++) {
@@ -20,17 +17,10 @@ const initResponseData = () => {
 				isQueued: j % 2 === 0
 			};
 			responseItems.push(responseItem);
-			if (responseItem.isQueued) {
-				queuedResponseItems.push(responseItem);
-			} else if (responseItem.isCallingCharactersTurn) {
-				myTurnResponseItems.push(responseItem);
-			} else {
-				theirTurnResponseItems.push(responseItem);
-			}
 		}
 	}
 };
-const getInitialAction = (turnFilter) => {
+const getInitialAction = () => {
 	const requests = [];
 	for (let i = 0; i < 5; i++) {
 		for (let j = 0; j < 10; j++) {
@@ -44,10 +34,7 @@ const getInitialAction = (turnFilter) => {
 	return {
 		type: actions.FETCH_PUBLIC_THREADS_STATUS,
 		data: {
-			threadStatusRequestJson: JSON.stringify(requests),
-			view: {
-				turnFilter
-			}
+			threadStatusRequestJson: JSON.stringify(requests)
 		}
 	};
 };
@@ -69,7 +56,7 @@ beforeAll(() => {
 	initResponseData();
 });
 describe('saga behavior', () => {
-	it('puts five empty chunks and success if no turn filter provided', () => {
+	it('puts five chunks and success', () => {
 		const saga = new SagaTestWrapper(fetchPublicThreadsStatusSaga);
 		const action = getInitialAction();
 		setupSaga(saga);
@@ -78,62 +65,8 @@ describe('saga behavior', () => {
 				const { effects } = result;
 				expect(effects.put).toHaveLength(6);
 				for (let i = 0; i < 5; i++) {
-					expect(effects.put[i].PUT.action.data).toEqual([]);
+					expect(effects.put[i].PUT.action.data).toHaveLength(10);
 				}
-				expect(effects.put[5].PUT.action.type).toEqual(
-					actions.FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
-				);
-			});
-	});
-	it('puts filtered chunks and success if turn filter is my turn', () => {
-		const saga = new SagaTestWrapper(fetchPublicThreadsStatusSaga);
-		const action = getInitialAction({ includeMyTurn: true });
-		setupSaga(saga);
-		return saga.execute(action)
-			.then((result) => {
-				const { effects } = result;
-				expect(effects.put).toHaveLength(6);
-				expect(effects.put[0].PUT.action.data).toHaveLength(5);
-				expect(effects.put[1].PUT.action.data).toHaveLength(0);
-				expect(effects.put[2].PUT.action.data).toHaveLength(5);
-				expect(effects.put[3].PUT.action.data).toHaveLength(0);
-				expect(effects.put[4].PUT.action.data).toHaveLength(5);
-				expect(effects.put[5].PUT.action.type).toEqual(
-					actions.FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
-				);
-			});
-	});
-	it('puts filtered chunks and success if turn filter is their turn', () => {
-		const saga = new SagaTestWrapper(fetchPublicThreadsStatusSaga);
-		const action = getInitialAction({ includeTheirTurn: true });
-		setupSaga(saga);
-		return saga.execute(action)
-			.then((result) => {
-				const { effects } = result;
-				expect(effects.put).toHaveLength(6);
-				expect(effects.put[0].PUT.action.data).toHaveLength(0);
-				expect(effects.put[1].PUT.action.data).toHaveLength(5);
-				expect(effects.put[2].PUT.action.data).toHaveLength(0);
-				expect(effects.put[3].PUT.action.data).toHaveLength(5);
-				expect(effects.put[4].PUT.action.data).toHaveLength(0);
-				expect(effects.put[5].PUT.action.type).toEqual(
-					actions.FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
-				);
-			});
-	});
-	it('puts filtered chunks and success if turn filter is queue', () => {
-		const saga = new SagaTestWrapper(fetchPublicThreadsStatusSaga);
-		const action = getInitialAction({ includeQueued: true });
-		setupSaga(saga);
-		return saga.execute(action)
-			.then((result) => {
-				const { effects } = result;
-				expect(effects.put).toHaveLength(6);
-				expect(effects.put[0].PUT.action.data).toHaveLength(5);
-				expect(effects.put[1].PUT.action.data).toHaveLength(5);
-				expect(effects.put[2].PUT.action.data).toHaveLength(5);
-				expect(effects.put[3].PUT.action.data).toHaveLength(5);
-				expect(effects.put[4].PUT.action.data).toHaveLength(5);
 				expect(effects.put[5].PUT.action.type).toEqual(
 					actions.FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
 				);

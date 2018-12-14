@@ -7,9 +7,6 @@ import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
 global.TUMBLR_CLIENT_BASE_URL = 'http://test-site/';
 
 const responseItems = [];
-const myTurnResponseItems = [];
-const theirTurnResponseItems = [];
-const queuedResponseItems = [];
 
 const initResponseData = () => {
 	for (let i = 0; i < 5; i++) {
@@ -20,13 +17,6 @@ const initResponseData = () => {
 				isQueued: j % 2 === 0
 			};
 			responseItems.push(responseItem);
-			if (responseItem.isQueued) {
-				queuedResponseItems.push(responseItem);
-			} else if (responseItem.isCallingCharactersTurn) {
-				myTurnResponseItems.push(responseItem);
-			} else {
-				theirTurnResponseItems.push(responseItem);
-			}
 		}
 	}
 };

@@ -60,6 +60,5 @@ const Help = (props) => {
 
 Help.propTypes = propTypes;
 export default connect(mapStateToProps, {
-	setActiveHelpTab: actions.setActiveHelpTab,
 	submitContactForm: actions.submitContactForm
 })(Help);
