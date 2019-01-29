@@ -106,4 +106,39 @@ describe('behavior', () => {
 			status: null
 		});
 	});
+	it('should skip statuses with no matching thread', () => {
+		const threads = getThreads();
+		const statuses = getStatuses();
+		statuses.push({
+			threadId: 'f',
+			postId: 6,
+			isCallingCharactersTurn: true
+		});
+		const result = buildThreadDataByPredicate(
+			threads, statuses, s => s.isCallingCharactersTurn, false
+		);
+		expect(result).toHaveLength(2);
+		expect(result[0]).toEqual({
+			thread: {
+				threadId: 'a',
+				postId: 1
+			},
+			status: {
+				threadId: 'a',
+				postId: 1,
+				isCallingCharactersTurn: true
+			}
+		});
+		expect(result[1]).toEqual({
+			thread: {
+				threadId: 'b',
+				postId: 2
+			},
+			status: {
+				threadId: 'b',
+				postId: 2,
+				isCallingCharactersTurn: true
+			}
+		});
+	});
 });
