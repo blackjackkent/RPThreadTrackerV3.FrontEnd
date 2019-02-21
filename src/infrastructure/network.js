@@ -8,7 +8,7 @@ const whitelist = [
 	'api/auth',
 	`${TUMBLR_CLIENT_BASE_URL}`
 ];
-const refreshSubscribers = [];
+let refreshSubscribers = [];
 let isRefreshing = false;
 
 function isPathInWhitelist(url) {
@@ -19,6 +19,7 @@ function subscribeTokenRefresh(cb) {
 }
 function onTokenRefreshed(token) {
 	refreshSubscribers.map(cb => cb(token));
+	refreshSubscribers = [];
 }
 function refreshAccessToken(error) {
 	return axios

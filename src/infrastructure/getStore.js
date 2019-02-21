@@ -2,7 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
 import { Iterable } from 'immutable';
 import createSagaMiddleware from 'redux-saga';
-// import { getQuery } from '../utility';
+import { getQuery } from '../utility';
 import reducers from './reducers';
 import initSagas from './initSagas';
 
@@ -20,7 +20,9 @@ const logger = createLogger({
 const getStore = () => {
 	const sagaMiddleware = createSagaMiddleware();
 	const middleWares = [sagaMiddleware];
-	middleWares.push(logger);
+	if (getQuery().logger) {
+		middleWares.push(logger);
+	}
 	const composables = [applyMiddleware(...middleWares)];
 	const enhancer = compose(...composables);
 	const store = createStore(
