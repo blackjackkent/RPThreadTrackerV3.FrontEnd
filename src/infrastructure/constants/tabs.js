@@ -39,6 +39,10 @@ export default {
 		BROWSER_EXTENSIONS: {
 			href: '/tools/extensions',
 			name: 'Browser Extensions'
+		},
+		MANAGE_TAGS: {
+			href: '/tools/tags',
+			name: 'Manage Tags'
 		}
 	}
 };

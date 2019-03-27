@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
-	TabPane, CardHeader, CardBlock
+	TabPane, CardHeader, CardBody
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 
@@ -13,7 +13,7 @@ const FAQPane = () => (
 					className="fas fa-question-circle"
 				/> FAQ
 			</CardHeader>
-			<CardBlock className="card-body">
+			<CardBody className="card-body">
 				<h4>Why am I seeing a &quot;Not Found&quot; error for my post?</h4>
 
 				<p>The following are several potential causes/fixes for this issue:</p>
@@ -58,7 +58,7 @@ const FAQPane = () => (
 					connection with Tumblr is stable, you can get the same information from the usual thread{' '}
 					tables.
 				</p>
-			</CardBlock>
+			</CardBody>
 		</Card>
 	</TabPane>
 );

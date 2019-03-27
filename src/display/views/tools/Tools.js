@@ -13,6 +13,7 @@ import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import ExportThreadsPane from './components/ExportThreadsPane';
+import ManageTagsPane from './components/ManageTagsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
@@ -95,8 +96,10 @@ class Tools extends Component {
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
 			username,
-			match
+			match,
+			tags
 		} = this.props;
+		console.log(tags);
 		const options = Object.values(tabs.TOOLS);
 		return (
 			<Style className="animated fadeIn static-container settings-container">
@@ -127,6 +130,10 @@ class Tools extends Component {
 								username={username}
 							/>
 							<BrowserExtensionsPane />
+							<ManageTagsPane
+								tags={tags}
+								isLoadingIconVisible={isLoadingIconVisible}
+							/>
 						</TabContent>
 					</Col>
 				</Row>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {
-	CardBlock, Button, Row, Col
+	CardBody, Button, Row, Col
 } from 'reactstrap';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
@@ -86,7 +86,7 @@ class Register extends Component {
 		}
 		return (
 			<Card className="mx-4">
-				<CardBlock className="p-4">
+				<CardBody className="p-4">
 					{loading}
 					<AvForm
 						data-spec="registration-form-container"
@@ -108,7 +108,7 @@ class Register extends Component {
 							</Col>
 						</Row>
 					</AvForm>
-				</CardBlock>
+				</CardBody>
 			</Card>
 		);
 	}

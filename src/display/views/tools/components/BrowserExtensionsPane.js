@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	TabPane, CardHeader, CardBlock, Row, Col
+	TabPane, CardHeader, CardBody, Row, Col
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 
@@ -12,7 +12,7 @@ const BrowserExtensionsPane = () => (
 					className="fas fa-flask"
 				/> Browser Extensions
 			</CardHeader>
-			<CardBlock className="card-body">
+			<CardBody className="card-body">
 				<p>
 					RPThreadTracker QuickAdd is a browser extension for Chrome and Firefox which allows you to quickly{' '}
 					add new Tumblr threads to an RPThreadTracker account.
@@ -34,7 +34,7 @@ const BrowserExtensionsPane = () => (
 						</a>
 					</Col>
 				</Row>
-			</CardBlock>
+			</CardBody>
 		</Card>
 	</TabPane>
 );

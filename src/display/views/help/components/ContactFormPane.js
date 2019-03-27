@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	Row, Col, TabPane, Button, FormGroup, Input, Label, CardHeader, CardBlock
+	Row, Col, TabPane, Button, FormGroup, Input, Label, CardHeader, CardBody
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import PropTypes from 'prop-types';
@@ -39,7 +39,7 @@ class ContactFormPane extends React.Component {
 							className="fas fa-envelope"
 						/> Contact Me
 					</CardHeader>
-					<CardBlock className="card-body">
+					<CardBody className="card-body">
 						<AvForm
 							data-spec="contact-form-container"
 							onValidSubmit={() => submitContactForm(formData)}
@@ -68,7 +68,7 @@ class ContactFormPane extends React.Component {
 								</Col>
 							</Row>
 						</AvForm>
-					</CardBlock>
+					</CardBody>
 				</Card>
 			</TabPane>
 		);

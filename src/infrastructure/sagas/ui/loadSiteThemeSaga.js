@@ -10,7 +10,10 @@ import {
 // #endregion imports
 
 function* loadSiteTheme() {
-	const useLightTheme = cache.get(cacheKeys.USE_LIGHT_THEME);
+	let useLightTheme = cache.get(cacheKeys.USE_LIGHT_THEME);
+	if (useLightTheme == null) {
+		useLightTheme = false;
+	}
 	yield put(loadSiteThemeSuccess(useLightTheme));
 }
 

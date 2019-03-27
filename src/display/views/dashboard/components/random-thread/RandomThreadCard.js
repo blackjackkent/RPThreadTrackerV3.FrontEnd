@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import RandomThreadDisplay from './RandomThreadDisplay';
 
@@ -19,7 +19,7 @@ const RandomThreadCard = (props) => {
 					data-spec="random-thread-generator-icon"
 				/> Random Thread Generator
 			</CardHeader>
-			<CardBlock className="card-body">
+			<CardBody className="card-body">
 				<button
 					type="button"
 					className="btn btn-primary"
@@ -29,7 +29,7 @@ const RandomThreadCard = (props) => {
 					Generate
 				</button>
 				<RandomThreadDisplay data-spec="random-thread-display" threadData={randomThread} />
-			</CardBlock>
+			</CardBody>
 		</Card>
 	);
 };
