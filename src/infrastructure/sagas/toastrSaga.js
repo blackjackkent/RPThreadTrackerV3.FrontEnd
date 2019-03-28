@@ -23,7 +23,9 @@ import {
 	UPSERT_PUBLIC_VIEW_SUCCESS,
 	EXPORT_THREADS_FAILURE,
 	BULK_UPDATE_TAG_SUCCESS,
-	BULK_UPDATE_TAG_FAILURE
+	BULK_UPDATE_TAG_FAILURE,
+	BULK_DELETE_TAG_SUCCESS,
+	BULK_DELETE_TAG_FAILURE
 } from '../actions';
 
 function* displayUntrackThreadError() {
@@ -135,10 +137,20 @@ function* displayBulkUpdateTagFailure() {
 	toastr.error('There was a problem updating the tag.');
 }
 
+function* displayBulkDeleteTagSuccess() {
+	toastr.success(`Successfully deleted tag.`);
+}
+
+function* displayBulkDeleteTagFailure() {
+	toastr.error('There was a problem deleting the tag.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
 		takeEvery(BULK_UPDATE_TAG_SUCCESS, displayBulkUpdateTagSuccess),
 		takeEvery(BULK_UPDATE_TAG_FAILURE, displayBulkUpdateTagFailure),
+		takeEvery(BULK_DELETE_TAG_SUCCESS, displayBulkDeleteTagSuccess),
+		takeEvery(BULK_DELETE_TAG_FAILURE, displayBulkDeleteTagFailure),
 		takeEvery(UNTRACK_THREAD_SUCCESS, displayUntrackThreadSuccess),
 		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError),
 		takeEvery(UPSERT_THREAD_FAILURE, displayUpdateThreadError),

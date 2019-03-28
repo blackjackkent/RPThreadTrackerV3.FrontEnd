@@ -5,7 +5,7 @@ export default styled.div`
 	color: ${colors.GRAY_100};
 	.manage-tags-pane {
 		#manage-tags-updated-value-input {
-			margin: 0 10px;
+			margin: 10px;
 		}
 		label { 
 			margin: 0;

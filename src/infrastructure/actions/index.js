@@ -48,6 +48,12 @@ export {
 	closeBulkUpdateTagModal
 } from './ui/bulkUpdateTagModal';
 export {
+	OPEN_BULK_DELETE_TAG_MODAL,
+	openBulkDeleteTagModal,
+	CLOSE_BULK_DELETE_TAG_MODAL,
+	closeBulkDeleteTagModal
+} from './ui/bulkDeleteTagModal';
+export {
 	setMaintenanceModeOn,
 	SET_MAINTENANCE_MODE_ON
 } from './ui/setMaintenanceModeOn';
@@ -307,6 +313,14 @@ export {
 	BULK_UPDATE_TAG_SUCCESS,
 	bulkUpdateTagSuccess
 } from './tags/bulkUpdateTag';
+export {
+	BULK_DELETE_TAG,
+	bulkDeleteTag,
+	BULK_DELETE_TAG_FAILURE,
+	bulkDeleteTagFailure,
+	BULK_DELETE_TAG_SUCCESS,
+	bulkDeleteTagSuccess
+} from './tags/bulkDeleteTag';
 
 // Help
 export {

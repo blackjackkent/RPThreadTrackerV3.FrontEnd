@@ -28,6 +28,7 @@ export { default as untrackThreadSaga } from './threads/untrackThreadSaga';
 //Tags
 export { default as fetchTagsSaga } from './tags/fetchTagsSaga';
 export { default as bulkUpdateTagSaga } from './tags/bulkUpdateTagSaga';
+export { default as bulkDeleteTagSaga } from './tags/bulkDeleteTagSaga';
 // Characters
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';
 export { default as upsertCharacterSaga } from './characters/upsertCharacterSaga';

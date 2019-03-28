@@ -43,9 +43,7 @@ function mapStateToProps(state) {
 		tags,
 		publicViews,
 		characters,
-		ui,
-		activeThreads,
-		archivedThreads
+		ui
 	} = state;
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
@@ -54,7 +52,8 @@ function mapStateToProps(state) {
 		tags,
 		publicViews,
 		isLoadingIconVisible,
-		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen
+		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen,
+		isBulkDeleteTagModalOpen: ui.isBulkDeleteTagModalOpen
 	};
 }
 
@@ -101,10 +100,12 @@ class Tools extends Component {
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
 			openBulkUpdateTagModal,
+			openBulkDeleteTagModal,
 			username,
 			match,
 			tags,
-			isBulkUpdateTagModalOpen
+			isBulkUpdateTagModalOpen,
+			isBulkDeleteTagModalOpen
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
@@ -138,8 +139,9 @@ class Tools extends Component {
 							<BrowserExtensionsPane />
 							<ManageTagsPane
 								tags={tags}
-								isLoadingIconVisible={isLoadingIconVisible || isBulkUpdateTagModalOpen}
+								isLoadingIconVisible={isLoadingIconVisible || isBulkUpdateTagModalOpen || isBulkDeleteTagModalOpen}
 								openBulkUpdateTagModal={openBulkUpdateTagModal}
+								openBulkDeleteTagModal={openBulkDeleteTagModal}
 							/>
 						</TabContent>
 					</Col>
@@ -158,6 +160,7 @@ export default connect(mapStateToProps, {
 	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
 	openDeletePublicViewModal: actions.openDeletePublicViewModal,
 	openBulkUpdateTagModal: actions.openBulkUpdateTagModal,
+	openBulkDeleteTagModal: actions.openBulkDeleteTagModal,
 	fetchCharacters: actions.fetchCharacters,
 	fetchUser: actions.fetchUser
 })(Tools);

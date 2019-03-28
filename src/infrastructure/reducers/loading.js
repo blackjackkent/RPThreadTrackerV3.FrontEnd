@@ -70,7 +70,10 @@ import {
 	FETCHED_PUBLIC_THREADS_STATUS_SUCCESS,
 	BULK_UPDATE_TAG_SUCCESS,
 	BULK_UPDATE_TAG_FAILURE,
-	BULK_UPDATE_TAG
+	BULK_UPDATE_TAG,
+	BULK_DELETE_TAG,
+	BULK_DELETE_TAG_FAILURE,
+	BULK_DELETE_TAG_SUCCESS
 } from '../actions';
 // #endregion imports
 
@@ -80,6 +83,7 @@ const defaultState = {
 	bulkUntrackThreadLoading: false,
 	bulkUpsertThreadsLoading: false,
 	bulkUpdateTagLoading: false,
+	bulkDeleteTagLoading: false,
 	changeAccountInfoLoading: false,
 	changePasswordLoading: false,
 	charactersLoading: false,
@@ -155,6 +159,17 @@ function loading(state = defaultState, action) {
 		case BULK_UPDATE_TAG_SUCCESS:
 			return Object.assign({}, state, {
 				bulkUpdateTagLoading: false
+			});
+		// #endregion
+		// #region Bulk Delete Tag
+		case BULK_DELETE_TAG:
+			return Object.assign({}, state, {
+				bulkDeleteTagLoading: true
+			});
+		case BULK_DELETE_TAG_FAILURE:
+		case BULK_DELETE_TAG_SUCCESS:
+			return Object.assign({}, state, {
+				bulkDeleteTagLoading: false
 			});
 		// #endregion
 		// #region Change Account Info

@@ -4,14 +4,14 @@ import {
 	TabPane, Col, Row, Button, CardHeader, CardBody, Label
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
 import Autosuggest from 'react-autosuggest';
 import LoadingIndicator from '../../../shared/loading/LoadingIndicator'
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
-	openBulkUpdateTagModal: PropTypes.func.isRequired
+	openBulkUpdateTagModal: PropTypes.func.isRequired,
+	openBulkDeleteTagModal: PropTypes.func.isRequired
 };
 const defaultProps = {
 	username: ''
@@ -69,6 +69,10 @@ class ManageTagsPane extends React.Component {
 	}
 	bulkUpdateTag() {
 		this.props.openBulkUpdateTagModal(this.state.selectedValue, this.state.updatedValue);
+		this.setState({ selectedValue: null, autosuggestValue: '', updatedValue: '' });
+	}
+	bulkDeleteTag() {
+		this.props.openBulkDeleteTagModal(this.state.selectedValue);
 		this.setState({ selectedValue: null, autosuggestValue: '', updatedValue: '' });
 	}
 	render() {
@@ -160,7 +164,10 @@ class ManageTagsPane extends React.Component {
 								<Row className="choice-row">
 									<Col>
 										<form className="d-flex justify-content-center form-inline">
-											<Button color="danger">
+											<Button
+												color="danger"
+												onClick={() => this.bulkDeleteTag()}
+											>
 												<i
 													className="fas fa-trash-alt"
 												/>{' '}

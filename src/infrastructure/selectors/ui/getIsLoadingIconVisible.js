@@ -58,6 +58,9 @@ const getIsLoadingIconVisible = createSelector(
 		if (loading.bulkUpdateTagLoading) {
 			return true;
 		}
+		if (loading.bulkDeleteTagLoading) {
+			return true;
+		}
 		return false;
 	}
 );
