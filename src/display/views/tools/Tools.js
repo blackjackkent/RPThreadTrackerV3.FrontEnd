@@ -15,6 +15,7 @@ import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import ManageTagsPane from './components/ManageTagsPane';
 import tabs from '../../../infrastructure/constants/tabs';
+import ui from '../../../infrastructure/reducers/ui';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -41,7 +42,10 @@ function mapStateToProps(state) {
 		user,
 		tags,
 		publicViews,
-		characters
+		characters,
+		ui,
+		activeThreads,
+		archivedThreads
 	} = state;
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
@@ -49,7 +53,10 @@ function mapStateToProps(state) {
 		username: user.userName,
 		tags,
 		publicViews,
-		isLoadingIconVisible
+		isLoadingIconVisible,
+		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen,
+		shouldRefreshActiveThreadsOnTagUpdate: activeThreads.length > 0,
+		shouldRefreshArchivedThreadsOnTagUpdate: archivedThreads.length > 0
 	};
 }
 
@@ -95,11 +102,14 @@ class Tools extends Component {
 			isLoadingIconVisible,
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
+			openBulkUpdateTagModal,
 			username,
 			match,
-			tags
+			tags,
+			isBulkUpdateTagModalOpen,
+			shouldRefreshActiveThreadsOnTagUpdate,
+			shouldRefreshArchivedThreadsOnTagUpdate
 		} = this.props;
-		console.log(tags);
 		const options = Object.values(tabs.TOOLS);
 		return (
 			<Style className="animated fadeIn static-container settings-container">
@@ -132,7 +142,10 @@ class Tools extends Component {
 							<BrowserExtensionsPane />
 							<ManageTagsPane
 								tags={tags}
-								isLoadingIconVisible={isLoadingIconVisible}
+								isLoadingIconVisible={isLoadingIconVisible || isBulkUpdateTagModalOpen}
+								openBulkUpdateTagModal={openBulkUpdateTagModal}
+								shouldRefreshActiveThreadsOnTagUpdate={shouldRefreshActiveThreadsOnTagUpdate}
+								shouldRefreshArchivedThreadsOnTagUpdate={shouldRefreshArchivedThreadsOnTagUpdate}
 							/>
 						</TabContent>
 					</Col>
@@ -150,6 +163,7 @@ export default connect(mapStateToProps, {
 	fetchPublicViews: actions.fetchPublicViews,
 	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
 	openDeletePublicViewModal: actions.openDeletePublicViewModal,
+	openBulkUpdateTagModal: actions.openBulkUpdateTagModal,
 	fetchCharacters: actions.fetchCharacters,
 	fetchUser: actions.fetchUser
 })(Tools);

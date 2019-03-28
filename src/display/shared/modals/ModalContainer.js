@@ -23,6 +23,7 @@ const propTypes = {
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	deletePublicView: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
+	isBulkUpdateTagModalOpen: PropTypes.bool.isRequired,
 	isDeletePublicViewModalOpen: PropTypes.bool.isRequired,
 	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
@@ -46,7 +47,8 @@ function mapStateToProps(state) {
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
-		viewToEdit
+		viewToEdit,
+		tagToEdit
 	} = state;
 	const sortedCharacters = selectors.getCharactersSortedByIdentifier(state);
 	const sortedTags = selectors.getTagsSortedByTagText(state);
@@ -58,10 +60,12 @@ function mapStateToProps(state) {
 		isUntrackCharacterModalOpen: ui.isUntrackCharacterModalOpen,
 		isUpsertPublicViewModalOpen: ui.isUpsertPublicViewModalOpen,
 		isDeletePublicViewModalOpen: ui.isDeletePublicViewModalOpen,
+		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen,
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
 		viewToEdit,
+		tagToEdit,
 		sortedCharacters,
 		sortedTags
 	};
@@ -71,8 +75,10 @@ const ModalContainer = (props) => {
 	const {
 		bulkThreadsToEdit,
 		bulkUntrackThreads,
+		bulkUpdateTag,
 		characterToEdit,
 		closeBulkUntrackThreadsModal,
+		closeBulkUpdateTagModal,
 		closeDeletePublicViewModal,
 		closeUntrackCharacterModal,
 		closeUntrackThreadModal,
@@ -81,6 +87,7 @@ const ModalContainer = (props) => {
 		closeUpsertThreadModal,
 		deletePublicView,
 		isBulkUntrackThreadsModalOpen,
+		isBulkUpdateTagModalOpen,
 		isDeletePublicViewModalOpen,
 		isUntrackCharacterModalOpen,
 		isUntrackThreadModalOpen,
@@ -95,7 +102,8 @@ const ModalContainer = (props) => {
 		upsertCharacter,
 		upsertPublicView,
 		upsertThread,
-		viewToEdit
+		viewToEdit,
+		tagToEdit
 	} = props;
 	return (
 		<div>
@@ -171,6 +179,16 @@ const ModalContainer = (props) => {
 				headerText="Confirm Public View Deletion"
 				bodyText={<span>Are you sure you want to delete <strong>{viewToEdit.name}</strong>?</span>}
 			/>
+			<GenericConfirmationModal
+				isModalOpen={isBulkUpdateTagModalOpen}
+				submitCallback={bulkUpdateTag}
+				submitButtonText="Update Tag"
+				closeCallback={closeBulkUpdateTagModal}
+				closeButtonText="Cancel"
+				data={tagToEdit}
+				headerText="Confirm Updated Tag Value"
+				bodyText={<span>Are you sure you want to change the tag <strong>{tagToEdit.selectedTag}</strong> to <strong>{tagToEdit.updatedValue}</strong> on all your threads?</span>}
+			/>
 		</div>
 	);
 };
@@ -178,7 +196,9 @@ const ModalContainer = (props) => {
 ModalContainer.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	bulkUntrackThreads: actions.bulkUntrackThreads,
+	bulkUpdateTag: actions.bulkUpdateTag,
 	closeBulkUntrackThreadsModal: actions.closeBulkUntrackThreadsModal,
+	closeBulkUpdateTagModal: actions.closeBulkUpdateTagModal,
 	closeDeletePublicViewModal: actions.closeDeletePublicViewModal,
 	closeUntrackCharacterModal: actions.closeUntrackCharacterModal,
 	closeUntrackThreadModal: actions.closeUntrackThreadModal,

@@ -42,6 +42,12 @@ export {
 	openUpsertThreadModal
 } from './ui/upsertThreadModal';
 export {
+	OPEN_BULK_UPDATE_TAG_MODAL,
+	openBulkUpdateTagModal,
+	CLOSE_BULK_UPDATE_TAG_MODAL,
+	closeBulkUpdateTagModal
+} from './ui/bulkUpdateTagModal';
+export {
 	setMaintenanceModeOn,
 	SET_MAINTENANCE_MODE_ON
 } from './ui/setMaintenanceModeOn';
@@ -285,6 +291,14 @@ export {
 	fetchedTagsSuccess,
 	fetchTags
 } from './tags/fetchTags';
+export {
+	BULK_UPDATE_TAG,
+	bulkUpdateTag,
+	BULK_UPDATE_TAG_FAILURE,
+	bulkUpdateTagFailure,
+	BULK_UPDATE_TAG_SUCCESS,
+	bulkUpdateTagSuccess
+} from './tags/bulkUpdateTag';
 
 // Help
 export {

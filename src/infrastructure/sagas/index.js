@@ -22,11 +22,12 @@ export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsS
 export { default as fetchActiveThreadsStatusSaga } from './threads/fetchActiveThreadsStatusSaga';
 export { default as fetchArchivedThreadsSaga } from './threads/fetchArchivedThreadsSaga';
 export { default as fetchArchivedThreadsStatusSaga } from './threads/fetchArchivedThreadsStatusSaga';
-export { default as fetchTagsSaga } from './threads/fetchTagsSaga';
 export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
 export { default as upsertThreadSaga } from './threads/upsertThreadSaga';
 export { default as untrackThreadSaga } from './threads/untrackThreadSaga';
-
+//Tags
+export { default as fetchTagsSaga } from './tags/fetchTagsSaga';
+export { default as bulkUpdateTagSaga } from './tags/bulkUpdateTagSaga';
 // Characters
 export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga';
 export { default as upsertCharacterSaga } from './characters/upsertCharacterSaga';

@@ -21,7 +21,9 @@ import {
 	SUBMIT_USER_ACCOUNT_INFO_SUCCESS,
 	UPSERT_PUBLIC_VIEW_FAILURE,
 	UPSERT_PUBLIC_VIEW_SUCCESS,
-	EXPORT_THREADS_FAILURE
+	EXPORT_THREADS_FAILURE,
+	BULK_UPDATE_TAG_SUCCESS,
+	BULK_UPDATE_TAG_FAILURE
 } from '../actions';
 
 function* displayUntrackThreadError() {
@@ -118,15 +120,25 @@ function* displayUpdatePublicViewError() {
 
 function* displayUpdatePublicViewSuccess(action) {
 	const view = action.data;
-	toastr.success(`Successfully updated public view ${view.name}`);
+	toastr.success(`Successfully updated public view ${view.name}.`);
 }
 
 function* displayExportThreadsError() {
 	toastr.error('There was a problem exporting your threads.');
 }
 
+function* displayBulkUpdateTagSuccess() {
+	toastr.success(`Successfully updated tag.`);
+}
+
+function* displayBulkUpdateTagFailure() {
+	toastr.error('There was a problem updating the tag.');
+}
+
 export default function* fetchActiveThreadsSaga() {
 	yield all([
+		takeEvery(BULK_UPDATE_TAG_SUCCESS, displayBulkUpdateTagSuccess),
+		takeEvery(BULK_UPDATE_TAG_FAILURE, displayBulkUpdateTagFailure),
 		takeEvery(UNTRACK_THREAD_SUCCESS, displayUntrackThreadSuccess),
 		takeEvery(UNTRACK_THREAD_FAILURE, displayUntrackThreadError),
 		takeEvery(UPSERT_THREAD_FAILURE, displayUpdateThreadError),

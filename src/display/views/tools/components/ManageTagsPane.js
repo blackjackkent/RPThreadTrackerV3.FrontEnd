@@ -10,7 +10,10 @@ import LoadingIndicator from '../../../shared/loading/LoadingIndicator'
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired
+	isLoadingIconVisible: PropTypes.bool.isRequired,
+	openBulkUpdateTagModal: PropTypes.func.isRequired,
+	shouldRefreshActiveThreadsOnTagUpdate: PropTypes.bool.isRequired,
+	shouldRefreshArchivedThreadsOnTagUpdate: PropTypes.bool.isRequired
 };
 const defaultProps = {
 	username: ''
@@ -28,7 +31,7 @@ class ManageTagsPane extends React.Component {
 		this.state = {
 			autosuggestValue: '',
 			selectedValue: null,
-			updatedValue: null,
+			updatedValue: '',
 			suggestions: []
 		};
 		this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
@@ -36,7 +39,9 @@ class ManageTagsPane extends React.Component {
 		this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
 		this.getSuggestions = this.getSuggestions.bind(this);
 		this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
+		this.onNewTagValueChange = this.onNewTagValueChange.bind(this);
 		this.clearSelectedTag = this.clearSelectedTag.bind(this);
+		this.bulkUpdateTag = this.bulkUpdateTag.bind(this);
 	}
 	onAutosuggestChange(event, { newValue }) {
 		this.setState({ autosuggestValue: newValue });
@@ -64,10 +69,18 @@ class ManageTagsPane extends React.Component {
 	clearSelectedTag() {
 		this.setState({ selectedValue: null });
 	}
+	bulkUpdateTag() {
+		this.props.openBulkUpdateTagModal(
+			this.state.selectedValue,
+			this.state.updatedValue,
+			this.props.shouldRefreshActiveThreadsOnTagUpdate,
+			this.props.shouldRefreshArchivedThreadsOnTagUpdate
+		);
+		this.setState({ selectedValue: null, autosuggestValue: '', updatedValue: '' });
+	}
 	render() {
 		const {
-			isLoadingIconVisible,
-			tags
+			isLoadingIconVisible
 		} = this.props;
 		const autosuggestProps = {
 			placeholder: 'Enter the tag you wish to edit',
@@ -123,7 +136,10 @@ class ManageTagsPane extends React.Component {
 								</Row>
 								<Row className="choice-row">
 									<Col>
-										<form className="d-flex justify-content-center form-inline">
+										<form
+											onSubmit={e => { e.preventDefault(); }}
+											className="d-flex justify-content-center form-inline"
+										>
 											<Label htmlFor="updatedValue">Update it to:</Label>{' '}
 											<input
 												name="updatedValue"
@@ -132,9 +148,14 @@ class ManageTagsPane extends React.Component {
 												id="manage-tags-updated-value-input"
 												type="text"
 												className="form-control"
+												onChange={this.onNewTagValueChange}
 												value={this.state.updatedValue}
 											/>
-											<Button color="primary">
+											<Button
+												color="primary"
+												onClick={() => this.bulkUpdateTag()}
+												disabled={!this.state.updatedValue}
+											>
 												<i
 													className="fas fa-edit"
 												/>{' '}

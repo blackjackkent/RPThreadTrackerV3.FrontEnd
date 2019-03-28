@@ -1,7 +1,10 @@
 export const FETCH_ARCHIVED_THREADS = 'FETCH_ARCHIVED_THREADS';
-export function fetchArchivedThreads() {
+export function fetchArchivedThreads(shouldSkipStatusFetch = false) {
 	return {
-		type: FETCH_ARCHIVED_THREADS
+		type: FETCH_ARCHIVED_THREADS,
+		data: {
+			shouldSkipStatusFetch
+		}
 	};
 }
 export const FETCHED_ARCHIVED_THREADS_FAILURE = 'FETCHED_ARCHIVED_THREADS_FAILURE';
