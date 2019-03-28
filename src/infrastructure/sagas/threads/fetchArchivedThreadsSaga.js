@@ -9,14 +9,12 @@ import {
 } from '../../actions';
 // #endregion imports
 
-function* fetchArchivedThreads(action) {
+function* fetchArchivedThreads() {
 	try {
 		const response = yield call(axios.get, `${API_BASE_URL}api/thread?isArchived=true`);
 		const threadData = response.data;
 		yield put(fetchedArchivedThreadsSuccess(threadData));
-		if (!action.data.shouldSkipStatusFetch) {
-			yield put(fetchArchivedThreadsStatus(threadData));
-		}
+		yield put(fetchArchivedThreadsStatus(threadData));
 	} catch (e) {
 		yield put(fetchedArchivedThreadsFailure());
 	}

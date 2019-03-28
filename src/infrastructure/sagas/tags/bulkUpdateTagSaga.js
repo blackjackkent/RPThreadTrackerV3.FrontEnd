@@ -4,7 +4,7 @@ import {
 import axios from 'axios';
 
 import {
-	BULK_UPDATE_TAG, bulkUpdateTagSuccess, bulkUpdateTagFailure, fetchActiveThreads, fetchArchivedThreads, fetchTags
+	BULK_UPDATE_TAG, bulkUpdateTagSuccess, bulkUpdateTagFailure, fetchActiveThreads, fetchArchivedThreads, fetchTags, clearActiveThreads, clearArchivedThreads
 } from '../../actions';
 
 function* bulkUpdateTag(action) {
@@ -16,7 +16,9 @@ function* bulkUpdateTag(action) {
 		yield call(axios.put, `${API_BASE_URL}api/thread/tags?currentTag=${currentTag}&replacementTag=${replacementTag}`, {});
 		yield all([
 			put(bulkUpdateTagSuccess()),
-			put(fetchTags())
+			put(fetchTags()),
+			put(clearActiveThreads()),
+			put(clearArchivedThreads())
 		]);
 		if (shouldRefreshActiveThreads) {
 			yield put(fetchActiveThreads(true));

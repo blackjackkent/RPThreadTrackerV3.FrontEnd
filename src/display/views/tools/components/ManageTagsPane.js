@@ -11,9 +11,7 @@ import LoadingIndicator from '../../../shared/loading/LoadingIndicator'
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
-	openBulkUpdateTagModal: PropTypes.func.isRequired,
-	shouldRefreshActiveThreadsOnTagUpdate: PropTypes.bool.isRequired,
-	shouldRefreshArchivedThreadsOnTagUpdate: PropTypes.bool.isRequired
+	openBulkUpdateTagModal: PropTypes.func.isRequired
 };
 const defaultProps = {
 	username: ''
@@ -70,12 +68,7 @@ class ManageTagsPane extends React.Component {
 		this.setState({ selectedValue: null });
 	}
 	bulkUpdateTag() {
-		this.props.openBulkUpdateTagModal(
-			this.state.selectedValue,
-			this.state.updatedValue,
-			this.props.shouldRefreshActiveThreadsOnTagUpdate,
-			this.props.shouldRefreshArchivedThreadsOnTagUpdate
-		);
+		this.props.openBulkUpdateTagModal(this.state.selectedValue, this.state.updatedValue);
 		this.setState({ selectedValue: null, autosuggestValue: '', updatedValue: '' });
 	}
 	render() {

@@ -7,14 +7,12 @@ export function closeBulkUpdateTagModal() {
 	};
 }
 export const OPEN_BULK_UPDATE_TAG_MODAL = 'OPEN_BULK_UPDATE_TAG_MODAL';
-export function openBulkUpdateTagModal(selectedTag, updatedValue = null, shouldUpdateActiveThreads = false, shouldUpdateArchivedThreads = false) {
+export function openBulkUpdateTagModal(selectedTag, updatedValue = null) {
 	return {
 		type: OPEN_BULK_UPDATE_TAG_MODAL,
 		data: {
 			selectedTag,
-			updatedValue,
-			shouldUpdateActiveThreads,
-			shouldUpdateArchivedThreads
+			updatedValue
 		},
 		analytics: {
 			func: analytics.funcs.MODALVIEW,

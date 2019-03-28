@@ -1,10 +1,7 @@
 export const FETCH_ACTIVE_THREADS = 'FETCH_ACTIVE_THREADS';
-export function fetchActiveThreads(shouldSkipStatusFetch = false) {
+export function fetchActiveThreads() {
 	return {
-		type: FETCH_ACTIVE_THREADS,
-		data: {
-			shouldSkipStatusFetch
-		}
+		type: FETCH_ACTIVE_THREADS
 	};
 }
 export const FETCHED_ACTIVE_THREADS_SUCCESS = 'FETCHED_ACTIVE_THREADS_SUCCESS';

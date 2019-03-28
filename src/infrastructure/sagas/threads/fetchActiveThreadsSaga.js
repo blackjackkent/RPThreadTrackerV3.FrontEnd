@@ -11,14 +11,14 @@ import {
 } from '../../actions';
 // #endregion imports
 
-function* fetchActiveThreads(action) {
+function* fetchActiveThreads() {
 	try {
 		const response = yield call(axios.get, `${API_BASE_URL}api/thread`);
 		const threadData = response.data;
-		yield put(fetchedActiveThreadsSuccess(threadData));
-		if (!action.data.shouldSkipStatusFetch) {
-			yield put(fetchActiveThreadsStatus(threadData))
-		}
+		yield all([
+			put(fetchedActiveThreadsSuccess(threadData)),
+			put(fetchActiveThreadsStatus(threadData))
+		]);
 	} catch (e) {
 		yield put(fetchedActiveThreadsFailure());
 	}

@@ -74,6 +74,14 @@ export {
 
 // Threads
 export {
+	clearActiveThreads,
+	CLEAR_ACTIVE_THREADS
+} from './threads/clearActiveThreads';
+export {
+	clearArchivedThreads,
+	CLEAR_ARCHIVED_THREADS
+} from './threads/clearArchivedThreads';
+export {
 	BULK_UNTRACK_THREADS_FAILURE,
 	BULK_UNTRACK_THREADS_SUCCESS,
 	BULK_UNTRACK_THREADS,

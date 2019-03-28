@@ -54,9 +54,7 @@ function mapStateToProps(state) {
 		tags,
 		publicViews,
 		isLoadingIconVisible,
-		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen,
-		shouldRefreshActiveThreadsOnTagUpdate: activeThreads.length > 0,
-		shouldRefreshArchivedThreadsOnTagUpdate: archivedThreads.length > 0
+		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen
 	};
 }
 
@@ -106,9 +104,7 @@ class Tools extends Component {
 			username,
 			match,
 			tags,
-			isBulkUpdateTagModalOpen,
-			shouldRefreshActiveThreadsOnTagUpdate,
-			shouldRefreshArchivedThreadsOnTagUpdate
+			isBulkUpdateTagModalOpen
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
@@ -144,8 +140,6 @@ class Tools extends Component {
 								tags={tags}
 								isLoadingIconVisible={isLoadingIconVisible || isBulkUpdateTagModalOpen}
 								openBulkUpdateTagModal={openBulkUpdateTagModal}
-								shouldRefreshActiveThreadsOnTagUpdate={shouldRefreshActiveThreadsOnTagUpdate}
-								shouldRefreshArchivedThreadsOnTagUpdate={shouldRefreshArchivedThreadsOnTagUpdate}
 							/>
 						</TabContent>
 					</Col>
