@@ -30,3 +30,4 @@ export { default as getCharactersSortedByIdentifier } from './characters/getChar
 export { default as getTagsSortedByTagText } from './tags/getTagsSortedByTagText';
 
 export { default as getIsLoadingIconVisible } from './ui/getIsLoadingIconVisible';
+export { default as getIsManageTagsLoadingIconVisible } from './ui/getIsManageTagsLoadingIconVisible';

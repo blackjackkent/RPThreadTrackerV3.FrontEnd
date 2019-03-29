@@ -4,8 +4,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 <Styled(Card)
   className="login-box p-4"
 >
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <span />
     <AvForm
@@ -93,7 +94,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         </Col>
       </Row>
     </AvForm>
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -101,8 +102,9 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
 <Styled(Card)
   className="login-box p-4"
 >
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <span />
     <AvForm
@@ -199,7 +201,7 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
         </Col>
       </Row>
     </AvForm>
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -207,8 +209,9 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
 <Styled(Card)
   className="login-box p-4"
 >
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <LoadingIndicator
       style={
@@ -306,6 +309,6 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
         </Col>
       </Row>
     </AvForm>
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

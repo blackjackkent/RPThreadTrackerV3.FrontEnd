@@ -6,6 +6,8 @@ const getState = overrides => ({
 	archivedThreadsLoading: false,
 	bulkUntrackThreadLoading: false,
 	bulkUpsertThreadsLoading: false,
+	bulkUpdateTagLoading: false,
+	bulkDeleteTagLoading: false,
 	changeAccountInfoLoading: false,
 	changePasswordLoading: false,
 	charactersLoading: false,

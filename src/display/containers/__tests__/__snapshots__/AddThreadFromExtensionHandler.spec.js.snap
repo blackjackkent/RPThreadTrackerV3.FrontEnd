@@ -46,13 +46,14 @@ exports[`rendering snapshots should render valid snapshot if user and characters
         <Styled(Card)
           className="login-box p-4"
         >
-          <CardBlock
+          <CardBody
             className="card-body text-center"
+            tag="div"
           >
             <p>
               You can now close this window.
             </p>
-          </CardBlock>
+          </CardBody>
         </Styled(Card)>
       </Col>
     </Row>

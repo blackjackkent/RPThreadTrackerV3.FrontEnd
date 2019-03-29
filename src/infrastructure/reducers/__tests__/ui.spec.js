@@ -15,6 +15,8 @@ const getState = overrides => ({
 	isUntrackCharacterModalOpen: false,
 	isUpsertPublicViewModalOpen: false,
 	isDeletePublicViewModalOpen: false,
+	isBulkUpdateTagModalOpen: false,
+	isBulkDeleteTagModalOpen: false,
 	useLightTheme: false,
 	...overrides
 });

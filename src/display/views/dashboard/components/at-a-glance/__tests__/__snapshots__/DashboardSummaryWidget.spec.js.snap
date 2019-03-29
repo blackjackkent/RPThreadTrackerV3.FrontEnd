@@ -4,8 +4,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 <Styled(Card)
   onClick={[Function]}
 >
-  <CardBlock
+  <CardBody
     className="card-body dashboard-summary-widget-card-body"
+    tag="div"
   >
     <div
       className="text-right mb-2"
@@ -36,7 +37,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       tag="div"
       value="100"
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -44,8 +45,9 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
 <Styled(Card)
   onClick={[Function]}
 >
-  <CardBlock
+  <CardBody
     className="card-body dashboard-summary-widget-card-body"
+    tag="div"
   >
     <div
       className="text-right mb-2"
@@ -87,6 +89,6 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
       tag="div"
       value="100"
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

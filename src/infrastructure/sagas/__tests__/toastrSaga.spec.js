@@ -282,7 +282,7 @@ describe('saga behavior', () => {
 			return saga.execute(action)
 				.then(() => {
 					expect(toastr.success).toHaveBeenCalledTimes(1);
-					expect(toastr.success).toHaveBeenLastCalledWith('Successfully updated public view Test View');
+					expect(toastr.success).toHaveBeenLastCalledWith('Successfully updated public view Test View.');
 				});
 		});
 	});

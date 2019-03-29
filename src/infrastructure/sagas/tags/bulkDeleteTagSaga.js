@@ -4,7 +4,12 @@ import {
 import axios from 'axios';
 
 import {
-	fetchTags, clearActiveThreads, clearArchivedThreads, BULK_DELETE_TAG, bulkDeleteTagSuccess, bulkDeleteTagFailure
+	fetchTags,
+	clearActiveThreads,
+	clearArchivedThreads,
+	BULK_DELETE_TAG,
+	bulkDeleteTagSuccess,
+	bulkDeleteTagFailure
 } from '../../actions';
 
 function* bulkDeleteTag(action) {

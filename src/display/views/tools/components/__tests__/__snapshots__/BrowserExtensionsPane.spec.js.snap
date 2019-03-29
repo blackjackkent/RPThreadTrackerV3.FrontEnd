@@ -14,8 +14,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
        Browser Extensions
     </CardHeader>
-    <CardBlock
+    <CardBody
       className="card-body"
+      tag="div"
     >
       <p>
         RPThreadTracker QuickAdd is a browser extension for Chrome and Firefox which allows you to quickly
@@ -77,7 +78,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           </a>
         </Col>
       </Row>
-    </CardBlock>
+    </CardBody>
   </Styled(Card)>
 </TabPane>
 `;

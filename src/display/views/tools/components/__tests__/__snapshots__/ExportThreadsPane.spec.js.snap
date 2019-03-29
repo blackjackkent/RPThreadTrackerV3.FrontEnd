@@ -14,8 +14,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
        Export Threads
     </CardHeader>
-    <CardBlock
+    <CardBody
       className="card-body"
+      tag="div"
     >
       <Form
         action=""
@@ -203,7 +204,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           </Button>
         </Col>
       </Row>
-    </CardBlock>
+    </CardBody>
   </Styled(Card)>
 </TabPane>
 `;

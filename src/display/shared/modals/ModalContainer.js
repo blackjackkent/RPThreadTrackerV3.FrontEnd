@@ -13,8 +13,11 @@ import UpsertPublicViewModal from './UpsertPublicViewModal';
 const propTypes = {
 	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	bulkUntrackThreads: PropTypes.func.isRequired,
+	bulkUpdateTag: PropTypes.func.isRequired,
+	bulkDeleteTag: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({}).isRequired,
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	closeBulkUpdateTagModal: PropTypes.func.isRequired,
 	closeBulkDeleteTagModal: PropTypes.func.isRequired,
 	closeDeletePublicViewModal: PropTypes.func.isRequired,
 	closeUntrackCharacterModal: PropTypes.func.isRequired,
@@ -40,6 +43,7 @@ const propTypes = {
 	upsertCharacter: PropTypes.func.isRequired,
 	upsertPublicView: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
+	tagToEdit: PropTypes.shape({}).isRequired,
 	viewToEdit: PropTypes.shape({}).isRequired
 };
 
@@ -193,7 +197,13 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={tagToEdit}
 				headerText="Confirm Updated Tag Value"
-				bodyText={<span>Are you sure you want to change the tag <strong>{tagToEdit.selectedTag}</strong> to <strong>{tagToEdit.updatedValue}</strong> on all your threads?</span>}
+				bodyText={(
+					<span>Are you sure you want to change the tag{' '}
+						<strong>{tagToEdit.selectedTag}</strong> to{' '}
+						<strong>{tagToEdit.updatedValue}</strong> on{' '}
+						all your threads?
+					</span>
+				)}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkDeleteTagModalOpen}
@@ -203,7 +213,12 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={tagToEdit}
 				headerText="Confirm Deleted Tag Value"
-				bodyText={<span>Are you sure you want to remove the tag <strong>{tagToEdit.selectedTag}</strong> from all your threads?</span>}
+				bodyText={(
+					<span>Are you sure you want to remove the tag{' '}
+						<strong>{tagToEdit.selectedTag}</strong>{' '}
+						from all your threads?
+					</span>
+				)}
 			/>
 		</div>
 	);

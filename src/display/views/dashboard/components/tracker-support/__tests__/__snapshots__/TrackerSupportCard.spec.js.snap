@@ -12,8 +12,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     />
      Support Tracker Development
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <div
       className="form-container"
@@ -49,6 +50,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         />
       </form>
     </div>
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

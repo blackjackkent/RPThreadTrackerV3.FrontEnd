@@ -15,8 +15,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     />
      Random Thread Generator
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <button
       className="btn btn-primary"
@@ -37,6 +38,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         }
       }
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

@@ -130,7 +130,7 @@ function* displayExportThreadsError() {
 }
 
 function* displayBulkUpdateTagSuccess() {
-	toastr.success(`Successfully updated tag.`);
+	toastr.success('Successfully updated tag.');
 }
 
 function* displayBulkUpdateTagFailure() {
@@ -138,7 +138,7 @@ function* displayBulkUpdateTagFailure() {
 }
 
 function* displayBulkDeleteTagSuccess() {
-	toastr.success(`Successfully deleted tag.`);
+	toastr.success('Successfully deleted tag.');
 }
 
 function* displayBulkDeleteTagFailure() {

@@ -1,4 +1,3 @@
-
 // News
 export { default as fetchNewsSaga } from './news/fetchNewsSaga';
 // User
@@ -25,7 +24,7 @@ export { default as fetchArchivedThreadsStatusSaga } from './threads/fetchArchiv
 export { default as generateRandomThreadSaga } from './threads/generateRandomThreadSaga';
 export { default as upsertThreadSaga } from './threads/upsertThreadSaga';
 export { default as untrackThreadSaga } from './threads/untrackThreadSaga';
-//Tags
+// Tags
 export { default as fetchTagsSaga } from './tags/fetchTagsSaga';
 export { default as bulkUpdateTagSaga } from './tags/bulkUpdateTagSaga';
 export { default as bulkDeleteTagSaga } from './tags/bulkDeleteTagSaga';
