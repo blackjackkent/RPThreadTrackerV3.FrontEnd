@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Col, Row, Button, CardHeader, CardBlock
+	TabPane, Col, Row, Button, CardHeader, CardBody
 } from 'reactstrap';
 import PublicViewsTable from './public-views/PublicViewsTable';
 import Card from '../../../shared/styled/Card';
@@ -33,7 +33,7 @@ const ManagePublicViewsPane = (props) => {
 						className="fas fa-eye"
 					/> Manage Public Views
 				</CardHeader>
-				<CardBlock className="card-body">
+				<CardBody className="card-body">
 					<Row>
 						<Col className="text-center">
 							<p>
@@ -56,7 +56,7 @@ const ManagePublicViewsPane = (props) => {
 							</p>
 						</Col>
 					</Row>
-				</CardBlock>
+				</CardBody>
 			</Card>
 			<Row>
 				<Col>

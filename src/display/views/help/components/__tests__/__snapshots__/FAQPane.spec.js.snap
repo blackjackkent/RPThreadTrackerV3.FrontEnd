@@ -14,8 +14,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
        FAQ
     </CardHeader>
-    <CardBlock
+    <CardBody
       className="card-body"
+      tag="div"
     >
       <h4>
         Why am I seeing a "Not Found" error for my post?
@@ -95,7 +96,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
          
         tables.
       </p>
-    </CardBlock>
+    </CardBody>
   </Styled(Card)>
 </TabPane>
 `;

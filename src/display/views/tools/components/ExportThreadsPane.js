@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Form, FormGroup, Col, Label, Row, Input, Button, CardHeader, CardBlock
+	TabPane, Form, FormGroup, Col, Label, Row, Input, Button, CardHeader, CardBody
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 import SwitchLabel from '../../../shared/styled/SwitchLabel';
@@ -39,7 +39,7 @@ class ExportThreadsPane extends Component {
 							className="fas fa-download"
 						/> Export Threads
 					</CardHeader>
-					<CardBlock className="card-body">
+					<CardBody className="card-body">
 						<Form
 							action=""
 							method="post"
@@ -108,7 +108,7 @@ class ExportThreadsPane extends Component {
 								</Button>
 							</Col>
 						</Row>
-					</CardBlock>
+					</CardBody>
 				</Card>
 			</TabPane>
 		);

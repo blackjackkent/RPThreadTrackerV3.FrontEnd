@@ -106,6 +106,18 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           username="test-user"
         />
         <BrowserExtensionsPane />
+        <ManageTagsPane
+          isLoadingIconVisible={true}
+          openBulkDeleteTagModal={[MockFunction]}
+          openBulkUpdateTagModal={[MockFunction]}
+          tags={
+            Array [
+              "tag1",
+              "tag2",
+              "tag3",
+            ]
+          }
+        />
       </Styled(TabContent)>
     </Col>
   </Row>

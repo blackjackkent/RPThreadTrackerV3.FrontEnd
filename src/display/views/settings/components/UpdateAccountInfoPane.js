@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Row, Button, Col, CardHeader, CardBlock
+	TabPane, Row, Button, Col, CardHeader, CardBody
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import Card from '../../../shared/styled/Card';
@@ -48,7 +48,7 @@ class UpdateAccountInfoPane extends React.Component {
 							className="fas fa-user"
 						/> Change Username/Email
 					</CardHeader>
-					<CardBlock className="card-body">
+					<CardBody className="card-body">
 						<AvForm
 							data-spec="account-info-form-container"
 							onValidSubmit={() => submitAccountInfoForm(formData)}
@@ -65,7 +65,7 @@ class UpdateAccountInfoPane extends React.Component {
 								</Col>
 							</Row>
 						</AvForm>
-					</CardBlock>
+					</CardBody>
 				</Card>
 			</TabPane>
 		);

@@ -35,9 +35,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
     </Styled(Label)>
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
     data-spec="at-a-glance-card-body"
+    tag="div"
   >
     <CardGroup
       tag="div"
@@ -78,6 +79,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         Queued
       </DashboardSummaryWidget>
     </CardGroup>
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

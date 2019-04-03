@@ -12,8 +12,9 @@ exports[`rendering snapshots should render valid snapshot when threads are loadi
     />
      Recent Activity
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <LoadingIndicator
       style={
@@ -27,7 +28,7 @@ exports[`rendering snapshots should render valid snapshot when threads are loadi
         }
       }
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -43,11 +44,12 @@ exports[`rendering snapshots should render valid snapshot when user has no activ
     />
      Recent Activity
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <NoActiveCharactersMessage />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -63,11 +65,12 @@ exports[`rendering snapshots should render valid snapshot when user has no chara
     />
      Recent Activity
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <NoCharactersMessage />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -83,11 +86,12 @@ exports[`rendering snapshots should render valid snapshot when user has no recen
     />
      Recent Activity
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <NoRecentActivityMessage />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -103,11 +107,12 @@ exports[`rendering snapshots should render valid snapshot when user has no threa
     />
      Recent Activity
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <NoThreadsMessage />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -123,8 +128,9 @@ exports[`rendering snapshots should render valid snapshot when user has recent a
     />
      Recent Activity
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <RecentActivityRow
       archiveThread={[MockFunction]}
@@ -156,6 +162,6 @@ exports[`rendering snapshots should render valid snapshot when user has recent a
         }
       }
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

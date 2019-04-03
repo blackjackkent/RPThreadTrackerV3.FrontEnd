@@ -42,6 +42,18 @@ export {
 	openUpsertThreadModal
 } from './ui/upsertThreadModal';
 export {
+	OPEN_BULK_UPDATE_TAG_MODAL,
+	openBulkUpdateTagModal,
+	CLOSE_BULK_UPDATE_TAG_MODAL,
+	closeBulkUpdateTagModal
+} from './ui/bulkUpdateTagModal';
+export {
+	OPEN_BULK_DELETE_TAG_MODAL,
+	openBulkDeleteTagModal,
+	CLOSE_BULK_DELETE_TAG_MODAL,
+	closeBulkDeleteTagModal
+} from './ui/bulkDeleteTagModal';
+export {
 	setMaintenanceModeOn,
 	SET_MAINTENANCE_MODE_ON
 } from './ui/setMaintenanceModeOn';
@@ -67,6 +79,14 @@ export {
 } from './ui/toggles';
 
 // Threads
+export {
+	clearActiveThreads,
+	CLEAR_ACTIVE_THREADS
+} from './threads/clearActiveThreads';
+export {
+	clearArchivedThreads,
+	CLEAR_ARCHIVED_THREADS
+} from './threads/clearArchivedThreads';
 export {
 	BULK_UNTRACK_THREADS_FAILURE,
 	BULK_UNTRACK_THREADS_SUCCESS,
@@ -285,6 +305,22 @@ export {
 	fetchedTagsSuccess,
 	fetchTags
 } from './tags/fetchTags';
+export {
+	BULK_UPDATE_TAG,
+	bulkUpdateTag,
+	BULK_UPDATE_TAG_FAILURE,
+	bulkUpdateTagFailure,
+	BULK_UPDATE_TAG_SUCCESS,
+	bulkUpdateTagSuccess
+} from './tags/bulkUpdateTag';
+export {
+	BULK_DELETE_TAG,
+	bulkDeleteTag,
+	BULK_DELETE_TAG_FAILURE,
+	bulkDeleteTagFailure,
+	BULK_DELETE_TAG_SUCCESS,
+	bulkDeleteTagSuccess
+} from './tags/bulkDeleteTag';
 
 // Help
 export {

@@ -43,6 +43,10 @@ Object {
       "href": "/tools/public",
       "name": "Manage Public Views",
     },
+    "MANAGE_TAGS": Object {
+      "href": "/tools/tags",
+      "name": "Manage Tags",
+    },
   },
 }
 `;

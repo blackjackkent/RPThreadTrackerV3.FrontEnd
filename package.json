@@ -12,6 +12,7 @@
 		"@babel/cli": "^7.1.5",
 		"@babel/core": "^7.1.6",
 		"@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+		"@babel/plugin-transform-runtime": "^7.4.0",
 		"@babel/preset-env": "^7.1.6",
 		"@babel/preset-react": "^7.0.0",
 		"babel-core": "^7.0.0-bridge.0",
@@ -24,8 +25,8 @@
 		"cross-env": "^5.2.0",
 		"css-hot-loader": "^1.4.2",
 		"css-loader": "^1.0.1",
-		"enzyme": "^3.7.0",
-		"enzyme-adapter-react-16": "^1.7.0",
+		"enzyme": "^3.9.0",
+		"enzyme-adapter-react-16": "^1.11.2",
 		"eslint": "^5.9.0",
 		"eslint-config-airbnb": "^17.1.0",
 		"eslint-plugin-import": "^2.14.0",
@@ -36,14 +37,14 @@
 		"html-loader": "^0.5.5",
 		"html-webpack-plugin": "^3.2.0",
 		"http-serve": "^1.0.1",
-		"jest": "^23.6.0",
-		"jest-environment-enzyme": "^7.0.1",
+		"jest": "^24.5.0",
+		"jest-environment-enzyme": "^7.0.2",
 		"jest-enzyme": "^7.0.1",
-		"jest-when": "^2.0.0",
+		"jest-when": "^2.3.1",
 		"mini-css-extract-plugin": "^0.4.5",
 		"mkdirp": "^0.5.1",
 		"node-sass": "^4.10.0",
-		"react-test-renderer": "^16.6.3",
+		"react-test-renderer": "^16.8.6",
 		"redux-saga-test-plan": "^3.7.0",
 		"redux-test-utils": "^0.3.0",
 		"rimraf": "^2.6.2",
@@ -75,8 +76,9 @@
 		"prop-types": "^15.6.2",
 		"query-string": "^6.2.0",
 		"rc-tooltip": "^3.7.3",
-		"react": "^16.6.3",
-		"react-dom": "^16.6.3",
+		"react": "^16.8.6",
+		"react-autosuggest": "^9.4.3",
+		"react-dom": "^16.8.6",
 		"react-ga": "^2.5.6",
 		"react-moment": "^0.8.4",
 		"react-multivalue-text-input": "^0.5.0",
@@ -93,7 +95,7 @@
 		"simple-line-icons": "^2.4.1",
 		"styled-components": "^4.1.2",
 		"webpack": "^4.26.1",
-		"webpack-dev-server": "^3.1.10"
+		"webpack-dev-server": "^3.2.1"
 	},
 	"scripts": {
 		"start": "webpack-dev-server --history-api-fallback --config webpack.dev.js",
@@ -118,7 +120,9 @@
 		"moduleNameMapper": {
 			"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
 		},
-		"setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
+		"setupFilesAfterEnv": [
+			"./node_modules/jest-enzyme/lib/index.js"
+		],
 		"testEnvironment": "enzyme",
 		"testEnvironmentOptions": {
 			"enzymeAdapter": "react16"

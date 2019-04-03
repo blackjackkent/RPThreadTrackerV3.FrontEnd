@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
 import NoThreadsMessage from '../NoThreadsMessage';
@@ -82,7 +82,7 @@ const RecentActivityCard = (props) => {
 			<CardHeader>
 				<i className="fas fa-bolt" /> Recent Activity
 			</CardHeader>
-			<CardBlock className="card-body">
+			<CardBody className="card-body">
 				{getBlockContent(
 					loadingInProgress,
 					characters,
@@ -92,7 +92,7 @@ const RecentActivityCard = (props) => {
 					openUntrackThreadModal,
 					markThreadQueued
 				)}
-			</CardBlock>
+			</CardBody>
 		</Card>
 	);
 };

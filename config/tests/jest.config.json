@@ -3,7 +3,9 @@
 	"moduleNameMapper": {
 		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
 	},
-	"setupTestFrameworkScriptFile": "<rootDir>/node_modules/jest-enzyme/lib/index.js",
+	"setupFilesAfterEnv": [
+		"<rootDir>/node_modules/jest-enzyme/lib/index.js"
+	],
 	"testEnvironment": "enzyme",
 	"testEnvironmentOptions": {
 		"enzymeAdapter": "react16"
@@ -24,7 +26,8 @@
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [
-		"**/src/**/*.{js|jsx}"
+		"**/src/**/*.js",
+		"**/src/**/*.jsx"
 	],
 	"testURL": "http://localhost/"
 }

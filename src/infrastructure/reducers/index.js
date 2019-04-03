@@ -16,6 +16,7 @@ import publicThreadsStatus from './publicThreadsStatus';
 import publicViews from './publicViews';
 import randomThread from './randomThread';
 import tags from './tags';
+import tagToEdit from './tagToEdit';
 import threadFilter from './threadFilter';
 import threadToEdit from './threadToEdit';
 import ui from './ui';
@@ -40,6 +41,7 @@ export default combineReducers({
 	publicViews,
 	randomThread,
 	tags,
+	tagToEdit,
 	threadFilter,
 	threadToEdit,
 	toastr,

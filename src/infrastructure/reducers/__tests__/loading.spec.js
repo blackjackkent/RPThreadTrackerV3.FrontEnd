@@ -6,6 +6,8 @@ const getState = overrides => ({
 	archivedThreadsLoading: false,
 	bulkUntrackThreadLoading: false,
 	bulkUpsertThreadsLoading: false,
+	bulkUpdateTagLoading: false,
+	bulkDeleteTagLoading: false,
 	changeAccountInfoLoading: false,
 	changePasswordLoading: false,
 	charactersLoading: false,
@@ -145,6 +147,56 @@ describe('action handling', () => {
 			};
 			const result = loading(initialState, action);
 			expect(result.bulkUpsertThreadsLoading).toBe(false);
+		});
+	});
+	describe('bulk update tag', () => {
+		it('should handle BULK_UPDATE_TAG', () => {
+			const action = {
+				type: actions.BULK_UPDATE_TAG
+			};
+			const result = loading(getState(), action);
+			expect(result.bulkUpdateTagLoading).toBe(true);
+		});
+		it('should handle BULK_UPDATE_TAG_FAILURE', () => {
+			const initialState = getState({ bulkUpdateTagLoading: true });
+			const action = {
+				type: actions.BULK_UPDATE_TAG_FAILURE
+			};
+			const result = loading(initialState, action);
+			expect(result.bulkUpdateTagLoading).toBe(false);
+		});
+		it('should handle BULK_UPDATE_TAG_SUCCESS', () => {
+			const initialState = getState({ bulkUpdateTagLoading: true });
+			const action = {
+				type: actions.BULK_UPDATE_TAG_SUCCESS
+			};
+			const result = loading(initialState, action);
+			expect(result.bulkUpdateTagLoading).toBe(false);
+		});
+	});
+	describe('bulk delete tag', () => {
+		it('should handle BULK_DELETE_TAG', () => {
+			const action = {
+				type: actions.BULK_DELETE_TAG
+			};
+			const result = loading(getState(), action);
+			expect(result.bulkDeleteTagLoading).toBe(true);
+		});
+		it('should handle BULK_DELETE_TAG_FAILURE', () => {
+			const initialState = getState({ bulkDeleteTagLoading: true });
+			const action = {
+				type: actions.BULK_DELETE_TAG_FAILURE
+			};
+			const result = loading(initialState, action);
+			expect(result.bulkDeleteTagLoading).toBe(false);
+		});
+		it('should handle BULK_DELETE_TAG_SUCCESS', () => {
+			const initialState = getState({ bulkDeleteTagLoading: true });
+			const action = {
+				type: actions.BULK_DELETE_TAG_SUCCESS
+			};
+			const result = loading(initialState, action);
+			expect(result.bulkDeleteTagLoading).toBe(false);
 		});
 	});
 	describe('change account info', () => {

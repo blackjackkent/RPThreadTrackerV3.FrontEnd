@@ -28,7 +28,13 @@ import {
 	OPEN_DELETE_PUBLIC_VIEW_MODAL,
 	CLOSE_DELETE_PUBLIC_VIEW_MODAL,
 	DELETE_PUBLIC_VIEW,
-	LOAD_SITE_THEME_SUCCESS
+	LOAD_SITE_THEME_SUCCESS,
+	OPEN_BULK_UPDATE_TAG_MODAL,
+	CLOSE_BULK_UPDATE_TAG_MODAL,
+	BULK_UPDATE_TAG,
+	OPEN_BULK_DELETE_TAG_MODAL,
+	CLOSE_BULK_DELETE_TAG_MODAL,
+	BULK_DELETE_TAG
 } from '../actions';
 // #endregion imports
 
@@ -46,6 +52,8 @@ const defaultState = {
 	isUntrackCharacterModalOpen: false,
 	isUpsertPublicViewModalOpen: false,
 	isDeletePublicViewModalOpen: false,
+	isBulkUpdateTagModalOpen: false,
+	isBulkDeleteTagModalOpen: false,
 	useLightTheme: false
 };
 
@@ -133,6 +141,24 @@ function ui(state = defaultState, action) {
 		case DELETE_PUBLIC_VIEW:
 			return Object.assign({}, state, {
 				isDeletePublicViewModalOpen: false
+			});
+		case OPEN_BULK_UPDATE_TAG_MODAL:
+			return Object.assign({}, state, {
+				isBulkUpdateTagModalOpen: true
+			});
+		case CLOSE_BULK_UPDATE_TAG_MODAL:
+		case BULK_UPDATE_TAG:
+			return Object.assign({}, state, {
+				isBulkUpdateTagModalOpen: false
+			});
+		case OPEN_BULK_DELETE_TAG_MODAL:
+			return Object.assign({}, state, {
+				isBulkDeleteTagModalOpen: true
+			});
+		case CLOSE_BULK_DELETE_TAG_MODAL:
+		case BULK_DELETE_TAG:
+			return Object.assign({}, state, {
+				isBulkDeleteTagModalOpen: false
 			});
 		case SET_MAINTENANCE_MODE_ON:
 			return Object.assign({}, state, {

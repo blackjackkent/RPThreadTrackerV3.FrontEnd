@@ -129,4 +129,18 @@ describe('behavior', () => {
 		const result = getIsLoadingIconVisible.resultFunc(loading);
 		expect(result).toBe(true);
 	});
+	it('should return true if bulkUpdateTagLoading is true', () => {
+		const loading = {
+			bulkUpdateTagLoading: true
+		};
+		const result = getIsLoadingIconVisible.resultFunc(loading);
+		expect(result).toBe(true);
+	});
+	it('should return true if bulkDeleteTagLoading is true', () => {
+		const loading = {
+			bulkDeleteTagLoading: true
+		};
+		const result = getIsLoadingIconVisible.resultFunc(loading);
+		expect(result).toBe(true);
+	});
 });

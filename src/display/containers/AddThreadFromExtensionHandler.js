@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-	Container, Row, Col, CardBlock
+	Container, Row, Col, CardBody
 } from 'reactstrap';
 import PropTypes from 'prop-types';
 
@@ -104,11 +104,11 @@ class AddThreadFromExtensionHandler extends Component {
 							<Row className="justify-content-center">
 								<Col md="6">
 									<Card className="login-box p-4">
-										<CardBlock className="card-body text-center">
+										<CardBody className="card-body text-center">
 											<p>
 												You can now close this window.
 											</p>
-										</CardBlock>
+										</CardBody>
 									</Card>
 								</Col>
 							</Row>

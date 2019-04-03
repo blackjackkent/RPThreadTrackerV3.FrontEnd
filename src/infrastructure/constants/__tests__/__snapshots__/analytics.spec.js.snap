@@ -6,6 +6,7 @@ Object {
     "ACCOUNT": "Account",
     "CHARACTER": "Character",
     "PUBLIC": "Public",
+    "TAG": "Tag",
     "THREAD": "Thread",
     "UI": "UI",
   },

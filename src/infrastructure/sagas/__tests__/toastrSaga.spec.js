@@ -282,7 +282,59 @@ describe('saga behavior', () => {
 			return saga.execute(action)
 				.then(() => {
 					expect(toastr.success).toHaveBeenCalledTimes(1);
-					expect(toastr.success).toHaveBeenLastCalledWith('Successfully updated public view Test View');
+					expect(toastr.success).toHaveBeenLastCalledWith('Successfully updated public view Test View.');
+				});
+		});
+	});
+	describe('BULK_UPDATE_TAG_SUCCESS', () => {
+		it('should display success message with thread title', () => {
+			const action = {
+				type: actions.BULK_UPDATE_TAG_SUCCESS
+			};
+			const saga = new SagaTestWrapper(toastrSaga);
+			return saga.execute(action)
+				.then(() => {
+					expect(toastr.success).toHaveBeenCalledTimes(1);
+					expect(toastr.success).toHaveBeenLastCalledWith('Successfully updated tag.');
+				});
+		});
+	});
+	describe('BULK_UPDATE_TAG_FAILURE', () => {
+		it('should display error message', () => {
+			const action = {
+				type: actions.BULK_UPDATE_TAG_FAILURE
+			};
+			const saga = new SagaTestWrapper(toastrSaga);
+			return saga.execute(action)
+				.then(() => {
+					expect(toastr.error).toHaveBeenCalledTimes(1);
+					expect(toastr.error).toHaveBeenLastCalledWith('There was a problem updating the tag.');
+				});
+		});
+	});
+	describe('BULK_DELETE_TAG_SUCCESS', () => {
+		it('should display success message with thread title', () => {
+			const action = {
+				type: actions.BULK_DELETE_TAG_SUCCESS
+			};
+			const saga = new SagaTestWrapper(toastrSaga);
+			return saga.execute(action)
+				.then(() => {
+					expect(toastr.success).toHaveBeenCalledTimes(1);
+					expect(toastr.success).toHaveBeenLastCalledWith('Successfully deleted tag.');
+				});
+		});
+	});
+	describe('BULK_DELETE_TAG_FAILURE', () => {
+		it('should display error message', () => {
+			const action = {
+				type: actions.BULK_DELETE_TAG_FAILURE
+			};
+			const saga = new SagaTestWrapper(toastrSaga);
+			return saga.execute(action)
+				.then(() => {
+					expect(toastr.error).toHaveBeenCalledTimes(1);
+					expect(toastr.error).toHaveBeenLastCalledWith('There was a problem deleting the tag.');
 				});
 		});
 	});
