@@ -14,7 +14,7 @@ function viewToEdit(state = defaultState, action) {
 	switch (action.type) {
 		case OPEN_BULK_UPDATE_TAG_MODAL:
 		case OPEN_BULK_DELETE_TAG_MODAL:
-			return action.data ? action.data : defaultState;
+			return action.data;
 		case CLOSE_BULK_UPDATE_TAG_MODAL:
 		case CLOSE_BULK_DELETE_TAG_MODAL:
 		case SUBMIT_USER_LOGOUT:

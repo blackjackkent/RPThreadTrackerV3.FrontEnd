@@ -8,7 +8,7 @@ export function bulkDeleteTag(data) {
 		analytics: {
 			func: analytics.funcs.EVENT,
 			event: {
-				category: analytics.categories.THREAD,
+				category: analytics.categories.TAG,
 				action: 'Bulk deleted tag'
 			}
 		}

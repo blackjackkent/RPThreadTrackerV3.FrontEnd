@@ -1,5 +1,3 @@
-import analytics from '../../constants/analytics';
-
 export const CLOSE_BULK_DELETE_TAG_MODAL = 'CLOSE_BULK_DELETE_TAG_MODAL';
 export function closeBulkDeleteTagModal() {
 	return {
@@ -12,10 +10,6 @@ export function openBulkDeleteTagModal(selectedTag) {
 		type: OPEN_BULK_DELETE_TAG_MODAL,
 		data: {
 			selectedTag
-		},
-		analytics: {
-			func: analytics.funcs.MODALVIEW,
-			path: '/modals/bulk-delete-tag'
 		}
 	};
 }

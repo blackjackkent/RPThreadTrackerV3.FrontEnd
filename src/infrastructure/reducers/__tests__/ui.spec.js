@@ -285,6 +285,60 @@ describe('action handling', () => {
 		expect(result.isDeletePublicViewModalOpen).toBe(false);
 		expect(result2.isDeletePublicViewModalOpen).toBe(false);
 	});
+	it('should handle OPEN_BULK_UPDATE_TAG_MODAL', () => {
+		const action = {
+			type: actions.OPEN_BULK_UPDATE_TAG_MODAL
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(getState({ isBulkUpdateTagModalOpen: true }), action);
+		expect(result.isBulkUpdateTagModalOpen).toBe(true);
+		expect(result2.isBulkUpdateTagModalOpen).toBe(true);
+	});
+	it('should handle CLOSE_BULK_UPDATE_TAG_MODAL', () => {
+		const action = {
+			type: actions.CLOSE_BULK_UPDATE_TAG_MODAL
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(getState({ isBulkUpdateTagModalOpen: true }), action);
+		expect(result.isBulkUpdateTagModalOpen).toBe(false);
+		expect(result2.isBulkUpdateTagModalOpen).toBe(false);
+	});
+	it('should handle BULK_UPDATE_TAG', () => {
+		const action = {
+			type: actions.BULK_UPDATE_TAG
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(getState({ isBulkUpdateTagModalOpen: true }), action);
+		expect(result.isBulkUpdateTagModalOpen).toBe(false);
+		expect(result2.isBulkUpdateTagModalOpen).toBe(false);
+	});
+	it('should handle OPEN_BULK_DELETE_TAG_MODAL', () => {
+		const action = {
+			type: actions.OPEN_BULK_DELETE_TAG_MODAL
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(getState({ isBulkDeleteTagModalOpen: true }), action);
+		expect(result.isBulkDeleteTagModalOpen).toBe(true);
+		expect(result2.isBulkDeleteTagModalOpen).toBe(true);
+	});
+	it('should handle CLOSE_BULK_DELETE_TAG_MODAL', () => {
+		const action = {
+			type: actions.CLOSE_BULK_DELETE_TAG_MODAL
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(getState({ isBulkDeleteTagModalOpen: true }), action);
+		expect(result.isBulkDeleteTagModalOpen).toBe(false);
+		expect(result2.isBulkDeleteTagModalOpen).toBe(false);
+	});
+	it('should handle BULK_DELETE_TAG', () => {
+		const action = {
+			type: actions.BULK_DELETE_TAG
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(getState({ isBulkDeleteTagModalOpen: true }), action);
+		expect(result.isBulkDeleteTagModalOpen).toBe(false);
+		expect(result2.isBulkDeleteTagModalOpen).toBe(false);
+	});
 	it('should handle SET_MAINTENANCE_MODE_ON', () => {
 		const action = {
 			type: actions.SET_MAINTENANCE_MODE_ON

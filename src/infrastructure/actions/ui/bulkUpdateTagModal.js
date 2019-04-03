@@ -1,5 +1,3 @@
-import analytics from '../../constants/analytics';
-
 export const CLOSE_BULK_UPDATE_TAG_MODAL = 'CLOSE_BULK_UPDATE_TAG_MODAL';
 export function closeBulkUpdateTagModal() {
 	return {
@@ -13,10 +11,6 @@ export function openBulkUpdateTagModal(selectedTag, updatedValue = null) {
 		data: {
 			selectedTag,
 			updatedValue
-		},
-		analytics: {
-			func: analytics.funcs.MODALVIEW,
-			path: '/modals/bulk-update-tag'
 		}
 	};
 }

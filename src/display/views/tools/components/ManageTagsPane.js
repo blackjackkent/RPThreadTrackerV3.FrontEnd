@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
 	TabPane, Col, Row, Button, CardHeader, CardBody, Label
@@ -13,215 +13,185 @@ const propTypes = {
 	openBulkUpdateTagModal: PropTypes.func.isRequired,
 	openBulkDeleteTagModal: PropTypes.func.isRequired
 };
-const defaultProps = {
-	username: ''
-};
 
-const autosuggestItem = suggestion => (
-	<div>
-		{suggestion}
-	</div>
-);
-const getSuggestionValue = suggestion => suggestion;
-class ManageTagsPane extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-			autosuggestValue: '',
-			selectedValue: null,
-			updatedValue: '',
-			suggestions: []
-		};
-		this.onSuggestionsFetchRequested = this.onSuggestionsFetchRequested.bind(this);
-		this.onAutosuggestChange = this.onAutosuggestChange.bind(this);
-		this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
-		this.getSuggestions = this.getSuggestions.bind(this);
-		this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
-		this.onNewTagValueChange = this.onNewTagValueChange.bind(this);
-		this.clearSelectedTag = this.clearSelectedTag.bind(this);
-		this.bulkUpdateTag = this.bulkUpdateTag.bind(this);
-	}
+const ManageTagsPane = (props) => {
+	const [autosuggestValue, setAutosuggestValue] = useState('');
+	const [selectedValue, setSelectedValue] = useState(null);
+	const [updatedValue, setUpdatedValue] = useState('');
+	const [suggestions, setSuggestions] = useState([]);
+	const { isLoadingIconVisible } = props;
 
-	onAutosuggestChange(event, { newValue }) {
-		this.setState({ autosuggestValue: newValue });
-	}
+	const autosuggestItem = suggestion => (
+		<div>
+			{suggestion}
+		</div>
+	);
+	const getSuggestionValue = suggestion => suggestion;
+	const onAutosuggestChange = (_, { newValue }) => {
+		setAutosuggestValue(newValue);
+	};
 
-	onSuggestionsFetchRequested({ value }) {
-		this.setState({ suggestions: this.getSuggestions(value) });
-	}
-
-	onSuggestionsClearRequested() {
-		this.setState({ suggestions: [] });
-	}
-
-	onSuggestionSelected(e, data) {
-		this.setState({ selectedValue: data.suggestionValue });
-	}
-
-	getSuggestions(value) {
-		const { tags } = this.props;
+	const onSuggestionsFetchRequested = ({ value }) => {
+		const { tags } = props;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
+		let filteredSuggestions = [];
 		if (inputLength === 0) {
-			return tags.sort().slice(0, 9);
+			filteredSuggestions = tags.sort().slice(0, 10);
+		} else {
+			filteredSuggestions = tags.filter(tag => tag.toLowerCase().includes(inputValue)).sort();
 		}
-		return tags.filter(tag => tag.toLowerCase().includes(inputValue)).sort();
-	}
+		setSuggestions(filteredSuggestions);
+	};
 
-	onNewTagValueChange(event) {
-		this.setState({ updatedValue: event.target.value });
-	}
+	const onSuggestionsClearRequested = () => {
+		setSuggestions([]);
+	};
 
-	clearSelectedTag() {
-		this.setState({ selectedValue: null });
-	}
+	const onSuggestionSelected = (_, data) => {
+		setSelectedValue(data.suggestionValue);
+	};
 
-	bulkUpdateTag() {
-		const { selectedValue, updatedValue } = this.state;
-		const { openBulkUpdateTagModal } = this.props;
+	const onNewTagValueChange = (event) => {
+		setUpdatedValue(event.target.value);
+	};
+
+	const clearSelectedTag = () => {
+		setSelectedValue(null);
+	};
+
+	const bulkUpdateTag = () => {
+		const { openBulkUpdateTagModal } = props;
 		openBulkUpdateTagModal(selectedValue, updatedValue);
-		this.setState({ selectedValue: null, autosuggestValue: '', updatedValue: '' });
-	}
+		setSelectedValue(null);
+		setAutosuggestValue('');
+		setUpdatedValue('');
+	};
 
-	bulkDeleteTag() {
-		const { selectedValue } = this.state;
-		const { openBulkDeleteTagModal } = this.props;
+	const bulkDeleteTag = () => {
+		const { openBulkDeleteTagModal } = props;
 		openBulkDeleteTagModal(selectedValue);
-		this.setState({ selectedValue: null, autosuggestValue: '', updatedValue: '' });
-	}
+		setSelectedValue(null);
+		setAutosuggestValue('');
+		setUpdatedValue('');
+	};
 
-	render() {
-		const {
-			isLoadingIconVisible
-		} = this.props;
-		const {
-			updatedValue,
-			selectedValue,
-			suggestions,
-			autosuggestValue
-		} = this.state;
-		const autosuggestProps = {
-			placeholder: 'Enter the tag you wish to edit',
-			value: autosuggestValue,
-			onChange: this.onAutosuggestChange,
-			className: 'form-control'
-		};
-		return (
-			<TabPane tabId="tags" className="manage-tags-pane">
-				<Card>
-					<CardHeader>
-						<i
-							className="fas fa-eye"
-						/> Manage Tags
-					</CardHeader>
-					<CardBody className="card-body">
-
-						<Row>
-							<Col>
-								<p className="text-center">
-									Here you can manage the tags you have added to threads in RPThreadTracker.{' '}
-									Enter a tag below to update that tag for all threads, or to remove it from{' '}
-									all threads it is assigned to.
-								</p>
-							</Col>
-						</Row>
-						{isLoadingIconVisible
-							&& (
-								<LoadingIndicator />
-							)
-						}
-						{!isLoadingIconVisible
-							&& !selectedValue
-							&& (
-								<Row className="form-group">
+	const autosuggestProps = {
+		placeholder: 'Enter the tag you wish to edit',
+		value: autosuggestValue,
+		onChange: onAutosuggestChange,
+		className: 'form-control'
+	};
+	return (
+		<TabPane tabId="tags" className="manage-tags-pane">
+			<Card>
+				<CardHeader>
+					<i className="fas fa-eye" /> Manage Tags
+				</CardHeader>
+				<CardBody className="card-body">
+					<Row>
+						<Col>
+							<p className="text-center">
+								Here you can manage the tags you have added to threads in RPThreadTracker.{' '}
+								Enter a tag below to update that tag for all threads, or to remove it from{' '}
+								all threads it is assigned to.
+							</p>
+						</Col>
+					</Row>
+					{isLoadingIconVisible && (<LoadingIndicator />)}
+					{!isLoadingIconVisible
+						&& !selectedValue
+						&& (
+							<Row className="form-group" data-spec="manage-tags-autosuggest-section">
+								<Col>
+									<Autosuggest
+										data-spec="manage-tags-autosuggest"
+										name="autosuggest"
+										suggestions={suggestions}
+										onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+										onSuggestionsClearRequested={onSuggestionsClearRequested}
+										onSuggestionSelected={onSuggestionSelected}
+										renderSuggestion={autosuggestItem}
+										inputProps={autosuggestProps}
+										getSuggestionValue={getSuggestionValue}
+										shouldRenderSuggestions={() => true}
+									/>
+								</Col>
+							</Row>
+						)
+					}
+					{!isLoadingIconVisible
+						&& selectedValue
+						&& (
+							<div data-spec="manage-tags-form-section">
+								<Row>
 									<Col>
-										<Autosuggest
-											name="autosuggest"
-											suggestions={suggestions}
-											onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
-											onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-											onSuggestionSelected={this.onSuggestionSelected}
-											renderSuggestion={autosuggestItem}
-											inputProps={autosuggestProps}
-											getSuggestionValue={getSuggestionValue}
-											shouldRenderSuggestions={() => true}
-										/>
+										<p className="text-center">How do you wish to modify the tag <strong>{selectedValue}</strong>?</p>
 									</Col>
 								</Row>
-							)
-						}
-						{!isLoadingIconVisible
-							&& selectedValue
-							&& (
-								<div>
-									<Row>
-										<Col>
-											<p className="text-center">How do you wish to modify the tag <strong>{selectedValue}</strong>?</p>
-										</Col>
-									</Row>
-									<Row className="choice-row">
-										<Col>
-											<form
-												onSubmit={(e) => { e.preventDefault(); }}
-												className="d-flex justify-content-center form-inline"
+								<Row className="choice-row">
+									<Col>
+										<form
+											data-spec="manage-tags-action-form"
+											onSubmit={(e) => { e.preventDefault(); }}
+											className="d-flex justify-content-center form-inline"
+										>
+											<Label htmlFor="updatedValue">Update it to:</Label>
+											<input
+												name="updatedValue"
+												placeholder="New tag"
+												data-spec="updated-value-field"
+												id="manage-tags-updated-value-input"
+												type="text"
+												className="form-control"
+												onChange={onNewTagValueChange}
+												value={updatedValue}
+											/>
+											<Button
+												color="primary"
+												onClick={bulkUpdateTag}
+												disabled={!updatedValue}
+												data-spec="manage-tags-update-button"
 											>
-												<Label htmlFor="updatedValue">Update it to:</Label>{' '}
-												<input
-													name="updatedValue"
-													placeholder="New tag"
-													data-spec="updated-value-field"
-													id="manage-tags-updated-value-input"
-													type="text"
-													className="form-control"
-													onChange={this.onNewTagValueChange}
-													value={updatedValue}
-												/>
-												<Button
-													color="primary"
-													onClick={() => this.bulkUpdateTag()}
-													disabled={!updatedValue}
-												>
-													<i
-														className="fas fa-edit"
-													/>{' '}
-													Bulk Edit This Tag
-												</Button>{' '}
-											</form>
-										</Col>
-									</Row>
-									<Row className="choice-row">
-										<Col>
-											<form className="d-flex justify-content-center form-inline">
-												<Button
-													color="danger"
-													onClick={() => this.bulkDeleteTag()}
-												>
-													<i
-														className="fas fa-trash-alt"
-													/>{' '}
-													Bulk Delete This Tag
-												</Button>{' '}
-											</form>
-										</Col>
-									</Row>
-									<Row>
-										<Col>
-											<p className="text-center">
-												<button type="button" className="back-button" onClick={this.clearSelectedTag}>
-													<i className="fas fa-arrow-left" /> Select a different tag
-												</button>
-											</p>
-										</Col>
-									</Row>
-								</div>
-							)
-						}
-					</CardBody>
-				</Card>
-			</TabPane>
-		);
-	}
-}
+												<i className="fas fa-edit" /> Bulk Edit This Tag
+											</Button>
+										</form>
+									</Col>
+								</Row>
+								<Row className="choice-row">
+									<Col>
+										<form className="d-flex justify-content-center form-inline">
+											<Button
+												color="danger"
+												onClick={bulkDeleteTag}
+												data-spec="manage-tags-delete-button"
+											>
+												<i className="fas fa-trash-alt" /> Bulk Delete This Tag
+											</Button>{' '}
+										</form>
+									</Col>
+								</Row>
+								<Row>
+									<Col>
+										<p className="text-center">
+											<button
+												type="button"
+												className="back-button"
+												onClick={clearSelectedTag}
+												data-spec="manage-tags-back-button"
+											>
+												<i className="fas fa-arrow-left" /> Select a different tag
+											</button>
+										</p>
+									</Col>
+								</Row>
+							</div>
+						)
+					}
+				</CardBody>
+			</Card>
+		</TabPane>
+	);
+};
 ManageTagsPane.propTypes = propTypes;
-ManageTagsPane.defaultProps = defaultProps;
 export default ManageTagsPane;
