@@ -37,7 +37,7 @@ const ManageTagsPane = (props) => {
 		const inputLength = inputValue.length;
 		let filteredSuggestions = [];
 		if (inputLength === 0) {
-			filteredSuggestions = tags.sort().slice(0, 10);
+			filteredSuggestions = tags.sort();
 		} else {
 			filteredSuggestions = tags.filter(tag => tag.toLowerCase().includes(inputValue)).sort();
 		}

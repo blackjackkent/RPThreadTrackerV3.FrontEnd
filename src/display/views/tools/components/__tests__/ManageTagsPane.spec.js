@@ -57,7 +57,7 @@ describe('behavior', () => {
 		expect(submitEvent.preventDefault).toHaveBeenCalledTimes(1);
 	});
 	describe('onSuggestionsFetchRequested', () => {
-		it('should return ten sorted values when no input', () => {
+		it('should return sorted values when no input', () => {
 			const tags = [
 				'tagb', 'tag7', 'tag9', 'tag4', 'tag2', 'tag5', 'tag1', 'tag3', 'tag6', 'tag8', 'taga'
 			];
@@ -66,9 +66,9 @@ describe('behavior', () => {
 			autosuggest.props().onSuggestionsFetchRequested({ value: '' });
 			element.update();
 			autosuggest = getSpecWrapper(element, 'manage-tags-autosuggest');
-			expect(autosuggest.props().suggestions).toHaveLength(10);
+			expect(autosuggest.props().suggestions).toHaveLength(11);
 			expect(autosuggest.props().suggestions).toEqual(
-				['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8', 'tag9', 'taga']
+				['tag1', 'tag2', 'tag3', 'tag4', 'tag5', 'tag6', 'tag7', 'tag8', 'tag9', 'taga', 'tagb']
 			);
 		});
 		it('should return case-insensitive matching values when input', () => {
