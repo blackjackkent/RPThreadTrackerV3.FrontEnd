@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Col, Row, Button, CardHeader, CardBlock
+	TabPane, Col, Row, Button, CardHeader, CardBody
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import Card from '../../../shared/styled/Card';
@@ -41,7 +41,7 @@ class ChangePasswordPane extends React.Component {
 							className="fas fa-key"
 						/> Change Password
 					</CardHeader>
-					<CardBlock className="card-body">
+					<CardBody className="card-body">
 						<AvForm
 							data-spec="change-password-form-container"
 							onValidSubmit={() => submitChangePasswordForm(formData)}
@@ -58,7 +58,7 @@ class ChangePasswordPane extends React.Component {
 								</Col>
 							</Row>
 						</AvForm>
-					</CardBlock>
+					</CardBody>
 				</Card>
 			</TabPane>
 		);

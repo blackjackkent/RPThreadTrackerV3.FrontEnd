@@ -8,9 +8,11 @@ import Tools from '../Tools';
 jest.mock('../components/ManagePublicViewsPane', () => 'ManagePublicViewsPane');
 jest.mock('../components/BrowserExtensionsPane', () => 'BrowserExtensionsPane');
 jest.mock('../components/ExportThreadsPane', () => 'ExportThreadsPane');
+jest.mock('../components/ManageTagsPane', () => 'ManageTagsPane');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getIsLoadingIconVisible: () => true
+	getIsLoadingIconVisible: () => true,
+	getIsManageTagsLoadingIconVisible: () => true
 }));
 jest.mock('../../../../infrastructure/constants/tabs', () => ({
 	TOOLS: {
@@ -37,6 +39,8 @@ const createTestProps = propOverrides => ({
 	exportThreads: jest.fn(),
 	openUpsertPublicViewModal: jest.fn(),
 	openDeletePublicViewModal: jest.fn(),
+	openBulkUpdateTagModal: jest.fn(),
+	openBulkDeleteTagModal: jest.fn(),
 	match: {
 		url: '/tools/tab1',
 		params: { tabId: 'tab1' }
@@ -49,6 +53,7 @@ const createTestState = stateOverrides => ({
 	tags: ['tag1', 'tag2', 'tag3'],
 	publicViews: [{}, {}, {}, {}],
 	characters: [{}, {}],
+	ui: { isBulkUpdateTagModalOpen: true, isBulkDeleteTagModalOpen: true },
 	...stateOverrides
 });
 

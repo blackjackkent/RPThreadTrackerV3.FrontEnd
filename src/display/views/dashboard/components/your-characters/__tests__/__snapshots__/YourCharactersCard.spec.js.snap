@@ -23,8 +23,9 @@ exports[`rendering snapshots should render valid snapshot when characters are lo
       </Link>
     </div>
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <LoadingIndicator
       style={
@@ -38,7 +39,7 @@ exports[`rendering snapshots should render valid snapshot when characters are lo
         }
       }
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -65,8 +66,9 @@ exports[`rendering snapshots should render valid snapshot when user has active c
       </Link>
     </div>
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <YourCharactersCardRow
       character={
@@ -88,7 +90,7 @@ exports[`rendering snapshots should render valid snapshot when user has active c
       key="3"
       threadCount={30}
     />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -115,11 +117,12 @@ exports[`rendering snapshots should render valid snapshot when user has no activ
       </Link>
     </div>
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <NoActiveCharactersMessage />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;
 
@@ -146,10 +149,11 @@ exports[`rendering snapshots should render valid snapshot when user has no chara
       </Link>
     </div>
   </CardHeader>
-  <CardBlock
+  <CardBody
     className="card-body"
+    tag="div"
   >
     <NoCharactersMessage />
-  </CardBlock>
+  </CardBody>
 </Styled(Card)>
 `;

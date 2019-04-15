@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CardBlock, Progress } from 'reactstrap';
+import { CardBody, Progress } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import { navigation } from '../../../../../utility/history';
 import LoadingIndicator from '../../../../shared/loading/LoadingIndicator';
@@ -24,7 +24,7 @@ const DashboardSummaryWidget = (props) => {
 
 	return (
 		<Card {...attributes} onClick={() => navigation.navigateTo(href)}>
-			<CardBlock className="card-body dashboard-summary-widget-card-body">
+			<CardBody className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
 					{isLoadingIconVisible
 						&& (
@@ -49,7 +49,7 @@ const DashboardSummaryWidget = (props) => {
 					{children}
 				</small>
 				<Progress className="progress-xs mt-3 mb-0" value="100" />
-			</CardBlock>
+			</CardBody>
 		</Card>
 	);
 };

@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render autosuggest item format 1`] = `
+<div>
+  test tag
+</div>
+`;
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<TabPane
+  className="manage-tags-pane"
+  tabId="tags"
+  tag="div"
+>
+  <Card>
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-eye"
+      />
+       Manage Tags
+    </CardHeader>
+    <CardBody
+      className="card-body"
+      tag="div"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <p
+            className="text-center"
+          >
+            Here you can manage the tags you have added to threads in RPThreadTracker.
+             
+            Enter a tag below to update that tag for all threads, or to remove it from
+             
+            all threads it is assigned to.
+          </p>
+        </Col>
+      </Row>
+      <Row
+        className="form-group"
+        data-spec="manage-tags-autosuggest-section"
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <Autosuggest
+            alwaysRenderSuggestions={false}
+            data-spec="manage-tags-autosuggest"
+            focusInputOnSuggestionClick={true}
+            getSuggestionValue={[Function]}
+            highlightFirstSuggestion={false}
+            id="1"
+            inputProps={
+              Object {
+                "className": "form-control",
+                "onChange": [Function],
+                "placeholder": "Enter the tag you wish to edit",
+                "value": "",
+              }
+            }
+            multiSection={false}
+            name="autosuggest"
+            onSuggestionSelected={[Function]}
+            onSuggestionsClearRequested={[Function]}
+            onSuggestionsFetchRequested={[Function]}
+            renderSuggestion={[Function]}
+            renderSuggestionsContainer={[Function]}
+            shouldRenderSuggestions={[Function]}
+            suggestions={Array []}
+            theme={
+              Object {
+                "container": "react-autosuggest__container",
+                "containerOpen": "react-autosuggest__container--open",
+                "input": "react-autosuggest__input",
+                "inputFocused": "react-autosuggest__input--focused",
+                "inputOpen": "react-autosuggest__input--open",
+                "sectionContainer": "react-autosuggest__section-container",
+                "sectionContainerFirst": "react-autosuggest__section-container--first",
+                "sectionTitle": "react-autosuggest__section-title",
+                "suggestion": "react-autosuggest__suggestion",
+                "suggestionFirst": "react-autosuggest__suggestion--first",
+                "suggestionHighlighted": "react-autosuggest__suggestion--highlighted",
+                "suggestionsContainer": "react-autosuggest__suggestions-container",
+                "suggestionsContainerOpen": "react-autosuggest__suggestions-container--open",
+                "suggestionsList": "react-autosuggest__suggestions-list",
+              }
+            }
+          />
+        </Col>
+      </Row>
+    </CardBody>
+  </Card>
+</TabPane>
+`;
+
+exports[`rendering snapshots should render valid snapshot when loading indicator is visible 1`] = `
+<TabPane
+  className="manage-tags-pane"
+  tabId="tags"
+  tag="div"
+>
+  <Card>
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-eye"
+      />
+       Manage Tags
+    </CardHeader>
+    <CardBody
+      className="card-body"
+      tag="div"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <p
+            className="text-center"
+          >
+            Here you can manage the tags you have added to threads in RPThreadTracker.
+             
+            Enter a tag below to update that tag for all threads, or to remove it from
+             
+            all threads it is assigned to.
+          </p>
+        </Col>
+      </Row>
+      <LoadingIndicator />
+    </CardBody>
+  </Card>
+</TabPane>
+`;
+
+exports[`rendering snapshots should render valid snapshot when tag is selected 1`] = `
+<TabPane
+  className="manage-tags-pane"
+  tabId="tags"
+  tag="div"
+>
+  <Card>
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-eye"
+      />
+       Manage Tags
+    </CardHeader>
+    <CardBody
+      className="card-body"
+      tag="div"
+    >
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+        >
+          <p
+            className="text-center"
+          >
+            Here you can manage the tags you have added to threads in RPThreadTracker.
+             
+            Enter a tag below to update that tag for all threads, or to remove it from
+             
+            all threads it is assigned to.
+          </p>
+        </Col>
+      </Row>
+      <div
+        data-spec="manage-tags-form-section"
+      >
+        <Row
+          tag="div"
+        >
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <p
+              className="text-center"
+            >
+              How do you wish to modify the tag 
+              <strong>
+                test tag
+              </strong>
+              ?
+            </p>
+          </Col>
+        </Row>
+        <Row
+          className="choice-row"
+          tag="div"
+        >
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <form
+              className="d-flex justify-content-center form-inline"
+              data-spec="manage-tags-action-form"
+              onSubmit={[Function]}
+            >
+              <Label
+                htmlFor="updatedValue"
+                tag="label"
+                widths={
+                  Array [
+                    "xs",
+                    "sm",
+                    "md",
+                    "lg",
+                    "xl",
+                  ]
+                }
+              >
+                Update it to:
+              </Label>
+              <input
+                className="form-control"
+                data-spec="updated-value-field"
+                id="manage-tags-updated-value-input"
+                name="updatedValue"
+                onChange={[Function]}
+                placeholder="New tag"
+                type="text"
+                value=""
+              />
+              <Button
+                color="primary"
+                data-spec="manage-tags-update-button"
+                disabled={true}
+                onClick={[Function]}
+                tag="button"
+              >
+                <i
+                  className="fas fa-edit"
+                />
+                 Bulk Edit This Tag
+              </Button>
+            </form>
+          </Col>
+        </Row>
+        <Row
+          className="choice-row"
+          tag="div"
+        >
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <form
+              className="d-flex justify-content-center form-inline"
+            >
+              <Button
+                color="danger"
+                data-spec="manage-tags-delete-button"
+                onClick={[Function]}
+                tag="button"
+              >
+                <i
+                  className="fas fa-trash-alt"
+                />
+                 Bulk Delete This Tag
+              </Button>
+               
+            </form>
+          </Col>
+        </Row>
+        <Row
+          tag="div"
+        >
+          <Col
+            tag="div"
+            widths={
+              Array [
+                "xs",
+                "sm",
+                "md",
+                "lg",
+                "xl",
+              ]
+            }
+          >
+            <p
+              className="text-center"
+            >
+              <button
+                className="back-button"
+                data-spec="manage-tags-back-button"
+                onClick={[Function]}
+                type="button"
+              >
+                <i
+                  className="fas fa-arrow-left"
+                />
+                 Select a different tag
+              </button>
+            </p>
+          </Col>
+        </Row>
+      </div>
+    </CardBody>
+  </Card>
+</TabPane>
+`;

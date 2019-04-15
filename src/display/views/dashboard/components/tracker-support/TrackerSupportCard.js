@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 
 const TrackerSupportCard = () => (
@@ -7,7 +7,7 @@ const TrackerSupportCard = () => (
 		<CardHeader>
 			<i className="fas fa-dollar-sign" /> Support Tracker Development
 		</CardHeader>
-		<CardBlock className="card-body">
+		<CardBody className="card-body">
 			<div className="form-container">
 				<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
 					<input type="hidden" name="cmd" value="_s-xclick" />
@@ -21,7 +21,7 @@ const TrackerSupportCard = () => (
 			{/* <div className="patreon-button-wrapper">
 				<a href="https://www.patreon.com/bePatron?u=4797959" className="btn btn-primary">Support me on Patreon!</a>
 			</div> */}
-		</CardBlock>
+		</CardBody>
 	</Card>
 );
 

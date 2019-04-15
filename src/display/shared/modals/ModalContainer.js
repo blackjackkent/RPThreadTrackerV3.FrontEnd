@@ -13,8 +13,12 @@ import UpsertPublicViewModal from './UpsertPublicViewModal';
 const propTypes = {
 	bulkThreadsToEdit: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	bulkUntrackThreads: PropTypes.func.isRequired,
+	bulkUpdateTag: PropTypes.func.isRequired,
+	bulkDeleteTag: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({}).isRequired,
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
+	closeBulkUpdateTagModal: PropTypes.func.isRequired,
+	closeBulkDeleteTagModal: PropTypes.func.isRequired,
 	closeDeletePublicViewModal: PropTypes.func.isRequired,
 	closeUntrackCharacterModal: PropTypes.func.isRequired,
 	closeUntrackThreadModal: PropTypes.func.isRequired,
@@ -23,6 +27,8 @@ const propTypes = {
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	deletePublicView: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
+	isBulkUpdateTagModalOpen: PropTypes.bool.isRequired,
+	isBulkDeleteTagModalOpen: PropTypes.bool.isRequired,
 	isDeletePublicViewModalOpen: PropTypes.bool.isRequired,
 	isUntrackCharacterModalOpen: PropTypes.bool.isRequired,
 	isUntrackThreadModalOpen: PropTypes.bool.isRequired,
@@ -37,6 +43,7 @@ const propTypes = {
 	upsertCharacter: PropTypes.func.isRequired,
 	upsertPublicView: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
+	tagToEdit: PropTypes.shape({}).isRequired,
 	viewToEdit: PropTypes.shape({}).isRequired
 };
 
@@ -46,7 +53,8 @@ function mapStateToProps(state) {
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
-		viewToEdit
+		viewToEdit,
+		tagToEdit
 	} = state;
 	const sortedCharacters = selectors.getCharactersSortedByIdentifier(state);
 	const sortedTags = selectors.getTagsSortedByTagText(state);
@@ -58,10 +66,13 @@ function mapStateToProps(state) {
 		isUntrackCharacterModalOpen: ui.isUntrackCharacterModalOpen,
 		isUpsertPublicViewModalOpen: ui.isUpsertPublicViewModalOpen,
 		isDeletePublicViewModalOpen: ui.isDeletePublicViewModalOpen,
+		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen,
+		isBulkDeleteTagModalOpen: ui.isBulkDeleteTagModalOpen,
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
 		viewToEdit,
+		tagToEdit,
 		sortedCharacters,
 		sortedTags
 	};
@@ -71,8 +82,12 @@ const ModalContainer = (props) => {
 	const {
 		bulkThreadsToEdit,
 		bulkUntrackThreads,
+		bulkUpdateTag,
+		bulkDeleteTag,
 		characterToEdit,
 		closeBulkUntrackThreadsModal,
+		closeBulkUpdateTagModal,
+		closeBulkDeleteTagModal,
 		closeDeletePublicViewModal,
 		closeUntrackCharacterModal,
 		closeUntrackThreadModal,
@@ -81,6 +96,8 @@ const ModalContainer = (props) => {
 		closeUpsertThreadModal,
 		deletePublicView,
 		isBulkUntrackThreadsModalOpen,
+		isBulkUpdateTagModalOpen,
+		isBulkDeleteTagModalOpen,
 		isDeletePublicViewModalOpen,
 		isUntrackCharacterModalOpen,
 		isUntrackThreadModalOpen,
@@ -95,7 +112,8 @@ const ModalContainer = (props) => {
 		upsertCharacter,
 		upsertPublicView,
 		upsertThread,
-		viewToEdit
+		viewToEdit,
+		tagToEdit
 	} = props;
 	return (
 		<div>
@@ -171,6 +189,37 @@ const ModalContainer = (props) => {
 				headerText="Confirm Public View Deletion"
 				bodyText={<span>Are you sure you want to delete <strong>{viewToEdit.name}</strong>?</span>}
 			/>
+			<GenericConfirmationModal
+				isModalOpen={isBulkUpdateTagModalOpen}
+				submitCallback={bulkUpdateTag}
+				submitButtonText="Update Tag"
+				closeCallback={closeBulkUpdateTagModal}
+				closeButtonText="Cancel"
+				data={tagToEdit}
+				headerText="Confirm Updated Tag Value"
+				bodyText={(
+					<span>Are you sure you want to change the tag{' '}
+						<strong>{tagToEdit.selectedTag}</strong> to{' '}
+						<strong>{tagToEdit.updatedValue}</strong> on{' '}
+						all your threads?
+					</span>
+				)}
+			/>
+			<GenericConfirmationModal
+				isModalOpen={isBulkDeleteTagModalOpen}
+				submitCallback={bulkDeleteTag}
+				submitButtonText="Delete Tag"
+				closeCallback={closeBulkDeleteTagModal}
+				closeButtonText="Cancel"
+				data={tagToEdit}
+				headerText="Confirm Deleted Tag Value"
+				bodyText={(
+					<span>Are you sure you want to remove the tag{' '}
+						<strong>{tagToEdit.selectedTag}</strong>{' '}
+						from all your threads?
+					</span>
+				)}
+			/>
 		</div>
 	);
 };
@@ -178,7 +227,11 @@ const ModalContainer = (props) => {
 ModalContainer.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	bulkUntrackThreads: actions.bulkUntrackThreads,
+	bulkUpdateTag: actions.bulkUpdateTag,
+	bulkDeleteTag: actions.bulkDeleteTag,
 	closeBulkUntrackThreadsModal: actions.closeBulkUntrackThreadsModal,
+	closeBulkUpdateTagModal: actions.closeBulkUpdateTagModal,
+	closeBulkDeleteTagModal: actions.closeBulkDeleteTagModal,
 	closeDeletePublicViewModal: actions.closeDeletePublicViewModal,
 	closeUntrackCharacterModal: actions.closeUntrackCharacterModal,
 	closeUntrackThreadModal: actions.closeUntrackThreadModal,

@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-	TabPane, CardHeader, CardBlock
+	TabPane, CardHeader, CardBody
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 
@@ -12,7 +12,7 @@ const AboutTrackerPane = () => (
 					className="fas fa-info-circle"
 				/> About RPThreadTracker
 			</CardHeader>
-			<CardBlock className="card-body">
+			<CardBody className="card-body">
 				<p>
 					RPThreadTracker allows users to track thread-based roleplay interactions
 					and collaborative writing and stay up-to-date on which interactions they
@@ -26,7 +26,7 @@ const AboutTrackerPane = () => (
 					public application programming interfaces.
 				</p>
 				<p>RPThreadTracker is a product of <a href="http://www.blackjack-software.com">Blackjack Software</a>.</p>
-			</CardBlock>
+			</CardBody>
 		</Card>
 	</TabPane>
 );

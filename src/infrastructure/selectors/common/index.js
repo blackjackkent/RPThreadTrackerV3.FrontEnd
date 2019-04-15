@@ -17,5 +17,6 @@ export {
 	getNews,
 	getUserSettings,
 	getTags,
-	getLoading
+	getLoading,
+	getUi
 } from './commonState';

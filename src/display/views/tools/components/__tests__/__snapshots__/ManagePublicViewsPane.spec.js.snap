@@ -14,8 +14,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       />
        Manage Public Views
     </CardHeader>
-    <CardBlock
+    <CardBody
       className="card-body"
+      tag="div"
     >
       <Row
         tag="div"
@@ -67,7 +68,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           </p>
         </Col>
       </Row>
-    </CardBlock>
+    </CardBody>
   </Styled(Card)>
   <Row
     tag="div"

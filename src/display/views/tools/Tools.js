@@ -9,10 +9,11 @@ import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import * as actions from '../../../infrastructure/actions';
 import Style from './_styles';
-import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
+import { getIsLoadingIconVisible, getIsManageTagsLoadingIconVisible } from '../../../infrastructure/selectors';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import ExportThreadsPane from './components/ExportThreadsPane';
+import ManageTagsPane from './components/ManageTagsPane';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
@@ -22,11 +23,14 @@ const propTypes = {
 	fetchTags: PropTypes.func.isRequired,
 	fetchUser: PropTypes.func.isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
+	isManageTagsLoadingIconVisible: PropTypes.bool.isRequired,
 	fetchPublicViews: PropTypes.func.isRequired,
 	exportThreads: PropTypes.func.isRequired,
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	openUpsertPublicViewModal: PropTypes.func.isRequired,
 	openDeletePublicViewModal: PropTypes.func.isRequired,
+	openBulkUpdateTagModal: PropTypes.func.isRequired,
+	openBulkDeleteTagModal: PropTypes.func.isRequired,
 	username: PropTypes.string,
 	match: PropTypes.shape({}).isRequired
 };
@@ -43,12 +47,14 @@ function mapStateToProps(state) {
 		characters
 	} = state;
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
+	const isManageTagsLoadingIconVisible = getIsManageTagsLoadingIconVisible(state);
 	return {
 		characters,
 		username: user.userName,
 		tags,
 		publicViews,
-		isLoadingIconVisible
+		isLoadingIconVisible,
+		isManageTagsLoadingIconVisible
 	};
 }
 
@@ -92,10 +98,14 @@ class Tools extends Component {
 		const {
 			publicViews,
 			isLoadingIconVisible,
+			isManageTagsLoadingIconVisible,
 			openUpsertPublicViewModal,
 			openDeletePublicViewModal,
+			openBulkUpdateTagModal,
+			openBulkDeleteTagModal,
 			username,
-			match
+			match,
+			tags
 		} = this.props;
 		const options = Object.values(tabs.TOOLS);
 		return (
@@ -127,6 +137,12 @@ class Tools extends Component {
 								username={username}
 							/>
 							<BrowserExtensionsPane />
+							<ManageTagsPane
+								tags={tags}
+								isLoadingIconVisible={isManageTagsLoadingIconVisible}
+								openBulkUpdateTagModal={openBulkUpdateTagModal}
+								openBulkDeleteTagModal={openBulkDeleteTagModal}
+							/>
 						</TabContent>
 					</Col>
 				</Row>
@@ -143,6 +159,8 @@ export default connect(mapStateToProps, {
 	fetchPublicViews: actions.fetchPublicViews,
 	openUpsertPublicViewModal: actions.openUpsertPublicViewModal,
 	openDeletePublicViewModal: actions.openDeletePublicViewModal,
+	openBulkUpdateTagModal: actions.openBulkUpdateTagModal,
+	openBulkDeleteTagModal: actions.openBulkDeleteTagModal,
 	fetchCharacters: actions.fetchCharacters,
 	fetchUser: actions.fetchUser
 })(Tools);

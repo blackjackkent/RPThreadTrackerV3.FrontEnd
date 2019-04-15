@@ -32,7 +32,12 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           "calls": Array [
             Array [],
           ],
-          "results": undefined,
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
         }
       }
       fetchUser={[MockFunction]}
@@ -41,7 +46,12 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           "calls": Array [
             Array [],
           ],
-          "results": undefined,
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
         }
       }
       isLoadingIconVisible={true}

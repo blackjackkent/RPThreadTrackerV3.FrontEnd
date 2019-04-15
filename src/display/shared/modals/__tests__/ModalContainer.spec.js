@@ -24,7 +24,11 @@ jest.mock('../UpsertPublicViewModal', () => 'UpsertPublicViewModal');
 
 const createTestProps = propOverrides => ({
 	bulkUntrackThreads: jest.fn(),
+	bulkUpdateTag: jest.fn(),
+	bulkDeleteTag: jest.fn(),
 	closeBulkUntrackThreadsModal: jest.fn(),
+	closeBulkUpdateTagModal: jest.fn(),
+	closeBulkDeleteTagModal: jest.fn(),
 	closeDeletePublicViewModal: jest.fn(),
 	closeUntrackCharacterModal: jest.fn(),
 	closeUntrackThreadModal: jest.fn(),
@@ -55,11 +59,14 @@ const createTestState = stateOverrides => ({
 		isUpsertThreadModalOpen: true,
 		isUntrackCharacterModalOpen: true,
 		isUpsertPublicViewModalOpen: true,
-		isDeletePublicViewModalOpen: true
+		isDeletePublicViewModalOpen: true,
+		isBulkUpdateTagModalOpen: true,
+		isBulkDeleteTagModalOpen: true
 	},
 	characterToEdit: { characterId: 3, characterName: 'My Test Character' },
 	threadToEdit: { threadId: 5, userTitle: 'My Test Thread' },
 	bulkThreadsToEdit: [{ threadId: 1 }, { threadId: 2 }],
+	tagToEdit: { selectedTag: 'Test Tag', updatedValue: 'Test Tag Edited' },
 	viewToEdit: { id: 10, name: 'My Test View' },
 	...stateOverrides
 });

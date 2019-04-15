@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { CardHeader, CardBlock } from 'reactstrap';
+import { CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
@@ -56,13 +56,13 @@ const YourCharactersCard = (props) => {
 					<Link href="/manage-characters" to="/manage-characters">Manage Characters</Link>
 				</div>
 			</CardHeader>
-			<CardBlock className="card-body">
+			<CardBody className="card-body">
 				{getBlockContent(
 					loadingInProgress,
 					characters,
 					characterThreadCounts
 				)}
-			</CardBlock>
+			</CardBody>
 		</Card>
 	);
 };

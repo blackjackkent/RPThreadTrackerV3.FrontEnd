@@ -11,6 +11,7 @@ export default {
 		ACCOUNT: 'Account',
 		PUBLIC: 'Public',
 		THREAD: 'Thread',
+		TAG: 'Tag',
 		UI: 'UI'
 	}
 };

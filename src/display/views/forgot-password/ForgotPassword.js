@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import {
-	CardBlock, Button, Row, Col
+	CardBody, Button, Row, Col
 } from 'reactstrap';
 import * as actions from '../../../infrastructure/actions';
 import Card from '../../shared/styled/Card';
@@ -82,7 +82,7 @@ class ForgotPassword extends Component {
 		}
 		return (
 			<Card className="mx-4">
-				<CardBlock className="p-4">
+				<CardBody className="p-4">
 					{loading}
 					<AvForm
 						data-spec="forgot-password-form-container"
@@ -104,7 +104,7 @@ class ForgotPassword extends Component {
 							</Col>
 						</Row>
 					</AvForm>
-				</CardBlock>
+				</CardBody>
 			</Card>
 		);
 	}

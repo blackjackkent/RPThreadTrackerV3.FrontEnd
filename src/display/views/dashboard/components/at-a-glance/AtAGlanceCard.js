@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	CardHeader, Input, CardBlock, CardGroup
+	CardHeader, Input, CardBody, CardGroup
 } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import SwitchLabel from '../../../../shared/styled/SwitchLabel';
@@ -47,7 +47,7 @@ const AtAGlanceCard = (props) => {
 					<span className="switch-handle" />
 				</SwitchLabel>
 			</CardHeader>
-			<CardBlock data-spec="at-a-glance-card-body" className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
+			<CardBody data-spec="at-a-glance-card-body" className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
 				<CardGroup>
 					<DashboardSummaryWidget
 						data-spec="at-a-glance-active-widget"
@@ -85,7 +85,7 @@ const AtAGlanceCard = (props) => {
 						Queued
 					</DashboardSummaryWidget>
 				</CardGroup>
-			</CardBlock>
+			</CardBody>
 		</Card>
 	);
 };

@@ -159,6 +159,62 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     submitButtonText="Delete"
     submitCallback={[MockFunction]}
   />
+  <GenericConfirmationModal
+    bodyText={
+      <span>
+        Are you sure you want to change the tag
+         
+        <strong>
+          Test Tag
+        </strong>
+         to
+         
+        <strong>
+          Test Tag Edited
+        </strong>
+         on
+         
+        all your threads?
+      </span>
+    }
+    closeButtonText="Cancel"
+    closeCallback={[MockFunction]}
+    data={
+      Object {
+        "selectedTag": "Test Tag",
+        "updatedValue": "Test Tag Edited",
+      }
+    }
+    headerText="Confirm Updated Tag Value"
+    isModalOpen={true}
+    submitButtonText="Update Tag"
+    submitCallback={[MockFunction]}
+  />
+  <GenericConfirmationModal
+    bodyText={
+      <span>
+        Are you sure you want to remove the tag
+         
+        <strong>
+          Test Tag
+        </strong>
+         
+        from all your threads?
+      </span>
+    }
+    closeButtonText="Cancel"
+    closeCallback={[MockFunction]}
+    data={
+      Object {
+        "selectedTag": "Test Tag",
+        "updatedValue": "Test Tag Edited",
+      }
+    }
+    headerText="Confirm Deleted Tag Value"
+    isModalOpen={true}
+    submitButtonText="Delete Tag"
+    submitCallback={[MockFunction]}
+  />
 </div>
 `;
 
@@ -319,6 +375,62 @@ exports[`rendering snapshots should render valid snapshot with missing character
     headerText="Confirm Public View Deletion"
     isModalOpen={true}
     submitButtonText="Delete"
+    submitCallback={[MockFunction]}
+  />
+  <GenericConfirmationModal
+    bodyText={
+      <span>
+        Are you sure you want to change the tag
+         
+        <strong>
+          Test Tag
+        </strong>
+         to
+         
+        <strong>
+          Test Tag Edited
+        </strong>
+         on
+         
+        all your threads?
+      </span>
+    }
+    closeButtonText="Cancel"
+    closeCallback={[MockFunction]}
+    data={
+      Object {
+        "selectedTag": "Test Tag",
+        "updatedValue": "Test Tag Edited",
+      }
+    }
+    headerText="Confirm Updated Tag Value"
+    isModalOpen={true}
+    submitButtonText="Update Tag"
+    submitCallback={[MockFunction]}
+  />
+  <GenericConfirmationModal
+    bodyText={
+      <span>
+        Are you sure you want to remove the tag
+         
+        <strong>
+          Test Tag
+        </strong>
+         
+        from all your threads?
+      </span>
+    }
+    closeButtonText="Cancel"
+    closeCallback={[MockFunction]}
+    data={
+      Object {
+        "selectedTag": "Test Tag",
+        "updatedValue": "Test Tag Edited",
+      }
+    }
+    headerText="Confirm Deleted Tag Value"
+    isModalOpen={true}
+    submitButtonText="Delete Tag"
     submitCallback={[MockFunction]}
   />
 </div>

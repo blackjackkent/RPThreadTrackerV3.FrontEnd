@@ -12,3 +12,4 @@ export const getNews = state => state.news;
 export const getUserSettings = state => state.userSettings;
 export const getTags = state => state.tags;
 export const getLoading = state => state.loading;
+export const getUi = state => state.ui;
