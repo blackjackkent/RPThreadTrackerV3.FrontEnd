@@ -81,7 +81,7 @@ describe('behavior', () => {
 				}
 			]);
 		});
-		it('should trigger onSelectionChanged when item is added', () => {
+		it('should trigger onSelectionChanged when item is removed', () => {
 			const onSelectionChanged = jest.fn();
 			const props = createTestProps({
 				onSelectionChanged
@@ -129,6 +129,40 @@ describe('behavior', () => {
 			});
 			element.update();
 			expect(element.find('RTSelectTable').props().selectAll).toBe(true);
+		});
+		it('should select item when row is clicked, forwarding to callbacks from props', () => {
+			const onSelectionChanged = jest.fn();
+			const originalOnClick = jest.fn();
+			const props = createTestProps({
+				onSelectionChanged,
+				getTdProps: jest.fn(() => ({
+					onClick: originalOnClick
+				}))
+			});
+			const state = {};
+			const rowInfo = { original: props.data[0] };
+			const column = {};
+			const instance = {};
+			const event = {};
+			const handleOriginal = jest.fn();
+			const jsx = <CheckboxTable {...props} />;
+			const element = shallow(jsx);
+			const tdProps = element.instance().getTdProps(state, rowInfo, column, instance);
+			tdProps.onClick(event, handleOriginal);
+			expect(props.getTdProps).toBeCalledWith(state, rowInfo, column, instance);
+			expect(originalOnClick).toBeCalledWith(event, handleOriginal);
+			expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+			expect(onSelectionChanged).toHaveBeenLastCalledWith([{ _id: 1, testProp: 'test1' }]);
+		});
+		it('should color selected rows', () => {
+			const props = createTestProps({});
+			const rowInfo = { original: props.data[0] };
+			const jsx = <CheckboxTable {...props} />;
+			const element = shallow(jsx);
+			const tdProps = element.instance().getTdProps({}, rowInfo, {}, {});
+			tdProps.onClick({}, jest.fn());
+			const trProps = element.instance().getTrProps({}, rowInfo);
+			expect(typeof trProps.style.backgroundColor).toBe('string');
 		});
 		it('should set select-all checkbox checked when selected items length equals row length', () => {});
 	});
@@ -186,7 +220,7 @@ describe('behavior', () => {
 			const isSelected = element.instance().isSelected(1);
 			expect(isSelected).toBe(true);
 		});
-		it('should return true if item is not selected', () => {
+		it('should return false if item is not selected', () => {
 			const props = createTestProps();
 			const jsx = <CheckboxTable {...props} />;
 			const element = mount(jsx);

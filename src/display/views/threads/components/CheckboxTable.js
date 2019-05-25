@@ -29,6 +29,7 @@ class CheckboxTable extends React.Component {
 		};
 		this.toggleSelection = this.toggleSelection.bind(this);
 		this.getTrProps = this.getTrProps.bind(this);
+		this.getTdProps = this.getTdProps.bind(this);
 		this.toggleAll = this.toggleAll.bind(this);
 		this.isSelected = this.isSelected.bind(this);
 		this.clearSelection = this.clearSelection.bind(this);
@@ -52,6 +53,37 @@ class CheckboxTable extends React.Component {
 		}
 
 		return {};
+	}
+
+	getTdProps(state, rowInfo, column, instance) {
+		const { getTdProps } = this.props;
+		const tdProps = getTdProps ? getTdProps(state, rowInfo, column, instance) : {};
+		const clickHandlerFromProps = tdProps.onClick;
+
+		return {
+			...tdProps,
+			onClick: (event, handleOriginal) => {
+				let clickHandled = false;
+				if (clickHandlerFromProps) {
+					clickHandled = clickHandlerFromProps(event, handleOriginal);
+				} else if (handleOriginal) {
+					handleOriginal();
+				}
+
+				if (column.Expander) {
+					// there's a bug in react-table where triggering selection state change
+					// undoes expansion. we can workaround because we don't selection to happen
+					// on expansion anyway
+					return;
+				}
+
+				if (!clickHandled && rowInfo) {
+					const row = rowInfo.original;
+					// eslint-disable-next-line no-underscore-dangle
+					this.toggleSelection(`select-${row._id}`, false, row);
+				}
+			}
+		};
 	}
 
 	toggleSelection(key, shift, row) {
@@ -115,7 +147,6 @@ class CheckboxTable extends React.Component {
 			noDataText,
 			defaultFilterMethod,
 			SubComponent,
-			getTdProps,
 			defaultSorted,
 			defaultPageSize,
 			onPageSizeChange
@@ -141,8 +172,8 @@ class CheckboxTable extends React.Component {
 					defaultPageSize={defaultPageSize}
 					onPageSizeChange={onPageSizeChange}
 					columns={columns}
-					getTdProps={getTdProps}
 					getTrProps={this.getTrProps}
+					getTdProps={this.getTdProps}
 					defaultSorted={defaultSorted}
 					defaultFilterMethod={defaultFilterMethod}
 					showPaginationTop

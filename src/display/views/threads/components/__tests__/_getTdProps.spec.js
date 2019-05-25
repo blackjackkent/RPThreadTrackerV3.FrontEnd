@@ -91,6 +91,22 @@ describe('behavior', () => {
 			});
 		});
 	});
+	describe('return value', () => {
+		it('should return true if onClick handled the action', () => {
+			const clickedColumn = { id: 'editButton' };
+			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
+			const props = propsCreator({}, { original: {} }, clickedColumn);
+			const result = props.onClick({}, jest.fn());
+			expect(result).toBe(true);
+		});
+		it('should return false if onClick did not handle the action', () => {
+			const clickedColumn = { id: 'unrecognized' };
+			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
+			const props = propsCreator({}, { original: {} }, clickedColumn);
+			const result = props.onClick({}, jest.fn());
+			expect(result).toBe(false);
+		});
+	});
 	describe('handleOriginal', () => {
 		it('should fall back to handleOriginal in other cases', () => {
 			const clickedColumn = {
