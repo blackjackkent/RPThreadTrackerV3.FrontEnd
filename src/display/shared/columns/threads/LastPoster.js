@@ -2,6 +2,8 @@
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 
+const stopPropagation = (e) => e.stopPropagation();
+
 export default (lastPosters, includeFilter) => ({
 	Header: columns.LAST_POSTER.name,
 	accessor: columns.LAST_POSTER.key,
@@ -12,6 +14,7 @@ export default (lastPosters, includeFilter) => ({
 					target="_blank"
 					rel="noopener noreferrer"
 					href={row.original.status && row.original.status.lastPostUrl}
+					onClick={stopPropagation}
 				>
 					{row.value} <i className="fas fa-external-link-alt" />
 				</a>
