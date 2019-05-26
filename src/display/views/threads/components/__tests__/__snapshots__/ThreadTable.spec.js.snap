@@ -178,6 +178,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     onPageSizeChange={[MockFunction]}
     onSelectionChanged={[Function]}
     showPaginationTop={true}
+    useLightTheme={false}
   />
 </div>
 `;
@@ -360,6 +361,7 @@ exports[`rendering snapshots should render valid snapshot when items are selecte
     onPageSizeChange={[MockFunction]}
     onSelectionChanged={[Function]}
     showPaginationTop={true}
+    useLightTheme={false}
   />
 </div>
 `;
@@ -542,6 +544,7 @@ exports[`rendering snapshots should render valid snapshot when loading 1`] = `
     onPageSizeChange={[MockFunction]}
     onSelectionChanged={[Function]}
     showPaginationTop={true}
+    useLightTheme={false}
   />
 </div>
 `;
@@ -724,6 +727,7 @@ exports[`rendering snapshots should render valid snapshot when threadTablePageSi
     onPageSizeChange={[MockFunction]}
     onSelectionChanged={[Function]}
     showPaginationTop={true}
+    useLightTheme={false}
   />
 </div>
 `;

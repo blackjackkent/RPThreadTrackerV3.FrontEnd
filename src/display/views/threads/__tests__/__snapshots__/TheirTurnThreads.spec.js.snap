@@ -57,5 +57,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   tdProps="mockConstructor mockConstructor mockConstructor mockConstructor"
   toggleThreadIsArchived={[MockFunction]}
   toggleThreadIsMarkedQueued={[MockFunction]}
+  useLightTheme={false}
 />
 `;

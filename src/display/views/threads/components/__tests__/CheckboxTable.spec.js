@@ -128,7 +128,7 @@ describe('behavior', () => {
 			const jsx = (<CheckboxTable {...props} />);
 			const element = shallow(jsx);
 			const trProps = element.instance().getTrProps({}, rowInfo);
-			expect(trProps.style.backgroundColor).not.toBeDefined();
+			expect(trProps.style).not.toBeDefined();
 		});
 		it('should color selected rows', () => {
 			const props = createTestProps({});

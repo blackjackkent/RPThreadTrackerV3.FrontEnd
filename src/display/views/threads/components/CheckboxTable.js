@@ -16,7 +16,8 @@ const propTypes = {
 	onSelectionChanged: PropTypes.func.isRequired,
 	SubComponent: PropTypes.func.isRequired,
 	defaultPageSize: PropTypes.number.isRequired,
-	onPageSizeChange: PropTypes.func.isRequired
+	onPageSizeChange: PropTypes.func.isRequired,
+	useLightTheme: PropTypes.bool
 };
 
 class CheckboxTable extends React.Component {
@@ -35,14 +36,19 @@ class CheckboxTable extends React.Component {
 
 	getTrProps(state, rowInfo) {
 		if (rowInfo) {
+			const { useLightTheme } = this.props;
 			// eslint-disable-next-line no-underscore-dangle
-			const selected = this.isSelected(rowInfo.original._id);
+			if (this.isSelected(rowInfo.original._id)) {
+				const backgroundColor = useLightTheme
+					? colors.BASE_BLUE_OPACITY(0.3)
+					: colors.BASE_BLUE_OPACITY(0.5);
 
-			return {
-				style: {
-					backgroundColor: selected ? colors.BASE_BLUE_OPACITY(0.3) : undefined
-				}
-			};
+				return {
+					style: {
+						backgroundColor
+					}
+				};
+			}
 		}
 
 		return {};
@@ -142,4 +148,8 @@ class CheckboxTable extends React.Component {
 	}
 }
 CheckboxTable.propTypes = propTypes;
+CheckboxTable.defaultProps = {
+	useLightTheme: false
+};
+
 export default CheckboxTable;

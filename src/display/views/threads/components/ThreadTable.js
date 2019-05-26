@@ -25,7 +25,8 @@ const propTypes = {
 	tdProps: PropTypes.func.isRequired,
 	threadFilter: PropTypes.shape({}).isRequired,
 	threadTablePageSize: PropTypes.number,
-	updateThreadTablePageSize: PropTypes.func.isRequired
+	updateThreadTablePageSize: PropTypes.func.isRequired,
+	useLightTheme: PropTypes.bool.isRequired
 };
 const defaultProps = {
 	isArchive: false,
@@ -83,7 +84,8 @@ class ThreadTable extends React.Component {
 			threadFilter,
 			threadTablePageSize,
 			updateThreadTablePageSize,
-			tags
+			tags,
+			useLightTheme
 		} = this.props;
 		const { selectedItems } = this.state;
 		return (
@@ -143,6 +145,7 @@ class ThreadTable extends React.Component {
 						/>
 					)}
 					onSelectionChanged={this.onSelectionChanged}
+					useLightTheme={useLightTheme}
 				/>
 			</div>
 		);
