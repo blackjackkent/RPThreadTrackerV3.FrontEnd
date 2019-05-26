@@ -121,6 +121,25 @@ describe('behavior', () => {
 			expect(isSelected).toBe(false);
 		});
 	});
+	describe('selection highlighting', () => {
+		it('should not color unselected rows', () => {
+			const props = createTestProps({});
+			const rowInfo = { original: props.data[0] };
+			const jsx = (<CheckboxTable {...props} />);
+			const element = shallow(jsx);
+			const trProps = element.instance().getTrProps({}, rowInfo);
+			expect(trProps.style.backgroundColor).not.toBeDefined();
+		});
+		it('should color selected rows', () => {
+			const props = createTestProps({});
+			const rowInfo = { original: props.data[0] };
+			const jsx = (<CheckboxTable {...props} />);
+			const element = shallow(jsx);
+			element.instance().toggleSelection(1, null, { _id: 1, testProp: 'test1' });
+			const trProps = element.instance().getTrProps({}, rowInfo);
+			expect(typeof trProps.style.backgroundColor).toBe('string');
+		});
+	});
 	describe('clearSelection', () => {
 		it('should clear all selected items', () => {
 			const onSelectionChanged = jest.fn();

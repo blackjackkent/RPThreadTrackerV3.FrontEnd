@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import checkboxHOC from 'react-table/lib/hoc/selectTable';
 import ReactTable from 'react-table';
+import colors from '../../../../infrastructure/constants/colors';
 import ReactTableContainer from '../../../shared/styled/ReactTableContainer';
 
 const CheckboxTableHOC = checkboxHOC(ReactTable);
@@ -26,9 +27,25 @@ class CheckboxTable extends React.Component {
 			selectAll: false
 		};
 		this.toggleSelection = this.toggleSelection.bind(this);
+		this.getTrProps = this.getTrProps.bind(this);
 		this.toggleAll = this.toggleAll.bind(this);
 		this.isSelected = this.isSelected.bind(this);
 		this.clearSelection = this.clearSelection.bind(this);
+	}
+
+	getTrProps(state, rowInfo) {
+		if (rowInfo) {
+			// eslint-disable-next-line no-underscore-dangle
+			const selected = this.isSelected(rowInfo.original._id);
+
+			return {
+				style: {
+					backgroundColor: selected ? colors.BASE_BLUE_OPACITY(0.3) : undefined
+				}
+			};
+		}
+
+		return {};
 	}
 
 	toggleSelection(key, shift, row) {
@@ -113,6 +130,7 @@ class CheckboxTable extends React.Component {
 					onPageSizeChange={onPageSizeChange}
 					columns={columns}
 					getTdProps={getTdProps}
+					getTrProps={this.getTrProps}
 					defaultSorted={defaultSorted}
 					defaultFilterMethod={defaultFilterMethod}
 					showPaginationTop
