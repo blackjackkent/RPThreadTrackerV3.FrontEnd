@@ -13,14 +13,15 @@ jest.mock('../Header', () => 'Header');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({
+	loadSidebarOpen: jest.fn(),
 	openUpsertCharacterModal: jest.fn(),
 	openUpsertThreadModal: jest.fn(),
+	setSidebarOpen: jest.fn(),
 	submitUserLogout: jest.fn(),
 	toggleHeaderProfileDropdown: jest.fn(),
 	toggleHeaderAddMenuDropdown: jest.fn(),
 	toggleMobileSidebar: jest.fn(),
 	toggleNewsAside: jest.fn(),
-	toggleSidebar: jest.fn(),
 	updateUserSettings: jest.fn(),
 	...propOverrides
 });
@@ -146,15 +147,35 @@ describe('behavior', () => {
 		});
 	});
 	describe('sidebarToggle', () => {
-		it('should dispatch sidebar toggle action', () => {
-			const toggleSidebar = jest.fn();
-			const props = createTestProps({ toggleSidebar });
-			const state = createTestState();
+		it('should dispatch setSidebarOpen action with false when open', () => {
+			const setSidebarOpen = jest.fn();
+			const props = createTestProps({ setSidebarOpen });
+			const state = createTestState({
+				ui: {
+					...createTestState().ui,
+					isSidebarOpen: true
+				}
+			});
 			const jsx = (<HeaderContainer {...props} />);
 			const element = shallowWithState(jsx, state).dive();
 			element.instance().sidebarToggle();
-			expect(toggleSidebar).toHaveBeenCalledTimes(1);
-			expect(toggleSidebar).toHaveBeenCalledWith(false);
+			expect(setSidebarOpen).toHaveBeenCalledTimes(1);
+			expect(setSidebarOpen).toHaveBeenCalledWith(false);
+		});
+		it('should dispatch setSidebarOpen action with true when not open', () => {
+			const setSidebarOpen = jest.fn();
+			const props = createTestProps({ setSidebarOpen });
+			const state = createTestState({
+				ui: {
+					...createTestState().ui,
+					isSidebarOpen: false
+				}
+			});
+			const jsx = (<HeaderContainer {...props} />);
+			const element = shallowWithState(jsx, state).dive();
+			element.instance().sidebarToggle();
+			expect(setSidebarOpen).toHaveBeenCalledTimes(1);
+			expect(setSidebarOpen).toHaveBeenCalledWith(true);
 		});
 	});
 	describe('asideToggle', () => {
