@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/utility/helpers.unit';
 import YourCharactersCard from '../YourCharactersCard';
 // #endregion imports
 
@@ -9,7 +9,7 @@ import YourCharactersCard from '../YourCharactersCard';
 jest.mock('../YourCharactersCardRow', () => 'YourCharactersCardRow');
 jest.mock('../../NoCharactersMessage', () => 'NoCharactersMessage');
 jest.mock('../../NoActiveCharactersMessage', () => 'NoActiveCharactersMessage');
-jest.mock('../../../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('~/display/shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 // #endregion mocks
 
 const createTestProps = propOverrides => ({

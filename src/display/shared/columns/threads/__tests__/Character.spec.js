@@ -4,7 +4,7 @@ import Character from '../Character';
 // #endregion imports
 
 jest.mock('../../../CharacterSelectItem', () => 'CharacterSelectItem');
-jest.mock('../../../../../utility', () => ({ sortCharacters: jest.fn() }));
+jest.mock('~/utility', () => ({ sortCharacters: jest.fn() }));
 
 describe('data', () => {
 	it('should be defined', () => {

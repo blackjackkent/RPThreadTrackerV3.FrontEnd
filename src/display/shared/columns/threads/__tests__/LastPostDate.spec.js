@@ -1,6 +1,6 @@
 // #region imports
 import { shallow } from 'enzyme';
-import { initMockDateNow } from '../../../../../../config/tests/helpers.unit';
+import { initMockDateNow } from '~/utility/helpers.unit';
 import LastPostDate from '../LastPostDate';
 // #endregion imports
 

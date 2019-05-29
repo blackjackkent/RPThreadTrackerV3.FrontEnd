@@ -1,15 +1,15 @@
 import { when } from 'jest-when';
-import * as common from '../../../../common';
-import * as filters from '../../../../../constants/filters';
+import * as common from '~/infrastructure/selectors/common';
+import * as filters from '~/infrastructure/constants/filters';
 import getTheirTurnThreads from '../getTheirTurnThreads';
 
-jest.mock('../../../../common', () => ({
+jest.mock('~/infrastructure/selectors/common', () => ({
 	buildThreadDataByPredicate: jest.fn(),
 	shouldProcessThreads: jest.fn(),
 	getAllActiveThreads: jest.fn(),
 	getAllActiveThreadStatus: jest.fn()
 }));
-jest.mock('../../../../../constants/filters', () => ({
+jest.mock('~/infrastructure/constants/filters', () => ({
 	THEIR_TURN: jest.fn()
 }));
 

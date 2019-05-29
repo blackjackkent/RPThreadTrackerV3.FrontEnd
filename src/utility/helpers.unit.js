@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { shallow } from 'enzyme';
 import { createMockStore } from 'redux-test-utils';
 import { expectSaga } from 'redux-saga-test-plan';

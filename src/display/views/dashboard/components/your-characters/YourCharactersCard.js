@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CardHeader, CardBody } from 'reactstrap';
-import Card from '../../../../shared/styled/Card';
+import Card from '~/display/shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
-import LoadingIndicator from '../../../../shared/loading/LoadingIndicator';
+import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

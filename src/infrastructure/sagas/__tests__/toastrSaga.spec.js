@@ -2,7 +2,7 @@ import { toastr } from 'react-redux-toastr';
 import { shallow } from 'enzyme';
 import toastrSaga from '../toastrSaga';
 import * as actions from '../../actions';
-import { SagaTestWrapper } from '../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/utility/helpers.unit';
 
 
 jest.mock('react-redux-toastr', () => ({

@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper, initMockDateNow } from '../../../../../config/tests/helpers.unit';
+import { getSpecWrapper, initMockDateNow } from '~/utility/helpers.unit';
 import AsideNewsRow from '../AsideNewsRow';
 // #endregion imports
 

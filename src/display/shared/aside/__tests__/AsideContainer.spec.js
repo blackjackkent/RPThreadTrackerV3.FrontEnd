@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '~/utility/helpers.unit';
 import * as selectors from '../../../../infrastructure/selectors'; //eslint-disable-line
 import AsideContainer from '../AsideContainer';
 // #endregion imports

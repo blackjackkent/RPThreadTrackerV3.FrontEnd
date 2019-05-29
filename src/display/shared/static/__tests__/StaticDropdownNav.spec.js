@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/utility/helpers.unit';
 import * as history from '../../../../utility/history';
 import StaticDropdownNav from '../StaticDropdownNav';
 // #endregion imports
