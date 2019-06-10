@@ -14,6 +14,6 @@ function* setSiteTheme(action) {
 	yield put(loadSiteThemeSuccess(action.data));
 }
 
-export default function* loadSiteThemeSaga() {
+export default function* setSiteThemeSaga() {
 	yield takeEvery(SET_SITE_THEME, setSiteTheme);
 }

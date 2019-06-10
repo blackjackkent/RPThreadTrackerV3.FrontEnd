@@ -18,7 +18,7 @@ import {
 	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
-	TOGGLE_SIDEBAR,
+	LOAD_SIDEBAR_OPEN_SUCCESS,
 	UNTRACK_CHARACTER,
 	UNTRACK_THREAD,
 	UPSERT_CHARACTER,
@@ -59,7 +59,7 @@ const defaultState = {
 
 function ui(state = defaultState, action) {
 	switch (action.type) {
-		case TOGGLE_SIDEBAR:
+		case LOAD_SIDEBAR_OPEN_SUCCESS:
 			return Object.assign({}, state, {
 				isSidebarOpen: action.data
 			});

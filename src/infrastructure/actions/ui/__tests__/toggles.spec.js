@@ -44,14 +44,3 @@ describe('toggleNewsAside', () => {
 		expect(action.analytics.event.action).toBe('Toggled news aside');
 	});
 });
-describe('toggleSidebar', () => {
-	it('should create action with type, data, and analytics', () => {
-		const data = true;
-		const action = actions.toggleSidebar(data);
-		expect(action.type).toBe('TOGGLE_SIDEBAR');
-		expect(action.data).toBe(data);
-		expect(action.analytics.func).toBe('event');
-		expect(action.analytics.event.category).toBe('UI');
-		expect(action.analytics.event.action).toBe('Toggled sidebar');
-	});
-});
