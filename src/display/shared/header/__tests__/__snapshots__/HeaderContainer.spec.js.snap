@@ -28,7 +28,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   toggleHeaderProfileDropdown={[MockFunction]}
   toggleMobileSidebar={[MockFunction]}
   toggleNewsAside={[MockFunction]}
-  toggleSidebar={[MockFunction]}
   updateUserSettings={[MockFunction]}
   user={
     Object {

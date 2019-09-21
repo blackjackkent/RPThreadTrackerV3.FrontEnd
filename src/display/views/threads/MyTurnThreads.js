@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import getColumns from './components/_columns';
 import getTdProps from './components/_getTdProps';
 import ThreadTable from './components/ThreadTable';
+import { getUi } from '../../../infrastructure/selectors/common';
 import * as actions from '../../../infrastructure/actions';
 import * as selectors from '../../../infrastructure/selectors';
 
@@ -18,7 +19,8 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	partners: PropTypes.arrayOf(PropTypes.string).isRequired,
 	lastPosters: PropTypes.arrayOf(PropTypes.string).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	useLightTheme: PropTypes.bool.isRequired
 };
 
 function mapStateToProps(state) {
@@ -28,13 +30,15 @@ function mapStateToProps(state) {
 	const lastPosters = selectors.getActiveThreadLastPosters(state);
 	const tags = selectors.getActiveThreadTags(state);
 	const filteredThreads = selectors.getMyTurnFilteredThreads(state);
+	const { useLightTheme } = getUi(state);
 	return {
 		activeThreads,
 		filteredThreads,
 		characters,
 		partners,
 		lastPosters,
-		tags
+		tags,
+		useLightTheme
 	};
 }
 

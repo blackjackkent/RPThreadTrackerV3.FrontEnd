@@ -31,6 +31,7 @@ const createTestProps = propOverrides => ({
 	threadFilter: { filteredTag: 'tag3' },
 	threadTablePageSize: 50,
 	updateThreadTablePageSize: jest.fn(),
+	useLightTheme: false,
 	...propOverrides
 });
 describe('rendering', () => {

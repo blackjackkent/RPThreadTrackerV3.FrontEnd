@@ -29,6 +29,7 @@ const createTestProps = propOverrides => ({
 
 const createTestState = stateOverrides => ({
 	activeThreads: [{}, {}, {}, {}, {}, {}, {}, {}],
+	ui: { useLightTheme: false },
 	...stateOverrides
 });
 

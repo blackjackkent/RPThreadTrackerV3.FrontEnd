@@ -66,16 +66,22 @@ export {
 	LOAD_SITE_THEME_SUCCESS
 } from './ui/theme';
 export {
+	loadSidebarOpen,
+	setSidebarOpen,
+	loadSidebarOpenSuccess,
+	LOAD_SIDEBAR_OPEN,
+	SET_SIDEBAR_OPEN,
+	LOAD_SIDEBAR_OPEN_SUCCESS
+} from './ui/sidebar';
+export {
 	TOGGLE_HEADER_PROFILE_DROPDOWN,
 	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
-	TOGGLE_SIDEBAR,
 	toggleHeaderProfileDropdown,
 	toggleHeaderAddMenuDropdown,
 	toggleMobileSidebar,
-	toggleNewsAside,
-	toggleSidebar
+	toggleNewsAside
 } from './ui/toggles';
 
 // Threads

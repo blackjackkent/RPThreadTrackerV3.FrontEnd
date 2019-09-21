@@ -15,6 +15,8 @@ export { default as updateUserSettingsSaga } from './userSettings/updateUserSett
 // UI
 export { default as loadSiteThemeSaga } from './ui/loadSiteThemeSaga';
 export { default as setSiteThemeSaga } from './ui/setSiteThemeSaga';
+export { default as loadSideBarOpenSaga } from './ui/loadSideBarOpenSaga';
+export { default as setSiteBarOpenSaga } from './ui/setSideBarOpenSaga';
 // Threads
 export { default as exportThreadsSaga } from './threads/exportThreadsSaga';
 export { default as fetchActiveThreadsSaga } from './threads/fetchActiveThreadsSaga';

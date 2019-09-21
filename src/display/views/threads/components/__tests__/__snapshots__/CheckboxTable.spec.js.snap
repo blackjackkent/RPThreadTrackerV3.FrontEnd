@@ -44,6 +44,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       ]
     }
     getTdProps={[Function]}
+    getTrProps={[Function]}
     isSelected={[Function]}
     keyField="_id"
     noDataText="No Data Text"

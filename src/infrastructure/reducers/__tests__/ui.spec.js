@@ -26,13 +26,13 @@ describe('action handling', () => {
 		const result = ui(undefined, {});
 		expect(result).toEqual(getState());
 	});
-	it('should handle TOGGLE_SIDEBAR', () => {
+	it('should handle LOAD_SIDEBAR_OPEN_SUCCESS', () => {
 		const action = {
-			type: actions.TOGGLE_SIDEBAR,
+			type: actions.LOAD_SIDEBAR_OPEN_SUCCESS,
 			data: true
 		};
 		const action2 = {
-			type: actions.TOGGLE_SIDEBAR,
+			type: actions.LOAD_SIDEBAR_OPEN_SUCCESS,
 			data: false
 		};
 		const result = ui(getState(), action);
