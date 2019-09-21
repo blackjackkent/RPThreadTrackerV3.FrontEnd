@@ -2,7 +2,7 @@ import axios from 'axios';
 import { call } from 'redux-saga/effects';
 import submitContactFormSaga from '../submitContactFormSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '~/utility/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {

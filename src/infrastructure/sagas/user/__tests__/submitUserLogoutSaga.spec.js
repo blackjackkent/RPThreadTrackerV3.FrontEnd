@@ -4,7 +4,7 @@ import submitUserLogoutSaga from '../submitUserLogoutSaga';
 import * as actions from '../../../actions';
 import * as cache from '../../../cache';
 import * as history from '../../../../utility/history';
-import { SagaTestWrapper } from '~/utility/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.API_BASE_URL = 'http://test-site/';
 jest.mock('../../../cache', () => ({

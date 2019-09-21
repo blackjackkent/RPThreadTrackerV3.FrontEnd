@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '~/utility/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import UpdateAccountInfoForm from '../UpdateAccountInfoForm';
 // #endregion imports
 

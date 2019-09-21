@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { getSpecWrapper, shallowWithState, initMockDateNow } from '~/utility/helpers.unit';
+import { getSpecWrapper, shallowWithState, initMockDateNow } from '~/testhelpers/helpers.unit';
 import Dashboard from '../Dashboard';
 // #endregion imports
 

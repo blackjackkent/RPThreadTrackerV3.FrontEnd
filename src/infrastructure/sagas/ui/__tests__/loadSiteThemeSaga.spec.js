@@ -1,7 +1,7 @@
 import loadSiteThemeSaga from '../loadSiteThemeSaga';
 import * as actions from '../../../actions';
 import * as cache from '../../../cache';
-import { SagaTestWrapper } from '~/utility/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 jest.mock('../../../cache', () => ({
 	get: jest.fn()

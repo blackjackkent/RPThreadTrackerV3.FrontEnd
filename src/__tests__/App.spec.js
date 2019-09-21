@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '~/utility/helpers.unit';
+import { shallowWithState } from '~/testhelpers/helpers.unit';
 import App from '../App';
 // #endregion imports
 

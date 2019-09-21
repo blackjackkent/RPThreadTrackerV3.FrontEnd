@@ -3,7 +3,7 @@ import { call } from 'redux-saga/effects';
 import submitUserResetPasswordSaga from '../submitUserResetPasswordSaga';
 import * as actions from '../../../actions';
 import * as history from '../../../../utility/history';
-import { SagaTestWrapper } from '~/utility/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 jest.mock('../../../../utility/history', () => ({
 	navigation: {

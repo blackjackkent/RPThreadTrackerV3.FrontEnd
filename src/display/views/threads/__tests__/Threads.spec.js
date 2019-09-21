@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { shallowWithState, initMockDateNow } from '~/utility/helpers.unit';
+import { shallowWithState, initMockDateNow } from '~/testhelpers/helpers.unit';
 import Threads from '../Threads';
 
 initMockDateNow();

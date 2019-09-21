@@ -23,7 +23,8 @@
 		"/src/infrastructure/initSagas",
 		"/src/infrastructure/network",
 		"/src/utility/getQuery",
-		"/src/utility/history"
+		"/src/utility/history",
+		"/src/testhelpers/"
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [
