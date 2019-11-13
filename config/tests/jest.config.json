@@ -1,7 +1,8 @@
 {
 	"rootDir": "../..",
 	"moduleNameMapper": {
-		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
+		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js",
+		"^~/(.*)": "<rootDir>/src/$1"
 	},
 	"setupFilesAfterEnv": [
 		"<rootDir>/node_modules/jest-enzyme/lib/index.js"
@@ -22,7 +23,8 @@
 		"/src/infrastructure/initSagas",
 		"/src/infrastructure/network",
 		"/src/utility/getQuery",
-		"/src/utility/history"
+		"/src/utility/history",
+		"/src/testhelpers/"
 	],
 	"collectCoverage": true,
 	"collectCoverageFrom": [

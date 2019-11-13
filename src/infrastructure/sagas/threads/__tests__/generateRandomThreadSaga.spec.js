@@ -2,7 +2,7 @@ import { select } from 'redux-saga/effects';
 import generateRandomThreadSaga from '../generateRandomThreadSaga';
 import * as actions from '../../../actions';
 import * as selectors from '../../../selectors';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 jest.mock('../../../selectors', () => ({
 	getMyTurnThreads: jest.fn()

@@ -1,4 +1,4 @@
-import columns from '../../../../../infrastructure/constants/columns';
+import columns from '~/infrastructure/constants/columns';
 
 const getTdProps = (onDeleteTrigger, onEditTrigger) => (state, row, column) => ({
 	onClick: (e, handleOriginal) => {

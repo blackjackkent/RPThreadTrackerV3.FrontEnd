@@ -1,11 +1,11 @@
 import { when } from 'jest-when';
-import * as utility from '../../../../../utility';
+import * as utility from '~/utility';
 import getActiveThreadTags from '../getActiveThreadTags';
 
 jest.mock('../../../common', () => ({
 	getAllActiveThreads: jest.fn()
 }));
-jest.mock('../../../../../utility', () => ({
+jest.mock('~/utility', () => ({
 	filterDuplicatesFromArray: jest.fn(),
 	flattenArrayOfArrays: jest.fn(),
 	sortTags: jest.fn((a, b) => a.localeCompare(b))

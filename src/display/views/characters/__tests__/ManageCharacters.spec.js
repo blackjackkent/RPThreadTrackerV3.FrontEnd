@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallowWithState, getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState, getSpecWrapper } from '~/testhelpers/helpers.unit';
 import ManageCharacters from '../ManageCharacters';
 // #endregion imports
 

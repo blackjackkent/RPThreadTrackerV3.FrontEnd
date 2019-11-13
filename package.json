@@ -29,6 +29,7 @@
 		"enzyme-adapter-react-16": "^1.11.2",
 		"eslint": "^5.9.0",
 		"eslint-config-airbnb": "^17.1.0",
+		"eslint-import-resolver-webpack": "^0.11.1",
 		"eslint-plugin-import": "^2.14.0",
 		"eslint-plugin-jsx-a11y": "^6.1.2",
 		"eslint-plugin-react": "^7.11.1",
@@ -118,7 +119,8 @@
 	},
 	"jest": {
 		"moduleNameMapper": {
-			"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js"
+			"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js",
+			"^~/(.*)": "<rootDir>/src/$1"
 		},
 		"setupFilesAfterEnv": [
 			"./node_modules/jest-enzyme/lib/index.js"
@@ -142,6 +144,7 @@
 			"/src/infrastructure/network",
 			"/src/utility/getQuery",
 			"/src/utility/history",
+			"/src/testhelpers/",
 			"/e2e/"
 		],
 		"testURL": "http://localhost/",

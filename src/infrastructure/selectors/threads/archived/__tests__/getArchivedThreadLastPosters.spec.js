@@ -1,11 +1,11 @@
 import { when } from 'jest-when';
-import * as utility from '../../../../../utility';
+import * as utility from '~/utility';
 import getArchivedThreadLastPosters from '../getArchivedThreadLastPosters';
 
 jest.mock('../../../common', () => ({
 	getAllArchivedThreadStatus: jest.fn()
 }));
-jest.mock('../../../../../utility', () => ({
+jest.mock('~/utility', () => ({
 	filterDuplicatesFromArray: jest.fn()
 }));
 

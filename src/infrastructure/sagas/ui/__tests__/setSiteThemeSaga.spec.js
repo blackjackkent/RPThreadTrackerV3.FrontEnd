@@ -1,6 +1,6 @@
 import setSiteThemeSaga from '../setSiteThemeSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 jest.mock('../../../cache', () => ({
 	set: jest.fn()

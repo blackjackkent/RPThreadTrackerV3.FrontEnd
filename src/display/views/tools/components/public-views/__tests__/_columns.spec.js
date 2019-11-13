@@ -1,6 +1,6 @@
 import _columns from '../_columns';
 
-jest.mock('../../../../../shared/columns', () => ({
+jest.mock('~/display/shared/columns', () => ({
 	EditButton: title => ({ title }),
 	DeleteButton: title => ({ title }),
 	PublicViewName: () => ({ title: 'PublicViewName' }),

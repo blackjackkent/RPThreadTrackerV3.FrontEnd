@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as matchers from 'redux-saga-test-plan/matchers';
 import fetchActiveThreadsStatusSaga from '../fetchActiveThreadsStatusSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.TUMBLR_CLIENT_BASE_URL = 'http://test-site/';
 

@@ -1,11 +1,11 @@
 import { when } from 'jest-when';
-import * as utility from '../../../../../utility';
+import * as utility from '~/utility';
 import getArchivedThreadPartners from '../getArchivedThreadPartners';
 
 jest.mock('../../../common', () => ({
 	getAllArchivedThreads: jest.fn()
 }));
-jest.mock('../../../../../utility', () => ({
+jest.mock('~/utility', () => ({
 	filterDuplicatesFromArray: jest.fn()
 }));
 

@@ -93,5 +93,12 @@
 				"allowChildren": false
 			}
 		]
+	},
+	"settings": {
+		"import/resolver": {
+			"webpack": {
+				"config": "webpack.common.js"
+			}
+		}
 	}
 }

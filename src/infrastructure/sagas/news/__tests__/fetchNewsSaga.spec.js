@@ -2,7 +2,7 @@ import axios from 'axios';
 import { call } from 'redux-saga/effects';
 import fetchNewsSaga from '../fetchNewsSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.TUMBLR_CLIENT_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {

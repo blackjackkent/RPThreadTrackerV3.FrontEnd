@@ -1,6 +1,6 @@
 import ReactGA from 'react-ga';
 import analyticsSaga from '../analyticsSaga';
-import { SagaTestWrapper } from '../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 jest.mock('react-ga', () => ({
 	pageview: jest.fn(),

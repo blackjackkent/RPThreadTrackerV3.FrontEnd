@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { initMockDateNow } from '../../../../config/tests/helpers.unit';
+import { initMockDateNow } from '~/testhelpers/helpers.unit';
 import LandingContainer from '../LandingContainer';
 // #endregion imports
 

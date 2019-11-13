@@ -1,4 +1,4 @@
-import * as columns from '../../../../shared/columns';
+import * as columns from '~/display/shared/columns';
 
 export default username => [
 	columns.EditButton('Edit Public View'),

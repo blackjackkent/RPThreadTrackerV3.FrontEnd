@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '~/testhelpers/helpers.unit';
 import MyTurnThreads from '../MyTurnThreads';
 // #endregion imports
 
