@@ -10,27 +10,17 @@ const propTypes = {
 };
 
 const HeaderAsideToggle = (props) => {
-	const {
-		asideToggle,
-		newsUnreadCount
-	} = props;
+	const { asideToggle, newsUnreadCount } = props;
 
 	return (
 		<NavItem>
-			<NavLink
-				data-spec="header-aside-toggle-link"
-				href="#"
-				onClick={asideToggle}
-			>
+			<NavLink data-spec="header-aside-toggle-link" href="#" onClick={asideToggle}>
 				<i className="fas fa-bell" />
-				{
-					newsUnreadCount > 0
-					&& (
-						<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
-							{newsUnreadCount}
-						</Badge>
-					)
-				}
+				{newsUnreadCount > 0 && (
+					<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
+						{newsUnreadCount}
+					</Badge>
+				)}
 			</NavLink>
 		</NavItem>
 	);

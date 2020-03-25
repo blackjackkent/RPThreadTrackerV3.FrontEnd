@@ -3,10 +3,7 @@ import { takeEvery, put } from 'redux-saga/effects';
 import cache from '../../cache';
 import cacheKeys from '../../constants/cacheKeys';
 
-import {
-	SET_SIDEBAR_OPEN,
-	loadSidebarOpenSuccess
-} from '../../actions';
+import { SET_SIDEBAR_OPEN, loadSidebarOpenSuccess } from '../../actions';
 // #endregion imports
 
 function* setSidebarOpen(action) {

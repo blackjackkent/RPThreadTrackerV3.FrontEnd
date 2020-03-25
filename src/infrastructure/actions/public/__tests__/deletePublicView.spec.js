@@ -2,7 +2,9 @@ import * as actions from '../deletePublicView';
 
 describe('deletePublicView', () => {
 	it('should create action with type, data, and analytics', () => {
-		const view = { id: 13569 };
+		const view = {
+			id: 13569
+		};
 		const action = actions.deletePublicView(view);
 		expect(action.type).toBe('DELETE_PUBLIC_VIEW');
 		expect(action.data).toBe(view);

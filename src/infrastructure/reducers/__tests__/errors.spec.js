@@ -1,7 +1,7 @@
 import errors from '../errors';
 import * as actions from '../../actions';
 
-const getState = overrides => ({
+const getState = (overrides) => ({
 	loginError: null,
 	registrationErrors: [],
 	forgotPasswordError: null,
@@ -15,7 +15,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_LOGIN_SUCCESS', () => {
-		const initialState = getState({ loginError: 'Login error' });
+		const initialState = getState({
+			loginError: 'Login error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_LOGIN_SUCCESS
 		};
@@ -23,7 +25,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_LOGIN', () => {
-		const initialState = getState({ loginError: 'Login error' });
+		const initialState = getState({
+			loginError: 'Login error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_LOGIN
 		};
@@ -31,7 +35,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_REGISTRATION_SUCCESS', () => {
-		const initialState = getState({ registrationErrors: ['Registration error'] });
+		const initialState = getState({
+			registrationErrors: ['Registration error']
+		});
 		const action = {
 			type: actions.SUBMIT_USER_REGISTRATION_SUCCESS
 		};
@@ -39,7 +45,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_REGISTRATION', () => {
-		const initialState = getState({ registrationErrors: ['Registration error'] });
+		const initialState = getState({
+			registrationErrors: ['Registration error']
+		});
 		const action = {
 			type: actions.SUBMIT_USER_REGISTRATION
 		};
@@ -47,7 +55,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_FORGOT_PASSWORD_SUCCESS', () => {
-		const initialState = getState({ forgotPasswordError: 'Forgot password error' });
+		const initialState = getState({
+			forgotPasswordError: 'Forgot password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_FORGOT_PASSWORD_SUCCESS
 		};
@@ -55,7 +65,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_FORGOT_PASSWORD', () => {
-		const initialState = getState({ forgotPasswordError: 'Forgot password error' });
+		const initialState = getState({
+			forgotPasswordError: 'Forgot password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_FORGOT_PASSWORD
 		};
@@ -63,7 +75,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_RESET_PASSWORD_SUCCESS', () => {
-		const initialState = getState({ resetPasswordError: 'Reset password error' });
+		const initialState = getState({
+			resetPasswordError: 'Reset password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_RESET_PASSWORD_SUCCESS
 		};
@@ -71,7 +85,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_RESET_PASSWORD', () => {
-		const initialState = getState({ resetPasswordError: 'Reset password error' });
+		const initialState = getState({
+			resetPasswordError: 'Reset password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_RESET_PASSWORD
 		};
@@ -79,7 +95,9 @@ describe('action handling', () => {
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_LOGIN_FAILURE', () => {
-		const expectedState = getState({ loginError: 'Login error' });
+		const expectedState = getState({
+			loginError: 'Login error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_LOGIN_FAILURE,
 			data: 'Login error'
@@ -88,7 +106,9 @@ describe('action handling', () => {
 		expect(result).toEqual(expectedState);
 	});
 	it('should handle SUBMIT_USER_REGISTRATION_FAILURE', () => {
-		const expectedState = getState({ registrationErrors: ['Registration error'] });
+		const expectedState = getState({
+			registrationErrors: ['Registration error']
+		});
 		const action = {
 			type: actions.SUBMIT_USER_REGISTRATION_FAILURE,
 			data: ['Registration error']
@@ -97,7 +117,9 @@ describe('action handling', () => {
 		expect(result).toEqual(expectedState);
 	});
 	it('should handle SUBMIT_USER_FORGOT_PASSWORD_FAILURE', () => {
-		const expectedState = getState({ forgotPasswordError: 'Forgot password error' });
+		const expectedState = getState({
+			forgotPasswordError: 'Forgot password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_FORGOT_PASSWORD_FAILURE,
 			data: 'Forgot password error'
@@ -106,7 +128,9 @@ describe('action handling', () => {
 		expect(result).toEqual(expectedState);
 	});
 	it('should handle SUBMIT_USER_RESET_PASSWORD_FAILURE', () => {
-		const expectedState = getState({ resetPasswordError: 'Reset password error' });
+		const expectedState = getState({
+			resetPasswordError: 'Reset password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_RESET_PASSWORD_FAILURE,
 			data: 'Reset password error'
@@ -115,7 +139,9 @@ describe('action handling', () => {
 		expect(result).toEqual(expectedState);
 	});
 	it('should handle SUBMIT_USER_RESET_PASSWORD_FAILURE', () => {
-		const expectedState = getState({ resetPasswordError: 'Reset password error' });
+		const expectedState = getState({
+			resetPasswordError: 'Reset password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_RESET_PASSWORD_FAILURE,
 			data: 'Reset password error'
@@ -124,7 +150,9 @@ describe('action handling', () => {
 		expect(result).toEqual(expectedState);
 	});
 	it('should handle SUBMIT_USER_LOGOUT', () => {
-		const initialState = getState({ resetPasswordError: 'Reset password error' });
+		const initialState = getState({
+			resetPasswordError: 'Reset password error'
+		});
 		const action = {
 			type: actions.SUBMIT_USER_LOGOUT
 		};

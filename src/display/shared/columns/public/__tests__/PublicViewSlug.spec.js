@@ -10,7 +10,9 @@ describe('data', () => {
 		expect(column.accessor).toBe('slug');
 	});
 	it('should display cell with URL, slug, and icon', () => {
-		const cellJsx = column.Cell({ value: 'my-slug' });
+		const cellJsx = column.Cell({
+			value: 'my-slug'
+		});
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('a')).toHaveProp('href', '/public/test-user/my-slug');
 		expect(cellElement.find('a')).toHaveText('my-slug');

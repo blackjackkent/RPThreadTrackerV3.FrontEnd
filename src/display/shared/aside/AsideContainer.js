@@ -12,12 +12,14 @@ const propTypes = {
 
 function mapStateToProps(state) {
 	const labeledNewsItems = markUnreadNews(state);
-	return { news: labeledNewsItems };
+	return {
+		news: labeledNewsItems
+	};
 }
 
 const AsideContainer = (props) => {
 	const { news } = props;
-	return (<Aside news={news} />);
+	return <Aside news={news} />;
 };
 
 AsideContainer.propTypes = propTypes;

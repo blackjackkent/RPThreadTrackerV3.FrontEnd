@@ -8,7 +8,7 @@ const getThreadDataFromExtensionQuery = (characters) => {
 	if (!characters.length) {
 		return thread;
 	}
-	const character = characters.find(c => c.urlIdentifier === query.tumblrBlogShortname);
+	const character = characters.find((c) => c.urlIdentifier === query.tumblrBlogShortname);
 	if (!character) {
 		thread.characterId = characters[0].characterId;
 	} else {

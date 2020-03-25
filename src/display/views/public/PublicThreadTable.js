@@ -23,12 +23,7 @@ function getData(threads) {
 }
 
 const PublicThreadTable = (props) => {
-	const {
-		threads,
-		columns,
-		view,
-		isLoadingIconVisible
-	} = props;
+	const { threads, columns, view, isLoadingIconVisible } = props;
 	return (
 		<ReactTableContainer>
 			<ReactTable

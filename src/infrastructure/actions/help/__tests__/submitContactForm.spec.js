@@ -2,7 +2,9 @@ import * as actions from '../submitContactForm';
 
 describe('submitContactForm', () => {
 	it('should create action with type, data, and analytics', () => {
-		const form = { message: 'Test message.' };
+		const form = {
+			message: 'Test message.'
+		};
 		const action = actions.submitContactForm(form);
 		expect(action.type).toBe('SUBMIT_CONTACT_FORM');
 		expect(action.data).toBe(form);

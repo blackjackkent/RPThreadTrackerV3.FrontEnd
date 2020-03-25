@@ -8,7 +8,9 @@ global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
 	describe('update', () => {
 		it('should dispatch success action on successful PUT when shouldSkipViewUpdate is false', () => {
-			const data = { lastNewsReadDate: Date.now() };
+			const data = {
+				lastNewsReadDate: Date.now()
+			};
 			const saga = new SagaTestWrapper(updateUserSettingsSaga);
 			saga.setup(call(axios.put, 'http://test-site/api/profilesettings', data), {});
 			saga.expectPut({
@@ -21,7 +23,9 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed PUT when shouldSkipViewUpdate is false', () => {
-			const data = { email: 'test@test.com' };
+			const data = {
+				email: 'test@test.com'
+			};
 			const saga = new SagaTestWrapper(updateUserSettingsSaga);
 			saga.setupError(call(axios.put, 'http://test-site/api/profilesettings', data), 'Error');
 			saga.expectPut({
@@ -33,7 +37,9 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed PUT when shouldSkipViewUpdate is true', () => {
-			const data = { email: 'test@test.com' };
+			const data = {
+				email: 'test@test.com'
+			};
 			const saga = new SagaTestWrapper(updateUserSettingsSaga);
 			saga.setupError(call(axios.put, 'http://test-site/api/profilesettings', data), 'Error');
 			saga.expectPut({
@@ -46,16 +52,20 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should do nothing on successful PUT when shouldSkipViewUpdate is true', () => {
-			const data = { email: 'test@test.com' };
+			const data = {
+				email: 'test@test.com'
+			};
 			const saga = new SagaTestWrapper(updateUserSettingsSaga);
 			saga.setup(call(axios.put, 'http://test-site/api/profilesettings', data), {});
-			return saga.execute({
-				type: actions.UPDATE_USER_SETTINGS,
-				data,
-				shouldSkipViewUpdate: true
-			}).then((result) => {
-				expect(result.effects.put).toBeUndefined();
-			});
+			return saga
+				.execute({
+					type: actions.UPDATE_USER_SETTINGS,
+					data,
+					shouldSkipViewUpdate: true
+				})
+				.then((result) => {
+					expect(result.effects.put).toBeUndefined();
+				});
 		});
 	});
 });

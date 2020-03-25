@@ -1,7 +1,7 @@
 import ui from '../ui';
 import * as actions from '../../actions';
 
-const getState = overrides => ({
+const getState = (overrides) => ({
 	isNewsAsideOpen: false,
 	isSidebarOpen: true,
 	isHeaderProfileDropdownOpen: false,
@@ -101,7 +101,12 @@ describe('action handling', () => {
 			type: actions.OPEN_UPSERT_CHARACTER_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertCharacterModalOpen).toBe(true);
 		expect(result2.isUpsertCharacterModalOpen).toBe(true);
 	});
@@ -110,7 +115,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_UPSERT_CHARACTER_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertCharacterModalOpen).toBe(false);
 		expect(result2.isUpsertCharacterModalOpen).toBe(false);
 	});
@@ -119,7 +129,12 @@ describe('action handling', () => {
 			type: actions.UPSERT_CHARACTER
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertCharacterModalOpen).toBe(false);
 		expect(result2.isUpsertCharacterModalOpen).toBe(false);
 	});
@@ -128,7 +143,12 @@ describe('action handling', () => {
 			type: actions.OPEN_UPSERT_PUBLIC_VIEW_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertPublicViewModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertPublicViewModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertPublicViewModalOpen).toBe(true);
 		expect(result2.isUpsertPublicViewModalOpen).toBe(true);
 	});
@@ -137,7 +157,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_UPSERT_PUBLIC_VIEW_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertPublicViewModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertPublicViewModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertPublicViewModalOpen).toBe(false);
 		expect(result2.isUpsertPublicViewModalOpen).toBe(false);
 	});
@@ -146,7 +171,12 @@ describe('action handling', () => {
 			type: actions.UPSERT_PUBLIC_VIEW
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertPublicViewModalOpen).toBe(false);
 		expect(result2.isUpsertPublicViewModalOpen).toBe(false);
 	});
@@ -155,7 +185,12 @@ describe('action handling', () => {
 			type: actions.OPEN_UPSERT_THREAD_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertThreadModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertThreadModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertThreadModalOpen).toBe(true);
 		expect(result2.isUpsertThreadModalOpen).toBe(true);
 	});
@@ -164,7 +199,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_UPSERT_THREAD_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertThreadModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertThreadModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertThreadModalOpen).toBe(false);
 		expect(result2.isUpsertThreadModalOpen).toBe(false);
 	});
@@ -173,7 +213,12 @@ describe('action handling', () => {
 			type: actions.UPSERT_THREAD
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUpsertThreadModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUpsertThreadModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUpsertThreadModalOpen).toBe(false);
 		expect(result2.isUpsertThreadModalOpen).toBe(false);
 	});
@@ -182,7 +227,12 @@ describe('action handling', () => {
 			type: actions.OPEN_UNTRACK_THREAD_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUntrackThreadModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUntrackThreadModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUntrackThreadModalOpen).toBe(true);
 		expect(result2.isUntrackThreadModalOpen).toBe(true);
 	});
@@ -191,7 +241,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_UNTRACK_THREAD_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUntrackThreadModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUntrackThreadModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUntrackThreadModalOpen).toBe(false);
 		expect(result2.isUntrackThreadModalOpen).toBe(false);
 	});
@@ -200,7 +255,12 @@ describe('action handling', () => {
 			type: actions.UNTRACK_THREAD
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUntrackThreadModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUntrackThreadModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUntrackThreadModalOpen).toBe(false);
 		expect(result2.isUntrackThreadModalOpen).toBe(false);
 	});
@@ -209,7 +269,12 @@ describe('action handling', () => {
 			type: actions.OPEN_BULK_UNTRACK_THREADS_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkUntrackThreadsModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkUntrackThreadsModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkUntrackThreadsModalOpen).toBe(true);
 		expect(result2.isBulkUntrackThreadsModalOpen).toBe(true);
 	});
@@ -218,7 +283,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_BULK_UNTRACK_THREADS_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkUntrackThreadsModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkUntrackThreadsModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkUntrackThreadsModalOpen).toBe(false);
 		expect(result2.isBulkUntrackThreadsModalOpen).toBe(false);
 	});
@@ -227,7 +297,12 @@ describe('action handling', () => {
 			type: actions.BULK_UNTRACK_THREADS
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkUntrackThreadsModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkUntrackThreadsModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkUntrackThreadsModalOpen).toBe(false);
 		expect(result2.isBulkUntrackThreadsModalOpen).toBe(false);
 	});
@@ -236,7 +311,12 @@ describe('action handling', () => {
 			type: actions.OPEN_UNTRACK_CHARACTER_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUntrackCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUntrackCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUntrackCharacterModalOpen).toBe(true);
 		expect(result2.isUntrackCharacterModalOpen).toBe(true);
 	});
@@ -245,7 +325,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_UNTRACK_CHARACTER_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUntrackCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUntrackCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUntrackCharacterModalOpen).toBe(false);
 		expect(result2.isUntrackCharacterModalOpen).toBe(false);
 	});
@@ -254,7 +339,12 @@ describe('action handling', () => {
 			type: actions.UNTRACK_CHARACTER
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isUntrackCharacterModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isUntrackCharacterModalOpen: true
+			}),
+			action
+		);
 		expect(result.isUntrackCharacterModalOpen).toBe(false);
 		expect(result2.isUntrackCharacterModalOpen).toBe(false);
 	});
@@ -263,7 +353,12 @@ describe('action handling', () => {
 			type: actions.OPEN_DELETE_PUBLIC_VIEW_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isDeletePublicViewModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isDeletePublicViewModalOpen: true
+			}),
+			action
+		);
 		expect(result.isDeletePublicViewModalOpen).toBe(true);
 		expect(result2.isDeletePublicViewModalOpen).toBe(true);
 	});
@@ -272,7 +367,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_DELETE_PUBLIC_VIEW_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isDeletePublicViewModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isDeletePublicViewModalOpen: true
+			}),
+			action
+		);
 		expect(result.isDeletePublicViewModalOpen).toBe(false);
 		expect(result2.isDeletePublicViewModalOpen).toBe(false);
 	});
@@ -281,7 +381,12 @@ describe('action handling', () => {
 			type: actions.DELETE_PUBLIC_VIEW
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isDeletePublicViewModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isDeletePublicViewModalOpen: true
+			}),
+			action
+		);
 		expect(result.isDeletePublicViewModalOpen).toBe(false);
 		expect(result2.isDeletePublicViewModalOpen).toBe(false);
 	});
@@ -290,7 +395,12 @@ describe('action handling', () => {
 			type: actions.OPEN_BULK_UPDATE_TAG_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkUpdateTagModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkUpdateTagModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkUpdateTagModalOpen).toBe(true);
 		expect(result2.isBulkUpdateTagModalOpen).toBe(true);
 	});
@@ -299,7 +409,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_BULK_UPDATE_TAG_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkUpdateTagModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkUpdateTagModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkUpdateTagModalOpen).toBe(false);
 		expect(result2.isBulkUpdateTagModalOpen).toBe(false);
 	});
@@ -308,7 +423,12 @@ describe('action handling', () => {
 			type: actions.BULK_UPDATE_TAG
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkUpdateTagModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkUpdateTagModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkUpdateTagModalOpen).toBe(false);
 		expect(result2.isBulkUpdateTagModalOpen).toBe(false);
 	});
@@ -317,7 +437,12 @@ describe('action handling', () => {
 			type: actions.OPEN_BULK_DELETE_TAG_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkDeleteTagModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkDeleteTagModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkDeleteTagModalOpen).toBe(true);
 		expect(result2.isBulkDeleteTagModalOpen).toBe(true);
 	});
@@ -326,7 +451,12 @@ describe('action handling', () => {
 			type: actions.CLOSE_BULK_DELETE_TAG_MODAL
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkDeleteTagModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkDeleteTagModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkDeleteTagModalOpen).toBe(false);
 		expect(result2.isBulkDeleteTagModalOpen).toBe(false);
 	});
@@ -335,7 +465,12 @@ describe('action handling', () => {
 			type: actions.BULK_DELETE_TAG
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isBulkDeleteTagModalOpen: true }), action);
+		const result2 = ui(
+			getState({
+				isBulkDeleteTagModalOpen: true
+			}),
+			action
+		);
 		expect(result.isBulkDeleteTagModalOpen).toBe(false);
 		expect(result2.isBulkDeleteTagModalOpen).toBe(false);
 	});
@@ -344,7 +479,12 @@ describe('action handling', () => {
 			type: actions.SET_MAINTENANCE_MODE_ON
 		};
 		const result = ui(getState(), action);
-		const result2 = ui(getState({ isMaintenanceMode: true }), action);
+		const result2 = ui(
+			getState({
+				isMaintenanceMode: true
+			}),
+			action
+		);
 		expect(result.isMaintenanceMode).toBe(true);
 		expect(result2.isMaintenanceMode).toBe(true);
 	});
@@ -360,11 +500,14 @@ describe('action handling', () => {
 		const action = {
 			type: actions.SUBMIT_USER_LOGOUT
 		};
-		const result = ui(getState({
-			activeSettingsTab: 'test-tab-settings',
-			isMaintenanceMode: true,
-			isBulkUntrackThreadsModalOpen: true
-		}), action);
+		const result = ui(
+			getState({
+				activeSettingsTab: 'test-tab-settings',
+				isMaintenanceMode: true,
+				isBulkUntrackThreadsModalOpen: true
+			}),
+			action
+		);
 		expect(result).toEqual(getState());
 	});
 });

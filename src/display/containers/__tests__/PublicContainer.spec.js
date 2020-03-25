@@ -6,10 +6,10 @@ import PublicContainer from '../PublicContainer';
 
 // #region mocks
 jest.mock('../../views/public/Public', () => () => 'Public');
-jest.mock('../../../infrastructure/withPageViewTracker', () => WrappedComponent => WrappedComponent);
+jest.mock('../../../infrastructure/withPageViewTracker', () => (WrappedComponent) => WrappedComponent);
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	match: {
 		params: {
 			slug: 'my-slug'
@@ -22,7 +22,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<PublicContainer {...props} />);
+			const jsx = <PublicContainer {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});

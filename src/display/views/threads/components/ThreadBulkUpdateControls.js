@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Form, Button, InputGroup, Input
-} from 'reactstrap';
+import { Form, Button, InputGroup, Input } from 'reactstrap';
 import CleanSelect from '../../../shared/styled/CleanSelect';
 
 const propTypes = {
@@ -19,7 +17,9 @@ const propTypes = {
 class ThreadBulkUpdateControls extends React.Component {
 	constructor() {
 		super();
-		this.state = { action: '' };
+		this.state = {
+			action: ''
+		};
 		this.submitBulkAction = this.submitBulkAction.bind(this);
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
@@ -53,18 +53,10 @@ class ThreadBulkUpdateControls extends React.Component {
 	}
 
 	render() {
-		const {
-			isArchive,
-			isQueue,
-			isAllThreads,
-			selectedThreadCount
-		} = this.props;
+		const { isArchive, isQueue, isAllThreads, selectedThreadCount } = this.props;
 		return (
 			<div className="thread-bulk-update-controls">
-				<Form
-					onSubmit={this.submitBulkAction}
-					data-spec="thread-bulk-update-controls-form"
-				>
+				<Form onSubmit={this.submitBulkAction} data-spec="thread-bulk-update-controls-form">
 					<CleanSelect>
 						<InputGroup>
 							<Input
@@ -76,8 +68,14 @@ class ThreadBulkUpdateControls extends React.Component {
 								onChange={this.handleInputChange}
 							>
 								<option value="">Bulk Actions</option>
-								{!isArchive && !isAllThreads && <option value="toggle-queued">{isQueue ? 'Unmark' : 'Mark'} Selected Threads Queued</option>}
-								<option value="toggle-archived">{isArchive ? 'Unarchive' : 'Archive'} Selected Threads</option>
+								{!isArchive && !isAllThreads && (
+									<option value="toggle-queued">
+										{isQueue ? 'Unmark' : 'Mark'} Selected Threads Queued
+									</option>
+								)}
+								<option value="toggle-archived">
+									{isArchive ? 'Unarchive' : 'Archive'} Selected Threads
+								</option>
 								<option value="untrack">Untrack Selected Threads</option>
 							</Input>
 							<Button

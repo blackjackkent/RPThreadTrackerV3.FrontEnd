@@ -24,14 +24,16 @@ const PublicThreadFilterSelect = (props) => {
 					id="tag"
 					className="clean-select"
 					value={publicThreadFilter}
-					onChange={e => setPublicThreadFilter(e.target.value)}
+					onChange={(e) => setPublicThreadFilter(e.target.value)}
 				>
 					<option value={publicThreadFilterKeys.ALL}>Show All</option>
 					<option value={publicThreadFilterKeys.MY_TURN}>Show Only My Turn</option>
 					<option value={publicThreadFilterKeys.PARTNERS_TURN}>
 						Show Only Partner&apos;s Turn
 					</option>
-					<option value={publicThreadFilterKeys.QUEUED}>Show Only Currently Queued</option>
+					<option value={publicThreadFilterKeys.QUEUED}>
+						Show Only Currently Queued
+					</option>
 					<option value={publicThreadFilterKeys.ARCHIVED}>Show Only Archived</option>
 				</Input>
 			</CleanSelect>

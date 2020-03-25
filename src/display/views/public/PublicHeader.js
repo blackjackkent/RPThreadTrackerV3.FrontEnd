@@ -17,16 +17,14 @@ const defaultProps = {
 };
 
 const PublicHeader = (props) => {
-	const {
-		slug,
-		title,
-		isLoadingIconVisible
-	} = props;
+	const { slug, title, isLoadingIconVisible } = props;
 
 	return (
 		<Row className="public-header">
 			<Col>
-				<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER.COM</Link>
+				<Link href="/" className="navbar-brand" to="/">
+					RPTHREADTRACKER.COM
+				</Link>
 			</Col>
 			<Col className="text-right">
 				{isLoadingIconVisible && (
@@ -34,7 +32,9 @@ const PublicHeader = (props) => {
 						<LoadingIndicator className="invert" />
 					</div>
 				)}
-				<h1 href={`/public/${slug}`} className="navbar-brand">{title}</h1>
+				<h1 href={`/public/${slug}`} className="navbar-brand">
+					{title}
+				</h1>
 			</Col>
 		</Row>
 	);

@@ -5,7 +5,7 @@ import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import ThreadBulkUpdateControls from '../ThreadBulkUpdateControls';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	isArchive: false,
 	isQueue: false,
 	isAllThreads: false,
@@ -20,25 +20,31 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot on archive page', () => {
-			const props = createTestProps({ isArchive: true });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const props = createTestProps({
+				isArchive: true
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot on queue page', () => {
-			const props = createTestProps({ isQueue: true });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const props = createTestProps({
+				isQueue: true
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot on all threads page', () => {
-			const props = createTestProps({ isAllThreads: true });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const props = createTestProps({
+				isAllThreads: true
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -46,14 +52,16 @@ describe('rendering', () => {
 	describe('content', () => {
 		it('should have enabled button when items selected', () => {
 			const props = createTestProps();
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'thread-bulk-update-controls-submit-button');
 			expect(button).not.toBeDisabled();
 		});
 		it('should have disabled button when no items selected', () => {
-			const props = createTestProps({ selectedThreadCount: 0 });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const props = createTestProps({
+				selectedThreadCount: 0
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'thread-bulk-update-controls-submit-button');
 			expect(button).toBeDisabled();
@@ -66,10 +74,19 @@ describe('behavior', () => {
 		it('should trigger mark-queued bulk action when mark-queued option selected', () => {
 			const bulkToggleThreadsAreMarkedQueued = jest.fn();
 			const executeBulkAction = jest.fn();
-			const changeEvent = { target: { value: 'toggle-queued' } };
-			const submitEvent = { preventDefault: jest.fn() };
-			const props = createTestProps({ bulkToggleThreadsAreMarkedQueued, executeBulkAction });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const changeEvent = {
+				target: {
+					value: 'toggle-queued'
+				}
+			};
+			const submitEvent = {
+				preventDefault: jest.fn()
+			};
+			const props = createTestProps({
+				bulkToggleThreadsAreMarkedQueued,
+				executeBulkAction
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			const select = getSpecWrapper(element, 'thread-bulk-update-controls-select');
 			const form = getSpecWrapper(element, 'thread-bulk-update-controls-form');
@@ -81,10 +98,19 @@ describe('behavior', () => {
 		it('should trigger archive bulk action when archive option selected', () => {
 			const bulkToggleThreadsAreArchived = jest.fn();
 			const executeBulkAction = jest.fn();
-			const changeEvent = { target: { value: 'toggle-archived' } };
-			const submitEvent = { preventDefault: jest.fn() };
-			const props = createTestProps({ bulkToggleThreadsAreArchived, executeBulkAction });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const changeEvent = {
+				target: {
+					value: 'toggle-archived'
+				}
+			};
+			const submitEvent = {
+				preventDefault: jest.fn()
+			};
+			const props = createTestProps({
+				bulkToggleThreadsAreArchived,
+				executeBulkAction
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			const select = getSpecWrapper(element, 'thread-bulk-update-controls-select');
 			const form = getSpecWrapper(element, 'thread-bulk-update-controls-form');
@@ -96,10 +122,19 @@ describe('behavior', () => {
 		it('should trigger untrack bulk action when untrack option selected', () => {
 			const openBulkUntrackThreadsModal = jest.fn();
 			const executeBulkAction = jest.fn();
-			const changeEvent = { target: { value: 'untrack' } };
-			const submitEvent = { preventDefault: jest.fn() };
-			const props = createTestProps({ openBulkUntrackThreadsModal, executeBulkAction });
-			const jsx = (<ThreadBulkUpdateControls {...props} />);
+			const changeEvent = {
+				target: {
+					value: 'untrack'
+				}
+			};
+			const submitEvent = {
+				preventDefault: jest.fn()
+			};
+			const props = createTestProps({
+				openBulkUntrackThreadsModal,
+				executeBulkAction
+			});
+			const jsx = <ThreadBulkUpdateControls {...props} />;
 			const element = shallow(jsx);
 			const select = getSpecWrapper(element, 'thread-bulk-update-controls-select');
 			const form = getSpecWrapper(element, 'thread-bulk-update-controls-form');

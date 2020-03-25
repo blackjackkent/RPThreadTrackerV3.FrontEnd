@@ -1,6 +1,4 @@
-import {
-	takeEvery, put, call, all
-} from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
@@ -36,7 +34,7 @@ function* bulkUntrackThreads(action) {
 	try {
 		const threads = action.data;
 		const tasks = [];
-		threads.map(t => tasks.push(call(untrackThread, t)));
+		threads.map((t) => tasks.push(call(untrackThread, t)));
 		yield all(tasks);
 		yield all([
 			put(bulkUntrackThreadsSuccess()),

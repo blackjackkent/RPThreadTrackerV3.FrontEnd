@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-	Row, Col
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actions from '../../../infrastructure/actions';
@@ -12,7 +10,10 @@ import getColumns from './_columns';
 import * as selectors from '../../../infrastructure/selectors';
 import FooterContainer from '../../shared/footer/FooterContainer';
 import Style from './_styles';
-import { legacyPublicSlugs, buildLegacyView } from '../../../infrastructure/constants/legacyPublicValues';
+import {
+	legacyPublicSlugs,
+	buildLegacyView
+} from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
 
 const propTypes = {
@@ -71,7 +72,11 @@ class Public extends Component {
 		} = this.props;
 		return (
 			<Style className="animated fadeIn">
-				<PublicHeader title={view.name} slug={slug} isLoadingIconVisible={isLoadingIconVisible} />
+				<PublicHeader
+					title={view.name}
+					slug={slug}
+					isLoadingIconVisible={isLoadingIconVisible}
+				/>
 				<PublicThreadFilterSelect
 					setPublicThreadFilter={setPublicThreadFilter}
 					publicThreadFilter={publicThreadFilter}

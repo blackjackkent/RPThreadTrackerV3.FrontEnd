@@ -22,10 +22,7 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const {
-		characters,
-		activeThreads
-	} = state;
+	const { characters, activeThreads } = state;
 	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
 	const threadCounts = selectors.getThreadCountsByCharacter(state);
 	return {
@@ -43,9 +40,7 @@ class ManageCharacters extends Component {
 	}
 
 	componentDidMount() {
-		const {
-			characters, activeThreads, fetchCharacters, fetchActiveThreads
-		} = this.props;
+		const { characters, activeThreads, fetchCharacters, fetchActiveThreads } = this.props;
 		if (!characters || !characters.length) {
 			fetchCharacters();
 		}
@@ -57,7 +52,8 @@ class ManageCharacters extends Component {
 	toggleCharacterIsOnHiatus(character) {
 		const { upsertCharacter } = this.props;
 		const updatedCharacter = {
-			...character, isOnHiatus: !character.isOnHiatus
+			...character,
+			isOnHiatus: !character.isOnHiatus
 		};
 		upsertCharacter(updatedCharacter);
 	}

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import PublicThreadFilterSelect from '../PublicThreadFilterSelect';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	publicThreadFilter: 'ALL',
 	setPublicThreadFilter: jest.fn(),
 	...propOverrides
@@ -22,9 +22,15 @@ describe('behavior', () => {
 	describe('setPublicThreadFilter', () => {
 		it('should be triggered on select change', () => {
 			const setPublicThreadFilter = jest.fn();
-			const event = { target: { value: 'My Turn' } };
-			const props = createTestProps({ setPublicThreadFilter });
-			const jsx = (<PublicThreadFilterSelect {...props} />);
+			const event = {
+				target: {
+					value: 'My Turn'
+				}
+			};
+			const props = createTestProps({
+				setPublicThreadFilter
+			});
+			const jsx = <PublicThreadFilterSelect {...props} />;
 			const element = shallow(jsx);
 			const select = element.find('Input');
 			select.simulate('change', event);

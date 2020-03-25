@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
-	TabPane, Form, FormGroup, Col, Label, Row, Input, Button, CardHeader, CardBody
+	TabPane,
+	Form,
+	FormGroup,
+	Col,
+	Label,
+	Row,
+	Input,
+	Button,
+	CardHeader,
+	CardBody
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 import SwitchLabel from '../../../shared/styled/SwitchLabel';
@@ -23,7 +32,7 @@ class ExportThreadsPane extends Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, checked } = target;
-		this.setState(prevState => Object.assign({}, prevState, {
+		this.setState((prevState) => Object.assign({}, prevState, {
 			[name]: checked
 		}));
 	}
@@ -35,9 +44,7 @@ class ExportThreadsPane extends Component {
 			<TabPane tabId="export">
 				<Card>
 					<CardHeader>
-						<i
-							className="fas fa-download"
-						/> Export Threads
+						<i className="fas fa-download" /> Export Threads
 					</CardHeader>
 					<CardBody className="card-body">
 						<Form
@@ -47,12 +54,19 @@ class ExportThreadsPane extends Component {
 							className="form-horizontal"
 						>
 							<p>
-								Use the button below to export an Excel file{' '}
-								of your current threads in the database.
+								Use the button below to export an Excel file of your current threads
+								in the database.
 							</p>
 							<FormGroup row>
-								<Col md={{ offset: 2, size: 6 }}>
-									<Label htmlFor="current-password">Include Archived Threads:</Label>
+								<Col
+									md={{
+										offset: 2,
+										size: 6
+									}}
+								>
+									<Label htmlFor="current-password">
+										Include Archived Threads:
+									</Label>
 								</Col>
 								<Col>
 									<SwitchLabel
@@ -67,14 +81,25 @@ class ExportThreadsPane extends Component {
 											onChange={this.handleInputChange}
 											name="includeArchived"
 										/>
-										<span className="switch-label" data-on="Yes" data-off="No" />
+										<span
+											className="switch-label"
+											data-on="Yes"
+											data-off="No"
+										/>
 										<span className="switch-handle" />
 									</SwitchLabel>
 								</Col>
 							</FormGroup>
 							<FormGroup row>
-								<Col md={{ offset: 2, size: 6 }}>
-									<Label htmlFor="current-password">Include Characters on Hiatus:</Label>
+								<Col
+									md={{
+										offset: 2,
+										size: 6
+									}}
+								>
+									<Label htmlFor="current-password">
+										Include Characters on Hiatus:
+									</Label>
 								</Col>
 								<Col>
 									<SwitchLabel
@@ -89,7 +114,11 @@ class ExportThreadsPane extends Component {
 											onChange={this.handleInputChange}
 											name="includeHiatused"
 										/>
-										<span className="switch-label" data-on="Yes" data-off="No" />
+										<span
+											className="switch-label"
+											data-on="Yes"
+											data-off="No"
+										/>
 										<span className="switch-handle" />
 									</SwitchLabel>
 								</Col>
@@ -101,8 +130,8 @@ class ExportThreadsPane extends Component {
 									data-spec="export-threads-form-submit-button"
 									type="submit"
 									color="primary"
-									onClick={
-										() => onExportRequest(includeHiatused, includeArchived)}
+									onClick={() => onExportRequest(includeHiatused, includeArchived)
+									}
 								>
 									Export
 								</Button>

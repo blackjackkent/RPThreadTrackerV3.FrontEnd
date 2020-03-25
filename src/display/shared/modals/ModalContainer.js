@@ -48,14 +48,7 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const {
-		ui,
-		characterToEdit,
-		threadToEdit,
-		bulkThreadsToEdit,
-		viewToEdit,
-		tagToEdit
-	} = state;
+	const { ui, characterToEdit, threadToEdit, bulkThreadsToEdit, viewToEdit, tagToEdit } = state;
 	const sortedCharacters = selectors.getCharactersSortedByIdentifier(state);
 	const sortedTags = selectors.getTagsSortedByTagText(state);
 	return {
@@ -148,7 +141,9 @@ const ModalContainer = (props) => {
 				data={threadToEdit}
 				headerText="Confirm Thread Untracking"
 				bodyText={(
-					<span>Are you sure you want to untrack <strong>{threadToEdit.userTitle}</strong>?</span>
+					<span>
+						Are you sure you want to untrack <strong>{threadToEdit.userTitle}</strong>?
+					</span>
 				)}
 			/>
 			<GenericConfirmationModal
@@ -170,12 +165,14 @@ const ModalContainer = (props) => {
 				data={characterToEdit}
 				headerText="Confirm Character Untracking"
 				bodyText={(
-					<span>Are you sure you want to untrack{' '}
+					<span>
+						Are you sure you want to untrack{' '}
 						<strong>
 							{characterToEdit.characterName
 								? characterToEdit.characterName
 								: characterToEdit.urlIdentifier}
-						</strong>? This will also untrack all threads associated with this character.
+						</strong>
+						? This will also untrack all threads associated with this character.
 					</span>
 				)}
 			/>
@@ -187,7 +184,11 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={viewToEdit}
 				headerText="Confirm Public View Deletion"
-				bodyText={<span>Are you sure you want to delete <strong>{viewToEdit.name}</strong>?</span>}
+				bodyText={(
+					<span>
+						Are you sure you want to delete <strong>{viewToEdit.name}</strong>?
+					</span>
+				)}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkUpdateTagModalOpen}
@@ -198,10 +199,10 @@ const ModalContainer = (props) => {
 				data={tagToEdit}
 				headerText="Confirm Updated Tag Value"
 				bodyText={(
-					<span>Are you sure you want to change the tag{' '}
+					<span>
+						Are you sure you want to change the tag{' '}
 						<strong>{tagToEdit.selectedTag}</strong> to{' '}
-						<strong>{tagToEdit.updatedValue}</strong> on{' '}
-						all your threads?
+						<strong>{tagToEdit.updatedValue}</strong> on all your threads?
 					</span>
 				)}
 			/>
@@ -214,9 +215,9 @@ const ModalContainer = (props) => {
 				data={tagToEdit}
 				headerText="Confirm Deleted Tag Value"
 				bodyText={(
-					<span>Are you sure you want to remove the tag{' '}
-						<strong>{tagToEdit.selectedTag}</strong>{' '}
-						from all your threads?
+					<span>
+						Are you sure you want to remove the tag{' '}
+						<strong>{tagToEdit.selectedTag}</strong> from all your threads?
 					</span>
 				)}
 			/>

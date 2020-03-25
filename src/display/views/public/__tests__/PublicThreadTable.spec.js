@@ -4,9 +4,22 @@ import { shallow } from 'enzyme';
 import PublicThreadTable from '../PublicThreadTable';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	columns: [{}, {}, {}],
-	threads: [{ thread: { threadId: 1, userTitle: 'Title 1' } }, { thread: { threadId: 2, userTitle: 'Title 2' } }],
+	threads: [
+		{
+			thread: {
+				threadId: 1,
+				userTitle: 'Title 1'
+			}
+		},
+		{
+			thread: {
+				threadId: 2,
+				userTitle: 'Title 2'
+			}
+		}
+	],
 	view: {
 		id: 1,
 		name: 'Test View',
@@ -25,7 +38,11 @@ describe('rendering', () => {
 		});
 		it('should render valid snapshot when loading', () => {
 			const element = shallow(
-				<PublicThreadTable {...createTestProps({ isLoadingIconVisible: true })} />
+				<PublicThreadTable
+					{...createTestProps({
+						isLoadingIconVisible: true
+					})}
+				/>
 			);
 			expect(element).toMatchSnapshot();
 		});

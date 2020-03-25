@@ -43,19 +43,19 @@ const getBlockContent = (
 		);
 	}
 	if (characters.length === 0) {
-		return (<NoCharactersMessage />);
+		return <NoCharactersMessage />;
 	}
-	const activeCharacters = characters.filter(c => !c.isOnHiatus);
+	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
 	if (characters.length > 0 && activeCharacters.length === 0) {
-		return (<NoActiveCharactersMessage />);
+		return <NoActiveCharactersMessage />;
 	}
 	if (allThreads.length === 0) {
-		return (<NoThreadsMessage />);
+		return <NoThreadsMessage />;
 	}
 	if (recentActivityThreads.length === 0) {
-		return (<NoRecentActivityMessage />);
+		return <NoRecentActivityMessage />;
 	}
-	return recentActivityThreads.map(threadData => (
+	return recentActivityThreads.map((threadData) => (
 		<RecentActivityRow
 			data-spec="recent-activity-card-row"
 			threadData={threadData}

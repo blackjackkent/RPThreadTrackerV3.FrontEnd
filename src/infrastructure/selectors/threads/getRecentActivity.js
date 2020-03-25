@@ -16,13 +16,10 @@ function sortByLastPostDate(a, b) {
 	}
 	return new Date(b.status.lastPostDate) - new Date(a.status.lastPostDate);
 }
-const getRecentActivity = createSelector(
-	[getMyTurnThreads],
-	(threads) => {
-		let results = threads.filter(t => t.status || !t.thread.postId);
-		results = results.sort(sortByLastPostDate);
-		return results.slice(0, 5);
-	}
-);
+const getRecentActivity = createSelector([getMyTurnThreads], (threads) => {
+	let results = threads.filter((t) => t.status || !t.thread.postId);
+	results = results.sort(sortByLastPostDate);
+	return results.slice(0, 5);
+});
 
 export default getRecentActivity;

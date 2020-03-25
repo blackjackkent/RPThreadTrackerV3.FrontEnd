@@ -11,14 +11,8 @@
 		"browser": true
 	},
 	"rules": {
-		"comma-dangle": [
-			"error",
-			"never"
-		],
-		"linebreak-style": [
-			"error",
-			"unix"
-		],
+		"comma-dangle": ["error", "never"],
+		"linebreak-style": ["error", "unix"],
 		"indent": [
 			"error",
 			"tab",
@@ -27,10 +21,7 @@
 			}
 		],
 		"no-tabs": "off",
-		"react/jsx-indent": [
-			"error",
-			"tab"
-		],
+		"react/jsx-indent": ["error", "tab"],
 		"react/destructuring-assignment": [
 			"error",
 			"always",
@@ -53,14 +44,8 @@
 		],
 		"class-methods-use-this": "off",
 		"no-plusplus": "off",
-		"react/jsx-indent-props": [
-			"error",
-			"tab"
-		],
-		"arrow-body-style": [
-			"error",
-			"as-needed"
-		],
+		"react/jsx-indent-props": ["error", "tab"],
+		"arrow-body-style": ["error", "as-needed"],
 		"no-confusing-arrow": [
 			"error",
 			{
@@ -82,17 +67,15 @@
 		"jsx-a11y/label-has-for": [
 			"error",
 			{
-				"components": [
-					"Label"
-				],
+				"components": ["Label"],
 				"required": {
-					"every": [
-						"id"
-					]
+					"every": ["id"]
 				},
 				"allowChildren": false
 			}
-		]
+		],
+		"object-curly-newline": "off",
+		"arrow-parens": ["error", "always"]
 	},
 	"settings": {
 		"import/resolver": {

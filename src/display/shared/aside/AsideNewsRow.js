@@ -13,18 +13,25 @@ const AsideNewsRow = (props) => {
 	const { item } = props;
 	return (
 		<div>
-			<div className={`callout m-0 py-3 ${item.isUnread ? 'callout-danger' : 'callout-secondary'}`}>
+			<div
+				className={`callout m-0 py-3 ${
+					item.isUnread ? 'callout-danger' : 'callout-secondary'
+				}`}
+			>
 				<div>
-					<a href={item.postUrl}>
-						{item.postTitle}
-					</a>
+					<a href={item.postUrl}>{item.postTitle}</a>
 				</div>
 				<small className="mr-3">
-					<Moment format="MMMM D, YYYY">
-						{item.postDate}
-					</Moment>
+					<Moment format="MMMM D, YYYY">{item.postDate}</Moment>
 				</small>
-				<Badge data-spec="news-item-badge" color="danger" className={item.isUnread ? 'float-right' : 'd-none'}> New</Badge>
+				<Badge
+					data-spec="news-item-badge"
+					color="danger"
+					className={item.isUnread ? 'float-right' : 'd-none'}
+				>
+					{' '}
+					New
+				</Badge>
 			</div>
 			<hr className="mx-3 my-0" />
 		</div>

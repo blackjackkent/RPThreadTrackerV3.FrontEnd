@@ -1,11 +1,7 @@
 // #region imports
 import { takeEvery, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import {
-	FETCH_USER,
-	fetchedUserSuccess,
-	fetchedUserFailure
-} from '../../actions';
+import { FETCH_USER, fetchedUserSuccess, fetchedUserFailure } from '../../actions';
 // #endregion imports
 
 function* fetchUser() {

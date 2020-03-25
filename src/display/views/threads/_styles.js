@@ -37,10 +37,10 @@ export default styled.div`
 			background: ${colors.GRAY_200};
 			border-bottom: 3px solid ${colors.GRAY_300};
 			.thread-table-description-display {
-				color: ${colors.GRAY_900}
+				color: ${colors.GRAY_900};
 			}
 			.tag-display-wrapper {
-				color: ${colors.GRAY_600}
+				color: ${colors.GRAY_600};
 			}
 		}
 		.thread-bulk-update-controls,
@@ -49,7 +49,7 @@ export default styled.div`
 			background: none;
 		}
 		.public-tool-banner {
-			background: ${colors.GRAY_100}
+			background: ${colors.GRAY_100};
 		}
 	}
 `;

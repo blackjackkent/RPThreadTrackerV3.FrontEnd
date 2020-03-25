@@ -1,6 +1,14 @@
 import React from 'react';
 import {
-	Row, Col, TabPane, Button, FormGroup, Input, Label, CardHeader, CardBody
+	Row,
+	Col,
+	TabPane,
+	Button,
+	FormGroup,
+	Input,
+	Label,
+	CardHeader,
+	CardBody
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import PropTypes from 'prop-types';
@@ -21,7 +29,7 @@ class ContactFormPane extends React.Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			formData: Object.assign({}, prevState.formData, {
 				[name]: value
 			})
@@ -35,16 +43,26 @@ class ContactFormPane extends React.Component {
 			<TabPane tabId="contact">
 				<Card>
 					<CardHeader>
-						<i
-							className="fas fa-envelope"
-						/> Contact Me
+						<i className="fas fa-envelope" /> Contact Me
 					</CardHeader>
 					<CardBody className="card-body">
 						<AvForm
 							data-spec="contact-form-container"
 							onValidSubmit={() => submitContactForm(formData)}
 						>
-							<p>Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Please feel free to send me a message, or visit the tracker <a target="_blank" rel="noopener noreferrer" href="http://tblrthreadtracker.tumblr.com">support blog</a>.</p>
+							<p>
+								Have a suggestion about the site? Encountered a bug? Want to just
+								say hi or give me a hug? Please feel free to send me a message, or
+								visit the tracker{' '}
+								<a
+									target="_blank"
+									rel="noopener noreferrer"
+									href="http://tblrthreadtracker.tumblr.com"
+								>
+									support blog
+								</a>
+								.
+							</p>
 							<FormGroup row>
 								<Col md="3">
 									<Label htmlFor="textarea-input">Message</Label>

@@ -1,4 +1,4 @@
-const BASE_BLUE_OPACITY = opacity => `rgba(64, 140, 228, ${opacity})`;
+const BASE_BLUE_OPACITY = (opacity) => `rgba(64, 140, 228, ${opacity})`;
 
 export default {
 	WHITE: '#fff',

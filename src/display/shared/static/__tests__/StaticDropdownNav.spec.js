@@ -12,16 +12,25 @@ jest.mock('../../../../utility/history', () => ({
 	}
 }));
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	activeTab: '/test/mock-option-2',
-	options: [{ href: '/test/mock-option-1', name: 'Mock Option 1' }, { href: '/test/mock-option-2', name: 'Mock Option 2' }],
+	options: [
+		{
+			href: '/test/mock-option-1',
+			name: 'Mock Option 1'
+		},
+		{
+			href: '/test/mock-option-2',
+			name: 'Mock Option 2'
+		}
+	],
 	...propOverrides
 });
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<StaticDropdownNav {...props} />);
+			const jsx = <StaticDropdownNav {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -29,7 +38,7 @@ describe('rendering', () => {
 	describe('content', () => {
 		it('should display an option for every option in props', () => {
 			const props = createTestProps();
-			const jsx = (<StaticDropdownNav {...props} />);
+			const jsx = <StaticDropdownNav {...props} />;
 			const element = shallow(jsx);
 			const options = getSpecWrapper(element, 'static-dropdown-nav-option');
 			expect(options).toHaveLength(2);
@@ -40,9 +49,13 @@ describe('rendering', () => {
 describe('behavior', () => {
 	describe('setActiveTab', () => {
 		it('should trigger navigation with selected value on change', () => {
-			const mockEvent = { target: { value: '/test/mock-option-1' } };
+			const mockEvent = {
+				target: {
+					value: '/test/mock-option-1'
+				}
+			};
 			const props = createTestProps();
-			const jsx = (<StaticDropdownNav {...props} />);
+			const jsx = <StaticDropdownNav {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'static-dropdown-nav-select');
 			field.simulate('change', mockEvent);

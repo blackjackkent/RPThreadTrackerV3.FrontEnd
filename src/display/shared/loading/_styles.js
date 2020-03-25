@@ -4,18 +4,18 @@ import colors from '../../../infrastructure/constants/colors';
 export default styled.div`
 	@keyframes lds-spinner {
 		0% {
-		opacity: 1;
+			opacity: 1;
 		}
 		100% {
-		opacity: 0;
+			opacity: 0;
 		}
 	}
 	@-webkit-keyframes lds-spinner {
 		0% {
-		opacity: 1;
+			opacity: 1;
 		}
 		100% {
-		opacity: 0;
+			opacity: 0;
 		}
 	}
 	position: relative;
@@ -115,6 +115,6 @@ export default styled.div`
 	}
 
 	.light-theme &.invert div {
-		background: ${colors.DARK_BLUE}
+		background: ${colors.DARK_BLUE};
 	}
 `;

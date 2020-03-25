@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import AboutTrackerPane from '../AboutTrackerPane';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 

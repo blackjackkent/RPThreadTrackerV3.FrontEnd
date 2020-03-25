@@ -13,7 +13,7 @@ jest.mock('../components', () => ({
 }));
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	asideToggle: jest.fn(),
 	headerProfileDropdownToggle: jest.fn(),
 	headerAddMenuDropdownToggle: jest.fn(),
@@ -41,7 +41,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<Header {...props} />);
+			const jsx = <Header {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});

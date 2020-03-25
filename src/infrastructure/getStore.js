@@ -25,11 +25,7 @@ const getStore = () => {
 	}
 	const composables = [applyMiddleware(...middleWares)];
 	const enhancer = compose(...composables);
-	const store = createStore(
-		reducers,
-		undefined,
-		enhancer
-	);
+	const store = createStore(reducers, undefined, enhancer);
 	initSagas(sagaMiddleware);
 	return store;
 };

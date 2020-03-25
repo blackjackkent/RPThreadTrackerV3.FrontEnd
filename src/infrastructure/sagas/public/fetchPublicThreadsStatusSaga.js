@@ -1,6 +1,4 @@
-import {
-	takeLatest, put, call, all
-} from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	FETCH_PUBLIC_THREADS_STATUS,
@@ -28,7 +26,7 @@ function* fetchPublicThreadsStatus(action) {
 			chunks.push(requests.slice(i, i + 10));
 		}
 		const tasks = [];
-		chunks.map(c => tasks.push(call(fetchPublicThreadsStatusChunk, c)));
+		chunks.map((c) => tasks.push(call(fetchPublicThreadsStatusChunk, c)));
 		yield all(tasks);
 		yield put(fetchedPublicThreadsStatusSuccess());
 	} catch (e) {

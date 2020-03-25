@@ -18,12 +18,10 @@ const TagFilterSelect = (props) => {
 	const options = [];
 	for (let i = 0; i < tags.length; i++) {
 		const element = (
-			<option
-				value={tags[i].tagText}
-				key={tags[i].threadTagId}
-			>
+			<option value={tags[i].tagText} key={tags[i].threadTagId}>
 				{tags[i].tagText}
-			</option>);
+			</option>
+		);
 		options.push(element);
 	}
 	return (
@@ -35,7 +33,7 @@ const TagFilterSelect = (props) => {
 					id="tag"
 					className="clean-select"
 					value={filteredTag}
-					onChange={e => setFilteredTag(e.target.value)}
+					onChange={(e) => setFilteredTag(e.target.value)}
 				>
 					<option value="">Filter by Tag</option>
 					{options}

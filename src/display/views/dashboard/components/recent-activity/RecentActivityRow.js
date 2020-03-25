@@ -11,19 +11,26 @@ const propTypes = {
 };
 
 const RecentActivityRow = (props) => {
-	const {
-		threadData, archiveThread, openUntrackThreadModal, markThreadQueued
-	} = props;
+	const { threadData, archiveThread, openUntrackThreadModal, markThreadQueued } = props;
 	return (
 		<Row>
 			<Col xs="12" sm="6">
 				<div>
-					{threadData.status && <a target="_blank" rel="noopener noreferrer" href={threadData.status.lastPostUrl}>{threadData.thread.userTitle}</a>}
+					{threadData.status && (
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href={threadData.status.lastPostUrl}
+						>
+							{threadData.thread.userTitle}
+						</a>
+					)}
 					{!threadData.status && <span>{threadData.thread.userTitle}</span>}
 				</div>
 				<div className="small ">
 					{threadData.status && (
-						<span>Last Post by{' '}
+						<span>
+							Last Post by{' '}
 							<a
 								target="_blank"
 								rel="noopener noreferrer"
@@ -38,9 +45,7 @@ const RecentActivityRow = (props) => {
 			<Col sm="6" xs="12" className="text-right">
 				<div>
 					{threadData.status && (
-						<Moment format="MMMM D, YYYY h:mm">
-							{threadData.status.lastPostDate}
-						</Moment>
+						<Moment format="MMMM D, YYYY h:mm">{threadData.status.lastPostDate}</Moment>
 					)}
 					{!threadData.status && !threadData.thread.postId && (
 						<span>Awaiting Starter</span>
@@ -53,14 +58,16 @@ const RecentActivityRow = (props) => {
 						data-spec="recent-activity-row-untrack-button"
 					>
 						Untrack
-					</button> &bull;{' '}
+					</button>{' '}
+					&bull;{' '}
 					<button
 						type="button"
 						onClick={() => archiveThread(threadData.thread)}
 						data-spec="recent-activity-row-archive-button"
 					>
 						Archive
-					</button> &bull;{' '}
+					</button>{' '}
+					&bull;{' '}
 					<button
 						type="button"
 						onClick={() => markThreadQueued(threadData.thread)}

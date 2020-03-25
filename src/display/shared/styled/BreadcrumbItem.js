@@ -4,13 +4,13 @@ import colors from '../../../infrastructure/constants/colors';
 
 export default styled(BreadcrumbItem)`
 	&::before {
-		color: ${colors.GRAY_100}
+		color: ${colors.GRAY_100};
 	}
 	&.active {
-		color: ${colors.GRAY_100}
+		color: ${colors.GRAY_100};
 	}
 	.light-theme &::before,
 	.light-theme &.active {
-		color: ${colors.GRAY_800}
+		color: ${colors.GRAY_800};
 	}
 `;

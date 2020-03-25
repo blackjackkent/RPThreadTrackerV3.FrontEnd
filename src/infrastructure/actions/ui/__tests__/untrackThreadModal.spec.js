@@ -8,7 +8,9 @@ describe('closeUntrackThreadModal', () => {
 });
 describe('openUntrackThreadModal', () => {
 	it('should create action with type and data', () => {
-		const data = { threadId: 1 };
+		const data = {
+			threadId: 1
+		};
 		const action = actions.openUntrackThreadModal(data);
 		expect(action.type).toBe('OPEN_UNTRACK_THREAD_MODAL');
 		expect(action.data).toBe(data);

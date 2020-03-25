@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
-import {
-	CardBody, Button, Row, Col
-} from 'reactstrap';
+import { CardBody, Button, Row, Col } from 'reactstrap';
 import * as actions from '../../../infrastructure/actions';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
@@ -23,10 +21,7 @@ const defaultProps = {
 };
 
 const mapStateToProps = (state) => {
-	const {
-		loading,
-		errors
-	} = state;
+	const { loading, errors } = state;
 	return {
 		displayLoadingIndicator: loading.resetPasswordLoading,
 		resetPasswordError: errors.resetPasswordError
@@ -55,7 +50,7 @@ class ResetPassword extends Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			resetPasswordRequest: Object.assign({}, prevState.resetPasswordRequest, {
 				[name]: value
 			})
@@ -64,27 +59,25 @@ class ResetPassword extends Component {
 
 	render() {
 		const { displayLoadingIndicator, resetPasswordError } = this.props;
-		let loading = (<span />);
+		let loading = <span />;
 		if (displayLoadingIndicator) {
 			loading = (
-				<LoadingIndicator style={{
-					width: 50,
-					height: 50,
-					position: 'absolute',
-					top: 0,
-					right: 0
-				}}
+				<LoadingIndicator
+					style={{
+						width: 50,
+						height: 50,
+						position: 'absolute',
+						top: 0,
+						right: 0
+					}}
 				/>
 			);
 		}
-		let error = (<span />);
+		let error = <span />;
 		if (resetPasswordError) {
 			error = (
 				<div className="has-danger">
-					<p
-						data-spec="reset-password-server-error"
-						className="form-control-feedback"
-					>
+					<p data-spec="reset-password-server-error" className="form-control-feedback">
 						{resetPasswordError}
 					</p>
 				</div>
@@ -99,9 +92,7 @@ class ResetPassword extends Component {
 						onValidSubmit={this.handleResetPasswordSubmit}
 					>
 						<h1>Reset Password</h1>
-						<p className="text-muted">
-							Enter your new password below.
-						</p>
+						<p className="text-muted">Enter your new password below.</p>
 						{error}
 						<TooltipForm
 							Renderable={ResetPasswordForm}
@@ -109,11 +100,16 @@ class ResetPassword extends Component {
 						/>
 						<Row>
 							<Col xs="6">
-								<Button color="primary" className="px-4">Request</Button>
+								<Button color="primary" className="px-4">
+									Request
+								</Button>
 							</Col>
 							<Col xs="6" className="text-right text-muted">
-								<span className="pull-right"><Link href="/login" to="/login">Back to Login</Link></span>
-
+								<span className="pull-right">
+									<Link href="/login" to="/login">
+										Back to Login
+									</Link>
+								</span>
 							</Col>
 						</Row>
 					</AvForm>

@@ -17,12 +17,11 @@ describe('saga behavior', () => {
 			type: 'TEST_ACTION'
 		};
 		const saga = new SagaTestWrapper(analyticsSaga);
-		return saga.execute(action)
-			.then(() => {
-				expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
-				expect(ReactGA.event).toHaveBeenCalledTimes(0);
-				expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
-			});
+		return saga.execute(action).then(() => {
+			expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
+			expect(ReactGA.event).toHaveBeenCalledTimes(0);
+			expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
+		});
 	});
 	it('should do nothing if action analytics have invalid func', () => {
 		const action = {
@@ -32,12 +31,11 @@ describe('saga behavior', () => {
 			}
 		};
 		const saga = new SagaTestWrapper(analyticsSaga);
-		return saga.execute(action)
-			.then(() => {
-				expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
-				expect(ReactGA.event).toHaveBeenCalledTimes(0);
-				expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
-			});
+		return saga.execute(action).then(() => {
+			expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
+			expect(ReactGA.event).toHaveBeenCalledTimes(0);
+			expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
+		});
 	});
 	it('should handle pageview action', () => {
 		const action = {
@@ -47,12 +45,11 @@ describe('saga behavior', () => {
 			}
 		};
 		const saga = new SagaTestWrapper(analyticsSaga);
-		return saga.execute(action)
-			.then(() => {
-				expect(ReactGA.pageview).toHaveBeenCalledTimes(1);
-				expect(ReactGA.event).toHaveBeenCalledTimes(0);
-				expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
-			});
+		return saga.execute(action).then(() => {
+			expect(ReactGA.pageview).toHaveBeenCalledTimes(1);
+			expect(ReactGA.event).toHaveBeenCalledTimes(0);
+			expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
+		});
 	});
 	it('should handle event action', () => {
 		const action = {
@@ -62,12 +59,11 @@ describe('saga behavior', () => {
 			}
 		};
 		const saga = new SagaTestWrapper(analyticsSaga);
-		return saga.execute(action)
-			.then(() => {
-				expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
-				expect(ReactGA.event).toHaveBeenCalledTimes(1);
-				expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
-			});
+		return saga.execute(action).then(() => {
+			expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
+			expect(ReactGA.event).toHaveBeenCalledTimes(1);
+			expect(ReactGA.modalview).toHaveBeenCalledTimes(0);
+		});
 	});
 	it('should handle modalview action', () => {
 		const action = {
@@ -77,11 +73,10 @@ describe('saga behavior', () => {
 			}
 		};
 		const saga = new SagaTestWrapper(analyticsSaga);
-		return saga.execute(action)
-			.then(() => {
-				expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
-				expect(ReactGA.event).toHaveBeenCalledTimes(0);
-				expect(ReactGA.modalview).toHaveBeenCalledTimes(1);
-			});
+		return saga.execute(action).then(() => {
+			expect(ReactGA.pageview).toHaveBeenCalledTimes(0);
+			expect(ReactGA.event).toHaveBeenCalledTimes(0);
+			expect(ReactGA.modalview).toHaveBeenCalledTimes(1);
+		});
 	});
 });

@@ -12,14 +12,23 @@ describe('saga behavior', () => {
 		saga.expectPut({
 			type: actions.SUBMIT_CONTACT_FORM_SUCCESS
 		});
-		return saga.execute({ type: actions.SUBMIT_CONTACT_FORM, data: 'Test message' });
+		return saga.execute({
+			type: actions.SUBMIT_CONTACT_FORM,
+			data: 'Test message'
+		});
 	});
 	it('should dispatch failure action on failed POST', () => {
 		const saga = new SagaTestWrapper(submitContactFormSaga);
-		saga.setupError(call(axios.post, 'http://test-site/api/contact', 'Test message'), 'Test error');
+		saga.setupError(
+			call(axios.post, 'http://test-site/api/contact', 'Test message'),
+			'Test error'
+		);
 		saga.expectPut({
 			type: actions.SUBMIT_CONTACT_FORM_FAILURE
 		});
-		return saga.execute({ type: actions.SUBMIT_CONTACT_FORM, data: 'Test message' });
+		return saga.execute({
+			type: actions.SUBMIT_CONTACT_FORM,
+			data: 'Test message'
+		});
 	});
 });

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import CharacterSelectItem from '../CharacterSelectItem';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	character: {
 		characterId: 1,
 		characterName: 'Test Character',
@@ -16,7 +16,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<CharacterSelectItem {...props} />);
+			const jsx = <CharacterSelectItem {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -27,7 +27,7 @@ describe('rendering', () => {
 					urlIdentifier: 'test-character'
 				}
 			});
-			const jsx = (<CharacterSelectItem {...props} />);
+			const jsx = <CharacterSelectItem {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -35,14 +35,14 @@ describe('rendering', () => {
 	describe('content', () => {
 		it('should provide character ID as option value', () => {
 			const props = createTestProps();
-			const jsx = (<CharacterSelectItem {...props} />);
+			const jsx = <CharacterSelectItem {...props} />;
 			const element = shallow(jsx);
 			const option = element.find('option');
 			expect(option).toHaveProp('value', 1);
 		});
 		it('should render character name if available', () => {
 			const props = createTestProps();
-			const jsx = (<CharacterSelectItem {...props} />);
+			const jsx = <CharacterSelectItem {...props} />;
 			const element = shallow(jsx);
 			const text = element.find('option').text();
 			expect(text).toBe('test-character (Test Character)');
@@ -54,7 +54,7 @@ describe('rendering', () => {
 					urlIdentifier: 'test-character'
 				}
 			});
-			const jsx = (<CharacterSelectItem {...props} />);
+			const jsx = <CharacterSelectItem {...props} />;
 			const element = shallow(jsx);
 			const text = element.find('option').text();
 			expect(text).toBe('test-character');

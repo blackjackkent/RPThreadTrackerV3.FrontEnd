@@ -44,7 +44,10 @@ describe('behavior', () => {
 		const threads = getThreads();
 		const statuses = getStatuses();
 		const result = buildThreadDataByPredicate(
-			threads, statuses, s => s.isCallingCharactersTurn, false
+			threads,
+			statuses,
+			(s) => s.isCallingCharactersTurn,
+			false
 		);
 		expect(result).toHaveLength(2);
 		expect(result[0]).toEqual({
@@ -74,7 +77,10 @@ describe('behavior', () => {
 		const threads = getThreads();
 		const statuses = getStatuses();
 		const result = buildThreadDataByPredicate(
-			threads, statuses, s => s.isCallingCharactersTurn, true
+			threads,
+			statuses,
+			(s) => s.isCallingCharactersTurn,
+			true
 		);
 		expect(result).toHaveLength(3);
 		expect(result[0]).toEqual({
@@ -115,7 +121,10 @@ describe('behavior', () => {
 			isCallingCharactersTurn: true
 		});
 		const result = buildThreadDataByPredicate(
-			threads, statuses, s => s.isCallingCharactersTurn, false
+			threads,
+			statuses,
+			(s) => s.isCallingCharactersTurn,
+			false
 		);
 		expect(result).toHaveLength(2);
 		expect(result[0]).toEqual({

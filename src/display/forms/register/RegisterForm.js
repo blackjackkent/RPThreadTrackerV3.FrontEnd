@@ -13,9 +13,7 @@ const propTypes = {
 };
 
 const RegisterForm = (props) => {
-	const {
-		handleInputChange, tooltipDisplayData, showTooltip, hideTooltip
-	} = props;
+	const { handleInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	return (
 		<div>
 			<div data-spec="username-field">
@@ -40,7 +38,9 @@ const RegisterForm = (props) => {
 				<Tooltip
 					visible={tooltipDisplayData.password}
 					overlay={formData.password.tooltip}
-					overlayStyle={{ width: 300 }}
+					overlayStyle={{
+						width: 300
+					}}
 					align={{
 						offset: [0, 10]
 					}}

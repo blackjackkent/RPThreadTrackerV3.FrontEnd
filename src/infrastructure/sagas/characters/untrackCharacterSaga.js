@@ -1,7 +1,5 @@
 // #region imports
-import {
-	takeEvery, put, call, all
-} from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	UNTRACK_CHARACTER,
@@ -15,10 +13,7 @@ function* untrackCharacter(action) {
 	try {
 		const character = action.data;
 		yield call(axios.delete, `${API_BASE_URL}api/character/${character.characterId}`);
-		yield all([
-			put(untrackCharacterSuccess()),
-			put(fetchCharacters())
-		]);
+		yield all([put(untrackCharacterSuccess()), put(fetchCharacters())]);
 	} catch (e) {
 		yield put(untrackCharacterFailure());
 	}

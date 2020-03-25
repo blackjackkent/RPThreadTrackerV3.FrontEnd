@@ -9,41 +9,64 @@ jest.mock('../_routes', () => ({
 	'/test/test2': 'Test 2 Page'
 }));
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot if route does not exist', () => {
-			const props = createTestProps({ match: { url: '/test/test3' } });
-			const jsx = (<BreadcrumbsItem {...props} />);
+			const props = createTestProps({
+				match: {
+					url: '/test/test3'
+				}
+			});
+			const jsx = <BreadcrumbsItem {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot if route is exact', () => {
-			const props = createTestProps({ match: { url: '/test/test2', isExact: true } });
-			const jsx = (<BreadcrumbsItem {...props} />);
+			const props = createTestProps({
+				match: {
+					url: '/test/test2',
+					isExact: true
+				}
+			});
+			const jsx = <BreadcrumbsItem {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot if route is not exact', () => {
-			const props = createTestProps({ match: { url: '/test/test2', isExact: false } });
-			const jsx = (<BreadcrumbsItem {...props} />);
+			const props = createTestProps({
+				match: {
+					url: '/test/test2',
+					isExact: false
+				}
+			});
+			const jsx = <BreadcrumbsItem {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 	});
 	describe('content', () => {
 		it('should render null if route does not exist', () => {
-			const props = createTestProps({ match: { url: '/test/test3' } });
-			const jsx = (<BreadcrumbsItem {...props} />);
+			const props = createTestProps({
+				match: {
+					url: '/test/test3'
+				}
+			});
+			const jsx = <BreadcrumbsItem {...props} />;
 			const element = shallow(jsx);
 			expect(element.children('Styled(BreadcrumbItem)')).toHaveLength(0);
 		});
 		it('should render without link if route is exact', () => {
-			const props = createTestProps({ match: { url: '/test/test2', isExact: true } });
-			const jsx = (<BreadcrumbsItem {...props} />);
+			const props = createTestProps({
+				match: {
+					url: '/test/test2',
+					isExact: true
+				}
+			});
+			const jsx = <BreadcrumbsItem {...props} />;
 			const element = shallow(jsx);
 			const item = element.find('Styled(BreadcrumbItem)');
 			expect(item).toHaveLength(1);
@@ -51,8 +74,13 @@ describe('rendering', () => {
 			expect(item.find('Link')).toHaveLength(0);
 		});
 		it('should render with link if route is not exact', () => {
-			const props = createTestProps({ match: { url: '/test/test2', isExact: false } });
-			const jsx = (<BreadcrumbsItem {...props} />);
+			const props = createTestProps({
+				match: {
+					url: '/test/test2',
+					isExact: false
+				}
+			});
+			const jsx = <BreadcrumbsItem {...props} />;
 			const element = shallow(jsx);
 			const item = element.find('Styled(BreadcrumbItem)');
 			expect(item).toHaveLength(1);

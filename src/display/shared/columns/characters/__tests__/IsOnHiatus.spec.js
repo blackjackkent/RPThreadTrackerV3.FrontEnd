@@ -9,13 +9,17 @@ describe('data', () => {
 		expect(column).toBeDefined();
 	});
 	it('should appear unmuted and with correct text if character is not on hiatus', () => {
-		const cellJsx = column.Cell({ value: false });
+		const cellJsx = column.Cell({
+			value: false
+		});
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('span')).not.toHaveClassName('text-muted');
 		expect(cellElement.find('span')).toHaveText('Active');
 	});
 	it('should appear muted and with correct text if character is on hiatus', () => {
-		const cellJsx = column.Cell({ value: true });
+		const cellJsx = column.Cell({
+			value: true
+		});
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('span')).toHaveClassName('text-muted');
 		expect(cellElement.find('span')).toHaveText('On Hiatus');

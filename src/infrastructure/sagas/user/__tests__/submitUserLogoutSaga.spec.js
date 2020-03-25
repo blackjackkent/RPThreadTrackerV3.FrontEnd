@@ -24,15 +24,17 @@ describe('saga behavior', () => {
 				refreshToken: '12345'
 			};
 			saga.setup(call(axios.post, 'http://test-site/api/auth/revoke', request), {});
-			return saga.execute({
-				type: actions.SUBMIT_USER_LOGOUT
-			}).then(() => {
-				expect(cache.get).toHaveBeenCalledTimes(1);
-				expect(cache.get).toHaveBeenCalledWith('refreshToken');
-				expect(cache.clear).toHaveBeenCalledTimes(1);
-				expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
-				expect(history.navigation.navigateTo).toHaveBeenCalledWith('/login');
-			});
+			return saga
+				.execute({
+					type: actions.SUBMIT_USER_LOGOUT
+				})
+				.then(() => {
+					expect(cache.get).toHaveBeenCalledTimes(1);
+					expect(cache.get).toHaveBeenCalledWith('refreshToken');
+					expect(cache.clear).toHaveBeenCalledTimes(1);
+					expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+					expect(history.navigation.navigateTo).toHaveBeenCalledWith('/login');
+				});
 		});
 		it('should not error on failed POST', () => {
 			const saga = new SagaTestWrapper(submitUserLogoutSaga);

@@ -34,7 +34,7 @@ describe('markUnreadNews', () => {
 		const result = markUnreadNews.resultFunc(getNews(), {});
 		// Assert
 		expect(result).toHaveLength(5);
-		expect(result.filter(n => n.isUnread)).toHaveLength(5);
+		expect(result.filter((n) => n.isUnread)).toHaveLength(5);
 	});
 	it('should mark items with date greater than lastNewsReadDate', () => {
 		// Arrange
@@ -46,6 +46,6 @@ describe('markUnreadNews', () => {
 		const result = markUnreadNews.resultFunc(news, userSettings);
 		// Assert
 		expect(result).toHaveLength(5);
-		expect(result.filter(n => n.isUnread)).toHaveLength(3);
+		expect(result.filter((n) => n.isUnread)).toHaveLength(3);
 	});
 });

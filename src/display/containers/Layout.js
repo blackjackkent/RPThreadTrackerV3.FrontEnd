@@ -45,11 +45,7 @@ const propTypes = {
 	}).isRequired
 };
 const mapStateToProps = (state) => {
-	const {
-		user,
-		news,
-		userSettings
-	} = state;
+	const { user, news, userSettings } = state;
 	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
 	return {
 		user,
@@ -128,42 +124,55 @@ class Layout extends Component {
 									name="Threads"
 									render={
 										/* istanbul ignore next */
-										() => (<Threads Renderable={AllThreads} />)}
+										() => <Threads Renderable={AllThreads} />
+									}
 								/>
 								<Route
 									path="/threads/your-turn"
 									name="Threads"
 									render={
 										/* istanbul ignore next */
-										() => (<Threads Renderable={MyTurnThreads} />)}
+										() => <Threads Renderable={MyTurnThreads} />
+									}
 								/>
 								<Route
 									path="/threads/their-turn"
 									name="Threads"
 									render={
 										/* istanbul ignore next */
-										() => (<Threads Renderable={TheirTurnThreads} />)}
+										() => <Threads Renderable={TheirTurnThreads} />
+									}
 								/>
 								<Route
 									path="/threads/archived"
 									name="Threads"
 									render={
 										/* istanbul ignore next */
-										() => (<Threads Renderable={ArchivedThreads} />)}
+										() => <Threads Renderable={ArchivedThreads} />
+									}
 								/>
 								<Route
 									path="/threads/queued"
 									name="Threads"
 									render={
 										/* istanbul ignore next */
-										() => (<Threads Renderable={QueuedThreads} />)}
+										() => <Threads Renderable={QueuedThreads} />
+									}
 								/>
-								<Route path="/manage-characters" name="Characters" component={ManageCharacters} />
+								<Route
+									path="/manage-characters"
+									name="Characters"
+									component={ManageCharacters}
+								/>
 
 								<Route path="/tools/:tabId" name="Tools" component={Tools} />
 								<Redirect from="/tools" to="/tools/export" />
 
-								<Route path="/settings/:tabId" name="Settings" component={Settings} />
+								<Route
+									path="/settings/:tabId"
+									name="Settings"
+									component={Settings}
+								/>
 								<Redirect from="/settings" to="/settings/change-password" />
 
 								<Route path="/help/:tabId" name="Help" component={Help} />

@@ -4,7 +4,8 @@ export default {
 			name: 'Dashboard',
 			url: '/dashboard',
 			icon: 'icon-speedometer'
-		}, {
+		},
+		{
 			title: true,
 			name: 'Threads',
 			wrapper: {
@@ -37,7 +38,8 @@ export default {
 			name: 'Queued',
 			url: '/threads/queued',
 			icon: 'icon-calendar'
-		}, {
+		},
+		{
 			title: true,
 			name: 'Manage',
 			wrapper: {
@@ -45,19 +47,23 @@ export default {
 				attributes: {}
 			},
 			class: ''
-		}, {
+		},
+		{
 			name: 'Characters',
 			url: '/manage-characters',
 			icon: 'icon-people'
-		}, {
+		},
+		{
 			name: 'Tools',
 			url: '/tools',
 			icon: 'icon-wrench'
-		}, {
+		},
+		{
 			name: 'Settings',
 			url: '/settings',
 			icon: 'icon-settings'
-		}, {
+		},
+		{
 			name: 'Help',
 			url: '/help',
 			icon: 'icon-info'

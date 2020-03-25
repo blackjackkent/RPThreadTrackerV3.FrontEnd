@@ -14,7 +14,9 @@ describe('fetchedUserFailure', () => {
 });
 describe('fetchedUserSuccess', () => {
 	it('should create action with type and data', () => {
-		const data = { id: '12345' };
+		const data = {
+			id: '12345'
+		};
 		const action = actions.fetchedUserSuccess(data);
 		expect(action.type).toBe('FETCHED_USER_SUCCESS');
 		expect(action.data).toBe(data);

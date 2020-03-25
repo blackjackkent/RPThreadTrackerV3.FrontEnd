@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	TabPane, Col, Row, Button, CardHeader, CardBody
-} from 'reactstrap';
+import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import PublicViewsTable from './public-views/PublicViewsTable';
 import Card from '../../../shared/styled/Card';
 
@@ -29,9 +27,7 @@ const ManagePublicViewsPane = (props) => {
 		<TabPane tabId="public">
 			<Card>
 				<CardHeader>
-					<i
-						className="fas fa-eye"
-					/> Manage Public Views
+					<i className="fas fa-eye" /> Manage Public Views
 				</CardHeader>
 				<CardBody className="card-body">
 					<Row>
@@ -40,8 +36,7 @@ const ManagePublicViewsPane = (props) => {
 								<Button
 									color="primary"
 									data-spec="create-public-view-button"
-									onClick={
-										() => openUpsertPublicViewModal({})}
+									onClick={() => openUpsertPublicViewModal({})}
 								>
 									Create New Public View
 								</Button>
@@ -51,8 +46,8 @@ const ManagePublicViewsPane = (props) => {
 					<Row>
 						<Col>
 							<p className="text-center">
-								Public views allow you to customize a display of your current threads
-								and share them with others.
+								Public views allow you to customize a display of your current
+								threads and share them with others.
 							</p>
 						</Col>
 					</Row>

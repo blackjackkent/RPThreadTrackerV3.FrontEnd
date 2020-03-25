@@ -11,13 +11,14 @@ const propTypes = {
 };
 
 const HeaderLogoBlock = (props) => {
-	const {
-		mobileSidebarToggle,
-		sidebarToggle
-	} = props;
+	const { mobileSidebarToggle, sidebarToggle } = props;
 
 	return (
-		<div style={{ display: 'inline' }}>
+		<div
+			style={{
+				display: 'inline'
+			}}
+		>
 			<NavbarToggler
 				className="d-lg-none"
 				data-spec="header-logo-block-mobile-toggler"
@@ -25,7 +26,9 @@ const HeaderLogoBlock = (props) => {
 			>
 				&#9776;
 			</NavbarToggler>
-			<Link href="/" className="navbar-brand" to="/">RPTHREADTRACKER</Link>
+			<Link href="/" className="navbar-brand" to="/">
+				RPTHREADTRACKER
+			</Link>
 			<NavbarToggler
 				className="d-md-down-none"
 				data-spec="header-logo-block-sidebar-toggler"

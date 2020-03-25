@@ -2,7 +2,9 @@ import * as actions from '../untrackCharacter';
 
 describe('untrackCharacter', () => {
 	it('should create action with type, data, and analytics', () => {
-		const character = { characterId: 13579 };
+		const character = {
+			characterId: 13579
+		};
 		const action = actions.untrackCharacter(character);
 		expect(action.type).toBe('UNTRACK_CHARACTER');
 		expect(action.data).toBe(character);

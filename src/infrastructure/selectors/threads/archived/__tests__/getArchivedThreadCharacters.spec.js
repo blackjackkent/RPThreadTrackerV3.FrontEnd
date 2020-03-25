@@ -10,21 +10,57 @@ jest.mock('~/utility', () => ({
 }));
 
 const getThreads = () => [
-	{ character: { characterId: 1 } },
-	{ character: { characterId: 2 } },
-	{ character: { characterId: 2 } },
-	{ character: { characterId: 3 } }
+	{
+		character: {
+			characterId: 1
+		}
+	},
+	{
+		character: {
+			characterId: 2
+		}
+	},
+	{
+		character: {
+			characterId: 2
+		}
+	},
+	{
+		character: {
+			characterId: 3
+		}
+	}
 ];
 const getCharacters = () => [
-	{ characterId: 1 },
-	{ characterId: 2 },
-	{ characterId: 2 },
-	{ characterId: 3 }
+	{
+		characterId: 1
+	},
+	{
+		characterId: 2
+	},
+	{
+		characterId: 2
+	},
+	{
+		characterId: 3
+	}
 ];
 const getFilterOutput = () => [
-	{ character: { characterId: 1 } },
-	{ character: { characterId: 2 } },
-	{ character: { characterId: 3 } }
+	{
+		character: {
+			characterId: 1
+		}
+	},
+	{
+		character: {
+			characterId: 2
+		}
+	},
+	{
+		character: {
+			characterId: 3
+		}
+	}
 ];
 
 describe('behavior', () => {
@@ -37,9 +73,7 @@ describe('behavior', () => {
 	it('should return filtered characters when threads list not empty', () => {
 		// Arrange
 		when(utility.filterDuplicatesFromArray)
-			.calledWith(
-				expect.arrayContaining(getCharacters())
-			)
+			.calledWith(expect.arrayContaining(getCharacters()))
 			.mockReturnValue(getFilterOutput());
 		// Act
 		const result = getArchivedThreadCharacters.resultFunc(getThreads());

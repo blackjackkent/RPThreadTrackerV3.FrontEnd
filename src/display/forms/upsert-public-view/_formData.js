@@ -4,51 +4,48 @@ export default {
 	name: {
 		helpMessage: (
 			<span>
-				For your own use; a name that will help you remember{' '}
-				what this view contains.
+				For your own use; a name that will help you remember what this view contains.
 			</span>
 		)
 	},
 	slug: {
-		helpMessage: (
-			<span>
-				The unique URL identifier for this public view.
-			</span>
-		),
+		helpMessage: <span>The unique URL identifier for this public view.</span>,
 		tooltip: (
-			<span>Will be rendered as <em>http://www.rpthreadtracker.com/public/{'{'}your-username{'}'}/<strong>{'{'}slug{'}'}</strong></em>.</span>
+			<span>
+				Will be rendered as{' '}
+				<em>
+					http://www.rpthreadtracker.com/public/{'{'}your-username
+					{'}'}/
+					<strong>
+						{'{'}slug{'}'}
+					</strong>
+				</em>
+				.
+			</span>
 		)
 	},
 	columns: {
 		helpMessage: (
-			<span>
-				Which columns should be displayed to visitors in this public view.
-			</span>
+			<span>Which columns should be displayed to visitors in this public view.</span>
 		),
-		tooltip: (
-			<span>Ctrl-click or shift-click to select multiple columns.</span>
-		)
+		tooltip: <span>Ctrl-click or shift-click to select multiple columns.</span>
 	},
 	characterIds: {
 		helpMessage: (
 			<span>
-				The characters whose threads should be displayed to visitors in this public view.{' '}
+				The characters whose threads should be displayed to visitors in this public view.
 				(Leave unselected to display threads for all characters.)
 			</span>
 		),
-		tooltip: (
-			<span>Ctrl-click or shift-click to select multiple characters.</span>
-		)
+		tooltip: <span>Ctrl-click or shift-click to select multiple characters.</span>
 	},
 	tags: {
 		helpMessage: (
 			<span>
-				The public view will only include threads with these tags.{' '}
-				(Leave unselected to display threads with all tags.)
+				The public view will only include threads with these tags. (Leave unselected to
+				display threads with all tags.)
 			</span>
 		),
-		tooltip: (
-			<span>Ctrl-click or shift-click to select multiple tags.</span>
-		)
+		tooltip: <span>Ctrl-click or shift-click to select multiple tags.</span>
 	}
 };

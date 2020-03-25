@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Col, Row, FormGroup, Label, Input
-} from 'reactstrap';
+import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import MultipleValueTextInput from 'react-multivalue-text-input';
@@ -36,7 +34,9 @@ const UpsertThreadForm = (props) => {
 		handleTagRemoved,
 		tagValues
 	} = props;
-	const options = characters.map(c => <CharacterSelectItem key={c.characterId} character={c} />);
+	const options = characters.map((c) => (
+		<CharacterSelectItem key={c.characterId} character={c} />
+	));
 	return (
 		<div>
 			<Row>
@@ -55,7 +55,9 @@ const UpsertThreadForm = (props) => {
 					</AvField>
 				</Col>
 			</Row>
-			<Row> {/* thread title */}
+			<Row>
+				{' '}
+				{/* thread title */}
 				<Col>
 					<AvField
 						name="userTitle"
@@ -70,7 +72,9 @@ const UpsertThreadForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<Row> {/* thread post ID */}
+			<Row>
+				{' '}
+				{/* thread post ID */}
 				<Col>
 					<AvField
 						name="postId"
@@ -85,12 +89,16 @@ const UpsertThreadForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<Row> {/* partner url identifier */}
+			<Row>
+				{' '}
+				{/* partner url identifier */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.partnerUrlIdentifier}
 						overlay={formData.partnerUrlIdentifier.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 30]
 						}}

@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import FAQPane from '../FAQPane';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 

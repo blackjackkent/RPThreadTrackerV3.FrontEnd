@@ -4,26 +4,25 @@ import cache from './cache';
 import cacheKeys from './constants/cacheKeys';
 import { SUBMIT_USER_LOGOUT, SET_MAINTENANCE_MODE_ON } from './actions';
 
-const whitelist = [
-	'api/auth',
-	`${TUMBLR_CLIENT_BASE_URL}`
-];
+const whitelist = ['api/auth', `${TUMBLR_CLIENT_BASE_URL}`];
 let refreshSubscribers = [];
 let isRefreshing = false;
 
 function isPathInWhitelist(url) {
-	return whitelist.some(path => url.indexOf(path) >= 0);
+	return whitelist.some((path) => url.indexOf(path) >= 0);
 }
 function subscribeTokenRefresh(cb) {
 	refreshSubscribers.push(cb);
 }
 function onTokenRefreshed(token) {
-	refreshSubscribers.map(cb => cb(token));
+	refreshSubscribers.map((cb) => cb(token));
 	refreshSubscribers = [];
 }
 function refreshAccessToken(error) {
 	return axios
-		.post(`${API_BASE_URL}/api/auth/refresh`, { RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN) })
+		.post(`${API_BASE_URL}/api/auth/refresh`, {
+			RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN)
+		})
 		.then(({ data }) => {
 			cache.set(cacheKeys.ACCESS_TOKEN, data.token.token);
 			cache.set(cacheKeys.REFRESH_TOKEN, data.refreshToken.token);
@@ -49,11 +48,10 @@ function handleUnauthorizedRequest(error, originalRequest) {
 	// start token refresh if it isn't already in process
 	if (!isRefreshing) {
 		isRefreshing = true;
-		refreshAccessToken(error)
-			.then(() => {
-				isRefreshing = false;
-				onTokenRefreshed();
-			});
+		refreshAccessToken(error).then(() => {
+			isRefreshing = false;
+			onTokenRefreshed();
+		});
 	}
 
 	// add request to list to be re-executed when token refresh is complete
@@ -61,7 +59,9 @@ function handleUnauthorizedRequest(error, originalRequest) {
 		subscribeTokenRefresh(() => {
 			const token = cache.get(cacheKeys.ACCESS_TOKEN);
 			const newRequest = {
-				headers: { authorization: `Bearer ${token}` },
+				headers: {
+					authorization: `Bearer ${token}`
+				},
 				...originalRequest
 			};
 			resolve(axios(newRequest));
@@ -72,21 +72,28 @@ function handleUnauthorizedRequest(error, originalRequest) {
 
 export default {
 	setupInterceptors: (store) => {
-		axios.interceptors.request.use(setAuthHeader, error => promise.reject(error));
-		axios.interceptors.response.use(response => response, (error) => {
-			const { config } = error;
-			if (error.response.status === 498) {
-				store.dispatch({ type: SUBMIT_USER_LOGOUT });
+		axios.interceptors.request.use(setAuthHeader, (error) => promise.reject(error));
+		axios.interceptors.response.use(
+			(response) => response,
+			(error) => {
+				const { config } = error;
+				if (error.response.status === 498) {
+					store.dispatch({
+						type: SUBMIT_USER_LOGOUT
+					});
+					return Promise.reject(error);
+				}
+				if (error.response.status === 503) {
+					store.dispatch({
+						type: SET_MAINTENANCE_MODE_ON
+					});
+					return Promise.reject(error);
+				}
+				if (error.response.status === 401 && !isPathInWhitelist(error.config.url)) {
+					return handleUnauthorizedRequest(error, config);
+				}
 				return Promise.reject(error);
 			}
-			if (error.response.status === 503) {
-				store.dispatch({ type: SET_MAINTENANCE_MODE_ON });
-				return Promise.reject(error);
-			}
-			if (error.response.status === 401 && !isPathInWhitelist(error.config.url)) {
-				return handleUnauthorizedRequest(error, config);
-			}
-			return Promise.reject(error);
-		});
+		);
 	}
 };

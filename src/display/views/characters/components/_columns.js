@@ -1,6 +1,6 @@
 import * as columns from '../../../shared/columns';
 
-export default threadCounts => [
+export default (threadCounts) => [
 	columns.EditButton('Edit Character'),
 	columns.ToggleHiatusButton(),
 	columns.DeleteButton('Untrack Character'),

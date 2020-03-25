@@ -2,9 +2,7 @@ import ls from 'local-storage';
 import { getQuery } from '../utility';
 
 const baseKey = 'rpthreadtracker-data';
-const disablingWhitelist = [
-	'accessToken'
-];
+const disablingWhitelist = ['accessToken'];
 export default {
 	get: (key) => {
 		if (getQuery().disableCache && !disablingWhitelist.includes(key)) {

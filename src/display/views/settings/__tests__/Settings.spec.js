@@ -24,18 +24,22 @@ jest.mock('../../../shared/static/StaticTabNav', () => 'StaticTabNav');
 jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav');
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	submitUserChangePassword: jest.fn(),
 	submitUserAccountInfo: jest.fn(),
 	match: {
 		url: '/settings/tab1',
-		params: { tabId: 'tab1' }
+		params: {
+			tabId: 'tab1'
+		}
 	},
 	...propOverrides
 });
 
-const createTestState = stateOverrides => ({
-	user: { id: '12345' },
+const createTestState = (stateOverrides) => ({
+	user: {
+		id: '12345'
+	},
 	...stateOverrides
 });
 
@@ -44,7 +48,7 @@ describe('rendering', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<Settings {...props} />);
+			const jsx = <Settings {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
@@ -53,7 +57,7 @@ describe('rendering', () => {
 		it('should populate options from imported tabs on dropdown nav', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<Settings {...props} />);
+			const jsx = <Settings {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const form = getSpecWrapper(element, 'settings-static-dropdown-nav');
 			const { options } = form.props();
@@ -62,7 +66,7 @@ describe('rendering', () => {
 		it('should populate options from imported tabs on tab nav', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<Settings {...props} />);
+			const jsx = <Settings {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const form = getSpecWrapper(element, 'settings-static-tab-nav');
 			const { options } = form.props();

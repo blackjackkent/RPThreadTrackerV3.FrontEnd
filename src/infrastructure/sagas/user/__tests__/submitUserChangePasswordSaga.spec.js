@@ -8,7 +8,9 @@ global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
 	describe('update', () => {
 		it('should dispatch success action on successful PUT', () => {
-			const data = { newPassword: 'my-password' };
+			const data = {
+				newPassword: 'my-password'
+			};
 			const saga = new SagaTestWrapper(submitUserChangePasswordSaga);
 			saga.setup(call(axios.put, 'http://test-site/api/user/password', data), data);
 			saga.expectPut({
@@ -20,9 +22,13 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed PUT', () => {
-			const data = { newPassword: 'my-password' };
+			const data = {
+				newPassword: 'my-password'
+			};
 			const saga = new SagaTestWrapper(submitUserChangePasswordSaga);
-			saga.setupError(call(axios.put, 'http://test-site/api/user/password', data), 'Error', { data: 'response data' });
+			saga.setupError(call(axios.put, 'http://test-site/api/user/password', data), 'Error', {
+				data: 'response data'
+			});
 			saga.expectPut({
 				type: actions.SUBMIT_USER_CHANGE_PASSWORD_FAILURE,
 				data: 'response data'

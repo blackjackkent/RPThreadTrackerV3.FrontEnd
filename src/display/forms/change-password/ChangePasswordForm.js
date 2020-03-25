@@ -16,16 +16,12 @@ const propTypes = {
 };
 
 const ChangePasswordForm = (props) => {
-	const {
-		handleInputChange, tooltipDisplayData, showTooltip, hideTooltip
-	} = props;
+	const { handleInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	return (
 		<div>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label htmlFor="current-password">
-						Current Password:
-					</Label>
+					<Label htmlFor="current-password">Current Password:</Label>
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
@@ -46,7 +42,9 @@ const ChangePasswordForm = (props) => {
 					<Tooltip
 						visible={tooltipDisplayData.newPassword}
 						overlay={formData.newPassword.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 10]
 						}}
@@ -68,9 +66,7 @@ const ChangePasswordForm = (props) => {
 			</FormGroup>
 			<FormGroup row>
 				<Col xs="12" lg="3">
-					<Label htmlFor="confirm-new-password">
-						Confirm New Password:
-					</Label>
+					<Label htmlFor="confirm-new-password">Confirm New Password:</Label>
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField

@@ -7,7 +7,7 @@ import Sidebar from '../Sidebar';
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
-			const jsx = (<Sidebar />);
+			const jsx = <Sidebar />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});

@@ -18,7 +18,7 @@ jest.mock('../../../../infrastructure/selectors', () => ({
 }));
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	fetchActiveThreads: jest.fn(),
 	openUntrackThreadModal: jest.fn(),
 	openEditThreadModal: jest.fn(),
@@ -27,9 +27,11 @@ const createTestProps = propOverrides => ({
 	...propOverrides
 });
 
-const createTestState = stateOverrides => ({
+const createTestState = (stateOverrides) => ({
 	activeThreads: [{}, {}, {}, {}, {}, {}, {}, {}],
-	ui: { useLightTheme: false },
+	ui: {
+		useLightTheme: false
+	},
 	...stateOverrides
 });
 
@@ -38,7 +40,7 @@ describe('rendering', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<AllThreads {...props} />);
+			const jsx = <AllThreads {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
@@ -49,17 +51,23 @@ describe('behavior', () => {
 	describe('componentDidMount', () => {
 		it('should retrieve threads when threads are not loaded', () => {
 			const fetchActiveThreads = jest.fn();
-			const props = createTestProps({ fetchActiveThreads });
-			const state = createTestState({ activeThreads: [] });
-			const jsx = (<AllThreads {...props} />);
+			const props = createTestProps({
+				fetchActiveThreads
+			});
+			const state = createTestState({
+				activeThreads: []
+			});
+			const jsx = <AllThreads {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchActiveThreads).toHaveBeenCalledTimes(1);
 		});
 		it('should not retrieve threads when threads are loaded', () => {
 			const fetchActiveThreads = jest.fn();
-			const props = createTestProps({ fetchActiveThreads });
+			const props = createTestProps({
+				fetchActiveThreads
+			});
 			const state = createTestState();
-			const jsx = (<AllThreads {...props} />);
+			const jsx = <AllThreads {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchActiveThreads).toHaveBeenCalledTimes(0);
 		});

@@ -1,7 +1,5 @@
 // #region imports
-import {
-	takeLatest, put, call, all
-} from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	FETCH_PUBLIC_THREADS,
@@ -14,7 +12,10 @@ import {
 function* fetchPublicThreads(action) {
 	try {
 		const { slug, username } = action.data;
-		const response = yield call(axios.get, `${API_BASE_URL}api/publicthread/${username}/${slug}`);
+		const response = yield call(
+			axios.get,
+			`${API_BASE_URL}api/publicthread/${username}/${slug}`
+		);
 		yield all([
 			put(fetchedPublicThreadsSuccess(response.data)),
 			put(fetchPublicThreadsStatus(response.data))

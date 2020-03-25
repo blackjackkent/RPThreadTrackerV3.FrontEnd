@@ -1,9 +1,7 @@
 // #region imports
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import {
-	ModalHeader, ModalBody, ModalFooter, Button
-} from 'reactstrap';
+import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import TooltipForm from '../../forms/TooltipForm';
 import UpsertThreadForm from '../../forms/upsert-thread/UpsertThreadForm';
@@ -32,15 +30,20 @@ class UpsertThreadModal extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({ threadToEdit: nextProps.threadToEdit });
+		this.setState({
+			threadToEdit: nextProps.threadToEdit
+		});
 	}
 
 	selectCharacter(e) {
 		const characterId = e.target.value;
 		const { threadToEdit } = this.state;
 		if (threadToEdit.characterId !== characterId) {
-			this.setState(prevState => ({
-				threadToEdit: { ...prevState.threadToEdit, characterId }
+			this.setState((prevState) => ({
+				threadToEdit: {
+					...prevState.threadToEdit,
+					characterId
+				}
 			}));
 		}
 	}
@@ -49,7 +52,7 @@ class UpsertThreadModal extends Component {
 		const { target } = event;
 		const value = target.type === 'checkbox' ? target.checked : target.value;
 		const { name } = target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			threadToEdit: Object.assign({}, prevState.threadToEdit, {
 				[name]: value
 			})
@@ -62,12 +65,14 @@ class UpsertThreadModal extends Component {
 		if (!currentTags) {
 			currentTags = [];
 		}
-		if (currentTags.filter(t => t.tagText === tagValue).length > 0) {
+		if (currentTags.filter((t) => t.tagText === tagValue).length > 0) {
 			return;
 		}
-		const newTag = { tagText: tagValue };
+		const newTag = {
+			tagText: tagValue
+		};
 		const newTags = currentTags.concat(newTag);
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			threadToEdit: Object.assign({}, prevState.threadToEdit, {
 				threadTags: newTags
 			})
@@ -80,8 +85,8 @@ class UpsertThreadModal extends Component {
 		if (!currentTags) {
 			currentTags = [];
 		}
-		const newTags = currentTags.filter(tag => tag.tagText !== tagValue);
-		this.setState(prevState => ({
+		const newTags = currentTags.filter((tag) => tag.tagText !== tagValue);
+		this.setState((prevState) => ({
 			threadToEdit: Object.assign({}, prevState.threadToEdit, {
 				threadTags: newTags
 			})
@@ -93,7 +98,7 @@ class UpsertThreadModal extends Component {
 		if (!threadToEdit.threadTags) {
 			return [];
 		}
-		return threadToEdit.threadTags.map(t => t.tagText);
+		return threadToEdit.threadTags.map((t) => t.tagText);
 	}
 
 	render() {
@@ -105,7 +110,7 @@ class UpsertThreadModal extends Component {
 			characters
 		} = this.props;
 		const { threadToEdit: requestData } = this.state;
-		const activeCharacters = [].concat(characters.filter(c => !c.isOnHiatus));
+		const activeCharacters = [].concat(characters.filter((c) => !c.isOnHiatus));
 		return (
 			<Modal
 				data-spec="upsert-thread-modal"
@@ -117,7 +122,10 @@ class UpsertThreadModal extends Component {
 					data-spec="upsert-thread-modal-form"
 					onValidSubmit={() => submitUpsertThread(requestData)}
 				>
-					<ModalHeader data-spec="upsert-thread-modal-header" toggle={closeUpsertThreadModal}>
+					<ModalHeader
+						data-spec="upsert-thread-modal-header"
+						toggle={closeUpsertThreadModal}
+					>
 						{threadToEdit && threadToEdit.threadId ? 'Edit Thread' : 'Add New Thread'}
 					</ModalHeader>
 					<ModalBody>
@@ -133,7 +141,9 @@ class UpsertThreadModal extends Component {
 						/>
 					</ModalBody>
 					<ModalFooter>
-						<Button color="primary">{threadToEdit.threadId ? 'Edit Thread' : 'Add Thread'}</Button>{' '}
+						<Button color="primary">
+							{threadToEdit.threadId ? 'Edit Thread' : 'Add Thread'}
+						</Button>{' '}
 						<Button
 							data-spec="upsert-thread-modal-close-button"
 							color="secondary"
