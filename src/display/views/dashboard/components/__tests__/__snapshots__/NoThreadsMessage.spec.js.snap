@@ -6,8 +6,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 >
   You do not currently have any threads tracked.
   <br />
-  Click "Track New Thread" in the header menu
-   
-  to add a thread to your account.
+  Click "Track New Thread" in the header menu to add a thread to your account.
 </div>
 `;

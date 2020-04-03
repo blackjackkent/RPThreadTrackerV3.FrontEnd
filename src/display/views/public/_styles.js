@@ -5,12 +5,15 @@ export default styled.div`
 	color: ${colors.GRAY_100};
 	.public-header {
 		position: relative;
-		margin-bottom: 30px; 
-		margin-top: 10px; 
-		padding: 5px; 
+		margin-bottom: 30px;
+		margin-top: 10px;
+		padding: 5px;
 		border-bottom: 1px solid ${colors.BASE_BLUE};
-		
-		ul { text-align: right; margin-right: 10px; }
+
+		ul {
+			text-align: right;
+			margin-right: 10px;
+		}
 		.navbar-brand {
 			color: ${colors.WHITE};
 			line-height: 50px;
@@ -23,10 +26,10 @@ export default styled.div`
 			font-size: 1.5rem;
 		}
 	}
-	.app-footer { 
-		margin: 0; 
-		background: none; 
-		border: none; 
+	.app-footer {
+		margin: 0;
+		background: none;
+		border: none;
 	}
 	.light-theme & {
 		color: ${colors.GRAY_800};

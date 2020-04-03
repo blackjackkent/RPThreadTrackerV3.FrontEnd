@@ -7,15 +7,15 @@ import formData from './_formData';
 
 const propTypes = {
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		password: PropTypes.bool
+	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired
 };
 
 const RegisterForm = (props) => {
-	const {
-		handleInputChange, tooltipDisplayData, showTooltip, hideTooltip
-	} = props;
+	const { handleInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	return (
 		<div>
 			<div data-spec="username-field">
@@ -40,7 +40,9 @@ const RegisterForm = (props) => {
 				<Tooltip
 					visible={tooltipDisplayData.password}
 					overlay={formData.password.tooltip}
-					overlayStyle={{ width: 300 }}
+					overlayStyle={{
+						width: 300
+					}}
 					align={{
 						offset: [0, 10]
 					}}

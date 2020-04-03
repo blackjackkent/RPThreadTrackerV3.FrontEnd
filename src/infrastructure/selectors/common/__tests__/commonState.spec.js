@@ -118,7 +118,9 @@ describe('getPublicThreadsView', () => {
 		// Arrange
 		const state = {
 			publicThreads: {
-				view: { id: '12345' }
+				view: {
+					id: '12345'
+				}
 			}
 		};
 		// Act
@@ -167,7 +169,9 @@ describe('getUserSettings', () => {
 	it('should return user settings from state', () => {
 		// Arrange
 		const state = {
-			userSettings: { settingsId: 1 }
+			userSettings: {
+				settingsId: 1
+			}
 		};
 		// Act
 		const result = getUserSettings(state);

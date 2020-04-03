@@ -7,12 +7,16 @@ describe('function', () => {
 		expect(result).toHaveLength(0);
 	});
 	it('should return empty array if select options is null', () => {
-		const result = getValuesFromMultiSelect({ options: null });
+		const result = getValuesFromMultiSelect({
+			options: null
+		});
 		expect(result).toBeTruthy();
 		expect(result).toHaveLength(0);
 	});
 	it('should return empty array if select options is empty', () => {
-		const result = getValuesFromMultiSelect({ options: [] });
+		const result = getValuesFromMultiSelect({
+			options: []
+		});
 		expect(result).toBeTruthy();
 		expect(result).toHaveLength(0);
 	});

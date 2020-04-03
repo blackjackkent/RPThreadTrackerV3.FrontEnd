@@ -4,7 +4,9 @@ import Character from '../Character';
 // #endregion imports
 
 jest.mock('../../../CharacterSelectItem', () => 'CharacterSelectItem');
-jest.mock('~/utility', () => ({ sortCharacters: jest.fn() }));
+jest.mock('~/utility', () => ({
+	sortCharacters: jest.fn()
+}));
 
 describe('data', () => {
 	it('should be defined', () => {
@@ -25,7 +27,9 @@ describe('data', () => {
 		const value = column.accessor({
 			thread: {
 				character: {
-					characterId: 1, characterName: 'My Character', urlIdentifier: 'my-url-identifier'
+					characterId: 1,
+					characterName: 'My Character',
+					urlIdentifier: 'my-url-identifier'
 				}
 			}
 		});
@@ -67,9 +71,21 @@ describe('cell', () => {
 describe('filter', () => {
 	it('should include filter which produces list of characters in select', () => {
 		const characters = [
-			{ characterId: 1, characterName: 'Character 1', urlIdentifier: 'character-1' },
-			{ characterId: 2, characterName: 'Character 2', urlIdentifier: 'character-2' },
-			{ characterId: 3, characterName: 'Character 3', urlIdentifier: 'character-3' }
+			{
+				characterId: 1,
+				characterName: 'Character 1',
+				urlIdentifier: 'character-1'
+			},
+			{
+				characterId: 2,
+				characterName: 'Character 2',
+				urlIdentifier: 'character-2'
+			},
+			{
+				characterId: 3,
+				characterName: 'Character 3',
+				urlIdentifier: 'character-3'
+			}
 		];
 		const column = Character(characters);
 		const filterJsx = column.Filter({});
@@ -85,15 +101,25 @@ describe('filter', () => {
 	});
 	it('should set select value to selected value when filter set', () => {
 		const column = Character([]);
-		const filterJsx = column.Filter({ filter: { value: 2 } });
+		const filterJsx = column.Filter({
+			filter: {
+				value: 2
+			}
+		});
 		const filterElement = shallow(filterJsx);
 		expect(filterElement.find('select')).toHaveProp('value', 2);
 	});
 	it('should fire passed onChange handler when select is changed', () => {
 		const column = Character([]);
 		const onChange = jest.fn();
-		const event = { target: { value: 15 } };
-		const filterJsx = column.Filter({ onChange });
+		const event = {
+			target: {
+				value: 15
+			}
+		};
+		const filterJsx = column.Filter({
+			onChange
+		});
 		const filterElement = shallow(filterJsx);
 		filterElement.find('select').simulate('change', event);
 		expect(onChange).toHaveBeenCalledTimes(1);
@@ -104,15 +130,35 @@ describe('filter', () => {
 describe('filterMethod', () => {
 	it('should return true when row character ID matches filter', () => {
 		const column = Character();
-		const filter = { value: '15' };
-		const row = { _original: { thread: { character: { characterId: 15 } } } };
+		const filter = {
+			value: '15'
+		};
+		const row = {
+			_original: {
+				thread: {
+					character: {
+						characterId: 15
+					}
+				}
+			}
+		};
 		const filterResult = column.filterMethod(filter, row);
 		expect(filterResult).toBe(true);
 	});
 	it('should return false when row character ID does not match filter', () => {
 		const column = Character();
-		const filter = { value: '15' };
-		const row = { _original: { thread: { character: { characterId: 16 } } } };
+		const filter = {
+			value: '15'
+		};
+		const row = {
+			_original: {
+				thread: {
+					character: {
+						characterId: 16
+					}
+				}
+			}
+		};
 		const filterResult = column.filterMethod(filter, row);
 		expect(filterResult).toBe(false);
 	});

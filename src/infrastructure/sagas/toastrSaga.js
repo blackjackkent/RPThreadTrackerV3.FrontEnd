@@ -51,7 +51,11 @@ function* displayUpdateThreadSuccess(action) {
 
 function* displayUpdateCharacterSuccess(action) {
 	const character = action.data;
-	toastr.success(`Successfully updated character ${character.characterName ? character.characterName : character.urlIdentifier}`);
+	toastr.success(
+		`Successfully updated character ${
+			character.characterName ? character.characterName : character.urlIdentifier
+		}`
+	);
 }
 
 function* displayUntrackCharacterSuccess() {
@@ -71,26 +75,38 @@ function* displayResetPasswordSuccess() {
 }
 
 function* displaySubmitContactFormSuccess() {
-	toastr.success('Thanks! Your message has been submitted and we\'ll get back to you as soon as possible.');
+	toastr.success(
+		"Thanks! Your message has been submitted and we'll get back to you as soon as possible."
+	);
 }
 
 function* displaySubmitContactFormError() {
-	toastr.error('There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.');
+	toastr.error(
+		'There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.'
+	);
 }
 
 function* displayUserChangePasswordError(action) {
 	const errors = action.data;
 	const messages = [];
 	for (let i = 0; i < errors.length; i++) {
-		messages.push(<span key={errors[i]}>{errors[i]}<br /></span>);
+		messages.push(
+			<span key={errors[i]}>
+				{errors[i]}
+				<br />
+			</span>
+		);
 	}
 	const message = (
 		<span>
-			There was a problem updating your password.<br />
+			There was a problem updating your password.
+			<br />
 			{messages}
 		</span>
 	);
-	toastr.error('', { component: () => message });
+	toastr.error('', {
+		component: () => message
+	});
 }
 
 function* displayUserChangePasswordSuccess() {
@@ -101,15 +117,23 @@ function* displayUserAccountInfoError(action) {
 	const errors = action.data;
 	const messages = [];
 	for (let i = 0; i < errors.length; i++) {
-		messages.push(<span key={errors[i]}>{errors[i]}<br /></span>);
+		messages.push(
+			<span key={errors[i]}>
+				{errors[i]}
+				<br />
+			</span>
+		);
 	}
 	const message = (
 		<span>
-			There was a problem updating your account information.<br />
+			There was a problem updating your account information.
+			<br />
 			{messages}
 		</span>
 	);
-	toastr.error('', { component: () => message });
+	toastr.error('', {
+		component: () => message
+	});
 }
 
 function* displayUserAccountInfoSuccess() {

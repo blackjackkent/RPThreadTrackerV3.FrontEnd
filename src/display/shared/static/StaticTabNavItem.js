@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
-import {
-	NavItem
-} from 'reactstrap';
+import { NavItem } from 'reactstrap';
 
 const propTypes = {
 	href: PropTypes.string.isRequired,
@@ -11,18 +9,10 @@ const propTypes = {
 };
 
 const StaticTabNavItem = (props) => {
-	const {
-		href,
-		title
-	} = props;
+	const { href, title } = props;
 	return (
 		<NavItem>
-
-			<NavLink
-				to={href}
-				activeClassName="active"
-				data-spec="static-tab-nav-item-navlink"
-			>
+			<NavLink to={href} activeClassName="active" data-spec="static-tab-nav-item-navlink">
 				{title}
 			</NavLink>
 		</NavItem>

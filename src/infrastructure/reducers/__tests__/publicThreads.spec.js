@@ -17,7 +17,12 @@ describe('action handling', () => {
 			data: 'test-slug'
 		};
 		const result = publicThreads({}, action);
-		expect(result).toEqual({ view: { slug: 'test-slug' }, threads: [] });
+		expect(result).toEqual({
+			view: {
+				slug: 'test-slug'
+			},
+			threads: []
+		});
 	});
 	it('should handle FETCHED_PUBLIC_THREADS_FAILURE', () => {
 		const action = {
@@ -29,7 +34,13 @@ describe('action handling', () => {
 	it('should handle FETCHED_PUBLIC_THREADS_SUCCESS', () => {
 		const action = {
 			type: actions.FETCHED_PUBLIC_THREADS_SUCCESS,
-			data: { threads: [{}, {}, {}], view: { slug: 'test-slug', id: 5 } }
+			data: {
+				threads: [{}, {}, {}],
+				view: {
+					slug: 'test-slug',
+					id: 5
+				}
+			}
 		};
 		const result = publicThreads(defaultState, action);
 		expect(result).toEqual(action.data);

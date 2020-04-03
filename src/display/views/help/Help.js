@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-	Row, Col
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AboutTrackerPane from './components/AboutTrackerPane';
@@ -16,7 +14,12 @@ import FAQPane from './components/FAQPane';
 
 const propTypes = {
 	submitContactForm: PropTypes.func.isRequired,
-	match: PropTypes.shape({}).isRequired
+	match: PropTypes.shape({
+		url: PropTypes.string,
+		params: PropTypes.shape({
+			tabId: PropTypes.string
+		})
+	}).isRequired
 };
 
 function mapStateToProps() {
@@ -39,11 +42,7 @@ const Help = (props) => {
 			</Row>
 			<Row>
 				<Col className="d-none d-lg-block" md={3}>
-
-					<StaticTabNav
-						data-spec="help-static-tab-nav"
-						options={options}
-					/>
+					<StaticTabNav data-spec="help-static-tab-nav" options={options} />
 				</Col>
 				<Col xs="12" lg="9">
 					<TabContent activeTab={match.params.tabId}>

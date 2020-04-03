@@ -22,7 +22,9 @@ describe('cell', () => {
 		const column = DateQueued();
 		const cellJsx = column.Cell({
 			original: {
-				thread: { dateMarkedQueued: Date.now }
+				thread: {
+					dateMarkedQueued: Date.now
+				}
 			}
 		});
 		const cellElement = shallow(cellJsx);

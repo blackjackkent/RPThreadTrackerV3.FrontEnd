@@ -19,14 +19,16 @@ class StaticDropdownNav extends React.Component {
 
 	render() {
 		const { activeTab, options } = this.props;
-		const optionElements = options.map(o => (
-			<option value={o.href} key={o.href} data-spec="static-dropdown-nav-option">{o.name}</option>
+		const optionElements = options.map((o) => (
+			<option value={o.href} key={o.href} data-spec="static-dropdown-nav-option">
+				{o.name}
+			</option>
 		));
 		return (
 			<CleanSelect>
 				<select
 					className="clean-select"
-					onChange={e => this.setActiveTab(e.target.value)}
+					onChange={(e) => this.setActiveTab(e.target.value)}
 					value={activeTab}
 					data-spec="static-dropdown-nav-select"
 				>

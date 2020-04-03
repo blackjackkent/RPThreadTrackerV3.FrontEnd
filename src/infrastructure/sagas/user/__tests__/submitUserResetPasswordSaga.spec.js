@@ -14,24 +14,36 @@ global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
 	describe('update', () => {
 		it('should dispatch success action on successful POST', () => {
-			const data = { newPassword: 'my-password' };
+			const data = {
+				newPassword: 'my-password'
+			};
 			const saga = new SagaTestWrapper(submitUserResetPasswordSaga);
 			saga.setup(call(axios.post, 'http://test-site/api/auth/resetpassword', data), {});
 			saga.expectPut({
 				type: actions.SUBMIT_USER_RESET_PASSWORD_SUCCESS
 			});
-			return saga.execute({
-				type: actions.SUBMIT_USER_RESET_PASSWORD,
-				data
-			}).then(() => {
-				expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
-				expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/login');
-			});
+			return saga
+				.execute({
+					type: actions.SUBMIT_USER_RESET_PASSWORD,
+					data
+				})
+				.then(() => {
+					expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+					expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/login');
+				});
 		});
 		it('should dispatch failure action on failed POST', () => {
-			const data = { newPassword: 'my-password' };
+			const data = {
+				newPassword: 'my-password'
+			};
 			const saga = new SagaTestWrapper(submitUserResetPasswordSaga);
-			saga.setupError(call(axios.post, 'http://test-site/api/auth/resetpassword', data), 'Error', { data: 'response data' });
+			saga.setupError(
+				call(axios.post, 'http://test-site/api/auth/resetpassword', data),
+				'Error',
+				{
+					data: 'response data'
+				}
+			);
 			saga.expectPut({
 				type: actions.SUBMIT_USER_RESET_PASSWORD_FAILURE,
 				data: 'response data'

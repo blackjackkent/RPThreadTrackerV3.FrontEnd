@@ -14,7 +14,9 @@ describe('saga behavior', () => {
 			type: actions.LOAD_SIDEBAR_OPEN_SUCCESS,
 			data: false
 		});
-		return saga.execute({ type: actions.LOAD_SIDEBAR_OPEN });
+		return saga.execute({
+			type: actions.LOAD_SIDEBAR_OPEN
+		});
 	});
 	it('should dispatch success action with side bar open by default', () => {
 		cache.get.mockReturnValue(null);
@@ -23,6 +25,8 @@ describe('saga behavior', () => {
 			type: actions.LOAD_SIDEBAR_OPEN_SUCCESS,
 			data: true
 		});
-		return saga.execute({ type: actions.LOAD_SIDEBAR_OPEN });
+		return saga.execute({
+			type: actions.LOAD_SIDEBAR_OPEN
+		});
 	});
 });

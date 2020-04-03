@@ -1,6 +1,4 @@
-import {
-	takeEvery, put, call, all
-} from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	UPSERT_CHARACTER,
@@ -12,10 +10,7 @@ import {
 function* updateCharacter(character) {
 	try {
 		yield call(axios.put, `${API_BASE_URL}api/character/${character.characterId}`, character);
-		yield all([
-			put(upsertCharacterSuccess(character)),
-			put(fetchCharacters())
-		]);
+		yield all([put(upsertCharacterSuccess(character)), put(fetchCharacters())]);
 	} catch (e) {
 		yield put(upsertCharacterFailure());
 	}
@@ -24,10 +19,7 @@ function* updateCharacter(character) {
 function* insertCharacter(character) {
 	try {
 		yield call(axios.post, `${API_BASE_URL}api/character`, character);
-		yield all([
-			put(upsertCharacterSuccess(character)),
-			put(fetchCharacters())
-		]);
+		yield all([put(upsertCharacterSuccess(character)), put(fetchCharacters())]);
 	} catch (e) {
 		yield put(upsertCharacterFailure());
 	}

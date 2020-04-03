@@ -2,7 +2,9 @@ import * as actions from '../submitUserLogin';
 
 describe('submitUserLogin', () => {
 	it('should create action with type, data, and analytics', () => {
-		const data = { username: 'test-username' };
+		const data = {
+			username: 'test-username'
+		};
 		const action = actions.submitUserLogin(data);
 		expect(action.type).toBe('SUBMIT_USER_LOGIN');
 		expect(action.data).toBe(data);

@@ -9,7 +9,7 @@ jest.mock('react-ga', () => ({
 	pageview: jest.fn()
 }));
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	location: {
 		pathname: '/test'
 	},
@@ -23,12 +23,17 @@ beforeEach(() => {
 describe('behavior', () => {
 	describe('componentDidMount', () => {
 		it('should track page by pathname', () => {
-			const TrackedComponent = withPageViewTracker(() => 'WrappedComponent', { testOption: 'test-value' });
+			const TrackedComponent = withPageViewTracker(() => 'WrappedComponent', {
+				testOption: 'test-value'
+			});
 			const props = createTestProps();
-			const jsx = (<TrackedComponent {...props} />);
+			const jsx = <TrackedComponent {...props} />;
 			shallow(jsx);
 			expect(GoogleAnalytics.set).toHaveBeenCalledTimes(1);
-			expect(GoogleAnalytics.set).toHaveBeenCalledWith({ page: '/test', testOption: 'test-value' });
+			expect(GoogleAnalytics.set).toHaveBeenCalledWith({
+				page: '/test',
+				testOption: 'test-value'
+			});
 			expect(GoogleAnalytics.pageview).toHaveBeenCalledTimes(1);
 			expect(GoogleAnalytics.pageview).toHaveBeenCalledWith('/test');
 		});
@@ -37,20 +42,30 @@ describe('behavior', () => {
 		it('should track page if location has changed', () => {
 			const TrackedComponent = withPageViewTracker(() => 'WrappedComponent');
 			const props = createTestProps();
-			const jsx = (<TrackedComponent {...props} />);
+			const jsx = <TrackedComponent {...props} />;
 			const element = shallow(jsx);
-			element.setProps({ location: { pathname: '/test2' } });
+			element.setProps({
+				location: {
+					pathname: '/test2'
+				}
+			});
 			expect(GoogleAnalytics.set).toHaveBeenCalledTimes(2);
-			expect(GoogleAnalytics.set).toHaveBeenCalledWith({ page: '/test2' });
+			expect(GoogleAnalytics.set).toHaveBeenCalledWith({
+				page: '/test2'
+			});
 			expect(GoogleAnalytics.pageview).toHaveBeenCalledTimes(2);
 			expect(GoogleAnalytics.pageview).toHaveBeenCalledWith('/test2');
 		});
 		it('should do nothing if location has not changed', () => {
 			const TrackedComponent = withPageViewTracker(() => 'WrappedComponent');
 			const props = createTestProps();
-			const jsx = (<TrackedComponent {...props} />);
+			const jsx = <TrackedComponent {...props} />;
 			const element = shallow(jsx);
-			element.setProps({ location: { pathname: '/test' } });
+			element.setProps({
+				location: {
+					pathname: '/test'
+				}
+			});
 			expect(GoogleAnalytics.set).toHaveBeenCalledTimes(1);
 			expect(GoogleAnalytics.pageview).toHaveBeenCalledTimes(1);
 		});

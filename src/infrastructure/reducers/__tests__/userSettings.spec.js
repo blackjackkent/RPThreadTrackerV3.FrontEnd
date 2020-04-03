@@ -1,7 +1,7 @@
 import userSettings from '../userSettings';
 import * as actions from '../../actions';
 
-const getState = overrides => ({
+const getState = (overrides) => ({
 	showDashboardThreadDistribution: false,
 	threadTablePageSize: 10,
 	...overrides
@@ -16,7 +16,10 @@ describe('action handling', () => {
 		const action = {
 			type: actions.FETCHED_USER_SETTINGS_SUCCESS,
 			shouldSkipViewUpdate: true,
-			data: { settingsId: '12345', showDashboardThreadDistribution: false }
+			data: {
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			}
 		};
 		const result = userSettings(getState(), action);
 		expect(result).toEqual(getState());
@@ -24,16 +27,26 @@ describe('action handling', () => {
 	it('should handle FETCHED_USER_SETTINGS_SUCCESS when not skipping view update', () => {
 		const action = {
 			type: actions.FETCHED_USER_SETTINGS_SUCCESS,
-			data: { settingsId: '12345', showDashboardThreadDistribution: false }
+			data: {
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			}
 		};
 		const result = userSettings(getState(), action);
-		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false, threadTablePageSize: 10 });
+		expect(result).toEqual({
+			settingsId: '12345',
+			showDashboardThreadDistribution: false,
+			threadTablePageSize: 10
+		});
 	});
 	it('should handle UPDATED_USER_SETTINGS_SUCCESS when skipping view update', () => {
 		const action = {
 			type: actions.UPDATED_USER_SETTINGS_SUCCESS,
 			shouldSkipViewUpdate: true,
-			data: { settingsId: '12345', showDashboardThreadDistribution: false }
+			data: {
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			}
 		};
 		const result = userSettings(getState(), action);
 		expect(result).toEqual(getState());
@@ -41,16 +54,26 @@ describe('action handling', () => {
 	it('should handle UPDATED_USER_SETTINGS_SUCCESS when not skipping view update', () => {
 		const action = {
 			type: actions.UPDATED_USER_SETTINGS_SUCCESS,
-			data: { settingsId: '12345', showDashboardThreadDistribution: false }
+			data: {
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			}
 		};
 		const result = userSettings(getState(), action);
-		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false, threadTablePageSize: 10 });
+		expect(result).toEqual({
+			settingsId: '12345',
+			showDashboardThreadDistribution: false,
+			threadTablePageSize: 10
+		});
 	});
 	it('should handle UPDATE_USER_SETTINGS when skipping view update', () => {
 		const action = {
 			type: actions.UPDATE_USER_SETTINGS,
 			shouldSkipViewUpdate: true,
-			data: { settingsId: '12345', showDashboardThreadDistribution: false }
+			data: {
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			}
 		};
 		const result = userSettings(getState(), action);
 		expect(result).toEqual(getState());
@@ -58,16 +81,29 @@ describe('action handling', () => {
 	it('should handle UPDATE_USER_SETTINGS when not skipping view update', () => {
 		const action = {
 			type: actions.UPDATE_USER_SETTINGS,
-			data: { settingsId: '12345', showDashboardThreadDistribution: false }
+			data: {
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			}
 		};
 		const result = userSettings(getState(), action);
-		expect(result).toEqual({ settingsId: '12345', showDashboardThreadDistribution: false, threadTablePageSize: 10 });
+		expect(result).toEqual({
+			settingsId: '12345',
+			showDashboardThreadDistribution: false,
+			threadTablePageSize: 10
+		});
 	});
 	it('should handle SUBMIT_USER_LOGOUT', () => {
 		const action = {
 			type: actions.SUBMIT_USER_LOGOUT
 		};
-		const result = userSettings({ settingsId: '12345', showDashboardThreadDistribution: false }, action);
+		const result = userSettings(
+			{
+				settingsId: '12345',
+				showDashboardThreadDistribution: false
+			},
+			action
+		);
 		expect(result).toEqual(getState());
 	});
 });

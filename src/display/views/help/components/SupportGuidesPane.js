@@ -1,21 +1,23 @@
 import React from 'react';
-import {
-	TabPane, CardHeader, CardBody
-} from 'reactstrap';
+import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 
 const SupportGuidesPane = () => (
 	<TabPane tabId="guides">
 		<Card>
 			<CardHeader>
-				<i
-					className="fas fa-play-circle"
-				/> Support Guides
+				<i className="fas fa-play-circle" /> Support Guides
 			</CardHeader>
 			<CardBody className="card-body">
 				<p>
 					Intro Tutorial: How to Use RPThreadTracker ~{' '}
-					<a href="https://youtu.be/R7psA53V-9E" target="_blank" rel="noopener noreferrer">Video <i className="fas fa-external-link-alt" /></a>
+					<a
+						href="https://youtu.be/R7psA53V-9E"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						Video <i className="fas fa-external-link-alt" />
+					</a>
 				</p>
 				<p>
 					How to Manage Public Views ~{' '}
@@ -28,7 +30,7 @@ const SupportGuidesPane = () => (
 					</a>
 				</p>
 				<p>
-					How to Mark Tumblr Threads as Queued ~ {' '}
+					How to Mark Tumblr Threads as Queued ~{' '}
 					<a
 						target="_blank"
 						rel="noopener noreferrer"

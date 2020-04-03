@@ -6,9 +6,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
 >
   You do not have any active characters.
   <br />
-  Click "Add Character" in the header menu
-   
-  to add one, or visit
+  Click "Add Character" in the header menu to add one, or visit
    
   <Link
     href="/manage-characters"

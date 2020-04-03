@@ -13,12 +13,7 @@ const getMyTurnThreads = createSelector(
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];
 		}
-		return buildThreadDataByPredicate(
-			threads,
-			threadsStatus,
-			filters.MY_TURN,
-			true
-		);
+		return buildThreadDataByPredicate(threads, threadsStatus, filters.MY_TURN, true);
 	}
 );
 export default getMyTurnThreads;

@@ -6,17 +6,15 @@ export default styled(Breadcrumb)`
 	.breadcrumb {
 		border-bottom: none;
 		margin-bottom: 0;
-		background-color: ${colors.GRAY_900}
-		a {
-			color: ${colors.LIGHT_BLUE}
+		background-color: ${colors.GRAY_900} a {
+			color: ${colors.LIGHT_BLUE};
 		}
 		.breadcrumb-item::before {
-			color: ${colors.GRAY_100}
+			color: ${colors.GRAY_100};
 		}
 		.light-theme & {
-			background-color: ${colors.GRAY_100}
-			a {
-				color: ${colors.DARK_BLUE}
+			background-color: ${colors.GRAY_100} a {
+				color: ${colors.DARK_BLUE};
 			}
 		}
 	}

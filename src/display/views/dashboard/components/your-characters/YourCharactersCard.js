@@ -30,13 +30,13 @@ const getBlockContent = (loadingInProgress, characters, characterThreadCounts) =
 		);
 	}
 	if (characters.length === 0) {
-		return (<NoCharactersMessage />);
+		return <NoCharactersMessage />;
 	}
-	const activeCharacters = characters.filter(c => !c.isOnHiatus);
+	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
 	if (characters.length > 0 && activeCharacters.length === 0) {
-		return (<NoActiveCharactersMessage />);
+		return <NoActiveCharactersMessage />;
 	}
-	return activeCharacters.map(character => (
+	return activeCharacters.map((character) => (
 		<YourCharactersCardRow
 			character={character}
 			key={character.characterId}
@@ -53,15 +53,13 @@ const YourCharactersCard = (props) => {
 			<CardHeader>
 				<i className="fas fa-users" /> Your Characters
 				<div className="float-right">
-					<Link href="/manage-characters" to="/manage-characters">Manage Characters</Link>
+					<Link href="/manage-characters" to="/manage-characters">
+						Manage Characters
+					</Link>
 				</div>
 			</CardHeader>
 			<CardBody className="card-body">
-				{getBlockContent(
-					loadingInProgress,
-					characters,
-					characterThreadCounts
-				)}
+				{getBlockContent(loadingInProgress, characters, characterThreadCounts)}
 			</CardBody>
 		</Card>
 	);

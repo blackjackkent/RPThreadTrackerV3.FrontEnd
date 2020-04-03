@@ -1,7 +1,5 @@
 // #region imports
-import {
-	takeLatest, put, call, all
-} from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	FETCH_LEGACY_PUBLIC_THREADS,

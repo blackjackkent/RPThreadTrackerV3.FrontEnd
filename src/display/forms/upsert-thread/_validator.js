@@ -24,7 +24,7 @@ export default {
 	partnerUrlIdentifier: {
 		maxLength: {
 			value: 256,
-			errorMessage: 'Your partner\'s URL identifier is too long.'
+			errorMessage: "Your partner's URL identifier is too long."
 		}
 	}
 };

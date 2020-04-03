@@ -10,30 +10,38 @@ describe('function', () => {
 		expect(filtered).toContain('test3');
 	});
 	it('should filter duplicate objects without key', () => {
-		const initial = [{
-			prop1: 'test string',
-			prop2: 25
-		}, {
-			prop1: 'test string',
-			prop2: 25
-		}, {
-			prop1: 'another test string',
-			prop2: 25
-		}];
+		const initial = [
+			{
+				prop1: 'test string',
+				prop2: 25
+			},
+			{
+				prop1: 'test string',
+				prop2: 25
+			},
+			{
+				prop1: 'another test string',
+				prop2: 25
+			}
+		];
 		const filtered = filterDuplicatesFromArray(initial);
 		expect(filtered).toHaveLength(2);
 	});
 	it('should filter duplicate objects with key', () => {
-		const initial = [{
-			prop1: 'test string',
-			prop2: 25
-		}, {
-			prop1: 'test string',
-			prop2: 25
-		}, {
-			prop1: 'another test string',
-			prop2: 25
-		}];
+		const initial = [
+			{
+				prop1: 'test string',
+				prop2: 25
+			},
+			{
+				prop1: 'test string',
+				prop2: 25
+			},
+			{
+				prop1: 'another test string',
+				prop2: 25
+			}
+		];
 		const filtered = filterDuplicatesFromArray(initial, 'prop2');
 		expect(filtered).toHaveLength(1);
 	});

@@ -57,15 +57,25 @@ describe('filter', () => {
 	});
 	it('should set select value to selected value when filter set', () => {
 		const column = TrackedPartner([]);
-		const filterJsx = column.Filter({ filter: { value: 'partner-1' } });
+		const filterJsx = column.Filter({
+			filter: {
+				value: 'partner-1'
+			}
+		});
 		const filterElement = shallow(filterJsx);
 		expect(filterElement.find('select')).toHaveProp('value', 'partner-1');
 	});
 	it('should fire passed onChange handler when select is changed', () => {
 		const column = TrackedPartner([]);
 		const onChange = jest.fn();
-		const event = { target: { value: 'partner-2' } };
-		const filterJsx = column.Filter({ onChange });
+		const event = {
+			target: {
+				value: 'partner-2'
+			}
+		};
+		const filterJsx = column.Filter({
+			onChange
+		});
 		const filterElement = shallow(filterJsx);
 		filterElement.find('select').simulate('change', event);
 		expect(onChange).toHaveBeenCalledTimes(1);

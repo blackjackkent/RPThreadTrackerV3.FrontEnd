@@ -26,9 +26,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         data-spec="view-name-field"
         helpMessage={
           <span>
-            For your own use; a name that will help you remember
-             
-            what this view contains.
+            For your own use; a name that will help you remember what this view contains.
           </span>
         }
         label="View Name"
@@ -83,7 +81,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         mouseLeaveDelay={0.1}
         overlay={
           <span>
-            Will be rendered as 
+            Will be rendered as
+             
             <em>
               http://www.rpthreadtracker.com/public/
               {
@@ -382,9 +381,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               onChange={[MockFunction]}
               type="checkbox"
             />
-            Include Partner
-            '
-            s Turn Threads
+            Include Partner's Turn Threads
           </label>
         </Col>
       </Row>
@@ -496,9 +493,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           data-spec="view-characters-field"
           helpMessage={
             <span>
-              The characters whose threads should be displayed to visitors in this public view.
-               
-              (Leave unselected to display threads for all characters.)
+              The characters whose threads should be displayed to visitors in this public view. (Leave unselected to display threads for all characters.)
             </span>
           }
           label="Characters"
@@ -610,9 +605,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           data-spec="view-tags-field"
           helpMessage={
             <span>
-              The public view will only include threads with these tags.
-               
-              (Leave unselected to display threads with all tags.)
+              The public view will only include threads with these tags. (Leave unselected to display threads with all tags.)
             </span>
           }
           label="Tags"
@@ -681,9 +674,7 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
         data-spec="view-name-field"
         helpMessage={
           <span>
-            For your own use; a name that will help you remember
-             
-            what this view contains.
+            For your own use; a name that will help you remember what this view contains.
           </span>
         }
         label="View Name"
@@ -739,7 +730,8 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
         mouseLeaveDelay={0.1}
         overlay={
           <span>
-            Will be rendered as 
+            Will be rendered as
+             
             <em>
               http://www.rpthreadtracker.com/public/
               {
@@ -1047,9 +1039,7 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
               onChange={[MockFunction]}
               type="checkbox"
             />
-            Include Partner
-            '
-            s Turn Threads
+            Include Partner's Turn Threads
           </label>
         </Col>
       </Row>
@@ -1161,9 +1151,7 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
           data-spec="view-characters-field"
           helpMessage={
             <span>
-              The characters whose threads should be displayed to visitors in this public view.
-               
-              (Leave unselected to display threads for all characters.)
+              The characters whose threads should be displayed to visitors in this public view. (Leave unselected to display threads for all characters.)
             </span>
           }
           label="Characters"
@@ -1282,9 +1270,7 @@ exports[`rendering snapshots should render valid snapshot with view 1`] = `
           data-spec="view-tags-field"
           helpMessage={
             <span>
-              The public view will only include threads with these tags.
-               
-              (Leave unselected to display threads with all tags.)
+              The public view will only include threads with these tags. (Leave unselected to display threads with all tags.)
             </span>
           }
           label="Tags"

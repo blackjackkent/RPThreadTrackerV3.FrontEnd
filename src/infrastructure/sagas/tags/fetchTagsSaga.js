@@ -1,11 +1,7 @@
 // #region imports
 import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import {
-	FETCH_TAGS,
-	fetchedTagsSuccess,
-	fetchedTagsFailure
-} from '../../actions';
+import { FETCH_TAGS, fetchedTagsSuccess, fetchedTagsFailure } from '../../actions';
 // #endregion imports
 
 function* fetchTags() {

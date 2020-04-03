@@ -20,7 +20,9 @@ describe('action handling', () => {
 			}
 		};
 		const result = characterToEdit({}, action);
-		expect(result).toEqual({ characterName: 'Test Character' });
+		expect(result).toEqual({
+			characterName: 'Test Character'
+		});
 	});
 	it('should handle OPEN_UPSERT_CHARACTER_MODAL with action data', () => {
 		const action = {
@@ -30,7 +32,9 @@ describe('action handling', () => {
 			}
 		};
 		const result = characterToEdit({}, action);
-		expect(result).toEqual({ characterName: 'Test Character' });
+		expect(result).toEqual({
+			characterName: 'Test Character'
+		});
 	});
 	it('should handle OPEN_UNTRACK_CHARACTER_MODAL without action data', () => {
 		const action = {

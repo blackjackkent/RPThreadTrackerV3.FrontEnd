@@ -23,7 +23,9 @@ describe('action handling', () => {
 	it('should handle FETCHED_ACTIVE_THREADS_SUCCESS', () => {
 		const action = {
 			type: actions.FETCHED_ACTIVE_THREADS_SUCCESS,
-			data: { threads: [{}, {}, {}] }
+			data: {
+				threads: [{}, {}, {}]
+			}
 		};
 		const result = activeThreads([{}, {}], action);
 		expect(result).toEqual([{}, {}, {}]);

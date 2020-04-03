@@ -1,4 +1,7 @@
-import { FETCH_PUBLIC_THREADS_STATUS, FETCHED_PUBLIC_THREADS_STATUS_CHUNK_SUCCESS } from '../actions';
+import {
+	FETCH_PUBLIC_THREADS_STATUS,
+	FETCHED_PUBLIC_THREADS_STATUS_CHUNK_SUCCESS
+} from '../actions';
 
 function publicThreadsStatus(state = [], action) {
 	switch (action.type) {

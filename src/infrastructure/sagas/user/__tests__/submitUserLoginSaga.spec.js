@@ -21,11 +21,17 @@ beforeEach(() => {
 describe('saga behavior', () => {
 	describe('update', () => {
 		it('should dispatch success action on successful POST when login action', () => {
-			const data = { username: 'my-user' };
+			const data = {
+				username: 'my-user'
+			};
 			const response = {
 				data: {
-					token: { token: '12345' },
-					refreshToken: { token: '54321' }
+					token: {
+						token: '12345'
+					},
+					refreshToken: {
+						token: '54321'
+					}
 				}
 			};
 			const saga = new SagaTestWrapper(submitUserLoginSaga);
@@ -33,23 +39,31 @@ describe('saga behavior', () => {
 			saga.expectPut({
 				type: actions.SUBMIT_USER_LOGIN_SUCCESS
 			});
-			return saga.execute({
-				type: actions.SUBMIT_USER_LOGIN,
-				data
-			}).then(() => {
-				expect(cache.set).toHaveBeenCalledTimes(2);
-				expect(cache.set).toHaveBeenCalledWith('accessToken', '12345');
-				expect(cache.set).toHaveBeenCalledWith('refreshToken', '54321');
-				expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
-				expect(history.navigation.navigateTo).toHaveBeenCalledWith('/dashboard');
-			});
+			return saga
+				.execute({
+					type: actions.SUBMIT_USER_LOGIN,
+					data
+				})
+				.then(() => {
+					expect(cache.set).toHaveBeenCalledTimes(2);
+					expect(cache.set).toHaveBeenCalledWith('accessToken', '12345');
+					expect(cache.set).toHaveBeenCalledWith('refreshToken', '54321');
+					expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+					expect(history.navigation.navigateTo).toHaveBeenCalledWith('/dashboard');
+				});
 		});
 		it('should dispatch success action on successful POST when successful registration', () => {
-			const data = { username: 'my-user' };
+			const data = {
+				username: 'my-user'
+			};
 			const response = {
 				data: {
-					token: { token: '12345' },
-					refreshToken: { token: '54321' }
+					token: {
+						token: '12345'
+					},
+					refreshToken: {
+						token: '54321'
+					}
 				}
 			};
 			const saga = new SagaTestWrapper(submitUserLoginSaga);
@@ -57,21 +71,27 @@ describe('saga behavior', () => {
 			saga.expectPut({
 				type: actions.SUBMIT_USER_LOGIN_SUCCESS
 			});
-			return saga.execute({
-				type: actions.SUBMIT_USER_REGISTRATION_SUCCESS,
-				data
-			}).then(() => {
-				expect(cache.set).toHaveBeenCalledTimes(2);
-				expect(cache.set).toHaveBeenCalledWith('accessToken', '12345');
-				expect(cache.set).toHaveBeenCalledWith('refreshToken', '54321');
-				expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
-				expect(history.navigation.navigateTo).toHaveBeenCalledWith('/dashboard');
-			});
+			return saga
+				.execute({
+					type: actions.SUBMIT_USER_REGISTRATION_SUCCESS,
+					data
+				})
+				.then(() => {
+					expect(cache.set).toHaveBeenCalledTimes(2);
+					expect(cache.set).toHaveBeenCalledWith('accessToken', '12345');
+					expect(cache.set).toHaveBeenCalledWith('refreshToken', '54321');
+					expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
+					expect(history.navigation.navigateTo).toHaveBeenCalledWith('/dashboard');
+				});
 		});
 		it('should dispatch failure action on failed POST', () => {
-			const data = { username: 'my-user' };
+			const data = {
+				username: 'my-user'
+			};
 			const saga = new SagaTestWrapper(submitUserLoginSaga);
-			saga.setupError(call(axios.post, 'http://test-site/api/auth/token', data), 'Error', { data: 'response data' });
+			saga.setupError(call(axios.post, 'http://test-site/api/auth/token', data), 'Error', {
+				data: 'response data'
+			});
 			saga.expectPut({
 				type: actions.SUBMIT_USER_LOGIN_FAILURE,
 				data: 'response data'

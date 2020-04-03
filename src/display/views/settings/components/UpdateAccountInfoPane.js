@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	TabPane, Row, Button, Col, CardHeader, CardBody
-} from 'reactstrap';
+import { TabPane, Row, Button, Col, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import Card from '../../../shared/styled/Card';
 import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
@@ -22,7 +20,7 @@ class UpdateAccountInfoPane extends React.Component {
 
 	componentWillReceiveProps(nextProps) {
 		const { user } = nextProps;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			formData: Object.assign({}, prevState.formData, user)
 		}));
 	}
@@ -30,7 +28,7 @@ class UpdateAccountInfoPane extends React.Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			formData: Object.assign({}, prevState.formData, {
 				[name]: value
 			})
@@ -44,9 +42,7 @@ class UpdateAccountInfoPane extends React.Component {
 			<TabPane tabId="change-username">
 				<Card>
 					<CardHeader>
-						<i
-							className="fas fa-user"
-						/> Change Username/Email
+						<i className="fas fa-user" /> Change Username/Email
 					</CardHeader>
 					<CardBody className="card-body">
 						<AvForm

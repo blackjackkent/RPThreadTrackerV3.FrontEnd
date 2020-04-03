@@ -8,7 +8,8 @@ async function isValidSlug(slug, viewId) {
 		url += `/${viewId}`;
 	}
 	return new Promise((resolve, reject) => {
-		axios.get(url)
+		axios
+			.get(url)
 			.then(() => resolve())
 			.catch(() => reject());
 	});

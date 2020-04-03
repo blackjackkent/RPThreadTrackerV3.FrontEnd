@@ -18,30 +18,32 @@ const defaultProps = {
 };
 
 const DashboardSummaryWidget = (props) => {
-	const {
-		header, icon, children, isLoadingIconVisible, href, ...attributes
-	} = props;
+	const { header, icon, children, isLoadingIconVisible, href, ...attributes } = props;
 
 	return (
 		<Card {...attributes} onClick={() => navigation.navigateTo(href)}>
 			<CardBody className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
-					{isLoadingIconVisible
-						&& (
-							<LoadingIndicator
-								data-spec="dashboard-summary-widget-loading"
-								className="inverse dashboard-summary-widget-loading-icon"
-								style={{
-									width: 25, height: 25
-								}}
-							/>
-						)
-					}
+					{isLoadingIconVisible && (
+						<LoadingIndicator
+							data-spec="dashboard-summary-widget-loading"
+							className="inverse dashboard-summary-widget-loading-icon"
+							style={{
+								width: 25,
+								height: 25
+							}}
+						/>
+					)}
 				</div>
 				<div className="h1 float-right text-right mb-2">
-					<i data-spec="dashboard-summary-widget-icon" className={`${icon} d-sm-none d-md-block`} />
+					<i
+						data-spec="dashboard-summary-widget-icon"
+						className={`${icon} d-sm-none d-md-block`}
+					/>
 				</div>
-				<div className="h4 mb-0" data-spec="dashboard-summary-widget-header">{header}</div>
+				<div className="h4 mb-0" data-spec="dashboard-summary-widget-header">
+					{header}
+				</div>
 				<small
 					data-spec="dashboard-summary-widget-body"
 					className=" text-uppercase font-weight-bold"

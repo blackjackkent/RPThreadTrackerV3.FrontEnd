@@ -8,7 +8,9 @@ global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
 	describe('update', () => {
 		it('should update character when character has ID', () => {
-			const character = { characterId: 1 };
+			const character = {
+				characterId: 1
+			};
 			const saga = new SagaTestWrapper(upsertCharacterSaga);
 			saga.setup(call(axios.put, 'http://test-site/api/character/1', character), character);
 			saga.expectPut({
@@ -24,9 +26,14 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed PUT', () => {
-			const character = { characterId: 1 };
+			const character = {
+				characterId: 1
+			};
 			const saga = new SagaTestWrapper(upsertCharacterSaga);
-			saga.setupError(call(axios.put, 'http://test-site/api/character/1', character), 'Test error');
+			saga.setupError(
+				call(axios.put, 'http://test-site/api/character/1', character),
+				'Test error'
+			);
 			saga.expectPut({
 				type: actions.UPSERT_CHARACTER_FAILURE
 			});
@@ -38,7 +45,9 @@ describe('saga behavior', () => {
 	});
 	describe('insert', () => {
 		it('should create character when character has no ID', () => {
-			const character = { characterName: 'Test Character' };
+			const character = {
+				characterName: 'Test Character'
+			};
 			const saga = new SagaTestWrapper(upsertCharacterSaga);
 			saga.setup(call(axios.post, 'http://test-site/api/character', character), character);
 			saga.expectPut({
@@ -54,9 +63,14 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed POST', () => {
-			const character = { characterName: 'Test Character' };
+			const character = {
+				characterName: 'Test Character'
+			};
 			const saga = new SagaTestWrapper(upsertCharacterSaga);
-			saga.setupError(call(axios.post, 'http://test-site/api/character', character), 'Test error');
+			saga.setupError(
+				call(axios.post, 'http://test-site/api/character', character),
+				'Test error'
+			);
 			saga.expectPut({
 				type: actions.UPSERT_CHARACTER_FAILURE
 			});

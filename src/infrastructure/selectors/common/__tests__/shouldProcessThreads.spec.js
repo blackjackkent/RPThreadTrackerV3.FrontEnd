@@ -1,20 +1,36 @@
 import shouldProcessThreads from '../shouldProcessThreads';
 
 const getThreads = () => [
-	{ postId: '' },
-	{ postId: '' },
-	{ postId: '12345' },
-	{ postId: '23456' }
+	{
+		postId: ''
+	},
+	{
+		postId: ''
+	},
+	{
+		postId: '12345'
+	},
+	{
+		postId: '23456'
+	}
 ];
 
 const getThreadsWithNoStatuses = () => [
-	{ postId: '' },
-	{ postId: '' }
+	{
+		postId: ''
+	},
+	{
+		postId: ''
+	}
 ];
 
 const getStatuses = () => [
-	{ postId: '12345' },
-	{ postId: '23456' }
+	{
+		postId: '12345'
+	},
+	{
+		postId: '23456'
+	}
 ];
 
 describe('behavior', () => {

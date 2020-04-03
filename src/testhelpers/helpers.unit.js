@@ -16,7 +16,9 @@ export const shallowWithState = (component, state) => {
 	const context = {
 		store
 	};
-	return shallow(component, { context });
+	return shallow(component, {
+		context
+	});
 };
 
 export const initMockDateNow = () => {
@@ -30,10 +32,22 @@ export const initMockDateNow = () => {
 };
 
 export const initExportWindowValues = () => {
-	Object.defineProperty(global.navigator, 'msSaveBlob', { value: undefined, writable: true });
-	Object.defineProperty(global.navigator, 'webkitSaveBlob', { value: undefined, writable: true });
-	Object.defineProperty(global.navigator, 'mozSaveBlob', { value: undefined, writable: true });
-	Object.defineProperty(global.navigator, 'saveBlob', { value: undefined, writable: true });
+	Object.defineProperty(global.navigator, 'msSaveBlob', {
+		value: undefined,
+		writable: true
+	});
+	Object.defineProperty(global.navigator, 'webkitSaveBlob', {
+		value: undefined,
+		writable: true
+	});
+	Object.defineProperty(global.navigator, 'mozSaveBlob', {
+		value: undefined,
+		writable: true
+	});
+	Object.defineProperty(global.navigator, 'saveBlob', {
+		value: undefined,
+		writable: true
+	});
 	global.window.URL = null;
 	global.window.webkitURL = null;
 	global.window.mozURL = null;
@@ -68,7 +82,9 @@ export class SagaTestWrapper {
 
 	setupFn(fn) {
 		this.saga.provide({
-			call(effect, next) { return fn(effect, next); }
+			call(effect, next) {
+				return fn(effect, next);
+			}
 		});
 	}
 

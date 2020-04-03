@@ -53,10 +53,7 @@ export {
 	CLOSE_BULK_DELETE_TAG_MODAL,
 	closeBulkDeleteTagModal
 } from './ui/bulkDeleteTagModal';
-export {
-	setMaintenanceModeOn,
-	SET_MAINTENANCE_MODE_ON
-} from './ui/setMaintenanceModeOn';
+export { setMaintenanceModeOn, SET_MAINTENANCE_MODE_ON } from './ui/setMaintenanceModeOn';
 export {
 	loadSiteTheme,
 	setSiteTheme,
@@ -85,14 +82,8 @@ export {
 } from './ui/toggles';
 
 // Threads
-export {
-	clearActiveThreads,
-	CLEAR_ACTIVE_THREADS
-} from './threads/clearActiveThreads';
-export {
-	clearArchivedThreads,
-	CLEAR_ARCHIVED_THREADS
-} from './threads/clearArchivedThreads';
+export { clearActiveThreads, CLEAR_ACTIVE_THREADS } from './threads/clearActiveThreads';
+export { clearArchivedThreads, CLEAR_ARCHIVED_THREADS } from './threads/clearArchivedThreads';
 export {
 	BULK_UNTRACK_THREADS_FAILURE,
 	BULK_UNTRACK_THREADS_SUCCESS,
@@ -163,10 +154,7 @@ export {
 	generatedRandomThreadSuccess,
 	generateRandomThread
 } from './threads/generateRandomThread';
-export {
-	SET_FILTERED_TAG,
-	setFilteredTag
-} from './threads/setFilteredTag';
+export { SET_FILTERED_TAG, setFilteredTag } from './threads/setFilteredTag';
 export {
 	UNTRACK_THREAD_FAILURE,
 	UNTRACK_THREAD_SUCCESS,
@@ -225,10 +213,7 @@ export {
 	submitUserLoginFailure,
 	submitUserLoginSuccess
 } from './user/submitUserLogin';
-export {
-	SUBMIT_USER_LOGOUT,
-	submitUserLogout
-} from './user/submitUserLogout';
+export { SUBMIT_USER_LOGOUT, submitUserLogout } from './user/submitUserLogout';
 export {
 	SUBMIT_USER_REGISTRATION_FAILURE,
 	SUBMIT_USER_REGISTRATION_SUCCESS,
@@ -269,12 +254,7 @@ export {
 } from './userSettings/updateUserSettings';
 
 // News
-export {
-	FETCH_NEWS,
-	FETCHED_NEWS_SUCCESS,
-	fetchedNewsSuccess,
-	fetchNews
-} from './news/fetchNews';
+export { FETCH_NEWS, FETCHED_NEWS_SUCCESS, fetchedNewsSuccess, fetchNews } from './news/fetchNews';
 
 // Characters
 export {
@@ -379,10 +359,7 @@ export {
 	fetchedPublicViewsSuccess,
 	fetchPublicViews
 } from './public/fetchPublicViews';
-export {
-	SET_PUBLIC_THREAD_FILTER,
-	setPublicThreadFilter
-} from './public/setPublicThreadFilter';
+export { SET_PUBLIC_THREAD_FILTER, setPublicThreadFilter } from './public/setPublicThreadFilter';
 export {
 	UPSERT_PUBLIC_VIEW_FAILURE,
 	UPSERT_PUBLIC_VIEW_SUCCESS,

@@ -1,6 +1,4 @@
-import {
-	takeLatest, put, call, all
-} from 'redux-saga/effects';
+import { takeLatest, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 import {
@@ -32,7 +30,7 @@ function* fetchActiveThreadsStatus(action) {
 			chunks.push(requests.slice(i, i + 10));
 		}
 		const tasks = [];
-		chunks.map(c => tasks.push(call(fetchActiveThreadsStatusChunk, c)));
+		chunks.map((c) => tasks.push(call(fetchActiveThreadsStatusChunk, c)));
 		yield all(tasks);
 		yield put(fetchedActiveThreadsStatusSuccess());
 	} catch (e) {

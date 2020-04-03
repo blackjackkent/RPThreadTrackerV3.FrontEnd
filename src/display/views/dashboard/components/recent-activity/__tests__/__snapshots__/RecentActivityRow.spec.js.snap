@@ -89,7 +89,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         Untrack
       </button>
-       •
+       
+      •
        
       <button
         data-spec="recent-activity-row-archive-button"
@@ -98,7 +99,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       >
         Archive
       </button>
-       •
+       
+      •
        
       <button
         data-spec="recent-activity-row-queue-button"
@@ -169,7 +171,8 @@ exports[`rendering snapshots should render valid snapshot with null status 1`] =
       >
         Untrack
       </button>
-       •
+       
+      •
        
       <button
         data-spec="recent-activity-row-archive-button"
@@ -178,7 +181,8 @@ exports[`rendering snapshots should render valid snapshot with null status 1`] =
       >
         Archive
       </button>
-       •
+       
+      •
        
       <button
         data-spec="recent-activity-row-queue-button"

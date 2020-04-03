@@ -8,7 +8,10 @@ import validator from './_validator';
 
 const propTypes = {
 	handleInputChange: PropTypes.func.isRequired,
-	user: PropTypes.shape({}).isRequired
+	user: PropTypes.shape({
+		userName: PropTypes.string,
+		email: PropTypes.string
+	}).isRequired
 };
 
 const UpdateAccountInfoForm = (props) => {

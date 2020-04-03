@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-	Row, Col
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AtAGlanceCard from './components/at-a-glance/AtAGlanceCard';
@@ -30,17 +28,13 @@ const propTypes = {
 	updateUserSettings: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
 	userSettings: PropTypes.shape({
-		id: PropTypes.string
+		id: PropTypes.string,
+		showDashboardThreadDistribution: PropTypes.bool
 	}).isRequired
 };
 
 function mapStateToProps(state) {
-	const {
-		characters,
-		userSettings,
-		activeThreads,
-		randomThread
-	} = state;
+	const { characters, userSettings, activeThreads, randomThread } = state;
 	const myTurnThreads = selectors.getMyTurnThreads(state);
 	const theirTurnThreads = selectors.getTheirTurnThreads(state);
 	const queuedThreads = selectors.getQueuedThreads(state);
@@ -65,15 +59,15 @@ class Dashboard extends Component {
 	constructor(props) {
 		super(props);
 		// eslint-disable-next-line max-len
-		this.showDashboardThreadDistributionToggle = this.showDashboardThreadDistributionToggle.bind(this);
+		this.showDashboardThreadDistributionToggle = this.showDashboardThreadDistributionToggle.bind(
+			this
+		);
 		this.archiveThread = this.archiveThread.bind(this);
 		this.markThreadQueued = this.markThreadQueued.bind(this);
 	}
 
 	componentDidMount() {
-		const {
-			activeThreads, fetchActiveThreads, characters, fetchCharacters
-		} = this.props;
+		const { activeThreads, fetchActiveThreads, characters, fetchCharacters } = this.props;
 		if (!activeThreads || !activeThreads.length) {
 			fetchActiveThreads();
 		}
@@ -93,7 +87,8 @@ class Dashboard extends Component {
 	archiveThread(thread) {
 		const { upsertThread } = this.props;
 		const updatedThread = {
-			...thread, isArchived: !thread.isArchived
+			...thread,
+			isArchived: !thread.isArchived
 		};
 		upsertThread(updatedThread);
 	}
@@ -101,7 +96,8 @@ class Dashboard extends Component {
 	markThreadQueued(thread) {
 		const { upsertThread } = this.props;
 		const updatedThread = {
-			...thread, dateMarkedQueued: new Date(Date.now())
+			...thread,
+			dateMarkedQueued: new Date(Date.now())
 		};
 		upsertThread(updatedThread);
 	}
@@ -127,8 +123,12 @@ class Dashboard extends Component {
 					<Col>
 						<AtAGlanceCard
 							data-spec="dashboard-at-a-glance-card"
-							showDashboardThreadDistribution={userSettings.showDashboardThreadDistribution}
-							showDashboardThreadDistributionToggle={this.showDashboardThreadDistributionToggle}
+							showDashboardThreadDistribution={
+								userSettings.showDashboardThreadDistribution
+							}
+							showDashboardThreadDistributionToggle={
+								this.showDashboardThreadDistributionToggle
+							}
 							myTurnThreads={myTurnThreads}
 							theirTurnThreads={theirTurnThreads}
 							activeThreads={activeThreads}

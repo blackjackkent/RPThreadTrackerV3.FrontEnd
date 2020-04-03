@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import {
-	CardBody, Button, Row, Col
-} from 'reactstrap';
+import { CardBody, Button, Row, Col } from 'reactstrap';
 import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import * as actions from '../../../infrastructure/actions';
@@ -22,10 +20,7 @@ const defaultProps = {
 	registrationErrors: []
 };
 const mapStateToProps = (state) => {
-	const {
-		loading,
-		errors
-	} = state;
+	const { loading, errors } = state;
 	return {
 		registrationLoading: loading.registrationLoading,
 		loginLoading: loading.loginLoading,
@@ -52,7 +47,7 @@ class Register extends Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			registerRequest: Object.assign({}, prevState.registerRequest, {
 				[name]: value
 			})
@@ -62,25 +57,33 @@ class Register extends Component {
 	render() {
 		const { registrationLoading, loginLoading, registrationErrors } = this.props;
 		const displayLoadingIndicator = registrationLoading || loginLoading;
-		let loading = (<span />);
+		let loading = <span />;
 		if (displayLoadingIndicator) {
 			loading = (
-				<LoadingIndicator style={{
-					width: 50,
-					height: 50,
-					position: 'absolute',
-					top: 0,
-					right: 0
-				}}
+				<LoadingIndicator
+					style={{
+						width: 50,
+						height: 50,
+						position: 'absolute',
+						top: 0,
+						right: 0
+					}}
 				/>
 			);
 		}
-		let error = (<span />);
+		let error = <span />;
 		if (registrationErrors.length) {
-			const errorStrings = registrationErrors.map(e => (<span key={e}>{e}<br /></span>));
+			const errorStrings = registrationErrors.map((e) => (
+				<span key={e}>
+					{e}
+					<br />
+				</span>
+			));
 			error = (
 				<div className="has-danger">
-					<p data-spec="register-server-error" className="form-control-feedback">{errorStrings}</p>
+					<p data-spec="register-server-error" className="form-control-feedback">
+						{errorStrings}
+					</p>
 				</div>
 			);
 		}
@@ -101,10 +104,15 @@ class Register extends Component {
 						/>
 						<Row>
 							<Col xs="6">
-								<Button color="primary" className="px-4">Create Account</Button>
+								<Button color="primary" className="px-4">
+									Create Account
+								</Button>
 							</Col>
 							<Col xs="6" className="text-right text-muted">
-								Already have an account? <Link href="/login" to="/login">Login</Link>
+								Already have an account?{' '}
+								<Link href="/login" to="/login">
+									Login
+								</Link>
 							</Col>
 						</Row>
 					</AvForm>

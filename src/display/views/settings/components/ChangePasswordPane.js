@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	TabPane, Col, Row, Button, CardHeader, CardBody
-} from 'reactstrap';
+import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import Card from '../../../shared/styled/Card';
 import TooltipForm from '../../../forms/TooltipForm';
@@ -23,7 +21,7 @@ class ChangePasswordPane extends React.Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, value } = target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			formData: Object.assign({}, prevState.formData, {
 				[name]: value
 			})
@@ -37,9 +35,7 @@ class ChangePasswordPane extends React.Component {
 			<TabPane tabId="change-password">
 				<Card>
 					<CardHeader>
-						<i
-							className="fas fa-key"
-						/> Change Password
+						<i className="fas fa-key" /> Change Password
 					</CardHeader>
 					<CardBody className="card-body">
 						<AvForm

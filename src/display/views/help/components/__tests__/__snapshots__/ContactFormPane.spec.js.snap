@@ -35,7 +35,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         }
       >
         <p>
-          Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Please feel free to send me a message, or visit the tracker 
+          Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Please feel free to send me a message, or visit the tracker
+           
           <a
             href="http://tblrthreadtracker.tumblr.com"
             rel="noopener noreferrer"

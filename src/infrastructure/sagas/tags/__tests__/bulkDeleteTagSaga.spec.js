@@ -33,7 +33,10 @@ describe('saga behavior', () => {
 		it('should dispatch failure action on failed DELETE', () => {
 			const tag = 'my tag';
 			const saga = new SagaTestWrapper(bulkDeleteTagSaga);
-			saga.setupError(call(axios.delete, 'http://test-site/api/thread/tags/my%20tag'), 'Test error');
+			saga.setupError(
+				call(axios.delete, 'http://test-site/api/thread/tags/my%20tag'),
+				'Test error'
+			);
 			saga.expectPut({
 				type: actions.BULK_DELETE_TAG_FAILURE
 			});

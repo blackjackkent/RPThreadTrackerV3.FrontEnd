@@ -1,16 +1,15 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper, initMockDateNow } from '~/testhelpers/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import AsideNewsRow from '../AsideNewsRow';
 // #endregion imports
 
-initMockDateNow();
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	item: {
 		postUrl: 'testurl',
 		postTitle: 'testtitle',
-		postDate: Date.now,
+		postDate: '2019-10-15T18:19:19Z',
 		isUnread: false
 	},
 	...propOverrides
@@ -19,14 +18,14 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<AsideNewsRow {...props} />);
+			const jsx = <AsideNewsRow {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when unread', () => {
 			const props = createTestProps();
 			props.item.isUnread = true;
-			const jsx = (<AsideNewsRow {...props} />);
+			const jsx = <AsideNewsRow {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -34,7 +33,7 @@ describe('rendering', () => {
 	describe('badge', () => {
 		it('should be hidden when news item is read', () => {
 			const props = createTestProps();
-			const jsx = (<AsideNewsRow {...props} />);
+			const jsx = <AsideNewsRow {...props} />;
 			const element = shallow(jsx);
 			const badge = getSpecWrapper(element, 'news-item-badge');
 			expect(badge.hasClass('float-right')).toEqual(false);
@@ -43,7 +42,7 @@ describe('rendering', () => {
 		it('should be visible when news item is unread', () => {
 			const props = createTestProps();
 			props.item.isUnread = true;
-			const jsx = (<AsideNewsRow {...props} />);
+			const jsx = <AsideNewsRow {...props} />;
 			const element = shallow(jsx);
 			const badge = getSpecWrapper(element, 'news-item-badge');
 			expect(badge.hasClass('float-right')).toEqual(true);

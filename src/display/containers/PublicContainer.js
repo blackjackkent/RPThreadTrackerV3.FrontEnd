@@ -8,7 +8,12 @@ import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 // #endregion imports
 
 const propTypes = {
-	match: PropTypes.shape({})
+	match: PropTypes.shape({
+		params: PropTypes.shape({
+			slug: PropTypes.string,
+			username: PropTypes.string
+		})
+	})
 };
 const defaultProps = {
 	match: {}

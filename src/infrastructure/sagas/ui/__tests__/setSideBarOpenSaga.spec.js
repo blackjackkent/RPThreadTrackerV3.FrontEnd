@@ -12,6 +12,9 @@ describe('saga behavior', () => {
 			type: actions.LOAD_SIDEBAR_OPEN_SUCCESS,
 			data: true
 		});
-		return saga.execute({ type: actions.SET_SIDEBAR_OPEN, data: true });
+		return saga.execute({
+			type: actions.SET_SIDEBAR_OPEN,
+			data: true
+		});
 	});
 });

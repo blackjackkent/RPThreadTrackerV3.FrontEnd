@@ -7,11 +7,11 @@ export default styled.footer`
 	border-top: 1px solid ${colors.GRAY_600};
 	margin-top: 30px;
 	a {
-		color: ${colors.LIGHT_BLUE}
+		color: ${colors.LIGHT_BLUE};
 	}
 	button {
-		background: none; 
-		border: none; 
+		background: none;
+		border: none;
 		color: ${colors.BASE_BLUE};
 		display: inline;
 		outline: none;
@@ -23,7 +23,7 @@ export default styled.footer`
 		color: ${colors.GRAY_800};
 		border-top: none;
 		a {
-			color: ${colors.BASE_BLUE}
+			color: ${colors.BASE_BLUE};
 		}
 	}
 `;

@@ -1,9 +1,7 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	Col, Row, FormGroup, Label, Input
-} from 'reactstrap';
+import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
 import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import validator from './_validator';
@@ -11,9 +9,15 @@ import formData from './_formData';
 // #endregion imports
 
 const propTypes = {
-	characterToEdit: PropTypes.shape({}).isRequired,
+	characterToEdit: PropTypes.shape({
+		characterName: PropTypes.string,
+		platformId: PropTypes.number,
+		urlIdentifier: PropTypes.string
+	}).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		urlIdentifier: PropTypes.bool
+	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired
 };
@@ -28,7 +32,9 @@ const UpsertCharacterForm = (props) => {
 	} = props;
 	return (
 		<div>
-			<Row> {/* character name */}
+			<Row>
+				{' '}
+				{/* character name */}
 				<Col>
 					<AvField
 						name="characterName"
@@ -42,7 +48,9 @@ const UpsertCharacterForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<FormGroup row> {/* character platform */}
+			<FormGroup row>
+				{' '}
+				{/* character platform */}
 				<Col>
 					<Label htmlFor="character-platform">Platform:</Label>
 					<Input
@@ -57,12 +65,16 @@ const UpsertCharacterForm = (props) => {
 					</Input>
 				</Col>
 			</FormGroup>
-			<Row> {/* character url identifier */}
+			<Row>
+				{' '}
+				{/* character url identifier */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.urlIdentifier}
 						overlay={formData.urlIdentifier.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 30]
 						}}

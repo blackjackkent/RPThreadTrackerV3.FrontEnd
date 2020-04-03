@@ -29,7 +29,11 @@ describe('cell', () => {
 	it('should display link with correct href, text, and icon if last poster exists', () => {
 		const column = LastPoster([], false);
 		const cellJsx = column.Cell({
-			original: { status: { lastPostUrl: 'http://www.url.com' } },
+			original: {
+				status: {
+					lastPostUrl: 'http://www.url.com'
+				}
+			},
 			value: 'my-partner-url'
 		});
 		const cellElement = shallow(cellJsx);
@@ -62,15 +66,25 @@ describe('filter', () => {
 	});
 	it('should set select value to selected value when filter set', () => {
 		const column = LastPoster([]);
-		const filterJsx = column.Filter({ filter: { value: 'partner-2' } });
+		const filterJsx = column.Filter({
+			filter: {
+				value: 'partner-2'
+			}
+		});
 		const filterElement = shallow(filterJsx);
 		expect(filterElement.find('select')).toHaveProp('value', 'partner-2');
 	});
 	it('should fire passed onChange handler when select is changed', () => {
 		const column = LastPoster([]);
 		const onChange = jest.fn();
-		const event = { target: { value: 'partner-2' } };
-		const filterJsx = column.Filter({ onChange });
+		const event = {
+			target: {
+				value: 'partner-2'
+			}
+		};
+		const filterJsx = column.Filter({
+			onChange
+		});
 		const filterElement = shallow(filterJsx);
 		filterElement.find('select').simulate('change', event);
 		expect(onChange).toHaveBeenCalledTimes(1);

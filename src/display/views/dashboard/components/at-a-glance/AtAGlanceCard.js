@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	CardHeader, Input, CardBody, CardGroup
-} from 'reactstrap';
+import { CardHeader, Input, CardBody, CardGroup } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import SwitchLabel from '../../../../shared/styled/SwitchLabel';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
@@ -47,7 +45,10 @@ const AtAGlanceCard = (props) => {
 					<span className="switch-handle" />
 				</SwitchLabel>
 			</CardHeader>
-			<CardBody data-spec="at-a-glance-card-body" className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}>
+			<CardBody
+				data-spec="at-a-glance-card-body"
+				className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}
+			>
 				<CardGroup>
 					<DashboardSummaryWidget
 						data-spec="at-a-glance-active-widget"

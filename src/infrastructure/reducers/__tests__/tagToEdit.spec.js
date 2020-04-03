@@ -1,7 +1,7 @@
 import tagToEdit from '../tagToEdit';
 import * as actions from '../../actions';
 
-const getState = overrides => ({
+const getState = (overrides) => ({
 	selectedTag: null,
 	updatedValue: null,
 	...overrides

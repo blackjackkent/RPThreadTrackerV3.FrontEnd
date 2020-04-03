@@ -6,41 +6,59 @@ import Breadcrumbs from '../Breadcrumbs';
 
 jest.mock('../BreadcrumbsItem', () => () => 'BreadcrumbsItem');
 
-const createTestProps = propOverrides => ({
-	location: { pathname: '' },
+const createTestProps = (propOverrides) => ({
+	location: {
+		pathname: ''
+	},
 	...propOverrides
 });
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot with empty string', () => {
 			const props = createTestProps();
-			const jsx = (<Breadcrumbs {...props} />);
+			const jsx = <Breadcrumbs {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with root path', () => {
-			const props = createTestProps({ location: { pathname: '/' } });
-			const jsx = (<Breadcrumbs {...props} />);
+			const props = createTestProps({
+				location: {
+					pathname: '/'
+				}
+			});
+			const jsx = <Breadcrumbs {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with one segment path', () => {
-			const props = createTestProps({ location: { pathname: '/test' } });
-			const jsx = (<Breadcrumbs {...props} />);
+			const props = createTestProps({
+				location: {
+					pathname: '/test'
+				}
+			});
+			const jsx = <Breadcrumbs {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with more than one segment path', () => {
-			const props = createTestProps({ location: { pathname: '/test/test2' } });
-			const jsx = (<Breadcrumbs {...props} />);
+			const props = createTestProps({
+				location: {
+					pathname: '/test/test2'
+				}
+			});
+			const jsx = <Breadcrumbs {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 	});
 	describe('children', () => {
 		it('should be rendered for each route segment', () => {
-			const props = createTestProps({ location: { pathname: '/test/test2' } });
-			const jsx = (<Breadcrumbs {...props} />);
+			const props = createTestProps({
+				location: {
+					pathname: '/test/test2'
+				}
+			});
+			const jsx = <Breadcrumbs {...props} />;
 			const element = shallow(jsx);
 			const routes = element.find('Route');
 			expect(routes).toHaveLength(3);

@@ -28,19 +28,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.navigator.msSaveBlob).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.navigator.msSaveBlob).toHaveBeenCalledTimes(1);
+				});
 		});
 		it('should fall back to webkitSaveBlob where possible', () => {
 			global.navigator.webkitSaveBlob = jest.fn();
@@ -51,19 +56,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.navigator.webkitSaveBlob).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.navigator.webkitSaveBlob).toHaveBeenCalledTimes(1);
+				});
 		});
 		it('should fall back to mozSaveBlob where possible', () => {
 			global.navigator.mozSaveBlob = jest.fn();
@@ -74,19 +84,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.navigator.mozSaveBlob).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.navigator.mozSaveBlob).toHaveBeenCalledTimes(1);
+				});
 		});
 		it('should fall back to saveBlob where possible', () => {
 			global.navigator.saveBlob = jest.fn();
@@ -97,19 +112,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.navigator.saveBlob).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.navigator.saveBlob).toHaveBeenCalledTimes(1);
+				});
 		});
 	});
 	describe('saveWithSimClick', () => {
@@ -121,10 +141,13 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_FAILURE
 			});
@@ -144,19 +167,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.window.URL.createObjectURL).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.window.URL.createObjectURL).toHaveBeenCalledTimes(1);
+				});
 		});
 		it('should fall back to window.webkitURL if present', () => {
 			global.window.webkitURL = {
@@ -169,19 +197,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.window.webkitURL.createObjectURL).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.window.webkitURL.createObjectURL).toHaveBeenCalledTimes(1);
+				});
 		});
 		it('should fall back to window.mozURL if present', () => {
 			global.window.mozURL = {
@@ -194,19 +227,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.window.mozURL.createObjectURL).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.window.mozURL.createObjectURL).toHaveBeenCalledTimes(1);
+				});
 		});
 		it('should fall back to window.msURL if present', () => {
 			global.window.msURL = {
@@ -219,19 +257,24 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(global.window.msURL.createObjectURL).toHaveBeenCalledTimes(1);
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(global.window.msURL.createObjectURL).toHaveBeenCalledTimes(1);
+				});
 		});
 	});
 	describe('saveWithWindowOpen', () => {
@@ -250,20 +293,27 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(window.location.assign).toHaveBeenCalledTimes(1);
-				expect(window.location.assign).toHaveBeenLastCalledWith('http://test-export-url/');
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(window.location.assign).toHaveBeenCalledTimes(1);
+					expect(window.location.assign).toHaveBeenLastCalledWith(
+						'http://test-export-url/'
+					);
+				});
 		});
 		it('should fall back to window.open if simclick link throws exception', () => {
 			global.document.createElement = jest.fn();
@@ -283,20 +333,27 @@ describe('saga behavior', () => {
 				}
 			};
 			const saga = new SagaTestWrapper(exportThreadsSaga);
-			saga.setup(call(axios.get, 'http://test-site/api/thread/export', {
-				responseType: 'arraybuffer',
-				params: 'test-data'
-			}), response);
+			saga.setup(
+				call(axios.get, 'http://test-site/api/thread/export', {
+					responseType: 'arraybuffer',
+					params: 'test-data'
+				}),
+				response
+			);
 			saga.expectPut({
 				type: actions.EXPORT_THREADS_SUCCESS
 			});
-			return saga.execute({
-				type: actions.EXPORT_THREADS,
-				data: 'test-data'
-			}).then(() => {
-				expect(window.location.assign).toHaveBeenCalledTimes(1);
-				expect(window.location.assign).toHaveBeenLastCalledWith('http://test-export-url/');
-			});
+			return saga
+				.execute({
+					type: actions.EXPORT_THREADS,
+					data: 'test-data'
+				})
+				.then(() => {
+					expect(window.location.assign).toHaveBeenCalledTimes(1);
+					expect(window.location.assign).toHaveBeenLastCalledWith(
+						'http://test-export-url/'
+					);
+				});
 		});
 	});
 });

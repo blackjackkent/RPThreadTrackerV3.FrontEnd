@@ -8,7 +8,9 @@ describe('closeUpsertCharacterModal', () => {
 });
 describe('openUpsertCharacterModal', () => {
 	it('should create action with type, data, and analytics when character has ID', () => {
-		const data = { characterId: 1 };
+		const data = {
+			characterId: 1
+		};
 		const action = actions.openUpsertCharacterModal(data);
 		expect(action.type).toBe('OPEN_UPSERT_CHARACTER_MODAL');
 		expect(action.data).toBe(data);
@@ -16,7 +18,9 @@ describe('openUpsertCharacterModal', () => {
 		expect(action.analytics.path).toBe('/modals/update-character');
 	});
 	it('should create action with type, data, and analytics when character has no ID', () => {
-		const data = { characterName: 'Test Character' };
+		const data = {
+			characterName: 'Test Character'
+		};
 		const action = actions.openUpsertCharacterModal(data);
 		expect(action.type).toBe('OPEN_UPSERT_CHARACTER_MODAL');
 		expect(action.data).toBe(data);

@@ -2,7 +2,9 @@ import * as actions from '../updateUserSettings';
 
 describe('updateUserSettings', () => {
 	it('should create action with type, data, skip flag, and analytics', () => {
-		const settings = { settingsId: '13579' };
+		const settings = {
+			settingsId: '13579'
+		};
 		const action = actions.updateUserSettings(settings, true);
 		expect(action.type).toBe('UPDATE_USER_SETTINGS');
 		expect(action.data).toBe(settings);
@@ -20,7 +22,9 @@ describe('updatedUserSettingsFailure', () => {
 });
 describe('updatedUserSettingsSuccess', () => {
 	it('should create action with type and data', () => {
-		const settings = { settingsId: '13579' };
+		const settings = {
+			settingsId: '13579'
+		};
 		const action = actions.updatedUserSettingsSuccess(settings);
 		expect(action.type).toBe('UPDATED_USER_SETTINGS_SUCCESS');
 		expect(action.data).toBe(settings);

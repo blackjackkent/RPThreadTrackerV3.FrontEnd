@@ -26,9 +26,7 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const {
-		ui, user, news, userSettings
-	} = state;
+	const { ui, user, news, userSettings } = state;
 	const {
 		isNewsAsideOpen,
 		isSidebarOpen,
@@ -85,14 +83,15 @@ class HeaderContainer extends Component {
 	}
 
 	asideToggle() {
-		const {
-			userSettings, isNewsAsideOpen, toggleNewsAside, updateUserSettings
-		} = this.props;
+		const { userSettings, isNewsAsideOpen, toggleNewsAside, updateUserSettings } = this.props;
 		toggleNewsAside(!isNewsAsideOpen);
-		updateUserSettings({
-			...userSettings,
-			lastNewsReadDate: new Date(Date.now())
-		}, !isNewsAsideOpen);
+		updateUserSettings(
+			{
+				...userSettings,
+				lastNewsReadDate: new Date(Date.now())
+			},
+			!isNewsAsideOpen
+		);
 	}
 
 	mobileSidebarToggle() {

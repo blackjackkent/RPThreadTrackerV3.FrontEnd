@@ -8,7 +8,9 @@ global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
 	describe('untrackIndividualThread', () => {
 		it('should dispatch success message on successful DELETE', () => {
-			const thread = { threadId: 1 };
+			const thread = {
+				threadId: 1
+			};
 			const saga = new SagaTestWrapper(untrackThreadSaga);
 			saga.setup(call(axios.delete, 'http://test-site/api/thread/1'), thread);
 			saga.expectPut({
@@ -26,7 +28,9 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed DELETE', () => {
-			const thread = { threadId: 1 };
+			const thread = {
+				threadId: 1
+			};
 			const saga = new SagaTestWrapper(untrackThreadSaga);
 			saga.setupError(call(axios.delete, 'http://test-site/api/thread/1'), 'Test error');
 			saga.expectPut({
@@ -40,7 +44,16 @@ describe('saga behavior', () => {
 	});
 	describe('bulk update', () => {
 		it('should dispatch events for all deleted threads', () => {
-			const threads = [{ threadId: 1, userTitle: 'Test thread' }, { threadId: 2, userTitle: 'Test thread 2' }];
+			const threads = [
+				{
+					threadId: 1,
+					userTitle: 'Test thread'
+				},
+				{
+					threadId: 2,
+					userTitle: 'Test thread 2'
+				}
+			];
 			const saga = new SagaTestWrapper(untrackThreadSaga);
 			saga.setupAll([
 				{

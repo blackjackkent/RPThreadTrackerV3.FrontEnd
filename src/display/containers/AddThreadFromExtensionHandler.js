@@ -1,9 +1,7 @@
 // #region imports
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-	Container, Row, Col, CardBody
-} from 'reactstrap';
+import { Container, Row, Col, CardBody } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import * as actions from '../../infrastructure/actions';
@@ -29,10 +27,7 @@ const propTypes = {
 	}).isRequired
 };
 const mapStateToProps = (state) => {
-	const {
-		user,
-		ui
-	} = state;
+	const { user, ui } = state;
 	const sortedCharacters = selectors.getCharactersSortedByIdentifier(state);
 	return {
 		user,
@@ -43,7 +38,9 @@ const mapStateToProps = (state) => {
 class AddThreadFromExtensionHandler extends Component {
 	constructor() {
 		super();
-		this.state = { hasOpenedModal: false };
+		this.state = {
+			hasOpenedModal: false
+		};
 		this.shouldOpenModal = this.shouldOpenModal.bind(this);
 	}
 
@@ -72,7 +69,9 @@ class AddThreadFromExtensionHandler extends Component {
 		if (hasOpenedModal) {
 			return false;
 		}
-		this.setState({ hasOpenedModal: true });
+		this.setState({
+			hasOpenedModal: true
+		});
 		return true;
 	}
 
@@ -98,23 +97,19 @@ class AddThreadFromExtensionHandler extends Component {
 		return (
 			<div className="app flex-row align-items-center" data-spec="layout-app">
 				<ModalContainer />
-				{hasOpenedModal && !isUpsertThreadModalOpen
-					&& (
-						<Container data-spec="extension-handler-success-message">
-							<Row className="justify-content-center">
-								<Col md="6">
-									<Card className="login-box p-4">
-										<CardBody className="card-body text-center">
-											<p>
-												You can now close this window.
-											</p>
-										</CardBody>
-									</Card>
-								</Col>
-							</Row>
-						</Container>
-					)
-				}
+				{hasOpenedModal && !isUpsertThreadModalOpen && (
+					<Container data-spec="extension-handler-success-message">
+						<Row className="justify-content-center">
+							<Col md="6">
+								<Card className="login-box p-4">
+									<CardBody className="card-body text-center">
+										<p>You can now close this window.</p>
+									</CardBody>
+								</Card>
+							</Col>
+						</Row>
+					</Container>
+				)}
 			</div>
 		);
 	}

@@ -5,13 +5,27 @@ import PublicViewsTable from '../PublicViewsTable';
 // #endregion imports
 
 // #region mocks
-jest.mock('../_columns', () => () => ([{ id: 'column1' }, { id: 'column2' }]));
-jest.mock('../_getTdProps', () => (jest.fn()));
+jest.mock('../_columns', () => () => [
+	{
+		id: 'column1'
+	},
+	{
+		id: 'column2'
+	}
+]);
+jest.mock('../_getTdProps', () => jest.fn());
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	isLoadingIconVisible: true,
-	publicViews: [{ publicViewId: 1 }, { publicViewId: 2 }],
+	publicViews: [
+		{
+			publicViewId: 1
+		},
+		{
+			publicViewId: 2
+		}
+	],
 	openUpsertPublicViewModal: jest.fn(),
 	openDeletePublicViewModal: jest.fn(),
 	username: 'test-user',
@@ -22,13 +36,15 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<PublicViewsTable {...props} />);
+			const jsx = <PublicViewsTable {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when loading icon not visible', () => {
-			const props = createTestProps({ isLoadingIconVisible: false });
-			const jsx = (<PublicViewsTable {...props} />);
+			const props = createTestProps({
+				isLoadingIconVisible: false
+			});
+			const jsx = <PublicViewsTable {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
