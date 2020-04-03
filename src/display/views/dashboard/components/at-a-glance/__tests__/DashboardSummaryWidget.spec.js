@@ -47,10 +47,7 @@ describe('behavior', () => {
 			const props = createTestProps();
 			const jsx = <DashboardSummaryWidget {...props}>Test</DashboardSummaryWidget>;
 			const element = shallow(jsx);
-			element
-				.find('Styled(Card)')
-				.props()
-				.onClick();
+			element.find('Styled(Card)').props().onClick();
 			expect(history.navigation.navigateTo).toHaveBeenCalledTimes(1);
 			expect(history.navigation.navigateTo).toHaveBeenLastCalledWith('/my-path');
 		});

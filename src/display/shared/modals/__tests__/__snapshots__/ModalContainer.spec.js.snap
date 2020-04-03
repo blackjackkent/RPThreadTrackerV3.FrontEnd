@@ -172,9 +172,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         <strong>
           Test Tag Edited
         </strong>
-         on
-         
-        all your threads?
+         on all your threads?
       </span>
     }
     closeButtonText="Cancel"
@@ -198,8 +196,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         <strong>
           Test Tag
         </strong>
-         
-        from all your threads?
+         from all your threads?
       </span>
     }
     closeButtonText="Cancel"
@@ -390,9 +387,7 @@ exports[`rendering snapshots should render valid snapshot with missing character
         <strong>
           Test Tag Edited
         </strong>
-         on
-         
-        all your threads?
+         on all your threads?
       </span>
     }
     closeButtonText="Cancel"
@@ -416,8 +411,7 @@ exports[`rendering snapshots should render valid snapshot with missing character
         <strong>
           Test Tag
         </strong>
-         
-        from all your threads?
+         from all your threads?
       </span>
     }
     closeButtonText="Cancel"

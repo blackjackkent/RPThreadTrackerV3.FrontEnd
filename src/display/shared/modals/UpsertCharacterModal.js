@@ -10,7 +10,9 @@ const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
 	submitUpsertCharacter: PropTypes.func.isRequired,
 	closeUpsertCharacterModal: PropTypes.func.isRequired,
-	characterToEdit: PropTypes.shape({}).isRequired
+	characterToEdit: PropTypes.shape({
+		characterId: PropTypes.string
+	}).isRequired
 };
 
 class UpsertCharacterModal extends React.Component {

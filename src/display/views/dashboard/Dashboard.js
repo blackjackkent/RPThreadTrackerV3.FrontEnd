@@ -28,7 +28,8 @@ const propTypes = {
 	updateUserSettings: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
 	userSettings: PropTypes.shape({
-		id: PropTypes.string
+		id: PropTypes.string,
+		showDashboardThreadDistribution: PropTypes.bool
 	}).isRequired
 };
 

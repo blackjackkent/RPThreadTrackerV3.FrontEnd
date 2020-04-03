@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 import { sortCharacters } from '../../../../utility';

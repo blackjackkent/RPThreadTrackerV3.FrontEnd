@@ -4,7 +4,16 @@ import PropTypes from 'prop-types';
 // #endregion imports
 
 const propTypes = {
-	threadData: PropTypes.shape({}).isRequired
+	threadData: PropTypes.shape({
+		status: PropTypes.shape({
+			lastPostUrl: PropTypes.string,
+			lastPosterUrlIdentifier: PropTypes.string
+		}),
+		thread: PropTypes.shape({
+			userTitle: PropTypes.string,
+			postId: PropTypes.string
+		})
+	}).isRequired
 };
 
 const RandomThreadDisplay = (props) => {

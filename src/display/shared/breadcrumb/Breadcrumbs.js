@@ -8,9 +8,7 @@ import BreadcrumbsItem from './BreadcrumbsItem';
 
 const propTypes = {
 	location: PropTypes.shape({
-		location: PropTypes.shape({
-			pathname: PropTypes.string
-		})
+		pathname: PropTypes.string
 	}).isRequired
 };
 

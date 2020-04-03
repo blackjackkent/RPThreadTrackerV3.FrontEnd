@@ -9,10 +9,11 @@ function saveAsBlob(response, filename, contentType) {
 		const blob = new Blob([response.data], {
 			type: contentType
 		});
-		const saveBlob =			navigator.msSaveBlob
-			|| navigator.webkitSaveBlob
-			|| navigator.mozSaveBlob
-			|| navigator.saveBlob;
+		const saveBlob =
+			navigator.msSaveBlob ||
+			navigator.webkitSaveBlob ||
+			navigator.mozSaveBlob ||
+			navigator.saveBlob;
 		if (saveBlob === undefined) {
 			throw new Error('Not supported');
 		}

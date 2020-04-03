@@ -8,9 +8,8 @@ import routes from './_routes';
 
 const propTypes = {
 	match: PropTypes.shape({
-		match: PropTypes.shape({
-			url: PropTypes.string
-		})
+		url: PropTypes.string,
+		isExact: PropTypes.bool
 	}).isRequired
 };
 

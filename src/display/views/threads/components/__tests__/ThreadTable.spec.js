@@ -143,10 +143,7 @@ describe('rendering', () => {
 			const props = createTestProps();
 			const jsx = <ThreadTable {...props} />;
 			const element = shallow(jsx);
-			const subComponentJsx = element
-				.find('CheckboxTable')
-				.props()
-				.SubComponent(row);
+			const subComponentJsx = element.find('CheckboxTable').props().SubComponent(row);
 			const subComponent = shallow(subComponentJsx);
 			expect(subComponent.props().tags).toHaveLength(3);
 		});

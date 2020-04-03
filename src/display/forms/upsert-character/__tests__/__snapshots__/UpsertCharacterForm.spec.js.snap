@@ -131,21 +131,17 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           data-spec="url-identifier-field"
           helpMessage={
             <span>
-              For a Tumblr account, this will be the part of your URL before ".tumblr.com".
+              For a Tumblr account, this will be the part of your URL before ".tumblr.com". For instance, if your URL is
                
-              For instance, if your URL is 
               <strong>
                 http://myawesomeblog.tumblr.com
               </strong>
-              , you would
+              , you would enter
                
-              enter 
               <strong>
                 myawesomeblog
               </strong>
-               in this field. (You can track more than one character
-               
-              with the same URL, if your blog is multi-muse.)
+               in this field. (You can track more than one character with the same URL, if your blog is multi-muse.)
             </span>
           }
           label="Character URL Identifier"
@@ -307,21 +303,17 @@ exports[`rendering snapshots should render valid snapshot with character 1`] = `
           data-spec="url-identifier-field"
           helpMessage={
             <span>
-              For a Tumblr account, this will be the part of your URL before ".tumblr.com".
+              For a Tumblr account, this will be the part of your URL before ".tumblr.com". For instance, if your URL is
                
-              For instance, if your URL is 
               <strong>
                 http://myawesomeblog.tumblr.com
               </strong>
-              , you would
+              , you would enter
                
-              enter 
               <strong>
                 myawesomeblog
               </strong>
-               in this field. (You can track more than one character
-               
-              with the same URL, if your blog is multi-muse.)
+               in this field. (You can track more than one character with the same URL, if your blog is multi-muse.)
             </span>
           }
           label="Character URL Identifier"

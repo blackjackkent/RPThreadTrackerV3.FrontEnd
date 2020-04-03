@@ -7,7 +7,9 @@ import formData from './_formData';
 
 const propTypes = {
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		password: PropTypes.bool
+	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired
 };

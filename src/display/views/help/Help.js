@@ -14,7 +14,12 @@ import FAQPane from './components/FAQPane';
 
 const propTypes = {
 	submitContactForm: PropTypes.func.isRequired,
-	match: PropTypes.shape({}).isRequired
+	match: PropTypes.shape({
+		url: PropTypes.string,
+		params: PropTypes.shape({
+			tabId: PropTypes.string
+		})
+	}).isRequired
 };
 
 function mapStateToProps() {

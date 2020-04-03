@@ -43,11 +43,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           <p
             className="text-center"
           >
-            Here you can manage the tags you have added to threads in RPThreadTracker.
-             
-            Enter a tag below to update that tag for all threads, or to remove it from
-             
-            all threads it is assigned to.
+            Here you can manage the tags you have added to threads in RPThreadTracker. Enter a tag below to update that tag for all threads, or to remove it from all threads it is assigned to.
           </p>
         </Col>
       </Row>
@@ -155,11 +151,7 @@ exports[`rendering snapshots should render valid snapshot when loading indicator
           <p
             className="text-center"
           >
-            Here you can manage the tags you have added to threads in RPThreadTracker.
-             
-            Enter a tag below to update that tag for all threads, or to remove it from
-             
-            all threads it is assigned to.
+            Here you can manage the tags you have added to threads in RPThreadTracker. Enter a tag below to update that tag for all threads, or to remove it from all threads it is assigned to.
           </p>
         </Col>
       </Row>
@@ -206,11 +198,7 @@ exports[`rendering snapshots should render valid snapshot when tag is selected 1
           <p
             className="text-center"
           >
-            Here you can manage the tags you have added to threads in RPThreadTracker.
-             
-            Enter a tag below to update that tag for all threads, or to remove it from
-             
-            all threads it is assigned to.
+            Here you can manage the tags you have added to threads in RPThreadTracker. Enter a tag below to update that tag for all threads, or to remove it from all threads it is assigned to.
           </p>
         </Col>
       </Row>
@@ -235,7 +223,8 @@ exports[`rendering snapshots should render valid snapshot when tag is selected 1
             <p
               className="text-center"
             >
-              How do you wish to modify the tag 
+              How do you wish to modify the tag
+               
               <strong>
                 test tag
               </strong>

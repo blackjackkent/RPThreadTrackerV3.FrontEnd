@@ -5,6 +5,7 @@ import { initMockDateNow } from '~/testhelpers/helpers.unit';
 import LandingContainer from '../LandingContainer';
 // #endregion imports
 
+// prettier-ignore
 jest.mock('../../../infrastructure/withPageViewTracker', () => (WrappedComponent) => WrappedComponent);
 jest.mock('../../views/landing/Landing', () => 'Landing');
 

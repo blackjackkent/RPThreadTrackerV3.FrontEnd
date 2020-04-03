@@ -6,7 +6,12 @@ import Moment from 'react-moment';
 // #endregion imports
 
 const propTypes = {
-	item: PropTypes.shape({}).isRequired
+	item: PropTypes.shape({
+		isUnread: PropTypes.bool,
+		postUrl: PropTypes.string,
+		postTitle: PropTypes.string,
+		postDate: PropTypes.string
+	}).isRequired
 };
 
 const AsideNewsRow = (props) => {

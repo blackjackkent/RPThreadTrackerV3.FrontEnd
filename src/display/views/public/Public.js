@@ -22,7 +22,10 @@ const propTypes = {
 	fetchLegacyPublicThreads: PropTypes.func.isRequired,
 	slug: PropTypes.string,
 	username: PropTypes.string,
-	view: PropTypes.shape({}).isRequired,
+	view: PropTypes.shape({
+		name: PropTypes.string,
+		columns: PropTypes.arrayOf(PropTypes.number)
+	}).isRequired,
 	fetchPublicThreads: PropTypes.func.isRequired,
 	setPublicThreadFilter: PropTypes.func.isRequired,
 	publicThreadFilter: PropTypes.string.isRequired

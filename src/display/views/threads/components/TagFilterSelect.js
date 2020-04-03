@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import CleanSelect from '../../../shared/styled/CleanSelect';
 
 const propTypes = {
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	tags: PropTypes.arrayOf(
+		PropTypes.shape({
+			tagText: PropTypes.string,
+			threadTagId: PropTypes.string
+		})
+	).isRequired,
 	filteredTag: PropTypes.string,
 	setFilteredTag: PropTypes.func.isRequired
 };

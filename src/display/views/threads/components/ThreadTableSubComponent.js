@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
 	description: PropTypes.string,
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+	tags: PropTypes.arrayOf(
+		PropTypes.shape({
+			threadTagId: PropTypes.string,
+			tagText: PropTypes.string
+		})
+	).isRequired
 };
 const defaultProps = {
 	description: ''

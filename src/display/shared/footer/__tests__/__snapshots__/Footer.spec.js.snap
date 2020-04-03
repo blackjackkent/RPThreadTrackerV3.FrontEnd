@@ -9,8 +9,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     RPThreadTracker
   </a>
-   
-  © 
+   © 
   1989
    
   <a
@@ -18,9 +17,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     Blackjack Software
   </a>
-   |
-   
-  Switch to
+   | Switch to
    
   <button
     data-spec="footer-theme-toggle-button"
@@ -52,8 +49,7 @@ exports[`rendering snapshots should render valid snapshot when light theme 1`] =
   >
     RPThreadTracker
   </a>
-   
-  © 
+   © 
   1989
    
   <a
@@ -61,9 +57,7 @@ exports[`rendering snapshots should render valid snapshot when light theme 1`] =
   >
     Blackjack Software
   </a>
-   |
-   
-  Switch to
+   | Switch to
    
   <button
     data-spec="footer-theme-toggle-button"

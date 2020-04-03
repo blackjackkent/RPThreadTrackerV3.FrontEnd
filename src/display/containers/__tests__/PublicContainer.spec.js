@@ -6,6 +6,7 @@ import PublicContainer from '../PublicContainer';
 
 // #region mocks
 jest.mock('../../views/public/Public', () => () => 'Public');
+// prettier-ignore
 jest.mock('../../../infrastructure/withPageViewTracker', () => (WrappedComponent) => WrappedComponent);
 // #endregion mocks
 

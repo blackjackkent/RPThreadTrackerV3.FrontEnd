@@ -3,9 +3,10 @@ import filters from '../../constants/filters';
 const filterByArchived = (statuses, threads, filter, isArchived) => {
 	const baseFiltered = statuses.filter(filter);
 	const result = baseFiltered.filter(
-		(s) => threads.filter(
-			(t) => (isArchived ? t.isArchived : !t.isArchived) && t.threadId === s.threadId
-		).length > 0
+		(s) =>
+			threads.filter(
+				(t) => (isArchived ? t.isArchived : !t.isArchived) && t.threadId === s.threadId
+			).length > 0
 	);
 	return result;
 };

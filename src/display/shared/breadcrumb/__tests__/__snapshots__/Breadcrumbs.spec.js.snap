@@ -4,7 +4,7 @@ exports[`rendering snapshots should render valid snapshot with empty string 1`] 
 <Styled(Breadcrumb)>
   <Route
     component={[Function]}
-    key="0"
+    key="/"
     path="/"
   />
 </Styled(Breadcrumb)>
@@ -14,17 +14,17 @@ exports[`rendering snapshots should render valid snapshot with more than one seg
 <Styled(Breadcrumb)>
   <Route
     component={[Function]}
-    key="0"
+    key="/"
     path="/"
   />
   <Route
     component={[Function]}
-    key="1"
+    key="/test"
     path="/test"
   />
   <Route
     component={[Function]}
-    key="2"
+    key="/test/test2"
     path="/test/test2"
   />
 </Styled(Breadcrumb)>
@@ -34,12 +34,12 @@ exports[`rendering snapshots should render valid snapshot with one segment path 
 <Styled(Breadcrumb)>
   <Route
     component={[Function]}
-    key="0"
+    key="/"
     path="/"
   />
   <Route
     component={[Function]}
-    key="1"
+    key="/test"
     path="/test"
   />
 </Styled(Breadcrumb)>
@@ -49,7 +49,7 @@ exports[`rendering snapshots should render valid snapshot with root path 1`] = `
 <Styled(Breadcrumb)>
   <Route
     component={[Function]}
-    key="0"
+    key="/"
     path="/"
   />
 </Styled(Breadcrumb)>

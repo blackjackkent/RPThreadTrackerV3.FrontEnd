@@ -12,7 +12,9 @@ const propTypes = {
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
 	submitUpsertThread: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
-	threadToEdit: PropTypes.shape({}).isRequired,
+	threadToEdit: PropTypes.shape({
+		threadId: PropTypes.string
+	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 

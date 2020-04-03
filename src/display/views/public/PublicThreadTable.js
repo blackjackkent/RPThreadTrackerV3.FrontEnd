@@ -6,7 +6,10 @@ import ReactTableContainer from '../../shared/styled/ReactTableContainer';
 const propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	view: PropTypes.shape({}).isRequired,
+	view: PropTypes.shape({
+		sortKey: PropTypes.string,
+		sortDescending: PropTypes.bool
+	}).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired
 };
 

@@ -14,7 +14,12 @@ const propTypes = {
 	user: PropTypes.shape({}).isRequired,
 	submitUserChangePassword: PropTypes.func.isRequired,
 	submitUserAccountInfo: PropTypes.func.isRequired,
-	match: PropTypes.shape({}).isRequired
+	match: PropTypes.shape({
+		url: PropTypes.string,
+		params: PropTypes.shape({
+			tabId: PropTypes.string
+		})
+	}).isRequired
 };
 
 function mapStateToProps(state) {

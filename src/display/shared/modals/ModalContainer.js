@@ -15,7 +15,10 @@ const propTypes = {
 	bulkUntrackThreads: PropTypes.func.isRequired,
 	bulkUpdateTag: PropTypes.func.isRequired,
 	bulkDeleteTag: PropTypes.func.isRequired,
-	characterToEdit: PropTypes.shape({}).isRequired,
+	characterToEdit: PropTypes.shape({
+		characterName: PropTypes.string,
+		urlIdentifier: PropTypes.string
+	}).isRequired,
 	closeBulkUntrackThreadsModal: PropTypes.func.isRequired,
 	closeBulkUpdateTagModal: PropTypes.func.isRequired,
 	closeBulkDeleteTagModal: PropTypes.func.isRequired,
@@ -37,14 +40,21 @@ const propTypes = {
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
 	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	sortedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	threadToEdit: PropTypes.shape({}).isRequired,
+	threadToEdit: PropTypes.shape({
+		userTitle: PropTypes.string
+	}).isRequired,
 	untrackCharacter: PropTypes.func.isRequired,
 	untrackThread: PropTypes.func.isRequired,
 	upsertCharacter: PropTypes.func.isRequired,
 	upsertPublicView: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
-	tagToEdit: PropTypes.shape({}).isRequired,
-	viewToEdit: PropTypes.shape({}).isRequired
+	tagToEdit: PropTypes.shape({
+		selectedTag: PropTypes.string,
+		updatedValue: PropTypes.string
+	}).isRequired,
+	viewToEdit: PropTypes.shape({
+		name: PropTypes.string
+	}).isRequired
 };
 
 function mapStateToProps(state) {
@@ -140,11 +150,11 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={threadToEdit}
 				headerText="Confirm Thread Untracking"
-				bodyText={(
+				bodyText={
 					<span>
 						Are you sure you want to untrack <strong>{threadToEdit.userTitle}</strong>?
 					</span>
-				)}
+				}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkUntrackThreadsModalOpen}
@@ -164,7 +174,7 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={characterToEdit}
 				headerText="Confirm Character Untracking"
-				bodyText={(
+				bodyText={
 					<span>
 						Are you sure you want to untrack{' '}
 						<strong>
@@ -174,7 +184,7 @@ const ModalContainer = (props) => {
 						</strong>
 						? This will also untrack all threads associated with this character.
 					</span>
-				)}
+				}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isDeletePublicViewModalOpen}
@@ -184,11 +194,11 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={viewToEdit}
 				headerText="Confirm Public View Deletion"
-				bodyText={(
+				bodyText={
 					<span>
 						Are you sure you want to delete <strong>{viewToEdit.name}</strong>?
 					</span>
-				)}
+				}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkUpdateTagModalOpen}
@@ -198,13 +208,13 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={tagToEdit}
 				headerText="Confirm Updated Tag Value"
-				bodyText={(
+				bodyText={
 					<span>
 						Are you sure you want to change the tag{' '}
 						<strong>{tagToEdit.selectedTag}</strong> to{' '}
 						<strong>{tagToEdit.updatedValue}</strong> on all your threads?
 					</span>
-				)}
+				}
 			/>
 			<GenericConfirmationModal
 				isModalOpen={isBulkDeleteTagModalOpen}
@@ -214,12 +224,12 @@ const ModalContainer = (props) => {
 				closeButtonText="Cancel"
 				data={tagToEdit}
 				headerText="Confirm Deleted Tag Value"
-				bodyText={(
+				bodyText={
 					<span>
 						Are you sure you want to remove the tag{' '}
 						<strong>{tagToEdit.selectedTag}</strong> from all your threads?
 					</span>
-				)}
+				}
 			/>
 		</div>
 	);

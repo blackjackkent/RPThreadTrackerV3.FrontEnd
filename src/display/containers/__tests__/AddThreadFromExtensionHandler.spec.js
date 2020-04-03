@@ -36,29 +36,33 @@ const createTestState = (stateOverrides) => ({
 	...stateOverrides
 });
 
-const createTestStateWithUser = (stateOverrides) => createTestState({
-	user: {
-		id: '12345'
-	},
-	...stateOverrides
-});
-
-const createTestStateWithUserAndCharacters = (stateOverrides) => createTestState({
-	user: {
-		id: '12345'
-	},
-	sortedCharacters: [
-		{
-			characterName: 'A Character',
-			characterId: 1
+function createTestStateWithUser(stateOverrides) {
+	return createTestState({
+		user: {
+			id: '12345'
 		},
-		{
-			characterName: 'B Character',
-			characterId: 2
-		}
-	],
-	...stateOverrides
-});
+		...stateOverrides
+	});
+}
+
+function createTestStateWithUserAndCharacters(stateOverrides) {
+	return createTestState({
+		user: {
+			id: '12345'
+		},
+		sortedCharacters: [
+			{
+				characterName: 'A Character',
+				characterId: 1
+			},
+			{
+				characterName: 'B Character',
+				characterId: 2
+			}
+		],
+		...stateOverrides
+	});
+}
 
 describe('rendering', () => {
 	describe('snapshots', () => {

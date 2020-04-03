@@ -2,7 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-	character: PropTypes.shape({}).isRequired
+	character: PropTypes.shape({
+		characterId: PropTypes.string,
+		urlIdentifier: PropTypes.string,
+		characterName: PropTypes.string
+	}).isRequired
 };
 
 const CharacterSelectItem = (props) => {

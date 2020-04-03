@@ -33,7 +33,12 @@ const propTypes = {
 	openBulkUpdateTagModal: PropTypes.func.isRequired,
 	openBulkDeleteTagModal: PropTypes.func.isRequired,
 	username: PropTypes.string,
-	match: PropTypes.shape({}).isRequired
+	match: PropTypes.shape({
+		url: PropTypes.string,
+		params: PropTypes.shape({
+			tabId: PropTypes.string
+		})
+	}).isRequired
 };
 
 const defaultProps = {

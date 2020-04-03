@@ -1,5 +1,6 @@
 import getThreadDataFromExtensionQuery from '../getThreadDataFromExtensionQuery';
 
+// prettier-ignore
 jest.mock('../getQuery', () => jest.fn(() => ({
 	tumblrPostId: 12345,
 	tumblrBlogShortname: 'my-test-blog'

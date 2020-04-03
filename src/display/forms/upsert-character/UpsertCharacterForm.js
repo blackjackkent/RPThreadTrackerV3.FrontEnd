@@ -9,9 +9,15 @@ import formData from './_formData';
 // #endregion imports
 
 const propTypes = {
-	characterToEdit: PropTypes.shape({}).isRequired,
+	characterToEdit: PropTypes.shape({
+		characterName: PropTypes.string,
+		platformId: PropTypes.number,
+		urlIdentifier: PropTypes.string
+	}).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		urlIdentifier: PropTypes.bool
+	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired
 };

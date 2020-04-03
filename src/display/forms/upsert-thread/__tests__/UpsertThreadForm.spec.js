@@ -46,17 +46,18 @@ const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 
-const createTestPropsWithThread = (propOverrides) => createTestProps({
-	threadToEdit: {
-		userTitle: 'Test Thread',
-		postId: '12345',
-		characterId: 2,
-		partnerUrlIdentifier: 'my-partner',
-		description: 'Test Description'
-	},
-	tagValues: ['tag1', 'tag2', 'tag3'],
-	...propOverrides
-});
+const createTestPropsWithThread = (propOverrides) =>
+	createTestProps({
+		threadToEdit: {
+			userTitle: 'Test Thread',
+			postId: '12345',
+			characterId: 2,
+			partnerUrlIdentifier: 'my-partner',
+			description: 'Test Description'
+		},
+		tagValues: ['tag1', 'tag2', 'tag3'],
+		...propOverrides
+	});
 
 describe('rendering', () => {
 	describe('snapshots', () => {

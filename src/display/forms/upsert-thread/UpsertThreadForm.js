@@ -9,13 +9,21 @@ import validator from './_validator';
 import formData from './_formData';
 
 const propTypes = {
-	threadToEdit: PropTypes.shape({}).isRequired,
+	threadToEdit: PropTypes.shape({
+		characterId: PropTypes.number,
+		userTitle: PropTypes.string,
+		postId: PropTypes.string,
+		partnerUrlIdentifier: PropTypes.string,
+		description: PropTypes.string
+	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
 	selectCharacter: PropTypes.func.isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		partnerUrlIdentifier: PropTypes.bool
+	}).isRequired,
 	handleTagAdded: PropTypes.func.isRequired,
 	handleTagRemoved: PropTypes.func.isRequired,
 	tagValues: PropTypes.arrayOf(PropTypes.string).isRequired

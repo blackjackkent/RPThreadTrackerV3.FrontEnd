@@ -5,8 +5,12 @@ import TheirTurnThreads from '../TheirTurnThreads';
 // #endregion imports
 
 // #region mocks
-jest.mock('../components/_columns', () => (characters, partners, lastPosters) => `${characters.length} ${partners.length} ${lastPosters.length}`);
-jest.mock('../components/_getTdProps', () => (fn1, fn2, fn3, fn4) => `${fn1.name} ${fn2.name} ${fn3.name} ${fn4.name}`);
+jest.mock('../components/_columns', () => (characters, partners, lastPosters) =>
+	`${characters.length} ${partners.length} ${lastPosters.length}`
+);
+jest.mock('../components/_getTdProps', () => (fn1, fn2, fn3, fn4) =>
+	`${fn1.name} ${fn2.name} ${fn3.name} ${fn4.name}`
+);
 jest.mock('../components/ThreadTable', () => 'ThreadTable');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({

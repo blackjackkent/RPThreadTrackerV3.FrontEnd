@@ -11,7 +11,9 @@ const propTypes = {
 	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
 	submitUpsertPublicView: PropTypes.func.isRequired,
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
-	viewToEdit: PropTypes.shape({}).isRequired,
+	viewToEdit: PropTypes.shape({
+		id: PropTypes.string
+	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	columns: PropTypes.shape({}).isRequired

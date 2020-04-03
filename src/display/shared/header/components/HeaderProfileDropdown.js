@@ -11,7 +11,8 @@ const propTypes = {
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
 	logout: PropTypes.func.isRequired,
 	user: PropTypes.shape({
-		id: PropTypes.string
+		id: PropTypes.string,
+		userName: PropTypes.string
 	}).isRequired
 };
 

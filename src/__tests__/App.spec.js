@@ -13,6 +13,7 @@ jest.mock('../display/containers/LandingContainer', () => () => 'LandingContaine
 jest.mock('../display/containers/StaticContainer', () => () => 'StaticContainer');
 jest.mock('../display/containers/Maintenance', () => () => 'Maintenance');
 jest.mock('../display/containers/PublicContainer', () => () => 'PublicContainer');
+// prettier-ignore
 jest.mock('../display/containers/AddThreadFromExtensionHandler', () => () => 'AddThreadFromExtensionHandler');
 // #endregion mocks
 

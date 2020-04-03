@@ -32,9 +32,11 @@ class ExportThreadsPane extends Component {
 	handleInputChange(event) {
 		const { target } = event;
 		const { name, checked } = target;
-		this.setState((prevState) => Object.assign({}, prevState, {
-			[name]: checked
-		}));
+		this.setState((prevState) =>
+			Object.assign({}, prevState, {
+				[name]: checked
+			})
+		);
 	}
 
 	render() {
@@ -130,7 +132,8 @@ class ExportThreadsPane extends Component {
 									data-spec="export-threads-form-submit-button"
 									type="submit"
 									color="primary"
-									onClick={() => onExportRequest(includeHiatused, includeArchived)
+									onClick={() =>
+										onExportRequest(includeHiatused, includeArchived)
 									}
 								>
 									Export

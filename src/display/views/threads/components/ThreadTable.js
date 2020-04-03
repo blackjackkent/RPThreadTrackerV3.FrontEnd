@@ -23,7 +23,9 @@ const propTypes = {
 	setFilteredTag: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tdProps: PropTypes.func.isRequired,
-	threadFilter: PropTypes.shape({}).isRequired,
+	threadFilter: PropTypes.shape({
+		filteredTag: PropTypes.string
+	}).isRequired,
 	threadTablePageSize: PropTypes.number,
 	updateThreadTablePageSize: PropTypes.func.isRequired,
 	useLightTheme: PropTypes.bool.isRequired

@@ -14,14 +14,15 @@ const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 
-const createTestPropsWithCharacter = (propOverrides) => createTestProps({
-	characterToEdit: {
-		characterName: 'John Smith',
-		platformId: 2,
-		urlIdentifier: 'my-test-character'
-	},
-	...propOverrides
-});
+const createTestPropsWithCharacter = (propOverrides) =>
+	createTestProps({
+		characterToEdit: {
+			characterName: 'John Smith',
+			platformId: 2,
+			urlIdentifier: 'my-test-character'
+		},
+		...propOverrides
+	});
 
 describe('rendering', () => {
 	describe('snapshots', () => {

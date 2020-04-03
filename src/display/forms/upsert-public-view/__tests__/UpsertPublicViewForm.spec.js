@@ -62,20 +62,21 @@ const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 
-const createTestPropsWithView = (propOverrides) => createTestProps({
-	viewToEdit: {
-		id: '12345',
-		name: 'Test View',
-		slug: 'test-slug',
-		columns: ['column1', 'column2'],
-		sortKey: 'column1',
-		sortDescending: true,
-		turnFilter: {},
-		characterIds: [1, 2, 3],
-		tags: ['tag1', 'tag2']
-	},
-	...propOverrides
-});
+const createTestPropsWithView = (propOverrides) =>
+	createTestProps({
+		viewToEdit: {
+			id: '12345',
+			name: 'Test View',
+			slug: 'test-slug',
+			columns: ['column1', 'column2'],
+			sortKey: 'column1',
+			sortDescending: true,
+			turnFilter: {},
+			characterIds: [1, 2, 3],
+			tags: ['tag1', 'tag2']
+		},
+		...propOverrides
+	});
 
 describe('rendering', () => {
 	describe('snapshots', () => {

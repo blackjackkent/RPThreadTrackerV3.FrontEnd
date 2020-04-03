@@ -6,6 +6,7 @@ import StaticContainer from '../StaticContainer';
 
 // #region mocks
 jest.mock('../../views/login/Login', () => () => 'Login');
+// prettier-ignore
 jest.mock('../../../infrastructure/withPageViewTracker', () => (WrappedComponent) => WrappedComponent);
 jest.mock('../../views/forgot-password/ForgotPassword', () => () => 'ForgotPassword');
 jest.mock('../../views/register/Register', () => () => 'Register');

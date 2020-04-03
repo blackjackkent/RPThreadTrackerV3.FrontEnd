@@ -7,11 +7,31 @@ import validator from './_validator';
 import formData from './_formData';
 
 const propTypes = {
-	viewToEdit: PropTypes.shape({}).isRequired,
+	viewToEdit: PropTypes.shape({
+		id: PropTypes.string,
+		name: PropTypes.string,
+		slug: PropTypes.string,
+		columns: PropTypes.arrayOf(PropTypes.shape({})),
+		sortKey: PropTypes.string,
+		sortDescending: PropTypes.bool,
+		turnFilter: PropTypes.shape({
+			includeMyTurn: PropTypes.bool,
+			includeTheirTurn: PropTypes.bool,
+			includeQueued: PropTypes.bool,
+			includeArchived: PropTypes.bool
+		}),
+		characterIds: PropTypes.arrayOf(PropTypes.string),
+		tags: PropTypes.arrayOf(PropTypes.shape({}))
+	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		slug: PropTypes.bool,
+		columns: PropTypes.bool,
+		characterIds: PropTypes.bool,
+		tags: PropTypes.bool
+	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
 	columns: PropTypes.shape({}).isRequired
@@ -189,12 +209,12 @@ const UpsertPublicViewForm = (props) => {
 									onChange={handleInputChange}
 									type="checkbox"
 									checked={
-										viewToEdit.turnFilter
-										&& viewToEdit.turnFilter.includeTheirTurn
+										viewToEdit.turnFilter &&
+										viewToEdit.turnFilter.includeTheirTurn
 									}
 									data-spec="include-their-turn-field"
 								/>
-								Include Partner{"'"}s Turn Threads
+								Include Partner&apos;s Turn Threads
 							</label>
 						</Col>
 					</Row>
@@ -220,8 +240,8 @@ const UpsertPublicViewForm = (props) => {
 									type="checkbox"
 									onChange={handleInputChange}
 									checked={
-										viewToEdit.turnFilter
-										&& viewToEdit.turnFilter.includeArchived
+										viewToEdit.turnFilter &&
+										viewToEdit.turnFilter.includeArchived
 									}
 									data-spec="include-archived-field"
 								/>

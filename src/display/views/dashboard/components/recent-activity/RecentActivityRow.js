@@ -4,7 +4,17 @@ import { Row, Col } from 'reactstrap';
 import Moment from 'react-moment';
 
 const propTypes = {
-	threadData: PropTypes.shape({}).isRequired,
+	threadData: PropTypes.shape({
+		status: PropTypes.shape({
+			lastPostUrl: PropTypes.string,
+			lastPosterUrlIdentifier: PropTypes.string,
+			lastPostDate: PropTypes.string
+		}),
+		thread: PropTypes.shape({
+			userTitle: PropTypes.string,
+			postId: PropTypes.string
+		})
+	}).isRequired,
 	archiveThread: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
 	markThreadQueued: PropTypes.func.isRequired

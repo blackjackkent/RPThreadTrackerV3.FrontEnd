@@ -1,16 +1,15 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper, initMockDateNow } from '~/testhelpers/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import AsideNewsRow from '../AsideNewsRow';
 // #endregion imports
 
-initMockDateNow();
 const createTestProps = (propOverrides) => ({
 	item: {
 		postUrl: 'testurl',
 		postTitle: 'testtitle',
-		postDate: Date.now,
+		postDate: '2019-10-15T18:19:19Z',
 		isUnread: false
 	},
 	...propOverrides

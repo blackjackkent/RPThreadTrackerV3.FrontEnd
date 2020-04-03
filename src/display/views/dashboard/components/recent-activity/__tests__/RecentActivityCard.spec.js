@@ -24,45 +24,50 @@ const createTestProps = (propOverrides) => ({
 	recentActivityThreads: [],
 	...propOverrides
 });
-const createTestPropsLoading = () => createTestProps({
-	loadingInProgress: true
-});
+const createTestPropsLoading = () =>
+	createTestProps({
+		loadingInProgress: true
+	});
 const createTestPropsNoCharacters = () => createTestProps({});
-const createTestPropsNoActiveCharacters = () => createTestProps({
-	characters: [
-		{
-			isOnHiatus: true
-		},
-		{
-			isOnHiatus: true
-		}
-	]
-});
-const createTestPropsNoThreads = () => createTestProps({
-	characters: [{}, {}]
-});
-const createTestPropsNoRecentActivity = () => createTestProps({
-	characters: [{}, {}],
-	allThreads: [{}, {}, {}]
-});
-const createTestPropsRecentActivity = () => createTestProps({
-	characters: [{}, {}],
-	allThreads: [{}, {}, {}],
-	recentActivityThreads: [
-		{
-			thread: {
-				threadId: 1,
-				userTitle: 'Recent 1'
+const createTestPropsNoActiveCharacters = () =>
+	createTestProps({
+		characters: [
+			{
+				isOnHiatus: true
+			},
+			{
+				isOnHiatus: true
 			}
-		},
-		{
-			thread: {
-				threadId: 2,
-				userTitle: 'Recent 2'
+		]
+	});
+const createTestPropsNoThreads = () =>
+	createTestProps({
+		characters: [{}, {}]
+	});
+const createTestPropsNoRecentActivity = () =>
+	createTestProps({
+		characters: [{}, {}],
+		allThreads: [{}, {}, {}]
+	});
+const createTestPropsRecentActivity = () =>
+	createTestProps({
+		characters: [{}, {}],
+		allThreads: [{}, {}, {}],
+		recentActivityThreads: [
+			{
+				thread: {
+					threadId: 1,
+					userTitle: 'Recent 1'
+				}
+			},
+			{
+				thread: {
+					threadId: 2,
+					userTitle: 'Recent 2'
+				}
 			}
-		}
-	]
-});
+		]
+	});
 
 describe('rendering', () => {
 	describe('snapshots', () => {

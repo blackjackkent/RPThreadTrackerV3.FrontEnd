@@ -21,7 +21,9 @@ const propTypes = {
 	threadFilter: PropTypes.shape({}).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	updateUserSettings: PropTypes.func.isRequired,
-	userSettings: PropTypes.shape({}).isRequired
+	userSettings: PropTypes.shape({
+		threadTablePageSize: PropTypes.number
+	}).isRequired
 };
 
 function mapStateToProps(state) {
