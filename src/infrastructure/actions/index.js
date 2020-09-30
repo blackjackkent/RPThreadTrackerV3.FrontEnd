@@ -12,6 +12,12 @@ export {
 	openDeletePublicViewModal
 } from './ui/deletePublicViewModal';
 export {
+	CLOSE_DELETE_ACCOUNT_CONFIRMATION_MODAL,
+	closeDeleteAccountConfirmationModal,
+	OPEN_DELETE_ACCOUNT_CONFIRMATION_MODAL,
+	openDeleteAccountConfirmationModal
+} from './ui/deleteAccountConfirmationModal';
+export {
 	CLOSE_UNTRACK_CHARACTER_MODAL,
 	closeUntrackCharacterModal,
 	OPEN_UNTRACK_CHARACTER_MODAL,
@@ -197,6 +203,14 @@ export {
 	submitUserChangePasswordFailure,
 	submitUserChangePasswordSuccess
 } from './user/submitUserChangePassword';
+export {
+	SUBMIT_USER_ACCOUNT_DELETION,
+	SUBMIT_USER_ACCOUNT_DELETION_FAILURE,
+	SUBMIT_USER_ACCOUNT_DELETION_SUCCESS,
+	submitUserAccountDeletion,
+	submitUserAccountDeletionFailure,
+	submitUserAccountDeletionSuccess
+} from './user/submitUserAccountDeletion';
 export {
 	SUBMIT_USER_FORGOT_PASSWORD_FAILURE,
 	SUBMIT_USER_FORGOT_PASSWORD_SUCCESS,

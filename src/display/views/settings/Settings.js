@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ChangePasswordPane from './components/ChangePasswordPane';
 import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
+import DeleteAccountPane from './components/DeleteAccountPane';
 import * as actions from '../../../infrastructure/actions';
 import TabContent from '../../shared/styled/TabContent';
 import StaticTabNav from '../../shared/static/StaticTabNav';
@@ -14,6 +15,7 @@ const propTypes = {
 	user: PropTypes.shape({}).isRequired,
 	submitUserChangePassword: PropTypes.func.isRequired,
 	submitUserAccountInfo: PropTypes.func.isRequired,
+	openDeleteAccountConfirmationModal: PropTypes.func.isRequired,
 	match: PropTypes.shape({
 		url: PropTypes.string,
 		params: PropTypes.shape({
@@ -32,6 +34,10 @@ function mapStateToProps(state) {
 const Settings = (props) => {
 	const { user, submitUserChangePassword, submitUserAccountInfo, match } = props;
 	const options = Object.values(tabs.SETTINGS);
+	const onDeleteAccountClicked = (e) => {
+		e.preventDefault();
+		props.openDeleteAccountConfirmationModal();
+	}
 	return (
 		<div className="animated fadeIn static-container settings-container">
 			<Row>
@@ -54,6 +60,7 @@ const Settings = (props) => {
 							submitAccountInfoForm={submitUserAccountInfo}
 							user={user}
 						/>
+						<DeleteAccountPane onDeleteAccountClicked={onDeleteAccountClicked} />
 					</TabContent>
 				</Col>
 			</Row>
@@ -64,5 +71,6 @@ const Settings = (props) => {
 Settings.propTypes = propTypes;
 export default connect(mapStateToProps, {
 	submitUserChangePassword: actions.submitUserChangePassword,
-	submitUserAccountInfo: actions.submitUserAccountInfo
+	submitUserAccountInfo: actions.submitUserAccountInfo,
+	openDeleteAccountConfirmationModal: actions.openDeleteAccountConfirmationModal
 })(Settings);
