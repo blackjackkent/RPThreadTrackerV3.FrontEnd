@@ -19,11 +19,11 @@ const YourCharactersCardRow = (props) => {
 	const { character, threadCount } = props;
 	return (
 		<Row className="your-characters-card-row">
+			<Col xs="4">{character.characterName || 'Unnamed Character'}</Col>
 			<Col xs="4">
-				{character.characterName || 'Unnamed Character'}
-			</Col>
-			<Col xs="4">
-				<a target="_blank" rel="noopener noreferrer" href={character.homeUrl}>{character.urlIdentifier}</a>
+				<a target="_blank" rel="noopener noreferrer" href={character.homeUrl}>
+					{character.urlIdentifier}
+				</a>
 			</Col>
 			<Col xs="4">
 				{threadCount} {threadCount === 1 ? 'thread' : 'threads'}

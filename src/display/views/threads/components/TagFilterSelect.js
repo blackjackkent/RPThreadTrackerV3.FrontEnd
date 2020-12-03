@@ -4,7 +4,12 @@ import PropTypes from 'prop-types';
 import CleanSelect from '../../../shared/styled/CleanSelect';
 
 const propTypes = {
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	tags: PropTypes.arrayOf(
+		PropTypes.shape({
+			tagText: PropTypes.string,
+			threadTagId: PropTypes.string
+		})
+	).isRequired,
 	filteredTag: PropTypes.string,
 	setFilteredTag: PropTypes.func.isRequired
 };
@@ -18,12 +23,10 @@ const TagFilterSelect = (props) => {
 	const options = [];
 	for (let i = 0; i < tags.length; i++) {
 		const element = (
-			<option
-				value={tags[i].tagText}
-				key={tags[i].threadTagId}
-			>
+			<option value={tags[i].tagText} key={tags[i].threadTagId}>
 				{tags[i].tagText}
-			</option>);
+			</option>
+		);
 		options.push(element);
 	}
 	return (
@@ -35,7 +38,7 @@ const TagFilterSelect = (props) => {
 					id="tag"
 					className="clean-select"
 					value={filteredTag}
-					onChange={e => setFilteredTag(e.target.value)}
+					onChange={(e) => setFilteredTag(e.target.value)}
 				>
 					<option value="">Filter by Tag</option>
 					{options}

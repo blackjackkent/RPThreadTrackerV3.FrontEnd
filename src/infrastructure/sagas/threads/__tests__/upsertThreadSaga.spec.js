@@ -2,13 +2,15 @@ import axios from 'axios';
 import { call } from 'redux-saga/effects';
 import upsertThreadSaga from '../upsertThreadSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
 	describe('update', () => {
 		it('should update thread when thread has ID', () => {
-			const thread = { threadId: 1 };
+			const thread = {
+				threadId: 1
+			};
 			const saga = new SagaTestWrapper(upsertThreadSaga);
 			saga.setup(call(axios.put, 'http://test-site/api/thread/1', thread), thread);
 			saga.expectPut({
@@ -27,7 +29,9 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed PUT', () => {
-			const thread = { threadId: 1 };
+			const thread = {
+				threadId: 1
+			};
 			const saga = new SagaTestWrapper(upsertThreadSaga);
 			saga.setupError(call(axios.put, 'http://test-site/api/thread/1', thread), 'Test error');
 			saga.expectPut({
@@ -41,7 +45,9 @@ describe('saga behavior', () => {
 	});
 	describe('insert', () => {
 		it('should create thread when thread has no ID', () => {
-			const thread = { userTitle: 'Test thread' };
+			const thread = {
+				userTitle: 'Test thread'
+			};
 			const saga = new SagaTestWrapper(upsertThreadSaga);
 			saga.setup(call(axios.post, 'http://test-site/api/thread', thread), thread);
 			saga.expectPut({
@@ -60,7 +66,9 @@ describe('saga behavior', () => {
 			});
 		});
 		it('should dispatch failure action on failed POST', () => {
-			const thread = { userTitle: 'Test thread' };
+			const thread = {
+				userTitle: 'Test thread'
+			};
 			const saga = new SagaTestWrapper(upsertThreadSaga);
 			saga.setupError(call(axios.post, 'http://test-site/api/thread', thread), 'Test error');
 			saga.expectPut({
@@ -74,7 +82,16 @@ describe('saga behavior', () => {
 	});
 	describe('bulk update', () => {
 		it('should dispatch events for all updated threads', () => {
-			const threads = [{ threadId: 1, userTitle: 'Test thread' }, { threadId: 2, userTitle: 'Test thread 2' }];
+			const threads = [
+				{
+					threadId: 1,
+					userTitle: 'Test thread'
+				},
+				{
+					threadId: 2,
+					userTitle: 'Test thread 2'
+				}
+			];
 			const saga = new SagaTestWrapper(upsertThreadSaga);
 			saga.setupAll([
 				{

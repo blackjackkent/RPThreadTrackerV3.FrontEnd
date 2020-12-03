@@ -14,10 +14,8 @@ const RandomThreadCard = (props) => {
 	return (
 		<Card className="random-thread-generator-card" data-spec="random-thread-generator-card">
 			<CardHeader data-spec="random-thread-generator-header">
-				<i
-					className="fas fa-random"
-					data-spec="random-thread-generator-icon"
-				/> Random Thread Generator
+				<i className="fas fa-random" data-spec="random-thread-generator-icon" /> Random
+				Thread Generator
 			</CardHeader>
 			<CardBody className="card-body">
 				<button

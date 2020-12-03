@@ -12,13 +12,20 @@ describe('action handling', () => {
 			data: 'tag1'
 		};
 		const result = threadFilter({}, action);
-		expect(result).toEqual({ filteredTag: 'tag1' });
+		expect(result).toEqual({
+			filteredTag: 'tag1'
+		});
 	});
 	it('should handle SUBMIT_USER_LOGOUT', () => {
 		const action = {
 			type: actions.SUBMIT_USER_LOGOUT
 		};
-		const result = threadFilter({ filteredTag: 'tag' }, action);
+		const result = threadFilter(
+			{
+				filteredTag: 'tag'
+			},
+			action
+		);
 		expect(result).toEqual({});
 	});
 });

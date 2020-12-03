@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import BrowserExtensionsPane from '../BrowserExtensionsPane';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 

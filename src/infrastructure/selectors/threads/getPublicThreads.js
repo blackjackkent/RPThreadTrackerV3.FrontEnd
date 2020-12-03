@@ -18,12 +18,7 @@ const getPublicThreads = createSelector(
 			return [];
 		}
 		const filteredStatuses = filterPublicStatusesByTurnFilter(threadsStatus, threads, view);
-		const threadData = buildThreadDataByPredicate(
-			threads,
-			filteredStatuses,
-			filters.ALL,
-			true
-		);
+		const threadData = buildThreadDataByPredicate(threads, filteredStatuses, filters.ALL, true);
 		return filterThreadsByPublicViewFilter(threadData, filter);
 	}
 );

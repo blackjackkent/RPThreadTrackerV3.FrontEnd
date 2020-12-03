@@ -19,7 +19,7 @@ class TooltipForm extends Component {
 
 	showTooltip(e) {
 		const { name } = e.target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			displayTooltip: Object.assign({}, prevState.displayTooltip, {
 				[name]: true
 			})
@@ -28,7 +28,7 @@ class TooltipForm extends Component {
 
 	hideTooltip(e) {
 		const { name } = e.target;
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			displayTooltip: Object.assign({}, prevState.displayTooltip, {
 				[name]: false
 			})
@@ -36,9 +36,7 @@ class TooltipForm extends Component {
 	}
 
 	render() {
-		const {
-			Renderable
-		} = this.props;
+		const { Renderable } = this.props;
 		const { displayTooltip } = this.state;
 		return (
 			<Renderable

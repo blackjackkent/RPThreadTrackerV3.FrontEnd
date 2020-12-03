@@ -37,6 +37,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         "Header": undefined,
         "Pivot": undefined,
         "PivotValue": undefined,
+        "Placeholder": undefined,
         "aggregate": undefined,
         "className": "",
         "filterAll": false,
@@ -49,6 +50,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         "getProps": [Function],
         "headerClassName": "",
         "headerStyle": Object {},
+        "minResizeWidth": 11,
         "minWidth": 100,
         "resizable": undefined,
         "show": true,
@@ -80,6 +82,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     defaultExpanded={Object {}}
     defaultFilterMethod={[Function]}
     defaultFiltered={Array []}
+    defaultPage={0}
     defaultPageSize={20}
     defaultResized={Array []}
     defaultSortDesc={false}
@@ -134,6 +137,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     ofText="of"
     onFetchData={[Function]}
     originalKey="_original"
+    pageJumpText="jump to page"
     pageSize={10}
     pageSizeOptions={
       Array [
@@ -152,6 +156,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     previousText="Previous"
     resizable={true}
     resolveData={[Function]}
+    rowsSelectorText="rows per page"
     rowsText="rows"
     showPageJump={true}
     showPageSizeOptions={true}
@@ -202,6 +207,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
         "Header": undefined,
         "Pivot": undefined,
         "PivotValue": undefined,
+        "Placeholder": undefined,
         "aggregate": undefined,
         "className": "",
         "filterAll": false,
@@ -214,6 +220,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
         "getProps": [Function],
         "headerClassName": "",
         "headerStyle": Object {},
+        "minResizeWidth": 11,
         "minWidth": 100,
         "resizable": undefined,
         "show": true,
@@ -245,6 +252,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     defaultExpanded={Object {}}
     defaultFilterMethod={[Function]}
     defaultFiltered={Array []}
+    defaultPage={0}
     defaultPageSize={20}
     defaultResized={Array []}
     defaultSortDesc={false}
@@ -299,6 +307,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     ofText="of"
     onFetchData={[Function]}
     originalKey="_original"
+    pageJumpText="jump to page"
     pageSize={10}
     pageSizeOptions={
       Array [
@@ -317,6 +326,7 @@ exports[`rendering snapshots should render valid snapshot when loading icon not 
     previousText="Previous"
     resizable={true}
     resolveData={[Function]}
+    rowsSelectorText="rows per page"
     rowsText="rows"
     showPageJump={true}
     showPageSizeOptions={true}

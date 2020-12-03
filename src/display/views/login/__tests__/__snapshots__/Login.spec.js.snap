@@ -82,7 +82,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           >
             Sign up
           </Link>
-           • 
+           
+          •
            
           <Link
             href="/forgotpassword"
@@ -189,7 +190,8 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
           >
             Sign up
           </Link>
-           • 
+           
+          •
            
           <Link
             href="/forgotpassword"
@@ -297,7 +299,8 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           >
             Sign up
           </Link>
-           • 
+           
+          •
            
           <Link
             href="/forgotpassword"

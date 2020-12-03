@@ -2,7 +2,9 @@ import * as actions from '../exportThreads';
 
 describe('exportThreads', () => {
 	it('should create action with type, data, and analytics', () => {
-		const data = { includeHiatused: true };
+		const data = {
+			includeHiatused: true
+		};
 		const action = actions.exportThreads(data);
 		expect(action.type).toBe('EXPORT_THREADS');
 		expect(action.data).toBe(data);

@@ -1,10 +1,26 @@
 import filters from '../filters';
 
 const getThreadStatuses = () => [
-	{ postId: 1, isCallingCharactersTurn: true, isQueued: true },
-	{ postId: 2, isCallingCharactersTurn: true, isQueued: false },
-	{ postId: 3, isCallingCharactersTurn: false, isQueued: true },
-	{ postId: 4, isCallingCharactersTurn: false, isQueued: false }
+	{
+		postId: 1,
+		isCallingCharactersTurn: true,
+		isQueued: true
+	},
+	{
+		postId: 2,
+		isCallingCharactersTurn: true,
+		isQueued: false
+	},
+	{
+		postId: 3,
+		isCallingCharactersTurn: false,
+		isQueued: true
+	},
+	{
+		postId: 4,
+		isCallingCharactersTurn: false,
+		isQueued: false
+	}
 ];
 
 describe('object structure', () => {

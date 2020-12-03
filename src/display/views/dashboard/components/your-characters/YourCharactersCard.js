@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CardHeader, CardBody } from 'reactstrap';
-import Card from '../../../../shared/styled/Card';
+import Card from '~/display/shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../NoCharactersMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
-import LoadingIndicator from '../../../../shared/loading/LoadingIndicator';
+import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -30,13 +30,13 @@ const getBlockContent = (loadingInProgress, characters, characterThreadCounts) =
 		);
 	}
 	if (characters.length === 0) {
-		return (<NoCharactersMessage />);
+		return <NoCharactersMessage />;
 	}
-	const activeCharacters = characters.filter(c => !c.isOnHiatus);
+	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
 	if (characters.length > 0 && activeCharacters.length === 0) {
-		return (<NoActiveCharactersMessage />);
+		return <NoActiveCharactersMessage />;
 	}
-	return activeCharacters.map(character => (
+	return activeCharacters.map((character) => (
 		<YourCharactersCardRow
 			character={character}
 			key={character.characterId}
@@ -53,15 +53,13 @@ const YourCharactersCard = (props) => {
 			<CardHeader>
 				<i className="fas fa-users" /> Your Characters
 				<div className="float-right">
-					<Link href="/manage-characters" to="/manage-characters">Manage Characters</Link>
+					<Link href="/manage-characters" to="/manage-characters">
+						Manage Characters
+					</Link>
 				</div>
 			</CardHeader>
 			<CardBody className="card-body">
-				{getBlockContent(
-					loadingInProgress,
-					characters,
-					characterThreadCounts
-				)}
+				{getBlockContent(loadingInProgress, characters, characterThreadCounts)}
 			</CardBody>
 		</Card>
 	);

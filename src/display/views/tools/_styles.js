@@ -7,7 +7,7 @@ export default styled.div`
 		#manage-tags-updated-value-input {
 			margin: 10px;
 		}
-		label { 
+		label {
 			margin: 0;
 		}
 		.choice-row {
@@ -17,12 +17,12 @@ export default styled.div`
 			padding: 10px;
 		}
 		.back-button {
-			background: none; 
-			border: none; 
-			color: ${colors.BASE_BLUE}; 
+			background: none;
+			border: none;
+			color: ${colors.BASE_BLUE};
 		}
 		.back-button:hover {
-			text-decoration: underline
+			text-decoration: underline;
 		}
 	}
 	.light-theme & {

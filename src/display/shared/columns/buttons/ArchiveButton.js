@@ -1,7 +1,7 @@
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 
-export default isArchivePage => ({
+export default (isArchivePage) => ({
 	id: columns.ARCHIVE_BUTTON.key,
 	Cell: () => (
 		<span>

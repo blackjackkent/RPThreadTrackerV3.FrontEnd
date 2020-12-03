@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import TrackerSupportCard from '../TrackerSupportCard';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	...propOverrides
 });
 

@@ -1,20 +1,19 @@
 // #region imports
 import { takeLatest, put, call } from 'redux-saga/effects';
 import axios from 'axios';
-import {
-	EXPORT_THREADS,
-	exportThreadsFailure,
-	exportThreadsSuccess
-} from '../../actions';
+import { EXPORT_THREADS, exportThreadsFailure, exportThreadsSuccess } from '../../actions';
 // #endregion imports
 
 function saveAsBlob(response, filename, contentType) {
 	try {
-		const blob = new Blob([response.data], { type: contentType });
-		const saveBlob = navigator.msSaveBlob
-			|| navigator.webkitSaveBlob
-			|| navigator.mozSaveBlob
-			|| navigator.saveBlob;
+		const blob = new Blob([response.data], {
+			type: contentType
+		});
+		const saveBlob =
+			navigator.msSaveBlob ||
+			navigator.webkitSaveBlob ||
+			navigator.mozSaveBlob ||
+			navigator.saveBlob;
 		if (saveBlob === undefined) {
 			throw new Error('Not supported');
 		}
@@ -31,12 +30,30 @@ function saveWithSimClick(response, contentType, urlCreator, filename) {
 		return false;
 	}
 	try {
-		const blob = new Blob([response.data], { type: contentType });
+		const blob = new Blob([response.data], {
+			type: contentType
+		});
 		const url = urlCreator.createObjectURL(blob);
 		link.setAttribute('href', url);
 		link.setAttribute('download', filename);
 		const event = document.createEvent('MouseEvents');
-		event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+		event.initMouseEvent(
+			'click',
+			true,
+			true,
+			window,
+			1,
+			0,
+			0,
+			0,
+			0,
+			false,
+			false,
+			false,
+			false,
+			0,
+			null
+		);
 		link.dispatchEvent(event);
 		return true;
 	} catch (ex) {
@@ -45,7 +62,9 @@ function saveWithSimClick(response, contentType, urlCreator, filename) {
 }
 
 function saveWithWindowOpen(response, octetStreamMime, urlCreator) {
-	const blob = new Blob([response.data], { type: octetStreamMime });
+	const blob = new Blob([response.data], {
+		type: octetStreamMime
+	});
 	const url = urlCreator.createObjectURL(blob);
 	window.location.assign(url);
 }

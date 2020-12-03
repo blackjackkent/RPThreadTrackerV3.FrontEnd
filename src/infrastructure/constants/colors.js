@@ -1,3 +1,5 @@
+const BASE_BLUE_OPACITY = (opacity) => `rgba(64, 140, 228, ${opacity})`;
+
 export default {
 	WHITE: '#fff',
 	GRAY_050: '#f6f6f6',
@@ -14,6 +16,7 @@ export default {
 	GRAY_900: '#111',
 	BLACK: '#000',
 	LIGHT_BLUE: '#95C6FF',
-	BASE_BLUE: '#418ce4',
+	BASE_BLUE: BASE_BLUE_OPACITY(1.0),
+	BASE_BLUE_OPACITY,
 	DARK_BLUE: '#3A7DCC'
 };

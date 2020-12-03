@@ -23,9 +23,7 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const {
-		ui
-	} = state;
+	const { ui } = state;
 	return {
 		useLightTheme: ui.useLightTheme,
 		isMaintenanceMode: ui.isMaintenanceMode
@@ -60,27 +58,19 @@ class App extends React.Component {
 		return (
 			<Router history={history}>
 				<Switch>
-					<Route
-						path="/maintenance"
-						name="Maintenance"
-						component={Maintenance}
-					/>
-					{
-						['/login', '/forgotpassword', '/resetpassword', '/register'].map(path => <Route key={path} path={path} component={StaticContainer} />)
-					}
-					{
-						['/public/:username/:slug', '/public/:slug'].map(path => <Route key={path} path={path} component={PublicContainer} />)
-					}
+					<Route path="/maintenance" name="Maintenance" component={Maintenance} />
+					{['/login', '/forgotpassword', '/resetpassword', '/register'].map((path) => (
+						<Route key={path} path={path} component={StaticContainer} />
+					))}
+					{['/public/:username/:slug', '/public/:slug'].map((path) => (
+						<Route key={path} path={path} component={PublicContainer} />
+					))}
 					<Route
 						path="/add-thread"
 						name="AddThreadFromExtensionHandler"
 						component={AddThreadFromExtensionHandler}
 					/>
-					<Route
-						path="/landing"
-						name="Landing"
-						component={LandingContainer}
-					/>
+					<Route path="/landing" name="Landing" component={LandingContainer} />
 					<Route component={Layout} />
 				</Switch>
 			</Router>

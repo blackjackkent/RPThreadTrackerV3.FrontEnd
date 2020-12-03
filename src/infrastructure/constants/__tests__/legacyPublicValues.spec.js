@@ -1,6 +1,6 @@
 import * as legacyPublicValues from '../legacyPublicValues';
 
-const getQueryData = overrides => ({
+const getQueryData = (overrides) => ({
 	currentBlog: 'my-blog',
 	filteredTag: 'my-tag',
 	userId: '1234',
@@ -59,27 +59,37 @@ describe('buildLegacyView', () => {
 		expect(result.turnFilter.includeQueued).toBe(true);
 	});
 	it('should set sort by user title', () => {
-		const queryData = getQueryData({ currentOrderBy: 'UserTitle' });
+		const queryData = getQueryData({
+			currentOrderBy: 'UserTitle'
+		});
 		const result = legacyPublicValues.buildLegacyView(queryData);
 		expect(result.sortKey).toBe('thread.userTitle');
 	});
 	it('should set sort by last post date', () => {
-		const queryData = getQueryData({ currentOrderBy: 'LastPostDate' });
+		const queryData = getQueryData({
+			currentOrderBy: 'LastPostDate'
+		});
 		const result = legacyPublicValues.buildLegacyView(queryData);
 		expect(result.sortKey).toBe('status.lastPostDate');
 	});
 	it('should set sort by last poster', () => {
-		const queryData = getQueryData({ currentOrderBy: 'LastPosterShortname' });
+		const queryData = getQueryData({
+			currentOrderBy: 'LastPosterShortname'
+		});
 		const result = legacyPublicValues.buildLegacyView(queryData);
 		expect(result.sortKey).toBe('status.lastPosterUrlIdentifier');
 	});
 	it('should set sort by partner shortname', () => {
-		const queryData = getQueryData({ currentOrderBy: 'WatchedShortname' });
+		const queryData = getQueryData({
+			currentOrderBy: 'WatchedShortname'
+		});
 		const result = legacyPublicValues.buildLegacyView(queryData);
 		expect(result.sortKey).toBe('thread.partnerUrlIdentifier');
 	});
 	it('should set empty tag array when no tag set', () => {
-		const queryData = getQueryData({ filteredTag: null });
+		const queryData = getQueryData({
+			filteredTag: null
+		});
 		const result = legacyPublicValues.buildLegacyView(queryData);
 		expect(result.tags).toEqual([]);
 	});

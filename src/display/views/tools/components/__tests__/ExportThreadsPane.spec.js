@@ -1,11 +1,11 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import ExportThreadsPane from '../ExportThreadsPane';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	onExportRequest: jest.fn(),
 	...propOverrides
 });
@@ -23,7 +23,9 @@ describe('behavior', () => {
 	describe('onExportRequest', () => {
 		it('should be called when form is submitted', () => {
 			const onExportRequest = jest.fn();
-			const props = createTestProps({ onExportRequest });
+			const props = createTestProps({
+				onExportRequest
+			});
 			const element = shallow(<ExportThreadsPane {...props} />);
 			const button = getSpecWrapper(element, 'export-threads-form-submit-button');
 			button.simulate('click');
@@ -32,9 +34,17 @@ describe('behavior', () => {
 	});
 	describe('handleInputChange', () => {
 		it('should handle checkbox checked update', () => {
-			const event = { target: { type: 'checkbox', name: 'includeHiatused', checked: true } };
+			const event = {
+				target: {
+					type: 'checkbox',
+					name: 'includeHiatused',
+					checked: true
+				}
+			};
 			const onExportRequest = jest.fn();
-			const props = createTestProps({ onExportRequest });
+			const props = createTestProps({
+				onExportRequest
+			});
 			const element = shallow(<ExportThreadsPane {...props} />);
 			element.instance().handleInputChange(event);
 			element.update();
@@ -44,9 +54,17 @@ describe('behavior', () => {
 			expect(onExportRequest).toHaveBeenLastCalledWith(true, false);
 		});
 		it('should handle checkbox unchecked update', () => {
-			const event = { target: { type: 'checkbox', name: 'includeHiatused', checked: false } };
+			const event = {
+				target: {
+					type: 'checkbox',
+					name: 'includeHiatused',
+					checked: false
+				}
+			};
 			const onExportRequest = jest.fn();
-			const props = createTestProps({ onExportRequest });
+			const props = createTestProps({
+				onExportRequest
+			});
 			const element = shallow(<ExportThreadsPane {...props} />);
 			element.instance().handleInputChange(event);
 			element.update();

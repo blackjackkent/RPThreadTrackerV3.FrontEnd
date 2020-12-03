@@ -19,15 +19,14 @@ const propTypes = {
 	toggleHeaderAddMenuDropdown: PropTypes.func.isRequired,
 	toggleMobileSidebar: PropTypes.func.isRequired,
 	toggleNewsAside: PropTypes.func.isRequired,
-	toggleSidebar: PropTypes.func.isRequired,
+	loadSidebarOpen: PropTypes.func.isRequired,
+	setSidebarOpen: PropTypes.func.isRequired,
 	updateUserSettings: PropTypes.func.isRequired,
 	userSettings: PropTypes.shape({}).isRequired
 };
 
 function mapStateToProps(state) {
-	const {
-		ui, user, news, userSettings
-	} = state;
+	const { ui, user, news, userSettings } = state;
 	const {
 		isNewsAsideOpen,
 		isSidebarOpen,
@@ -64,6 +63,8 @@ class HeaderContainer extends Component {
 
 	componentDidMount() {
 		this.loadBodyClasses(this.props);
+		const { loadSidebarOpen } = this.props;
+		loadSidebarOpen();
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -77,19 +78,20 @@ class HeaderContainer extends Component {
 	}
 
 	sidebarToggle() {
-		const { isSidebarOpen, toggleSidebar } = this.props;
-		toggleSidebar(!isSidebarOpen);
+		const { isSidebarOpen, setSidebarOpen } = this.props;
+		setSidebarOpen(!isSidebarOpen);
 	}
 
 	asideToggle() {
-		const {
-			userSettings, isNewsAsideOpen, toggleNewsAside, updateUserSettings
-		} = this.props;
+		const { userSettings, isNewsAsideOpen, toggleNewsAside, updateUserSettings } = this.props;
 		toggleNewsAside(!isNewsAsideOpen);
-		updateUserSettings({
-			...userSettings,
-			lastNewsReadDate: new Date(Date.now())
-		}, !isNewsAsideOpen);
+		updateUserSettings(
+			{
+				...userSettings,
+				lastNewsReadDate: new Date(Date.now())
+			},
+			!isNewsAsideOpen
+		);
 	}
 
 	mobileSidebarToggle() {
@@ -123,9 +125,11 @@ class HeaderContainer extends Component {
 	}
 
 	render() {
+		const { loadSidebarOpen, setSidebarOpen, ...props } = this.props;
+
 		return (
 			<Header
-				{...this.props}
+				{...props}
 				mobileSidebarToggle={this.mobileSidebarToggle}
 				asideToggle={this.asideToggle}
 				headerProfileDropdownToggle={this.headerProfileDropdownToggle}
@@ -141,13 +145,14 @@ class HeaderContainer extends Component {
 
 HeaderContainer.propTypes = propTypes;
 export default connect(mapStateToProps, {
+	loadSidebarOpen: actions.loadSidebarOpen,
 	openUpsertCharacterModal: actions.openUpsertCharacterModal,
 	openUpsertThreadModal: actions.openUpsertThreadModal,
+	setSidebarOpen: actions.setSidebarOpen,
 	submitUserLogout: actions.submitUserLogout,
 	toggleHeaderProfileDropdown: actions.toggleHeaderProfileDropdown,
 	toggleHeaderAddMenuDropdown: actions.toggleHeaderAddMenuDropdown,
 	toggleMobileSidebar: actions.toggleMobileSidebar,
 	toggleNewsAside: actions.toggleNewsAside,
-	toggleSidebar: actions.toggleSidebar,
 	updateUserSettings: actions.updateUserSettings
 })(HeaderContainer);

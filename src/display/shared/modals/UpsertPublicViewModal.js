@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	ModalHeader, ModalBody, ModalFooter, Button
-} from 'reactstrap';
+import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import UpsertPublicViewForm from '../../forms/upsert-public-view/UpsertPublicViewForm';
 import TooltipForm from '../../forms/TooltipForm';
@@ -13,7 +11,9 @@ const propTypes = {
 	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
 	submitUpsertPublicView: PropTypes.func.isRequired,
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
-	viewToEdit: PropTypes.shape({}).isRequired,
+	viewToEdit: PropTypes.shape({
+		id: PropTypes.string
+	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	columns: PropTypes.shape({}).isRequired
@@ -29,7 +29,9 @@ class UpsertCharacterModal extends React.Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		this.setState({ viewToEdit: nextProps.viewToEdit });
+		this.setState({
+			viewToEdit: nextProps.viewToEdit
+		});
 	}
 
 	handleInputChange(event) {
@@ -46,14 +48,14 @@ class UpsertCharacterModal extends React.Component {
 				turnFilter = {};
 			}
 			turnFilter[name] = value;
-			this.setState(prevState => ({
+			this.setState((prevState) => ({
 				viewToEdit: Object.assign({}, prevState.viewToEdit, {
 					turnFilter
 				})
 			}));
 			return;
 		}
-		this.setState(prevState => ({
+		this.setState((prevState) => ({
 			viewToEdit: Object.assign({}, prevState.viewToEdit, {
 				[name]: value
 			})
@@ -82,7 +84,12 @@ class UpsertCharacterModal extends React.Component {
 					data-spec="upsert-public-view-modal-form"
 					onValidSubmit={() => submitUpsertPublicView(requestData)}
 				>
-					<ModalHeader data-spec="upsert-public-view-modal-header" toggle={closeUpsertPublicViewModal}>{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}</ModalHeader>
+					<ModalHeader
+						data-spec="upsert-public-view-modal-header"
+						toggle={closeUpsertPublicViewModal}
+					>
+						{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}
+					</ModalHeader>
 					<ModalBody>
 						<TooltipForm
 							Renderable={UpsertPublicViewForm}

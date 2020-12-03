@@ -7,18 +7,20 @@ import {
 	CLOSE_UPSERT_CHARACTER_MODAL,
 	CLOSE_UPSERT_PUBLIC_VIEW_MODAL,
 	CLOSE_UPSERT_THREAD_MODAL,
+	CLOSE_DELETE_ACCOUNT_CONFIRMATION_MODAL,
 	OPEN_BULK_UNTRACK_THREADS_MODAL,
 	OPEN_UNTRACK_CHARACTER_MODAL,
 	OPEN_UNTRACK_THREAD_MODAL,
 	OPEN_UPSERT_CHARACTER_MODAL,
 	OPEN_UPSERT_PUBLIC_VIEW_MODAL,
 	OPEN_UPSERT_THREAD_MODAL,
+	OPEN_DELETE_ACCOUNT_CONFIRMATION_MODAL,
 	SUBMIT_USER_LOGOUT,
 	TOGGLE_HEADER_PROFILE_DROPDOWN,
 	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
-	TOGGLE_SIDEBAR,
+	LOAD_SIDEBAR_OPEN_SUCCESS,
 	UNTRACK_CHARACTER,
 	UNTRACK_THREAD,
 	UPSERT_CHARACTER,
@@ -54,12 +56,13 @@ const defaultState = {
 	isDeletePublicViewModalOpen: false,
 	isBulkUpdateTagModalOpen: false,
 	isBulkDeleteTagModalOpen: false,
+	isDeleteAccountConfirmationModalOpen: false,
 	useLightTheme: false
 };
 
 function ui(state = defaultState, action) {
 	switch (action.type) {
-		case TOGGLE_SIDEBAR:
+		case LOAD_SIDEBAR_OPEN_SUCCESS:
 			return Object.assign({}, state, {
 				isSidebarOpen: action.data
 			});
@@ -141,6 +144,14 @@ function ui(state = defaultState, action) {
 		case DELETE_PUBLIC_VIEW:
 			return Object.assign({}, state, {
 				isDeletePublicViewModalOpen: false
+			});
+		case OPEN_DELETE_ACCOUNT_CONFIRMATION_MODAL:
+			return Object.assign({}, state, {
+				isDeleteAccountConfirmationModalOpen: true
+			});
+		case CLOSE_DELETE_ACCOUNT_CONFIRMATION_MODAL:
+			return Object.assign({}, state, {
+				isDeleteAccountConfirmationModalOpen: false
 			});
 		case OPEN_BULK_UPDATE_TAG_MODAL:
 			return Object.assign({}, state, {

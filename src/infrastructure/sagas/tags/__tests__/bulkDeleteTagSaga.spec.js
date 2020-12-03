@@ -2,7 +2,7 @@ import axios from 'axios';
 import { call } from 'redux-saga/effects';
 import bulkDeleteTagSaga from '../bulkDeleteTagSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.API_BASE_URL = 'http://test-site/';
 describe('saga behavior', () => {
@@ -33,7 +33,10 @@ describe('saga behavior', () => {
 		it('should dispatch failure action on failed DELETE', () => {
 			const tag = 'my tag';
 			const saga = new SagaTestWrapper(bulkDeleteTagSaga);
-			saga.setupError(call(axios.delete, 'http://test-site/api/thread/tags/my%20tag'), 'Test error');
+			saga.setupError(
+				call(axios.delete, 'http://test-site/api/thread/tags/my%20tag'),
+				'Test error'
+			);
 			saga.expectPut({
 				type: actions.BULK_DELETE_TAG_FAILURE
 			});

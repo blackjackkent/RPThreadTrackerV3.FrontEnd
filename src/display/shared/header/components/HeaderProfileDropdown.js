@@ -1,9 +1,7 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem
-} from 'reactstrap';
+import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { navigation } from '../../../../utility/history';
 import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
@@ -13,17 +11,13 @@ const propTypes = {
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
 	logout: PropTypes.func.isRequired,
 	user: PropTypes.shape({
-		id: PropTypes.string
+		id: PropTypes.string,
+		userName: PropTypes.string
 	}).isRequired
 };
 
 const HeaderProfileDropdown = (props) => {
-	const {
-		headerProfileDropdownToggle,
-		isHeaderProfileDropdownOpen,
-		logout,
-		user
-	} = props;
+	const { headerProfileDropdownToggle, isHeaderProfileDropdownOpen, logout, user } = props;
 
 	return (
 		<NavItem>
@@ -35,13 +29,19 @@ const HeaderProfileDropdown = (props) => {
 				<DropdownToggle className="nav-link dropdown-toggle">
 					<i className="fas fa-user" />
 				</DropdownToggle>
-				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderProfileDropdownOpen ? 'show' : ''}>
+				<DropdownMenu
+					data-spec="header-dropdown-menu"
+					right
+					className={isHeaderProfileDropdownOpen ? 'show' : ''}
+				>
 					<DropdownItem>
 						<span className="text-center">
-							Logged in as:<br />
+							Logged in as:
+							<br />
 							<strong>{user.userName}</strong>
 						</span>
-					</DropdownItem><HeaderDropdownItem
+					</DropdownItem>
+					<HeaderDropdownItem
 						data-spec="header-dropdown-account-settings-link"
 						onClick={() => navigation.navigateTo('/settings')}
 						label="Account Settings"

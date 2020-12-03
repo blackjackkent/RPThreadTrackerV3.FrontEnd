@@ -3,7 +3,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Nav } from 'reactstrap';
 import {
-	HeaderLogoBlock, HeaderAsideToggle, HeaderProfileDropdown, HeaderAddMenuDropdown
+	HeaderLogoBlock,
+	HeaderAsideToggle,
+	HeaderProfileDropdown,
+	HeaderAddMenuDropdown
 } from './components';
 import Style from './_styles';
 // #endregion imports
@@ -24,7 +27,6 @@ const propTypes = {
 		id: PropTypes.string
 	}).isRequired
 };
-
 
 const Header = (props) => {
 	const {
@@ -49,10 +51,7 @@ const Header = (props) => {
 				sidebarToggle={sidebarToggle}
 			/>
 			<Nav className="ml-auto" navbar>
-				<HeaderAsideToggle
-					asideToggle={asideToggle}
-					newsUnreadCount={newsUnreadCount}
-				/>
+				<HeaderAsideToggle asideToggle={asideToggle} newsUnreadCount={newsUnreadCount} />
 				<HeaderAddMenuDropdown
 					isHeaderAddMenuDropdownOpen={isHeaderAddMenuDropdownOpen}
 					headerAddMenuDropdownToggle={headerAddMenuDropdownToggle}

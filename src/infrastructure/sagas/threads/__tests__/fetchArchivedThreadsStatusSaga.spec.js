@@ -2,7 +2,7 @@ import axios from 'axios';
 import * as matchers from 'redux-saga-test-plan/matchers';
 import fetchArchivedThreadsStatusSaga from '../fetchArchivedThreadsStatusSaga';
 import * as actions from '../../../actions';
-import { SagaTestWrapper } from '../../../../../config/tests/helpers.unit';
+import { SagaTestWrapper } from '~/testhelpers/helpers.unit';
 
 global.TUMBLR_CLIENT_BASE_URL = 'http://test-site/';
 
@@ -70,17 +70,16 @@ describe('saga behavior', () => {
 		const saga = new SagaTestWrapper(fetchArchivedThreadsStatusSaga);
 		const action = getInitialAction();
 		setupSaga(saga);
-		return saga.execute(action)
-			.then((result) => {
-				const { effects } = result;
-				expect(effects.put).toHaveLength(6);
-				for (let i = 0; i < 5; i++) {
-					expect(effects.put[i].PUT.action.data).toHaveLength(10);
-				}
-				expect(effects.put[5].PUT.action.type).toEqual(
-					actions.FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS
-				);
-			});
+		return saga.execute(action).then((result) => {
+			const { effects } = result;
+			expect(effects.put).toHaveLength(6);
+			for (let i = 0; i < 5; i++) {
+				expect(effects.put[i].PUT.action.data).toHaveLength(10);
+			}
+			expect(effects.put[5].PUT.action.type).toEqual(
+				actions.FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS
+			);
+		});
 	});
 	it('should dispatch general failure on pre-chunk exception', () => {
 		const saga = new SagaTestWrapper(fetchArchivedThreadsStatusSaga);

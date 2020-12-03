@@ -23,7 +23,9 @@ describe('action handling', () => {
 	it('should handle FETCHED_ARCHIVED_THREADS_SUCCESS', () => {
 		const action = {
 			type: actions.FETCHED_ARCHIVED_THREADS_SUCCESS,
-			data: { threads: [{}, {}, {}] }
+			data: {
+				threads: [{}, {}, {}]
+			}
 		};
 		const result = archivedThreads([{}, {}], action);
 		expect(result).toEqual([{}, {}, {}]);

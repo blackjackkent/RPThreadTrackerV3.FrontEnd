@@ -30,7 +30,12 @@ const CurrentCharacterTable = (props) => {
 				className="-striped"
 				data={characters}
 				columns={columns(threadCounts)}
-				defaultSorted={[{ id: 'characterName', desc: true }]}
+				defaultSorted={[
+					{
+						id: 'characterName',
+						desc: true
+					}
+				]}
 				defaultPageSize={10}
 				noDataText={isLoadingIconVisible ? 'Loading...' : 'No Characters Found'}
 				getTdProps={getTdProps(

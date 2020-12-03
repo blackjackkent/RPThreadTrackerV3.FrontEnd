@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import YourCharactersCardRow from '../YourCharactersCardRow';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	character: {
 		id: 5,
 		urlIdentifier: 'my-test-character',
@@ -33,7 +33,9 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when thread count equals 1', () => {
-			const props = createTestProps({ threadCount: 1 });
+			const props = createTestProps({
+				threadCount: 1
+			});
 			const element = shallow(<YourCharactersCardRow {...props} />);
 			expect(element).toMatchSnapshot();
 		});

@@ -32,7 +32,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         utc={false}
         withTitle={false}
       >
-        <Component />
+        2019-10-15T18:19:19Z
       </t>
     </small>
     <Badge
@@ -42,7 +42,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       pill={false}
       tag="span"
     >
-       New
+       
+      New
     </Badge>
   </div>
   <hr
@@ -83,7 +84,7 @@ exports[`rendering snapshots should render valid snapshot when unread 1`] = `
         utc={false}
         withTitle={false}
       >
-        <Component />
+        2019-10-15T18:19:19Z
       </t>
     </small>
     <Badge
@@ -93,7 +94,8 @@ exports[`rendering snapshots should render valid snapshot when unread 1`] = `
       pill={false}
       tag="span"
     >
-       New
+       
+      New
     </Badge>
   </div>
   <hr

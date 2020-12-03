@@ -12,6 +12,12 @@ export {
 	openDeletePublicViewModal
 } from './ui/deletePublicViewModal';
 export {
+	CLOSE_DELETE_ACCOUNT_CONFIRMATION_MODAL,
+	closeDeleteAccountConfirmationModal,
+	OPEN_DELETE_ACCOUNT_CONFIRMATION_MODAL,
+	openDeleteAccountConfirmationModal
+} from './ui/deleteAccountConfirmationModal';
+export {
 	CLOSE_UNTRACK_CHARACTER_MODAL,
 	closeUntrackCharacterModal,
 	OPEN_UNTRACK_CHARACTER_MODAL,
@@ -53,10 +59,7 @@ export {
 	CLOSE_BULK_DELETE_TAG_MODAL,
 	closeBulkDeleteTagModal
 } from './ui/bulkDeleteTagModal';
-export {
-	setMaintenanceModeOn,
-	SET_MAINTENANCE_MODE_ON
-} from './ui/setMaintenanceModeOn';
+export { setMaintenanceModeOn, SET_MAINTENANCE_MODE_ON } from './ui/setMaintenanceModeOn';
 export {
 	loadSiteTheme,
 	setSiteTheme,
@@ -66,27 +69,27 @@ export {
 	LOAD_SITE_THEME_SUCCESS
 } from './ui/theme';
 export {
+	loadSidebarOpen,
+	setSidebarOpen,
+	loadSidebarOpenSuccess,
+	LOAD_SIDEBAR_OPEN,
+	SET_SIDEBAR_OPEN,
+	LOAD_SIDEBAR_OPEN_SUCCESS
+} from './ui/sidebar';
+export {
 	TOGGLE_HEADER_PROFILE_DROPDOWN,
 	TOGGLE_HEADER_ADD_MENU_DROPDOWN,
 	TOGGLE_MOBILE_SIDEBAR,
 	TOGGLE_NEWS_ASIDE,
-	TOGGLE_SIDEBAR,
 	toggleHeaderProfileDropdown,
 	toggleHeaderAddMenuDropdown,
 	toggleMobileSidebar,
-	toggleNewsAside,
-	toggleSidebar
+	toggleNewsAside
 } from './ui/toggles';
 
 // Threads
-export {
-	clearActiveThreads,
-	CLEAR_ACTIVE_THREADS
-} from './threads/clearActiveThreads';
-export {
-	clearArchivedThreads,
-	CLEAR_ARCHIVED_THREADS
-} from './threads/clearArchivedThreads';
+export { clearActiveThreads, CLEAR_ACTIVE_THREADS } from './threads/clearActiveThreads';
+export { clearArchivedThreads, CLEAR_ARCHIVED_THREADS } from './threads/clearArchivedThreads';
 export {
 	BULK_UNTRACK_THREADS_FAILURE,
 	BULK_UNTRACK_THREADS_SUCCESS,
@@ -157,10 +160,7 @@ export {
 	generatedRandomThreadSuccess,
 	generateRandomThread
 } from './threads/generateRandomThread';
-export {
-	SET_FILTERED_TAG,
-	setFilteredTag
-} from './threads/setFilteredTag';
+export { SET_FILTERED_TAG, setFilteredTag } from './threads/setFilteredTag';
 export {
 	UNTRACK_THREAD_FAILURE,
 	UNTRACK_THREAD_SUCCESS,
@@ -204,6 +204,14 @@ export {
 	submitUserChangePasswordSuccess
 } from './user/submitUserChangePassword';
 export {
+	SUBMIT_USER_ACCOUNT_DELETION,
+	SUBMIT_USER_ACCOUNT_DELETION_FAILURE,
+	SUBMIT_USER_ACCOUNT_DELETION_SUCCESS,
+	submitUserAccountDeletion,
+	submitUserAccountDeletionFailure,
+	submitUserAccountDeletionSuccess
+} from './user/submitUserAccountDeletion';
+export {
 	SUBMIT_USER_FORGOT_PASSWORD_FAILURE,
 	SUBMIT_USER_FORGOT_PASSWORD_SUCCESS,
 	SUBMIT_USER_FORGOT_PASSWORD,
@@ -219,10 +227,7 @@ export {
 	submitUserLoginFailure,
 	submitUserLoginSuccess
 } from './user/submitUserLogin';
-export {
-	SUBMIT_USER_LOGOUT,
-	submitUserLogout
-} from './user/submitUserLogout';
+export { SUBMIT_USER_LOGOUT, submitUserLogout } from './user/submitUserLogout';
 export {
 	SUBMIT_USER_REGISTRATION_FAILURE,
 	SUBMIT_USER_REGISTRATION_SUCCESS,
@@ -263,12 +268,7 @@ export {
 } from './userSettings/updateUserSettings';
 
 // News
-export {
-	FETCH_NEWS,
-	FETCHED_NEWS_SUCCESS,
-	fetchedNewsSuccess,
-	fetchNews
-} from './news/fetchNews';
+export { FETCH_NEWS, FETCHED_NEWS_SUCCESS, fetchedNewsSuccess, fetchNews } from './news/fetchNews';
 
 // Characters
 export {
@@ -373,10 +373,7 @@ export {
 	fetchedPublicViewsSuccess,
 	fetchPublicViews
 } from './public/fetchPublicViews';
-export {
-	SET_PUBLIC_THREAD_FILTER,
-	setPublicThreadFilter
-} from './public/setPublicThreadFilter';
+export { SET_PUBLIC_THREAD_FILTER, setPublicThreadFilter } from './public/setPublicThreadFilter';
 export {
 	UPSERT_PUBLIC_VIEW_FAILURE,
 	UPSERT_PUBLIC_VIEW_SUCCESS,

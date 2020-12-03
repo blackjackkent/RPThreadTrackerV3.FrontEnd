@@ -1,12 +1,16 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '~/testhelpers/helpers.unit';
 import QueuedThreads from '../QueuedThreads';
 // #endregion imports
 
 // #region mocks
-jest.mock('../components/_queueColumns', () => (characters, partners, lastPosters) => `${characters.length} ${partners.length} ${lastPosters.length}`);
-jest.mock('../components/_getTdProps', () => (fn1, fn2, fn3, fn4) => `${fn1.name} ${fn2.name} ${fn3.name} ${fn4.name}`);
+jest.mock('../components/_queueColumns', () => (characters, partners, lastPosters) =>
+	`${characters.length} ${partners.length} ${lastPosters.length}`
+);
+jest.mock('../components/_getTdProps', () => (fn1, fn2, fn3, fn4) =>
+	`${fn1.name} ${fn2.name} ${fn3.name} ${fn4.name}`
+);
 jest.mock('../components/ThreadTable', () => 'ThreadTable');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
@@ -18,7 +22,7 @@ jest.mock('../../../../infrastructure/selectors', () => ({
 }));
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	fetchActiveThreads: jest.fn(),
 	openUntrackThreadModal: jest.fn(),
 	openEditThreadModal: jest.fn(),
@@ -27,8 +31,11 @@ const createTestProps = propOverrides => ({
 	...propOverrides
 });
 
-const createTestState = stateOverrides => ({
+const createTestState = (stateOverrides) => ({
 	activeThreads: [{}, {}, {}, {}, {}, {}, {}, {}],
+	ui: {
+		useLightTheme: false
+	},
 	...stateOverrides
 });
 
@@ -37,7 +44,7 @@ describe('rendering', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<QueuedThreads {...props} />);
+			const jsx = <QueuedThreads {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
@@ -48,17 +55,23 @@ describe('behavior', () => {
 	describe('componentDidMount', () => {
 		it('should retrieve threads when threads are not loaded', () => {
 			const fetchActiveThreads = jest.fn();
-			const props = createTestProps({ fetchActiveThreads });
-			const state = createTestState({ activeThreads: [] });
-			const jsx = (<QueuedThreads {...props} />);
+			const props = createTestProps({
+				fetchActiveThreads
+			});
+			const state = createTestState({
+				activeThreads: []
+			});
+			const jsx = <QueuedThreads {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchActiveThreads).toHaveBeenCalledTimes(1);
 		});
 		it('should not retrieve threads when threads are loaded', () => {
 			const fetchActiveThreads = jest.fn();
-			const props = createTestProps({ fetchActiveThreads });
+			const props = createTestProps({
+				fetchActiveThreads
+			});
 			const state = createTestState();
-			const jsx = (<QueuedThreads {...props} />);
+			const jsx = <QueuedThreads {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchActiveThreads).toHaveBeenCalledTimes(0);
 		});

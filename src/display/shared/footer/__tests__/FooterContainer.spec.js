@@ -1,17 +1,17 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '~/testhelpers/helpers.unit';
 import FooterContainer from '../FooterContainer';
 // #endregion imports
 
 jest.mock('../Footer', () => 'Footer');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	setSiteTheme: jest.fn(),
 	...propOverrides
 });
-const createTestState = stateOverrides => ({
+const createTestState = (stateOverrides) => ({
 	ui: {
 		useLightTheme: true
 	},
@@ -23,7 +23,7 @@ describe('rendering', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<FooterContainer {...props} />);
+			const jsx = <FooterContainer {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
@@ -33,9 +33,11 @@ describe('behavior', () => {
 	describe('themeToggle', () => {
 		it('should dispatch theme toggle action', () => {
 			const setSiteTheme = jest.fn();
-			const props = createTestProps({ setSiteTheme });
+			const props = createTestProps({
+				setSiteTheme
+			});
 			const state = createTestState();
-			const jsx = (<FooterContainer {...props} />);
+			const jsx = <FooterContainer {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			element.instance().themeToggle();
 			expect(setSiteTheme).toHaveBeenCalledTimes(1);

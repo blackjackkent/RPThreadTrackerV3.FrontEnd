@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	ModalHeader, ModalBody, ModalFooter, Button
-} from 'reactstrap';
+import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import Modal from '../styled/Modal';
 
 const propTypes = {
@@ -13,10 +11,7 @@ const propTypes = {
 	closeButtonText: PropTypes.string,
 	headerText: PropTypes.string.isRequired,
 	bodyText: PropTypes.node.isRequired,
-	data: PropTypes.oneOfType([
-		PropTypes.shape({}),
-		PropTypes.array
-	]).isRequired
+	data: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.array]).isRequired
 };
 
 const defaultProps = {
@@ -42,15 +37,10 @@ const GenericConfirmationModal = (props) => {
 			backdrop
 			data-spec="generic-confirmation-modal"
 		>
-			<ModalHeader
-				toggle={closeCallback}
-				data-spec="generic-confirmation-modal-header"
-			>
+			<ModalHeader toggle={closeCallback} data-spec="generic-confirmation-modal-header">
 				{headerText}
 			</ModalHeader>
-			<ModalBody>
-				{bodyText}
-			</ModalBody>
+			<ModalBody>{bodyText}</ModalBody>
 			<ModalFooter>
 				<Button
 					color="primary"

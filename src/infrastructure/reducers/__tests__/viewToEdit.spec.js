@@ -14,7 +14,9 @@ describe('action handling', () => {
 			}
 		};
 		const result = viewToEdit({}, action);
-		expect(result).toEqual({ slug: 'test-view' });
+		expect(result).toEqual({
+			slug: 'test-view'
+		});
 	});
 	it('should handle OPEN_UPSERT_PUBLIC_VIEW_MODAL with action data', () => {
 		const action = {
@@ -24,7 +26,9 @@ describe('action handling', () => {
 			}
 		};
 		const result = viewToEdit({}, action);
-		expect(result).toEqual({ slug: 'test-view' });
+		expect(result).toEqual({
+			slug: 'test-view'
+		});
 	});
 	it('should handle OPEN_DELETE_PUBLIC_VIEW_MODAL without action data', () => {
 		const action = {

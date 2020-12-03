@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 import { sortCharacters } from '../../../../utility';
@@ -6,11 +7,16 @@ import CharacterSelectItem from '../../CharacterSelectItem';
 export default (characters, includeFilter) => ({
 	id: columns.CHARACTER.key,
 	Header: columns.CHARACTER.name,
-	accessor: row => ({
+	accessor: (row) => ({
 		urlIdentifier: row.thread.character.urlIdentifier,
 		characterName: row.thread.character.characterName
 	}),
-	Cell: row => <span>{row.value.urlIdentifier}{row.value.characterName && ` (${row.value.characterName})`}</span>,
+	Cell: (row) => (
+		<span>
+			{row.value.urlIdentifier}
+			{row.value.characterName && ` (${row.value.characterName})`}
+		</span>
+	),
 	minWidth: 250,
 	sortable: true,
 	resizable: true,
@@ -19,11 +25,15 @@ export default (characters, includeFilter) => ({
 	Filter: ({ filter, onChange }) => {
 		const options = characters
 			.sort(sortCharacters)
-			.map(character => <CharacterSelectItem key={character.characterId} character={character} />);
+			.map((character) => (
+				<CharacterSelectItem key={character.characterId} character={character} />
+			));
 		return (
 			<select
-				onChange={event => onChange(event.target.value)}
-				style={{ width: '100%' }}
+				onChange={(event) => onChange(event.target.value)}
+				style={{
+					width: '100%'
+				}}
 				value={filter ? filter.value : ''}
 			>
 				<option value="">Show All</option>

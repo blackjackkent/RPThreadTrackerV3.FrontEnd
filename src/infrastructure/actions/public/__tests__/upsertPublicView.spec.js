@@ -2,7 +2,9 @@ import * as actions from '../upsertPublicView';
 
 describe('upsertPublicView', () => {
 	it('should create action with type, data, and analytics if view ID is present', () => {
-		const view = { id: 13579 };
+		const view = {
+			id: 13579
+		};
 		const action = actions.upsertPublicView(view);
 		expect(action.type).toBe('UPSERT_PUBLIC_VIEW');
 		expect(action.data).toBe(view);
@@ -11,7 +13,9 @@ describe('upsertPublicView', () => {
 		expect(action.analytics.event.action).toBe('Edited public view');
 	});
 	it('should create action with type, data, and analytics if view ID is not present', () => {
-		const view = { slug: 'test-view' };
+		const view = {
+			slug: 'test-view'
+		};
 		const action = actions.upsertPublicView(view);
 		expect(action.type).toBe('UPSERT_PUBLIC_VIEW');
 		expect(action.data).toBe(view);
@@ -28,7 +32,9 @@ describe('upsertPublicViewFailure', () => {
 });
 describe('upsertPublicViewSuccess', () => {
 	it('should create action with type and data', () => {
-		const view = { id: 13579 };
+		const view = {
+			id: 13579
+		};
 		const action = actions.upsertPublicViewSuccess(view);
 		expect(action.type).toBe('UPSERT_PUBLIC_VIEW_SUCCESS');
 		expect(action.data).toBe(view);

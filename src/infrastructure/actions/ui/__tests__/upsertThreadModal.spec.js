@@ -8,7 +8,9 @@ describe('closeUpsertThreadModal', () => {
 });
 describe('openUpsertThreadModal', () => {
 	it('should create action with type, data, and analytics when thread has ID', () => {
-		const data = { threadId: 1 };
+		const data = {
+			threadId: 1
+		};
 		const action = actions.openUpsertThreadModal(data);
 		expect(action.type).toBe('OPEN_UPSERT_THREAD_MODAL');
 		expect(action.data).toBe(data);
@@ -16,7 +18,9 @@ describe('openUpsertThreadModal', () => {
 		expect(action.analytics.path).toBe('/modals/update-thread');
 	});
 	it('should create action with type, data, and analytics when thread has no ID', () => {
-		const data = { userTitle: 'Test Thread' };
+		const data = {
+			userTitle: 'Test Thread'
+		};
 		const action = actions.openUpsertThreadModal(data);
 		expect(action.type).toBe('OPEN_UPSERT_THREAD_MODAL');
 		expect(action.data).toBe(data);

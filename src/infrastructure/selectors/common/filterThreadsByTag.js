@@ -1,5 +1,3 @@
-
-
 export default (threadData, tag) => {
 	let results = [].concat(threadData);
 	if (tag) {
@@ -7,7 +5,7 @@ export default (threadData, tag) => {
 			if (!t.thread || !t.thread.threadTags) {
 				return false;
 			}
-			return t.thread.threadTags.filter(tt => tt.tagText === tag).length > 0;
+			return t.thread.threadTags.filter((tt) => tt.tagText === tag).length > 0;
 		});
 	}
 	return results;

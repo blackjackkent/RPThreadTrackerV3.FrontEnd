@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CardHeader, CardBody } from 'reactstrap';
-import Card from '../../../../shared/styled/Card';
+import Card from '~/display/shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
 import NoThreadsMessage from '../NoThreadsMessage';
 import NoCharactersMessage from '../NoCharactersMessage';
 import NoRecentActivityMessage from '../NoRecentActivityMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
-import LoadingIndicator from '../../../../shared/loading/LoadingIndicator';
+import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 
 const propTypes = {
 	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -43,19 +43,19 @@ const getBlockContent = (
 		);
 	}
 	if (characters.length === 0) {
-		return (<NoCharactersMessage />);
+		return <NoCharactersMessage />;
 	}
-	const activeCharacters = characters.filter(c => !c.isOnHiatus);
+	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
 	if (characters.length > 0 && activeCharacters.length === 0) {
-		return (<NoActiveCharactersMessage />);
+		return <NoActiveCharactersMessage />;
 	}
 	if (allThreads.length === 0) {
-		return (<NoThreadsMessage />);
+		return <NoThreadsMessage />;
 	}
 	if (recentActivityThreads.length === 0) {
-		return (<NoRecentActivityMessage />);
+		return <NoRecentActivityMessage />;
 	}
-	return recentActivityThreads.map(threadData => (
+	return recentActivityThreads.map((threadData) => (
 		<RecentActivityRow
 			data-spec="recent-activity-card-row"
 			threadData={threadData}

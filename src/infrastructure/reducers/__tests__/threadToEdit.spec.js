@@ -22,7 +22,9 @@ describe('action handling', () => {
 			}
 		};
 		const result = threadToEdit({}, action);
-		expect(result).toEqual({ userTitle: 'Test Thread' });
+		expect(result).toEqual({
+			userTitle: 'Test Thread'
+		});
 	});
 	it('should handle OPEN_UPSERT_THREAD_MODAL with action data', () => {
 		const action = {
@@ -32,7 +34,9 @@ describe('action handling', () => {
 			}
 		};
 		const result = threadToEdit({}, action);
-		expect(result).toEqual({ userTitle: 'Test Thread' });
+		expect(result).toEqual({
+			userTitle: 'Test Thread'
+		});
 	});
 	it('should handle OPEN_UNTRACK_THREAD_MODAL without action data', () => {
 		const action = {

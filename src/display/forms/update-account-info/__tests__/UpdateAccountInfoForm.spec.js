@@ -1,11 +1,11 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import UpdateAccountInfoForm from '../UpdateAccountInfoForm';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	handleInputChange: jest.fn(),
 	user: {
 		userName: 'TestUser',
@@ -18,7 +18,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<UpdateAccountInfoForm {...props} />);
+			const jsx = <UpdateAccountInfoForm {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -26,14 +26,14 @@ describe('rendering', () => {
 	describe('content', () => {
 		it('should populate existing username', () => {
 			const props = createTestProps();
-			const jsx = (<UpdateAccountInfoForm {...props} />);
+			const jsx = <UpdateAccountInfoForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'username-field');
 			expect(field).toHaveValue('TestUser');
 		});
 		it('should populate existing email and disable field', () => {
 			const props = createTestProps();
-			const jsx = (<UpdateAccountInfoForm {...props} />);
+			const jsx = <UpdateAccountInfoForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'email-field');
 			expect(field).toHaveValue('test@test.com');
@@ -46,7 +46,7 @@ describe('behavior', () => {
 	describe('validation', () => {
 		it('should validate the username field', () => {
 			const props = createTestProps();
-			const jsx = (<UpdateAccountInfoForm {...props} />);
+			const jsx = <UpdateAccountInfoForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'username-field');
 			expect(field.props().validate.required).toHaveProperty('value', true);
@@ -55,7 +55,7 @@ describe('behavior', () => {
 		});
 		it('should validate the email field', () => {
 			const props = createTestProps();
-			const jsx = (<UpdateAccountInfoForm {...props} />);
+			const jsx = <UpdateAccountInfoForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'email-field');
 			expect(field.props().validate.required).toHaveProperty('value', true);
@@ -65,8 +65,10 @@ describe('behavior', () => {
 	describe('handleInputChange', () => {
 		it('should handle input change for username', () => {
 			const handleInputChange = jest.fn();
-			const props = createTestProps({ handleInputChange });
-			const jsx = (<UpdateAccountInfoForm {...props} />);
+			const props = createTestProps({
+				handleInputChange
+			});
+			const jsx = <UpdateAccountInfoForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'username-field');
 			field.simulate('change');

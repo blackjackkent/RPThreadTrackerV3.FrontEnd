@@ -1,9 +1,7 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-	NavItem, Dropdown, DropdownToggle, DropdownMenu
-} from 'reactstrap';
+import { NavItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
@@ -32,7 +30,11 @@ const HeaderAddMenuDropdown = (props) => {
 				<DropdownToggle className="nav-link dropdown-toggle">
 					<i className="fas fa-plus-circle" />
 				</DropdownToggle>
-				<DropdownMenu data-spec="header-dropdown-menu" right className={isHeaderAddMenuDropdownOpen ? 'show' : ''}>
+				<DropdownMenu
+					data-spec="header-dropdown-menu"
+					right
+					className={isHeaderAddMenuDropdownOpen ? 'show' : ''}
+				>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-upsert-thread-link"
 						onClick={() => openNewThreadModal()}

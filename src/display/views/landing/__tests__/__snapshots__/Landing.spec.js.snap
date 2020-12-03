@@ -208,9 +208,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <p
               className="padding-t-15 text-muted"
             >
-              Add a post ID for one post in the thread, and the app will keep track of whose
-               
-              turn it is.
+              Add a post ID for one post in the thread, and the app will keep track of whose turn it is.
             </p>
           </div>
         </div>
@@ -277,9 +275,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <p
               className="padding-t-15 text-muted"
             >
-              Lots of blogs? No problem! Track all your threads in one place or filter
-               
-              the list by character.
+              Lots of blogs? No problem! Track all your threads in one place or filter the list by character.
             </p>
           </div>
         </div>
@@ -300,9 +296,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <p
               className="padding-t-15 text-muted"
             >
-              Create customized public tables to let your partners know which threads
-               
-              you're working on.
+              Create customized public tables to let your partners know which threads you're working on.
             </p>
           </div>
         </div>
@@ -323,9 +317,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             <p
               className="padding-t-15 text-muted"
             >
-              With the RPThreadTracker Quick-Add browser extension, you can track new threads
-               
-              rapidly and without hassle directly from Tumblr.
+              With the RPThreadTracker Quick-Add browser extension, you can track new threads rapidly and without hassle directly from Tumblr.
             </p>
           </div>
         </div>
@@ -1179,9 +1171,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             className="text-muted margin-t-20"
           >
             <p>
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean ligula
-               
-              eget dolor.
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean ligula eget dolor.
             </p>
           </div>
           <form
@@ -1228,7 +1218,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             >
               RPThreadTracker
             </a>
-             © 
+             ©
+             
             2018
              
             <a

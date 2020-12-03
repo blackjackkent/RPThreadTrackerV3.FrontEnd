@@ -14,6 +14,11 @@ module.exports = {
 		filename: '[name].[hash].bundle.js',
 		chunkFilename: '[name].[hash].bundle.js'
 	},
+	resolve: {
+		alias: {
+			'~': path.resolve(__dirname, 'src')
+		}
+	},
 	module: {
 		rules: [
 			{

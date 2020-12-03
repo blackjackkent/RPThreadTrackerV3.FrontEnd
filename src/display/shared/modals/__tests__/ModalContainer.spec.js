@@ -1,13 +1,20 @@
 // #region imports
 import React from 'react';
-import { shallowWithState } from '../../../../../config/tests/helpers.unit';
+import { shallowWithState } from '~/testhelpers/helpers.unit';
 import ModalContainer from '../ModalContainer';
 // #endregion imports
 
 // #region mocks
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getCharactersSortedByIdentifier: () => [{ characterId: 1 }, { characterId: 2 }],
+	getCharactersSortedByIdentifier: () => [
+		{
+			characterId: 1
+		},
+		{
+			characterId: 2
+		}
+	],
 	getTagsSortedByTagText: () => ['tag1', 'tag2', 'tag3']
 }));
 jest.mock('../../../../infrastructure/constants/columns', () => ({
@@ -22,7 +29,7 @@ jest.mock('../GenericConfirmationModal', () => 'GenericConfirmationModal');
 jest.mock('../UpsertPublicViewModal', () => 'UpsertPublicViewModal');
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	bulkUntrackThreads: jest.fn(),
 	bulkUpdateTag: jest.fn(),
 	bulkDeleteTag: jest.fn(),
@@ -51,7 +58,7 @@ const createTestProps = propOverrides => ({
 	...propOverrides
 });
 
-const createTestState = stateOverrides => ({
+const createTestState = (stateOverrides) => ({
 	ui: {
 		isUpsertCharacterModalOpen: true,
 		isUntrackThreadModalOpen: true,
@@ -63,11 +70,30 @@ const createTestState = stateOverrides => ({
 		isBulkUpdateTagModalOpen: true,
 		isBulkDeleteTagModalOpen: true
 	},
-	characterToEdit: { characterId: 3, characterName: 'My Test Character' },
-	threadToEdit: { threadId: 5, userTitle: 'My Test Thread' },
-	bulkThreadsToEdit: [{ threadId: 1 }, { threadId: 2 }],
-	tagToEdit: { selectedTag: 'Test Tag', updatedValue: 'Test Tag Edited' },
-	viewToEdit: { id: 10, name: 'My Test View' },
+	characterToEdit: {
+		characterId: 3,
+		characterName: 'My Test Character'
+	},
+	threadToEdit: {
+		threadId: 5,
+		userTitle: 'My Test Thread'
+	},
+	bulkThreadsToEdit: [
+		{
+			threadId: 1
+		},
+		{
+			threadId: 2
+		}
+	],
+	tagToEdit: {
+		selectedTag: 'Test Tag',
+		updatedValue: 'Test Tag Edited'
+	},
+	viewToEdit: {
+		id: 10,
+		name: 'My Test View'
+	},
 	...stateOverrides
 });
 
@@ -76,14 +102,19 @@ describe('rendering', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<ModalContainer {...props} />);
+			const jsx = <ModalContainer {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot with missing character name', () => {
 			const props = createTestProps();
-			const state = createTestState({ characterToEdit: { id: 12, urlIdentifier: 'my-test-character' } });
-			const jsx = (<ModalContainer {...props} />);
+			const state = createTestState({
+				characterToEdit: {
+					id: 12,
+					urlIdentifier: 'my-test-character'
+				}
+			});
+			const jsx = <ModalContainer {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});

@@ -8,7 +8,9 @@ describe('closeUpsertPublicViewModal', () => {
 });
 describe('openUpsertPublicViewModal', () => {
 	it('should create action with type, data, and analytics when view has ID', () => {
-		const data = { id: 1 };
+		const data = {
+			id: 1
+		};
 		const action = actions.openUpsertPublicViewModal(data);
 		expect(action.type).toBe('OPEN_UPSERT_PUBLIC_VIEW_MODAL');
 		expect(action.data).toBe(data);
@@ -16,7 +18,9 @@ describe('openUpsertPublicViewModal', () => {
 		expect(action.analytics.path).toBe('/modals/update-public-view');
 	});
 	it('should create action with type, data, and analytics when view has no ID', () => {
-		const data = { slug: 'test-view' };
+		const data = {
+			slug: 'test-view'
+		};
 		const action = actions.openUpsertPublicViewModal(data);
 		expect(action.type).toBe('OPEN_UPSERT_PUBLIC_VIEW_MODAL');
 		expect(action.data).toBe(data);

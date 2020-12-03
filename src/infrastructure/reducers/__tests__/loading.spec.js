@@ -1,7 +1,7 @@
 import loading from '../loading';
 import * as actions from '../../actions';
 
-const getState = overrides => ({
+const getState = (overrides) => ({
 	activeThreadsLoading: false,
 	archivedThreadsLoading: false,
 	bulkUntrackThreadLoading: false,
@@ -42,7 +42,9 @@ describe('action handling', () => {
 			expect(result.activeThreadsLoading).toBe(true);
 		});
 		it('should handle FETCHED_ACTIVE_THREADS_FAILURE', () => {
-			const initialState = getState({ activeThreadsLoading: true });
+			const initialState = getState({
+				activeThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_ACTIVE_THREADS_FAILURE
 			};
@@ -50,7 +52,9 @@ describe('action handling', () => {
 			expect(result.activeThreadsLoading).toBe(false);
 		});
 		it('should handle FETCHED_ACTIVE_THREADS_STATUS_SUCCESS', () => {
-			const initialState = getState({ activeThreadsLoading: true });
+			const initialState = getState({
+				activeThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_ACTIVE_THREADS_STATUS_SUCCESS
 			};
@@ -58,7 +62,9 @@ describe('action handling', () => {
 			expect(result.activeThreadsLoading).toBe(false);
 		});
 		it('should handle FETCHED_ACTIVE_THREADS_STATUS_FAILURE', () => {
-			const initialState = getState({ activeThreadsLoading: true });
+			const initialState = getState({
+				activeThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_ACTIVE_THREADS_STATUS_FAILURE
 			};
@@ -75,7 +81,9 @@ describe('action handling', () => {
 			expect(result.archivedThreadsLoading).toBe(true);
 		});
 		it('should handle FETCHED_ARCHIVED_THREADS_FAILURE', () => {
-			const initialState = getState({ archivedThreadsLoading: true });
+			const initialState = getState({
+				archivedThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_ARCHIVED_THREADS_FAILURE
 			};
@@ -83,7 +91,9 @@ describe('action handling', () => {
 			expect(result.archivedThreadsLoading).toBe(false);
 		});
 		it('should handle FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS', () => {
-			const initialState = getState({ activeThreadsLoading: true });
+			const initialState = getState({
+				activeThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_ARCHIVED_THREADS_STATUS_SUCCESS
 			};
@@ -91,7 +101,9 @@ describe('action handling', () => {
 			expect(result.archivedThreadsLoading).toBe(false);
 		});
 		it('should handle FETCHED_ARCHIVED_THREADS_STATUS_FAILURE', () => {
-			const initialState = getState({ activeThreadsLoading: true });
+			const initialState = getState({
+				activeThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_ARCHIVED_THREADS_STATUS_FAILURE
 			};
@@ -108,7 +120,9 @@ describe('action handling', () => {
 			expect(result.bulkUpsertThreadsLoading).toBe(true);
 		});
 		it('should handle BULK_UNTRACK_THREADS_FAILURE', () => {
-			const initialState = getState({ bulkUpsertThreadsLoading: true });
+			const initialState = getState({
+				bulkUpsertThreadsLoading: true
+			});
 			const action = {
 				type: actions.BULK_UNTRACK_THREADS_FAILURE
 			};
@@ -116,7 +130,9 @@ describe('action handling', () => {
 			expect(result.bulkUpsertThreadsLoading).toBe(false);
 		});
 		it('should handle BULK_UNTRACK_THREADS_SUCCESS', () => {
-			const initialState = getState({ bulkUpsertThreadsLoading: true });
+			const initialState = getState({
+				bulkUpsertThreadsLoading: true
+			});
 			const action = {
 				type: actions.BULK_UNTRACK_THREADS_SUCCESS
 			};
@@ -133,7 +149,9 @@ describe('action handling', () => {
 			expect(result.bulkUpsertThreadsLoading).toBe(true);
 		});
 		it('should handle BULK_UPDATE_THREADS_FAILURE', () => {
-			const initialState = getState({ bulkUpsertThreadsLoading: true });
+			const initialState = getState({
+				bulkUpsertThreadsLoading: true
+			});
 			const action = {
 				type: actions.BULK_UPDATE_THREADS_FAILURE
 			};
@@ -141,7 +159,9 @@ describe('action handling', () => {
 			expect(result.bulkUpsertThreadsLoading).toBe(false);
 		});
 		it('should handle BULK_UPDATE_THREADS_SUCCESS', () => {
-			const initialState = getState({ bulkUpsertThreadsLoading: true });
+			const initialState = getState({
+				bulkUpsertThreadsLoading: true
+			});
 			const action = {
 				type: actions.BULK_UPDATE_THREADS_SUCCESS
 			};
@@ -158,7 +178,9 @@ describe('action handling', () => {
 			expect(result.bulkUpdateTagLoading).toBe(true);
 		});
 		it('should handle BULK_UPDATE_TAG_FAILURE', () => {
-			const initialState = getState({ bulkUpdateTagLoading: true });
+			const initialState = getState({
+				bulkUpdateTagLoading: true
+			});
 			const action = {
 				type: actions.BULK_UPDATE_TAG_FAILURE
 			};
@@ -166,7 +188,9 @@ describe('action handling', () => {
 			expect(result.bulkUpdateTagLoading).toBe(false);
 		});
 		it('should handle BULK_UPDATE_TAG_SUCCESS', () => {
-			const initialState = getState({ bulkUpdateTagLoading: true });
+			const initialState = getState({
+				bulkUpdateTagLoading: true
+			});
 			const action = {
 				type: actions.BULK_UPDATE_TAG_SUCCESS
 			};
@@ -183,7 +207,9 @@ describe('action handling', () => {
 			expect(result.bulkDeleteTagLoading).toBe(true);
 		});
 		it('should handle BULK_DELETE_TAG_FAILURE', () => {
-			const initialState = getState({ bulkDeleteTagLoading: true });
+			const initialState = getState({
+				bulkDeleteTagLoading: true
+			});
 			const action = {
 				type: actions.BULK_DELETE_TAG_FAILURE
 			};
@@ -191,7 +217,9 @@ describe('action handling', () => {
 			expect(result.bulkDeleteTagLoading).toBe(false);
 		});
 		it('should handle BULK_DELETE_TAG_SUCCESS', () => {
-			const initialState = getState({ bulkDeleteTagLoading: true });
+			const initialState = getState({
+				bulkDeleteTagLoading: true
+			});
 			const action = {
 				type: actions.BULK_DELETE_TAG_SUCCESS
 			};
@@ -208,7 +236,9 @@ describe('action handling', () => {
 			expect(result.changeAccountInfoLoading).toBe(true);
 		});
 		it('should handle SUBMIT_USER_ACCOUNT_INFO_FAILURE', () => {
-			const initialState = getState({ changeAccountInfoLoading: true });
+			const initialState = getState({
+				changeAccountInfoLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_ACCOUNT_INFO_FAILURE
 			};
@@ -216,7 +246,9 @@ describe('action handling', () => {
 			expect(result.changeAccountInfoLoading).toBe(false);
 		});
 		it('should handle SUBMIT_USER_ACCOUNT_INFO_SUCCESS', () => {
-			const initialState = getState({ changeAccountInfoLoading: true });
+			const initialState = getState({
+				changeAccountInfoLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_ACCOUNT_INFO_SUCCESS
 			};
@@ -233,7 +265,9 @@ describe('action handling', () => {
 			expect(result.changePasswordLoading).toBe(true);
 		});
 		it('should handle SUBMIT_USER_CHANGE_PASSWORD_FAILURE', () => {
-			const initialState = getState({ changePasswordLoading: true });
+			const initialState = getState({
+				changePasswordLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_CHANGE_PASSWORD_FAILURE
 			};
@@ -241,7 +275,9 @@ describe('action handling', () => {
 			expect(result.changePasswordLoading).toBe(false);
 		});
 		it('should handle SUBMIT_USER_CHANGE_PASSWORD_SUCCESS', () => {
-			const initialState = getState({ changePasswordLoading: true });
+			const initialState = getState({
+				changePasswordLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_CHANGE_PASSWORD_SUCCESS
 			};
@@ -258,7 +294,9 @@ describe('action handling', () => {
 			expect(result.charactersLoading).toBe(true);
 		});
 		it('should handle FETCHED_CHARACTERS_FAILURE', () => {
-			const initialState = getState({ charactersLoading: true });
+			const initialState = getState({
+				charactersLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_CHARACTERS_FAILURE
 			};
@@ -266,7 +304,9 @@ describe('action handling', () => {
 			expect(result.charactersLoading).toBe(false);
 		});
 		it('should handle FETCHED_CHARACTERS_FAILURE', () => {
-			const initialState = getState({ charactersLoading: true });
+			const initialState = getState({
+				charactersLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_CHARACTERS_FAILURE
 			};
@@ -283,7 +323,9 @@ describe('action handling', () => {
 			expect(result.contactFormLoading).toBe(true);
 		});
 		it('should handle SUBMIT_CONTACT_FORM_FAILURE', () => {
-			const initialState = getState({ contactFormLoading: true });
+			const initialState = getState({
+				contactFormLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_CONTACT_FORM_FAILURE
 			};
@@ -291,7 +333,9 @@ describe('action handling', () => {
 			expect(result.contactFormLoading).toBe(false);
 		});
 		it('should handle SUBMIT_CONTACT_FORM_FAILURE', () => {
-			const initialState = getState({ contactFormLoading: true });
+			const initialState = getState({
+				contactFormLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_CONTACT_FORM_FAILURE
 			};
@@ -308,7 +352,9 @@ describe('action handling', () => {
 			expect(result.deletePublicViewLoading).toBe(true);
 		});
 		it('should handle DELETE_PUBLIC_VIEW_FAILURE', () => {
-			const initialState = getState({ deletePublicViewLoading: true });
+			const initialState = getState({
+				deletePublicViewLoading: true
+			});
 			const action = {
 				type: actions.DELETE_PUBLIC_VIEW_FAILURE
 			};
@@ -316,7 +362,9 @@ describe('action handling', () => {
 			expect(result.deletePublicViewLoading).toBe(false);
 		});
 		it('should handle DELETE_PUBLIC_VIEW_SUCCESS', () => {
-			const initialState = getState({ deletePublicViewLoading: true });
+			const initialState = getState({
+				deletePublicViewLoading: true
+			});
 			const action = {
 				type: actions.DELETE_PUBLIC_VIEW_SUCCESS
 			};
@@ -333,7 +381,9 @@ describe('action handling', () => {
 			expect(result.deletePublicViewLoading).toBe(true);
 		});
 		it('should handle DELETE_PUBLIC_VIEW_FAILURE', () => {
-			const initialState = getState({ deletePublicViewLoading: true });
+			const initialState = getState({
+				deletePublicViewLoading: true
+			});
 			const action = {
 				type: actions.DELETE_PUBLIC_VIEW_FAILURE
 			};
@@ -341,7 +391,9 @@ describe('action handling', () => {
 			expect(result.deletePublicViewLoading).toBe(false);
 		});
 		it('should handle DELETE_PUBLIC_VIEW_SUCCESS', () => {
-			const initialState = getState({ deletePublicViewLoading: true });
+			const initialState = getState({
+				deletePublicViewLoading: true
+			});
 			const action = {
 				type: actions.DELETE_PUBLIC_VIEW_SUCCESS
 			};
@@ -358,7 +410,9 @@ describe('action handling', () => {
 			expect(result.exportThreadsLoading).toBe(true);
 		});
 		it('should handle EXPORT_THREADS_FAILURE', () => {
-			const initialState = getState({ exportThreadsLoading: true });
+			const initialState = getState({
+				exportThreadsLoading: true
+			});
 			const action = {
 				type: actions.EXPORT_THREADS_FAILURE
 			};
@@ -366,7 +420,9 @@ describe('action handling', () => {
 			expect(result.exportThreadsLoading).toBe(false);
 		});
 		it('should handle EXPORT_THREADS_SUCCESS', () => {
-			const initialState = getState({ exportThreadsLoading: true });
+			const initialState = getState({
+				exportThreadsLoading: true
+			});
 			const action = {
 				type: actions.EXPORT_THREADS_SUCCESS
 			};
@@ -383,7 +439,9 @@ describe('action handling', () => {
 			expect(result.forgotPasswordLoading).toBe(true);
 		});
 		it('should handle SUBMIT_USER_FORGOT_PASSWORD_FAILURE', () => {
-			const initialState = getState({ forgotPasswordLoading: true });
+			const initialState = getState({
+				forgotPasswordLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_FORGOT_PASSWORD_FAILURE
 			};
@@ -391,7 +449,9 @@ describe('action handling', () => {
 			expect(result.forgotPasswordLoading).toBe(false);
 		});
 		it('should handle SUBMIT_USER_FORGOT_PASSWORD_SUCCESS', () => {
-			const initialState = getState({ forgotPasswordLoading: true });
+			const initialState = getState({
+				forgotPasswordLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_FORGOT_PASSWORD_SUCCESS
 			};
@@ -408,7 +468,9 @@ describe('action handling', () => {
 			expect(result.loginLoading).toBe(true);
 		});
 		it('should handle SUBMIT_USER_LOGIN_FAILURE', () => {
-			const initialState = getState({ loginLoading: true });
+			const initialState = getState({
+				loginLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_LOGIN_FAILURE
 			};
@@ -416,7 +478,9 @@ describe('action handling', () => {
 			expect(result.loginLoading).toBe(false);
 		});
 		it('should handle SUBMIT_USER_LOGIN_SUCCESS', () => {
-			const initialState = getState({ loginLoading: true });
+			const initialState = getState({
+				loginLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_LOGIN_SUCCESS
 			};
@@ -433,7 +497,9 @@ describe('action handling', () => {
 			expect(result.publicViewsLoading).toBe(true);
 		});
 		it('should handle FETCHED_PUBLIC_VIEWS_FAILURE', () => {
-			const initialState = getState({ publicViewsLoading: true });
+			const initialState = getState({
+				publicViewsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_PUBLIC_VIEWS_FAILURE
 			};
@@ -441,7 +507,9 @@ describe('action handling', () => {
 			expect(result.publicViewsLoading).toBe(false);
 		});
 		it('should handle FETCHED_PUBLIC_VIEWS_SUCCESS', () => {
-			const initialState = getState({ publicViewsLoading: true });
+			const initialState = getState({
+				publicViewsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_PUBLIC_VIEWS_SUCCESS
 			};
@@ -465,7 +533,9 @@ describe('action handling', () => {
 			expect(result.publicThreadsLoading).toBe(true);
 		});
 		it('should handle FETCHED_PUBLIC_THREADS_FAILURE', () => {
-			const initialState = getState({ publicThreadsLoading: true });
+			const initialState = getState({
+				publicThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_PUBLIC_THREADS_FAILURE
 			};
@@ -473,7 +543,9 @@ describe('action handling', () => {
 			expect(result.publicThreadsLoading).toBe(false);
 		});
 		it('should handle FETCHED_PUBLIC_THREADS_STATUS_FAILURE', () => {
-			const initialState = getState({ publicThreadsLoading: true });
+			const initialState = getState({
+				publicThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_PUBLIC_THREADS_STATUS_FAILURE
 			};
@@ -481,7 +553,9 @@ describe('action handling', () => {
 			expect(result.publicThreadsLoading).toBe(false);
 		});
 		it('should handle FETCHED_PUBLIC_THREADS_STATUS_SUCCESS', () => {
-			const initialState = getState({ publicThreadsLoading: true });
+			const initialState = getState({
+				publicThreadsLoading: true
+			});
 			const action = {
 				type: actions.FETCHED_PUBLIC_THREADS_STATUS_SUCCESS
 			};
@@ -498,7 +572,9 @@ describe('action handling', () => {
 			expect(result.registrationLoading).toBe(true);
 		});
 		it('should handle SUBMIT_USER_REGISTRATION_FAILURE', () => {
-			const initialState = getState({ registrationLoading: true });
+			const initialState = getState({
+				registrationLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_REGISTRATION_FAILURE
 			};
@@ -506,7 +582,9 @@ describe('action handling', () => {
 			expect(result.registrationLoading).toBe(false);
 		});
 		it('should handle SUBMIT_USER_REGISTRATION_SUCCESS', () => {
-			const initialState = getState({ registrationLoading: true });
+			const initialState = getState({
+				registrationLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_REGISTRATION_SUCCESS
 			};
@@ -523,7 +601,9 @@ describe('action handling', () => {
 			expect(result.resetPasswordLoading).toBe(true);
 		});
 		it('should handle SUBMIT_USER_RESET_PASSWORD_FAILURE', () => {
-			const initialState = getState({ resetPasswordLoading: true });
+			const initialState = getState({
+				resetPasswordLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_RESET_PASSWORD_FAILURE
 			};
@@ -531,7 +611,9 @@ describe('action handling', () => {
 			expect(result.resetPasswordLoading).toBe(false);
 		});
 		it('should handle SUBMIT_USER_RESET_PASSWORD_SUCCESS', () => {
-			const initialState = getState({ resetPasswordLoading: true });
+			const initialState = getState({
+				resetPasswordLoading: true
+			});
 			const action = {
 				type: actions.SUBMIT_USER_RESET_PASSWORD_SUCCESS
 			};
@@ -548,7 +630,9 @@ describe('action handling', () => {
 			expect(result.untrackCharactersLoading).toBe(true);
 		});
 		it('should handle UNTRACK_CHARACTER_FAILURE', () => {
-			const initialState = getState({ untrackCharactersLoading: true });
+			const initialState = getState({
+				untrackCharactersLoading: true
+			});
 			const action = {
 				type: actions.UNTRACK_CHARACTER_FAILURE
 			};
@@ -556,7 +640,9 @@ describe('action handling', () => {
 			expect(result.untrackCharactersLoading).toBe(false);
 		});
 		it('should handle UNTRACK_CHARACTER_SUCCESS', () => {
-			const initialState = getState({ untrackCharactersLoading: true });
+			const initialState = getState({
+				untrackCharactersLoading: true
+			});
 			const action = {
 				type: actions.UNTRACK_CHARACTER_SUCCESS
 			};
@@ -573,7 +659,9 @@ describe('action handling', () => {
 			expect(result.untrackThreadLoading).toBe(true);
 		});
 		it('should handle UNTRACK_THREAD_FAILURE', () => {
-			const initialState = getState({ untrackThreadLoading: true });
+			const initialState = getState({
+				untrackThreadLoading: true
+			});
 			const action = {
 				type: actions.UNTRACK_THREAD_FAILURE
 			};
@@ -581,7 +669,9 @@ describe('action handling', () => {
 			expect(result.untrackThreadLoading).toBe(false);
 		});
 		it('should handle UNTRACK_THREAD_SUCCESS', () => {
-			const initialState = getState({ untrackThreadLoading: true });
+			const initialState = getState({
+				untrackThreadLoading: true
+			});
 			const action = {
 				type: actions.UNTRACK_THREAD_SUCCESS
 			};
@@ -598,7 +688,9 @@ describe('action handling', () => {
 			expect(result.upsertCharactersLoading).toBe(true);
 		});
 		it('should handle UPSERT_CHARACTER_FAILURE', () => {
-			const initialState = getState({ upsertCharactersLoading: true });
+			const initialState = getState({
+				upsertCharactersLoading: true
+			});
 			const action = {
 				type: actions.UPSERT_CHARACTER_FAILURE
 			};
@@ -606,7 +698,9 @@ describe('action handling', () => {
 			expect(result.upsertCharactersLoading).toBe(false);
 		});
 		it('should handle UPSERT_CHARACTER_SUCCESS', () => {
-			const initialState = getState({ upsertCharactersLoading: true });
+			const initialState = getState({
+				upsertCharactersLoading: true
+			});
 			const action = {
 				type: actions.UPSERT_CHARACTER_SUCCESS
 			};
@@ -623,7 +717,9 @@ describe('action handling', () => {
 			expect(result.upsertPublicViewLoading).toBe(true);
 		});
 		it('should handle UPSERT_PUBLIC_VIEW_FAILURE', () => {
-			const initialState = getState({ upsertPublicViewLoading: true });
+			const initialState = getState({
+				upsertPublicViewLoading: true
+			});
 			const action = {
 				type: actions.UPSERT_PUBLIC_VIEW_FAILURE
 			};
@@ -631,7 +727,9 @@ describe('action handling', () => {
 			expect(result.upsertPublicViewLoading).toBe(false);
 		});
 		it('should handle UPSERT_PUBLIC_VIEW_SUCCESS', () => {
-			const initialState = getState({ upsertPublicViewLoading: true });
+			const initialState = getState({
+				upsertPublicViewLoading: true
+			});
 			const action = {
 				type: actions.UPSERT_PUBLIC_VIEW_SUCCESS
 			};
@@ -648,7 +746,9 @@ describe('action handling', () => {
 			expect(result.upsertThreadLoading).toBe(true);
 		});
 		it('should handle UPSERT_THREAD_FAILURE', () => {
-			const initialState = getState({ upsertThreadLoading: true });
+			const initialState = getState({
+				upsertThreadLoading: true
+			});
 			const action = {
 				type: actions.UPSERT_THREAD_FAILURE
 			};
@@ -656,7 +756,9 @@ describe('action handling', () => {
 			expect(result.upsertThreadLoading).toBe(false);
 		});
 		it('should handle UPSERT_THREAD_SUCCESS', () => {
-			const initialState = getState({ upsertThreadLoading: true });
+			const initialState = getState({
+				upsertThreadLoading: true
+			});
 			const action = {
 				type: actions.UPSERT_THREAD_SUCCESS
 			};
@@ -669,7 +771,12 @@ describe('action handling', () => {
 			const action = {
 				type: actions.SUBMIT_USER_LOGOUT
 			};
-			const result = loading({ upsertThreadLoading: true }, action);
+			const result = loading(
+				{
+					upsertThreadLoading: true
+				},
+				action
+			);
 			expect(result).toEqual(getState());
 		});
 	});

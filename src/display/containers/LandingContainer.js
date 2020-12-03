@@ -5,9 +5,7 @@ import Landing from '../views/landing/Landing';
 // #endregion imports
 
 const LandingContainer = () => {
-	const currentYear = (new Date()).getFullYear();
-	return (
-		<Landing currentYear={currentYear} />
-	);
+	const currentYear = new Date().getFullYear();
+	return <Landing currentYear={currentYear} />;
 };
 export default withPageViewTracker(LandingContainer);

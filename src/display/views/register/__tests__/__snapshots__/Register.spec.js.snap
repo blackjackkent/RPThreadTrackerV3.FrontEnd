@@ -76,7 +76,8 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           }
           xs="6"
         >
-          Already have an account? 
+          Already have an account?
+           
           <Link
             href="/login"
             replace={false}
@@ -181,7 +182,8 @@ exports[`rendering snapshots should render valid snapshot with error message 1`]
           }
           xs="6"
         >
-          Already have an account? 
+          Already have an account?
+           
           <Link
             href="/login"
             replace={false}
@@ -282,7 +284,8 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           }
           xs="6"
         >
-          Already have an account? 
+          Already have an account?
+           
           <Link
             href="/login"
             replace={false}
@@ -383,7 +386,8 @@ exports[`rendering snapshots should render valid snapshot with loading indicator
           }
           xs="6"
         >
-          Already have an account? 
+          Already have an account?
+           
           <Link
             href="/login"
             replace={false}

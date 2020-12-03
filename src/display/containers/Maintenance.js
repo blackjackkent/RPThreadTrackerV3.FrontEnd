@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-	Container, Row, Col, CardBody
-} from 'reactstrap';
+import { Container, Row, Col, CardBody } from 'reactstrap';
 import Card from '../shared/styled/Card';
 import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 
@@ -21,7 +19,9 @@ const Maintenance = () => (
 							</span>
 							<p>
 								Please see{' '}
-								<a href="http://tblrthreadtracker.tumblr.com">our announcements blog</a>{' '}
+								<a href="http://tblrthreadtracker.tumblr.com">
+									our announcements blog
+								</a>{' '}
 								for further information and updates.
 							</p>
 						</CardBody>

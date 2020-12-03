@@ -23,9 +23,12 @@ const propTypes = {
 	setFilteredTag: PropTypes.func.isRequired,
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tdProps: PropTypes.func.isRequired,
-	threadFilter: PropTypes.shape({}).isRequired,
+	threadFilter: PropTypes.shape({
+		filteredTag: PropTypes.string
+	}).isRequired,
 	threadTablePageSize: PropTypes.number,
-	updateThreadTablePageSize: PropTypes.func.isRequired
+	updateThreadTablePageSize: PropTypes.func.isRequired,
+	useLightTheme: PropTypes.bool.isRequired
 };
 const defaultProps = {
 	isArchive: false,
@@ -57,12 +60,14 @@ class ThreadTable extends React.Component {
 	}
 
 	onSelectionChanged(selectedItems) {
-		this.setState({ selectedItems });
+		this.setState({
+			selectedItems
+		});
 	}
 
 	executeBulkAction(func) {
 		const { selectedItems } = this.state;
-		const items = selectedItems.map(t => t.thread);
+		const items = selectedItems.map((t) => t.thread);
 		func(items);
 	}
 
@@ -83,7 +88,8 @@ class ThreadTable extends React.Component {
 			threadFilter,
 			threadTablePageSize,
 			updateThreadTablePageSize,
-			tags
+			tags,
+			useLightTheme
 		} = this.props;
 		const { selectedItems } = this.state;
 		return (
@@ -108,15 +114,34 @@ class ThreadTable extends React.Component {
 							openBulkUntrackThreadsModal={openBulkUntrackThreadsModal}
 						/>
 					</Col>
-					<Col xs={{ size: 6, offset: 3 }} sm={{ size: 4, offset: 4 }} xl={{ size: 2, offset: 0 }}>
-						<ThreadRefreshButton isArchive={isArchive} refreshThreads={refreshThreads} />
+					<Col
+						xs={{
+							size: 6,
+							offset: 3
+						}}
+						sm={{
+							size: 4,
+							offset: 4
+						}}
+						xl={{
+							size: 2,
+							offset: 0
+						}}
+					>
+						<ThreadRefreshButton
+							isArchive={isArchive}
+							refreshThreads={refreshThreads}
+						/>
 					</Col>
 				</Row>
 				<Row>
 					<Col>
 						<p className="public-tool-banner">
 							Want to share this view publicly? Check out the new{' '}
-							<Link href="/tools/public" to="/tools/public">Public Views tool</Link>.
+							<Link href="/tools/public" to="/tools/public">
+								Public Views tool
+							</Link>
+							.
 						</p>
 					</Col>
 				</Row>
@@ -136,13 +161,14 @@ class ThreadTable extends React.Component {
 					]}
 					defaultFilterMethod={defaultFilter}
 					showPaginationTop
-					SubComponent={row => (
+					SubComponent={(row) => (
 						<ThreadTableSubComponent
 							description={row.original.thread.description}
 							tags={row.original.thread.threadTags}
 						/>
 					)}
 					onSelectionChanged={this.onSelectionChanged}
+					useLightTheme={useLightTheme}
 				/>
 			</div>
 		);

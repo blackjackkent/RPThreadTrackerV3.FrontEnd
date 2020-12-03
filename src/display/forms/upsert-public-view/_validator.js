@@ -5,7 +5,7 @@ export default {
 	name: {
 		maxLength: {
 			value: 256,
-			errorMessage: 'Your character\'s name is too long.'
+			errorMessage: "Your character's name is too long."
 		},
 		required: {
 			value: true,

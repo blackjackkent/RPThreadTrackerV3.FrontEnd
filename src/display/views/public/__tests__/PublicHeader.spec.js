@@ -6,7 +6,7 @@ import PublicHeader from '../PublicHeader';
 
 jest.mock('../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	isLoadingIconVisible: false,
 	slug: 'my-slug',
 	title: 'My Title',
@@ -21,7 +21,11 @@ describe('rendering', () => {
 		});
 		it('should render valid snapshot when loading icon is visible', () => {
 			const element = shallow(
-				<PublicHeader {...createTestProps({ isLoadingIconVisible: true })} />
+				<PublicHeader
+					{...createTestProps({
+						isLoadingIconVisible: true
+					})}
+				/>
 			);
 			expect(element).toMatchSnapshot();
 		});

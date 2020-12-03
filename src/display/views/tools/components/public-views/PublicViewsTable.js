@@ -27,13 +27,18 @@ const PublicViewsTable = (props) => {
 				className="-striped"
 				data={publicViews}
 				columns={columns(username)}
-				defaultSorted={[{ id: 'name' }]}
+				defaultSorted={[
+					{
+						id: 'name'
+					}
+				]}
 				pageSize={10}
-				getTdProps={getTdProps(
-					openDeletePublicViewModal,
-					openUpsertPublicViewModal
-				)}
-				noDataText={isLoadingIconVisible ? 'Loading...' : 'You have not yet created any public views.'}
+				getTdProps={getTdProps(openDeletePublicViewModal, openUpsertPublicViewModal)}
+				noDataText={
+					isLoadingIconVisible
+						? 'Loading...'
+						: 'You have not yet created any public views.'
+				}
 			/>
 		</ReactTableContainer>
 	);

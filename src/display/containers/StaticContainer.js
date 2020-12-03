@@ -18,8 +18,18 @@ const StaticContainer = () => (
 				<Col md="6">
 					<Switch>
 						<Route exact path="/login" name="Login" component={Login} />
-						<Route exact path="/resetpassword" name="Reset Password" component={ResetPassword} />
-						<Route exact path="/forgotpassword" name="Forgot Password" component={ForgotPassword} />
+						<Route
+							exact
+							path="/resetpassword"
+							name="Reset Password"
+							component={ResetPassword}
+						/>
+						<Route
+							exact
+							path="/forgotpassword"
+							name="Forgot Password"
+							component={ForgotPassword}
+						/>
 						<Route exact path="/register" name="Register" component={Register} />
 					</Switch>
 				</Col>

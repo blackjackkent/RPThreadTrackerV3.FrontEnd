@@ -2,7 +2,9 @@ import * as actions from '../submitUserResetPassword';
 
 describe('submitUserResetPassword', () => {
 	it('should create action with type, data, and analytics', () => {
-		const data = { newPassword: 'test-password' };
+		const data = {
+			newPassword: 'test-password'
+		};
 		const action = actions.submitUserResetPassword(data);
 		expect(action.type).toBe('SUBMIT_USER_RESET_PASSWORD');
 		expect(action.data).toBe(data);

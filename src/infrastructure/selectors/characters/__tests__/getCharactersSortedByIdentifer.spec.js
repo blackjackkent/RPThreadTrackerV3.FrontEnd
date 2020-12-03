@@ -22,6 +22,6 @@ describe('behavior', () => {
 		const result = getCharactersSortedByIdentifier.resultFunc(characters);
 		// Assert
 		expect(result).toEqual([2, 3, 5, 7, 8, 9]);
-		expect(utility.sortCharacters).toHaveBeenCalledTimes(8);
+		expect(utility.sortCharacters).toHaveBeenCalled();
 	});
 });

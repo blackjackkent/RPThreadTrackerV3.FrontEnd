@@ -1,11 +1,11 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import ContactFormPane from '../ContactFormPane';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	submitContactForm: jest.fn(),
 	...propOverrides
 });
@@ -23,7 +23,9 @@ describe('behavior', () => {
 	describe('submitContactForm', () => {
 		it('should be called when form is submitted', () => {
 			const submitContactForm = jest.fn();
-			const props = createTestProps({ submitContactForm });
+			const props = createTestProps({
+				submitContactForm
+			});
 			const element = shallow(<ContactFormPane {...props} />);
 			const form = getSpecWrapper(element, 'contact-form-container');
 			form.props().onValidSubmit();
@@ -32,16 +34,26 @@ describe('behavior', () => {
 	});
 	describe('handleInputChange', () => {
 		it('should handle text field update', () => {
-			const event = { target: { type: 'text', name: 'message', value: 'my-message' } };
+			const event = {
+				target: {
+					type: 'text',
+					name: 'message',
+					value: 'my-message'
+				}
+			};
 			const submitContactForm = jest.fn();
-			const props = createTestProps({ submitContactForm });
+			const props = createTestProps({
+				submitContactForm
+			});
 			const element = shallow(<ContactFormPane {...props} />);
 			element.instance().handleInputChange(event);
 			element.update();
 			const form = getSpecWrapper(element, 'contact-form-container');
 			form.props().onValidSubmit();
 			expect(submitContactForm).toHaveBeenCalledTimes(1);
-			expect(submitContactForm).toHaveBeenLastCalledWith({ message: 'my-message' });
+			expect(submitContactForm).toHaveBeenLastCalledWith({
+				message: 'my-message'
+			});
 		});
 	});
 });

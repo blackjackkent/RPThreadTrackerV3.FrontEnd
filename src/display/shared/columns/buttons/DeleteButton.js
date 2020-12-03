@@ -1,7 +1,7 @@
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 
-export default title => ({
+export default (title) => ({
 	id: columns.DELETE_BUTTON.key,
 	Cell: () => (
 		<span>

@@ -8,7 +8,7 @@ import BreadcrumbsItem from './BreadcrumbsItem';
 
 const propTypes = {
 	location: PropTypes.shape({
-		location: PropTypes.shape({ pathname: PropTypes.string })
+		pathname: PropTypes.string
 	}).isRequired
 };
 
@@ -27,11 +27,15 @@ class Breadcrumbs extends React.Component {
 	}
 
 	render() {
-		const { location: { pathname } } = this.props;
+		const {
+			location: { pathname }
+		} = this.props;
 		const paths = this.getPaths(pathname);
 		// eslint-disable-next-line react/no-array-index-key
-		const items = paths.map((path, i) => <Route key={i} path={path} component={BreadcrumbsItem} />);
-		return (<Breadcrumb>{items}</Breadcrumb>);
+		const items = paths.map((path) => (
+			<Route key={path} path={path} component={BreadcrumbsItem} />
+		));
+		return <Breadcrumb>{items}</Breadcrumb>;
 	}
 }
 

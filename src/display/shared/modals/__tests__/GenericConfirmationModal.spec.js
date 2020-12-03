@@ -1,16 +1,16 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import GenericConfirmationModal from '../GenericConfirmationModal';
 // #endregion imports
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	isModalOpen: true,
 	submitCallback: jest.fn(),
 	closeCallback: jest.fn(),
 	headerText: 'Test Header',
-	bodyText: (<span>Test Body</span>),
+	bodyText: <span>Test Body</span>,
 	data: ['my', 'data'],
 	...propOverrides
 });
@@ -19,7 +19,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = (<GenericConfirmationModal {...props} />);
+			const jsx = <GenericConfirmationModal {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -28,7 +28,7 @@ describe('rendering', () => {
 				submitButtonText: 'Test OK',
 				closeButtonText: 'Test Cancel'
 			});
-			const jsx = (<GenericConfirmationModal {...props} />);
+			const jsx = <GenericConfirmationModal {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -39,8 +39,10 @@ describe('behavior', () => {
 	describe('submitCallback', () => {
 		it('should be triggered with data when submit button is clicked', () => {
 			const submitCallback = jest.fn();
-			const props = createTestProps({ submitCallback });
-			const jsx = (<GenericConfirmationModal {...props} />);
+			const props = createTestProps({
+				submitCallback
+			});
+			const jsx = <GenericConfirmationModal {...props} />;
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'generic-confirmation-ok-button');
 			button.simulate('click');
@@ -51,8 +53,10 @@ describe('behavior', () => {
 	describe('closeCallback', () => {
 		it('should be triggered when modal is toggled', () => {
 			const closeCallback = jest.fn();
-			const props = createTestProps({ closeCallback });
-			const jsx = (<GenericConfirmationModal {...props} />);
+			const props = createTestProps({
+				closeCallback
+			});
+			const jsx = <GenericConfirmationModal {...props} />;
 			const element = shallow(jsx);
 			const modal = getSpecWrapper(element, 'generic-confirmation-modal');
 			modal.prop('toggle')();
@@ -60,8 +64,10 @@ describe('behavior', () => {
 		});
 		it('should close modal on modal header toggle', () => {
 			const closeCallback = jest.fn();
-			const props = createTestProps({ closeCallback });
-			const jsx = (<GenericConfirmationModal {...props} />);
+			const props = createTestProps({
+				closeCallback
+			});
+			const jsx = <GenericConfirmationModal {...props} />;
 			const element = shallow(jsx);
 			const header = getSpecWrapper(element, 'generic-confirmation-modal-header');
 			header.prop('toggle')();
@@ -69,8 +75,10 @@ describe('behavior', () => {
 		});
 		it('should be triggered when cancel button is clicked', () => {
 			const closeCallback = jest.fn();
-			const props = createTestProps({ closeCallback });
-			const jsx = (<GenericConfirmationModal {...props} />);
+			const props = createTestProps({
+				closeCallback
+			});
+			const jsx = <GenericConfirmationModal {...props} />;
 			const element = shallow(jsx);
 			const button = getSpecWrapper(element, 'generic-confirmation-cancel-button');
 			button.simulate('click');

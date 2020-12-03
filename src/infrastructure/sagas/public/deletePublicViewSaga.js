@@ -1,7 +1,5 @@
 // #region imports
-import {
-	takeEvery, put, call, all
-} from 'redux-saga/effects';
+import { takeEvery, put, call, all } from 'redux-saga/effects';
 import axios from 'axios';
 import {
 	DELETE_PUBLIC_VIEW,
@@ -15,10 +13,7 @@ function* deletePublicView(action) {
 	try {
 		const view = action.data;
 		yield call(axios.delete, `${API_BASE_URL}api/publicviewmanagement/${view.id}`);
-		yield all([
-			put(deletePublicViewSuccess()),
-			put(fetchPublicViews())
-		]);
+		yield all([put(deletePublicViewSuccess()), put(fetchPublicViews())]);
 	} catch (e) {
 		yield put(deletePublicViewFailure());
 	}

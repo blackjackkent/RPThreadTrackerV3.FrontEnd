@@ -1,4 +1,8 @@
-import { CLOSE_BULK_UNTRACK_THREADS_MODAL, OPEN_BULK_UNTRACK_THREADS_MODAL, SUBMIT_USER_LOGOUT } from '../actions';
+import {
+	CLOSE_BULK_UNTRACK_THREADS_MODAL,
+	OPEN_BULK_UNTRACK_THREADS_MODAL,
+	SUBMIT_USER_LOGOUT
+} from '../actions';
 
 function bulkThreadsToEdit(state = [], action) {
 	switch (action.type) {

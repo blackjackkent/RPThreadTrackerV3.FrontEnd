@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import {
-	Row, Col
-} from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Style from './_styles';
@@ -23,15 +21,13 @@ const propTypes = {
 	threadFilter: PropTypes.shape({}).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	updateUserSettings: PropTypes.func.isRequired,
-	userSettings: PropTypes.shape({}).isRequired
+	userSettings: PropTypes.shape({
+		threadTablePageSize: PropTypes.number
+	}).isRequired
 };
 
 function mapStateToProps(state) {
-	const {
-		threadFilter,
-		characters,
-		userSettings
-	} = state;
+	const { threadFilter, characters, userSettings } = state;
 	const isLoadingIconVisible = getIsLoadingIconVisible(state);
 	return {
 		threadFilter,
@@ -63,7 +59,9 @@ class Threads extends Component {
 	toggleThreadIsArchived(thread) {
 		const { upsertThread } = this.props;
 		const updatedThread = {
-			...thread, isArchived: !thread.isArchived, dateMarkedQueued: null
+			...thread,
+			isArchived: !thread.isArchived,
+			dateMarkedQueued: null
 		};
 		upsertThread(updatedThread);
 	}
@@ -80,7 +78,7 @@ class Threads extends Component {
 
 	bulkToggleThreadsAreMarkedQueued(threads) {
 		const { bulkUpdateThreads } = this.props;
-		const updatedThreads = threads.map(t => ({
+		const updatedThreads = threads.map((t) => ({
 			...t,
 			dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now()),
 			isArchived: false
@@ -90,7 +88,7 @@ class Threads extends Component {
 
 	bulkToggleThreadsAreArchived(threads) {
 		const { bulkUpdateThreads } = this.props;
-		const updatedThreads = threads.map(t => ({
+		const updatedThreads = threads.map((t) => ({
 			...t,
 			isArchived: !t.isArchived,
 			dateMarkedQueued: null
@@ -109,7 +107,10 @@ class Threads extends Component {
 
 	updateThreadTablePageSize(size) {
 		const { userSettings, updateUserSettings } = this.props;
-		updateUserSettings({ ...userSettings, threadTablePageSize: size });
+		updateUserSettings({
+			...userSettings,
+			threadTablePageSize: size
+		});
 	}
 
 	render() {

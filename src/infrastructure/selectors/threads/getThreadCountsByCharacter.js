@@ -9,7 +9,7 @@ const getTheirTurnThreads = createSelector(
 		}
 		const mapping = {};
 		characters.forEach((char) => {
-			const characterThreads = threads.filter(t => t.characterId === char.characterId);
+			const characterThreads = threads.filter((t) => t.characterId === char.characterId);
 			mapping[char.characterId] = characterThreads.length;
 		});
 		return mapping;

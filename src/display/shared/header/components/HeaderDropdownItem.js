@@ -10,21 +10,11 @@ const propTypes = {
 };
 
 const HeaderDropdownItem = (props) => {
-	const {
-		onClick,
-		label
-	} = props;
+	const { onClick, label } = props;
 
 	return (
-		<DropdownItem
-			className="hidden-lg-up"
-			onKeyDown={onClick}
-			onClick={onClick}
-		>
-			<span
-				role="button"
-				tabIndex="-1"
-			>
+		<DropdownItem className="hidden-lg-up" onKeyDown={onClick} onClick={onClick}>
+			<span role="button" tabIndex="-1">
 				{label}
 			</span>
 		</DropdownItem>

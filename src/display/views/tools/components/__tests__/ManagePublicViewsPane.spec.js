@@ -1,13 +1,13 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import ManagePublicViewsPane from '../ManagePublicViewsPane';
 // #endregion imports
 
 jest.mock('../public-views/PublicViewsTable', () => 'PublicViewsTable');
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	isLoadingIconVisible: true,
 	publicViews: [{}, {}],
 	username: 'test-user',
@@ -29,7 +29,9 @@ describe('behavior', () => {
 	describe('openUpsertPublicViewModal', () => {
 		it('should be called when button is clicked', () => {
 			const openUpsertPublicViewModal = jest.fn();
-			const props = createTestProps({ openUpsertPublicViewModal });
+			const props = createTestProps({
+				openUpsertPublicViewModal
+			});
 			const element = shallow(<ManagePublicViewsPane {...props} />);
 			const button = getSpecWrapper(element, 'create-public-view-button');
 			button.simulate('click');

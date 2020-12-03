@@ -2,10 +2,48 @@ import filterThreadsByTag from '../filterThreadsByTag';
 
 const getThreads = () => [
 	{},
-	{ thread: {} },
-	{ thread: { threadId: 1, threadTags: [{ tagText: 'tag1' }, { tagText: 'tag2' }] } },
-	{ thread: { threadId: 2, threadTags: [{ tagText: 'tag2' }, { tagText: 'tag3' }] } },
-	{ thread: { threadId: 3, threadTags: [{ tagText: 'tag3' }, { tagText: 'tag4' }] } }
+	{
+		thread: {}
+	},
+	{
+		thread: {
+			threadId: 1,
+			threadTags: [
+				{
+					tagText: 'tag1'
+				},
+				{
+					tagText: 'tag2'
+				}
+			]
+		}
+	},
+	{
+		thread: {
+			threadId: 2,
+			threadTags: [
+				{
+					tagText: 'tag2'
+				},
+				{
+					tagText: 'tag3'
+				}
+			]
+		}
+	},
+	{
+		thread: {
+			threadId: 3,
+			threadTags: [
+				{
+					tagText: 'tag3'
+				},
+				{
+					tagText: 'tag4'
+				}
+			]
+		}
+	}
 ];
 
 describe('behavior', () => {

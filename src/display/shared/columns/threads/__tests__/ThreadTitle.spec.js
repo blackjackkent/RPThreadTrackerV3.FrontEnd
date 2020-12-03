@@ -26,7 +26,9 @@ describe('data', () => {
 	});
 	it('should display cell with title and text', () => {
 		const column = ThreadTitle(false);
-		const cellJsx = column.Cell({ value: 'My Thread' });
+		const cellJsx = column.Cell({
+			value: 'My Thread'
+		});
 		const cellElement = shallow(cellJsx);
 		expect(cellElement.find('span')).toHaveProp('title', 'My Thread');
 		expect(cellElement.find('span')).toHaveText('My Thread');

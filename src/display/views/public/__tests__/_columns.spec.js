@@ -3,11 +3,21 @@ import _columns from '../_columns';
 // #endregion imports
 
 jest.mock('../../../shared/columns', () => ({
-	ThreadTitle: () => ({ title: 'ThreadTitle' }),
-	Character: () => ({ title: 'Character' }),
-	LastPoster: () => ({ title: 'LastPoster' }),
-	LastPostDate: () => ({ title: 'LastPostDate' }),
-	TrackedPartner: () => ({ title: 'TrackedPartner' })
+	ThreadTitle: () => ({
+		title: 'ThreadTitle'
+	}),
+	Character: () => ({
+		title: 'Character'
+	}),
+	LastPoster: () => ({
+		title: 'LastPoster'
+	}),
+	LastPostDate: () => ({
+		title: 'LastPostDate'
+	}),
+	TrackedPartner: () => ({
+		title: 'TrackedPartner'
+	})
 }));
 
 describe('data', () => {

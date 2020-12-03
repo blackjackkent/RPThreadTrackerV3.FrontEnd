@@ -15,12 +15,7 @@ const getAllArchivedFilteredThreads = createSelector(
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return [];
 		}
-		const results = buildThreadDataByPredicate(
-			threads,
-			threadsStatus,
-			filters.ALL,
-			true
-		);
+		const results = buildThreadDataByPredicate(threads, threadsStatus, filters.ALL, true);
 		return filterThreadsByTag(results, tag);
 	}
 );

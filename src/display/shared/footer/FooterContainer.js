@@ -10,9 +10,7 @@ const propTypes = {
 };
 
 function mapStateToProps(state) {
-	const {
-		ui
-	} = state;
+	const { ui } = state;
 	return {
 		useLightTheme: ui.useLightTheme
 	};
@@ -32,11 +30,7 @@ class FooterContainer extends React.Component {
 	render() {
 		const { useLightTheme } = this.props;
 		return (
-			<Footer
-				{...this.props}
-				useLightTheme={useLightTheme}
-				toggleTheme={this.themeToggle}
-			/>
+			<Footer {...this.props} useLightTheme={useLightTheme} toggleTheme={this.themeToggle} />
 		);
 	}
 }

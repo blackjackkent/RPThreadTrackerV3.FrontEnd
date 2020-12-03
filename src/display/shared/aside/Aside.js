@@ -11,15 +11,16 @@ const propTypes = {
 
 const Aside = (props) => {
 	const { news } = props;
+	const items = news.map((item) => <AsideNewsRow item={item} key={item.postId} />);
 	return (
 		<Style className="aside-menu">
 			<div className="callout m-0 py-2 text-center text-uppercase">
-				<small><b>RPThreadTracker News</b></small>
+				<small>
+					<b>RPThreadTracker News</b>
+				</small>
 			</div>
 			<hr className="mx-3 my-0" />
-			{
-				news.length ? news.map(item => <AsideNewsRow item={item} key={item.postId} />) : ''
-			}
+			{news.length ? items : ''}
 		</Style>
 	);
 };

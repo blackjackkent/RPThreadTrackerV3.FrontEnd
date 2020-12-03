@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import { getSpecWrapper } from '../../../../../../../config/tests/helpers.unit';
+import { getSpecWrapper } from '~/testhelpers/helpers.unit';
 import YourCharactersCard from '../YourCharactersCard';
 // #endregion imports
 
@@ -9,25 +9,46 @@ import YourCharactersCard from '../YourCharactersCard';
 jest.mock('../YourCharactersCardRow', () => 'YourCharactersCardRow');
 jest.mock('../../NoCharactersMessage', () => 'NoCharactersMessage');
 jest.mock('../../NoActiveCharactersMessage', () => 'NoActiveCharactersMessage');
-jest.mock('../../../../../shared/loading/LoadingIndicator', () => 'LoadingIndicator');
+jest.mock('~/display/shared/loading/LoadingIndicator', () => 'LoadingIndicator');
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	characters: [],
 	characterThreadCounts: {},
 	loadingInProgress: false,
 	...propOverrides
 });
-const createTestPropsLoading = () => createTestProps({ loadingInProgress: true });
+const createTestPropsLoading = () =>
+	createTestProps({
+		loadingInProgress: true
+	});
 const createTestPropsNoCharacters = () => createTestProps({});
-const createTestPropsNoActiveCharacters = () => createTestProps({
-	characters: [{ isOnHiatus: true }, { isOnHiatus: true }]
-});
-const createTestPropsCharacters = () => createTestProps({
-	characters: [{ characterId: 2 }, { characterId: 3 }],
-	characterThreadCounts: { 2: 15, 3: 30 }
-});
-
+const createTestPropsNoActiveCharacters = () =>
+	createTestProps({
+		characters: [
+			{
+				isOnHiatus: true
+			},
+			{
+				isOnHiatus: true
+			}
+		]
+	});
+const createTestPropsCharacters = () =>
+	createTestProps({
+		characters: [
+			{
+				characterId: 2
+			},
+			{
+				characterId: 3
+			}
+		],
+		characterThreadCounts: {
+			2: 15,
+			3: 30
+		}
+	});
 
 describe('rendering', () => {
 	describe('snapshots', () => {
@@ -40,7 +61,9 @@ describe('rendering', () => {
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when user has no active characters', () => {
-			const element = shallow(<YourCharactersCard {...createTestPropsNoActiveCharacters()} />);
+			const element = shallow(
+				<YourCharactersCard {...createTestPropsNoActiveCharacters()} />
+			);
 			expect(element).toMatchSnapshot();
 		});
 		it('should render valid snapshot when user has active characters', () => {

@@ -14,7 +14,9 @@ describe('fetchedUserSettingsFailure', () => {
 });
 describe('fetchedUserSettingsSuccess', () => {
 	it('should create action with type and data', () => {
-		const data = { settingsId: '12345' };
+		const data = {
+			settingsId: '12345'
+		};
 		const action = actions.fetchedUserSettingsSuccess(data);
 		expect(action.type).toBe('FETCHED_USER_SETTINGS_SUCCESS');
 		expect(action.data).toBe(data);

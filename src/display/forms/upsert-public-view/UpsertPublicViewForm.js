@@ -7,11 +7,31 @@ import validator from './_validator';
 import formData from './_formData';
 
 const propTypes = {
-	viewToEdit: PropTypes.shape({}).isRequired,
+	viewToEdit: PropTypes.shape({
+		id: PropTypes.string,
+		name: PropTypes.string,
+		slug: PropTypes.string,
+		columns: PropTypes.arrayOf(PropTypes.shape({})),
+		sortKey: PropTypes.string,
+		sortDescending: PropTypes.bool,
+		turnFilter: PropTypes.shape({
+			includeMyTurn: PropTypes.bool,
+			includeTheirTurn: PropTypes.bool,
+			includeQueued: PropTypes.bool,
+			includeArchived: PropTypes.bool
+		}),
+		characterIds: PropTypes.arrayOf(PropTypes.string),
+		tags: PropTypes.arrayOf(PropTypes.shape({}))
+	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	handleInputChange: PropTypes.func.isRequired,
-	tooltipDisplayData: PropTypes.shape({}).isRequired,
+	tooltipDisplayData: PropTypes.shape({
+		slug: PropTypes.bool,
+		columns: PropTypes.bool,
+		characterIds: PropTypes.bool,
+		tags: PropTypes.bool
+	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
 	columns: PropTypes.shape({}).isRequired
@@ -29,18 +49,28 @@ const UpsertPublicViewForm = (props) => {
 		columns
 	} = props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
-		.filter(i => columns[i].name)
-		.map(i => <option value={columns[i].key} key={columns[i].key}>{columns[i].name}</option>);
-	const characterOptions = characters.map(c => (
+		.filter((i) => columns[i].name)
+		.map((i) => (
+			<option value={columns[i].key} key={columns[i].key}>
+				{columns[i].name}
+			</option>
+		));
+	const characterOptions = characters.map((c) => (
 		<option value={c.characterId} key={c.characterId}>
 			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
 		</option>
 	));
-	const tagOptions = tags.map(t => (<option value={t} key={t}>{t}</option>));
+	const tagOptions = tags.map((t) => (
+		<option value={t} key={t}>
+			{t}
+		</option>
+	));
 	return (
 		<div>
 			<AvField type="hidden" name="viewId" value={viewToEdit.id} />
-			<Row> {/* view name */}
+			<Row>
+				{' '}
+				{/* view name */}
 				<Col>
 					<AvField
 						name="name"
@@ -55,13 +85,16 @@ const UpsertPublicViewForm = (props) => {
 					/>
 				</Col>
 			</Row>
-			<Row> {/* view slug */}
+			<Row>
+				{' '}
+				{/* view slug */}
 				<Col>
-
 					<Tooltip
 						visible={tooltipDisplayData.slug}
 						overlay={formData.slug.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 30]
 						}}
@@ -84,12 +117,16 @@ const UpsertPublicViewForm = (props) => {
 					</Tooltip>
 				</Col>
 			</Row>
-			<Row> {/* view columns */}
+			<Row>
+				{' '}
+				{/* view columns */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.columns}
 						overlay={formData.columns.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 30]
 						}}
@@ -157,7 +194,9 @@ const UpsertPublicViewForm = (props) => {
 									name="includeMyTurn"
 									onChange={handleInputChange}
 									type="checkbox"
-									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeMyTurn}
+									checked={
+										viewToEdit.turnFilter && viewToEdit.turnFilter.includeMyTurn
+									}
 									data-spec="include-my-turn-field"
 								/>
 								Include My Turn Threads
@@ -169,10 +208,13 @@ const UpsertPublicViewForm = (props) => {
 									name="includeTheirTurn"
 									onChange={handleInputChange}
 									type="checkbox"
-									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeTheirTurn}
+									checked={
+										viewToEdit.turnFilter &&
+										viewToEdit.turnFilter.includeTheirTurn
+									}
 									data-spec="include-their-turn-field"
 								/>
-								Include Partner{"'"}s Turn Threads
+								Include Partner&apos;s Turn Threads
 							</label>
 						</Col>
 					</Row>
@@ -183,7 +225,9 @@ const UpsertPublicViewForm = (props) => {
 									name="includeQueued"
 									type="checkbox"
 									onChange={handleInputChange}
-									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeQueued}
+									checked={
+										viewToEdit.turnFilter && viewToEdit.turnFilter.includeQueued
+									}
 									data-spec="include-queued-field"
 								/>
 								Include Queued Threads
@@ -195,7 +239,10 @@ const UpsertPublicViewForm = (props) => {
 									name="includeArchived"
 									type="checkbox"
 									onChange={handleInputChange}
-									checked={viewToEdit.turnFilter && viewToEdit.turnFilter.includeArchived}
+									checked={
+										viewToEdit.turnFilter &&
+										viewToEdit.turnFilter.includeArchived
+									}
 									data-spec="include-archived-field"
 								/>
 								Include Archived Threads
@@ -204,12 +251,16 @@ const UpsertPublicViewForm = (props) => {
 					</Row>
 				</div>
 			</Row>
-			<Row> {/* view characters */}
+			<Row>
+				{' '}
+				{/* view characters */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.characterIds}
 						overlay={formData.characterIds.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 30]
 						}}
@@ -234,12 +285,16 @@ const UpsertPublicViewForm = (props) => {
 					</Tooltip>
 				</Col>
 			</Row>
-			<Row> {/* view tags */}
+			<Row>
+				{' '}
+				{/* view tags */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.tags}
 						overlay={formData.tags.tooltip}
-						overlayStyle={{ width: 300 }}
+						overlayStyle={{
+							width: 300
+						}}
 						align={{
 							offset: [0, 30]
 						}}

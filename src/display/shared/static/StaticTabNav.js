@@ -8,7 +8,7 @@ const propTypes = {
 };
 const StaticTabNav = (props) => {
 	const { options } = props;
-	const optionElements = options.map(o => (
+	const optionElements = options.map((o) => (
 		<StaticTabNavItem
 			href={o.href}
 			title={o.name}

@@ -1,6 +1,6 @@
 // #region imports
 import React from 'react';
-import { getSpecWrapper, shallowWithState, initMockDateNow } from '../../../../../config/tests/helpers.unit';
+import { getSpecWrapper, shallowWithState, initMockDateNow } from '~/testhelpers/helpers.unit';
 import Dashboard from '../Dashboard';
 // #endregion imports
 
@@ -13,16 +13,63 @@ jest.mock('../components/tracker-support/TrackerSupportCard', () => 'TrackerSupp
 jest.mock('../components/random-thread/RandomThreadCard', () => 'RandomThreadCard');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/selectors', () => ({
-	getMyTurnThreads: () => [{ threadId: 5, userTitle: 'My Turn 1' }, { threadId: 6, userTitle: 'My Turn 2' }],
-	getTheirTurnThreads: () => [{ threadId: 7, userTitle: 'Their Turn 1' }, { threadId: 8, userTitle: 'Their Turn 2' }],
-	getQueuedThreads: () => [{ threadId: 9, userTitle: 'Queued Turn 1' }, { threadId: 10, userTitle: 'Queued Turn 2' }],
-	getRecentActivity: () => [{ threadId: 11, userTitle: 'Recent 1' }, { threadId: 12, userTitle: 'Recent 2' }],
-	getThreadCountsByCharacter: () => ({ 2: [{ threadId: 13, userTitle: 'By Character 1' }, { threadId: 14, userTitle: 'By Character 2' }] }),
+	getMyTurnThreads: () => [
+		{
+			threadId: 5,
+			userTitle: 'My Turn 1'
+		},
+		{
+			threadId: 6,
+			userTitle: 'My Turn 2'
+		}
+	],
+	getTheirTurnThreads: () => [
+		{
+			threadId: 7,
+			userTitle: 'Their Turn 1'
+		},
+		{
+			threadId: 8,
+			userTitle: 'Their Turn 2'
+		}
+	],
+	getQueuedThreads: () => [
+		{
+			threadId: 9,
+			userTitle: 'Queued Turn 1'
+		},
+		{
+			threadId: 10,
+			userTitle: 'Queued Turn 2'
+		}
+	],
+	getRecentActivity: () => [
+		{
+			threadId: 11,
+			userTitle: 'Recent 1'
+		},
+		{
+			threadId: 12,
+			userTitle: 'Recent 2'
+		}
+	],
+	getThreadCountsByCharacter: () => ({
+		2: [
+			{
+				threadId: 13,
+				userTitle: 'By Character 1'
+			},
+			{
+				threadId: 14,
+				userTitle: 'By Character 2'
+			}
+		]
+	}),
 	getIsLoadingIconVisible: () => true
 }));
 // #endregion mocks
 
-const createTestProps = propOverrides => ({
+const createTestProps = (propOverrides) => ({
 	fetchActiveThreads: jest.fn(),
 	fetchCharacters: jest.fn(),
 	generateRandomThread: jest.fn(),
@@ -32,11 +79,38 @@ const createTestProps = propOverrides => ({
 	...propOverrides
 });
 
-const createTestState = stateOverrides => ({
-	characters: [{ characterId: 1, characterName: 'Character A' }, { characterId: 2, characterName: 'Character B' }],
-	userSettings: { settingsId: 3 },
-	activeThreads: [{ threadId: 1, userTitle: 'Active 1' }, { threadId: 2, userTitle: 'Active 2' }, { threadId: 3, userTitle: 'Active 3' }],
-	randomThread: { threadId: 2, userTitle: 'My Random Thread' },
+const createTestState = (stateOverrides) => ({
+	characters: [
+		{
+			characterId: 1,
+			characterName: 'Character A'
+		},
+		{
+			characterId: 2,
+			characterName: 'Character B'
+		}
+	],
+	userSettings: {
+		settingsId: 3
+	},
+	activeThreads: [
+		{
+			threadId: 1,
+			userTitle: 'Active 1'
+		},
+		{
+			threadId: 2,
+			userTitle: 'Active 2'
+		},
+		{
+			threadId: 3,
+			userTitle: 'Active 3'
+		}
+	],
+	randomThread: {
+		threadId: 2,
+		userTitle: 'My Random Thread'
+	},
 	...stateOverrides
 });
 
@@ -45,7 +119,7 @@ describe('rendering', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			expect(element).toMatchSnapshot();
 		});
@@ -56,33 +130,45 @@ describe('behavior', () => {
 	describe('componentDidMount', () => {
 		it('should fetch characters when characters are not loaded', () => {
 			const fetchCharacters = jest.fn();
-			const props = createTestProps({ fetchCharacters });
-			const state = createTestState({ characters: [] });
-			const jsx = (<Dashboard {...props} />);
+			const props = createTestProps({
+				fetchCharacters
+			});
+			const state = createTestState({
+				characters: []
+			});
+			const jsx = <Dashboard {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchCharacters).toHaveBeenCalledTimes(1);
 		});
 		it('should not fetch characters when characters are loaded', () => {
 			const fetchCharacters = jest.fn();
-			const props = createTestProps({ fetchCharacters });
+			const props = createTestProps({
+				fetchCharacters
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchCharacters).toHaveBeenCalledTimes(0);
 		});
 		it('should fetch active threads when active threads are not loaded', () => {
 			const fetchActiveThreads = jest.fn();
-			const props = createTestProps({ fetchActiveThreads });
-			const state = createTestState({ activeThreads: [] });
-			const jsx = (<Dashboard {...props} />);
+			const props = createTestProps({
+				fetchActiveThreads
+			});
+			const state = createTestState({
+				activeThreads: []
+			});
+			const jsx = <Dashboard {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchActiveThreads).toHaveBeenCalledTimes(1);
 		});
 		it('should not fetch active threads when active threads are loaded', () => {
 			const fetchActiveThreads = jest.fn();
-			const props = createTestProps({ fetchActiveThreads });
+			const props = createTestProps({
+				fetchActiveThreads
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			shallowWithState(jsx, state).dive();
 			expect(fetchActiveThreads).toHaveBeenCalledTimes(0);
 		});
@@ -90,9 +176,11 @@ describe('behavior', () => {
 	describe('generateRandomThread', () => {
 		it('should be triggered when child component prop is triggered', () => {
 			const generateRandomThread = jest.fn();
-			const props = createTestProps({ generateRandomThread });
+			const props = createTestProps({
+				generateRandomThread
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const child = getSpecWrapper(element, 'dashboard-random-thread-card');
 			child.props().generateRandomThread();
@@ -102,9 +190,11 @@ describe('behavior', () => {
 	describe('openUntrackThreadModal', () => {
 		it('should be triggered when child component prop is triggered', () => {
 			const openUntrackThreadModal = jest.fn();
-			const props = createTestProps({ openUntrackThreadModal });
+			const props = createTestProps({
+				openUntrackThreadModal
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const child = getSpecWrapper(element, 'dashboard-recent-activity-card');
 			child.props().openUntrackThreadModal();
@@ -114,9 +204,11 @@ describe('behavior', () => {
 	describe('showDashboardThreadDistributionToggle', () => {
 		it('should be triggered when child component prop is triggered', () => {
 			const updateUserSettings = jest.fn();
-			const props = createTestProps({ updateUserSettings });
+			const props = createTestProps({
+				updateUserSettings
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const child = getSpecWrapper(element, 'dashboard-at-a-glance-card');
 			child.props().showDashboardThreadDistributionToggle();
@@ -124,11 +216,16 @@ describe('behavior', () => {
 		});
 		it('should dispatch user settings update with thread distribution property reversed', () => {
 			const updateUserSettings = jest.fn();
-			const props = createTestProps({ updateUserSettings });
-			const state = createTestState({
-				userSettings: { settingsId: 5, showDashboardThreadDistribution: false }
+			const props = createTestProps({
+				updateUserSettings
 			});
-			const jsx = (<Dashboard {...props} />);
+			const state = createTestState({
+				userSettings: {
+					settingsId: 5,
+					showDashboardThreadDistribution: false
+				}
+			});
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			element.instance().showDashboardThreadDistributionToggle();
 			expect(updateUserSettings).toHaveBeenCalledTimes(1);
@@ -141,9 +238,11 @@ describe('behavior', () => {
 	describe('markThreadQueued', () => {
 		it('should be triggered when child component prop is triggered', () => {
 			const upsertThread = jest.fn();
-			const props = createTestProps({ upsertThread });
+			const props = createTestProps({
+				upsertThread
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const child = getSpecWrapper(element, 'dashboard-recent-activity-card');
 			child.props().markThreadQueued();
@@ -151,11 +250,15 @@ describe('behavior', () => {
 		});
 		it('should dispatch thread update with queued date set', () => {
 			const upsertThread = jest.fn();
-			const props = createTestProps({ upsertThread });
+			const props = createTestProps({
+				upsertThread
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
-			element.instance().markThreadQueued({ threadId: 1 });
+			element.instance().markThreadQueued({
+				threadId: 1
+			});
 			expect(upsertThread).toHaveBeenCalledTimes(1);
 			expect(upsertThread).toHaveBeenLastCalledWith({
 				threadId: 1,
@@ -166,21 +269,30 @@ describe('behavior', () => {
 	describe('archiveThread', () => {
 		it('should be triggered when child component prop is triggered', () => {
 			const upsertThread = jest.fn();
-			const props = createTestProps({ upsertThread });
+			const props = createTestProps({
+				upsertThread
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
 			const child = getSpecWrapper(element, 'dashboard-recent-activity-card');
-			child.props().archiveThread({ threadId: 1 });
+			child.props().archiveThread({
+				threadId: 1
+			});
 			expect(upsertThread).toHaveBeenCalledTimes(1);
 		});
 		it('should dispatch thread update with isArchived reversed', () => {
 			const upsertThread = jest.fn();
-			const props = createTestProps({ upsertThread });
+			const props = createTestProps({
+				upsertThread
+			});
 			const state = createTestState();
-			const jsx = (<Dashboard {...props} />);
+			const jsx = <Dashboard {...props} />;
 			const element = shallowWithState(jsx, state).dive();
-			element.instance().archiveThread({ threadId: 1, isArchived: false });
+			element.instance().archiveThread({
+				threadId: 1,
+				isArchived: false
+			});
 			expect(upsertThread).toHaveBeenCalledTimes(1);
 			expect(upsertThread).toHaveBeenLastCalledWith({
 				threadId: 1,
