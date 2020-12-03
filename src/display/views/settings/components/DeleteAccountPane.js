@@ -21,6 +21,6 @@ const DeleteAccountPane = ({ onDeleteAccountClicked }) => {
 			</Card>
 		</TabPane>
 	);
-}
+};
 DeleteAccountPane.propTypes = propTypes;
 export default DeleteAccountPane;

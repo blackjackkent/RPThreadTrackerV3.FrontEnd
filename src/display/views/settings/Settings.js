@@ -37,7 +37,7 @@ const Settings = (props) => {
 	const onDeleteAccountClicked = (e) => {
 		e.preventDefault();
 		props.openDeleteAccountConfirmationModal();
-	}
+	};
 	return (
 		<div className="animated fadeIn static-container settings-container">
 			<Row>

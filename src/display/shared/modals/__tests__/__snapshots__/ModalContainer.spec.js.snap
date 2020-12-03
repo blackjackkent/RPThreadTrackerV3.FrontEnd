@@ -212,6 +212,22 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     submitButtonText="Delete Tag"
     submitCallback={[MockFunction]}
   />
+  <GenericConfirmationModal
+    bodyText={
+      <span>
+        Are you sure you want to delete your account?
+         
+        <strong>
+          This action cannot be undone.
+        </strong>
+         You will be unable to access any tracked characters or threads in the future, unless you create a new account and re-add them.
+      </span>
+    }
+    closeButtonText="Cancel"
+    data={null}
+    headerText="Really Delete Account?"
+    submitButtonText="Confirm Deletion"
+  />
 </div>
 `;
 
@@ -426,6 +442,22 @@ exports[`rendering snapshots should render valid snapshot with missing character
     isModalOpen={true}
     submitButtonText="Delete Tag"
     submitCallback={[MockFunction]}
+  />
+  <GenericConfirmationModal
+    bodyText={
+      <span>
+        Are you sure you want to delete your account?
+         
+        <strong>
+          This action cannot be undone.
+        </strong>
+         You will be unable to access any tracked characters or threads in the future, unless you create a new account and re-add them.
+      </span>
+    }
+    closeButtonText="Cancel"
+    data={null}
+    headerText="Really Delete Account?"
+    submitButtonText="Confirm Deletion"
   />
 </div>
 `;

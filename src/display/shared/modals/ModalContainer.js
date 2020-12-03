@@ -248,9 +248,10 @@ const ModalContainer = (props) => {
 				headerText="Really Delete Account?"
 				bodyText={
 					<span>
-						Are you sure  you want to delete your account? <strong>This action cannot be undone.</strong>{' '} 
-						You will be unable to access any tracked characters or threads in the future,{' '}
-						unless you create a new account and re-add them.
+						Are you sure you want to delete your account?{' '}
+						<strong>This action cannot be undone.</strong> You will be unable to access
+						any tracked characters or threads in the future, unless you create a new
+						account and re-add them.
 					</span>
 				}
 			/>
