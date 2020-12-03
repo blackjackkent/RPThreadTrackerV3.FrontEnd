@@ -46,7 +46,7 @@
 		"jest-when": "^2.3.1",
 		"mini-css-extract-plugin": "^0.4.5",
 		"mkdirp": "^0.5.1",
-		"node-sass": "^4.10.0",
+		"node-sass": "^4.14.1",
 		"prettier": "^2.0.2",
 		"react-test-renderer": "^16.8.6",
 		"redux-saga-test-plan": "^3.7.0",
@@ -73,9 +73,9 @@
 		"dot-prop-immutable": "^1.5.0",
 		"history": "^4.7.2",
 		"immutable": "^4.0.0-rc.12",
-		"jquery": "^3.3.1",
+		"jquery": "^3.5.1",
 		"local-storage": "^1.4.2",
-		"lodash": "^4.17.11",
+		"lodash": "^4.17.20",
 		"promise": "^8.0.2",
 		"prop-types": "^15.6.2",
 		"query-string": "^6.2.0",
@@ -99,7 +99,7 @@
 		"simple-line-icons": "^2.4.1",
 		"styled-components": "^4.1.2",
 		"webpack": "^4.26.1",
-		"webpack-dev-server": "^3.2.1"
+		"webpack-dev-server": "^3.11.0"
 	},
 	"scripts": {
 		"start": "webpack-dev-server --history-api-fallback --config webpack.dev.js",

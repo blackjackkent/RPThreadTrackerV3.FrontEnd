@@ -16,6 +16,7 @@ const getState = (overrides) => ({
 	isUpsertPublicViewModalOpen: false,
 	isDeletePublicViewModalOpen: false,
 	isBulkUpdateTagModalOpen: false,
+	isDeleteAccountConfirmationModalOpen: false,
 	isBulkDeleteTagModalOpen: false,
 	useLightTheme: false,
 	...overrides

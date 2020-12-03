@@ -29,6 +29,10 @@ Object {
       "href": "/settings/change-username",
       "name": "Change Username/Email",
     },
+    "DELETE_ACCOUNT": Object {
+      "href": "/settings/delete-account",
+      "name": "Delete Account",
+    },
   },
   "TOOLS": Object {
     "BROWSER_EXTENSIONS": Object {

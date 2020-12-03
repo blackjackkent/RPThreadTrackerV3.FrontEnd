@@ -25,6 +25,10 @@ export default {
 		CHANGE_USERNAME: {
 			href: '/settings/change-username',
 			name: 'Change Username/Email'
+		},
+		DELETE_ACCOUNT: {
+			href: '/settings/delete-account',
+			name: 'Delete Account'
 		}
 	},
 	TOOLS: {

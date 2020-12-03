@@ -28,6 +28,7 @@ const propTypes = {
 	closeUpsertCharacterModal: PropTypes.func.isRequired,
 	closeUpsertPublicViewModal: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
+	closeDeleteAccountConfirmationModal: PropTypes.func.isRequired,
 	deletePublicView: PropTypes.func.isRequired,
 	isBulkUntrackThreadsModalOpen: PropTypes.bool.isRequired,
 	isBulkUpdateTagModalOpen: PropTypes.bool.isRequired,
@@ -38,6 +39,7 @@ const propTypes = {
 	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
 	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
 	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
+	isDeleteAccountConfirmationModalOpen: PropTypes.bool.isRequired,
 	sortedCharacters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	sortedTags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	threadToEdit: PropTypes.shape({
@@ -48,6 +50,7 @@ const propTypes = {
 	upsertCharacter: PropTypes.func.isRequired,
 	upsertPublicView: PropTypes.func.isRequired,
 	upsertThread: PropTypes.func.isRequired,
+	submitUserAccountDeletion: PropTypes.func.isRequired,
 	tagToEdit: PropTypes.shape({
 		selectedTag: PropTypes.string,
 		updatedValue: PropTypes.string
@@ -71,6 +74,7 @@ function mapStateToProps(state) {
 		isDeletePublicViewModalOpen: ui.isDeletePublicViewModalOpen,
 		isBulkUpdateTagModalOpen: ui.isBulkUpdateTagModalOpen,
 		isBulkDeleteTagModalOpen: ui.isBulkDeleteTagModalOpen,
+		isDeleteAccountConfirmationModalOpen: ui.isDeleteAccountConfirmationModalOpen,
 		characterToEdit,
 		threadToEdit,
 		bulkThreadsToEdit,
@@ -97,6 +101,7 @@ const ModalContainer = (props) => {
 		closeUpsertCharacterModal,
 		closeUpsertPublicViewModal,
 		closeUpsertThreadModal,
+		closeDeleteAccountConfirmationModal,
 		deletePublicView,
 		isBulkUntrackThreadsModalOpen,
 		isBulkUpdateTagModalOpen,
@@ -107,6 +112,7 @@ const ModalContainer = (props) => {
 		isUpsertCharacterModalOpen,
 		isUpsertPublicViewModalOpen,
 		isUpsertThreadModalOpen,
+		isDeleteAccountConfirmationModalOpen,
 		sortedCharacters,
 		sortedTags,
 		threadToEdit,
@@ -116,7 +122,8 @@ const ModalContainer = (props) => {
 		upsertPublicView,
 		upsertThread,
 		viewToEdit,
-		tagToEdit
+		tagToEdit,
+		submitUserAccountDeletion
 	} = props;
 	return (
 		<div>
@@ -231,6 +238,23 @@ const ModalContainer = (props) => {
 					</span>
 				}
 			/>
+			<GenericConfirmationModal
+				isModalOpen={isDeleteAccountConfirmationModalOpen}
+				submitCallback={submitUserAccountDeletion}
+				submitButtonText="Confirm Deletion"
+				closeCallback={closeDeleteAccountConfirmationModal}
+				closeButtonText="Cancel"
+				data={null}
+				headerText="Really Delete Account?"
+				bodyText={
+					<span>
+						Are you sure you want to delete your account?{' '}
+						<strong>This action cannot be undone.</strong> You will be unable to access
+						any tracked characters or threads in the future, unless you create a new
+						account and re-add them.
+					</span>
+				}
+			/>
 		</div>
 	);
 };
@@ -249,7 +273,9 @@ export default connect(mapStateToProps, {
 	closeUpsertCharacterModal: actions.closeUpsertCharacterModal,
 	closeUpsertPublicViewModal: actions.closeUpsertPublicViewModal,
 	closeUpsertThreadModal: actions.closeUpsertThreadModal,
+	closeDeleteAccountConfirmationModal: actions.closeDeleteAccountConfirmationModal,
 	deletePublicView: actions.deletePublicView,
+	submitUserAccountDeletion: actions.submitUserAccountDeletion,
 	untrackCharacter: actions.untrackCharacter,
 	untrackThread: actions.untrackThread,
 	upsertCharacter: actions.upsertCharacter,
