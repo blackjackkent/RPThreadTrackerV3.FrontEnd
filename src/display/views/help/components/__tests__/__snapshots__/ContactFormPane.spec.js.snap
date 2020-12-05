@@ -18,117 +18,34 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       className="card-body"
       tag="div"
     >
-      <AvForm
-        data-spec="contact-form-container"
-        method="get"
-        model={Object {}}
-        onInvalidSubmit={[Function]}
-        onKeyDown={[Function]}
-        onSubmit={[Function]}
-        onValidSubmit={[Function]}
-        tag={[Function]}
-        validationEvent={
-          Array [
-            "onChange",
-            "onInput",
-          ]
-        }
+      <p>
+        Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Click th ebutton below to open an issue on GitHub with your message.
+      </p>
+      <div
+        className="text-center"
       >
-        <p>
-          Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Please feel free to send me a message, or visit the tracker
-           
-          <a
-            href="http://tblrthreadtracker.tumblr.com"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            support blog
-          </a>
-          .
-        </p>
-        <FormGroup
-          row={true}
-          tag="div"
+        <a
+          className="btn btn-primary"
+          href="https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd/issues/new"
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <Col
-            md="3"
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            <Label
-              htmlFor="textarea-input"
-              tag="label"
-              widths={
-                Array [
-                  "xs",
-                  "sm",
-                  "md",
-                  "lg",
-                  "xl",
-                ]
-              }
-            >
-              Message
-            </Label>
-          </Col>
-          <Col
-            md="9"
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-            xs="12"
-          >
-            <Input
-              id="message-textarea"
-              name="Message"
-              onChange={[Function]}
-              placeholder="Enter your message here..."
-              rows="9"
-              type="textarea"
-            />
-          </Col>
-        </FormGroup>
-        <Row
-          tag="div"
+          Go to Github
+        </a>
+      </div>
+      <br />
+      <p>
+        You can also visit the tracker
+         
+        <a
+          href="http://tblrthreadtracker.tumblr.com"
+          rel="noopener noreferrer"
+          target="_blank"
         >
-          <Col
-            className="text-right"
-            tag="div"
-            widths={
-              Array [
-                "xs",
-                "sm",
-                "md",
-                "lg",
-                "xl",
-              ]
-            }
-          >
-            <Button
-              color="primary"
-              tag="button"
-              type="submit"
-            >
-              Submit
-            </Button>
-          </Col>
-        </Row>
-      </AvForm>
+          support blog 
+        </a>
+        to see if your question has recenly been answered.
+      </p>
     </CardBody>
   </Styled(Card)>
 </TabPane>

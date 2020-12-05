@@ -61,28 +61,3 @@ body.light-theme {
 .react-autosuggest__suggestion--highlighted {
 	background-color: #ddd;
 }
-.container-github-button {
-	height: 40px;
-	position: relative;
-}
-
-.center-github-button {
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-ms-transform: translate(-50%, -50%);
-	transform: translate(-50%, -50%);
-}
-.github-issue-link-button {
-	justify-content: center;
-	align-content: center;
-	background-color: skyblue;
-	padding: 10px 24px;
-	border-radius: 12px;
-}
-
-.github-issue-link-button:hover {
-	background-color: #4caf50; /* Green */
-	color: white;
-}
