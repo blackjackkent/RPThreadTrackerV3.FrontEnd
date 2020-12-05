@@ -35,7 +35,11 @@ class ContactFormPane extends React.Component {
 			})
 		}));
 	}
-
+	submitForm() {
+		window.location.assign(
+			'https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd/issues/new'
+		);
+	}
 	render() {
 		const { submitContactForm } = this.props;
 		const { formData } = this.state;
@@ -48,7 +52,7 @@ class ContactFormPane extends React.Component {
 					<CardBody className="card-body">
 						<AvForm
 							data-spec="contact-form-container"
-							onValidSubmit={() => submitContactForm(formData)}
+							// onValidSubmit={() => submitContactForm(formData)}
 						>
 							<p>
 								Have a suggestion about the site? Encountered a bug? Want to just
@@ -61,7 +65,9 @@ class ContactFormPane extends React.Component {
 								>
 									support blog
 								</a>
-								.
+								. (On "Submit", you will be redirected to this projects repo to file
+								an On "Submit", ypu will be redirected to this projects repo to file
+								an "Issue").
 							</p>
 							<FormGroup row>
 								<Col md="3">
@@ -80,7 +86,11 @@ class ContactFormPane extends React.Component {
 							</FormGroup>
 							<Row>
 								<Col className="text-right">
-									<Button type="submit" color="primary">
+									<Button
+										type="submit"
+										onClick={this.submitForm.bind(this)}
+										color="primary"
+									>
 										Submit
 									</Button>
 								</Col>
