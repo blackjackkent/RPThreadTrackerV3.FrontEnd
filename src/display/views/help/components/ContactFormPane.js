@@ -1,15 +1,5 @@
 import React from 'react';
-import {
-	Row,
-	Col,
-	TabPane,
-	Button,
-	FormGroup,
-	Input,
-	Label,
-	CardHeader,
-	CardBody
-} from 'reactstrap';
+import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 // import PropTypes from 'prop-types';
 import Card from '../../../shared/styled/Card';
@@ -59,8 +49,23 @@ class ContactFormPane extends React.Component {
 						>
 							<p>
 								Have a suggestion about the site? Encountered a bug? Want to just
-								say hi or give me a hug? Please feel free to send me a message, or
-								visit the tracker{' '}
+								say hi or give me a hug? Click th ebutton below to open an issue on
+								GitHub with your message.
+							</p>
+							<div className="container-github-button">
+								<div className="center-github-button">
+									<button
+										type="submit"
+										className="github-issue-link-button"
+										onClick={this.submitForm}
+									>
+										Go to Github
+									</button>
+								</div>
+							</div>
+							<br />
+							<p>
+								You can also visit the tracker{' '}
 								<a
 									target="_blank"
 									rel="noopener noreferrer"
@@ -68,10 +73,9 @@ class ContactFormPane extends React.Component {
 								>
 									support blog
 								</a>
-								. (On &apos;Submit&apos;, you will be redirected to this projects
-								repo to file an &apos;Issue&apos;).
+								to see if your question has recenly been answered.
 							</p>
-							<FormGroup row>
+							{/* <FormGroup row>
 								<Col md="3">
 									<Label htmlFor="textarea-input">Message</Label>
 								</Col>
@@ -92,7 +96,7 @@ class ContactFormPane extends React.Component {
 										Submit
 									</Button>
 								</Col>
-							</Row>
+							</Row> */}
 						</AvForm>
 					</CardBody>
 				</Card>
