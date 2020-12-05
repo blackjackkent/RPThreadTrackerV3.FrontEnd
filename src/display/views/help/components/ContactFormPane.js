@@ -11,16 +11,17 @@ import {
 	CardBody
 } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Card from '../../../shared/styled/Card';
 
-const propTypes = {
-	submitContactForm: PropTypes.func.isRequired
-};
+// const propTypes = {
+// 	// submitContactForm: PropTypes.func.isRequired
+// };
 class ContactFormPane extends React.Component {
 	constructor() {
 		super();
 		this.handleInputChange = this.handleInputChange.bind(this);
+		this.submitForm = this.submitForm.bind(this);
 		this.state = {
 			formData: {}
 		};
@@ -35,14 +36,16 @@ class ContactFormPane extends React.Component {
 			})
 		}));
 	}
+
 	submitForm() {
 		window.location.assign(
 			'https://github.com/blackjackkent/RPThreadTrackerV3.FrontEnd/issues/new'
 		);
 	}
+
 	render() {
-		const { submitContactForm } = this.props;
-		const { formData } = this.state;
+		// const { submitContactForm } = this.props;
+		// const { formData } = this.state;
 		return (
 			<TabPane tabId="contact">
 				<Card>
@@ -65,9 +68,8 @@ class ContactFormPane extends React.Component {
 								>
 									support blog
 								</a>
-								. (On "Submit", you will be redirected to this projects repo to file
-								an On "Submit", ypu will be redirected to this projects repo to file
-								an "Issue").
+								. (On &apos;Submit&apos;, you will be redirected to this projects
+								repo to file an &apos;Issue&apos;).
 							</p>
 							<FormGroup row>
 								<Col md="3">
@@ -86,11 +88,7 @@ class ContactFormPane extends React.Component {
 							</FormGroup>
 							<Row>
 								<Col className="text-right">
-									<Button
-										type="submit"
-										onClick={this.submitForm.bind(this)}
-										color="primary"
-									>
+									<Button type="submit" onClick={this.submitForm} color="primary">
 										Submit
 									</Button>
 								</Col>
@@ -102,5 +100,5 @@ class ContactFormPane extends React.Component {
 		);
 	}
 }
-ContactFormPane.propTypes = propTypes;
+// ContactFormPane.propTypes = propTypes;
 export default ContactFormPane;
