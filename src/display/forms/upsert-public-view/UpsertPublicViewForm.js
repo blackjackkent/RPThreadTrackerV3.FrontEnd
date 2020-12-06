@@ -11,7 +11,7 @@ const propTypes = {
 		id: PropTypes.string,
 		name: PropTypes.string,
 		slug: PropTypes.string,
-		columns: PropTypes.arrayOf(PropTypes.shape({})),
+		columns: PropTypes.arrayOf(PropTypes.string),
 		sortKey: PropTypes.string,
 		sortDescending: PropTypes.bool,
 		turnFilter: PropTypes.shape({
@@ -20,8 +20,8 @@ const propTypes = {
 			includeQueued: PropTypes.bool,
 			includeArchived: PropTypes.bool
 		}),
-		characterIds: PropTypes.arrayOf(PropTypes.string),
-		tags: PropTypes.arrayOf(PropTypes.shape({}))
+		characterIds: PropTypes.arrayOf(PropTypes.number),
+		tags: PropTypes.arrayOf(PropTypes.string)
 	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,

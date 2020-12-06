@@ -31,6 +31,7 @@
     - provider: Environment
       name: RPThreadTrackerV3-FrontEnd-Staging
   on_success:
+    - bash <(curl -s https://codecov.io/bash)
     - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
     - ps: ./send.ps1 success $env:WEBHOOK_URL
   on_failure:
@@ -69,6 +70,7 @@
     - provider: Environment
       name: RPThreadTrackerV3-FrontEnd-Prod
   on_success:
+    - bash <(curl -s https://codecov.io/bash)
     - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
     - ps: ./send.ps1 success $env:WEBHOOK_URL
   on_failure:

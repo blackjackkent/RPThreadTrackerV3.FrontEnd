@@ -18,7 +18,7 @@ const createTestProps = (propOverrides) => ({
 	submitUpsertPublicView: jest.fn(),
 	closeUpsertPublicViewModal: jest.fn(),
 	viewToEdit: {
-		id: 1
+		id: '1'
 	},
 	characters: [
 		{
@@ -61,7 +61,7 @@ describe('behavior', () => {
 		it('should be called when form is submitted', () => {
 			const submitUpsertPublicView = jest.fn();
 			const viewToEdit = {
-				id: 2
+				id: '2'
 			};
 			const props = createTestProps({
 				submitUpsertPublicView,
@@ -96,7 +96,7 @@ describe('behavior', () => {
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
 			expect(submitUpsertPublicView).toHaveBeenLastCalledWith({
-				id: 1,
+				id: '1',
 				slug: 'my-slug'
 			});
 		});
@@ -120,7 +120,7 @@ describe('behavior', () => {
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
 			expect(submitUpsertPublicView).toHaveBeenLastCalledWith({
-				id: 1,
+				id: '1',
 				columns: ['value1', 'value2']
 			});
 		});
@@ -144,7 +144,7 @@ describe('behavior', () => {
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
 			expect(submitUpsertPublicView).toHaveBeenLastCalledWith({
-				id: 1,
+				id: '1',
 				turnFilter: {
 					includeMyTurn: true
 				}
@@ -153,7 +153,7 @@ describe('behavior', () => {
 		it('should handle turnfilter checkbox update if turnfilter is already partially set', () => {
 			const submitUpsertPublicView = jest.fn();
 			const viewToEdit = {
-				id: 1,
+				id: '1',
 				turnFilter: {
 					includeTheirTurn: false
 				}
@@ -176,7 +176,7 @@ describe('behavior', () => {
 			form.prop('onValidSubmit')();
 			expect(submitUpsertPublicView).toHaveBeenCalledTimes(1);
 			expect(submitUpsertPublicView).toHaveBeenLastCalledWith({
-				id: 1,
+				id: '1',
 				turnFilter: {
 					includeMyTurn: true,
 					includeTheirTurn: false
@@ -188,7 +188,7 @@ describe('behavior', () => {
 		it('should set view to edit', () => {
 			const submitUpsertPublicView = jest.fn();
 			const viewToEdit = {
-				id: 2
+				id: '2'
 			};
 			const props = createTestProps({
 				submitUpsertPublicView

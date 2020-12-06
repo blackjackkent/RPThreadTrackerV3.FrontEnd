@@ -25,6 +25,7 @@ jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav')
 // #endregion mocks
 
 const createTestProps = (propOverrides) => ({
+	openDeleteAccountConfirmationModal: jest.fn(),
 	submitUserChangePassword: jest.fn(),
 	submitUserAccountInfo: jest.fn(),
 	match: {

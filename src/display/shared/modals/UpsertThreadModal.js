@@ -13,7 +13,7 @@ const propTypes = {
 	submitUpsertThread: PropTypes.func.isRequired,
 	closeUpsertThreadModal: PropTypes.func.isRequired,
 	threadToEdit: PropTypes.shape({
-		threadId: PropTypes.string
+		threadId: PropTypes.number
 	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
