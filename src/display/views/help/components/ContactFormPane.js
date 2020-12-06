@@ -18,7 +18,7 @@ class ContactFormPane extends React.Component {
 					<CardBody className="card-body">
 						<p>
 							Have a suggestion about the site? Encountered a bug? Want to just say hi
-							or give me a hug? Click th ebutton below to open an issue on GitHub with
+							or give me a hug? Click the button below to open an issue on GitHub with
 							your message.
 						</p>
 						<div className="text-center">
@@ -41,7 +41,7 @@ class ContactFormPane extends React.Component {
 							>
 								support blog&nbsp;
 							</a>
-							to see if your question has recenly been answered.
+							to see if your question has recently been answered.
 						</p>
 					</CardBody>
 				</Card>
