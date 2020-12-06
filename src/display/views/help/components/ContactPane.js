@@ -2,7 +2,7 @@ import React from 'react';
 import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 
-class ContactFormPane extends React.Component {
+class ContactPane extends React.Component {
 	constructor() {
 		super();
 		this.state = {};
@@ -50,4 +50,4 @@ class ContactFormPane extends React.Component {
 	}
 }
 
-export default ContactFormPane;
+export default ContactPane;

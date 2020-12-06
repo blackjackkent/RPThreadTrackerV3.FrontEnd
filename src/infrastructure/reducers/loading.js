@@ -30,9 +30,6 @@ import {
 	UPSERT_CHARACTER,
 	UPSERT_CHARACTER_FAILURE,
 	UPSERT_CHARACTER_SUCCESS,
-	SUBMIT_CONTACT_FORM,
-	SUBMIT_CONTACT_FORM_FAILURE,
-	SUBMIT_CONTACT_FORM_SUCCESS,
 	UPSERT_PUBLIC_VIEW,
 	UPSERT_PUBLIC_VIEW_FAILURE,
 	UPSERT_PUBLIC_VIEW_SUCCESS,
@@ -87,7 +84,6 @@ const defaultState = {
 	changeAccountInfoLoading: false,
 	changePasswordLoading: false,
 	charactersLoading: false,
-	contactFormLoading: false,
 	deletePublicViewLoading: false,
 	exportThreadsLoading: false,
 	forgotPasswordLoading: false,
@@ -203,17 +199,6 @@ function loading(state = defaultState, action) {
 		case FETCHED_CHARACTERS_SUCCESS:
 			return Object.assign({}, state, {
 				charactersLoading: false
-			});
-		// #endregion
-		// #region Contact Form
-		case SUBMIT_CONTACT_FORM:
-			return Object.assign({}, state, {
-				contactFormLoading: true
-			});
-		case SUBMIT_CONTACT_FORM_FAILURE:
-		case SUBMIT_CONTACT_FORM_SUCCESS:
-			return Object.assign({}, state, {
-				contactFormLoading: false
 			});
 		// #endregion
 		// #region Delete Public View
