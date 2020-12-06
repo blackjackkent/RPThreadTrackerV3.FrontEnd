@@ -100,6 +100,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           }
         />
         <DeleteAccountPane
+          data-spec="delete-account-pane"
           onDeleteAccountClicked={[Function]}
         />
       </Styled(TabContent)>
