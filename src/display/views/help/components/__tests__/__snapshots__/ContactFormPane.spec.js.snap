@@ -19,7 +19,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
       tag="div"
     >
       <p>
-        Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Click th ebutton below to open an issue on GitHub with your message.
+        Have a suggestion about the site? Encountered a bug? Want to just say hi or give me a hug? Click the button below to open an issue on GitHub with your message.
       </p>
       <div
         className="text-center"
@@ -44,7 +44,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         >
           support blog 
         </a>
-        to see if your question has recenly been answered.
+        to see if your question has recently been answered.
       </p>
     </CardBody>
   </Styled(Card)>
