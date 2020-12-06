@@ -11,12 +11,13 @@ const propTypes = {
 	closeButtonText: PropTypes.string,
 	headerText: PropTypes.string.isRequired,
 	bodyText: PropTypes.node.isRequired,
-	data: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.array]).isRequired
+	data: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.array])
 };
 
 const defaultProps = {
 	submitButtonText: 'OK',
-	closeButtonText: 'Cancel'
+	closeButtonText: 'Cancel',
+	data: null
 };
 
 const GenericConfirmationModal = (props) => {
