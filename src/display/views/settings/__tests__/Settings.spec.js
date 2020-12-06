@@ -74,4 +74,18 @@ describe('rendering', () => {
 			expect(options).toHaveLength(2);
 		});
 	});
+	describe('onDeleteAccountClicked', () => {
+		it('should trigger modal open action', () => {
+			const openDeleteAccountConfirmationModal = jest.fn();
+			const props = createTestProps({
+				openDeleteAccountConfirmationModal
+			});
+			const state = createTestState();
+			const jsx = <Settings {...props} />;
+			const element = shallowWithState(jsx, state).dive();
+			const deletePane = getSpecWrapper(element, 'delete-account-pane');
+			deletePane.props().onDeleteAccountClicked({ preventDefault: jest.fn() });
+			expect(openDeleteAccountConfirmationModal).toHaveBeenCalledTimes(1);
+		});
+	});
 });

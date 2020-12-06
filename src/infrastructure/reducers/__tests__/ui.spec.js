@@ -391,6 +391,34 @@ describe('action handling', () => {
 		expect(result.isDeletePublicViewModalOpen).toBe(false);
 		expect(result2.isDeletePublicViewModalOpen).toBe(false);
 	});
+	it('should handle OPEN_DELETE_ACCOUNT_CONFIRMATION_MODAL', () => {
+		const action = {
+			type: actions.OPEN_DELETE_ACCOUNT_CONFIRMATION_MODAL
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(
+			getState({
+				isDeleteAccountConfirmationModalOpen: true
+			}),
+			action
+		);
+		expect(result.isDeleteAccountConfirmationModalOpen).toBe(true);
+		expect(result2.isDeleteAccountConfirmationModalOpen).toBe(true);
+	});
+	it('should handle CLOSE_DELETE_ACCOUNT_CONFIRMATION_MODAL', () => {
+		const action = {
+			type: actions.CLOSE_DELETE_ACCOUNT_CONFIRMATION_MODAL
+		};
+		const result = ui(getState(), action);
+		const result2 = ui(
+			getState({
+				isDeleteAccountConfirmationModalOpen: true
+			}),
+			action
+		);
+		expect(result.isDeleteAccountConfirmationModalOpen).toBe(false);
+		expect(result2.isDeleteAccountConfirmationModalOpen).toBe(false);
+	});
 	it('should handle OPEN_BULK_UPDATE_TAG_MODAL', () => {
 		const action = {
 			type: actions.OPEN_BULK_UPDATE_TAG_MODAL

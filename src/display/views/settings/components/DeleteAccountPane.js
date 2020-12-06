@@ -14,7 +14,12 @@ const DeleteAccountPane = ({ onDeleteAccountClicked }) => {
 					<i className="fas fa-trash-alt" /> Delete Account
 				</CardHeader>
 				<CardBody className="card-body text-center">
-					<Button type="submit" color="danger" onClick={onDeleteAccountClicked}>
+					<Button
+						data-spec="delete-account-button"
+						type="submit"
+						color="danger"
+						onClick={onDeleteAccountClicked}
+					>
 						Delete Account
 					</Button>
 				</CardBody>
