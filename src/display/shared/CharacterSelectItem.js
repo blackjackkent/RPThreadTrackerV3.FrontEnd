@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
 	character: PropTypes.shape({
-		characterId: PropTypes.string,
+		characterId: PropTypes.number,
 		urlIdentifier: PropTypes.string,
 		characterName: PropTypes.string
 	}).isRequired

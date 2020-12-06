@@ -11,7 +11,7 @@ const propTypes = {
 	submitUpsertCharacter: PropTypes.func.isRequired,
 	closeUpsertCharacterModal: PropTypes.func.isRequired,
 	characterToEdit: PropTypes.shape({
-		characterId: PropTypes.string
+		characterId: PropTypes.number
 	}).isRequired
 };
 

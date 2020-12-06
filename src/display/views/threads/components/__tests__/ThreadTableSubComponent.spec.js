@@ -7,11 +7,11 @@ import ThreadTableSubComponent from '../ThreadTableSubComponent';
 const createTestProps = (propOverrides) => ({
 	tags: [
 		{
-			threadTagId: 1,
+			threadTagId: '1',
 			tagText: 'tag1'
 		},
 		{
-			threadTagId: 2,
+			threadTagId: '2',
 			tagText: 'tag2'
 		}
 	],

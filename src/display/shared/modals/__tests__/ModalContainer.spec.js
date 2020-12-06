@@ -36,6 +36,7 @@ const createTestProps = (propOverrides) => ({
 	closeBulkUntrackThreadsModal: jest.fn(),
 	closeBulkUpdateTagModal: jest.fn(),
 	closeBulkDeleteTagModal: jest.fn(),
+	closeDeleteAccountConfirmationModal: jest.fn(),
 	closeDeletePublicViewModal: jest.fn(),
 	closeUntrackCharacterModal: jest.fn(),
 	closeUntrackThreadModal: jest.fn(),
@@ -44,6 +45,7 @@ const createTestProps = (propOverrides) => ({
 	closeUpsertThreadModal: jest.fn(),
 	deletePublicView: jest.fn(),
 	isBulkUntrackThreadsModalOpen: true,
+	isDeleteAccountConfirmationModalOpen: true,
 	isDeletePublicViewModalOpen: true,
 	isUntrackCharacterModalOpen: true,
 	isUntrackThreadModalOpen: true,
@@ -55,6 +57,7 @@ const createTestProps = (propOverrides) => ({
 	upsertCharacter: jest.fn(),
 	upsertPublicView: jest.fn(),
 	upsertThread: jest.fn(),
+	submitUserAccountDeletion: jest.fn(),
 	...propOverrides
 });
 
@@ -66,6 +69,7 @@ const createTestState = (stateOverrides) => ({
 		isUpsertThreadModalOpen: true,
 		isUntrackCharacterModalOpen: true,
 		isUpsertPublicViewModalOpen: true,
+		isDeleteAccountConfirmationModalOpen: true,
 		isDeletePublicViewModalOpen: true,
 		isBulkUpdateTagModalOpen: true,
 		isBulkDeleteTagModalOpen: true
