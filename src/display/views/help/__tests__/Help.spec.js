@@ -7,7 +7,7 @@ import Help from '../Help';
 // #region mocks
 jest.mock('../components/AboutTrackerPane', () => 'AboutTrackerPane');
 jest.mock('../components/SupportGuidesPane', () => 'SupportGuidesPane');
-jest.mock('../components/ContactFormPane', () => 'ContactFormPane');
+jest.mock('../components/ContactPane', () => 'ContactPane');
 jest.mock('../components/FAQPane', () => 'FAQPane');
 jest.mock('../../../../infrastructure/actions', () => ({}));
 jest.mock('../../../../infrastructure/constants/tabs', () => ({
@@ -27,7 +27,6 @@ jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav')
 // #endregion mocks
 
 const createTestProps = (propOverrides) => ({
-	submitContactForm: jest.fn(),
 	match: {
 		url: '/help/tab1',
 		params: {

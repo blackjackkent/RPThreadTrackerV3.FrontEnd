@@ -3,7 +3,8 @@ import colors from '../../../infrastructure/constants/colors';
 
 export default styled.aside`
 	color: ${colors.GRAY_100};
-	background: ${colors.GRAY_900} a {
+	background: ${colors.GRAY_900};
+	a {
 		color: ${colors.LIGHT_BLUE};
 	}
 	hr {
@@ -16,7 +17,8 @@ export default styled.aside`
 	}
 	.light-theme & {
 		color: ${colors.GRAY_800};
-		background: ${colors.GRAY_050} a {
+		background: ${colors.GRAY_050};
+		a {
 			color: ${colors.BASE_BLUE};
 		}
 		hr {

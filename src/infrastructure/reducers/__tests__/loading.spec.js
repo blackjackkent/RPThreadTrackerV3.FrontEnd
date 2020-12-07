@@ -11,7 +11,6 @@ const getState = (overrides) => ({
 	changeAccountInfoLoading: false,
 	changePasswordLoading: false,
 	charactersLoading: false,
-	contactFormLoading: false,
 	deletePublicViewLoading: false,
 	exportThreadsLoading: false,
 	forgotPasswordLoading: false,
@@ -312,35 +311,6 @@ describe('action handling', () => {
 			};
 			const result = loading(initialState, action);
 			expect(result.charactersLoading).toBe(false);
-		});
-	});
-	describe('contact form', () => {
-		it('should handle SUBMIT_CONTACT_FORM', () => {
-			const action = {
-				type: actions.SUBMIT_CONTACT_FORM
-			};
-			const result = loading(getState(), action);
-			expect(result.contactFormLoading).toBe(true);
-		});
-		it('should handle SUBMIT_CONTACT_FORM_FAILURE', () => {
-			const initialState = getState({
-				contactFormLoading: true
-			});
-			const action = {
-				type: actions.SUBMIT_CONTACT_FORM_FAILURE
-			};
-			const result = loading(initialState, action);
-			expect(result.contactFormLoading).toBe(false);
-		});
-		it('should handle SUBMIT_CONTACT_FORM_FAILURE', () => {
-			const initialState = getState({
-				contactFormLoading: true
-			});
-			const action = {
-				type: actions.SUBMIT_CONTACT_FORM_FAILURE
-			};
-			const result = loading(initialState, action);
-			expect(result.contactFormLoading).toBe(false);
 		});
 	});
 	describe('delete public view', () => {

@@ -175,34 +175,6 @@ describe('saga behavior', () => {
 			});
 		});
 	});
-	describe('SUBMIT_CONTACT_FORM_SUCCESS', () => {
-		it('should display success message', () => {
-			const action = {
-				type: actions.SUBMIT_CONTACT_FORM_SUCCESS
-			};
-			const saga = new SagaTestWrapper(toastrSaga);
-			return saga.execute(action).then(() => {
-				expect(toastr.success).toHaveBeenCalledTimes(1);
-				expect(toastr.success).toHaveBeenLastCalledWith(
-					"Thanks! Your message has been submitted and we'll get back to you as soon as possible."
-				);
-			});
-		});
-	});
-	describe('SUBMIT_CONTACT_FORM_FAILURE', () => {
-		it('should display error message', () => {
-			const action = {
-				type: actions.SUBMIT_CONTACT_FORM_FAILURE
-			};
-			const saga = new SagaTestWrapper(toastrSaga);
-			return saga.execute(action).then(() => {
-				expect(toastr.error).toHaveBeenCalledTimes(1);
-				expect(toastr.error).toHaveBeenLastCalledWith(
-					'There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.'
-				);
-			});
-		});
-	});
 	describe('SUBMIT_USER_CHANGE_PASSWORD_FAILURE', () => {
 		it('should display error message with action data', () => {
 			const action = {

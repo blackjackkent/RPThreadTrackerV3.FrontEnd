@@ -46,7 +46,7 @@ export default styled.div`
 
 	.random-thread-generator-card,
 	.patreon-card {
-		height: 180px;
+		height: 230px;
 	}
 	.random-thread-generator-card .card-body,
 	.patreon-card .card-body {
@@ -68,6 +68,10 @@ export default styled.div`
 	.dashboard-card-center-message {
 		text-align: center;
 		padding: 30px;
+	}
+
+	.patreon-card a {
+		margin-bottom: 20px;
 	}
 
 	@media (min-width: 768px) {

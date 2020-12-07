@@ -322,16 +322,6 @@ export {
 	bulkDeleteTagSuccess
 } from './tags/bulkDeleteTag';
 
-// Help
-export {
-	SUBMIT_CONTACT_FORM_FAILURE,
-	SUBMIT_CONTACT_FORM_SUCCESS,
-	SUBMIT_CONTACT_FORM,
-	submitContactForm,
-	submitContactFormFailure,
-	submitContactFormSuccess
-} from './help/submitContactForm';
-
 // Public
 export {
 	DELETE_PUBLIC_VIEW_FAILURE,

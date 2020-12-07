@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AboutTrackerPane from './components/AboutTrackerPane';
 import SupportGuidesPane from './components/SupportGuidesPane';
-import ContactFormPane from './components/ContactFormPane';
-import * as actions from '../../../infrastructure/actions';
+import ContactPane from './components/ContactPane';
 import tabs from '../../../infrastructure/constants/tabs';
 import TabContent from '../../shared/styled/TabContent';
 import StaticTabNav from '../../shared/static/StaticTabNav';
@@ -13,7 +12,6 @@ import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import FAQPane from './components/FAQPane';
 
 const propTypes = {
-	submitContactForm: PropTypes.func.isRequired,
 	match: PropTypes.shape({
 		url: PropTypes.string,
 		params: PropTypes.shape({
@@ -27,7 +25,7 @@ function mapStateToProps() {
 }
 
 const Help = (props) => {
-	const { submitContactForm, match } = props;
+	const { match } = props;
 	const options = Object.values(tabs.HELP);
 	return (
 		<div className="animated fadeIn static-container help-container">
@@ -49,7 +47,7 @@ const Help = (props) => {
 						<AboutTrackerPane />
 						<SupportGuidesPane />
 						<FAQPane />
-						<ContactFormPane submitContactForm={submitContactForm} />
+						<ContactPane />
 					</TabContent>
 				</Col>
 			</Row>
@@ -58,6 +56,4 @@ const Help = (props) => {
 };
 
 Help.propTypes = propTypes;
-export default connect(mapStateToProps, {
-	submitContactForm: actions.submitContactForm
-})(Help);
+export default connect(mapStateToProps)(Help);

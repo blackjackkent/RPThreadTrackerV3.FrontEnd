@@ -18,7 +18,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
     ☰
   </NavbarToggler>
   <Link
-    className="navbar-brand"
+    className="d-none d-sm-inline-block navbar-brand"
     href="/"
     replace={false}
     to="/"

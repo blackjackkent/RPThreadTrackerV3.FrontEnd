@@ -59,13 +59,6 @@ describe('behavior', () => {
 		const result = getIsLoadingIconVisible.resultFunc(loading);
 		expect(result).toBe(true);
 	});
-	it('should return true if contactFormLoading is true', () => {
-		const loading = {
-			contactFormLoading: true
-		};
-		const result = getIsLoadingIconVisible.resultFunc(loading);
-		expect(result).toBe(true);
-	});
 	it('should return true if deletePublicViewLoading is true', () => {
 		const loading = {
 			deletePublicViewLoading: true

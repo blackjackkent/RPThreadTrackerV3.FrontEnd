@@ -221,7 +221,21 @@ describe('behavior', () => {
 				testProp: 'test1'
 			});
 			const trProps = element.instance().getTrProps({}, rowInfo);
-			expect(typeof trProps.style.backgroundColor).toBe('string');
+			expect(trProps.style.backgroundColor).toBe('rgba(64, 140, 228, 0.5)');
+		});
+		it('should color selected rows with light theme', () => {
+			const props = createTestProps({ useLightTheme: true });
+			const rowInfo = {
+				original: props.data[0]
+			};
+			const jsx = <CheckboxTable {...props} />;
+			const element = shallow(jsx);
+			element.instance().toggleSelection(1, null, {
+				_id: 1,
+				testProp: 'test1'
+			});
+			const trProps = element.instance().getTrProps({}, rowInfo);
+			expect(trProps.style.backgroundColor).toBe('rgba(64, 140, 228, 0.3)');
 		});
 	});
 	describe('clearSelection', () => {

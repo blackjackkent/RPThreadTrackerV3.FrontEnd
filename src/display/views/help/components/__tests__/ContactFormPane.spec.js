@@ -1,18 +1,17 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import ContactFormPane from '../ContactFormPane';
+import ContactPane from '../ContactPane';
 // #endregion imports
 
 const createTestProps = (propOverrides) => ({
-	submitContactForm: jest.fn(),
 	...propOverrides
 });
 
 describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
-			const element = shallow(<ContactFormPane {...createTestProps()} />);
+			const element = shallow(<ContactPane {...createTestProps()} />);
 			expect(element).toMatchSnapshot();
 		});
 	});
