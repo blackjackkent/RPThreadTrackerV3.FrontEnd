@@ -7,6 +7,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/r4fylvaq1gmepf82?svg=true)](https://ci.appveyor.com/project/blackjackkent/rpthreadtrackerv3-frontend)
 [![codecov](https://codecov.io/gh/blackjackkent/RPThreadTrackerV3.FrontEnd/branch/development/graph/badge.svg)](https://codecov.io/gh/blackjackkent/RPThreadTrackerV3.FrontEnd)
+[![Discord](https://img.shields.io/discord/375365160057176064?color=7389D8&label=Discord&logo=discord)](https://discord.gg/k4gDad5)
+
 
 This is a React/Redux Javascript application which makes up the client-side portion of RPThreadTracker V3, a web application for members of the Tumblr collaborative writing community.
 

@@ -13,8 +13,6 @@ import {
 	UNTRACK_CHARACTER_FAILURE,
 	SUBMIT_USER_FORGOT_PASSWORD_SUCCESS,
 	SUBMIT_USER_RESET_PASSWORD_SUCCESS,
-	SUBMIT_CONTACT_FORM_SUCCESS,
-	SUBMIT_CONTACT_FORM_FAILURE,
 	SUBMIT_USER_CHANGE_PASSWORD_FAILURE,
 	SUBMIT_USER_CHANGE_PASSWORD_SUCCESS,
 	SUBMIT_USER_ACCOUNT_INFO_FAILURE,
@@ -72,18 +70,6 @@ function* displayForgotPasswordSuccess() {
 
 function* displayResetPasswordSuccess() {
 	toastr.success('Success. You can now log in with your updated password');
-}
-
-function* displaySubmitContactFormSuccess() {
-	toastr.success(
-		"Thanks! Your message has been submitted and we'll get back to you as soon as possible."
-	);
-}
-
-function* displaySubmitContactFormError() {
-	toastr.error(
-		'There was a problem submitting your message. Please try again later, or visit our support blog at http://tblrthreadtracker.tumblr.com.'
-	);
 }
 
 function* displayUserChangePasswordError(action) {
@@ -185,8 +171,6 @@ export default function* fetchActiveThreadsSaga() {
 		takeEvery(UNTRACK_CHARACTER_SUCCESS, displayUntrackCharacterSuccess),
 		takeEvery(SUBMIT_USER_FORGOT_PASSWORD_SUCCESS, displayForgotPasswordSuccess),
 		takeEvery(SUBMIT_USER_RESET_PASSWORD_SUCCESS, displayResetPasswordSuccess),
-		takeEvery(SUBMIT_CONTACT_FORM_SUCCESS, displaySubmitContactFormSuccess),
-		takeEvery(SUBMIT_CONTACT_FORM_FAILURE, displaySubmitContactFormError),
 		takeEvery(SUBMIT_USER_CHANGE_PASSWORD_FAILURE, displayUserChangePasswordError),
 		takeEvery(SUBMIT_USER_CHANGE_PASSWORD_SUCCESS, displayUserChangePasswordSuccess),
 		takeEvery(SUBMIT_USER_ACCOUNT_INFO_FAILURE, displayUserAccountInfoError),

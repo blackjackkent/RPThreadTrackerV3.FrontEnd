@@ -91,9 +91,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         <AboutTrackerPane />
         <SupportGuidesPane />
         <FAQPane />
-        <ContactFormPane
-          submitContactForm={[MockFunction]}
-        />
+        <ContactPane />
       </Styled(TabContent)>
     </Col>
   </Row>

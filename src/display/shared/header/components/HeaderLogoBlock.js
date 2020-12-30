@@ -26,7 +26,7 @@ const HeaderLogoBlock = (props) => {
 			>
 				&#9776;
 			</NavbarToggler>
-			<Link href="/" className="navbar-brand" to="/">
+			<Link href="/" className="d-none d-sm-inline-block navbar-brand" to="/">
 				RPTHREADTRACKER
 			</Link>
 			<NavbarToggler

@@ -36,9 +36,6 @@ export { default as fetchCharactersSaga } from './characters/fetchCharactersSaga
 export { default as upsertCharacterSaga } from './characters/upsertCharacterSaga';
 export { default as untrackCharacterSaga } from './characters/untrackCharacterSaga';
 
-// Help
-export { default as submitContactFormSaga } from './help/submitContactFormSaga';
-
 // Public
 export { default as fetchPublicThreadsSaga } from './public/fetchPublicThreadsSaga';
 export { default as fetchPublicThreadsStatusSaga } from './public/fetchPublicThreadsStatusSaga';

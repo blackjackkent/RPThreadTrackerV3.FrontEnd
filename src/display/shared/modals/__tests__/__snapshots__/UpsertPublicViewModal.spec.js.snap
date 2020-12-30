@@ -64,7 +64,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
         }
         viewToEdit={
           Object {
-            "id": 1,
+            "id": "1",
           }
         }
       />

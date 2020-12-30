@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<TabPane
+  tabId="delete-account"
+  tag="div"
+>
+  <Styled(Card)>
+    <CardHeader
+      tag="div"
+    >
+      <i
+        className="fas fa-trash-alt"
+      />
+       Delete Account
+    </CardHeader>
+    <CardBody
+      className="card-body text-center"
+      tag="div"
+    >
+      <Button
+        color="danger"
+        data-spec="delete-account-button"
+        onClick={[MockFunction]}
+        tag="button"
+        type="submit"
+      >
+        Delete Account
+      </Button>
+    </CardBody>
+  </Styled(Card)>
+</TabPane>
+`;

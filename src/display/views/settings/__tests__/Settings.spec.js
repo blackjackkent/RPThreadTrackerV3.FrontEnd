@@ -25,6 +25,7 @@ jest.mock('../../../shared/static/StaticDropdownNav', () => 'StaticDropdownNav')
 // #endregion mocks
 
 const createTestProps = (propOverrides) => ({
+	openDeleteAccountConfirmationModal: jest.fn(),
 	submitUserChangePassword: jest.fn(),
 	submitUserAccountInfo: jest.fn(),
 	match: {
@@ -71,6 +72,20 @@ describe('rendering', () => {
 			const form = getSpecWrapper(element, 'settings-static-tab-nav');
 			const { options } = form.props();
 			expect(options).toHaveLength(2);
+		});
+	});
+	describe('onDeleteAccountClicked', () => {
+		it('should trigger modal open action', () => {
+			const openDeleteAccountConfirmationModal = jest.fn();
+			const props = createTestProps({
+				openDeleteAccountConfirmationModal
+			});
+			const state = createTestState();
+			const jsx = <Settings {...props} />;
+			const element = shallowWithState(jsx, state).dive();
+			const deletePane = getSpecWrapper(element, 'delete-account-pane');
+			deletePane.props().onDeleteAccountClicked({ preventDefault: jest.fn() });
+			expect(openDeleteAccountConfirmationModal).toHaveBeenCalledTimes(1);
 		});
 	});
 });

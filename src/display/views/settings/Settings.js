@@ -32,11 +32,17 @@ function mapStateToProps(state) {
 }
 
 const Settings = (props) => {
-	const { user, submitUserChangePassword, submitUserAccountInfo, match } = props;
+	const {
+		user,
+		submitUserChangePassword,
+		submitUserAccountInfo,
+		openDeleteAccountConfirmationModal,
+		match
+	} = props;
 	const options = Object.values(tabs.SETTINGS);
 	const onDeleteAccountClicked = (e) => {
 		e.preventDefault();
-		props.openDeleteAccountConfirmationModal();
+		openDeleteAccountConfirmationModal();
 	};
 	return (
 		<div className="animated fadeIn static-container settings-container">
@@ -60,7 +66,10 @@ const Settings = (props) => {
 							submitAccountInfoForm={submitUserAccountInfo}
 							user={user}
 						/>
-						<DeleteAccountPane onDeleteAccountClicked={onDeleteAccountClicked} />
+						<DeleteAccountPane
+							data-spec="delete-account-pane"
+							onDeleteAccountClicked={onDeleteAccountClicked}
+						/>
 					</TabContent>
 				</Col>
 			</Row>

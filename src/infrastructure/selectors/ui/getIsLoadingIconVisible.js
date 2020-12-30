@@ -23,9 +23,6 @@ const getIsLoadingIconVisible = createSelector([getLoading], (loading) => {
 	if (loading.charactersLoading) {
 		return true;
 	}
-	if (loading.contactFormLoading) {
-		return true;
-	}
 	if (loading.deletePublicViewLoading) {
 		return true;
 	}
