@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabPane, CardHeader, CardBody } from 'reactstrap';
+import { TabPane, CardHeader, CardBody, Col, Row } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 
 const AboutTrackerPane = () => (
@@ -22,8 +22,69 @@ const AboutTrackerPane = () => (
 				</p>
 				<p>
 					RPThreadTracker is a product of{' '}
-					<a href="http://www.blackjack-software.com">Blackjack Software</a>.
+					<a href="http://www.twitter.com/blackjackkent">Blackjack Software</a>.
 				</p>
+				<hr />
+				<p className="text-center">
+					<strong>Many Thanks to Our Wonderful Patreon Supporters!</strong>
+				</p>
+				<p className="text-center">
+					<em>
+						Want to help keep RPThreadTracker running smoothly?
+						<br />
+						<a
+							href="https://www.patreon.com/bePatron?u=4797959"
+							rel="noopener noreferrer"
+							target="_blank"
+						>
+							Become a patron today! <i className="fas fa-external-link-alt" />
+						</a>
+					</em>
+				</p>
+				<Row>
+					<Col xs="6">
+						<p>
+							<strong>Kilobyte Tier ($5 a month)</strong>
+						</p>
+						<ul>
+							<li>Abby Steinsieck</li>
+							<li>Alex D</li>
+							<li>Alex Stahl</li>
+							<li>AvocaDon&quot;t</li>
+							<li>Beth Halverson</li>
+							<li>Cassandra Clark</li>
+							<li>Emily Hunt</li>
+							<li>Ezra Wilson</li>
+							<li>Isabella R.</li>
+							<li>LusidDreamer</li>
+							<li>Maddie Douglas</li>
+							<li>Maerkus</li>
+							<li>Morgan Looney</li>
+							<li>Nichelle</li>
+							<li>Shelby Van Horn</li>
+							<li>Sugar</li>
+							<li>Tabitha Clancy</li>
+							<li>The Colony Roleplay</li>
+							<li>Windress</li>
+						</ul>
+					</Col>
+					<Col xs="6">
+						<p>
+							<strong>Megabyte Tier ($10 a month)</strong>
+						</p>
+						<ul>
+							<li>Carla Page</li>
+							<li>Insolitus-Academy</li>
+							<li>girl-next-door-writes</li>
+							<li>Gravel Jessika</li>
+							<li>Kenickie</li>
+							<li>Lanie M</li>
+							<li>Melissa Roule</li>
+							<li>tabbyrp</li>
+							<li>tyrantofthefirmament</li>
+						</ul>
+					</Col>
+				</Row>
 			</CardBody>
 		</Card>
 	</TabPane>
