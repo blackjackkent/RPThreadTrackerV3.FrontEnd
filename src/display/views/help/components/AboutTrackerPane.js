@@ -60,7 +60,7 @@ const AboutTrackerPane = () => (
 							<li>Maddie Douglas</li>
 							<li>Maerkus</li>
 							<li>Morgan Looney</li>
-							<li>Nichelle</li>
+							<li>Rave</li>
 							<li>Shelby Van Horn</li>
 							<li>Sugar</li>
 							<li>Tabitha Clancy</li>
