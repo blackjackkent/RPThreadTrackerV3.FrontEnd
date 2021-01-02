@@ -61,11 +61,11 @@ describe('behavior', () => {
 			});
 			const jsx = <CheckboxTable {...props} />;
 			const element = shallow(jsx);
-			element.instance().toggleSelection(1, null, {
+			element.instance().toggleSelection('select-1', null, {
 				_id: 1,
 				testProp: 'test1'
 			});
-			element.instance().toggleSelection(2, null, {
+			element.instance().toggleSelection('select-2', null, {
 				_id: 2,
 				testProp: 'test2'
 			});
@@ -88,15 +88,15 @@ describe('behavior', () => {
 			});
 			const jsx = <CheckboxTable {...props} />;
 			const element = shallow(jsx);
-			element.instance().toggleSelection(1, null, {
+			element.instance().toggleSelection('select-1', null, {
 				_id: 1,
 				testProp: 'test1'
 			});
-			element.instance().toggleSelection(2, null, {
+			element.instance().toggleSelection('select-2', null, {
 				_id: 2,
 				testProp: 'test2'
 			});
-			element.instance().toggleSelection(1, null, {
+			element.instance().toggleSelection('select-1', null, {
 				_id: 1,
 				testProp: 'test1'
 			});

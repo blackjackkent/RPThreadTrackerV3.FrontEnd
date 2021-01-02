@@ -58,7 +58,7 @@ class CheckboxTable extends React.Component {
 		let { selection } = this.state;
 		const { data, onSelectionChanged } = this.props;
 		// eslint-disable-next-line no-underscore-dangle
-		const keyIndex = selection.findIndex((s) => s._id === key);
+		const keyIndex = selection.findIndex((s) => `select-${s._id}` === key);
 		if (keyIndex >= 0) {
 			selection = [...selection.slice(0, keyIndex), ...selection.slice(keyIndex + 1)];
 		} else {
