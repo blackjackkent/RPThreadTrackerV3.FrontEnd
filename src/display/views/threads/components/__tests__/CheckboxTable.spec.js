@@ -164,6 +164,25 @@ describe('behavior', () => {
 			const trProps = element.instance().getTrProps({}, rowInfo);
 			expect(typeof trProps.style.backgroundColor).toBe('string');
 		});
+		it('should not toggle selection when an expander cell is clicked', () => {
+			const onSelectionChanged = jest.fn();
+			const props = createTestProps({
+				onSelectionChanged,
+				getTdProps: jest.fn(() => ({
+					onClick: jest.fn(),
+				}))
+			});
+			const state = {};
+			const rowInfo = { original: props.data[0] };
+			const column = { Expander: {} };
+			const instance = {};
+			const event = {};
+			const jsx = <CheckboxTable {...props} />;
+			const element = shallow(jsx);
+			const tdProps = element.instance().getTdProps(state, rowInfo, column, instance);
+			tdProps.onClick(event, jest.fn());
+			expect(onSelectionChanged).not.toHaveBeenCalled();
+		});
 		it('should set select-all checkbox checked when selected items length equals row length', () => {});
 	});
 	describe('toggleAll', () => {
