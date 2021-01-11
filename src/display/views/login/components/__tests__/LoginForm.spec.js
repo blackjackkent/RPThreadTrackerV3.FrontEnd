@@ -2,11 +2,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '~/testhelpers/helpers.unit';
-import LoginForm from '../../../views/login/components/LoginForm';
+import LoginForm from '../LoginForm';
 // #endregion imports
 
 const createTestProps = (propOverrides) => ({
-	handleInputChange: jest.fn(),
+	isLoading: false,
+	errorMessage: '',
+	onInputChange: jest.fn(),
+	onSubmit: jest.fn(),
 	...propOverrides
 });
 
@@ -40,28 +43,28 @@ describe('behavior', () => {
 			expect(field.props().validate.required).toHaveProperty('value', true);
 		});
 	});
-	describe('handleInputChange', () => {
+	describe('onInputChange', () => {
 		it('should be called when username changes', () => {
-			const handleInputChange = jest.fn();
+			const onInputChange = jest.fn();
 			const props = createTestProps({
-				handleInputChange
+				onInputChange
 			});
 			const jsx = <LoginForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'username-field').find('AvField');
 			field.simulate('change');
-			expect(handleInputChange).toHaveBeenCalledTimes(1);
+			expect(onInputChange).toHaveBeenCalledTimes(1);
 		});
 		it('should be called when password changes', () => {
-			const handleInputChange = jest.fn();
+			const onInputChange = jest.fn();
 			const props = createTestProps({
-				handleInputChange
+				onInputChange
 			});
 			const jsx = <LoginForm {...props} />;
 			const element = shallow(jsx);
 			const field = getSpecWrapper(element, 'password-field').find('AvField');
 			field.simulate('change');
-			expect(handleInputChange).toHaveBeenCalledTimes(1);
+			expect(onInputChange).toHaveBeenCalledTimes(1);
 		});
 	});
 });

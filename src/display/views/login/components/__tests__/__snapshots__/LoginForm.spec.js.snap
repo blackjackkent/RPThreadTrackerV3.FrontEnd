@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`rendering snapshots should render valid snapshot 1`] = `
+<Styled(Card)
+  className="login-box p-4"
+>
+  <CardBody
+    className="card-body"
+    tag="div"
+  >
+    <AvForm
+      data-spec="login-form-container"
+      method="get"
+      model={Object {}}
+      onInvalidSubmit={[Function]}
+      onKeyDown={[Function]}
+      onSubmit={[Function]}
+      onValidSubmit={[MockFunction]}
+      tag={[Function]}
+      validationEvent={
+        Array [
+          "onChange",
+          "onInput",
+        ]
+      }
+    >
+      <h1>
+        Login
+      </h1>
+      <p
+        className="text-muted"
+      >
+        Sign in to RPThreadTracker
+      </p>
+      <div>
+        <div
+          data-spec="username-field"
+        >
+          <AvField
+            name="username"
+            onChange={[MockFunction]}
+            placeholder="Username"
+            type="text"
+            validate={
+              Object {
+                "maxLength": Object {
+                  "errorMessage": "Your username is too long.",
+                  "value": 256,
+                },
+                "minLength": Object {
+                  "errorMessage": "Your username must be more than 3 characters.",
+                  "value": 3,
+                },
+                "required": Object {
+                  "errorMessage": "You must enter a username.",
+                  "value": true,
+                },
+              }
+            }
+          />
+        </div>
+        <div
+          data-spec="password-field"
+        >
+          <AvField
+            name="password"
+            onChange={[MockFunction]}
+            placeholder="Password"
+            type="password"
+            validate={
+              Object {
+                "required": Object {
+                  "errorMessage": "You must enter a password.",
+                  "value": true,
+                },
+              }
+            }
+          />
+        </div>
+      </div>
+      <Row
+        tag="div"
+      >
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <Button
+            className="px-4"
+            color="primary"
+            tag="button"
+          >
+            Login
+          </Button>
+        </Col>
+        <Col
+          className="text-right text-muted"
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="6"
+        >
+          <Link
+            href="/register"
+            replace={false}
+            to="/register"
+          >
+            Sign up
+          </Link>
+           
+          •
+           
+          <Link
+            href="/forgotpassword"
+            replace={false}
+            to="/forgotpassword"
+          >
+            Forgot password?
+          </Link>
+        </Col>
+      </Row>
+    </AvForm>
+  </CardBody>
+</Styled(Card)>
+`;
