@@ -1,7 +1,4 @@
 import {
-	SUBMIT_USER_LOGIN,
-	SUBMIT_USER_LOGIN_SUCCESS,
-	SUBMIT_USER_LOGIN_FAILURE,
 	SUBMIT_USER_LOGOUT,
 	SUBMIT_USER_REGISTRATION_SUCCESS,
 	SUBMIT_USER_REGISTRATION,
@@ -15,7 +12,6 @@ import {
 } from '../actions';
 
 const defaultState = {
-	loginError: null,
 	registrationErrors: [],
 	forgotPasswordError: null,
 	resetPasswordError: null
@@ -23,11 +19,6 @@ const defaultState = {
 
 function errors(state = defaultState, action) {
 	switch (action.type) {
-		case SUBMIT_USER_LOGIN_SUCCESS:
-		case SUBMIT_USER_LOGIN:
-			return Object.assign({}, state, {
-				loginError: null
-			});
 		case SUBMIT_USER_REGISTRATION_SUCCESS:
 		case SUBMIT_USER_REGISTRATION:
 			return Object.assign({}, state, {
@@ -42,10 +33,6 @@ function errors(state = defaultState, action) {
 		case SUBMIT_USER_RESET_PASSWORD:
 			return Object.assign({}, state, {
 				resetPasswordError: null
-			});
-		case SUBMIT_USER_LOGIN_FAILURE:
-			return Object.assign({}, state, {
-				loginError: action.data
 			});
 		case SUBMIT_USER_REGISTRATION_FAILURE:
 			return Object.assign({}, state, {

@@ -219,14 +219,6 @@ export {
 	submitUserForgotPasswordFailure,
 	submitUserForgotPasswordSuccess
 } from './user/submitUserForgotPassword';
-export {
-	SUBMIT_USER_LOGIN_FAILURE,
-	SUBMIT_USER_LOGIN_SUCCESS,
-	SUBMIT_USER_LOGIN,
-	submitUserLogin,
-	submitUserLoginFailure,
-	submitUserLoginSuccess
-} from './user/submitUserLogin';
 export { SUBMIT_USER_LOGOUT, submitUserLogout } from './user/submitUserLogout';
 export {
 	SUBMIT_USER_REGISTRATION_FAILURE,

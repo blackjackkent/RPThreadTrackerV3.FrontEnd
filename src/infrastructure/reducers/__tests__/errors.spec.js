@@ -2,7 +2,6 @@ import errors from '../errors';
 import * as actions from '../../actions';
 
 const getState = (overrides) => ({
-	loginError: null,
 	registrationErrors: [],
 	forgotPasswordError: null,
 	resetPasswordError: null,
@@ -12,26 +11,6 @@ const getState = (overrides) => ({
 describe('action handling', () => {
 	it('should set initial state', () => {
 		const result = errors(undefined, {});
-		expect(result).toEqual(getState());
-	});
-	it('should handle SUBMIT_USER_LOGIN_SUCCESS', () => {
-		const initialState = getState({
-			loginError: 'Login error'
-		});
-		const action = {
-			type: actions.SUBMIT_USER_LOGIN_SUCCESS
-		};
-		const result = errors(initialState, action);
-		expect(result).toEqual(getState());
-	});
-	it('should handle SUBMIT_USER_LOGIN', () => {
-		const initialState = getState({
-			loginError: 'Login error'
-		});
-		const action = {
-			type: actions.SUBMIT_USER_LOGIN
-		};
-		const result = errors(initialState, action);
 		expect(result).toEqual(getState());
 	});
 	it('should handle SUBMIT_USER_REGISTRATION_SUCCESS', () => {
@@ -93,17 +72,6 @@ describe('action handling', () => {
 		};
 		const result = errors(initialState, action);
 		expect(result).toEqual(getState());
-	});
-	it('should handle SUBMIT_USER_LOGIN_FAILURE', () => {
-		const expectedState = getState({
-			loginError: 'Login error'
-		});
-		const action = {
-			type: actions.SUBMIT_USER_LOGIN_FAILURE,
-			data: 'Login error'
-		};
-		const result = errors(getState(), action);
-		expect(result).toEqual(expectedState);
 	});
 	it('should handle SUBMIT_USER_REGISTRATION_FAILURE', () => {
 		const expectedState = getState({

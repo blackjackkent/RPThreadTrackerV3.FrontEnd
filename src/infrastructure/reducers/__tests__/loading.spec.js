@@ -14,7 +14,6 @@ const getState = (overrides) => ({
 	deletePublicViewLoading: false,
 	exportThreadsLoading: false,
 	forgotPasswordLoading: false,
-	loginLoading: false,
 	publicViewsLoading: false,
 	publicThreadsLoading: false,
 	registrationLoading: false,
@@ -427,35 +426,6 @@ describe('action handling', () => {
 			};
 			const result = loading(initialState, action);
 			expect(result.forgotPasswordLoading).toBe(false);
-		});
-	});
-	describe('login', () => {
-		it('should handle SUBMIT_USER_LOGIN', () => {
-			const action = {
-				type: actions.SUBMIT_USER_LOGIN
-			};
-			const result = loading(getState(), action);
-			expect(result.loginLoading).toBe(true);
-		});
-		it('should handle SUBMIT_USER_LOGIN_FAILURE', () => {
-			const initialState = getState({
-				loginLoading: true
-			});
-			const action = {
-				type: actions.SUBMIT_USER_LOGIN_FAILURE
-			};
-			const result = loading(initialState, action);
-			expect(result.loginLoading).toBe(false);
-		});
-		it('should handle SUBMIT_USER_LOGIN_SUCCESS', () => {
-			const initialState = getState({
-				loginLoading: true
-			});
-			const action = {
-				type: actions.SUBMIT_USER_LOGIN_SUCCESS
-			};
-			const result = loading(initialState, action);
-			expect(result.loginLoading).toBe(false);
 		});
 	});
 	describe('public views', () => {

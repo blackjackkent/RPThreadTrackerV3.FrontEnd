@@ -9,11 +9,8 @@ import {
 	FETCH_ACTIVE_THREADS,
 	FETCH_ARCHIVED_THREADS,
 	FETCH_CHARACTERS,
-	SUBMIT_USER_LOGIN,
 	SUBMIT_USER_LOGOUT,
 	SUBMIT_USER_REGISTRATION,
-	SUBMIT_USER_LOGIN_FAILURE,
-	SUBMIT_USER_LOGIN_SUCCESS,
 	SUBMIT_USER_REGISTRATION_FAILURE,
 	SUBMIT_USER_REGISTRATION_SUCCESS,
 	SUBMIT_USER_FORGOT_PASSWORD_FAILURE,
@@ -87,7 +84,6 @@ const defaultState = {
 	deletePublicViewLoading: false,
 	exportThreadsLoading: false,
 	forgotPasswordLoading: false,
-	loginLoading: false,
 	publicViewsLoading: false,
 	publicThreadsLoading: false,
 	registrationLoading: false,
@@ -232,17 +228,6 @@ function loading(state = defaultState, action) {
 		case SUBMIT_USER_FORGOT_PASSWORD:
 			return Object.assign({}, state, {
 				forgotPasswordLoading: true
-			});
-		// #endregion
-		// #region Login
-		case SUBMIT_USER_LOGIN_SUCCESS:
-		case SUBMIT_USER_LOGIN_FAILURE:
-			return Object.assign({}, state, {
-				loginLoading: false
-			});
-		case SUBMIT_USER_LOGIN:
-			return Object.assign({}, state, {
-				loginLoading: true
 			});
 		// #endregion
 		// #region Public Views
