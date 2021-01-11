@@ -2,7 +2,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { getSpecWrapper } from '~/testhelpers/helpers.unit';
-import LoginForm from '../LoginForm';
+import LoginForm from '../../../views/login/components/LoginForm';
 // #endregion imports
 
 const createTestProps = (propOverrides) => ({
