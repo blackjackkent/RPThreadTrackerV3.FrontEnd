@@ -92,9 +92,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               Alex Stahl
             </li>
             <li>
-              AvocaDon"t
-            </li>
-            <li>
               Beth Halverson
             </li>
             <li>
@@ -105,6 +102,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             </li>
             <li>
               Ezra Wilson
+            </li>
+            <li>
+              hazeljv
             </li>
             <li>
               Isabella R.
@@ -125,7 +125,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               Rave
             </li>
             <li>
-              Shelby Van Horn
+              Shelbi Van Horn
             </li>
             <li>
               Sugar
@@ -161,16 +161,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           </p>
           <ul>
             <li>
-              Carla Page
-            </li>
-            <li>
               Insolitus-Academy
             </li>
             <li>
               girl-next-door-writes
             </li>
             <li>
-              Gravel Jessika
+              Jess
             </li>
             <li>
               Kenickie
@@ -179,7 +176,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               Lanie M
             </li>
             <li>
-              Melissa Roule
+              Melissa
             </li>
             <li>
               tabbyrp
