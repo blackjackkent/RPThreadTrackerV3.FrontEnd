@@ -75,7 +75,6 @@ const AboutTrackerPane = () => (
 							<strong>Megabyte Tier ($10 a month)</strong>
 						</p>
 						<ul>
-							<li>Carla Page</li>
 							<li>Insolitus-Academy</li>
 							<li>girl-next-door-writes</li>
 							<li>Jess</li>
