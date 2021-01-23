@@ -91,20 +91,30 @@ describe('behavior', () => {
 			});
 		});
 	});
-	describe('return value', () => {
-		it('should return true if onClick handled the action', () => {
+	describe('row selection', () => {
+		it('should not toggle row selection if onClick handled the action', () => {
 			const clickedColumn = { id: 'editButton' };
+			const toggleSelection = jest.fn();
 			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
-			const props = propsCreator({}, { original: {} }, clickedColumn);
-			const result = props.onClick({}, jest.fn());
-			expect(result).toBe(true);
+			const props = propsCreator({}, { original: {} }, clickedColumn, {}, toggleSelection);
+			props.onClick({}, jest.fn());
+			expect(toggleSelection).not.toBeCalled();
 		});
-		it('should return false if onClick did not handle the action', () => {
+		it('should toggle row selection if onClick did not handle the action', () => {
 			const clickedColumn = { id: 'unrecognized' };
+			const toggleSelection = jest.fn();
 			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
-			const props = propsCreator({}, { original: {} }, clickedColumn);
-			const result = props.onClick({}, jest.fn());
-			expect(result).toBe(false);
+			const props = propsCreator({}, { original: {} }, clickedColumn, {}, toggleSelection);
+			props.onClick({}, jest.fn());
+			expect(toggleSelection).toBeCalled();
+		});
+		it('should not toggle row selection if onClick did not handle the action and the column is an Expander', () => {
+			const clickedColumn = { id: 'unrecognized', Expander: jest.fn() };
+			const toggleSelection = jest.fn();
+			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
+			const props = propsCreator({}, { original: {} }, clickedColumn, {}, toggleSelection);
+			props.onClick({}, jest.fn());
+			expect(toggleSelection).not.toBeCalled();
 		});
 	});
 	describe('handleOriginal', () => {
@@ -121,7 +131,7 @@ describe('behavior', () => {
 			};
 			const handleOriginal = jest.fn();
 			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
-			const props = propsCreator({}, clickedRow, clickedColumn);
+			const props = propsCreator({}, clickedRow, clickedColumn, {}, jest.fn());
 			props.onClick({}, handleOriginal);
 			expect(handleOriginal).toHaveBeenCalledTimes(1);
 		});
@@ -137,7 +147,7 @@ describe('behavior', () => {
 				}
 			};
 			const propsCreator = _getTdProps(jest.fn(), jest.fn(), jest.fn(), jest.fn());
-			const props = propsCreator({}, clickedRow, clickedColumn);
+			const props = propsCreator({}, clickedRow, clickedColumn, {}, jest.fn());
 			props.onClick({}, null);
 			expect(true).toBe(true);
 		});
