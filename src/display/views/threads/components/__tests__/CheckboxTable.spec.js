@@ -130,58 +130,43 @@ describe('behavior', () => {
 			element.update();
 			expect(element.find('RTSelectTable').props().selectAll).toBe(true);
 		});
-		it('should select item when row is clicked, forwarding to callbacks from props', () => {
+		it('should support toggling selection from td props, to allow clicking empty space on the row to select it', () => {
 			const onSelectionChanged = jest.fn();
-			const originalOnClick = jest.fn();
 			const props = createTestProps({
 				onSelectionChanged,
-				getTdProps: jest.fn(() => ({
-					onClick: originalOnClick
-				}))
+				getTdProps: jest.fn(() => ({}))
 			});
 			const state = {};
 			const rowInfo = { original: props.data[0] };
 			const column = {};
 			const instance = {};
-			const event = {};
-			const handleOriginal = jest.fn();
 			const jsx = <CheckboxTable {...props} />;
 			const element = shallow(jsx);
-			const tdProps = element.instance().getTdProps(state, rowInfo, column, instance);
-			tdProps.onClick(event, handleOriginal);
-			expect(props.getTdProps).toBeCalledWith(state, rowInfo, column, instance);
-			expect(originalOnClick).toBeCalledWith(event, handleOriginal);
+			element.instance().getTdProps(state, rowInfo, column, instance);
+			expect(props.getTdProps).toBeCalledWith(
+				state,
+				rowInfo,
+				column,
+				instance,
+				expect.any(Function)
+			);
+			const toggleSelectionCallback = props.getTdProps.mock.calls[0][4];
+			toggleSelectionCallback();
 			expect(onSelectionChanged).toHaveBeenCalledTimes(1);
 			expect(onSelectionChanged).toHaveBeenLastCalledWith([{ _id: 1, testProp: 'test1' }]);
 		});
 		it('should color selected rows', () => {
-			const props = createTestProps({});
+			const props = createTestProps({
+				getTdProps: jest.fn(() => ({}))
+			});
 			const rowInfo = { original: props.data[0] };
 			const jsx = <CheckboxTable {...props} />;
 			const element = shallow(jsx);
-			const tdProps = element.instance().getTdProps({}, rowInfo, {}, {});
-			tdProps.onClick({}, jest.fn());
+			element.instance().getTdProps({}, rowInfo, {}, {});
+			const toggleSelectionCallback = props.getTdProps.mock.calls[0][4];
+			toggleSelectionCallback();
 			const trProps = element.instance().getTrProps({}, rowInfo);
 			expect(typeof trProps.style.backgroundColor).toBe('string');
-		});
-		it('should not toggle selection when an expander cell is clicked', () => {
-			const onSelectionChanged = jest.fn();
-			const props = createTestProps({
-				onSelectionChanged,
-				getTdProps: jest.fn(() => ({
-					onClick: jest.fn(),
-				}))
-			});
-			const state = {};
-			const rowInfo = { original: props.data[0] };
-			const column = { Expander: {} };
-			const instance = {};
-			const event = {};
-			const jsx = <CheckboxTable {...props} />;
-			const element = shallow(jsx);
-			const tdProps = element.instance().getTdProps(state, rowInfo, column, instance);
-			tdProps.onClick(event, jest.fn());
-			expect(onSelectionChanged).not.toHaveBeenCalled();
 		});
 		it('should set select-all checkbox checked when selected items length equals row length', () => {});
 	});
