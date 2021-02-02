@@ -4,16 +4,8 @@
 		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js",
 		"^~/(.*)": "<rootDir>/src/$1"
 	},
-	"setupFilesAfterEnv": [
-		"<rootDir>/node_modules/jest-enzyme/lib/index.js"
-	],
-	"testEnvironment": "enzyme",
-	"testEnvironmentOptions": {
-		"enzymeAdapter": "react16"
-	},
-	"testPathIgnorePatterns": [
-		"/node_modules/"
-	],
+	"setupFilesAfterEnv": ["<rootDir>/config/tests/setup.js"],
+	"testPathIgnorePatterns": ["/node_modules/"],
 	"coveragePathIgnorePatterns": [
 		"/node_modules/",
 		"/config/",
@@ -27,9 +19,6 @@
 		"/src/testhelpers/"
 	],
 	"collectCoverage": true,
-	"collectCoverageFrom": [
-		"**/src/**/*.js",
-		"**/src/**/*.jsx"
-	],
+	"collectCoverageFrom": ["**/src/**/*.js", "**/src/**/*.jsx"],
 	"testURL": "http://localhost/"
 }

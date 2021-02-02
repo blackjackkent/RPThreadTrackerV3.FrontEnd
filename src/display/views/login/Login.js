@@ -1,6 +1,5 @@
 // #region imports
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { useLoginMutation } from '~/infrastructure/hooks/mutations';
 import { useFormReducer } from '~/infrastructure/hooks';
@@ -8,10 +7,6 @@ import cache from '~/infrastructure/cache';
 import cacheKeys from '~/infrastructure/constants/cacheKeys';
 import LoginForm from './components/LoginForm';
 // #endregion imports
-
-const propTypes = {
-	history: PropTypes.shape({ push: PropTypes.func }).isRequired
-};
 
 function Login() {
 	const [state, onInputChange] = useFormReducer();
@@ -41,5 +36,4 @@ function Login() {
 		/>
 	);
 }
-Login.propTypes = propTypes;
 export default Login;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Row, Col, CardBody, Button } from 'reactstrap';
+import { Row, Col, CardBody, Button, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import validator from '../_loginFormValidator';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
@@ -41,6 +41,7 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 					)}
 					<div>
 						<div data-spec="username-field">
+							<Label for="username">Username</Label>
 							<AvField
 								name="username"
 								placeholder="Username"
@@ -50,6 +51,7 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 							/>
 						</div>
 						<div data-spec="password-field">
+							<Label for="password">Password</Label>
 							<AvField
 								name="password"
 								placeholder="Password"
