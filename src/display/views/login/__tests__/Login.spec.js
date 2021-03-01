@@ -9,9 +9,12 @@ import { render } from '~/testhelpers/helpers.integration';
 // #endregion imports
 
 jest.mock('~/utility', () => ({}));
-
+jest.mock('react-router-dom', () => ({
+	...jest.requireActual('react-router-dom'),
+	Redirect: () => () => `redirect to `
+}));
 const server = setupServer(
-	rest.get(`${API_BASE_URL}/api/auth/token`, (req, res, ctx) => {
+	rest.post(`${API_BASE_URL}api/auth/token`, (req, res, ctx) => {
 		return res(
 			ctx.json({
 				token: {
@@ -114,6 +117,8 @@ describe('rendering', () => {
 			userEvent.type(passwordInput, 'testPassword');
 			userEvent.click(submitInput);
 			await waitFor(() => {
+				const loadingIndicator = screen.queryByRole('progressbar');
+				expect(loadingIndicator).toBeNull();
 				expect(screen.getByText('Invalid username or password.')).toBeInTheDocument();
 			});
 		});

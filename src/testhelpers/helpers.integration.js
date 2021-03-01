@@ -10,14 +10,6 @@ const renderWrapper = (children) => {
 		error: () => {}
 	});
 	const queryClient = new QueryClient();
-	queryClient.setDefaultOptions({
-		queries: {
-			cacheTime: 0
-		},
-		mutations: {
-			cacheTime: 0
-		}
-	});
 	const wrapper = <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 	return render(wrapper, { wrapper: MemoryRouter });
 };
