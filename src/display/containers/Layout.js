@@ -13,9 +13,9 @@ import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
 import BreadcrumbWrapper from '../shared/breadcrumb/BreadcrumbWrapper';
 import AsideContainer from '../shared/aside/AsideContainer';
-import FooterContainer from '../shared/footer/FooterContainer';
 import ModalContainer from '../shared/modals/ModalContainer';
 import LoadingIndicator from '../shared/loading/LoadingIndicator';
+import Footer from '../shared/footer/Footer';
 
 import Dashboard from '../views/dashboard/Dashboard';
 import Threads from '../views/threads/Threads';
@@ -184,7 +184,7 @@ class Layout extends Component {
 					</main>
 					<AsideContainer />
 				</div>
-				<FooterContainer />
+				<Footer />
 				<ModalContainer />
 			</div>
 		);

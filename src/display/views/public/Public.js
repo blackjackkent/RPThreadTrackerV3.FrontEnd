@@ -8,13 +8,13 @@ import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
 import * as selectors from '../../../infrastructure/selectors';
-import FooterContainer from '../../shared/footer/FooterContainer';
 import Style from './_styles';
 import {
 	legacyPublicSlugs,
 	buildLegacyView
 } from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
+import Footer from '~/display/shared/footer/Footer';
 
 const propTypes = {
 	isLoadingIconVisible: PropTypes.bool.isRequired,
@@ -94,7 +94,7 @@ class Public extends Component {
 						/>
 					</Col>
 				</Row>
-				<FooterContainer />
+				<Footer />
 			</Style>
 		);
 	}

@@ -4,8 +4,8 @@ import cache from '~/infrastructure/cache';
 export default (key) => {
 	const [value, setValue] = useState(cache.get(key));
 	const setKey = (newValue) => {
-		cache.set(key, value);
 		setValue(newValue);
+		cache.set(key, newValue);
 	};
 	const clearKey = () => {
 		cache.clearKey(key);

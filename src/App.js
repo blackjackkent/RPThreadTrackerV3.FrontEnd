@@ -12,17 +12,12 @@ import Maintenance from './display/containers/Maintenance';
 import Logout from './display/containers/Logout';
 import PublicContainer from './display/containers/PublicContainer';
 import AddThreadFromExtensionHandler from './display/containers/AddThreadFromExtensionHandler';
-import useCacheValue from './infrastructure/hooks/useCacheValue';
+import { useCacheValue, LightThemeContext } from './infrastructure/hooks';
 import cacheKeys from './infrastructure/constants/cacheKeys';
-
-const LightThemeContext = createContext({});
-const MaintenanceModeContext = createContext({});
 
 const App = () => {
 	const [useLightTheme, setUseLightTheme] = useCacheValue(cacheKeys.USE_LIGHT_THEME);
-	const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
 
-	// logic to update theme
 	const loadBodyClasses = () => {
 		document.body.classList.toggle('light-theme', useLightTheme);
 	};
@@ -37,33 +32,24 @@ const App = () => {
 				setUseLightTheme
 			}}
 		>
-			<MaintenanceModeContext.Provider
-				value={{
-					isMaintenanceMode,
-					setIsMaintenanceMode
-				}}
-			>
-				<Router history={history}>
-					<Switch>
-						<Route path="/maintenance" name="Maintenance" component={Maintenance} />
-						<Route path="/logout" name="Logout" component={Logout} />
-						{['/login', '/forgotpassword', '/resetpassword', '/register'].map(
-							(path) => (
-								<Route key={path} path={path} component={StaticContainer} />
-							)
-						)}
-						{['/public/:username/:slug', '/public/:slug'].map((path) => (
-							<Route key={path} path={path} component={PublicContainer} />
-						))}
-						<Route
-							path="/add-thread"
-							name="AddThreadFromExtensionHandler"
-							component={AddThreadFromExtensionHandler}
-						/>
-						<Route component={Layout} />
-					</Switch>
-				</Router>
-			</MaintenanceModeContext.Provider>
+			<Router history={history}>
+				<Switch>
+					<Route path="/maintenance" name="Maintenance" component={Maintenance} />
+					<Route path="/logout" name="Logout" component={Logout} />
+					{['/login', '/forgotpassword', '/resetpassword', '/register'].map((path) => (
+						<Route key={path} path={path} component={StaticContainer} />
+					))}
+					{['/public/:username/:slug', '/public/:slug'].map((path) => (
+						<Route key={path} path={path} component={PublicContainer} />
+					))}
+					<Route
+						path="/add-thread"
+						name="AddThreadFromExtensionHandler"
+						component={AddThreadFromExtensionHandler}
+					/>
+					<Route component={Layout} />
+				</Switch>
+			</Router>
 		</LightThemeContext.Provider>
 	);
 };

@@ -4,7 +4,7 @@ import { useLogoutMutation } from '~/infrastructure/hooks/mutations';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import cache from '~/infrastructure/cache';
 import cacheKeys from '~/infrastructure/constants/cacheKeys';
-import useCacheValue from '~/infrastructure/hooks/useCacheValue';
+import { useCacheValue } from '~/infrastructure/hooks';
 
 const Logout = () => {
 	const [shouldRedirect, setShouldRedirect] = useState(false);

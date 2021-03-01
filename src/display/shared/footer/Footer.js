@@ -1,23 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Style from './_styles';
+import { useLightThemeContext } from '~/infrastructure/hooks';
 
-const propTypes = {
-	useLightTheme: PropTypes.bool.isRequired,
-	toggleTheme: PropTypes.func.isRequired
-};
-
-const Footer = (props) => {
+const Footer = () => {
 	const currentYear = new Date().getFullYear();
-	const { useLightTheme, toggleTheme } = props;
+	const { useLightTheme, setUseLightTheme } = useLightThemeContext();
 	return (
 		<Style className="app-footer">
 			<a href="http://www.rpthreadtracker.com">RPThreadTracker</a> &copy; {currentYear}{' '}
 			<a href="http://blackjack-software.com">Blackjack Software</a> | Switch to{' '}
 			<button
 				type="button"
-				onKeyPress={toggleTheme}
-				onClick={toggleTheme}
+				onKeyPress={() => setUseLightTheme(!useLightTheme)}
+				onClick={() => setUseLightTheme(!useLightTheme)}
 				data-spec="footer-theme-toggle-button"
 			>
 				{useLightTheme ? 'dark theme' : 'light theme'}
@@ -38,5 +33,4 @@ const Footer = (props) => {
 	);
 };
 
-Footer.propTypes = propTypes;
 export default Footer;
