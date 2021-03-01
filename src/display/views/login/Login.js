@@ -21,7 +21,7 @@ function Login() {
 		cache.set(cacheKeys.REFRESH_TOKEN, data.data.refreshToken.token);
 		return (
 			<div>
-				<Redirect data-testid="dashboard-redirect" to="/dashboard" />
+				<Redirect to="/dashboard" />
 			</div>
 		);
 	}

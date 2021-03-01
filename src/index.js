@@ -5,13 +5,13 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import GoogleAnalytics from 'react-ga';
 
 import getStore from './infrastructure/getStore';
+import analytics from './infrastructure/analytics';
 import network from './infrastructure/network';
 import icons from './infrastructure/icons';
-import analytics from './infrastructure/analytics';
 import App from './App';
 
 const store = getStore();
-network.setupInterceptors(store);
+network.setupInterceptors();
 icons.init();
 const queryClient = new QueryClient();
 

@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import { navigation } from '../../../../utility/history';
 import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
@@ -9,7 +10,6 @@ import HeaderDropdownItem from './HeaderDropdownItem';
 const propTypes = {
 	headerProfileDropdownToggle: PropTypes.func.isRequired,
 	isHeaderProfileDropdownOpen: PropTypes.bool.isRequired,
-	logout: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		id: PropTypes.string,
 		userName: PropTypes.string
@@ -17,7 +17,11 @@ const propTypes = {
 };
 
 const HeaderProfileDropdown = (props) => {
-	const { headerProfileDropdownToggle, isHeaderProfileDropdownOpen, logout, user } = props;
+	const { headerProfileDropdownToggle, isHeaderProfileDropdownOpen, user } = props;
+	const history = useHistory();
+	const logout = () => {
+		history.push('/logout');
+	};
 
 	return (
 		<NavItem>
