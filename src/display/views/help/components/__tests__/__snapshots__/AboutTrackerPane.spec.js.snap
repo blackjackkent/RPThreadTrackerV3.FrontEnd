@@ -83,7 +83,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           </p>
           <ul>
             <li>
-              Abby Steinsieck
+              Abby S.
             </li>
             <li>
               Alex D
@@ -99,6 +99,9 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             </li>
             <li>
               Cassandra Clark
+            </li>
+            <li>
+              containsmultitvdes
             </li>
             <li>
               Emily Hunt
@@ -173,13 +176,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               girl-next-door-writes
             </li>
             <li>
-              Gravel Jessika
+              Jess
             </li>
             <li>
               Kenickie
             </li>
             <li>
-              Lanie M
+              Lanie
             </li>
             <li>
               Melissa
