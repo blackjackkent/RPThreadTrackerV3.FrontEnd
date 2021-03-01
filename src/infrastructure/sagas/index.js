@@ -13,8 +13,6 @@ export { default as submitUserAccountDeletionSaga } from './user/submitUserAccou
 export { default as fetchUserSettingsSaga } from './userSettings/fetchUserSettingsSaga';
 export { default as updateUserSettingsSaga } from './userSettings/updateUserSettingsSaga';
 // UI
-export { default as loadSiteThemeSaga } from './ui/loadSiteThemeSaga';
-export { default as setSiteThemeSaga } from './ui/setSiteThemeSaga';
 export { default as loadSideBarOpenSaga } from './ui/loadSideBarOpenSaga';
 export { default as setSiteBarOpenSaga } from './ui/setSideBarOpenSaga';
 // Threads

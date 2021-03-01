@@ -19,8 +19,7 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	partners: PropTypes.arrayOf(PropTypes.string).isRequired,
 	lastPosters: PropTypes.arrayOf(PropTypes.string).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	useLightTheme: PropTypes.bool.isRequired
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 function mapStateToProps(state) {
@@ -30,15 +29,13 @@ function mapStateToProps(state) {
 	const tags = selectors.getArchivedThreadTags(state);
 	const filteredThreads = selectors.getArchivedFilteredThreads(state);
 	const lastPosters = selectors.getArchivedThreadLastPosters(state);
-	const { useLightTheme } = getUi(state);
 	return {
 		archivedThreads,
 		filteredThreads,
 		characters,
 		partners,
 		lastPosters,
-		tags,
-		useLightTheme
+		tags
 	};
 }
 

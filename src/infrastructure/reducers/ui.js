@@ -30,7 +30,6 @@ import {
 	OPEN_DELETE_PUBLIC_VIEW_MODAL,
 	CLOSE_DELETE_PUBLIC_VIEW_MODAL,
 	DELETE_PUBLIC_VIEW,
-	LOAD_SITE_THEME_SUCCESS,
 	OPEN_BULK_UPDATE_TAG_MODAL,
 	CLOSE_BULK_UPDATE_TAG_MODAL,
 	BULK_UPDATE_TAG,
@@ -56,8 +55,7 @@ const defaultState = {
 	isDeletePublicViewModalOpen: false,
 	isBulkUpdateTagModalOpen: false,
 	isBulkDeleteTagModalOpen: false,
-	isDeleteAccountConfirmationModalOpen: false,
-	useLightTheme: false
+	isDeleteAccountConfirmationModalOpen: false
 };
 
 function ui(state = defaultState, action) {
@@ -174,10 +172,6 @@ function ui(state = defaultState, action) {
 		case SET_MAINTENANCE_MODE_ON:
 			return Object.assign({}, state, {
 				isMaintenanceMode: true
-			});
-		case LOAD_SITE_THEME_SUCCESS:
-			return Object.assign({}, state, {
-				useLightTheme: action.data
 			});
 		case SUBMIT_USER_LOGOUT:
 			return defaultState;
