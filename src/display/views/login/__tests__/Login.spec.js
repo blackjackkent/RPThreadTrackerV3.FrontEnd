@@ -6,12 +6,16 @@ import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Login from '../Login';
 import { render } from '~/testhelpers/helpers.integration';
+import cache from '~/infrastructure/cache';
 // #endregion imports
 
 jest.mock('~/utility', () => ({}));
+jest.mock('~/infrastructure/cache', () => ({
+	set: jest.fn()
+}));
 jest.mock('react-router-dom', () => ({
-	...jest.requireActual('react-router-dom'),
-	Redirect: () => () => `redirect to `
+	...jest.requireActual('react-router-dom'), // import and retain the original functionalities
+	Redirect: (data) => `Redirect to ${data.to}`
 }));
 const server = setupServer(
 	rest.post(`${API_BASE_URL}api/auth/token`, (req, res, ctx) => {
@@ -99,6 +103,23 @@ describe('rendering', () => {
 			userEvent.click(submitInput);
 			await waitFor(() => {
 				expect(screen.getByRole('progressbar')).toBeInTheDocument();
+			});
+		});
+	});
+	describe('success', () => {
+		it.only('should init navigation when request is successful', async () => {
+			render(<Login />);
+			const usernameInput = screen.getByLabelText('Username');
+			const passwordInput = screen.getByLabelText('Password');
+			const submitInput = screen.getByRole('button', { name: 'Login' });
+			userEvent.type(usernameInput, 'testUsername');
+			userEvent.type(passwordInput, 'testPassword');
+			userEvent.click(submitInput);
+			await waitFor(() => {
+				expect(screen.getByText('Redirect to /dashboard')).toBeInTheDocument();
+				expect(cache.set).toBeCalledTimes(2);
+				expect(cache.set).toBeCalledWith('accessToken', 'test-token');
+				expect(cache.set).toBeCalledWith('refreshToken', 'test-refresh-token');
 			});
 		});
 	});

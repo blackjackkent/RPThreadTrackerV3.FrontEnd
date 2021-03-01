@@ -17,11 +17,12 @@ function Login() {
 	};
 
 	if (isSuccess) {
+		console.log('SUCCESS');
 		cache.set(cacheKeys.ACCESS_TOKEN, data.data.token.token);
 		cache.set(cacheKeys.REFRESH_TOKEN, data.data.refreshToken.token);
 		return (
 			<div>
-				<Redirect to="/dashboard" />
+				<Redirect data-testid="dashboard-redirect" to="/dashboard" />
 			</div>
 		);
 	}
