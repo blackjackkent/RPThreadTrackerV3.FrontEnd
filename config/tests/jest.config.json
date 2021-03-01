@@ -4,6 +4,9 @@
 		"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js",
 		"^~/(.*)": "<rootDir>/src/$1"
 	},
+	"globals": {
+		"API_BASE_URL": "http://baseurl/"
+	},
 	"setupFilesAfterEnv": ["<rootDir>/config/tests/setup.js"],
 	"testPathIgnorePatterns": ["/node_modules/"],
 	"coveragePathIgnorePatterns": [

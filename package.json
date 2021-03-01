@@ -86,7 +86,7 @@
 		"react-ga": "^2.5.6",
 		"react-moment": "^0.8.4",
 		"react-multivalue-text-input": "^0.5.0",
-		"react-query": "^3.5.11",
+		"react-query": "^3.12.0",
 		"react-redux": "^5.1.1",
 		"react-redux-toastr": "^7.4.3",
 		"react-router-dom": "^5.2.0",
@@ -126,6 +126,9 @@
 		"moduleNameMapper": {
 			"\\.(css|scss)$": "<rootDir>/config/tests/styleMock.js",
 			"^~/(.*)": "<rootDir>/src/$1"
+		},
+		"globals": {
+			"API_BASE_URL": "http://baseurl/"
 		},
 		"setupFilesAfterEnv": [
 			"<rootDir>/config/tests/setup.js"

@@ -63,7 +63,7 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 					</div>
 					<Row>
 						<Col xs="6">
-							<Button color="primary" className="px-4">
+							<Button color="primary" role="button" className="px-4">
 								Login
 							</Button>
 						</Col>
