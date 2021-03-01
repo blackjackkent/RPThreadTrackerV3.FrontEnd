@@ -17,7 +17,6 @@ function Login() {
 	};
 
 	if (isSuccess) {
-		console.log('SUCCESS');
 		cache.set(cacheKeys.ACCESS_TOKEN, data.data.token.token);
 		cache.set(cacheKeys.REFRESH_TOKEN, data.data.refreshToken.token);
 		return (
