@@ -47,12 +47,13 @@ const AboutTrackerPane = () => (
 							<strong>Kilobyte Tier ($5 a month)</strong>
 						</p>
 						<ul>
-							<li>Abby Steinsieck</li>
+							<li>Abby S.</li>
 							<li>Alex D</li>
 							<li>Alex Stahl</li>
 							<li>avenginggirlscout</li>
 							<li>Beth Halverson</li>
 							<li>Cassandra Clark</li>
+							<li>containsmultitvdes</li>
 							<li>Emily Hunt</li>
 							<li>Ezra Wilson</li>
 							<li>hazeljv</li>
@@ -77,9 +78,9 @@ const AboutTrackerPane = () => (
 							<li>Carla Page</li>
 							<li>Insolitus-Academy</li>
 							<li>girl-next-door-writes</li>
-							<li>Gravel Jessika</li>
+							<li>Jess</li>
 							<li>Kenickie</li>
-							<li>Lanie M</li>
+							<li>Lanie</li>
 							<li>Melissa</li>
 							<li>tabbyrp</li>
 							<li>tyrantofthefirmament</li>
