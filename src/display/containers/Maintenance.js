@@ -1,10 +1,8 @@
 import React from 'react';
 import { Container, Row, Col, CardBody } from 'reactstrap';
-import { usePageViewTracker } from '~/infrastructure/hooks';
 import Card from '../shared/styled/Card';
 
 const Maintenance = (props) => {
-	usePageViewTracker(props);
 	return (
 		<div className="app flex-row align-items-center">
 			<Container>
