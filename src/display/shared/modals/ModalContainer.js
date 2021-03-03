@@ -128,10 +128,11 @@ const ModalContainer = (props) => {
 	return (
 		<div>
 			<UpsertThreadModal
-				isUpsertThreadModalOpen={isUpsertThreadModalOpen}
-				closeUpsertThreadModal={closeUpsertThreadModal}
-				threadToEdit={threadToEdit}
-				submitUpsertThread={upsertThread}
+				isModalOpen={isUpsertThreadModalOpen}
+				onModalClose={closeUpsertThreadModal}
+				thread={threadToEdit}
+				onInputChange={null}
+				onFormSubmit={upsertThread}
 				characters={sortedCharacters}
 			/>
 			<UpsertCharacterModal

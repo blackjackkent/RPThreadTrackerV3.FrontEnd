@@ -1,13 +1,9 @@
 // #region imports
-import React, { Component } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Container } from 'reactstrap';
-import PropTypes from 'prop-types';
 import ReduxToastr from 'react-redux-toastr';
-
-import * as actions from '../../infrastructure/actions';
-import * as selectors from '../../infrastructure/selectors';
+import { useIsFetching } from 'react-query';
 
 import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
@@ -28,68 +24,14 @@ import ManageCharacters from '../views/characters/ManageCharacters';
 import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
-import withPageViewTracker from '../../infrastructure/withPageViewTracker';
+import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
 // #endregion imports
 
-const propTypes = {
-	fetchUser: PropTypes.func.isRequired,
-	fetchNews: PropTypes.func.isRequired,
-	fetchUserSettings: PropTypes.func.isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	user: PropTypes.shape({
-		id: PropTypes.string.isRequired
-	}).isRequired,
-	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	userSettings: PropTypes.shape({
-		settingsId: PropTypes.number
-	}).isRequired
-};
-const mapStateToProps = (state) => {
-	const { user, news, userSettings } = state;
-	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
-	return {
-		user,
-		news,
-		userSettings,
-		isLoadingIconVisible
-	};
-};
-class Layout extends Component {
-	constructor() {
-		super();
-		this.isUserLoaded = this.isUserLoaded.bind(this);
-		this.isNewsLoaded = this.isNewsLoaded.bind(this);
-	}
+const Layout = () => {
+	const isFetching = useIsFetching();
+	useUserProfileQuery();
 
-	componentDidMount() {
-		const { fetchUser, fetchNews, fetchUserSettings } = this.props;
-		if (!this.isUserLoaded()) {
-			fetchUser();
-		}
-		if (!this.isNewsLoaded()) {
-			fetchNews();
-		}
-		if (!this.areUserSettingsLoaded()) {
-			fetchUserSettings();
-		}
-	}
-
-	isUserLoaded() {
-		const { user } = this.props;
-		return user && user.id;
-	}
-
-	isNewsLoaded() {
-		const { news } = this.props;
-		return news && news.length;
-	}
-
-	areUserSettingsLoaded() {
-		const { userSettings } = this.props;
-		return userSettings && userSettings.settingsId;
-	}
-
-	showLoadingIndicator() {
+	const renderLoadingIndicator = () => {
 		return (
 			<LoadingIndicator
 				data-spec="layout-loader"
@@ -103,18 +45,17 @@ class Layout extends Component {
 				}}
 			/>
 		);
-	}
+	};
 
-	showLayout() {
-		const { isLoadingIconVisible } = this.props;
+	const renderLayout = () => {
 		return (
 			<div className="app" data-spec="layout-app">
 				<ReduxToastr />
 				<HeaderContainer />
 				<div className="app-body">
-					<Sidebar {...this.props} />
+					<Sidebar />
 					<main className="main">
-						<BreadcrumbWrapper isLoadingIconVisible={isLoadingIconVisible} />
+						<BreadcrumbWrapper />
 						<Container fluid>
 							<Switch>
 								<Route path="/dashboard" name="Dashboard" component={Dashboard} />
@@ -188,19 +129,11 @@ class Layout extends Component {
 				<ModalContainer />
 			</div>
 		);
+	};
+	if (isFetching) {
+		return renderLoadingIndicator();
 	}
+	return renderLayout();
+};
 
-	render() {
-		if (!this.isUserLoaded()) {
-			return this.showLoadingIndicator();
-		}
-		return this.showLayout();
-	}
-}
-
-Layout.propTypes = propTypes;
-export default connect(mapStateToProps, {
-	fetchUser: actions.fetchUser,
-	fetchNews: actions.fetchNews,
-	fetchUserSettings: actions.fetchUserSettings
-})(withPageViewTracker(Layout));
+export default Layout;
