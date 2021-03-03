@@ -85,7 +85,7 @@
 		"react-dom": "^16.8.6",
 		"react-ga": "^2.5.6",
 		"react-moment": "^0.8.4",
-		"react-multivalue-text-input": "^0.5.0",
+		"react-multivalue-text-input": "^0.6.2",
 		"react-query": "^3.12.0",
 		"react-redux": "^5.1.1",
 		"react-redux-toastr": "^7.4.3",
@@ -116,7 +116,8 @@
 		"test": "jest",
 		"test:watch": "jest --watch --coverage",
 		"test:coverage": "jest --coverage",
-		"test:ci": "npm run lint && jest --config=\"./config/tests/jest.config.json\""
+		"test:ci": "npm run lint && jest --config=\"./config/tests/jest.config.json\"",
+		"diffquery": "git diff --stat development...react-query-migration ':(exclude)*package-lock.json'"
 	},
 	"engines": {
 		"node": ">= 8.9.1",

@@ -4,20 +4,31 @@ const reducer = (state, action) => {
 	if (!action) {
 		return state;
 	}
+	if (action.type === 'set') {
+		return action.data;
+	}
 	return {
 		...state,
-		[action.type]: action.data
+		[action.name]: action.data
 	};
 };
-const useFormReducer = () => {
-	const [state, dispatch] = useReducer(reducer, {});
+const useFormReducer = (defaultState = {}) => {
+	const [formData, dispatch] = useReducer(reducer, defaultState);
 	const onInputChange = (e) => {
 		const action = {
-			type: e.target.name,
+			type: 'input',
+			name: e.target.name,
 			data: e.target.value
 		};
 		dispatch(action);
 	};
-	return [state, onInputChange, dispatch];
+	const setFormData = (data) => {
+		const action = {
+			type: 'set',
+			data
+		};
+		dispatch(action);
+	};
+	return [formData, onInputChange, setFormData, dispatch];
 };
 export default useFormReducer;
