@@ -2,8 +2,6 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
-import ReduxToastr from 'react-redux-toastr';
-import { useIsFetching } from 'react-query';
 
 import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
