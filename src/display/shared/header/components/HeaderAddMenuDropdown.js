@@ -6,26 +6,28 @@ import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
 const propTypes = {
-	headerAddMenuDropdownToggle: PropTypes.func.isRequired,
-	isHeaderAddMenuDropdownOpen: PropTypes.bool.isRequired,
-	openUpsertCharacterModal: PropTypes.func.isRequired,
-	openNewThreadModal: PropTypes.func.isRequired
+	isHeaderAddMenuDropdownVisible: PropTypes.bool.isRequired,
+	setIsHeaderAddMenuDropdownVisible: PropTypes.func.isRequired,
+	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
+	setIsUpsertCharacterModalOpen: PropTypes.func.isRequired,
+	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
+	setIsUpsertThreadModalOpen: PropTypes.func.isRequired,
+	user: PropTypes.shape({})
 };
 
 const HeaderAddMenuDropdown = (props) => {
 	const {
-		headerAddMenuDropdownToggle,
-		isHeaderAddMenuDropdownOpen,
-		openUpsertCharacterModal,
-		openNewThreadModal
+		isHeaderAddMenuDropdownVisible,
+		setIsHeaderAddMenuDropdownVisible,
+		setIsUpsertCharacterModalOpen,
+		setIsUpsertThreadModalOpen
 	} = props;
-
 	return (
 		<NavItem>
 			<Dropdown
-				isOpen={isHeaderAddMenuDropdownOpen}
+				isOpen={isHeaderAddMenuDropdownVisible}
 				data-spec="header-dropdown"
-				toggle={headerAddMenuDropdownToggle}
+				toggle={() => setIsHeaderAddMenuDropdownVisible(!isHeaderAddMenuDropdownVisible)}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
 					<i className="fas fa-plus-circle" />
@@ -33,16 +35,16 @@ const HeaderAddMenuDropdown = (props) => {
 				<DropdownMenu
 					data-spec="header-dropdown-menu"
 					right
-					className={isHeaderAddMenuDropdownOpen ? 'show' : ''}
+					className={isHeaderAddMenuDropdownVisible ? 'show' : ''}
 				>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-upsert-thread-link"
-						onClick={() => openNewThreadModal()}
+						onClick={() => setIsUpsertThreadModalOpen(true)}
 						label="Track New Thread"
 					/>
 					<HeaderDropdownItem
 						data-spec="header-dropdown-upsert-character-link"
-						onClick={() => openUpsertCharacterModal()}
+						onClick={() => setIsUpsertCharacterModalOpen(true)}
 						label="Add Character"
 					/>
 				</DropdownMenu>

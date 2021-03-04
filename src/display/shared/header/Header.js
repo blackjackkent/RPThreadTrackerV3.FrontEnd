@@ -63,7 +63,6 @@ const Header = (props) => {
 				<HeaderProfileDropdown
 					isHeaderProfileDropdownOpen={isHeaderProfileDropdownOpen}
 					headerProfileDropdownToggle={headerProfileDropdownToggle}
-					logout={logout}
 					user={user}
 				/>
 			</Nav>

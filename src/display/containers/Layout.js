@@ -24,12 +24,13 @@ import ManageCharacters from '../views/characters/ManageCharacters';
 import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
-import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import { useUserProfileQuery, useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 // #endregion imports
 
 const Layout = () => {
-	const isFetching = useIsFetching();
-	useUserProfileQuery();
+	const { isLoading: isUserProfileLoading } = useUserProfileQuery();
+	const { isLoading: isUserSettingsLoading } = useUserSettingsQuery();
+	const isLoading = isUserProfileLoading || isUserSettingsLoading;
 
 	const renderLoadingIndicator = () => {
 		return (
@@ -50,7 +51,6 @@ const Layout = () => {
 	const renderLayout = () => {
 		return (
 			<div className="app" data-spec="layout-app">
-				<ReduxToastr />
 				<HeaderContainer />
 				<div className="app-body">
 					<Sidebar />
@@ -130,7 +130,7 @@ const Layout = () => {
 			</div>
 		);
 	};
-	if (isFetching) {
+	if (isLoading) {
 		return renderLoadingIndicator();
 	}
 	return renderLayout();

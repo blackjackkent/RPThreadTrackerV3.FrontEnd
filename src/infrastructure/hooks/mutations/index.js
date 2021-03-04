@@ -3,3 +3,7 @@ export { default as useLogoutMutation } from './useLogoutMutation';
 
 // Threads
 export { default as useCreateThreadMutation } from './useCreateThreadMutation';
+export { default as useCreateCharacterMutation } from './useCreateCharacterMutation';
+
+// User
+export { default as useUpdateUserSettingsMutation } from './useUpdateUserSettingsMutation';

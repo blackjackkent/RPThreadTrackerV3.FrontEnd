@@ -59,7 +59,7 @@ const UpsertThreadModal = (props) => {
 	};
 
 	const getTagValues = () => {
-		if (!thread.threadTags) {
+		if (!thread || !thread.threadTags) {
 			return [];
 		}
 		return thread.threadTags.map((t) => t.tagText);

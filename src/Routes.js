@@ -1,8 +1,5 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import 'simple-line-icons/css/simple-line-icons.css';
-import 'react-redux-toastr/src/styles/index.scss';
-import 'rc-tooltip/assets/bootstrap.css';
 
 import '../scss/style.scss';
 import Layout from './display/containers/Layout';

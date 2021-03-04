@@ -91,6 +91,7 @@
 		"react-redux-toastr": "^7.4.3",
 		"react-router-dom": "^5.2.0",
 		"react-table": "^6.8.6",
+		"react-toastify": "^7.0.3",
 		"react-transition-group": "^2.5.0",
 		"reactstrap": "^6.5.0",
 		"redux": "^4.0.1",

@@ -4,7 +4,7 @@ import queryKeys from '~/infrastructure/constants/queryKeys';
 
 function useUserProfileQuery() {
 	const userProfileQuery = useQuery(queryKeys.USER_PROFILE, () => {
-		return axios.get(`${API_BASE_URL}api/user`);
+		return axios.get(`${API_BASE_URL}api/user`).then((res) => Promise.resolve(res.data));
 	});
 	return userProfileQuery;
 }

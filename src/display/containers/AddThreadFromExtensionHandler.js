@@ -16,7 +16,7 @@ const AddThreadFromExtensionHandler = () => {
 	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
 	const [thread, onInputChange, setThread] = useFormReducer();
 	const {
-		data: { data: characters } = {},
+		data: characters,
 		isLoading: isCharactersLoading,
 		isError: isCharactersFetchError
 	} = useCharactersQuery();

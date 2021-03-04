@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Router } from 'react-router-dom';
 import 'simple-line-icons/css/simple-line-icons.css';
-import 'react-redux-toastr/src/styles/index.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import 'rc-tooltip/assets/bootstrap.css';
 
 import '../scss/style.scss';
