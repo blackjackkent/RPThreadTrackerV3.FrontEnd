@@ -11,7 +11,7 @@ const BreadcrumbWrapper = (props) => {
 	const isFetching = useIsFetching();
 	return (
 		<Style className="breadcrumb-wrapper">
-			{isFetching && (
+			{isFetching !== 0 && (
 				<div data-spec="header-loading-indicator" className="float-right">
 					<LoadingIndicator className="invert" />
 				</div>

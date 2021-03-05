@@ -16,6 +16,9 @@ function useCreateCharacterMutation() {
 			}
 		}
 	);
-	return createCharacterMutation;
+	return {
+		createCharacter: createCharacterMutation.mutateAsync,
+		isLoading: createCharacterMutation.isLoading
+	};
 }
 export default useCreateCharacterMutation;

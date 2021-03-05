@@ -11,6 +11,9 @@ import {
 
 function* fetchActiveThreadsStatusChunk(chunk) {
 	try {
+		if (chunk.find((t) => t.ThreadId == 1655769)) {
+			console.log(chunk);
+		}
 		const response = yield call(axios.post, `${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk, {
 			headers: {
 				'Content-Type': 'application/json'

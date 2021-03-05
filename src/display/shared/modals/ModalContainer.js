@@ -5,8 +5,6 @@ import { connect } from 'react-redux';
 import * as selectors from '../../../infrastructure/selectors';
 import * as actions from '../../../infrastructure/actions';
 import columns from '../../../infrastructure/constants/columns';
-import UpsertCharacterModal from './UpsertCharacterModal';
-import UpsertThreadModal from './UpsertThreadModal';
 import GenericConfirmationModal from './GenericConfirmationModal';
 import UpsertPublicViewModal from './UpsertPublicViewModal';
 
@@ -127,7 +125,7 @@ const ModalContainer = (props) => {
 	} = props;
 	return (
 		<div>
-			<UpsertThreadModal
+			{/* <UpsertThreadModal
 				isModalOpen={isUpsertThreadModalOpen}
 				onModalClose={closeUpsertThreadModal}
 				thread={threadToEdit}
@@ -140,7 +138,7 @@ const ModalContainer = (props) => {
 				closeUpsertCharacterModal={closeUpsertCharacterModal}
 				submitUpsertCharacter={upsertCharacter}
 				characterToEdit={characterToEdit}
-			/>
+			/> */}
 			<UpsertPublicViewModal
 				isUpsertPublicViewModalOpen={isUpsertPublicViewModalOpen}
 				submitUpsertPublicView={upsertPublicView}

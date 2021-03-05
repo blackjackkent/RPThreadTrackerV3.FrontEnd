@@ -16,6 +16,9 @@ function useCreateThreadMutation() {
 			}
 		}
 	);
-	return createThreadMutation;
+	return {
+		createThread: createThreadMutation.mutateAsync,
+		isLoading: createThreadMutation.isLoading
+	};
 }
 export default useCreateThreadMutation;

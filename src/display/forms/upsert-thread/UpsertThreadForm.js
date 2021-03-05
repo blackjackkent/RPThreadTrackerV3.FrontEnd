@@ -10,7 +10,7 @@ import formData from './_formData';
 
 const propTypes = {
 	thread: PropTypes.shape({
-		characterId: PropTypes.number,
+		characterId: PropTypes.string,
 		userTitle: PropTypes.string,
 		postId: PropTypes.string,
 		partnerUrlIdentifier: PropTypes.string,

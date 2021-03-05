@@ -34,8 +34,8 @@ const HeaderContainer = () => {
 	const { unreadNewsCount, userSettings, setUnreadNewsCount } = useNewsQuery();
 	const { data: user } = useUserProfileQuery();
 	const { mutate: updateUserSettings } = useUpdateUserSettingsMutation();
-	const { mutate: createThread } = useCreateThreadMutation();
-	const { mutate: createCharacter } = useCreateCharacterMutation();
+	const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
+	const { createCharacter, isLoading: isCreateCharacterLoading } = useCreateCharacterMutation();
 
 	useEffect(() => {
 		document.body.classList.toggle('sidebar-hidden', isSidebarOpen);
@@ -54,21 +54,32 @@ const HeaderContainer = () => {
 		setIsNewsAsideOpen(!isNewsAsideOpen);
 	};
 
+	const submitCreateCharacter = (character) => {
+		createCharacter(character).then(() => {
+			setIsUpsertCharacterModalOpen(false);
+		});
+	};
+
+	const submitCreateThread = (thread) => {
+		createThread(thread).then(() => {
+			setIsUpsertThreadModalOpen(false);
+		});
+	};
+
 	return (
 		<Style className="app-header navbar">
 			<UpsertThreadModal
 				isModalOpen={isUpsertThreadModalOpen}
-				onModalClose={() => setIsUpsertThreadModalOpen(false)}
-				onInputChange={null}
-				onFormSubmit={createThread}
+				setIsModalOpen={setIsUpsertThreadModalOpen}
+				submitForm={submitCreateThread}
+				isLoading={isCreateThreadLoading}
 				characters={characters}
-				thread={{}}
 			/>
 			<UpsertCharacterModal
-				isUpsertCharacterModalOpen={isUpsertCharacterModalOpen}
-				closeUpsertCharacterModal={() => setIsUpsertCharacterModalOpen(false)}
-				submitUpsertCharacter={createCharacter}
-				characterToEdit={{}}
+				isModalOpen={isUpsertCharacterModalOpen}
+				setIsModalOpen={setIsUpsertCharacterModalOpen}
+				submitForm={submitCreateCharacter}
+				isLoading={isCreateCharacterLoading}
 			/>
 			<HeaderLogoBlock
 				isMobileSidebarOpen={isMobileSidebarOpen}
