@@ -13,32 +13,28 @@ import { useCreateThreadMutation } from '~/infrastructure/hooks/mutations';
 // #endregion imports
 
 const AddThreadFromExtensionHandler = () => {
-	const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-	const [thread, onInputChange, setThread] = useFormReducer();
+	const [isUpsertThreadModalOpen, setIsUpsertThreadModalOpen] = useState(false);
 	const {
 		data: characters,
 		isLoading: isCharactersLoading,
 		isError: isCharactersFetchError
 	} = useCharactersQuery();
 	const {
-		mutate: submitForm,
-		isLoading: isLoadingFormSubmit,
-		isSuccess: isFormSubmitSuccess,
-		isError: isFormSubmitError
+		createThread,
+		isLoading: isCreateThreadLoading,
+		isError: isFormSubmitError,
+		isSuccess: isFormSubmitSuccess
 	} = useCreateThreadMutation();
-	const isLoading = isCharactersLoading || isLoadingFormSubmit;
-
 	useEffect(() => {
-		if (!characters) {
-			return;
+		if (characters) {
+			setIsUpsertThreadModalOpen(true);
 		}
-		const data = getThreadDataFromExtensionQuery(characters);
-		setThread(data);
 	}, [characters]);
 
-	const onFormSubmit = () => {
-		submitForm(thread);
-		setIsFormSubmitted(true);
+	const submitCreateThread = (thread) => {
+		createThread(thread).then(() => {
+			setIsUpsertThreadModalOpen(false);
+		});
 	};
 
 	const renderLoadingIndicator = () => {
@@ -61,11 +57,10 @@ const AddThreadFromExtensionHandler = () => {
 		return (
 			<div className="app flex-row align-items-center" data-spec="layout-app">
 				<UpsertThreadModal
-					isModalOpen={!isLoading && !isFormSubmitted}
-					onModalClose={null}
-					thread={thread}
-					onInputChange={onInputChange}
-					onFormSubmit={onFormSubmit}
+					isModalOpen={isUpsertThreadModalOpen}
+					setIsModalOpen={setIsUpsertThreadModalOpen}
+					submitForm={submitCreateThread}
+					isLoading={isCreateThreadLoading}
 					characters={characters}
 				/>
 				{message && (
@@ -85,7 +80,7 @@ const AddThreadFromExtensionHandler = () => {
 			</div>
 		);
 	};
-	if (isLoading) {
+	if (isCharactersLoading) {
 		return renderLoadingIndicator();
 	}
 	let message = '';
