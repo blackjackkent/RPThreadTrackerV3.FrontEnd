@@ -34,7 +34,7 @@ const HeaderContainer = () => {
 	const { data: characters } = useCharactersQuery();
 	const { unreadNewsCount, userSettings, setUnreadNewsCount } = useNewsQuery();
 	const { data: user } = useUserProfileQuery();
-	const { mutate: updateUserSettings } = useUpdateUserSettingsMutation();
+	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
 	const { createCharacter, isLoading: isCreateCharacterLoading } = useCreateCharacterMutation();
 

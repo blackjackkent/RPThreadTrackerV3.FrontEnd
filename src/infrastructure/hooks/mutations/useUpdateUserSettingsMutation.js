@@ -16,6 +16,9 @@ function useUpdateUserSettingsMutation() {
 			}
 		}
 	);
-	return updateUserSettingsMutation;
+	return {
+		updateUserSettings: updateUserSettingsMutation.mutateAsync,
+		...updateUserSettingsMutation
+	};
 }
 export default useUpdateUserSettingsMutation;
