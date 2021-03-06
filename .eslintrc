@@ -4,6 +4,7 @@
 		"browser": true,
 		"jest": true
 	},
+	"parser": "@babel/eslint-parser",
 	"globals": {
 		"API_BASE_URL": false,
 		"TUMBLR_CLIENT_BASE_URL": false,
@@ -11,24 +12,7 @@
 		"browser": true
 	},
 	"rules": {
-		// "comma-dangle": ["error", "never"],
-		// "linebreak-style": ["error", "unix"],
-		// "indent": [
-		// 	"error",
-		// 	"tab",
-		// 	{
-		// 		"SwitchCase": 1
-		// 	}
-		// ],
-		// "no-tabs": "off",
 		"react/jsx-indent": ["error", "tab"],
-		// "react/destructuring-assignment": [
-		// 	"error",
-		// 	"always",
-		// 	{
-		// 		"ignoreClassFields": true
-		// 	}
-		// ],
 		"react/jsx-filename-extension": "off",
 		"react/jsx-one-expression-per-line": "off",
 		"react/sort-comp": [
@@ -40,19 +24,6 @@
 		"class-methods-use-this": "off",
 		"no-plusplus": "off",
 		"react/jsx-indent-props": ["error", "tab"],
-		// "arrow-body-style": ["error", "as-needed"],
-		// "no-confusing-arrow": [
-		// 	"error",
-		// 	{
-		// 		"allowParens": true
-		// 	}
-		// ],
-		// "import/no-extraneous-dependencies": [
-		// 	"error",
-		// 	{
-		// 		"devDependencies": ["**/*.test.js", "**/*.spec.js", "**/config/**", "**/*webpack*"]
-		// 	}
-		// ],
 		"react/jsx-wrap-multilines": [
 			"error",
 			{
@@ -60,18 +31,6 @@
 			}
 		],
 		"require-yield": "off"
-		// "jsx-a11y/label-has-for": [
-		// 	"error",
-		// 	{
-		// 		"components": ["Label"],
-		// 		"required": {
-		// 			"every": ["id"]
-		// 		},
-		// 		"allowChildren": false
-		// 	}
-		// ],
-		// "object-curly-newline": "off",
-		// "arrow-parens": ["error", "always"]
 	},
 	"settings": {
 		"import/resolver": {

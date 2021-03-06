@@ -12,7 +12,6 @@ import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 
 const StaticContainer = () => (
 	<div className="app flex-row align-items-center">
-		<ReduxToastr />
 		<Container>
 			<Row className="justify-content-center">
 				<Col md="6">

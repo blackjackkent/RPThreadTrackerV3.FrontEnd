@@ -12,7 +12,7 @@ function useCreateThreadMutation() {
 		},
 		{
 			onSuccess: (data) => {
-				queryClient.setQueryData([queryKeys.THREADS, { id: data.threadId }], data);
+				queryClient.setQueryData([queryKeys.ACTIVE_THREADS, { id: data.threadId }], data);
 			}
 		}
 	);
