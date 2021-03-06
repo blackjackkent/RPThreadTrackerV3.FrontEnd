@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, CardBody } from 'reactstrap';
 
+import { toast } from 'react-toastify';
 import Card from '../shared/styled/Card';
 import LoadingIndicator from '../shared/loading/LoadingIndicator';
 import UpsertThreadModal from '../shared/modals/UpsertThreadModal';
@@ -22,7 +23,6 @@ const AddThreadFromExtensionHandler = () => {
 	const {
 		createThread,
 		isLoading: isCreateThreadLoading,
-		isError: isFormSubmitError,
 		isSuccess: isFormSubmitSuccess
 	} = useCreateThreadMutation();
 	useEffect(() => {
@@ -33,9 +33,13 @@ const AddThreadFromExtensionHandler = () => {
 	}, [characters]);
 
 	const submitCreateThread = (thread) => {
-		createThread(thread).then(() => {
-			setIsUpsertThreadModalOpen(false);
-		});
+		createThread(thread)
+			.then(() => {
+				setIsUpsertThreadModalOpen(false);
+			})
+			.catch(() => {
+				toast.error(`There was an error tracking this thread.`);
+			});
 	};
 
 	const renderLoadingIndicator = () => {
@@ -88,9 +92,6 @@ const AddThreadFromExtensionHandler = () => {
 	let message = '';
 	if (isCharactersFetchError) {
 		message = 'There was an error retrieving your account information.';
-	}
-	if (isFormSubmitError) {
-		message = 'There was an error creating the thread.';
 	}
 	if (isFormSubmitSuccess) {
 		message = 'You may now close this window.';

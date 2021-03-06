@@ -56,21 +56,29 @@ const HeaderContainer = () => {
 	};
 
 	const submitCreateCharacter = (character) => {
-		createCharacter(character).then(() => {
-			setIsUpsertCharacterModalOpen(false);
-			toast.success(
-				`Added ${
-					character.characterName ? character.characterName : character.urlIdentifier
-				} to the character list!`
-			);
-		});
+		createCharacter(character)
+			.then(() => {
+				setIsUpsertCharacterModalOpen(false);
+				toast.success(
+					`Added ${
+						character.characterName ? character.characterName : character.urlIdentifier
+					} to the character list!`
+				);
+			})
+			.catch(() => {
+				toast.error(`There was an error adding this character.`);
+			});
 	};
 
 	const submitCreateThread = (thread) => {
-		createThread(thread).then(() => {
-			setIsUpsertThreadModalOpen(false);
-			toast.success('Thread created!');
-		});
+		createThread(thread)
+			.then(() => {
+				setIsUpsertThreadModalOpen(false);
+				toast.success('Thread created!');
+			})
+			.catch(() => {
+				toast.error(`There was an error tracking this thread.`);
+			});
 	};
 
 	return (
