@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react';
 function useFilteredThreads(threads, threadsStatus, filter, includeThreadsWithoutStatus = true) {
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	useEffect(() => {
+		// console.log('running');
+		// console.log(threads);
+		// console.log(threadsStatus);
+		// console.log('************************');
 		const threadData = threads?.threads;
 		if (!threadData?.length) {
 			return;
