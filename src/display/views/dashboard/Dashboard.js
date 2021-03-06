@@ -16,7 +16,7 @@ import {
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
-import { useQuery, useQueryClient } from 'react-query';
+import { useQueryClient } from 'react-query';
 import queryKeys from '~/infrastructure/constants/queryKeys';
 import useFilteredThreads from '~/infrastructure/hooks/useFilteredThreads';
 import filters from '~/infrastructure/constants/filters';
@@ -48,19 +48,16 @@ function mapStateToProps(state) {
 const Dashboard = (props) => {
 	const queryClient = useQueryClient();
 	const { activeThreads } = useThreadsQuery();
-	const { data: activeThreadsStatus } = useQuery(
-		[queryKeys.THREADS_STATUS, { isArchived: false }],
-		() => {
-			return queryClient.getQueryData([queryKeys.THREADS_STATUS, { isArchived: false }]);
-		}
-	);
+	const activeThreadsStatus = queryClient.getQueryData([
+		queryKeys.THREADS_STATUS,
+		{ isArchived: false }
+	]);
 	const myTurnThreads = useFilteredThreads(
 		activeThreads,
 		activeThreadsStatus,
 		filters.MY_TURN,
 		true
 	);
-	console.log(myTurnThreads);
 	// const toggleDashboardThreadDistribution = () => {
 	// 	updateUserSettings({
 	// 		...userSettings,

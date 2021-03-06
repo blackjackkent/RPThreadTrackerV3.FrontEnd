@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react';
 function useFilteredThreads(threads, threadsStatus, filter, includeThreadsWithoutStatus = true) {
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	useEffect(() => {
-		// console.log('running');
-		// console.log(threads);
-		// console.log(threadsStatus);
-		// console.log('************************');
+		console.log('running');
+		console.log(threads);
+		console.log(threadsStatus);
 		const threadData = threads?.threads;
 		if (!threadData?.length) {
 			return;
@@ -34,6 +33,8 @@ function useFilteredThreads(threads, threadsStatus, filter, includeThreadsWithou
 					}))
 			);
 		}
+		console.log(results);
+		console.log('************************');
 		setFilteredThreads(results);
 	}, [filter, includeThreadsWithoutStatus, threads, threadsStatus]);
 	return filteredThreads;

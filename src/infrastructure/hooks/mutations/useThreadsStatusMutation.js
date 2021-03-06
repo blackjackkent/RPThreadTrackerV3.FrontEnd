@@ -15,6 +15,7 @@ function useThreadsStatusMutation(isArchived = false) {
 				const currentData =
 					queryClient.getQueryData([queryKeys.THREADS_STATUS, { isArchived }]) ?? [];
 				const updated = currentData.concat(data);
+				queryClient.invalidateQueries([queryKeys.THREADS_STATUS, { isArchived }]);
 				queryClient.setQueryData([queryKeys.THREADS_STATUS, { isArchived }], updated);
 			}
 		}
