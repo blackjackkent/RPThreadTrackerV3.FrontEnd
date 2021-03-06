@@ -2,11 +2,14 @@ import { useMutation } from 'react-query';
 import axios from 'axios';
 
 function useLogoutMutation() {
-	const loginMutation = useMutation((refreshToken) => {
+	const logoutMutation = useMutation((refreshToken) => {
 		return axios.post(`${API_BASE_URL}api/auth/revoke`, {
 			refreshToken
 		});
 	});
-	return loginMutation;
+	return {
+		submitLogout: logoutMutation.mutateAsync,
+		...logoutMutation
+	};
 }
 export default useLogoutMutation;

@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Row, Col, CardBody } from 'reactstrap';
 import Card from '../shared/styled/Card';
 
-const Maintenance = (props) => {
+const Maintenance = () => {
 	return (
 		<div className="app flex-row align-items-center">
 			<Container>

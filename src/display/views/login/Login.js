@@ -3,22 +3,18 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useLoginMutation } from '~/infrastructure/hooks/mutations';
 import { useFormReducer } from '~/infrastructure/hooks';
-import cache from '~/infrastructure/cache';
-import cacheKeys from '~/infrastructure/constants/cacheKeys';
 import LoginForm from './components/LoginForm';
 // #endregion imports
 
 function Login() {
 	const [state, onInputChange] = useFormReducer();
-	const { mutate, reset, isLoading, isError, isSuccess, data, error } = useLoginMutation();
+	const { submitLogin, reset, isLoading, isError, isSuccess, error } = useLoginMutation();
 	const onSubmit = () => {
 		reset();
-		mutate({ username: state.username, password: state.password });
+		submitLogin({ username: state.username, password: state.password });
 	};
 
 	if (isSuccess) {
-		cache.set(cacheKeys.ACCESS_TOKEN, data.data.token.token);
-		cache.set(cacheKeys.REFRESH_TOKEN, data.data.refreshToken.token);
 		return (
 			<div>
 				<Redirect to="/dashboard" />
