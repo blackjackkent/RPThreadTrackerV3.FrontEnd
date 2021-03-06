@@ -3,6 +3,7 @@ import { Router } from 'react-router-dom';
 import 'simple-line-icons/css/simple-line-icons.css';
 import 'react-toastify/dist/ReactToastify.css';
 import 'rc-tooltip/assets/bootstrap.css';
+import { ToastContainer } from 'react-toastify';
 
 import '../scss/style.scss';
 import history from './utility/history';
@@ -27,6 +28,7 @@ const App = () => {
 				setUseLightTheme
 			}}
 		>
+			<ToastContainer />
 			<Router history={history}>
 				<Routes />
 			</Router>

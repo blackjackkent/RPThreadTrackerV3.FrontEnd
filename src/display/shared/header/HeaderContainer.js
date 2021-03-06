@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Nav } from 'reactstrap';
+import { toast } from 'react-toastify';
 import { useCacheValue } from '~/infrastructure/hooks';
 import {
 	useCreateThreadMutation,
@@ -57,12 +58,18 @@ const HeaderContainer = () => {
 	const submitCreateCharacter = (character) => {
 		createCharacter(character).then(() => {
 			setIsUpsertCharacterModalOpen(false);
+			toast.success(
+				`Added ${
+					character.characterName ? character.characterName : character.urlIdentifier
+				} to the character list!`
+			);
 		});
 	};
 
 	const submitCreateThread = (thread) => {
 		createThread(thread).then(() => {
 			setIsUpsertThreadModalOpen(false);
+			toast.success('Thread created!');
 		});
 	};
 

@@ -8,11 +8,11 @@ import UpsertThreadModal from '../shared/modals/UpsertThreadModal';
 
 import { getThreadDataFromExtensionQuery } from '../../utility';
 import { useCharactersQuery } from '~/infrastructure/hooks/queries';
-import { useFormReducer } from '~/infrastructure/hooks';
 import { useCreateThreadMutation } from '~/infrastructure/hooks/mutations';
 // #endregion imports
 
 const AddThreadFromExtensionHandler = () => {
+	const [threadData, setThreadData] = useState({});
 	const [isUpsertThreadModalOpen, setIsUpsertThreadModalOpen] = useState(false);
 	const {
 		data: characters,
@@ -27,6 +27,7 @@ const AddThreadFromExtensionHandler = () => {
 	} = useCreateThreadMutation();
 	useEffect(() => {
 		if (characters) {
+			setThreadData(getThreadDataFromExtensionQuery(characters));
 			setIsUpsertThreadModalOpen(true);
 		}
 	}, [characters]);
@@ -62,6 +63,7 @@ const AddThreadFromExtensionHandler = () => {
 					submitForm={submitCreateThread}
 					isLoading={isCreateThreadLoading}
 					characters={characters}
+					threadToEdit={threadData}
 				/>
 				{message && (
 					<Container data-spec="extension-handler-success-message">
