@@ -11,8 +11,8 @@ function useUpdateUserSettingsMutation() {
 				.then((res) => Promise.resolve(res.data));
 		},
 		{
-			onSuccess: (data) => {
-				queryClient.setQueryData([queryKeys.USER_SETTINGS], data);
+			onSuccess: () => {
+				queryClient.invalidateQueries([queryKeys.USER_SETTINGS]);
 			}
 		}
 	);

@@ -14,11 +14,8 @@ import Routes from './Routes';
 const App = () => {
 	const [useLightTheme, setUseLightTheme] = useCacheValue(cacheKeys.USE_LIGHT_THEME);
 
-	const loadBodyClasses = () => {
-		document.body.classList.toggle('light-theme', useLightTheme);
-	};
 	useEffect(() => {
-		loadBodyClasses();
+		document.body.classList.toggle('light-theme', useLightTheme);
 	}, [useLightTheme]);
 
 	return (

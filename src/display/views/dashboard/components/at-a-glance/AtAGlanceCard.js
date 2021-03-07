@@ -7,7 +7,7 @@ import DashboardSummaryWidget from './DashboardSummaryWidget';
 
 const propTypes = {
 	showDashboardThreadDistribution: PropTypes.bool.isRequired,
-	showDashboardThreadDistributionToggle: PropTypes.func.isRequired,
+	toggleShowDashboardThreadDistribution: PropTypes.func.isRequired,
 	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -18,7 +18,7 @@ const propTypes = {
 const AtAGlanceCard = (props) => {
 	const {
 		showDashboardThreadDistribution,
-		showDashboardThreadDistributionToggle,
+		toggleShowDashboardThreadDistribution,
 		myTurnThreads,
 		theirTurnThreads,
 		activeThreads,
@@ -39,7 +39,7 @@ const AtAGlanceCard = (props) => {
 						className="switch-input"
 						id="at-a-glance-switch"
 						checked={showDashboardThreadDistribution}
-						onChange={showDashboardThreadDistributionToggle}
+						onChange={toggleShowDashboardThreadDistribution}
 					/>
 					<span className="switch-label" data-on="On" data-off="Off" />
 					<span className="switch-handle" />

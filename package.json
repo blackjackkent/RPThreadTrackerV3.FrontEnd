@@ -104,6 +104,7 @@
 		"simple-line-icons": "^2.4.1",
 		"styled-components": "^4.1.2",
 		"unused-webpack-plugin": "^2.4.0",
+		"uuid": "^8.3.2",
 		"webpack": "^4.26.1",
 		"webpack-dev-server": "^3.11.0"
 	},

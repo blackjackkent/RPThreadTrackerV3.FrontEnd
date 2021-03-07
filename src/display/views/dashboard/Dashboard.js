@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState } from 'react';
+import React, { Component, useContext, useEffect, useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -16,63 +16,44 @@ import {
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
-import { useQueryClient } from 'react-query';
+import { QueryObserver, useQuery, useQueryClient } from 'react-query';
 import queryKeys from '~/infrastructure/constants/queryKeys';
-import useFilteredThreads from '~/infrastructure/hooks/useFilteredThreads';
 import filters from '~/infrastructure/constants/filters';
+import { ActiveThreadsContext, useFilteredActiveThreads } from '~/infrastructure/hooks';
 
-const propTypes = {};
-
-function mapStateToProps(state) {
-	const { characters, userSettings, activeThreads, randomThread } = state;
-	const myTurnThreads = selectors.getMyTurnThreads(state);
-	const theirTurnThreads = selectors.getTheirTurnThreads(state);
-	const queuedThreads = selectors.getQueuedThreads(state);
-	const recentActivityThreads = selectors.getRecentActivity(state);
-	const characterThreadCounts = selectors.getThreadCountsByCharacter(state);
-	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
-	return {
-		characters,
-		userSettings,
-		activeThreads,
-		randomThread,
-		myTurnThreads,
-		theirTurnThreads,
-		queuedThreads,
-		recentActivityThreads,
-		characterThreadCounts,
-		isLoadingIconVisible
+const Dashboard = () => {
+	const [
+		isDashboardThreadDistributionVisible,
+		setIsDashboardThreadDistributionVisible
+	] = useState(false);
+	const { isThreadsLoading, isThreadsStatusLoading } = useContext(ActiveThreadsContext);
+	const { data: userSettings } = useUserSettingsQuery();
+	const { updateUserSettings } = useUpdateUserSettingsMutation();
+	const allActiveThreads = useFilteredActiveThreads(filters.ALL);
+	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
+	const theirTurnThreads = useFilteredActiveThreads(filters.THEIR_TURN, false);
+	const queuedThreads = useFilteredActiveThreads(filters.QUEUED, false);
+	useEffect(() => {
+		if (userSettings) {
+			setIsDashboardThreadDistributionVisible(userSettings.showDashboardThreadDistribution);
+		}
+	}, [userSettings]);
+	const toggleDashboardThreadDistribution = () => {
+		const newValue = !isDashboardThreadDistributionVisible;
+		setIsDashboardThreadDistributionVisible(newValue);
+		updateUserSettings({
+			...userSettings,
+			showDashboardThreadDistribution: newValue
+		});
 	};
-}
-
-const Dashboard = (props) => {
-	const queryClient = useQueryClient();
-	const { activeThreads } = useThreadsQuery();
-	const activeThreadsStatus = queryClient.getQueryData([
-		queryKeys.THREADS_STATUS,
-		{ isArchived: false }
-	]);
-	const myTurnThreads = useFilteredThreads(
-		activeThreads,
-		activeThreadsStatus,
-		filters.MY_TURN,
-		true
-	);
-	// const toggleDashboardThreadDistribution = () => {
-	// 	updateUserSettings({
-	// 		...userSettings,
-	// 		showDashboardThreadDistribution: !isDashboardThreadDistributionVisible
-	// 	});
-	// 	setIsDashboardThreadDistributionVisible(!isDashboardThreadDistributionVisible);
-	// };
-	// archiveThread(thread) {
-	// 	const { upsertThread } = this.props;
-	// 	const updatedThread = {
-	// 		...thread,
-	// 		isArchived: !thread.isArchived
-	// 	};
-	// 	upsertThread(updatedThread);
-	// }
+	const archiveThread = (thread) => {
+		const { upsertThread } = this.props;
+		const updatedThread = {
+			...thread,
+			isArchived: !thread.isArchived
+		};
+		upsertThread(updatedThread);
+	};
 
 	// markThreadQueued(thread) {
 	// 	const { upsertThread } = this.props;
@@ -86,25 +67,23 @@ const Dashboard = (props) => {
 		<Style className="animated fadeIn dashboard-container">
 			<Row>
 				<Col>
-					{/* <AtAGlanceCard
+					<AtAGlanceCard
 						data-spec="dashboard-at-a-glance-card"
-						showDashboardThreadDistribution={
-							userSettings.showDashboardThreadDistribution
-						}
-						showDashboardThreadDistributionToggle={toggleDashboardThreadDistribution}
+						showDashboardThreadDistribution={isDashboardThreadDistributionVisible}
+						toggleShowDashboardThreadDistribution={toggleDashboardThreadDistribution}
 						myTurnThreads={myTurnThreads}
 						theirTurnThreads={theirTurnThreads}
-						activeThreads={activeThreads}
+						activeThreads={allActiveThreads}
 						queuedThreads={queuedThreads}
-						isLoadingIconVisible={isLoadingIconVisible}
-					/> */}
+						isLoadingIconVisible={isThreadsLoading || isThreadsStatusLoading}
+					/>
 				</Col>
 			</Row>
 			{/* <Row>
 				<Col xs="12" md="6">
 					<RecentActivityCard
 						data-spec="dashboard-recent-activity-card"
-						recentActivityThreads={recentActivityThreads}
+						recentActivity-={recentActivityThreads}
 						allThreads={activeThreads}
 						characters={characters}
 						archiveThread={this.archiveThread}
