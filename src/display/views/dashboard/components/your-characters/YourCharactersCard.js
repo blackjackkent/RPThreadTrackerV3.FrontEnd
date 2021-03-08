@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import { CardHeader, CardBody } from 'reactstrap';
 import Card from '~/display/shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
-import NoCharactersMessage from '../NoCharactersMessage';
-import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
+import NoCharactersMessage from '../shared/NoCharactersMessage';
+import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 
 const propTypes = {

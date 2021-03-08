@@ -1,5 +1,5 @@
 // #region imports
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
@@ -46,7 +46,11 @@ const Layout = () => {
 		isThreadsLoading: isArchivedThreadsLoading,
 		isThreadsStatusLoading: isArchivedThreadsStatusLoading
 	} = useThreadsQuery(true, activeThreads && activeThreads.length);
-	const { data: characters, isLoading: isCharactersLoading } = useCharactersQuery();
+	const {
+		data: characters,
+		isLoading: isCharactersLoading,
+		isError: isCharactersFetchError
+	} = useCharactersQuery();
 	const isGlobalLoading = isUserProfileLoading || isUserSettingsLoading;
 
 	const renderLoadingIndicator = () => {
@@ -68,7 +72,9 @@ const Layout = () => {
 	const renderLayout = () => {
 		return (
 			<div className="app" data-spec="layout-app">
-				<CharactersContext.Provider value={{ characters, isCharactersLoading }}>
+				<CharactersContext.Provider
+					value={{ characters, isCharactersLoading, isCharactersFetchError }}
+				>
 					<HeaderContainer />
 					<div className="app-body">
 						<Sidebar />

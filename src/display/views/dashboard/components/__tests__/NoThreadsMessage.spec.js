@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import NoThreadsMessage from '../NoThreadsMessage';
+import NoThreadsMessage from '../recent-activity/NoThreadsMessage';
 // #endregion imports
 
 const createTestProps = (propOverrides) => ({

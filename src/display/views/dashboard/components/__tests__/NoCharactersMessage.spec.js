@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import NoCharactersMessage from '../NoCharactersMessage';
+import NoCharactersMessage from '../shared/NoCharactersMessage';
 // #endregion imports
 
 const createTestProps = (propOverrides) => ({
