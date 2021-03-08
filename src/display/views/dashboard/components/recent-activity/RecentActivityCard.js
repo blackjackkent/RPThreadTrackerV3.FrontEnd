@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
 import Card from '~/display/shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
@@ -11,7 +10,7 @@ import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import { useFilteredActiveThreads } from '~/infrastructure/hooks';
 import filters from '~/infrastructure/constants/filters';
 import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
-import { useThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
+import { useActiveThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
@@ -24,11 +23,11 @@ const renderBlockMessage = (characters, allThreads) => {
 	if (allThreads.length === 0) {
 		return <NoThreadsMessage />;
 	}
-	return null;
+	return <NoRecentActivityMessage />;
 };
 
 const RecentActivityCard = () => {
-	const { isThreadsLoading } = useThreadsContext();
+	const { isThreadsLoading } = useActiveThreadsContext();
 	const { characters } = useCharactersContext();
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();

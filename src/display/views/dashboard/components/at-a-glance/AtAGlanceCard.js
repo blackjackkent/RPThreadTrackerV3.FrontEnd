@@ -7,7 +7,7 @@ import { useFilteredActiveThreads } from '~/infrastructure/hooks';
 import filters from '~/infrastructure/constants/filters';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
-import { useThreadsContext } from '~/infrastructure/hooks/contexts';
+import { useActiveThreadsContext } from '~/infrastructure/hooks/contexts';
 
 const AtAGlanceCard = () => {
 	const [
@@ -34,7 +34,7 @@ const AtAGlanceCard = () => {
 	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
 	const theirTurnThreads = useFilteredActiveThreads(filters.THEIR_TURN, false);
 	const queuedThreads = useFilteredActiveThreads(filters.QUEUED, false);
-	const { isThreadsLoading } = useThreadsContext();
+	const { isThreadsLoading } = useActiveThreadsContext();
 
 	return (
 		<Card className="at-a-glance-card">
