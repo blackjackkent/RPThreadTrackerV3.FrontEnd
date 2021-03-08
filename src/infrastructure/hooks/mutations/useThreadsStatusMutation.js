@@ -1,7 +1,6 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useReducer } from 'react';
+import { useMutation } from 'react-query';
 import axios from 'axios';
-import queryKeys from '~/infrastructure/constants/queryKeys';
-import { useReducer, useState } from 'react';
 
 const threadsStatusReducer = (state, action) => {
 	if (!action) {
