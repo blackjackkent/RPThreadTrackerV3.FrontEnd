@@ -20,24 +20,21 @@ import { QueryObserver, useQuery, useQueryClient } from 'react-query';
 import queryKeys from '~/infrastructure/constants/queryKeys';
 import filters from '~/infrastructure/constants/filters';
 import { ThreadsContext, useFilteredActiveThreads } from '~/infrastructure/hooks';
+import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
 
 const Dashboard = () => {
 	const [
 		isDashboardThreadDistributionVisible,
 		setIsDashboardThreadDistributionVisible
 	] = useState(false);
-	const {
-		isThreadsLoading,
-		isThreadsStatusLoading,
-		archivedThreads,
-		archivedThreadsStatus
-	} = useContext(ThreadsContext);
+	const { isActiveThreadsLoading, isActiveThreadsStatusLoading } = useContext(ThreadsContext);
 	const { data: userSettings } = useUserSettingsQuery();
 	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	const allActiveThreads = useFilteredActiveThreads(filters.ALL);
 	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
 	const theirTurnThreads = useFilteredActiveThreads(filters.THEIR_TURN, false);
 	const queuedThreads = useFilteredActiveThreads(filters.QUEUED, false);
+	const { data: characters } = useCharactersQuery();
 	useEffect(() => {
 		if (userSettings) {
 			setIsDashboardThreadDistributionVisible(userSettings.showDashboardThreadDistribution);
@@ -51,29 +48,9 @@ const Dashboard = () => {
 			showDashboardThreadDistribution: newValue
 		});
 	};
-	useEffect(() => {
-		console.log('archived values updated');
-		console.log(archivedThreads);
-		console.log(archivedThreadsStatus);
-		console.log('*************************');
-	}, [archivedThreads, archivedThreadsStatus]);
-	const archiveThread = (thread) => {
-		const { upsertThread } = this.props;
-		const updatedThread = {
-			...thread,
-			isArchived: !thread.isArchived
-		};
-		upsertThread(updatedThread);
-	};
+	const archiveThread = (thread) => {};
 
-	// markThreadQueued(thread) {
-	// 	const { upsertThread } = this.props;
-	// 	const updatedThread = {
-	// 		...thread,
-	// 		dateMarkedQueued: new Date(Date.now())
-	// 	};
-	// 	upsertThread(updatedThread);
-	// }
+	const markThreadQueued = (thread) => {};
 	return (
 		<Style className="animated fadeIn dashboard-container">
 			<Row>
@@ -86,32 +63,30 @@ const Dashboard = () => {
 						theirTurnThreads={theirTurnThreads}
 						activeThreads={allActiveThreads}
 						queuedThreads={queuedThreads}
-						isLoadingIconVisible={isThreadsLoading || isThreadsStatusLoading}
+						isLoadingIconVisible={
+							isActiveThreadsLoading || isActiveThreadsStatusLoading
+						}
 					/>
 				</Col>
 			</Row>
-			{/* <Row>
+			<Row>
 				<Col xs="12" md="6">
 					<RecentActivityCard
-						data-spec="dashboard-recent-activity-card"
-						recentActivity-={recentActivityThreads}
-						allThreads={activeThreads}
-						characters={characters}
-						archiveThread={this.archiveThread}
-						openUntrackThreadModal={openUntrackThreadModal}
-						markThreadQueued={this.markThreadQueued}
-						loadingInProgress={isLoadingIconVisible}
+						archiveThread={archiveThread}
+						openUntrackThreadModal={() => {}}
+						markThreadQueued={markThreadQueued}
+						loadingInProgress={isActiveThreadsLoading || isActiveThreadsStatusLoading}
 					/>
 				</Col>
-				<Col xs="12" md="6">
+				{/* <Col xs="12" md="6">
 					<YourCharactersCard
 						characters={characters}
 						characterThreadCounts={characterThreadCounts}
 						loadingInProgress={isLoadingIconVisible}
 					/>
-				</Col>
+				</Col> */}
 			</Row>
-			<Row>
+			{/* <Row>
 				<Col md="6" xs="12">
 					<RandomThreadCard
 						data-spec="dashboard-random-thread-card"
@@ -122,7 +97,7 @@ const Dashboard = () => {
 				<Col md="6" xs="12">
 					<TrackerSupportCard />
 				</Col>
-			</Row> */}
+			</Row>} */}
 		</Style>
 	);
 };

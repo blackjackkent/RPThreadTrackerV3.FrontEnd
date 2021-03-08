@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { CardHeader, CardBody } from 'reactstrap';
 import Card from '~/display/shared/styled/Card';
@@ -8,15 +8,24 @@ import NoCharactersMessage from '../NoCharactersMessage';
 import NoRecentActivityMessage from '../NoRecentActivityMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
+import { ThreadsContext, useFilteredActiveThreads } from '~/infrastructure/hooks';
+import filters from '~/infrastructure/constants/filters';
+import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
+import { useCharactersQuery } from '~/infrastructure/hooks/queries';
 
 const propTypes = {
-	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	allThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})),
+	allThreads: PropTypes.arrayOf(PropTypes.shape({})),
+	characters: PropTypes.arrayOf(PropTypes.shape({})),
 	archiveThread: PropTypes.func.isRequired,
 	openUntrackThreadModal: PropTypes.func.isRequired,
 	markThreadQueued: PropTypes.func.isRequired,
 	loadingInProgress: PropTypes.bool.isRequired
+};
+const defaultProps = {
+	characters: [],
+	recentActivityThreads: [],
+	allThreads: []
 };
 
 const getBlockContent = (
@@ -42,7 +51,7 @@ const getBlockContent = (
 			/>
 		);
 	}
-	if (characters.length === 0) {
+	if (!characters) {
 		return <NoCharactersMessage />;
 	}
 	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
@@ -52,10 +61,10 @@ const getBlockContent = (
 	if (allThreads.length === 0) {
 		return <NoThreadsMessage />;
 	}
-	if (recentActivityThreads.length === 0) {
+	if (recentActivityThreads?.length === 0) {
 		return <NoRecentActivityMessage />;
 	}
-	return recentActivityThreads.map((threadData) => (
+	return recentActivityThreads?.map((threadData) => (
 		<RecentActivityRow
 			data-spec="recent-activity-card-row"
 			threadData={threadData}
@@ -68,15 +77,10 @@ const getBlockContent = (
 };
 
 const RecentActivityCard = (props) => {
-	const {
-		recentActivityThreads,
-		allThreads,
-		characters,
-		archiveThread,
-		openUntrackThreadModal,
-		markThreadQueued,
-		loadingInProgress
-	} = props;
+	const { archiveThread, openUntrackThreadModal, markThreadQueued, loadingInProgress } = props;
+	const allThreads = useFilteredActiveThreads(filters.ALL);
+	const recentActivityThreads = useRecentActivity();
+	const { data: characters } = useCharactersQuery();
 	return (
 		<Card className="recent-activity-card">
 			<CardHeader>
@@ -97,4 +101,5 @@ const RecentActivityCard = (props) => {
 	);
 };
 RecentActivityCard.propTypes = propTypes;
+RecentActivityCard.defaultProps = defaultProps;
 export default RecentActivityCard;
