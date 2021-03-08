@@ -8,10 +8,11 @@ import NoCharactersMessage from '../NoCharactersMessage';
 import NoRecentActivityMessage from '../NoRecentActivityMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
-import { useFilteredActiveThreads, useThreadsContext } from '~/infrastructure/hooks';
+import { useFilteredActiveThreads } from '~/infrastructure/hooks';
 import filters from '~/infrastructure/constants/filters';
 import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
-import { useCharactersQuery } from '~/infrastructure/hooks/queries';
+import { useThreadsContext } from '~/infrastructure/hooks/contexts';
+import useCharactersContext from '~/infrastructure/hooks/contexts/useCharactersContext';
 
 const getBlockContent = (
 	loadingInProgress,
@@ -63,7 +64,7 @@ const getBlockContent = (
 
 const RecentActivityCard = () => {
 	const { isThreadsLoading } = useThreadsContext();
-	const { data: characters } = useCharactersQuery();
+	const { characters } = useCharactersContext();
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
 	const archiveThread = () => {};

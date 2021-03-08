@@ -23,11 +23,12 @@ import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
 import {
+	useCharactersQuery,
 	useThreadsQuery,
 	useUserProfileQuery,
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
-import { ThreadsContext } from '~/infrastructure/hooks';
+import { CharactersContext, ThreadsContext } from '~/infrastructure/hooks/contexts';
 // #endregion imports
 
 const Layout = () => {
@@ -45,7 +46,8 @@ const Layout = () => {
 		isThreadsLoading: isArchivedThreadsLoading,
 		isThreadsStatusLoading: isArchivedThreadsStatusLoading
 	} = useThreadsQuery(true, activeThreads && activeThreads.length);
-	const isLoading = isUserProfileLoading || isUserSettingsLoading;
+	const { data: characters, isLoading: isCharactersLoading } = useCharactersQuery();
+	const isGlobalLoading = isUserProfileLoading || isUserSettingsLoading;
 
 	const renderLoadingIndicator = () => {
 		return (
@@ -66,103 +68,113 @@ const Layout = () => {
 	const renderLayout = () => {
 		return (
 			<div className="app" data-spec="layout-app">
-				<HeaderContainer />
-				<div className="app-body">
-					<Sidebar />
-					<main className="main">
-						<BreadcrumbWrapper />
-						<ThreadsContext.Provider
-							value={{
-								activeThreads,
-								activeThreadsStatus,
-								isActiveThreadsLoading,
-								isActiveThreadsStatusLoading,
-								archivedThreads,
-								archivedThreadsStatus,
-								isArchivedThreadsLoading,
-								isArchivedThreadsStatusLoading
-							}}
-						>
-							<Container fluid>
-								<Switch>
-									<Route
-										path="/dashboard"
-										name="Dashboard"
-										component={Dashboard}
-									/>
-									<Route path="threads/*" name="Threads" component={Threads} />
-									<Route
-										path="/threads/all"
-										name="Threads"
-										render={
-											/* istanbul ignore next */
-											() => <Threads Renderable={AllThreads} />
-										}
-									/>
-									<Route
-										path="/threads/your-turn"
-										name="Threads"
-										render={
-											/* istanbul ignore next */
-											() => <Threads Renderable={MyTurnThreads} />
-										}
-									/>
-									<Route
-										path="/threads/their-turn"
-										name="Threads"
-										render={
-											/* istanbul ignore next */
-											() => <Threads Renderable={TheirTurnThreads} />
-										}
-									/>
-									<Route
-										path="/threads/archived"
-										name="Threads"
-										render={
-											/* istanbul ignore next */
-											() => <Threads Renderable={ArchivedThreads} />
-										}
-									/>
-									<Route
-										path="/threads/queued"
-										name="Threads"
-										render={
-											/* istanbul ignore next */
-											() => <Threads Renderable={QueuedThreads} />
-										}
-									/>
-									<Route
-										path="/manage-characters"
-										name="Characters"
-										component={ManageCharacters}
-									/>
+				<CharactersContext.Provider value={{ characters, isCharactersLoading }}>
+					<HeaderContainer />
+					<div className="app-body">
+						<Sidebar />
+						<main className="main">
+							<BreadcrumbWrapper />
+							<ThreadsContext.Provider
+								value={{
+									activeThreads,
+									activeThreadsStatus,
+									isActiveThreadsLoading,
+									isActiveThreadsStatusLoading,
+									archivedThreads,
+									archivedThreadsStatus,
+									isArchivedThreadsLoading,
+									isArchivedThreadsStatusLoading
+								}}
+							>
+								<Container fluid>
+									<Switch>
+										<Route
+											path="/dashboard"
+											name="Dashboard"
+											component={Dashboard}
+										/>
+										<Route
+											path="threads/*"
+											name="Threads"
+											component={Threads}
+										/>
+										<Route
+											path="/threads/all"
+											name="Threads"
+											render={
+												/* istanbul ignore next */
+												() => <Threads Renderable={AllThreads} />
+											}
+										/>
+										<Route
+											path="/threads/your-turn"
+											name="Threads"
+											render={
+												/* istanbul ignore next */
+												() => <Threads Renderable={MyTurnThreads} />
+											}
+										/>
+										<Route
+											path="/threads/their-turn"
+											name="Threads"
+											render={
+												/* istanbul ignore next */
+												() => <Threads Renderable={TheirTurnThreads} />
+											}
+										/>
+										<Route
+											path="/threads/archived"
+											name="Threads"
+											render={
+												/* istanbul ignore next */
+												() => <Threads Renderable={ArchivedThreads} />
+											}
+										/>
+										<Route
+											path="/threads/queued"
+											name="Threads"
+											render={
+												/* istanbul ignore next */
+												() => <Threads Renderable={QueuedThreads} />
+											}
+										/>
+										<Route
+											path="/manage-characters"
+											name="Characters"
+											component={ManageCharacters}
+										/>
 
-									<Route path="/tools/:tabId" name="Tools" component={Tools} />
-									<Redirect from="/tools" to="/tools/export" />
+										<Route
+											path="/tools/:tabId"
+											name="Tools"
+											component={Tools}
+										/>
+										<Redirect from="/tools" to="/tools/export" />
 
-									<Route
-										path="/settings/:tabId"
-										name="Settings"
-										component={Settings}
-									/>
-									<Redirect from="/settings" to="/settings/change-password" />
+										<Route
+											path="/settings/:tabId"
+											name="Settings"
+											component={Settings}
+										/>
+										<Redirect from="/settings" to="/settings/change-password" />
 
-									<Route path="/help/:tabId" name="Help" component={Help} />
-									<Redirect from="/help" to="/help/about" />
+										<Route path="/help/:tabId" name="Help" component={Help} />
+										<Redirect from="/help" to="/help/about" />
 
-									<Redirect from="/" to="/dashboard" />
-								</Switch>
-							</Container>
-						</ThreadsContext.Provider>
-					</main>
-					<AsideContainer />
-				</div>
-				<Footer />
-				<ModalContainer />
+										<Redirect from="/" to="/dashboard" />
+									</Switch>
+								</Container>
+							</ThreadsContext.Provider>
+						</main>
+						<AsideContainer />
+					</div>
+					<Footer />
+					<ModalContainer />
+				</CharactersContext.Provider>
 			</div>
 		);
 	};
-	if (isLoading) {
+	if (isGlobalLoading) {
 		return renderLoadingIndicator();
 	}
 	return renderLayout();

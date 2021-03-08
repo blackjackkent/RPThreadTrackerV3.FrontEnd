@@ -1,6 +1,6 @@
 import React from 'react';
+import { useLightThemeContext } from '~/infrastructure/hooks/contexts';
 import Style from './_styles';
-import { useLightThemeContext } from '~/infrastructure/hooks';
 
 const Footer = () => {
 	const currentYear = new Date().getFullYear();

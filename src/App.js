@@ -7,9 +7,10 @@ import { ToastContainer } from 'react-toastify';
 
 import '../scss/style.scss';
 import history from './utility/history';
-import { useCacheValue, LightThemeContext } from './infrastructure/hooks';
+import { useCacheValue } from './infrastructure/hooks';
 import cacheKeys from './infrastructure/constants/cacheKeys';
 import Routes from './Routes';
+import { LightThemeContext } from './infrastructure/hooks/contexts';
 
 const App = () => {
 	const [useLightTheme, setUseLightTheme] = useCacheValue(cacheKeys.USE_LIGHT_THEME);

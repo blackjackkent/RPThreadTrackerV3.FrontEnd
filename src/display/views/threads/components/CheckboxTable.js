@@ -4,7 +4,7 @@ import checkboxHOC from 'react-table/lib/hoc/selectTable';
 import ReactTable from 'react-table';
 import colors from '../../../../infrastructure/constants/colors';
 import ReactTableContainer from '../../../shared/styled/ReactTableContainer';
-import { useLightThemeContext } from '~/infrastructure/hooks';
+import { useLightThemeContext } from '~/infrastructure/hooks/contexts';
 
 const CheckboxTableHOC = checkboxHOC(ReactTable);
 const propTypes = {
