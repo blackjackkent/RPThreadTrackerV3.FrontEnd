@@ -1,4 +1,4 @@
-import { useQueries, useQuery, useInfiniteQuery, useQueryClient } from 'react-query';
+import { useQuery } from 'react-query';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -28,7 +28,7 @@ function useThreadsQuery(isArchived = false, enabled = true) {
 		const requests = JSON.parse(threadData.threadStatusRequestJson);
 		const chunks = [];
 		for (let i = 0, j = requests.length; i < j; i += 10) {
-			const chunk = { chunkId: uuidv4(), threads: requests.slice(i, i + 10) };
+			const chunk = requests.slice(i, i + 10);
 			chunks.push(chunk);
 		}
 		chunks.forEach((chunk) => {

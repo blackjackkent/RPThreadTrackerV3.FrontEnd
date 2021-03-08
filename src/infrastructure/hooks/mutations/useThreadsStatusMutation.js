@@ -6,7 +6,9 @@ const threadsStatusReducer = (state, action) => {
 	if (!action) {
 		return state;
 	}
-	return { ...state, [action.chunkId]: action.data };
+	let newState = state[action.isArchived] ?? [];
+	newState = newState.concat(action.data);
+	return { ...state, [action.isArchived]: newState };
 };
 
 function useThreadsStatusMutation(isArchived = false) {
@@ -14,10 +16,8 @@ function useThreadsStatusMutation(isArchived = false) {
 	const threadsStatusMutation = useMutation(
 		(chunk) => {
 			return axios
-				.post(`${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk.threads)
-				.then((res) =>
-					Promise.resolve({ chunkId: chunk.chunkId, isArchived, data: res.data })
-				);
+				.post(`${TUMBLR_CLIENT_BASE_URL}api/thread`, chunk)
+				.then((res) => Promise.resolve({ isArchived, data: res.data }));
 		},
 		{
 			onSuccess: (res) => {
