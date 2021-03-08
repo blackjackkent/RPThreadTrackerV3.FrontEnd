@@ -8,25 +8,10 @@ import NoCharactersMessage from '../NoCharactersMessage';
 import NoRecentActivityMessage from '../NoRecentActivityMessage';
 import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
-import { ThreadsContext, useFilteredActiveThreads } from '~/infrastructure/hooks';
+import { useFilteredActiveThreads, useThreadsContext } from '~/infrastructure/hooks';
 import filters from '~/infrastructure/constants/filters';
 import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
 import { useCharactersQuery } from '~/infrastructure/hooks/queries';
-
-const propTypes = {
-	recentActivityThreads: PropTypes.arrayOf(PropTypes.shape({})),
-	allThreads: PropTypes.arrayOf(PropTypes.shape({})),
-	characters: PropTypes.arrayOf(PropTypes.shape({})),
-	archiveThread: PropTypes.func.isRequired,
-	openUntrackThreadModal: PropTypes.func.isRequired,
-	markThreadQueued: PropTypes.func.isRequired,
-	loadingInProgress: PropTypes.bool.isRequired
-};
-const defaultProps = {
-	characters: [],
-	recentActivityThreads: [],
-	allThreads: []
-};
 
 const getBlockContent = (
 	loadingInProgress,
@@ -51,11 +36,11 @@ const getBlockContent = (
 			/>
 		);
 	}
-	if (!characters) {
+	if (characters?.length === 0) {
 		return <NoCharactersMessage />;
 	}
-	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
-	if (characters.length > 0 && activeCharacters.length === 0) {
+	const activeCharacters = characters?.filter((c) => !c.isOnHiatus);
+	if (characters?.length > 0 && activeCharacters.length === 0) {
 		return <NoActiveCharactersMessage />;
 	}
 	if (allThreads.length === 0) {
@@ -76,11 +61,14 @@ const getBlockContent = (
 	));
 };
 
-const RecentActivityCard = (props) => {
-	const { archiveThread, openUntrackThreadModal, markThreadQueued, loadingInProgress } = props;
+const RecentActivityCard = () => {
+	const { isThreadsLoading } = useThreadsContext();
+	const { data: characters } = useCharactersQuery();
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
-	const { data: characters } = useCharactersQuery();
+	const archiveThread = () => {};
+	const openUntrackThreadModal = () => {};
+	const markThreadQueued = () => {};
 	return (
 		<Card className="recent-activity-card">
 			<CardHeader>
@@ -88,7 +76,7 @@ const RecentActivityCard = (props) => {
 			</CardHeader>
 			<CardBody className="card-body">
 				{getBlockContent(
-					loadingInProgress,
+					isThreadsLoading,
 					characters,
 					allThreads,
 					recentActivityThreads,
@@ -100,6 +88,4 @@ const RecentActivityCard = (props) => {
 		</Card>
 	);
 };
-RecentActivityCard.propTypes = propTypes;
-RecentActivityCard.defaultProps = defaultProps;
 export default RecentActivityCard;

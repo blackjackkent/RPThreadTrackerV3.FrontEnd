@@ -20,6 +20,11 @@ export default () => {
 		isActiveThreadsLoading,
 		isActiveThreadsStatusLoading,
 		isArchivedThreadsLoading,
-		isArchivedThreadsStatusLoading
+		isArchivedThreadsStatusLoading,
+		isThreadsLoading:
+			isActiveThreadsLoading ||
+			isActiveThreadsStatusLoading ||
+			isArchivedThreadsLoading ||
+			isArchivedThreadsStatusLoading
 	};
 };

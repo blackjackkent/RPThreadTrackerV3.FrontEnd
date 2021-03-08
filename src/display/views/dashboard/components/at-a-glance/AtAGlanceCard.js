@@ -1,30 +1,40 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { CardHeader, Input, CardBody, CardGroup } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import SwitchLabel from '../../../../shared/styled/SwitchLabel';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
+import { useFilteredActiveThreads, useThreadsContext } from '~/infrastructure/hooks';
+import filters from '~/infrastructure/constants/filters';
+import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
+import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
 
-const propTypes = {
-	showDashboardThreadDistribution: PropTypes.bool.isRequired,
-	toggleShowDashboardThreadDistribution: PropTypes.func.isRequired,
-	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired
-};
+const AtAGlanceCard = () => {
+	const [
+		isDashboardThreadDistributionVisible,
+		setIsDashboardThreadDistributionVisible
+	] = useState(false);
+	const { data: userSettings } = useUserSettingsQuery();
+	const { updateUserSettings } = useUpdateUserSettingsMutation();
+	useEffect(() => {
+		if (userSettings) {
+			setIsDashboardThreadDistributionVisible(userSettings.showDashboardThreadDistribution);
+		}
+	}, [userSettings]);
+	const toggleDashboardThreadDistribution = () => {
+		const newValue = !isDashboardThreadDistributionVisible;
+		setIsDashboardThreadDistributionVisible(newValue);
+		updateUserSettings({
+			...userSettings,
+			showDashboardThreadDistribution: newValue
+		});
+	};
 
-const AtAGlanceCard = (props) => {
-	const {
-		showDashboardThreadDistribution,
-		toggleShowDashboardThreadDistribution,
-		myTurnThreads,
-		theirTurnThreads,
-		activeThreads,
-		queuedThreads,
-		isLoadingIconVisible
-	} = props;
+	const activeThreads = useFilteredActiveThreads(filters.ALL);
+	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
+	const theirTurnThreads = useFilteredActiveThreads(filters.THEIR_TURN, false);
+	const queuedThreads = useFilteredActiveThreads(filters.QUEUED, false);
+	const { isThreadsLoading } = useThreadsContext();
+
 	return (
 		<Card className="at-a-glance-card">
 			<CardHeader data-spec="at-a-glance-card-header">
@@ -38,8 +48,8 @@ const AtAGlanceCard = (props) => {
 						type="checkbox"
 						className="switch-input"
 						id="at-a-glance-switch"
-						checked={showDashboardThreadDistribution}
-						onChange={toggleShowDashboardThreadDistribution}
+						checked={isDashboardThreadDistributionVisible}
+						onChange={toggleDashboardThreadDistribution}
 					/>
 					<span className="switch-label" data-on="On" data-off="Off" />
 					<span className="switch-handle" />
@@ -47,7 +57,7 @@ const AtAGlanceCard = (props) => {
 			</CardHeader>
 			<CardBody
 				data-spec="at-a-glance-card-body"
-				className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}
+				className={isDashboardThreadDistributionVisible ? 'card-body' : 'd-none'}
 			>
 				<CardGroup>
 					<DashboardSummaryWidget
@@ -62,7 +72,7 @@ const AtAGlanceCard = (props) => {
 						data-spec="at-a-glance-my-turn-widget"
 						icon="icon-pencil"
 						header={myTurnThreads.length}
-						isLoadingIconVisible={isLoadingIconVisible}
+						isLoadingIconVisible={isThreadsLoading}
 						href="/threads/your-turn"
 					>
 						Your Turn
@@ -71,7 +81,7 @@ const AtAGlanceCard = (props) => {
 						data-spec="at-a-glance-their-turn-widget"
 						icon="icon-check"
 						header={theirTurnThreads.length}
-						isLoadingIconVisible={isLoadingIconVisible}
+						isLoadingIconVisible={isThreadsLoading}
 						href="/threads/their-turn"
 					>
 						Their Turn
@@ -80,7 +90,7 @@ const AtAGlanceCard = (props) => {
 						data-spec="at-a-glance-queued-widget"
 						icon="icon-calendar"
 						header={queuedThreads.length}
-						isLoadingIconVisible={isLoadingIconVisible}
+						isLoadingIconVisible={isThreadsLoading}
 						href="/threads/queued"
 					>
 						Queued
@@ -91,5 +101,4 @@ const AtAGlanceCard = (props) => {
 	);
 };
 
-AtAGlanceCard.propTypes = propTypes;
 export default AtAGlanceCard;
