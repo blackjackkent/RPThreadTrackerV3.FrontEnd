@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react';
-import { ActiveThreadsContext } from './useActiveThreadsContext';
+import { ThreadsContext } from './useThreadsContext';
 
 function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 	const { activeThreads: threads, activeThreadsStatus: threadsStatusChunks } = useContext(
-		ActiveThreadsContext
+		ThreadsContext
 	);
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	useEffect(() => {

@@ -27,7 +27,7 @@ import {
 	useUserProfileQuery,
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
-import { ActiveThreadsContext } from '~/infrastructure/hooks';
+import { ThreadsContext } from '~/infrastructure/hooks';
 // #endregion imports
 
 const Layout = () => {
@@ -36,9 +36,15 @@ const Layout = () => {
 	const {
 		threadData: activeThreads,
 		threadsStatus: activeThreadsStatus,
-		isThreadsLoading,
-		isThreadsStatusLoading
+		isThreadsLoading: isActiveThreadsLoading,
+		isThreadsStatusLoading: isActiveThreadsStatusLoading
 	} = useThreadsQuery();
+	const {
+		threadData: archivedThreads,
+		threadsStatus: archivedThreadsStatus,
+		isThreadsLoading: isArchivedThreadsLoading,
+		isThreadsStatusLoading: isArchivedThreadsStatusLoading
+	} = useThreadsQuery(true, activeThreads && activeThreads.length);
 	const isLoading = isUserProfileLoading || isUserSettingsLoading;
 
 	const renderLoadingIndicator = () => {
@@ -65,12 +71,16 @@ const Layout = () => {
 					<Sidebar />
 					<main className="main">
 						<BreadcrumbWrapper />
-						<ActiveThreadsContext.Provider
+						<ThreadsContext.Provider
 							value={{
 								activeThreads,
 								activeThreadsStatus,
-								isThreadsLoading,
-								isThreadsStatusLoading
+								isActiveThreadsLoading,
+								isActiveThreadsStatusLoading,
+								archivedThreads,
+								archivedThreadsStatus,
+								isArchivedThreadsLoading,
+								isArchivedThreadsStatusLoading
 							}}
 						>
 							<Container fluid>
@@ -143,7 +153,7 @@ const Layout = () => {
 									<Redirect from="/" to="/dashboard" />
 								</Switch>
 							</Container>
-						</ActiveThreadsContext.Provider>
+						</ThreadsContext.Provider>
 					</main>
 					<AsideContainer />
 				</div>

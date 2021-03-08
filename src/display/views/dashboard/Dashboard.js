@@ -19,14 +19,19 @@ import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations'
 import { QueryObserver, useQuery, useQueryClient } from 'react-query';
 import queryKeys from '~/infrastructure/constants/queryKeys';
 import filters from '~/infrastructure/constants/filters';
-import { ActiveThreadsContext, useFilteredActiveThreads } from '~/infrastructure/hooks';
+import { ThreadsContext, useFilteredActiveThreads } from '~/infrastructure/hooks';
 
 const Dashboard = () => {
 	const [
 		isDashboardThreadDistributionVisible,
 		setIsDashboardThreadDistributionVisible
 	] = useState(false);
-	const { isThreadsLoading, isThreadsStatusLoading } = useContext(ActiveThreadsContext);
+	const {
+		isThreadsLoading,
+		isThreadsStatusLoading,
+		archivedThreads,
+		archivedThreadsStatus
+	} = useContext(ThreadsContext);
 	const { data: userSettings } = useUserSettingsQuery();
 	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	const allActiveThreads = useFilteredActiveThreads(filters.ALL);
@@ -46,6 +51,12 @@ const Dashboard = () => {
 			showDashboardThreadDistribution: newValue
 		});
 	};
+	useEffect(() => {
+		console.log('archived values updated');
+		console.log(archivedThreads);
+		console.log(archivedThreadsStatus);
+		console.log('*************************');
+	}, [archivedThreads, archivedThreadsStatus]);
 	const archiveThread = (thread) => {
 		const { upsertThread } = this.props;
 		const updatedThread = {
@@ -116,5 +127,4 @@ const Dashboard = () => {
 	);
 };
 
-Dashboard.propTypes = propTypes;
 export default Dashboard;

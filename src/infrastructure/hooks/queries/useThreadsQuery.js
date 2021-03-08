@@ -5,10 +5,16 @@ import { useEffect } from 'react';
 import queryKeys from '~/infrastructure/constants/queryKeys';
 import { useThreadsStatusMutation } from '../mutations';
 
-function useThreadsQuery(isArchived = false) {
-	const threadsQuery = useQuery([queryKeys.THREADS, { isArchived }], () => {
-		return axios.get(`${API_BASE_URL}api/thread`).then((res) => Promise.resolve(res.data));
-	});
+function useThreadsQuery(isArchived = false, enabled = true) {
+	const threadsQuery = useQuery(
+		[queryKeys.THREADS, { isArchived }],
+		() => {
+			return axios
+				.get(`${API_BASE_URL}api/thread?isArchived=${isArchived}`)
+				.then((res) => Promise.resolve(res.data));
+		},
+		{ enabled }
+	);
 	const {
 		threadsStatus,
 		fetchThreadsStatusChunk,
