@@ -25,11 +25,7 @@ const Dashboard = () => {
 			</Row>
 			<Row>
 				<Col md="6" xs="12">
-					{/* <RandomThreadCard
-						data-spec="dashboard-random-thread-card"
-						generateRandomThread={generateRandomThread}
-						randomThread={randomThread}
-					/> */}
+					<RandomThreadCard />
 				</Col>
 				<Col md="6" xs="12">
 					<TrackerSupportCard />

@@ -18,7 +18,7 @@ const propTypes = {
 
 const RandomThreadDisplay = (props) => {
 	const { threadData } = props;
-	if (!threadData.thread) {
+	if (!threadData?.thread) {
 		return (
 			<div className="random-thread-result" data-spec="random-thread-result">
 				<p>Pick a random thread to respond to!</p>

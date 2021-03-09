@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
+import filters from '~/infrastructure/constants/filters';
 import { useActiveThreadsContext } from '../contexts';
 
-function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
+function useFilteredActiveThreads(filter) {
 	const {
 		activeThreads: threads,
 		activeThreadsStatus: threadsStatus
@@ -25,7 +26,7 @@ function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 			}
 			return result;
 		}, []);
-		if (includeThreadsWithoutStatus) {
+		if (filter === filters.THEIR_TURN || filter === filters.QUEUED) {
 			results = results.concat(
 				threadData
 					.filter((t) => !t.postId)
@@ -36,7 +37,7 @@ function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 			);
 		}
 		setFilteredThreads(results);
-	}, [filter, includeThreadsWithoutStatus, threads, threadsStatus]);
+	}, [filter, threads, threadsStatus]);
 	return filteredThreads;
 }
 export default useFilteredActiveThreads;
