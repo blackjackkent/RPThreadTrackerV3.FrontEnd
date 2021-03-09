@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
 import Card from '~/display/shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
@@ -11,6 +11,7 @@ import { useFilteredActiveThreads } from '~/infrastructure/hooks';
 import filters from '~/infrastructure/constants/filters';
 import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
 import { useActiveThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
+import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
@@ -27,15 +28,39 @@ const renderBlockMessage = (characters, allThreads) => {
 };
 
 const RecentActivityCard = () => {
+	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
+	const [selectedThread, setSelectedThread] = useState(null);
 	const { isThreadsLoading } = useActiveThreadsContext();
 	const { characters } = useCharactersContext();
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
 	const archiveThread = () => {};
-	const openUntrackThreadModal = () => {};
+	const openUntrackThreadModal = (thread) => {
+		setSelectedThread(thread);
+		setIsUntrackThreadModalOpen(true);
+	};
+	const closeUntrackThreadModal = () => {
+		setIsUntrackThreadModalOpen(false);
+		setSelectedThread(null);
+	};
 	const markThreadQueued = () => {};
 	return (
 		<Card className="recent-activity-card">
+			<GenericConfirmationModal
+				isModalOpen={isUntrackThreadModalOpen}
+				submitCallback={() => {}}
+				submitButtonText="Untrack"
+				closeCallback={closeUntrackThreadModal}
+				closeButtonText="Cancel"
+				data={selectedThread}
+				headerText="Confirm Thread Untracking"
+				bodyText={
+					<span>
+						Are you sure you want to untrack{' '}
+						<strong>{selectedThread?.userTitle}</strong>?
+					</span>
+				}
+			/>
 			<CardHeader>
 				<i className="fas fa-bolt" /> Recent Activity
 			</CardHeader>
