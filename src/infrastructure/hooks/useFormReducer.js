@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 
 const reducer = (state, action) => {
 	if (!action) {
@@ -22,13 +22,13 @@ const useFormReducer = (defaultState = {}) => {
 		};
 		dispatch(action);
 	};
-	const setFormData = (data) => {
+	const setFormData = useCallback((data) => {
 		const action = {
 			type: 'set',
 			data
 		};
 		dispatch(action);
-	};
+	}, []);
 	return [formData, onInputChange, setFormData, dispatch];
 };
 export default useFormReducer;

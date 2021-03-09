@@ -8,8 +8,6 @@ function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 	} = useActiveThreadsContext();
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	useEffect(() => {
-		console.log(threads);
-		console.log(threadsStatus);
 		const threadData = threads?.threads;
 		if (!threadData?.length || !threadsStatus) {
 			return;

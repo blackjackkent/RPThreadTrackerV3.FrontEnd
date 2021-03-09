@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query';
+import { useQuery, useQueryClient } from 'react-query';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -6,16 +6,18 @@ import queryKeys from '~/infrastructure/constants/queryKeys';
 import { useThreadsStatusMutation } from '../mutations';
 
 export function useThreadsQuery(isArchived = false) {
-	const threadsQuery = useQuery([queryKeys.THREADS, { isArchived }], () => {
-		return axios
-			.get(`${API_BASE_URL}api/thread?isArchived=${isArchived}`)
-			.then((res) => Promise.resolve(res.data));
-	});
 	const {
 		threadsStatus,
 		fetchThreadsStatusChunk,
+		clearData: resetThreadsStatus,
 		isLoading: isThreadsStatusLoading
 	} = useThreadsStatusMutation();
+	const threadsQuery = useQuery([queryKeys.THREADS, { isArchived }], () => {
+		return axios.get(`${API_BASE_URL}api/thread?isArchived=${isArchived}`).then((res) => {
+			resetThreadsStatus();
+			return Promise.resolve(res.data);
+		});
+	});
 	const { data: threadData, isLoading: isThreadsLoading } = threadsQuery;
 	useEffect(() => {
 		if (!threadData?.threads?.length) {
@@ -31,7 +33,13 @@ export function useThreadsQuery(isArchived = false) {
 			fetchThreadsStatusChunk(chunk);
 		});
 	}, [threadData, threadsQuery.data, fetchThreadsStatusChunk]);
-	return { threadData, threadsStatus, isThreadsLoading, isThreadsStatusLoading, ...threadsQuery };
+	return {
+		threadData,
+		threadsStatus,
+		isThreadsLoading,
+		isThreadsStatusLoading,
+		...threadsQuery
+	};
 }
 
 export const useActiveThreadsQuery = () => useThreadsQuery(false);

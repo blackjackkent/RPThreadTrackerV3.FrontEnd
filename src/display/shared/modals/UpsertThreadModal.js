@@ -31,7 +31,7 @@ const UpsertThreadModal = (props) => {
 			return;
 		}
 		setFormData(threadToEdit);
-	}, [threadToEdit]);
+	}, [setFormData, threadToEdit]);
 	const activeCharacters = [].concat(
 		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
 	);

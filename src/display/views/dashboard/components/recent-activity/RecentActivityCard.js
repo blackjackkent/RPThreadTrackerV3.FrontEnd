@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
+import { toast } from 'react-toastify';
 import Card from '~/display/shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
 import NoThreadsMessage from './NoThreadsMessage';
@@ -12,6 +13,7 @@ import filters from '~/infrastructure/constants/filters';
 import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
 import { useActiveThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
+import useUntrackThreadMutation from '~/infrastructure/hooks/mutations/useUntrackThreadMutation';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
@@ -34,24 +36,32 @@ const RecentActivityCard = () => {
 	const { characters } = useCharactersContext();
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
+	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
+	const submitUntrackThread = () => {
+		untrackThread(selectedThread)
+			.then(() => {
+				setIsUntrackThreadModalOpen(false);
+				toast.success('Thread untracked!');
+			})
+			.catch(() => {
+				toast.error(`There was an error intracking this thread.`);
+			});
+	};
 	const archiveThread = () => {};
 	const openUntrackThreadModal = (thread) => {
 		setSelectedThread(thread);
 		setIsUntrackThreadModalOpen(true);
-	};
-	const closeUntrackThreadModal = () => {
-		setIsUntrackThreadModalOpen(false);
-		setSelectedThread(null);
 	};
 	const markThreadQueued = () => {};
 	return (
 		<Card className="recent-activity-card">
 			<GenericConfirmationModal
 				isModalOpen={isUntrackThreadModalOpen}
-				submitCallback={() => {}}
+				setIsModalOpen={setIsUntrackThreadModalOpen}
+				submitForm={submitUntrackThread}
 				submitButtonText="Untrack"
-				closeCallback={closeUntrackThreadModal}
 				closeButtonText="Cancel"
+				isLoading={isUntrackThreadLoading}
 				data={selectedThread}
 				headerText="Confirm Thread Untracking"
 				bodyText={

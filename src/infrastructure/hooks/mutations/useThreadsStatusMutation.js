@@ -6,13 +6,11 @@ const threadsStatusReducer = (state, action) => {
 	if (!action) {
 		return state;
 	}
-	console.log('UPDATING STATE');
-	console.log(state);
-	console.log(action);
+	if (action.type === 'reset') {
+		return [];
+	}
 	let newState = [...state];
 	newState = newState.concat(action.data);
-	console.log(newState);
-	console.log('***********************');
 	return newState;
 };
 
@@ -30,9 +28,15 @@ function useThreadsStatusMutation(isArchived = false) {
 			}
 		}
 	);
+	const clearData = () => {
+		dispatch({
+			type: 'reset'
+		});
+	};
 	return {
 		threadsStatus,
 		fetchThreadsStatusChunk: threadsStatusMutation.mutateAsync,
+		clearData,
 		...threadsStatusMutation
 	};
 }

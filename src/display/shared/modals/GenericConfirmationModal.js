@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import Modal from '../styled/Modal';
+import LoadingIndicator from '../loading/LoadingIndicator';
 
 const propTypes = {
 	isModalOpen: PropTypes.bool.isRequired,
-	submitCallback: PropTypes.func.isRequired,
+	setIsModalOpen: PropTypes.func.isRequired,
+	submitForm: PropTypes.func.isRequired,
 	submitButtonText: PropTypes.string,
-	closeCallback: PropTypes.func.isRequired,
+	isLoading: PropTypes.bool.isRequired,
 	closeButtonText: PropTypes.string,
 	headerText: PropTypes.string.isRequired,
 	bodyText: PropTypes.node.isRequired,
@@ -23,37 +25,37 @@ const defaultProps = {
 const GenericConfirmationModal = (props) => {
 	const {
 		isModalOpen,
-		submitCallback,
+		setIsModalOpen,
+		submitForm,
 		submitButtonText,
-		closeCallback,
 		closeButtonText,
 		data,
 		headerText,
-		bodyText
+		bodyText,
+		isLoading
 	} = props;
 	return (
-		<Modal
-			isOpen={isModalOpen}
-			toggle={closeCallback}
-			backdrop
-			data-spec="generic-confirmation-modal"
-		>
-			<ModalHeader toggle={closeCallback} data-spec="generic-confirmation-modal-header">
+		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
+			<ModalHeader
+				toggle={() => setIsModalOpen(!isModalOpen)}
+				data-spec="generic-confirmation-modal-header"
+			>
 				{headerText}
 			</ModalHeader>
 			<ModalBody>{bodyText}</ModalBody>
 			<ModalFooter>
+				{isLoading && <LoadingIndicator />}
 				<Button
 					color="primary"
 					data-spec="generic-confirmation-ok-button"
-					onClick={() => submitCallback(data)}
+					onClick={() => submitForm(data)}
 				>
 					{submitButtonText}
 				</Button>{' '}
 				<Button
 					color="secondary"
 					data-spec="generic-confirmation-cancel-button"
-					onClick={closeCallback}
+					onClick={() => setIsModalOpen(false)}
 				>
 					{closeButtonText}
 				</Button>
