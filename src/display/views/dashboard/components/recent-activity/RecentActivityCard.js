@@ -40,7 +40,7 @@ const RecentActivityCard = () => {
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
 	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
-	const { updateThread, isLoading: isUpdateThreadLoading } = useUpdateThreadMutation();
+	const { updateThread } = useUpdateThreadMutation();
 	const submitUntrackThread = () => {
 		untrackThread(selectedThread)
 			.then(() => {
@@ -64,11 +64,23 @@ const RecentActivityCard = () => {
 				toast.error(`There was an error archiving this thread.`);
 			});
 	};
+	const markThreadQueued = (thread) => {
+		const updated = {
+			...thread,
+			dateMarkedQueued: new Date(Date.now())
+		};
+		updateThread(updated)
+			.then(() => {
+				toast.success('Thread marked as queued!');
+			})
+			.catch(() => {
+				toast.error(`There was an error marking this thread as queued.`);
+			});
+	};
 	const openUntrackThreadModal = (thread) => {
 		setSelectedThread(thread);
 		setIsUntrackThreadModalOpen(true);
 	};
-	const markThreadQueued = () => {};
 	return (
 		<Card className="recent-activity-card">
 			<GenericConfirmationModal
