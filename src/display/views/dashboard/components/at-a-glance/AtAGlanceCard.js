@@ -3,7 +3,7 @@ import { CardHeader, Input, CardBody, CardGroup } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
 import SwitchLabel from '../../../../shared/styled/SwitchLabel';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
-import { useFilteredActiveThreads } from '~/infrastructure/hooks';
+import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import filters from '~/infrastructure/constants/filters';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';

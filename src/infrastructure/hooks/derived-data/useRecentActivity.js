@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import filters from '../constants/filters';
+import filters from '../../constants/filters';
 import useFilteredActiveThreads from './useFilteredActiveThreads';
 
 function sortByLastPostDate(a, b) {

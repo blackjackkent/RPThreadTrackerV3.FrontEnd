@@ -20,11 +20,7 @@ const Dashboard = () => {
 					<RecentActivityCard />
 				</Col>
 				<Col xs="12" md="6">
-					{/* <YourCharactersCard
-						characters={characters}
-						characterThreadCounts={characterThreadCounts}
-						loadingInProgress={isLoadingIconVisible}
-					/> */}
+					<YourCharactersCard />
 				</Col>
 			</Row>
 			<Row>

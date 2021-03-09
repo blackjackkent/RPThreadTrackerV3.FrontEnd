@@ -9,8 +9,8 @@ const propTypes = {
 	setIsModalOpen: PropTypes.func.isRequired,
 	submitForm: PropTypes.func.isRequired,
 	submitButtonText: PropTypes.string,
-	isLoading: PropTypes.bool.isRequired,
 	closeButtonText: PropTypes.string,
+	isLoading: PropTypes.bool.isRequired,
 	headerText: PropTypes.string.isRequired,
 	bodyText: PropTypes.node.isRequired,
 	data: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.array])

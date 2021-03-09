@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useActiveThreadsContext } from './contexts';
+import { useActiveThreadsContext } from '../contexts';
 
 function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 	const {

@@ -8,9 +8,8 @@ import NoRecentActivityMessage from './NoRecentActivityMessage';
 import NoCharactersMessage from '../shared/NoCharactersMessage';
 import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
-import { useFilteredActiveThreads } from '~/infrastructure/hooks';
 import filters from '~/infrastructure/constants/filters';
-import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
+import { useRecentActivity, useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import { useActiveThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
 import {
