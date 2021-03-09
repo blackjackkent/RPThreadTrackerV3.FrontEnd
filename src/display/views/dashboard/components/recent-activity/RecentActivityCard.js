@@ -13,7 +13,10 @@ import filters from '~/infrastructure/constants/filters';
 import useRecentActivity from '~/infrastructure/hooks/useRecentActivity';
 import { useActiveThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import useUntrackThreadMutation from '~/infrastructure/hooks/mutations/useUntrackThreadMutation';
+import {
+	useUntrackThreadMutation,
+	useUpdateThreadMutation
+} from '~/infrastructure/hooks/mutations';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
@@ -37,6 +40,7 @@ const RecentActivityCard = () => {
 	const allThreads = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
 	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
+	const { updateThread, isLoading: isUpdateThreadLoading } = useUpdateThreadMutation();
 	const submitUntrackThread = () => {
 		untrackThread(selectedThread)
 			.then(() => {
@@ -44,10 +48,22 @@ const RecentActivityCard = () => {
 				toast.success('Thread untracked!');
 			})
 			.catch(() => {
-				toast.error(`There was an error intracking this thread.`);
+				toast.error(`There was an error untracking this thread.`);
 			});
 	};
-	const archiveThread = () => {};
+	const submitArchiveThread = (thread) => {
+		const updated = {
+			...thread,
+			isArchived: !thread.isArchived
+		};
+		updateThread(updated)
+			.then(() => {
+				toast.success('Thread archived!');
+			})
+			.catch(() => {
+				toast.error(`There was an error archiving this thread.`);
+			});
+	};
 	const openUntrackThreadModal = (thread) => {
 		setSelectedThread(thread);
 		setIsUntrackThreadModalOpen(true);
@@ -94,7 +110,7 @@ const RecentActivityCard = () => {
 							data-spec="recent-activity-card-row"
 							threadData={threadData}
 							key={threadData.thread.threadId}
-							archiveThread={archiveThread}
+							archiveThread={submitArchiveThread}
 							openUntrackThreadModal={openUntrackThreadModal}
 							markThreadQueued={markThreadQueued}
 						/>
