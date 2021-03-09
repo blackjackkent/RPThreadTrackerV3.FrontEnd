@@ -1,5 +1,5 @@
 import columnTypes from '../../../infrastructure/constants/columns';
-import * as columns from '../../shared/columns';
+import * as columns from '../../shared/thread-table-columns';
 
 const getColumns = (columnIds) => {
 	const result = [];

@@ -1,4 +1,4 @@
-import * as columns from '~/display/shared/columns';
+import * as columns from '~/display/shared/thread-table-columns';
 
 export default (username) => [
 	columns.EditButton('Edit Public View'),
