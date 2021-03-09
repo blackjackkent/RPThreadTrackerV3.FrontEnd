@@ -11,8 +11,8 @@ function useCreateThreadMutation() {
 				.then((res) => Promise.resolve(res.data));
 		},
 		{
-			onSuccess: (data) => {
-				queryClient.setQueryData([queryKeys.ACTIVE_THREADS, { id: data.threadId }], data);
+			onSuccess: () => {
+				queryClient.invalidateQueries([queryKeys.THREADS, { isArchived: false }]);
 			}
 		}
 	);
