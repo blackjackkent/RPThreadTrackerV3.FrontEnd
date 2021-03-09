@@ -4,18 +4,16 @@ import { useActiveThreadsContext } from './contexts';
 function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 	const {
 		activeThreads: threads,
-		activeThreadsStatus: threadsStatusChunks
+		activeThreadsStatus: threadsStatus
 	} = useActiveThreadsContext();
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	useEffect(() => {
+		console.log(threads);
+		console.log(threadsStatus);
 		const threadData = threads?.threads;
-		if (!threadData?.length || !threadsStatusChunks) {
+		if (!threadData?.length || !threadsStatus) {
 			return;
 		}
-		const threadsStatus = Object.values(threadsStatusChunks).reduce(
-			(acc, curr) => acc.concat(curr),
-			[]
-		);
 		const statuses = threadsStatus.filter(filter) ?? [];
 		let results = statuses.reduce((result, status) => {
 			const thread = threadData.find(
@@ -40,7 +38,7 @@ function useFilteredActiveThreads(filter, includeThreadsWithoutStatus = true) {
 			);
 		}
 		setFilteredThreads(results);
-	}, [filter, includeThreadsWithoutStatus, threads, threadsStatusChunks]);
+	}, [filter, includeThreadsWithoutStatus, threads, threadsStatus]);
 	return filteredThreads;
 }
 export default useFilteredActiveThreads;

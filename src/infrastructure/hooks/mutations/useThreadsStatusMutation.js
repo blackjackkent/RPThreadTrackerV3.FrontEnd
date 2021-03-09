@@ -6,13 +6,18 @@ const threadsStatusReducer = (state, action) => {
 	if (!action) {
 		return state;
 	}
-	let newState = state[action.isArchived] ?? [];
+	console.log('UPDATING STATE');
+	console.log(state);
+	console.log(action);
+	let newState = [...state];
 	newState = newState.concat(action.data);
-	return { ...state, [action.isArchived]: newState };
+	console.log(newState);
+	console.log('***********************');
+	return newState;
 };
 
 function useThreadsStatusMutation(isArchived = false) {
-	const [threadsStatus, dispatch] = useReducer(threadsStatusReducer, {});
+	const [threadsStatus, dispatch] = useReducer(threadsStatusReducer, []);
 	const threadsStatusMutation = useMutation(
 		(chunk) => {
 			return axios

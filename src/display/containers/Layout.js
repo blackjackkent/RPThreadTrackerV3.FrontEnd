@@ -1,5 +1,5 @@
 // #region imports
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { Container } from 'reactstrap';
 
@@ -23,8 +23,8 @@ import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
 import Help from '../views/help/Help';
 import {
+	useActiveThreadsQuery,
 	useCharactersQuery,
-	useThreadsQuery,
 	useUserProfileQuery,
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
@@ -39,14 +39,14 @@ const Layout = () => {
 		threadsStatus: activeThreadsStatus,
 		isThreadsLoading: isActiveThreadsLoading,
 		isThreadsStatusLoading: isActiveThreadsStatusLoading
-	} = useThreadsQuery();
+	} = useActiveThreadsQuery();
 	const {
 		data: characters,
 		isLoading: isCharactersLoading,
 		isError: isCharactersFetchError
 	} = useCharactersQuery();
-	const isGlobalLoading = isUserProfileLoading || isUserSettingsLoading;
 
+	const isGlobalLoading = isUserProfileLoading || isUserSettingsLoading;
 	const renderLoadingIndicator = () => {
 		return (
 			<LoadingIndicator
