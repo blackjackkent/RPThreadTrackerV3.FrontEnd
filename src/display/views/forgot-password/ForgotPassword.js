@@ -47,7 +47,7 @@ const ForgotPassword = () => {
 					</p>
 					{isForgotPasswordError && (
 						<div className="has-danger">
-							<p className="form-control-feedback">{forgotPasswordError}</p>
+							<p className="form-control-feedback">{forgotPasswordError.message}</p>
 						</div>
 					)}
 					<ForgotPasswordForm handleInputChange={onInputChange} />
