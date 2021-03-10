@@ -11,8 +11,8 @@ function useCreateCharacterMutation() {
 				.then((res) => Promise.resolve(res.data));
 		},
 		{
-			onSuccess: (data) => {
-				queryClient.setQueryData([queryKeys.CHARACTERS, { id: data.characterId }], data);
+			onSuccess: () => {
+				queryClient.invalidateQueries([queryKeys.CHARACTERS]);
 			}
 		}
 	);

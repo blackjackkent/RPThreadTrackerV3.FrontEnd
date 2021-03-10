@@ -14,14 +14,14 @@ const reducer = (state, action) => {
 };
 const useFormReducer = (defaultState = {}) => {
 	const [formData, dispatch] = useReducer(reducer, defaultState);
-	const onInputChange = (e) => {
+	const onInputChange = useCallback((e) => {
 		const action = {
 			type: 'input',
 			name: e.target.name,
 			data: e.target.value
 		};
 		dispatch(action);
-	};
+	}, []);
 	const setFormData = useCallback((data) => {
 		const action = {
 			type: 'set',

@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import filters from '~/infrastructure/constants/filters';
-import { useCharactersQuery } from '../queries';
+import { useCharactersContext } from '../contexts';
 import useFilteredActiveThreads from './useFilteredActiveThreads';
 
 function useCharacterThreadCounts() {
 	const allActiveThreads = useFilteredActiveThreads(filters.ALL);
-	const { data: characters } = useCharactersQuery();
+	const { characters } = useCharactersContext();
 	const [characterThreadCounts, setCharacterThreadCounts] = useState({});
 	useEffect(() => {
 		if (!allActiveThreads.length || !characters.length) {

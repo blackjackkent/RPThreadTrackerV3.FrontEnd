@@ -14,7 +14,6 @@ export function useThreadsQuery(isArchived = false) {
 	} = useThreadsStatusMutation();
 	const threadsQuery = useQuery([queryKeys.THREADS, { isArchived }], () => {
 		return axios.get(`${API_BASE_URL}api/thread?isArchived=${isArchived}`).then((res) => {
-			resetThreadsStatus();
 			return Promise.resolve(res.data);
 		});
 	});
@@ -23,16 +22,19 @@ export function useThreadsQuery(isArchived = false) {
 		if (!threadData?.threads?.length) {
 			return;
 		}
+		resetThreadsStatus();
 		const requests = JSON.parse(threadData.threadStatusRequestJson);
 		const chunks = [];
 		for (let i = 0, j = requests.length; i < j; i += 10) {
 			const chunk = requests.slice(i, i + 10);
 			chunks.push(chunk);
 		}
+		console.log(chunks);
+		console.log('*******************');
 		chunks.forEach((chunk) => {
 			fetchThreadsStatusChunk(chunk);
 		});
-	}, [threadData, threadsQuery.data, fetchThreadsStatusChunk]);
+	}, [threadData, fetchThreadsStatusChunk]);
 	return {
 		threadData,
 		threadsStatus,

@@ -11,6 +11,8 @@ export { default as useThreadsStatusMutation } from './useThreadsStatusMutation'
 
 // Characters
 export { default as useCreateCharacterMutation } from './useCreateCharacterMutation';
+export { default as useUpdateCharacterMutation } from './useUpdateCharacterMutation';
+export { default as useUntrackCharacterMutation } from './useUntrackCharacterMutation';
 
 // User
 export { default as useUpdateUserSettingsMutation } from './useUpdateUserSettingsMutation';

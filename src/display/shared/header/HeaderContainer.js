@@ -8,11 +8,7 @@ import {
 	useCreateCharacterMutation
 } from '~/infrastructure/hooks/mutations';
 import cacheKeys from '~/infrastructure/constants/cacheKeys';
-import {
-	useCharactersQuery,
-	useNewsQuery,
-	useUserProfileQuery
-} from '~/infrastructure/hooks/queries';
+import { useNewsQuery, useUserProfileQuery } from '~/infrastructure/hooks/queries';
 import {
 	HeaderLogoBlock,
 	HeaderAsideToggle,
@@ -22,6 +18,7 @@ import {
 import Style from './_styles';
 import UpsertThreadModal from '../modals/UpsertThreadModal';
 import UpsertCharacterModal from '../modals/UpsertCharacterModal';
+import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 
 const HeaderContainer = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useCacheValue(cacheKeys.IS_SIDEBAR_OPEN);
@@ -31,7 +28,7 @@ const HeaderContainer = () => {
 	const [isHeaderAddMenuDropdownVisible, setIsHeaderAddMenuDropdownVisible] = useState(false);
 	const [isUpsertThreadModalOpen, setIsUpsertThreadModalOpen] = useState(false);
 	const [isUpsertCharacterModalOpen, setIsUpsertCharacterModalOpen] = useState(false);
-	const { data: characters } = useCharactersQuery();
+	const { characters } = useCharactersContext();
 	const { unreadNewsCount, userSettings, setUnreadNewsCount } = useNewsQuery();
 	const { data: user } = useUserProfileQuery();
 	const { updateUserSettings } = useUpdateUserSettingsMutation();

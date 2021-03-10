@@ -30,7 +30,7 @@ const UpsertCharacterModal = (props) => {
 		}
 		setFormData(characterToEdit);
 		onInputChange({ target: { name: 'platformId', value: 1 } });
-	}, [characterToEdit]);
+	}, [characterToEdit, onInputChange, setFormData]);
 	return (
 		<Modal
 			data-spec="upsert-character-modal"
