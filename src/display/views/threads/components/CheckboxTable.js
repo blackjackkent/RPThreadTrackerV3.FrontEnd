@@ -29,6 +29,7 @@ class CheckboxTable extends React.Component {
 		};
 		this.toggleSelection = this.toggleSelection.bind(this);
 		this.getTrProps = this.getTrProps.bind(this);
+		this.getTdProps = this.getTdProps.bind(this);
 		this.toggleAll = this.toggleAll.bind(this);
 		this.isSelected = this.isSelected.bind(this);
 		this.clearSelection = this.clearSelection.bind(this);
@@ -52,6 +53,17 @@ class CheckboxTable extends React.Component {
 		}
 
 		return {};
+	}
+
+	getTdProps(state, rowInfo, column, instance) {
+		const { getTdProps } = this.props;
+		return getTdProps(state, rowInfo, column, instance, () => {
+			if (rowInfo) {
+				const row = rowInfo.original;
+				// eslint-disable-next-line no-underscore-dangle
+				this.toggleSelection(`select-${row._id}`, false, row);
+			}
+		});
 	}
 
 	toggleSelection(key, shift, row) {
@@ -115,7 +127,6 @@ class CheckboxTable extends React.Component {
 			noDataText,
 			defaultFilterMethod,
 			SubComponent,
-			getTdProps,
 			defaultSorted,
 			defaultPageSize,
 			onPageSizeChange
@@ -141,8 +152,8 @@ class CheckboxTable extends React.Component {
 					defaultPageSize={defaultPageSize}
 					onPageSizeChange={onPageSizeChange}
 					columns={columns}
-					getTdProps={getTdProps}
 					getTrProps={this.getTrProps}
+					getTdProps={this.getTdProps}
 					defaultSorted={defaultSorted}
 					defaultFilterMethod={defaultFilterMethod}
 					showPaginationTop

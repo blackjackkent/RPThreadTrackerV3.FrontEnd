@@ -81,7 +81,7 @@ describe('behavior', () => {
 				}
 			]);
 		});
-		it('should trigger onSelectionChanged when item is added', () => {
+		it('should trigger onSelectionChanged when item is removed', () => {
 			const onSelectionChanged = jest.fn();
 			const props = createTestProps({
 				onSelectionChanged
@@ -129,6 +129,44 @@ describe('behavior', () => {
 			});
 			element.update();
 			expect(element.find('RTSelectTable').props().selectAll).toBe(true);
+		});
+		it('should support toggling selection from td props, to allow clicking empty space on the row to select it', () => {
+			const onSelectionChanged = jest.fn();
+			const props = createTestProps({
+				onSelectionChanged,
+				getTdProps: jest.fn(() => ({}))
+			});
+			const state = {};
+			const rowInfo = { original: props.data[0] };
+			const column = {};
+			const instance = {};
+			const jsx = <CheckboxTable {...props} />;
+			const element = shallow(jsx);
+			element.instance().getTdProps(state, rowInfo, column, instance);
+			expect(props.getTdProps).toBeCalledWith(
+				state,
+				rowInfo,
+				column,
+				instance,
+				expect.any(Function)
+			);
+			const toggleSelectionCallback = props.getTdProps.mock.calls[0][4];
+			toggleSelectionCallback();
+			expect(onSelectionChanged).toHaveBeenCalledTimes(1);
+			expect(onSelectionChanged).toHaveBeenLastCalledWith([{ _id: 1, testProp: 'test1' }]);
+		});
+		it('should color selected rows', () => {
+			const props = createTestProps({
+				getTdProps: jest.fn(() => ({}))
+			});
+			const rowInfo = { original: props.data[0] };
+			const jsx = <CheckboxTable {...props} />;
+			const element = shallow(jsx);
+			element.instance().getTdProps({}, rowInfo, {}, {});
+			const toggleSelectionCallback = props.getTdProps.mock.calls[0][4];
+			toggleSelectionCallback();
+			const trProps = element.instance().getTrProps({}, rowInfo);
+			expect(typeof trProps.style.backgroundColor).toBe('string');
 		});
 		it('should set select-all checkbox checked when selected items length equals row length', () => {});
 	});
@@ -186,7 +224,7 @@ describe('behavior', () => {
 			const isSelected = element.instance().isSelected(1);
 			expect(isSelected).toBe(true);
 		});
-		it('should return true if item is not selected', () => {
+		it('should return false if item is not selected', () => {
 			const props = createTestProps();
 			const jsx = <CheckboxTable {...props} />;
 			const element = mount(jsx);

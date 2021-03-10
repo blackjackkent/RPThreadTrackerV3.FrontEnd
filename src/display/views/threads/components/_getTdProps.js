@@ -1,7 +1,7 @@
 import columns from '../../../../infrastructure/constants/columns';
 
 const getTdProps = (onDeleteTrigger, onEditTrigger, onArchiveTrigger, onQueueTrigger) => {
-	const generateTdProps = (state, row, column) => ({
+	const generateTdProps = (state, row, column, _instance, toggleSelection) => ({
 		onClick: (e, handleOriginal) => {
 			if (column.id === columns.DELETE_BUTTON.key) {
 				onDeleteTrigger(row.original.thread);
@@ -19,6 +19,15 @@ const getTdProps = (onDeleteTrigger, onEditTrigger, onArchiveTrigger, onQueueTri
 				onQueueTrigger(row.original.thread);
 				return;
 			}
+
+			// there's a bug in react-table where triggering selection state change
+			// undoes expansion. this manifests as the expand button not doing anything
+			// when clicked. we can workaround because we don't selection to happen
+			// on expansion anyway
+			if (!column.Expander) {
+				toggleSelection();
+			}
+
 			if (handleOriginal) {
 				handleOriginal();
 			}
