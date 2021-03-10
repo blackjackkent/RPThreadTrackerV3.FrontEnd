@@ -4,6 +4,7 @@ export { default as useLoginMutation } from './useLoginMutation';
 export { default as useLogoutMutation } from './useLogoutMutation';
 export { default as useForgotPasswordMutation } from './useForgotPasswordMutation';
 export { default as useResetPasswordMutation } from './useResetPasswordMutation';
+export { default as useRegisterMutation } from './useRegisterMutation';
 
 // Threads
 export { default as useCreateThreadMutation } from './useCreateThreadMutation';
