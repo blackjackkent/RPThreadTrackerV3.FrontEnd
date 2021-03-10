@@ -2,6 +2,7 @@ export { default as useIsMutating } from './useIsMutating';
 
 export { default as useLoginMutation } from './useLoginMutation';
 export { default as useLogoutMutation } from './useLogoutMutation';
+export { default as useForgotPasswordMutation } from './useForgotPasswordMutation';
 
 // Threads
 export { default as useCreateThreadMutation } from './useCreateThreadMutation';
