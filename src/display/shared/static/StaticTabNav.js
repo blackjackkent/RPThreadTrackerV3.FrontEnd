@@ -23,5 +23,4 @@ const StaticTabNav = (props) => {
 	);
 };
 StaticTabNav.propTypes = propTypes;
-
 export default StaticTabNav;

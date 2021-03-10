@@ -19,5 +19,4 @@ const StaticTabNavItem = (props) => {
 	);
 };
 StaticTabNavItem.propTypes = propTypes;
-
 export default StaticTabNavItem;

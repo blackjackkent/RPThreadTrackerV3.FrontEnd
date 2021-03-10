@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardBody, Progress } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
-import { navigation } from '~/utility/history';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
+import { useHistory } from 'react-router';
 
 const propTypes = {
 	header: PropTypes.number.isRequired,
@@ -18,10 +18,11 @@ const defaultProps = {
 };
 
 const DashboardSummaryWidget = (props) => {
-	const { header, icon, children, isLoadingIconVisible, href, ...attributes } = props;
+	const { header, icon, children, isLoadingIconVisible, href } = props;
+	const history = useHistory();
 
 	return (
-		<Card {...attributes} onClick={() => navigation.navigateTo(href)}>
+		<Card onClick={() => history.push(href)}>
 			<CardBody className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
 					{isLoadingIconVisible && (
