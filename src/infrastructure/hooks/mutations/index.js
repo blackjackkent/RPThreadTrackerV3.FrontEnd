@@ -1,21 +1,21 @@
 export { default as useIsMutating } from './useIsMutating';
 
-export { default as useLoginMutation } from './useLoginMutation';
-export { default as useLogoutMutation } from './useLogoutMutation';
-export { default as useForgotPasswordMutation } from './useForgotPasswordMutation';
-export { default as useResetPasswordMutation } from './useResetPasswordMutation';
-export { default as useRegisterMutation } from './useRegisterMutation';
+// User
+export { default as useUpdateUserSettingsMutation } from './user/useUpdateUserSettingsMutation';
+export { default as useLoginMutation } from './user/useLoginMutation';
+export { default as useLogoutMutation } from './user/useLogoutMutation';
+export { default as useForgotPasswordMutation } from './user/useForgotPasswordMutation';
+export { default as useResetPasswordMutation } from './user/useResetPasswordMutation';
+export { default as useRegisterMutation } from './user/useRegisterMutation';
+export { default as useChangePasswordMutation } from './user/useChangePasswordMutation';
 
 // Threads
-export { default as useCreateThreadMutation } from './useCreateThreadMutation';
-export { default as useUpdateThreadMutation } from './useUpdateThreadMutation';
-export { default as useUntrackThreadMutation } from './useUntrackThreadMutation';
-export { default as useThreadsStatusMutation } from './useThreadsStatusMutation';
+export { default as useCreateThreadMutation } from './threads/useCreateThreadMutation';
+export { default as useUpdateThreadMutation } from './threads/useUpdateThreadMutation';
+export { default as useUntrackThreadMutation } from './threads/useUntrackThreadMutation';
+export { default as useThreadsStatusMutation } from './threads/useThreadsStatusMutation';
 
 // Characters
-export { default as useCreateCharacterMutation } from './useCreateCharacterMutation';
-export { default as useUpdateCharacterMutation } from './useUpdateCharacterMutation';
-export { default as useUntrackCharacterMutation } from './useUntrackCharacterMutation';
-
-// User
-export { default as useUpdateUserSettingsMutation } from './useUpdateUserSettingsMutation';
+export { default as useCreateCharacterMutation } from './characters/useCreateCharacterMutation';
+export { default as useUpdateCharacterMutation } from './characters/useUpdateCharacterMutation';
+export { default as useUntrackCharacterMutation } from './characters/useUntrackCharacterMutation';
