@@ -8,8 +8,11 @@ import { NavbarToggler } from 'reactstrap';
 const propTypes = {
 	isMobileSidebarOpen: PropTypes.bool.isRequired,
 	setIsMobileSidebarOpen: PropTypes.func.isRequired,
-	isSidebarOpen: PropTypes.bool.isRequired,
+	isSidebarOpen: PropTypes.bool,
 	setIsSidebarOpen: PropTypes.func.isRequired
+};
+const defaultProps = {
+	isSidebarOpen: true
 };
 
 const HeaderLogoBlock = (props) => {
@@ -42,4 +45,5 @@ const HeaderLogoBlock = (props) => {
 	);
 };
 HeaderLogoBlock.propTypes = propTypes;
+HeaderLogoBlock.defaultProps = defaultProps;
 export default HeaderLogoBlock;

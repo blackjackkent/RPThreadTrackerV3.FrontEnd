@@ -20,7 +20,6 @@ const DeleteAccountPane = () => {
 				history.push('/logout');
 			})
 			.catch((e) => {
-				console.log(e);
 				toast.error(`There was a problem deleting your account.`);
 			});
 	};
