@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useLogoutMutation } from '~/infrastructure/hooks/mutations';
 import cache from '~/infrastructure/cache';
@@ -13,7 +13,7 @@ const Logout = () => {
 		if (refreshToken) {
 			submitLogout(refreshToken);
 		}
-	}, []);
+	}, [refreshToken, submitLogout]);
 	return <Redirect to="/login" />;
 };
 export default Logout;
