@@ -9,6 +9,7 @@ export { default as useResetPasswordMutation } from './user/useResetPasswordMuta
 export { default as useRegisterMutation } from './user/useRegisterMutation';
 export { default as useChangePasswordMutation } from './user/useChangePasswordMutation';
 export { default as useDeleteAccountMutation } from './user/useDeleteAccountMutation';
+export { default as useUpdateAccountInfoMutation } from './user/useUpdateAccountInfoMutation';
 
 // Threads
 export { default as useCreateThreadMutation } from './threads/useCreateThreadMutation';
