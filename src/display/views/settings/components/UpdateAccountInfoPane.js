@@ -1,71 +1,56 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
 import { TabPane, Row, Button, Col, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
+import { toast } from 'react-toastify';
 import Card from '../../../shared/styled/Card';
 import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
+import { useFormReducer } from '~/infrastructure/hooks';
+import { useUpdateAccountInfoMutation } from '~/infrastructure/hooks/mutations';
+import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
 
-const propTypes = {
-	user: PropTypes.shape({}).isRequired,
-	submitAccountInfoForm: PropTypes.func.isRequired
-};
-class UpdateAccountInfoPane extends React.Component {
-	constructor() {
-		super();
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.state = {
-			formData: {}
-		};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { user } = nextProps;
-		this.setState((prevState) => ({
-			formData: Object.assign({}, prevState.formData, user)
-		}));
-	}
-
-	handleInputChange(event) {
-		const { target } = event;
-		const { name, value } = target;
-		this.setState((prevState) => ({
-			formData: Object.assign({}, prevState.formData, {
-				[name]: value
+const UpdateAccountInfoPane = () => {
+	const [formData, onInputChange, setFormData] = useFormReducer();
+	const { updateAccountInfo } = useUpdateAccountInfoMutation();
+	const { data: user } = useUserProfileQuery();
+	useEffect(() => {
+		setFormData(user);
+	}, [user, setFormData]);
+	const submitUpdateAccountInfo = () => {
+		updateAccountInfo(formData)
+			.then(() => {
+				toast.success('Your account information was successfully updated.');
 			})
-		}));
-	}
-
-	render() {
-		const { submitAccountInfoForm } = this.props;
-		const { formData } = this.state;
-		return (
-			<TabPane tabId="change-username">
-				<Card>
-					<CardHeader>
-						<i className="fas fa-user" /> Change Username/Email
-					</CardHeader>
-					<CardBody className="card-body">
-						<AvForm
-							data-spec="account-info-form-container"
-							onValidSubmit={() => submitAccountInfoForm(formData)}
-						>
-							<UpdateAccountInfoForm
-								handleInputChange={this.handleInputChange}
-								user={formData}
-							/>
-							<Row>
-								<Col className="text-right">
-									<Button type="submit" color="primary">
-										Submit
-									</Button>
-								</Col>
-							</Row>
-						</AvForm>
-					</CardBody>
-				</Card>
-			</TabPane>
-		);
-	}
-}
-UpdateAccountInfoPane.propTypes = propTypes;
+			.catch((err) => {
+				const errors = err.response.data;
+				const message = `There was a problem updating your account info: ${
+					errors.length ? errors[0] : ''
+				}`;
+				toast.error(message);
+			});
+	};
+	return (
+		<TabPane tabId="change-username">
+			<Card>
+				<CardHeader>
+					<i className="fas fa-user" /> Change Username/Email
+				</CardHeader>
+				<CardBody className="card-body">
+					<AvForm
+						data-spec="account-info-form-container"
+						onValidSubmit={() => submitUpdateAccountInfo(formData)}
+					>
+						<UpdateAccountInfoForm handleInputChange={onInputChange} user={formData} />
+						<Row>
+							<Col className="text-right">
+								<Button type="submit" color="primary">
+									Submit
+								</Button>
+							</Col>
+						</Row>
+					</AvForm>
+				</CardBody>
+			</Card>
+		</TabPane>
+	);
+};
 export default UpdateAccountInfoPane;

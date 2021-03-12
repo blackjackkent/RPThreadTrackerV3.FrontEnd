@@ -29,12 +29,10 @@ export function useThreadsQuery(isArchived = false) {
 			const chunk = requests.slice(i, i + 10);
 			chunks.push(chunk);
 		}
-		console.log(chunks);
-		console.log('*******************');
 		chunks.forEach((chunk) => {
 			fetchThreadsStatusChunk(chunk);
 		});
-	}, [threadData, fetchThreadsStatusChunk]);
+	}, [threadData, fetchThreadsStatusChunk, resetThreadsStatus]);
 	return {
 		threadData,
 		threadsStatus,
