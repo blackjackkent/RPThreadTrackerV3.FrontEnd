@@ -29,6 +29,8 @@ import {
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
 import { CharactersContext, ActiveThreadsContext } from '~/infrastructure/hooks/contexts';
+import ThreadTable from '../views/threads/components/ThreadTable';
+import filters from '~/infrastructure/constants/filters';
 // #endregion imports
 
 const Layout = () => {
@@ -101,7 +103,7 @@ const Layout = () => {
 											name="Threads"
 											render={
 												/* istanbul ignore next */
-												() => <Threads Renderable={AllThreads} />
+												() => <AllThreads />
 											}
 										/>
 										<Route
