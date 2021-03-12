@@ -13,7 +13,10 @@ const propTypes = {
 			userTitle: PropTypes.string,
 			postId: PropTypes.string
 		})
-	}).isRequired
+	})
+};
+const defaultProps = {
+	threadData: null
 };
 
 const RandomThreadDisplay = (props) => {
@@ -55,4 +58,5 @@ const RandomThreadDisplay = (props) => {
 };
 
 RandomThreadDisplay.propTypes = propTypes;
+RandomThreadDisplay.defaultProps = defaultProps;
 export default RandomThreadDisplay;
