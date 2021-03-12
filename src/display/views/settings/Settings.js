@@ -12,10 +12,6 @@ import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import tabs from '../../../infrastructure/constants/tabs';
 
 const propTypes = {
-	user: PropTypes.shape({}).isRequired,
-	submitUserChangePassword: PropTypes.func.isRequired,
-	submitUserAccountInfo: PropTypes.func.isRequired,
-	openDeleteAccountConfirmationModal: PropTypes.func.isRequired,
 	match: PropTypes.shape({
 		url: PropTypes.string,
 		params: PropTypes.shape({
@@ -24,26 +20,9 @@ const propTypes = {
 	}).isRequired
 };
 
-function mapStateToProps(state) {
-	const { user } = state;
-	return {
-		user
-	};
-}
-
 const Settings = (props) => {
-	const {
-		user,
-		submitUserChangePassword,
-		submitUserAccountInfo,
-		openDeleteAccountConfirmationModal,
-		match
-	} = props;
+	const { match } = props;
 	const options = Object.values(tabs.SETTINGS);
-	const onDeleteAccountClicked = (e) => {
-		e.preventDefault();
-		openDeleteAccountConfirmationModal();
-	};
 	return (
 		<div className="animated fadeIn static-container settings-container">
 			<Row>
@@ -61,15 +40,9 @@ const Settings = (props) => {
 				</Col>
 				<Col xs="12" lg="9">
 					<TabContent activeTab={match.params.tabId}>
-						<ChangePasswordPane submitChangePasswordForm={submitUserChangePassword} />
-						<UpdateAccountInfoPane
-							submitAccountInfoForm={submitUserAccountInfo}
-							user={user}
-						/>
-						<DeleteAccountPane
-							data-spec="delete-account-pane"
-							onDeleteAccountClicked={onDeleteAccountClicked}
-						/>
+						<ChangePasswordPane />
+						<UpdateAccountInfoPane />
+						<DeleteAccountPane />
 					</TabContent>
 				</Col>
 			</Row>
@@ -78,8 +51,4 @@ const Settings = (props) => {
 };
 
 Settings.propTypes = propTypes;
-export default connect(mapStateToProps, {
-	submitUserChangePassword: actions.submitUserChangePassword,
-	submitUserAccountInfo: actions.submitUserAccountInfo,
-	openDeleteAccountConfirmationModal: actions.openDeleteAccountConfirmationModal
-})(Settings);
+export default Settings;

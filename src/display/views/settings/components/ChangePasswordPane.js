@@ -11,7 +11,7 @@ import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
 
 const ChangePasswordPane = () => {
 	const [formData, onInputChange] = useFormReducer();
-	const { changePassword, error: changePasswordError } = useChangePasswordMutation();
+	const { changePassword } = useChangePasswordMutation();
 	const submitChangePasswordForm = () => {
 		changePassword(formData)
 			.then(() => {
