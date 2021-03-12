@@ -4,7 +4,7 @@ import { useCharactersContext } from '../contexts';
 import useFilteredActiveThreads from './useFilteredActiveThreads';
 
 function useCharacterThreadCounts() {
-	const { filteredThreads: allActiveThreads } = useFilteredActiveThreads(filters.ALL);
+	const allActiveThreads = useFilteredActiveThreads(filters.ALL);
 	const { characters } = useCharactersContext();
 	const [characterThreadCounts, setCharacterThreadCounts] = useState({});
 	useEffect(() => {

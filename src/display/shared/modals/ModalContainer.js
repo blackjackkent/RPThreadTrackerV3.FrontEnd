@@ -138,7 +138,7 @@ const ModalContainer = (props) => {
 				closeUpsertCharacterModal={closeUpsertCharacterModal}
 				submitUpsertCharacter={upsertCharacter}
 				characterToEdit={characterToEdit}
-			/> */}
+			/>
 			<UpsertPublicViewModal
 				isUpsertPublicViewModalOpen={isUpsertPublicViewModalOpen}
 				submitUpsertPublicView={upsertPublicView}
@@ -253,7 +253,7 @@ const ModalContainer = (props) => {
 						account and re-add them.
 					</span>
 				}
-			/>
+			/> */}
 		</div>
 	);
 };

@@ -41,7 +41,6 @@ const Register = () => {
 	}
 
 	const shouldDisplayLoadingIndicator = isUserRegistrationLoading || isLoginLoading;
-	console.log(registrationError?.response);
 	return (
 		<Card className="mx-4">
 			<CardBody className="p-4">

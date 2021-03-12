@@ -78,7 +78,6 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 	}, [statusThreads]);
 	useEffect(() => {
 		let threads = [].concat(statusThreads);
-		console.log(threads);
 		if (filteredTag) {
 			threads = threads.filter((t) => {
 				if (!t.thread || !t.thread.threadTags) {

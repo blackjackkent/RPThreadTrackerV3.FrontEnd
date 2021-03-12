@@ -5,8 +5,7 @@ import { useActiveThreadsContext } from '../contexts';
 function useFilteredActiveThreads(filter) {
 	const {
 		activeThreads: threads,
-		activeThreadsStatus: threadsStatus,
-		isThreadsLoading
+		activeThreadsStatus: threadsStatus
 	} = useActiveThreadsContext();
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	useEffect(() => {
@@ -39,6 +38,6 @@ function useFilteredActiveThreads(filter) {
 		}
 		setFilteredThreads(results);
 	}, [filter, threads, threadsStatus]);
-	return { filteredThreads, isThreadsLoading };
+	return filteredThreads;
 }
 export default useFilteredActiveThreads;

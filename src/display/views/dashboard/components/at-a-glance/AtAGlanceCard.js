@@ -35,7 +35,6 @@ const AtAGlanceCard = () => {
 	const theirTurnThreads = useFilteredActiveThreads(filters.THEIR_TURN);
 	const queuedThreads = useFilteredActiveThreads(filters.QUEUED);
 	const { isThreadsLoading } = useActiveThreadsContext();
-
 	return (
 		<Card className="at-a-glance-card">
 			<CardHeader data-spec="at-a-glance-card-header">

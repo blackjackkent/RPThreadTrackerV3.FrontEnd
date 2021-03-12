@@ -18,7 +18,7 @@ function sortByLastPostDate(a, b) {
 	return new Date(b.status.lastPostDate) - new Date(a.status.lastPostDate);
 }
 function useRecentActivity() {
-	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);
+	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
 	const [recentActivityThreads, setRecentActivityThreads] = useState([]);
 	useEffect(() => {
 		let results = myTurnThreads.filter((t) => t.status || !t.thread.postId);
