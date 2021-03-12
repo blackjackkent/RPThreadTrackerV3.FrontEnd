@@ -15,34 +15,13 @@ import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import getTdProps from './_getTdProps';
 
 const propTypes = {
-	bulkToggleThreadsAreArchived: PropTypes.func.isRequired,
-	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
-	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isArchive: PropTypes.bool,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	isQueue: PropTypes.bool,
-	isAllThreads: PropTypes.bool,
-	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
-	refreshThreads: PropTypes.func.isRequired,
-	setFilteredTag: PropTypes.func.isRequired,
-	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tdProps: PropTypes.func.isRequired,
-	threadFilter: PropTypes.shape({
-		filteredTag: PropTypes.string
-	}).isRequired,
-	threadTablePageSize: PropTypes.number,
-	updateThreadTablePageSize: PropTypes.func.isRequired
-};
-const defaultProps = {
-	isArchive: false,
-	isQueue: false,
-	isAllThreads: false,
-	threadTablePageSize: 10
+	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
+	isLoading: PropTypes.bool.isRequired,
+	getColumns: PropTypes.func.isRequired
 };
 
 function getData(filteredThreads) {
-	const data = filteredThreads.map((item) => {
+	const data = filteredThreads?.map((item) => {
 		// eslint-disable-next-line no-underscore-dangle
 		const _id = item.thread.threadId;
 		return {
@@ -53,10 +32,10 @@ function getData(filteredThreads) {
 	return data;
 }
 
-const ThreadTable = ({ filter, getColumns, tdProps }) => {
+const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 	const { data: userSettings } = useUserSettingsQuery();
 	const [isLoadingIconVisible, setIsLoadingIconVisible] = useState(false);
-	const filteredThreads = useFilteredActiveThreads(filter);
+	const [filteredThreads, setFilteredThreads] = useState([]);
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [filteredTag, setFilteredTag] = useState(null);
 	const [threadFilter, setThreadFilter] = useState({});
@@ -84,7 +63,7 @@ const ThreadTable = ({ filter, getColumns, tdProps }) => {
 		return filterDuplicatesFromArray(lastPosterList);
 	};
 	useEffect(() => {
-		if (!filteredThreads.length) {
+		if (!statusThreads.length) {
 			setTags([]);
 			setSelectedItems([]);
 			setCharacters([]);
@@ -92,11 +71,24 @@ const ThreadTable = ({ filter, getColumns, tdProps }) => {
 			setLastPosters([]);
 			return;
 		}
-		setTags(getTagsFromThreads(filteredThreads));
-		setCharacters(getCharactersFromThreads(filteredThreads));
-		setPartners(getPartnersFromThreads(filteredThreads));
-		setLastPosters(getLastPostersFromThreads(filteredThreads));
-	}, [filteredThreads]);
+		setTags(getTagsFromThreads(statusThreads));
+		setCharacters(getCharactersFromThreads(statusThreads));
+		setPartners(getPartnersFromThreads(statusThreads));
+		setLastPosters(getLastPostersFromThreads(statusThreads));
+	}, [statusThreads]);
+	useEffect(() => {
+		let threads = [].concat(statusThreads);
+		console.log(threads);
+		if (filteredTag) {
+			threads = threads.filter((t) => {
+				if (!t.thread || !t.thread.threadTags) {
+					return false;
+				}
+				return t.thread.threadTags.filter((tt) => tt.tagText === filteredTag).length > 0;
+			});
+		}
+		setFilteredThreads(threads);
+	}, [statusThreads, filteredTag]);
 
 	const onSelectionChanged = (newSelectedItems) => {
 		setSelectedItems(newSelectedItems);
@@ -200,7 +192,7 @@ const ThreadTable = ({ filter, getColumns, tdProps }) => {
 						<CheckboxTable
 							className="-striped"
 							data={getData(filteredThreads)}
-							noDataText={isLoadingIconVisible ? 'Loading...' : 'No Threads Found'}
+							noDataText={isLoading ? 'Loading...' : 'No Threads Found'}
 							defaultPageSize={userSettings?.threadTablePageSize || 10}
 							onPageSizeChange={updateThreadTablePageSize}
 							columns={getColumns(characters, partners, lastPosters)}
@@ -233,5 +225,4 @@ const ThreadTable = ({ filter, getColumns, tdProps }) => {
 	);
 };
 ThreadTable.propTypes = propTypes;
-ThreadTable.defaultProps = defaultProps;
 export default ThreadTable;
