@@ -7,6 +7,7 @@ import ThreadTable from './components/ThreadTable';
 import { getUi } from '../../../infrastructure/selectors/common';
 import * as actions from '../../../infrastructure/actions';
 import * as selectors from '../../../infrastructure/selectors';
+import filters from '~/infrastructure/constants/filters';
 
 const propTypes = {
 	fetchActiveThreads: PropTypes.func.isRequired,
@@ -39,45 +40,9 @@ function mapStateToProps(state) {
 	};
 }
 
-class MyTurnThreads extends Component {
-	componentDidMount() {
-		const { activeThreads, fetchActiveThreads } = this.props;
-		if (!activeThreads || !activeThreads.length) {
-			fetchActiveThreads();
-		}
-	}
+const AllThreads = () => {
+	return <ThreadTable filter={filters.ALL} getColumns={getColumns} />;
+};
 
-	render() {
-		const {
-			filteredThreads,
-			openUntrackThreadModal,
-			openEditThreadModal,
-			toggleThreadIsArchived,
-			toggleThreadIsMarkedQueued,
-			characters,
-			partners,
-			lastPosters,
-			tags
-		} = this.props;
-		return (
-			<ThreadTable
-				{...this.props}
-				filteredThreads={filteredThreads}
-				tags={tags}
-				isAllThreads
-				columns={getColumns(characters, partners, lastPosters)}
-				tdProps={getTdProps(
-					openUntrackThreadModal,
-					openEditThreadModal,
-					toggleThreadIsArchived,
-					toggleThreadIsMarkedQueued
-				)}
-			/>
-		);
-	}
-}
-
-MyTurnThreads.propTypes = propTypes;
-export default connect(mapStateToProps, {
-	fetchActiveThreads: actions.fetchActiveThreads
-})(MyTurnThreads);
+AllThreads.propTypes = propTypes;
+export default AllThreads;
