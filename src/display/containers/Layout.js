@@ -12,12 +12,13 @@ import LoadingIndicator from '../shared/loading/LoadingIndicator';
 import Footer from '../shared/footer/Footer';
 
 import Dashboard from '../views/dashboard/Dashboard';
-import Threads from '../views/threads/Threads';
-import AllThreads from '../views/threads/AllThreads';
-import MyTurnThreads from '../views/threads/MyTurnThreads';
-import TheirTurnThreads from '../views/threads/TheirTurnThreads';
-import ArchivedThreads from '../views/threads/ArchivedThreads';
-import QueuedThreads from '../views/threads/QueuedThreads';
+import Threads, {
+	AllThreads,
+	ArchivedThreads,
+	MyTurnThreads,
+	QueuedThreads,
+	TheirTurnThreads
+} from '../views/threads/Threads';
 import ManageCharacters from '../views/characters/ManageCharacters';
 import Tools from '../views/tools/Tools';
 import Settings from '../views/settings/Settings';
@@ -96,47 +97,32 @@ const Layout = () => {
 										<Route
 											path="threads/*"
 											name="Threads"
-											component={Threads}
+											component={AllThreads}
 										/>
 										<Route
 											path="/threads/all"
 											name="Threads"
-											render={
-												/* istanbul ignore next */
-												() => <AllThreads />
-											}
+											component={AllThreads}
 										/>
 										<Route
 											path="/threads/your-turn"
 											name="Threads"
-											render={
-												/* istanbul ignore next */
-												() => <Threads Renderable={MyTurnThreads} />
-											}
+											component={MyTurnThreads}
 										/>
 										<Route
 											path="/threads/their-turn"
 											name="Threads"
-											render={
-												/* istanbul ignore next */
-												() => <Threads Renderable={TheirTurnThreads} />
-											}
+											component={TheirTurnThreads}
 										/>
 										<Route
 											path="/threads/archived"
 											name="Threads"
-											render={
-												/* istanbul ignore next */
-												() => <Threads Renderable={ArchivedThreads} />
-											}
+											component={ArchivedThreads}
 										/>
 										<Route
 											path="/threads/queued"
 											name="Threads"
-											render={
-												/* istanbul ignore next */
-												() => <Threads Renderable={QueuedThreads} />
-											}
+											component={QueuedThreads}
 										/>
 										<Route
 											path="/manage-characters"
