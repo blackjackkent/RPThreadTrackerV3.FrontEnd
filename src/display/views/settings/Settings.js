@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import ChangePasswordPane from './components/ChangePasswordPane';
 import UpdateAccountInfoPane from './components/UpdateAccountInfoPane';
 import DeleteAccountPane from './components/DeleteAccountPane';
-import * as actions from '../../../infrastructure/actions';
 import TabContent from '../../shared/styled/TabContent';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';

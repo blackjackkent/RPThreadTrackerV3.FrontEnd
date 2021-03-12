@@ -1,11 +1,11 @@
-import * as React from 'react';
+import React, { useEffect } from 'react';
 import { useQueryClient } from 'react-query';
 
 export default function useIsMutating() {
 	const queryClient = useQueryClient();
 	const [pendingMutations, setPendingMutations] = React.useState(0);
 
-	React.useEffect(
+	useEffect(
 		() =>
 			queryClient.getMutationCache().subscribe(() => {
 				const muts = queryClient
