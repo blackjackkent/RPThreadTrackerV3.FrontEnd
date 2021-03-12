@@ -1,5 +1,5 @@
 // #region imports
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import { useIsFetching } from 'react-query';
 import Breadcrumbs from './Breadcrumbs';

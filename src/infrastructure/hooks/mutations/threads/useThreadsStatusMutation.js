@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { useCallback, useReducer } from 'react';
 import { useMutation } from 'react-query';
 import axios from 'axios';
 
@@ -28,11 +28,11 @@ function useThreadsStatusMutation(isArchived = false) {
 			}
 		}
 	);
-	const clearData = () => {
+	const clearData = useCallback(() => {
 		dispatch({
 			type: 'reset'
 		});
-	};
+	}, []);
 	return {
 		threadsStatus,
 		fetchThreadsStatusChunk: threadsStatusMutation.mutateAsync,
