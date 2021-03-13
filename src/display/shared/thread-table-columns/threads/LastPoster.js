@@ -7,7 +7,7 @@ const stopPropagation = (e) => e.stopPropagation();
 export default (lastPosters, includeFilter) => ({
 	Header: columns.LAST_POSTER.name,
 	accessor: columns.LAST_POSTER.key,
-	Cell: (row) => (
+	Cell: ({ row }) => (
 		<span>
 			{row.value && (
 				<a

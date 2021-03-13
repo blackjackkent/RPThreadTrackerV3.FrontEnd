@@ -1,4 +1,7 @@
 export default {
+	EXPANDER: {
+		key: 'expander'
+	},
 	ARCHIVE_BUTTON: {
 		key: 'archiveButton'
 	},
