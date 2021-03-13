@@ -9,10 +9,15 @@ import ThreadTableSubComponent from './ThreadTableSubComponent';
 import TagFilterSelect from './TagFilterSelect';
 import ThreadRefreshButton from './ThreadRefreshButton';
 import Style from '../_styles';
-import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import { filterDuplicatesFromArray, flattenArrayOfArrays, sortTags } from '~/utility';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import getTdProps from './_getTdProps';
+import {
+	useUntrackThreadMutation,
+	useUpdateThreadMutation
+} from '~/infrastructure/hooks/mutations';
+import { toast } from 'react-toastify';
+import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
 
 const propTypes = {
 	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
@@ -34,15 +39,34 @@ function getData(filteredThreads) {
 
 const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 	const { data: userSettings } = useUserSettingsQuery();
-	const [isLoadingIconVisible, setIsLoadingIconVisible] = useState(false);
+
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	const [selectedItems, setSelectedItems] = useState([]);
-	const [filteredTag, setFilteredTag] = useState(null);
-	const [threadFilter, setThreadFilter] = useState({});
+	const [filteredTag, setFilteredTag] = useState(undefined);
 	const [tags, setTags] = useState([]);
 	const [characters, setCharacters] = useState([]);
 	const [partners, setPartners] = useState([]);
 	const [lastPosters, setLastPosters] = useState([]);
+
+	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
+	const [actedThread, setActedThread] = useState(null);
+	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
+	const { updateThread } = useUpdateThreadMutation();
+	const submitUntrackThread = () => {
+		untrackThread(actedThread)
+			.then(() => {
+				setIsUntrackThreadModalOpen(false);
+				toast.success('Thread untracked!');
+			})
+			.catch(() => {
+				toast.error(`There was an error untracking this thread.`);
+			});
+	};
+	const openUntrackThreadModal = (thread) => {
+		setActedThread(thread);
+		setIsUntrackThreadModalOpen(true);
+	};
+
 	const getTagsFromThreads = (threads) => {
 		const tagArrays = threads.map((t) => t.thread.threadTags);
 		const flattened = flattenArrayOfArrays(tagArrays);
@@ -76,6 +100,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		setPartners(getPartnersFromThreads(statusThreads));
 		setLastPosters(getLastPostersFromThreads(statusThreads));
 	}, [statusThreads]);
+
 	useEffect(() => {
 		let threads = [].concat(statusThreads);
 		if (filteredTag) {
@@ -132,6 +157,21 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 	};
 	return (
 		<Style className="animated fadeIn threads-container">
+			<GenericConfirmationModal
+				isModalOpen={isUntrackThreadModalOpen}
+				setIsModalOpen={setIsUntrackThreadModalOpen}
+				submitForm={submitUntrackThread}
+				submitButtonText="Untrack"
+				closeButtonText="Cancel"
+				isLoading={isUntrackThreadLoading}
+				data={actedThread}
+				headerText="Confirm Thread Untracking"
+				bodyText={
+					<span>
+						Are you sure you want to untrack <strong>{actedThread?.userTitle}</strong>?
+					</span>
+				}
+			/>
 			<Row>
 				<Col>
 					<div>
@@ -140,7 +180,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								<TagFilterSelect
 									setFilteredTag={setFilteredTag}
 									tags={tags}
-									filteredTag={threadFilter.filteredTag}
+									filteredTag={filteredTag}
 								/>
 							</Col>
 							<Col xs="12" sm="6" xl="5">
@@ -195,12 +235,14 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 							defaultPageSize={userSettings?.threadTablePageSize || 10}
 							onPageSizeChange={updateThreadTablePageSize}
 							columns={getColumns(characters, partners, lastPosters)}
-							tdProps={getTdProps(
-								() => {},
-								() => {},
-								() => {},
-								() => {}
-							)}
+							tdProps={() =>
+								getTdProps(
+									openUntrackThreadModal,
+									() => {},
+									() => {},
+									() => {}
+								)
+							}
 							defaultSorted={[
 								{
 									id: 'status.lastPostDate',
