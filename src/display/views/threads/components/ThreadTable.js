@@ -18,7 +18,7 @@ import {
 } from '~/infrastructure/hooks/mutations';
 import { toast } from 'react-toastify';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import { useExpanded, useSortBy, useTable } from 'react-table';
+import { useExpanded, usePagination, useSortBy, useTable } from 'react-table';
 
 const propTypes = {
 	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
@@ -161,23 +161,42 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		});
 	};
 
-	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+	const {
+		getTableProps,
+		getTableBodyProps,
+		headerGroups,
+		prepareRow,
+		page,
+		canPreviousPage,
+		canNextPage,
+		pageOptions,
+		pageCount,
+		gotoPage,
+		nextPage,
+		previousPage,
+		setPageSize,
+		state: { pageIndex, pageSize }
+	} = useTable(
 		{
 			columns: React.useMemo(() => getColumns(characters, partners, lastPosters), []),
 			data: React.useMemo(() => getData(filteredThreads), [filteredThreads]),
 			initialState: {
-				sortBy: React.useMemo(() => [
-					{
-						id: 'status.lastPostDate',
-						desc: true
-					}
-				])
+				pageSize: 10,
+				sortBy: React.useMemo(
+					() => [
+						{
+							id: 'status.lastPostDate',
+							desc: true
+						}
+					],
+					[]
+				)
 			}
 		},
 		useSortBy,
-		useExpanded
+		useExpanded,
+		usePagination
 	);
-	console.log(getData(filteredThreads));
 
 	return (
 		<Style className="animated fadeIn threads-container">
@@ -265,7 +284,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								))}
 							</thead>
 							<tbody {...getTableBodyProps()}>
-								{rows.map((row, i) => {
+								{page.map((row) => {
 									prepareRow(row);
 									return (
 										<tr {...row.getRowProps()}>
@@ -281,6 +300,68 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								})}
 							</tbody>
 						</table>
+						<div className="pagination">
+							<button
+								type="button"
+								onClick={() => gotoPage(0)}
+								disabled={!canPreviousPage}
+							>
+								{'<<'}
+							</button>{' '}
+							<button
+								type="button"
+								onClick={() => previousPage()}
+								disabled={!canPreviousPage}
+							>
+								{'<'}
+							</button>{' '}
+							<button
+								type="button"
+								onClick={() => nextPage()}
+								disabled={!canNextPage}
+							>
+								{'>'}
+							</button>{' '}
+							<button
+								type="button"
+								onClick={() => gotoPage(pageCount - 1)}
+								disabled={!canNextPage}
+							>
+								{'>>'}
+							</button>{' '}
+							<span>
+								Page{' '}
+								<strong>
+									{pageIndex + 1} of {pageOptions.length}
+								</strong>{' '}
+							</span>
+							<span>
+								| Go to page:{' '}
+								<input
+									type="number"
+									defaultValue={pageIndex + 1}
+									onChange={(e) => {
+										const page = e.target.value
+											? Number(e.target.value) - 1
+											: 0;
+										gotoPage(page);
+									}}
+									style={{ width: '100px' }}
+								/>
+							</span>{' '}
+							<select
+								value={pageSize}
+								onChange={(e) => {
+									setPageSize(Number(e.target.value));
+								}}
+							>
+								{[10, 20, 30, 40, 50].map((size) => (
+									<option key={size} value={size}>
+										Show {size}
+									</option>
+								))}
+							</select>
+						</div>
 						<CheckboxTable
 							className="-striped"
 							data={getData(filteredThreads)}
