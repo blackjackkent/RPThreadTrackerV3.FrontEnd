@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from 'reactstrap';
+import { Row, Col, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import defaultFilter from './_defaultFilter';
 // import CheckboxTable from './CheckboxTable';
@@ -19,6 +19,7 @@ import {
 import { toast } from 'react-toastify';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
 import { useExpanded, usePagination, useSortBy, useTable } from 'react-table';
+import { Tab } from 'bootstrap';
 
 const propTypes = {
 	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
@@ -175,10 +176,16 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		nextPage,
 		previousPage,
 		setPageSize,
-		state: { pageIndex, pageSize }
+		state: { pageIndex, pageSize },
+		visibleColumns
 	} = useTable(
 		{
-			columns: React.useMemo(() => getColumns(characters, partners, lastPosters), []),
+			columns: React.useMemo(() => getColumns(characters, partners, lastPosters), [
+				characters,
+				getColumns,
+				lastPosters,
+				partners
+			]),
 			data: React.useMemo(() => getData(filteredThreads), [filteredThreads]),
 			initialState: {
 				pageSize: 10,
@@ -196,6 +203,18 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		useSortBy,
 		useExpanded,
 		usePagination
+	);
+	const renderRowSubComponent = React.useCallback(
+		({ row }) => (
+			<pre
+				style={{
+					fontSize: '10px'
+				}}
+			>
+				<code>{JSON.stringify({ values: row.values }, null, 2)}</code>
+			</pre>
+		),
+		[]
 	);
 
 	return (
@@ -271,7 +290,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								</p>
 							</Col>
 						</Row>
-						<table {...getTableProps()}>
+						<Table dark striped bordered {...getTableProps()}>
 							<thead>
 								{headerGroups.map((headerGroup) => (
 									<tr {...headerGroup.getHeaderGroupProps()}>
@@ -287,19 +306,28 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								{page.map((row) => {
 									prepareRow(row);
 									return (
-										<tr {...row.getRowProps()}>
-											{row.cells.map((cell) => {
-												return (
-													<td {...cell.getCellProps()}>
-														{cell.render('Cell')}
+										<React.Fragment {...row.getRowProps()}>
+											<tr>
+												{row.cells.map((cell) => {
+													return (
+														<td {...cell.getCellProps()}>
+															{cell.render('Cell')}
+														</td>
+													);
+												})}
+											</tr>
+											{row.isExpanded ? (
+												<tr>
+													<td colSpan={visibleColumns.length}>
+														{renderRowSubComponent({ row })}
 													</td>
-												);
-											})}
-										</tr>
+												</tr>
+											) : null}
+										</React.Fragment>
 									);
 								})}
 							</tbody>
-						</table>
+						</Table>
 						<div className="pagination">
 							<button
 								type="button"
@@ -341,10 +369,10 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 									type="number"
 									defaultValue={pageIndex + 1}
 									onChange={(e) => {
-										const page = e.target.value
+										const newPage = e.target.value
 											? Number(e.target.value) - 1
 											: 0;
-										gotoPage(page);
+										gotoPage(newPage);
 									}}
 									style={{ width: '100px' }}
 								/>
