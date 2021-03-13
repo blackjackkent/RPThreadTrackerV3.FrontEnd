@@ -11,10 +11,10 @@ export default (characters, includeFilter) => ({
 		urlIdentifier: row.thread.character.urlIdentifier,
 		characterName: row.thread.character.characterName
 	}),
-	Cell: (row) => (
+	Cell: ({ value }) => (
 		<span>
-			{row.value.urlIdentifier}
-			{row.value.characterName && ` (${row.value.characterName})`}
+			{value.urlIdentifier}
+			{value.characterName && ` (${value.characterName})`}
 		</span>
 	),
 	minWidth: 250,

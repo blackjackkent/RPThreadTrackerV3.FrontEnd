@@ -5,7 +5,7 @@ import columns from '../../../../infrastructure/constants/columns';
 export default (partners, includeFilter) => ({
 	Header: columns.TRACKED_PARTNER.name,
 	accessor: columns.TRACKED_PARTNER.key,
-	Cell: (row) => <span>{row.value ? row.value : ''}</span>,
+	Cell: ({ value }) => <span>{value ? value : ''}</span>,
 	minWidth: 200,
 	sortable: true,
 	resizable: true,

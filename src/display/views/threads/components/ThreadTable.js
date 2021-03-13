@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import defaultFilter from './_defaultFilter';
-import CheckboxTable from './CheckboxTable';
+// import CheckboxTable from './CheckboxTable';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 import ThreadTableSubComponent from './ThreadTableSubComponent';
 import TagFilterSelect from './TagFilterSelect';
@@ -18,6 +18,7 @@ import {
 } from '~/infrastructure/hooks/mutations';
 import { toast } from 'react-toastify';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
+import { useExpanded, useSortBy, useTable } from 'react-table';
 
 const propTypes = {
 	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
@@ -36,6 +37,10 @@ function getData(filteredThreads) {
 	});
 	return data;
 }
+
+const CheckboxTable = () => {
+	return <div />;
+};
 
 const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 	const { data: userSettings } = useUserSettingsQuery();
@@ -155,6 +160,25 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 			threadTablePageSize: size
 		});
 	};
+
+	const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } = useTable(
+		{
+			columns: React.useMemo(() => getColumns(characters, partners, lastPosters), []),
+			data: React.useMemo(() => getData(filteredThreads), [filteredThreads]),
+			initialState: {
+				sortBy: React.useMemo(() => [
+					{
+						id: 'status.lastPostDate',
+						desc: true
+					}
+				])
+			}
+		},
+		useSortBy,
+		useExpanded
+	);
+	console.log(getData(filteredThreads));
+
 	return (
 		<Style className="animated fadeIn threads-container">
 			<GenericConfirmationModal
@@ -228,6 +252,35 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								</p>
 							</Col>
 						</Row>
+						<table {...getTableProps()}>
+							<thead>
+								{headerGroups.map((headerGroup) => (
+									<tr {...headerGroup.getHeaderGroupProps()}>
+										{headerGroup.headers.map((column) => (
+											<th {...column.getHeaderProps()}>
+												{column.render('Header')}
+											</th>
+										))}
+									</tr>
+								))}
+							</thead>
+							<tbody {...getTableBodyProps()}>
+								{rows.map((row, i) => {
+									prepareRow(row);
+									return (
+										<tr {...row.getRowProps()}>
+											{row.cells.map((cell) => {
+												return (
+													<td {...cell.getCellProps()}>
+														{cell.render('Cell')}
+													</td>
+												);
+											})}
+										</tr>
+									);
+								})}
+							</tbody>
+						</table>
 						<CheckboxTable
 							className="-striped"
 							data={getData(filteredThreads)}

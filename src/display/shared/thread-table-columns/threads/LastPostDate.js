@@ -5,7 +5,7 @@ import columns from '../../../../infrastructure/constants/columns';
 export default () => ({
 	Header: columns.LAST_POST_DATE.name,
 	accessor: columns.LAST_POST_DATE.key,
-	Cell: (row) => {
+	Cell: ({ row }) => {
 		if (!row.original.status) {
 			return <span>Awaiting Starter</span>;
 		}

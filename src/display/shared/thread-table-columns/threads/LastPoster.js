@@ -5,7 +5,7 @@ import columns from '../../../../infrastructure/constants/columns';
 export default (lastPosters, includeFilter) => ({
 	Header: columns.LAST_POSTER.name,
 	accessor: columns.LAST_POSTER.key,
-	Cell: (row) => (
+	Cell: ({ row }) => (
 		<span>
 			{row.value && (
 				<a
