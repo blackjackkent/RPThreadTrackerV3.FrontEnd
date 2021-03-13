@@ -5,19 +5,22 @@ import columns from '../../../../infrastructure/constants/columns';
 export default (lastPosters, includeFilter) => ({
 	Header: columns.LAST_POSTER.name,
 	accessor: columns.LAST_POSTER.key,
-	Cell: ({ row }) => (
-		<span>
-			{row.value && (
-				<a
-					target="_blank"
-					rel="noopener noreferrer"
-					href={row.original.status && row.original.status.lastPostUrl}
-				>
-					{row.value} <i className="fas fa-external-link-alt" />
-				</a>
-			)}
-		</span>
-	),
+	Cell: ({ row }) => {
+		return (
+			<span>
+				{row.value && (
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href={row.original.status && row.original.status.lastPostUrl}
+					>
+						{row.original.status.lastPosterUrlIdentifier}{' '}
+						<i className="fas fa-external-link-alt" />
+					</a>
+				)}
+			</span>
+		);
+	},
 	minWidth: 250,
 	sortable: true,
 	resizable: true,

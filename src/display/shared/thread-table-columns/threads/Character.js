@@ -18,7 +18,7 @@ export default (characters, includeFilter) => ({
 		</span>
 	),
 	minWidth: 250,
-	sortable: true,
+	canSort: true,
 	resizable: true,
 	filterable: includeFilter,
 	// eslint-disable-next-line react/prop-types
