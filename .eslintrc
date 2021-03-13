@@ -24,6 +24,7 @@
 		"class-methods-use-this": "off",
 		"no-plusplus": "off",
 		"react/jsx-indent-props": ["error", "tab"],
+		"react/jsx-props-no-spreading": "off",
 		"react/jsx-wrap-multilines": [
 			"error",
 			{
