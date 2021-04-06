@@ -74,7 +74,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               "xl",
             ]
           }
-          xs="6"
+          xs="4"
         >
           <p>
             <strong>
@@ -86,13 +86,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               Abby S.
             </li>
             <li>
-              Alex D
+              Alex D.
             </li>
             <li>
               Alex Stahl
-            </li>
-            <li>
-              avenginggirlscout
             </li>
             <li>
               Beth Halverson
@@ -104,9 +101,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               containsmultitvdes
             </li>
             <li>
-              Emily Hunt
-            </li>
-            <li>
               Ezra Wilson
             </li>
             <li>
@@ -116,16 +110,10 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               Isabella R.
             </li>
             <li>
-              LusidDreamer
-            </li>
-            <li>
-              Maddie Douglas
+              Maddie
             </li>
             <li>
               Morgan Looney
-            </li>
-            <li>
-              onennian
             </li>
             <li>
               peepingtoad
@@ -135,9 +123,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
             </li>
             <li>
               Shelbi Van Horn
-            </li>
-            <li>
-              Sugar
             </li>
             <li>
               The Colony Roleplay
@@ -158,7 +143,7 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
               "xl",
             ]
           }
-          xs="6"
+          xs="4"
         >
           <p>
             <strong>
@@ -167,28 +152,52 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
           </p>
           <ul>
             <li>
-              Insolitus-Academy
+              Dray
             </li>
             <li>
               girl-next-door-writes
             </li>
             <li>
+              insolitus-academy
+            </li>
+            <li>
               Jess
             </li>
             <li>
-              Kenickie
-            </li>
-            <li>
-              Lanie
-            </li>
-            <li>
               Melissa
+            </li>
+            <li>
+              Rico
             </li>
             <li>
               tabbyrp
             </li>
             <li>
               tyrantofthefirmament
+            </li>
+          </ul>
+        </Col>
+        <Col
+          tag="div"
+          widths={
+            Array [
+              "xs",
+              "sm",
+              "md",
+              "lg",
+              "xl",
+            ]
+          }
+          xs="4"
+        >
+          <p>
+            <strong>
+              Gigabyte Tier ($20 a month)
+            </strong>
+          </p>
+          <ul>
+            <li>
+              Lanie
             </li>
           </ul>
         </Col>

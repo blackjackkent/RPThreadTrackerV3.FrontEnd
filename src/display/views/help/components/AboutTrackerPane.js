@@ -42,47 +42,50 @@ const AboutTrackerPane = () => (
 					</em>
 				</p>
 				<Row>
-					<Col xs="6">
+					<Col xs="4">
 						<p>
 							<strong>Kilobyte Tier ($5 a month)</strong>
 						</p>
 						<ul>
 							<li>Abby S.</li>
-							<li>Alex D</li>
+							<li>Alex D.</li>
 							<li>Alex Stahl</li>
-							<li>avenginggirlscout</li>
 							<li>Beth Halverson</li>
 							<li>Cassandra Clark</li>
 							<li>containsmultitvdes</li>
-							<li>Emily Hunt</li>
 							<li>Ezra Wilson</li>
 							<li>hazeljv</li>
 							<li>Isabella R.</li>
-							<li>LusidDreamer</li>
-							<li>Maddie Douglas</li>
+							<li>Maddie</li>
 							<li>Morgan Looney</li>
-							<li>onennian</li>
 							<li>peepingtoad</li>
 							<li>Rave</li>
 							<li>Shelbi Van Horn</li>
-							<li>Sugar</li>
 							<li>The Colony Roleplay</li>
 							<li>Windress</li>
 						</ul>
 					</Col>
-					<Col xs="6">
+					<Col xs="4">
 						<p>
 							<strong>Megabyte Tier ($10 a month)</strong>
 						</p>
 						<ul>
-							<li>Insolitus-Academy</li>
+							<li>Dray</li>
 							<li>girl-next-door-writes</li>
+							<li>insolitus-academy</li>
 							<li>Jess</li>
-							<li>Kenickie</li>
-							<li>Lanie</li>
 							<li>Melissa</li>
+							<li>Rico</li>
 							<li>tabbyrp</li>
 							<li>tyrantofthefirmament</li>
+						</ul>
+					</Col>
+					<Col xs="4">
+						<p>
+							<strong>Gigabyte Tier ($20 a month)</strong>
+						</p>
+						<ul>
+							<li>Lanie</li>
 						</ul>
 					</Col>
 				</Row>
