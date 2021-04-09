@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 
@@ -5,8 +6,13 @@ export default (includeFilter) => ({
 	Header: columns.THREAD_TITLE.name,
 	accessor: columns.THREAD_TITLE.key,
 	Cell: ({ value }) => <span title={value}>{value}</span>,
-	minWidth: 200,
-	sortable: true,
-	resizable: true,
-	filterable: includeFilter
+	disableFilters: !includeFilter,
+	sortType: (rowA, rowB) => {
+		const aTitle = rowA.values['thread.userTitle'] ?? '';
+		const bTitle = rowB.values['thread.userTitle'] ?? '';
+		const result = aTitle.localeCompare(bTitle, undefined, {
+			sensitivity: 'accent'
+		});
+		return result;
+	}
 });

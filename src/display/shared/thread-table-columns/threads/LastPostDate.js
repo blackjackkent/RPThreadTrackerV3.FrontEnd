@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import Moment from 'react-moment';
 import columns from '../../../../infrastructure/constants/columns';
@@ -15,6 +16,6 @@ export default () => ({
 			<span>Post Not Found</span>
 		);
 	},
-	minWidth: 200,
-	filterable: false
+	disableFilters: false,
+	sortDescFirst: true
 });

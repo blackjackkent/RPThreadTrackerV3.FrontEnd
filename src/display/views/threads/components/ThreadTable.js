@@ -19,7 +19,6 @@ import {
 import { toast } from 'react-toastify';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
 import { useExpanded, usePagination, useSortBy, useTable } from 'react-table';
-import { Tab } from 'bootstrap';
 
 const propTypes = {
 	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
@@ -198,7 +197,8 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 					],
 					[]
 				)
-			}
+			},
+			disableSortRemove: true
 		},
 		useSortBy,
 		useExpanded,
@@ -295,8 +295,20 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								{headerGroups.map((headerGroup) => (
 									<tr {...headerGroup.getHeaderGroupProps()}>
 										{headerGroup.headers.map((column) => (
-											<th {...column.getHeaderProps()}>
+											<th
+												{...column.getHeaderProps(
+													column.getSortByToggleProps()
+												)}
+											>
 												{column.render('Header')}
+												{/* Add a sort direction indicator */}
+												<span>
+													{column.isSorted
+														? column.isSortedDesc
+															? ' 🔽'
+															: ' 🔼'
+														: ''}
+												</span>
 											</th>
 										))}
 									</tr>
