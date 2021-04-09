@@ -17,11 +17,7 @@ export default (characters, includeFilter) => ({
 			{value.characterName && ` (${value.characterName})`}
 		</span>
 	),
-	minWidth: 250,
-	canSort: true,
-	resizable: true,
-	filterable: includeFilter,
-	// eslint-disable-next-line react/prop-types
+	disableFilters: !includeFilter,
 	Filter: ({ filter, onChange }) => {
 		const options = characters
 			.sort(sortCharacters)
@@ -41,10 +37,12 @@ export default (characters, includeFilter) => ({
 			</select>
 		);
 	},
-	filterMethod: (filter, row) => {
-		const characterId = parseInt(filter.value, 10);
+	filter: (rows, _colIds, filterValue) => {
+		const characterId = parseInt(filterValue, 10);
 		// eslint-disable-next-line no-underscore-dangle
-		return characterId === row._original.thread.character.characterId;
+		return rows.filter((r) => characterId === r.original.thread.character.characterId);
 	},
-	sortMethod: sortCharacters
+	sortType: (rowA, rowB) => {
+		return sortCharacters(rowA?.original?.thread?.character, rowB?.original?.thread?.character);
+	}
 });

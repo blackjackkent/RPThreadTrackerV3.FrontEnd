@@ -22,7 +22,7 @@ export default {
 		name: 'Thread Title'
 	},
 	CHARACTER: {
-		key: 'thread.character.urlIdentifier',
+		key: 'thread.character',
 		name: 'Character'
 	},
 	LAST_POSTER: {

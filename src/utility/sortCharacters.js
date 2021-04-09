@@ -1,9 +1,19 @@
 export default (a, b) => {
-	if (a.urlIdentifier === b.urlIdentifier) {
-		if (a.characterName === b.characterName) {
+	const aUrlIdentifier = a.urlIdentifier ?? '';
+	const bUrlIdentifier = b.urlIdentifier ?? '';
+	const urlCompare = aUrlIdentifier.localeCompare(bUrlIdentifier, undefined, {
+		sensitivity: 'accent'
+	});
+	const aName = a.characterName ?? '';
+	const bName = b.characterName ?? '';
+	const nameCompare = aName.localeCompare(bName, undefined, {
+		sensitivity: 'accent'
+	});
+	if (urlCompare === 0) {
+		if (nameCompare === 0) {
 			return 0;
 		}
-		return a.characterName > b.characterName ? 1 : -1;
+		return nameCompare;
 	}
-	return a.urlIdentifier > b.urlIdentifier ? 1 : -1;
+	return urlCompare;
 };
