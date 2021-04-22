@@ -11,7 +11,10 @@ export default styled.div`
   }
 	.nav {
 		.nav-title {
-			color: ${colors.GRAY_600}
+			color: ${colors.GRAY_100};
+      .light-theme & {
+        color: ${colors.GRAY_600}
+      }
 		}
 		.nav-item {
 			.nav-link {
@@ -20,7 +23,7 @@ export default styled.div`
           color: ${colors.GRAY_600}
         }
 				i {
-					color: ${colors.GRAY_100};
+					color: ${colors.GRAY_100}; 
           .light-theme & {
             color: ${colors.GRAY_600}
           }
