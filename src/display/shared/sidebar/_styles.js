@@ -15,9 +15,15 @@ export default styled.div`
 		}
 		.nav-item {
 			.nav-link {
-				color: ${colors.GRAY_600}
+				color: ${colors.GRAY_100};
+        .light-theme & {
+          color: ${colors.GRAY_600}
+        }
 				i {
-					color: ${colors.GRAY_600}
+					color: ${colors.GRAY_100};
+          .light-theme & {
+            color: ${colors.GRAY_600}
+          }
 				}
 				&.active {
 					background: ${colors.GRAY_050};
