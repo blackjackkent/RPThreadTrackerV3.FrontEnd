@@ -29,8 +29,12 @@ export default styled.div`
           }
 				}
 				&.active {
-					background: ${colors.GRAY_050};
-					color: ${colors.GRAY_600};
+					background: ${colors.GRAY_600};
+					color: ${colors.GRAY_050};
+          .light-theme & {
+            background: ${colors.GRAY_050};
+            color: ${colors.GRAY_600};
+          }
 					i {
 						color: ${colors.LIGHT_BLUE};
 					}
