@@ -2,9 +2,13 @@ import styled from 'styled-components';
 import colors from '../../../infrastructure/constants/colors';
 
 export default styled.div`
-	color: ${colors.GRAY_400};
-	background: ${colors.WHITE};
+	color: ${colors.GRAY_100};
+	background: ${colors.GRAY_900};
 	border-right: 1px solid ${colors.GRAY_200};
+  .light-theme & {
+	  color: ${colors.GRAY_400};
+	  background: ${colors.WHITE};
+  }
 	.nav {
 		.nav-title {
 			color: ${colors.GRAY_600}
