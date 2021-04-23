@@ -4,10 +4,11 @@ import colors from '../../../infrastructure/constants/colors';
 export default styled.div`
 	color: ${colors.GRAY_100};
 	background: ${colors.GRAY_900};
-	border-right: 1px solid ${colors.GRAY_200};
+	border-right: 1px solid ${colors.GRAY_400};
   .light-theme & {
 	  color: ${colors.GRAY_400};
 	  background: ${colors.WHITE};
+    border-right: 1px solid ${colors.GRAY_200};
   }
 	.nav {
 		.nav-title {
