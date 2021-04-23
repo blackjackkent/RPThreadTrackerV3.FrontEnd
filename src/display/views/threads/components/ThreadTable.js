@@ -18,7 +18,7 @@ import {
 } from '~/infrastructure/hooks/mutations';
 import { toast } from 'react-toastify';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import { useExpanded, usePagination, useSortBy, useTable } from 'react-table';
+import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
 
 const propTypes = {
 	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
@@ -200,6 +200,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 			},
 			disableSortRemove: true
 		},
+		useFilters,
 		useSortBy,
 		useExpanded,
 		usePagination
@@ -293,25 +294,33 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 						<Table dark striped bordered {...getTableProps()}>
 							<thead>
 								{headerGroups.map((headerGroup) => (
-									<tr {...headerGroup.getHeaderGroupProps()}>
-										{headerGroup.headers.map((column) => (
-											<th
-												{...column.getHeaderProps(
-													column.getSortByToggleProps()
-												)}
-											>
-												{column.render('Header')}
-												{/* Add a sort direction indicator */}
-												<span>
-													{column.isSorted
-														? column.isSortedDesc
-															? ' 🔽'
-															: ' 🔼'
-														: ''}
-												</span>
-											</th>
-										))}
-									</tr>
+									<>
+										<tr {...headerGroup.getHeaderGroupProps()}>
+											{headerGroup.headers.map((column) => (
+												<th
+													{...column.getHeaderProps(
+														column.getSortByToggleProps()
+													)}
+												>
+													{column.render('Header')}
+													{/* Add a sort direction indicator */}
+													<span>
+														{column.isSorted
+															? column.isSortedDesc
+																? ' 🔽'
+																: ' 🔼'
+															: ''}
+													</span>
+
+													<div>
+														{column.canFilter
+															? column.render('Filter')
+															: null}
+													</div>
+												</th>
+											))}
+										</tr>
+									</>
 								))}
 							</thead>
 							<tbody {...getTableBodyProps()}>
