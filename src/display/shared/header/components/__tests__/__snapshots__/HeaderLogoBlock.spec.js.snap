@@ -17,14 +17,6 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     ☰
   </NavbarToggler>
-  <Link
-    className="d-none d-sm-inline-block navbar-brand"
-    href="/"
-    replace={false}
-    to="/"
-  >
-    RPTHREADTRACKER
-  </Link>
   <NavbarToggler
     className="d-md-down-none"
     data-spec="header-logo-block-sidebar-toggler"
@@ -34,5 +26,13 @@ exports[`rendering snapshots should render valid snapshot 1`] = `
   >
     ☰
   </NavbarToggler>
+  <Link
+    className="d-none d-sm-inline-block navbar-brand"
+    href="/"
+    replace={false}
+    to="/"
+  >
+    RPTHREADTRACKER
+  </Link>
 </div>
 `;
