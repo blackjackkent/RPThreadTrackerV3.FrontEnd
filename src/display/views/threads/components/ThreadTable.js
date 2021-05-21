@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Row, Col, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import defaultFilter from './_defaultFilter';
-// import CheckboxTable from './CheckboxTable';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 import ThreadTableSubComponent from './ThreadTableSubComponent';
 import TagFilterSelect from './TagFilterSelect';
@@ -205,18 +204,15 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		useExpanded,
 		usePagination
 	);
-	const renderRowSubComponent = React.useCallback(
-		({ row }) => (
-			<pre
-				style={{
-					fontSize: '10px'
-				}}
-			>
-				<code>{JSON.stringify({ values: row.values }, null, 2)}</code>
-			</pre>
-		),
-		[]
-	);
+	const renderRowSubComponent = React.useCallback(({ row }) => {
+		console.log(row);
+		return (
+			<ThreadTableSubComponent
+				description={row.original.thread.description}
+				tags={row.original.thread.threadTags}
+			/>
+		);
+	}, []);
 
 	return (
 		<Style className="animated fadeIn threads-container">
@@ -291,27 +287,112 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								</p>
 							</Col>
 						</Row>
-						<Table dark striped bordered {...getTableProps()}>
+						<Row>
+							<Col xs="12" md="4"></Col>
+							<Col xs="12" md="4"></Col>
+							<Col xs="12" md="4">
+								<div className="pagination">
+									<button
+										type="button"
+										onClick={() => gotoPage(0)}
+										disabled={!canPreviousPage}
+									>
+										{'<<'}
+									</button>{' '}
+									<button
+										type="button"
+										onClick={() => previousPage()}
+										disabled={!canPreviousPage}
+									>
+										{'<'}
+									</button>{' '}
+									<button
+										type="button"
+										onClick={() => nextPage()}
+										disabled={!canNextPage}
+									>
+										{'>'}
+									</button>{' '}
+									<button
+										type="button"
+										onClick={() => gotoPage(pageCount - 1)}
+										disabled={!canNextPage}
+									>
+										{'>>'}
+									</button>{' '}
+									<span>
+										Page{' '}
+										<strong>
+											{pageIndex + 1} of {pageOptions.length}
+										</strong>{' '}
+									</span>
+									<span>
+										| Go to page:{' '}
+										<input
+											type="number"
+											defaultValue={pageIndex + 1}
+											onChange={(e) => {
+												const newPage = e.target.value
+													? Number(e.target.value) - 1
+													: 0;
+												gotoPage(newPage);
+											}}
+											style={{ width: '100px' }}
+										/>
+									</span>{' '}
+									<select
+										value={pageSize}
+										onChange={(e) => {
+											setPageSize(Number(e.target.value));
+										}}
+									>
+										{[10, 20, 30, 40, 50].map((size) => (
+											<option key={size} value={size}>
+												Show {size}
+											</option>
+										))}
+									</select>
+								</div>
+							</Col>
+						</Row>
+						<Table className="tracker-table" dark striped bordered {...getTableProps()}>
 							<thead>
 								{headerGroups.map((headerGroup) => (
 									<>
-										<tr {...headerGroup.getHeaderGroupProps()}>
+										<tr
+											className="tracker-table-titles"
+											{...headerGroup.getHeaderGroupProps()}
+										>
 											{headerGroup.headers.map((column) => (
 												<th
-													{...column.getHeaderProps(
-														column.getSortByToggleProps()
-													)}
-												>
-													{column.render('Header')}
-													{/* Add a sort direction indicator */}
-													<span>
-														{column.isSorted
+													className={
+														column.isSorted
 															? column.isSortedDesc
-																? ' 🔽'
-																: ' 🔼'
-															: ''}
-													</span>
-
+																? 'sort-desc'
+																: 'sort-asc'
+															: ''
+													}
+												>
+													<div
+														{...column.getHeaderProps(
+															column.getSortByToggleProps()
+														)}
+													>
+														{column.render('Header')}
+													</div>
+												</th>
+											))}
+										</tr>
+									</>
+								))}
+								{headerGroups.map((headerGroup) => (
+									<>
+										<tr
+											className="tracker-table-filters"
+											{...headerGroup.getHeaderGroupProps()}
+										>
+											{headerGroup.headers.map((column) => (
+												<th>
 													<div>
 														{column.canFilter
 															? column.render('Filter')
@@ -323,7 +404,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 									</>
 								))}
 							</thead>
-							<tbody {...getTableBodyProps()}>
+							<tbody className="tracker-table-body" {...getTableBodyProps()}>
 								{page.map((row) => {
 									prepareRow(row);
 									return (
@@ -349,68 +430,6 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 								})}
 							</tbody>
 						</Table>
-						<div className="pagination">
-							<button
-								type="button"
-								onClick={() => gotoPage(0)}
-								disabled={!canPreviousPage}
-							>
-								{'<<'}
-							</button>{' '}
-							<button
-								type="button"
-								onClick={() => previousPage()}
-								disabled={!canPreviousPage}
-							>
-								{'<'}
-							</button>{' '}
-							<button
-								type="button"
-								onClick={() => nextPage()}
-								disabled={!canNextPage}
-							>
-								{'>'}
-							</button>{' '}
-							<button
-								type="button"
-								onClick={() => gotoPage(pageCount - 1)}
-								disabled={!canNextPage}
-							>
-								{'>>'}
-							</button>{' '}
-							<span>
-								Page{' '}
-								<strong>
-									{pageIndex + 1} of {pageOptions.length}
-								</strong>{' '}
-							</span>
-							<span>
-								| Go to page:{' '}
-								<input
-									type="number"
-									defaultValue={pageIndex + 1}
-									onChange={(e) => {
-										const newPage = e.target.value
-											? Number(e.target.value) - 1
-											: 0;
-										gotoPage(newPage);
-									}}
-									style={{ width: '100px' }}
-								/>
-							</span>{' '}
-							<select
-								value={pageSize}
-								onChange={(e) => {
-									setPageSize(Number(e.target.value));
-								}}
-							>
-								{[10, 20, 30, 40, 50].map((size) => (
-									<option key={size} value={size}>
-										Show {size}
-									</option>
-								))}
-							</select>
-						</div>
 						<CheckboxTable
 							className="-striped"
 							data={getData(filteredThreads)}

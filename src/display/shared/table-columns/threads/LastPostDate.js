@@ -16,6 +16,6 @@ export default () => ({
 			<span>Post Not Found</span>
 		);
 	},
-	disableFilters: false,
+	disableFilters: true,
 	sortDescFirst: true
 });

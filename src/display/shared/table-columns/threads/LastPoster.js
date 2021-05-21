@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
+import LastPosterFilter from '../../table-filters/LastPosterFilter';
 
 const stopPropagation = (e) => e.stopPropagation();
 
@@ -23,20 +24,5 @@ export default (lastPosters, includeFilter) => ({
 		);
 	},
 	disableFilters: !includeFilter,
-	Filter: ({ filter, onChange }) => (
-		<select
-			onChange={(event) => onChange(event.target.value)}
-			style={{
-				width: '100%'
-			}}
-			value={filter ? filter.value : ''}
-		>
-			<option value="">Show All</option>
-			{lastPosters.sort().map((lp) => (
-				<option key={lp} value={lp}>
-					{lp}
-				</option>
-			))}
-		</select>
-	)
+	Filter: LastPosterFilter(lastPosters)
 });

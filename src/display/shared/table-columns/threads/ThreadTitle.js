@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
+import TextStringFilter from '../../table-filters/TextStringFilter';
 
 export default (includeFilter) => ({
 	Header: columns.THREAD_TITLE.name,
@@ -14,5 +15,6 @@ export default (includeFilter) => ({
 			sensitivity: 'accent'
 		});
 		return result;
-	}
+	},
+	Filter: TextStringFilter
 });
