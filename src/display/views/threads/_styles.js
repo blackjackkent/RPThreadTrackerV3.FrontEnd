@@ -52,4 +52,41 @@ export default styled.div`
 			background: ${colors.GRAY_100};
 		}
 	}
+	.tracker-table {
+		.tracker-table-titles > th {
+			text-align: center;
+			background: ${colors.GRAY_900};
+			vertical-align: top;
+			&.sort-desc {
+				box-shadow: inset 0 -3px 0 0 ${colors.BASE_BLUE};
+			}
+			&.sort-asc {
+				box-shadow: inset 0 3px 0 0 ${colors.BASE_BLUE};
+			}
+		}
+		.tracker-table-filters {
+			border-left: 1px solid ${colors.GRAY_800};
+			> th {
+				text-align: center;
+				background: ${colors.GRAY_850};
+				vertical-align: top;
+				border: none;
+				input,
+				select {
+					border: 1px solid ${colors.GRAY_400};
+					background: ${colors.GRAY_500};
+					color: ${colors.GRAY_100};
+					width: 100%;
+					height: 100%;
+				}
+			}
+		}
+		.tracker-table-body tr:nth-child(odd) {
+			background: ${colors.GRAY_900};
+		}
+
+		.tracker-table-body tr:nth-child(even) {
+			background: ${colors.GRAY_850};
+		}
+	}
 `;

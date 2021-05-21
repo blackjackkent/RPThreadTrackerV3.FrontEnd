@@ -1,4 +1,4 @@
-import * as columns from '../../../shared/thread-table-columns';
+import * as columns from '../../../shared/table-columns';
 
 export default (threadCounts) => [
 	columns.EditButton('Edit Character'),
