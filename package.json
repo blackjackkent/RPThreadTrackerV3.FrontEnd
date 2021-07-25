@@ -64,9 +64,10 @@
 		"webpack-merge": "^4.1.4"
 	},
 	"dependencies": {
-		"@fortawesome/fontawesome": "^1.1.8",
-		"@fortawesome/fontawesome-free-regular": "^5.0.13",
-		"@fortawesome/fontawesome-free-solid": "^5.0.13",
+		"@fortawesome/fontawesome-svg-core": "^1.2.35",
+		"@fortawesome/free-regular-svg-icons": "^5.15.3",
+		"@fortawesome/free-solid-svg-icons": "^5.15.3",
+		"@fortawesome/react-fontawesome": "^0.1.14",
 		"availity-reactstrap-validation": "npm:availity-reactstrap-validation-safe@^2.6.1",
 		"axios": "^0.18.0",
 		"babel-polyfill": "^6.26.0",

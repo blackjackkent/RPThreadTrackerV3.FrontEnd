@@ -9,6 +9,7 @@ import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 import { useCharacterThreadCounts } from '~/infrastructure/hooks/derived-data';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const renderBlockMessage = (characters, activeCharacters) => {
 	if (characters.length > 0 && activeCharacters.length === 0) {
@@ -24,7 +25,7 @@ const YourCharactersCard = () => {
 	return (
 		<Card className="your-characters-card">
 			<CardHeader>
-				<i className="fas fa-users" /> Your Characters
+				<FontAwesomeIcon icon={['fas', 'users']} /> Your Characters
 				<div className="float-right">
 					<Link href="/manage-characters" to="/manage-characters">
 						Manage Characters

@@ -3,6 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
 import HeaderDropdownItem from './HeaderDropdownItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // #endregion imports
 
 const propTypes = {
@@ -30,7 +31,7 @@ const HeaderAddMenuDropdown = (props) => {
 				toggle={() => setIsHeaderAddMenuDropdownVisible(!isHeaderAddMenuDropdownVisible)}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
-					<i className="fas fa-plus-circle" />
+					<FontAwesomeIcon icon={['fas', 'plus-circle']} />
 				</DropdownToggle>
 				<DropdownMenu
 					data-spec="header-dropdown-menu"

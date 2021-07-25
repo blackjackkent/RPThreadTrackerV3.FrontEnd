@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TabPane, CardHeader, CardBody } from 'reactstrap';
@@ -7,7 +8,7 @@ const FAQPane = () => (
 	<TabPane tabId="faq">
 		<Card>
 			<CardHeader>
-				<i className="fas fa-question-circle" /> FAQ
+				<FontAwesomeIcon icon={['fas', 'question-circle']} /> FAQ
 			</CardHeader>
 			<CardBody className="card-body">
 				<h4>Why am I seeing a &quot;Not Found&quot; error for my post?</h4>

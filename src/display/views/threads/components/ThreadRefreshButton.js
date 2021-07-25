@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const propTypes = {
 	isArchive: PropTypes.bool.isRequired,
@@ -16,7 +17,7 @@ const ThreadRefreshButton = (props) => {
 				onClick={() => refreshThreads(isArchive)}
 				data-spec="thread-refresh-button-submit"
 			>
-				Refresh <i className="fas fa-sync-alt" />
+				Refresh <FontAwesomeIcon icon={['fas', 'sync-alt']} />
 			</Button>
 		</div>
 	);

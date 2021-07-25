@@ -1,6 +1,7 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // #endregion imports
 
 const propTypes = {
@@ -34,7 +35,8 @@ const RandomThreadDisplay = (props) => {
 				<div>
 					<p data-spec="random-thread-title">
 						<a href={threadData.status.lastPostUrl}>
-							{threadData.thread.userTitle} <i className="fas fa-external-link-alt" />
+							{threadData.thread.userTitle}{' '}
+							<FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 						</a>
 					</p>
 					<div className="small" data-spec="random-thread-subtitle">

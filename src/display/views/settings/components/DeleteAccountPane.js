@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import Card from '../../../shared/styled/Card';
 import { useDeleteAccountMutation } from '~/infrastructure/hooks/mutations';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DeleteAccountPane = () => {
 	const history = useHistory();
@@ -47,7 +48,7 @@ const DeleteAccountPane = () => {
 			/>
 			<Card>
 				<CardHeader>
-					<i className="fas fa-trash-alt" /> Delete Account
+					<FontAwesomeIcon icon={['fas', 'trash-alt']} /> Delete Account
 				</CardHeader>
 				<CardBody className="card-body text-center">
 					<Button

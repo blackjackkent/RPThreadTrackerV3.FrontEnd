@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
@@ -7,7 +8,7 @@ const ContactPane = () => {
 		<TabPane tabId="contact">
 			<Card>
 				<CardHeader>
-					<i className="fas fa-envelope" /> Contact Me
+					<FontAwesomeIcon icon={['fas', 'envelope']} /> Contact Me
 				</CardHeader>
 				<CardBody className="card-body">
 					<p>

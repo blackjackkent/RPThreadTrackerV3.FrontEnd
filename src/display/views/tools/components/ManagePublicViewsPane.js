@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import PublicViewsTable from './public-views/PublicViewsTable';
 import Card from '../../../shared/styled/Card';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const propTypes = {
 	username: PropTypes.string,
@@ -27,7 +28,7 @@ const ManagePublicViewsPane = (props) => {
 		<TabPane tabId="public">
 			<Card>
 				<CardHeader>
-					<i className="fas fa-eye" /> Manage Public Views
+					<FontAwesomeIcon icon={['fas', 'eye']} /> Manage Public Views
 				</CardHeader>
 				<CardBody className="card-body">
 					<Row>

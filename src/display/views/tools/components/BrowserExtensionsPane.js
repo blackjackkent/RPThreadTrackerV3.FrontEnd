@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { TabPane, CardHeader, CardBody, Row, Col } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
@@ -6,7 +7,7 @@ const BrowserExtensionsPane = () => (
 	<TabPane tabId="extensions">
 		<Card>
 			<CardHeader>
-				<i className="fas fa-flask" /> Browser Extensions
+				<FontAwesomeIcon icon={['fas', 'flask']} /> Browser Extensions
 			</CardHeader>
 			<CardBody className="card-body">
 				<p>

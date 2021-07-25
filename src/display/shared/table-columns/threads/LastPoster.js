@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 import LastPosterFilter from '../../table-filters/LastPosterFilter';
@@ -17,7 +18,7 @@ export default (lastPosters, includeFilter) => ({
 						rel="noopener noreferrer"
 						href={row.original.status && row.original.status.lastPostUrl}
 					>
-						{value} <i className="fas fa-external-link-alt" />
+						{value} <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 					</a>
 				)}
 			</span>

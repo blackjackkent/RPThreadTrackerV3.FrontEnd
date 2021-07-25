@@ -8,6 +8,7 @@ import filters from '~/infrastructure/constants/filters';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
 import { useActiveThreadsContext } from '~/infrastructure/hooks/contexts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const AtAGlanceCard = () => {
 	const [
@@ -37,14 +38,13 @@ const AtAGlanceCard = () => {
 	const { isThreadsLoading } = useActiveThreadsContext();
 	return (
 		<Card className="at-a-glance-card">
-			<CardHeader data-spec="at-a-glance-card-header">
-				<i className="fas fa-search" data-spec="at-a-glance-card-icon" /> At a Glance
+			<CardHeader>
+				<FontAwesomeIcon icon={['fas', 'search']} /> At a Glance
 				<SwitchLabel
 					htmlFor="at-a-glance-switch"
 					className="switch switch-sm switch-text switch-info float-right mb-0"
 				>
 					<Input
-						data-spec="at-a-glance-card-toggle"
 						type="checkbox"
 						className="switch-input"
 						id="at-a-glance-switch"

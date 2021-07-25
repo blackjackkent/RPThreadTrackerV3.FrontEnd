@@ -7,6 +7,7 @@ import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAcco
 import { useFormReducer } from '~/infrastructure/hooks';
 import { useUpdateAccountInfoMutation } from '~/infrastructure/hooks/mutations';
 import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UpdateAccountInfoPane = () => {
 	const [formData, onInputChange, setFormData] = useFormReducer();
@@ -32,7 +33,7 @@ const UpdateAccountInfoPane = () => {
 		<TabPane tabId="change-username">
 			<Card>
 				<CardHeader>
-					<i className="fas fa-user" /> Change Username/Email
+					<FontAwesomeIcon icon={['fas', 'user']} /> Change Username/Email
 				</CardHeader>
 				<CardBody className="card-body">
 					<AvForm

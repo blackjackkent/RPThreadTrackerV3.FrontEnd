@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
 export default (username) => ({
@@ -10,7 +11,7 @@ export default (username) => ({
 			rel="noopener noreferrer"
 		>
 			{row.value}
-			<i className="fas fa-external-link-alt" />
+			<FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 		</a>
 	)
 });

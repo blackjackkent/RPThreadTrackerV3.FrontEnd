@@ -4,6 +4,7 @@ import { TabPane, Col, Row, Button, CardHeader, CardBody, Label } from 'reactstr
 import Autosuggest from 'react-autosuggest';
 import Card from '../../../shared/styled/Card';
 import LoadingIndicator from '../../../shared/loading/LoadingIndicator';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -82,7 +83,7 @@ const ManageTagsPane = (props) => {
 		<TabPane tabId="tags" className="manage-tags-pane">
 			<Card>
 				<CardHeader>
-					<i className="fas fa-eye" /> Manage Tags
+					<FontAwesomeIcon icon={['fas', 'eye']} /> Manage Tags
 				</CardHeader>
 				<CardBody className="card-body">
 					<Row>
@@ -149,7 +150,8 @@ const ManageTagsPane = (props) => {
 											disabled={!updatedValue}
 											data-spec="manage-tags-update-button"
 										>
-											<i className="fas fa-edit" /> Bulk Edit This Tag
+											<FontAwesomeIcon icon={['fas', 'edit']} /> Bulk Edit
+											This Tag
 										</Button>
 									</form>
 								</Col>
@@ -162,7 +164,8 @@ const ManageTagsPane = (props) => {
 											onClick={bulkDeleteTag}
 											data-spec="manage-tags-delete-button"
 										>
-											<i className="fas fa-trash-alt" /> Bulk Delete This Tag
+											<FontAwesomeIcon icon={['fas', 'trash-alt']} /> Bulk
+											Delete This Tag
 										</Button>{' '}
 									</form>
 								</Col>
@@ -176,8 +179,8 @@ const ManageTagsPane = (props) => {
 											onClick={clearSelectedTag}
 											data-spec="manage-tags-back-button"
 										>
-											<i className="fas fa-arrow-left" /> Select a different
-											tag
+											<FontAwesomeIcon icon={['fas', 'arrow-left']} /> Select
+											a different tag
 										</button>
 									</p>
 								</Col>

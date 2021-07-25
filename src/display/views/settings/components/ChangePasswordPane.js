@@ -8,6 +8,7 @@ import TooltipForm from '../../../forms/TooltipForm';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
 import { useFormReducer } from '~/infrastructure/hooks';
 import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ChangePasswordPane = () => {
 	const [formData, onInputChange] = useFormReducer();
@@ -29,7 +30,7 @@ const ChangePasswordPane = () => {
 		<TabPane tabId="change-password">
 			<Card>
 				<CardHeader>
-					<i className="fas fa-key" /> Change Password
+					<FontAwesomeIcon icon={['fas', 'key']} /> Change Password
 				</CardHeader>
 				<CardBody className="card-body">
 					<AvForm

@@ -4,6 +4,7 @@ import Card from '../../../../shared/styled/Card';
 import RandomThreadDisplay from './RandomThreadDisplay';
 import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import filters from '~/infrastructure/constants/filters';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const RandomThreadCard = () => {
 	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);
@@ -19,8 +20,7 @@ const RandomThreadCard = () => {
 	return (
 		<Card className="random-thread-generator-card" data-spec="random-thread-generator-card">
 			<CardHeader data-spec="random-thread-generator-header">
-				<i className="fas fa-random" data-spec="random-thread-generator-icon" /> Random
-				Thread Generator
+				<FontAwesomeIcon icon={['fas', 'random']} /> Random Thread Generator
 			</CardHeader>
 			<CardBody className="card-body">
 				<button

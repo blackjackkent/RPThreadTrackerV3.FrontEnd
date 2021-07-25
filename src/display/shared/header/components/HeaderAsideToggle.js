@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, NavLink, Badge } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // #endregion imports
 
 const propTypes = {
@@ -15,7 +16,7 @@ const HeaderAsideToggle = (props) => {
 	return (
 		<NavItem>
 			<NavLink data-spec="header-aside-toggle-link" href="#" onClick={toggleNewsAside}>
-				<i className="fas fa-bell" />
+				<FontAwesomeIcon icon={['fas', 'bell']} />
 				{unreadNewsCount > 0 && (
 					<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
 						{unreadNewsCount}

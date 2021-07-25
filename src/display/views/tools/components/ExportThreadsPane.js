@@ -14,6 +14,7 @@ import {
 } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
 import SwitchLabel from '../../../shared/styled/SwitchLabel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const propTypes = {
 	onExportRequest: PropTypes.func.isRequired
@@ -46,7 +47,7 @@ class ExportThreadsPane extends Component {
 			<TabPane tabId="export">
 				<Card>
 					<CardHeader>
-						<i className="fas fa-download" /> Export Threads
+						<FontAwesomeIcon icon={['fas', 'download']} /> Export Threads
 					</CardHeader>
 					<CardBody className="card-body">
 						<Form

@@ -16,6 +16,7 @@ import {
 	useUntrackThreadMutation,
 	useUpdateThreadMutation
 } from '~/infrastructure/hooks/mutations';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
@@ -98,7 +99,7 @@ const RecentActivityCard = () => {
 				}
 			/>
 			<CardHeader>
-				<i className="fas fa-bolt" /> Recent Activity
+				<FontAwesomeIcon icon={['fas', 'bolt']} /> Recent Activity
 			</CardHeader>
 			<CardBody className="card-body">
 				{isThreadsLoading && (

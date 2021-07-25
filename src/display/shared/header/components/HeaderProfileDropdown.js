@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import HeaderDropdownItem from './HeaderDropdownItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // #endregion imports
 
 const propTypes = {
@@ -31,7 +32,7 @@ const HeaderProfileDropdown = (props) => {
 				toggle={() => setIsHeaderProfileDropdownVisible(!isHeaderProfileDropdownVisible)}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
-					<i className="fas fa-user" />
+					<FontAwesomeIcon icon={['fas', 'user']} />
 				</DropdownToggle>
 				<DropdownMenu
 					data-spec="header-dropdown-menu"
