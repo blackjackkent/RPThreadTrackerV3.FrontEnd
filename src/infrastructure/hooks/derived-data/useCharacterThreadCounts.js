@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import filters from '~/infrastructure/constants/filters';
 import { useCharactersContext } from '../contexts';
-import useFilteredActiveThreads from './useFilteredActiveThreads';
+import { useFilteredActiveThreads } from './useFilteredThreads';
 
 function useCharacterThreadCounts() {
-	const allActiveThreads = useFilteredActiveThreads(filters.ALL);
+	const { filteredThreads: allActiveThreads } = useFilteredActiveThreads(filters.ALL);
 	const { characters } = useCharactersContext();
 	const [characterThreadCounts, setCharacterThreadCounts] = useState({});
 	useEffect(() => {

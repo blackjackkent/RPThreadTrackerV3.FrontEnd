@@ -5,17 +5,15 @@ import getDefaultColumns from './components/_columns';
 import getAllThreadsColumns from './components/_allThreadsColumns';
 import getArchiveColumns from './components/_archiveColumns';
 import getQueueColumns from './components/_queueColumns';
-import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
+import { useArchivedThreads, useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import ThreadTable from './components/ThreadTable';
-import { useActiveThreadsContext } from '~/infrastructure/hooks/contexts';
 
 const propTypes = {
 	filter: PropTypes.func.isRequired,
 	getColumns: PropTypes.func.isRequired
 };
 const ActiveThreads = ({ filter, getColumns }) => {
-	const filteredThreads = useFilteredActiveThreads(filter);
-	const { isThreadsLoading } = useActiveThreadsContext();
+	const { filteredThreads, isThreadsLoading } = useFilteredActiveThreads(filter);
 	return (
 		<ThreadTable
 			statusThreads={filteredThreads}
@@ -42,6 +40,13 @@ export const QueuedThreads = () => {
 	return <ActiveThreads filter={filters.QUEUED} getColumns={getQueueColumns} />;
 };
 
-export const ArchivedThreads = ({}) => {
-	return <div />;
+export const ArchivedThreads = () => {
+	const { filteredThreads, isThreadsLoading } = useArchivedThreads();
+	return (
+		<ThreadTable
+			statusThreads={filteredThreads}
+			isLoading={isThreadsLoading}
+			getColumns={getArchiveColumns}
+		/>
+	);
 };

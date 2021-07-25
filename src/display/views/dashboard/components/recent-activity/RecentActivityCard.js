@@ -34,9 +34,8 @@ const renderBlockMessage = (characters, allThreads) => {
 const RecentActivityCard = () => {
 	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
 	const [selectedThread, setSelectedThread] = useState(null);
-	const { isThreadsLoading } = useActiveThreadsContext();
 	const { characters } = useCharactersContext();
-	const allThreads = useFilteredActiveThreads(filters.ALL);
+	const { filteredThreads: allThreads, isThreadsLoading } = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
 	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
 	const { updateThread } = useUpdateThreadMutation();

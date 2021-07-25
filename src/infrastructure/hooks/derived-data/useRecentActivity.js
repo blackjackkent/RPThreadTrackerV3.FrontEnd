@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import filters from '../../constants/filters';
-import useFilteredActiveThreads from './useFilteredActiveThreads';
+import { useFilteredActiveThreads } from './useFilteredThreads';
 
 function sortByLastPostDate(a, b) {
 	/* istanbul ignore if */
@@ -18,7 +18,7 @@ function sortByLastPostDate(a, b) {
 	return new Date(b.status.lastPostDate) - new Date(a.status.lastPostDate);
 }
 function useRecentActivity() {
-	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
+	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);
 	const [recentActivityThreads, setRecentActivityThreads] = useState([]);
 	useEffect(() => {
 		let results = myTurnThreads.filter((t) => t.status || !t.thread.postId);

@@ -30,10 +30,10 @@ const AtAGlanceCard = () => {
 		});
 	};
 
-	const activeThreads = useFilteredActiveThreads(filters.ALL);
-	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
-	const theirTurnThreads = useFilteredActiveThreads(filters.THEIR_TURN);
-	const queuedThreads = useFilteredActiveThreads(filters.QUEUED);
+	const { filteredThreads: activeThreads } = useFilteredActiveThreads(filters.ALL);
+	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);
+	const { filteredThreads: theirTurnThreads } = useFilteredActiveThreads(filters.THEIR_TURN);
+	const { filteredThreads: queuedThreads } = useFilteredActiveThreads(filters.QUEUED);
 	const { isThreadsLoading } = useActiveThreadsContext();
 	return (
 		<Card className="at-a-glance-card">

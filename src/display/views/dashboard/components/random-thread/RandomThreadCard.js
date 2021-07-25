@@ -6,7 +6,7 @@ import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import filters from '~/infrastructure/constants/filters';
 
 const RandomThreadCard = () => {
-	const myTurnThreads = useFilteredActiveThreads(filters.MY_TURN);
+	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);
 	const [randomThread, setRandomThread] = useState(null);
 	const selectRandomThread = () => {
 		if (!myTurnThreads?.length) {
