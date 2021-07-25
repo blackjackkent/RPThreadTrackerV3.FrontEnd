@@ -3,6 +3,8 @@ import faArrowLeft from '@fortawesome/fontawesome-free-solid/faArrowLeft';
 import faBell from '@fortawesome/fontawesome-free-solid/faBell';
 import faBolt from '@fortawesome/fontawesome-free-solid/faBolt';
 import faCheck from '@fortawesome/fontawesome-free-solid/faCheck';
+import faChevronDown from '@fortawesome/fontawesome-free-solid/faChevronDown';
+import faChevronRight from '@fortawesome/fontawesome-free-solid/faChevronRight';
 import faClock from '@fortawesome/fontawesome-free-solid/faClock';
 import faCog from '@fortawesome/fontawesome-free-solid/faCog';
 import faDollarSign from '@fortawesome/fontawesome-free-solid/faDollarSign';
@@ -37,6 +39,8 @@ const icons = {
 		fontawesome.library.add(faBell);
 		fontawesome.library.add(faBolt);
 		fontawesome.library.add(faCheck);
+		fontawesome.library.add(faChevronDown);
+		fontawesome.library.add(faChevronRight);
 		fontawesome.library.add(faClock);
 		fontawesome.library.add(faCog);
 		fontawesome.library.add(faDollarSign);

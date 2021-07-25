@@ -205,7 +205,6 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		usePagination
 	);
 	const renderRowSubComponent = React.useCallback(({ row }) => {
-		console.log(row);
 		return (
 			<tr className="thread-table-sub-component-wrapper">
 				<td colSpan={visibleColumns.length}>

@@ -8,7 +8,7 @@ export default () => ({
 	Cell: ({ row }) => (
 		// eslint-disable-next-line react/jsx-props-no-spreading
 		<div {...row.getToggleRowExpandedProps()}>
-			<i className="fas fa-info-circle" />
+			{row.isExpanded ? <i className="fas fa-info-circle" /> : 'no test'};
 		</div>
 	),
 	style: {
