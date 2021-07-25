@@ -207,10 +207,14 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 	const renderRowSubComponent = React.useCallback(({ row }) => {
 		console.log(row);
 		return (
-			<ThreadTableSubComponent
-				description={row.original.thread.description}
-				tags={row.original.thread.threadTags}
-			/>
+			<tr className="thread-table-sub-component-wrapper">
+				<td colSpan={visibleColumns.length}>
+					<ThreadTableSubComponent
+						description={row.original.thread.description}
+						tags={row.original.thread.threadTags}
+					/>
+				</td>
+			</tr>
 		);
 	}, []);
 
@@ -288,8 +292,8 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 							</Col>
 						</Row>
 						<Row>
-							<Col xs="12" md="4"></Col>
-							<Col xs="12" md="4"></Col>
+							<Col xs="12" md="4" />
+							<Col xs="12" md="4" />
 							<Col xs="12" md="4">
 								<div className="pagination">
 									<button
@@ -418,13 +422,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 													);
 												})}
 											</tr>
-											{row.isExpanded ? (
-												<tr>
-													<td colSpan={visibleColumns.length}>
-														{renderRowSubComponent({ row })}
-													</td>
-												</tr>
-											) : null}
+											{row.isExpanded ? renderRowSubComponent({ row }) : null}
 										</React.Fragment>
 									);
 								})}
