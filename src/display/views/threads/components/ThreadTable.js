@@ -282,7 +282,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 						<Row>
 							<Col>
 								<p className="public-tool-banner">
-									Want to share this view publicly? Check out the new{' '}
+									Want to share this view publicly? Check out the{' '}
 									<Link href="/tools/public" to="/tools/public">
 										Public Views tool
 									</Link>
@@ -412,7 +412,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 									prepareRow(row);
 									return (
 										<React.Fragment {...row.getRowProps()}>
-											<tr>
+											<tr {...row.getRowProps()}>
 												{row.cells.map((cell) => {
 													return (
 														<td {...cell.getCellProps()}>

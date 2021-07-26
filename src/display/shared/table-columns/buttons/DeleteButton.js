@@ -9,12 +9,6 @@ export default (title) => ({
 			<FontAwesomeIcon title={title} icon={['fas', 'trash-alt']} />
 		</span>
 	),
-	width: 30,
-	style: {
-		cursor: 'pointer',
-		textAlign: 'center',
-		userSelect: 'none'
-	},
 	sortable: false,
 	resizable: false,
 	filterable: false

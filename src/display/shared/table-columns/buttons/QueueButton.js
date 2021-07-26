@@ -12,11 +12,6 @@ export default (isQueuePage) => ({
 		</span>
 	),
 	width: 30,
-	style: {
-		cursor: 'pointer',
-		textAlign: 'center',
-		userSelect: 'none'
-	},
 	sortable: false,
 	resizable: false,
 	filterable: false
