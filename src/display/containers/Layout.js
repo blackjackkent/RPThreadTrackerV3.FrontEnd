@@ -155,7 +155,6 @@ const Layout = () => {
 						<AsideContainer />
 					</div>
 					<Footer />
-					<ModalContainer />
 				</CharactersContext.Provider>
 			</div>
 		);

@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Table } from 'reactstrap';
 import { Link } from 'react-router-dom';
+import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
+import { toast } from 'react-toastify';
 import defaultFilter from './_defaultFilter';
 import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 import ThreadTableSubComponent from './ThreadTableSubComponent';
 import TagFilterSelect from './TagFilterSelect';
 import ThreadRefreshButton from './ThreadRefreshButton';
 import Style from '../_styles';
-import { filterDuplicatesFromArray, flattenArrayOfArrays, sortTags } from '~/utility';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import getTdProps from './_getTdProps';
 import {
 	useUntrackThreadMutation,
 	useUpdateThreadMutation
 } from '~/infrastructure/hooks/mutations';
-import { toast } from 'react-toastify';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
+import useThreadFilterData from '~/infrastructure/hooks/derived-data/useThreadFilterData';
 
 const propTypes = {
-	statusThreads: PropTypes.arrayOf(PropTypes.shape({})),
+	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})),
 	isLoading: PropTypes.bool.isRequired,
 	getColumns: PropTypes.func.isRequired
 };
@@ -41,16 +41,13 @@ const CheckboxTable = () => {
 	return <div />;
 };
 
-const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
+const ThreadTable = ({ threadsWithStatus, isLoading, getColumns }) => {
 	const { data: userSettings } = useUserSettingsQuery();
 
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [filteredTag, setFilteredTag] = useState(undefined);
-	const [tags, setTags] = useState([]);
-	const [characters, setCharacters] = useState([]);
-	const [partners, setPartners] = useState([]);
-	const [lastPosters, setLastPosters] = useState([]);
+	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
 
 	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
 	const [actedThread, setActedThread] = useState(null);
@@ -71,42 +68,8 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 		setIsUntrackThreadModalOpen(true);
 	};
 
-	const getTagsFromThreads = (threads) => {
-		const tagArrays = threads.map((t) => t.thread.threadTags);
-		const flattened = flattenArrayOfArrays(tagArrays);
-		const filtered = filterDuplicatesFromArray(flattened, 'tagText');
-		filtered.sort(sortTags);
-		return filtered;
-	};
-	const getCharactersFromThreads = (threads) => {
-		const characterList = threads.map((t) => t.thread.character);
-		return filterDuplicatesFromArray(characterList, 'characterId');
-	};
-	const getPartnersFromThreads = (threads) => {
-		const partnerList = threads.map((t) => t.thread.partnerUrlIdentifier);
-		return filterDuplicatesFromArray(partnerList);
-	};
-	const getLastPostersFromThreads = (threads) => {
-		const lastPosterList = threads.map((s) => s.status?.lastPosterUrlIdentifier);
-		return filterDuplicatesFromArray(lastPosterList);
-	};
 	useEffect(() => {
-		if (!statusThreads.length) {
-			setTags([]);
-			setSelectedItems([]);
-			setCharacters([]);
-			setPartners([]);
-			setLastPosters([]);
-			return;
-		}
-		setTags(getTagsFromThreads(statusThreads));
-		setCharacters(getCharactersFromThreads(statusThreads));
-		setPartners(getPartnersFromThreads(statusThreads));
-		setLastPosters(getLastPostersFromThreads(statusThreads));
-	}, [statusThreads]);
-
-	useEffect(() => {
-		let threads = [].concat(statusThreads);
+		let threads = [].concat(threadsWithStatus);
 		if (filteredTag) {
 			threads = threads.filter((t) => {
 				if (!t.thread || !t.thread.threadTags) {
@@ -116,7 +79,7 @@ const ThreadTable = ({ statusThreads, isLoading, getColumns }) => {
 			});
 		}
 		setFilteredThreads(threads);
-	}, [statusThreads, filteredTag]);
+	}, [threadsWithStatus, filteredTag]);
 
 	const onSelectionChanged = (newSelectedItems) => {
 		setSelectedItems(newSelectedItems);

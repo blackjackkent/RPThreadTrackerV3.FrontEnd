@@ -16,7 +16,7 @@ const ActiveThreads = ({ filter, getColumns }) => {
 	const { filteredThreads, isThreadsLoading } = useFilteredActiveThreads(filter);
 	return (
 		<ThreadTable
-			statusThreads={filteredThreads}
+			threadsWithStatus={filteredThreads}
 			isLoading={isThreadsLoading}
 			getColumns={getColumns}
 		/>
@@ -44,7 +44,7 @@ export const ArchivedThreads = () => {
 	const { filteredThreads, isThreadsLoading } = useArchivedThreads();
 	return (
 		<ThreadTable
-			statusThreads={filteredThreads}
+			threadsWithStatus={filteredThreads}
 			isLoading={isThreadsLoading}
 			getColumns={getArchiveColumns}
 		/>
