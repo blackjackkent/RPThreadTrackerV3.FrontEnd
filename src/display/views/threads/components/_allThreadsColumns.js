@@ -9,6 +9,7 @@ const getColumns = (characters, partners, lastPosters) => [
 	columns.Character(characters, true),
 	columns.LastPoster(lastPosters, true),
 	columns.LastPostDate(),
-	columns.TrackedPartner(partners, true)
+	columns.TrackedPartner(partners, true),
+	columns.EditButton('Edit Thread')
 ];
 export default getColumns;

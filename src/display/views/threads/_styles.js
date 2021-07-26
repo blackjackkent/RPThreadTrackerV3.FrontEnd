@@ -57,6 +57,7 @@ export default styled.div`
 			text-align: center;
 			width: 15px;
 			margin: auto;
+			cursor: pointer;
 		}
 
 		.thread-table-sub-component-wrapper > td {

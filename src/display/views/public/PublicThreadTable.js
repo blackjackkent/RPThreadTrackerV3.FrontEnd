@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
-import ReactTableContainer from '../../shared/styled/ReactTableContainer';
 
 const propTypes = {
 	columns: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

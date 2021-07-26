@@ -5,12 +5,8 @@ import columns from '../../../../infrastructure/constants/columns';
 export default (title) => ({
 	id: columns.EDIT_BUTTON.key,
 	Cell: () => (
-		<span>
+		<div className="icon-column">
 			<FontAwesomeIcon title={title} icon={['fas', 'edit']} />
-		</span>
-	),
-	width: 30,
-	sortable: false,
-	resizable: false,
-	filterable: false
+		</div>
+	)
 });

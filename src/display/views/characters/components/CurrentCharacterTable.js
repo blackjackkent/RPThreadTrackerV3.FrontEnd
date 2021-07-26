@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ReactTable from 'react-table';
 import columns from './_columns';
 import getTdProps from './_getTdProps';
-import ReactTableContainer from '../../../shared/styled/ReactTableContainer';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

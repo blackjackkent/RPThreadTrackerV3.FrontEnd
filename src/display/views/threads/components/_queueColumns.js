@@ -3,7 +3,6 @@ import * as columns from '../../../shared/table-columns';
 const getColumns = (characters, partners, lastPosters) => [
 	columns.TagsButton(),
 	// columns.DeleteButton('Untrack Thread'),
-	// columns.EditButton('Edit Thread'),
 	// columns.ArchiveButton(),
 	// columns.QueueButton(true),
 	columns.ThreadTitle(true),
@@ -11,6 +10,7 @@ const getColumns = (characters, partners, lastPosters) => [
 	columns.LastPoster(lastPosters, true),
 	columns.LastPostDate(),
 	columns.DateQueued(),
-	columns.TrackedPartner(partners, true)
+	columns.TrackedPartner(partners, true),
+	columns.EditButton('Edit Thread')
 ];
 export default getColumns;
