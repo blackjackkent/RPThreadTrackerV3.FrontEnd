@@ -1,7 +1,7 @@
 // #region imports
 import React from 'react';
 import { shallow } from 'enzyme';
-import ThreadTable from '../ThreadTable';
+import ThreadTableWrapper from '../ThreadTableWrapper';
 // #endregion imports
 
 jest.mock('../_defaultFilter', () => jest.fn());
@@ -66,7 +66,7 @@ describe('rendering', () => {
 	describe('snapshots', () => {
 		it('should render valid snapshot', () => {
 			const props = createTestProps();
-			const jsx = <ThreadTable {...props} />;
+			const jsx = <ThreadTableWrapper {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -74,7 +74,7 @@ describe('rendering', () => {
 			const props = createTestProps({
 				isLoadingIconVisible: true
 			});
-			const jsx = <ThreadTable {...props} />;
+			const jsx = <ThreadTableWrapper {...props} />;
 			const element = shallow(jsx);
 			expect(element).toMatchSnapshot();
 		});
@@ -82,7 +82,7 @@ describe('rendering', () => {
 			const props = createTestProps({
 				isLoadingIconVisible: true
 			});
-			const jsx = <ThreadTable {...props} />;
+			const jsx = <ThreadTableWrapper {...props} />;
 			const element = shallow(jsx);
 			element.instance().onSelectionChanged([
 				{
@@ -103,7 +103,7 @@ describe('rendering', () => {
 			const props = createTestProps({
 				threadTablePageSize: null
 			});
-			const jsx = <ThreadTable {...props} />;
+			const jsx = <ThreadTableWrapper {...props} />;
 			const element = shallow(jsx);
 			element.instance().onSelectionChanged([
 				{
@@ -141,7 +141,7 @@ describe('rendering', () => {
 				}
 			};
 			const props = createTestProps();
-			const jsx = <ThreadTable {...props} />;
+			const jsx = <ThreadTableWrapper {...props} />;
 			const element = shallow(jsx);
 			const subComponentJsx = element.find('CheckboxTable').props().SubComponent(row);
 			const subComponent = shallow(subComponentJsx);
@@ -155,7 +155,7 @@ describe('behavior', () => {
 		it('should collect selection changes and submit them when triggered', () => {
 			const testBulkFunction = jest.fn();
 			const props = createTestProps();
-			const jsx = <ThreadTable {...props} />;
+			const jsx = <ThreadTableWrapper {...props} />;
 			const element = shallow(jsx);
 			element.instance().onSelectionChanged([
 				{

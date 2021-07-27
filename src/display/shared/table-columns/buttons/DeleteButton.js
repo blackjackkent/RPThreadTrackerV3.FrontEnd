@@ -5,9 +5,9 @@ import columns from '../../../../infrastructure/constants/columns';
 export default (title) => ({
 	id: columns.DELETE_BUTTON.key,
 	Cell: () => (
-		<span>
+		<div className="icon-column text-danger">
 			<FontAwesomeIcon title={title} icon={['fas', 'trash-alt']} />
-		</span>
+		</div>
 	),
 	sortable: false,
 	resizable: false,

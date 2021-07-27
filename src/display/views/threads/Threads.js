@@ -6,7 +6,7 @@ import getAllThreadsColumns from './components/_allThreadsColumns';
 import getArchiveColumns from './components/_archiveColumns';
 import getQueueColumns from './components/_queueColumns';
 import { useArchivedThreads, useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
-import ThreadTable from './components/ThreadTable';
+import ThreadTableWrapper from './components/ThreadTableWrapper';
 
 const propTypes = {
 	filter: PropTypes.func.isRequired,
@@ -15,7 +15,7 @@ const propTypes = {
 const ActiveThreads = ({ filter, getColumns }) => {
 	const { filteredThreads, isThreadsLoading } = useFilteredActiveThreads(filter);
 	return (
-		<ThreadTable
+		<ThreadTableWrapper
 			threadsWithStatus={filteredThreads}
 			isLoading={isThreadsLoading}
 			getColumns={getColumns}
@@ -43,7 +43,7 @@ export const QueuedThreads = () => {
 export const ArchivedThreads = () => {
 	const { filteredThreads, isThreadsLoading } = useArchivedThreads();
 	return (
-		<ThreadTable
+		<ThreadTableWrapper
 			threadsWithStatus={filteredThreads}
 			isLoading={isThreadsLoading}
 			getColumns={getArchiveColumns}

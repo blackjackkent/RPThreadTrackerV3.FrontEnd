@@ -1,31 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Table } from 'reactstrap';
-import { Link } from 'react-router-dom';
 import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
-import { toast } from 'react-toastify';
-import defaultFilter from './_defaultFilter';
-import ThreadBulkUpdateControls from './ThreadBulkUpdateControls';
 import ThreadTableSubComponent from './ThreadTableSubComponent';
-import TagFilterSelect from './TagFilterSelect';
-import ThreadRefreshButton from './ThreadRefreshButton';
-import Style from '../_styles';
-import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
-import getTdProps from './_getTdProps';
-import {
-	useUntrackThreadMutation,
-	useUpdateThreadMutation
-} from '~/infrastructure/hooks/mutations';
-import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import useThreadFilterData from '~/infrastructure/hooks/derived-data/useThreadFilterData';
 
 const propTypes = {
-	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})),
+	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	partners: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	lastPosters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	getColumns: PropTypes.func.isRequired
 };
 
-function getData(filteredThreads) {
+function formatDataForTable(filteredThreads) {
 	const data = filteredThreads?.map((item) => {
 		// eslint-disable-next-line no-underscore-dangle
 		const _id = item.thread.threadId;
@@ -37,92 +25,15 @@ function getData(filteredThreads) {
 	return data;
 }
 
-const CheckboxTable = () => {
-	return <div />;
-};
-
-const ThreadTable = ({ threadsWithStatus, isLoading, getColumns }) => {
-	const { data: userSettings } = useUserSettingsQuery();
-
-	const [filteredThreads, setFilteredThreads] = useState([]);
-	const [selectedItems, setSelectedItems] = useState([]);
-	const [filteredTag, setFilteredTag] = useState(undefined);
-	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
-
-	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
-	const [actedThread, setActedThread] = useState(null);
-	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
-	const { updateThread } = useUpdateThreadMutation();
-	const submitUntrackThread = () => {
-		untrackThread(actedThread)
-			.then(() => {
-				setIsUntrackThreadModalOpen(false);
-				toast.success('Thread untracked!');
-			})
-			.catch(() => {
-				toast.error(`There was an error untracking this thread.`);
-			});
-	};
-	const openUntrackThreadModal = (thread) => {
-		setActedThread(thread);
-		setIsUntrackThreadModalOpen(true);
-	};
-
-	useEffect(() => {
-		let threads = [].concat(threadsWithStatus);
-		if (filteredTag) {
-			threads = threads.filter((t) => {
-				if (!t.thread || !t.thread.threadTags) {
-					return false;
-				}
-				return t.thread.threadTags.filter((tt) => tt.tagText === filteredTag).length > 0;
-			});
-		}
-		setFilteredThreads(threads);
-	}, [threadsWithStatus, filteredTag]);
-
-	const onSelectionChanged = (newSelectedItems) => {
-		setSelectedItems(newSelectedItems);
-	};
-
-	const executeBulkAction = (func) => {
-		const items = selectedItems.map((t) => t.thread);
-		func(items);
-	};
-
-	const bulkToggleThreadsAreMarkedQueued = (threads) => {
-		const updatedThreads = threads.map((t) => ({
-			...t,
-			dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now()),
-			isArchived: false
-		}));
-		bulkUpdateThreads(updatedThreads);
-	};
-
-	const bulkToggleThreadsAreArchived = (threads) => {
-		const updatedThreads = threads.map((t) => ({
-			...t,
-			isArchived: !t.isArchived,
-			dateMarkedQueued: null
-		}));
-		bulkUpdateThreads(updatedThreads);
-	};
-
-	const refreshThreads = (isArchivePage) => {
-		if (!isArchivePage) {
-			fetchActiveThreads();
-		} else {
-			fetchArchivedThreads();
-		}
-	};
-
-	const updateThreadTablePageSize = (size) => {
-		updateUserSettings({
-			...userSettings,
-			threadTablePageSize: size
-		});
-	};
-
+const ThreadTable = ({
+	characters,
+	partners,
+	lastPosters,
+	getColumns,
+	filteredThreads,
+	isLoading
+}) => {
+	const tableData = React.useMemo(() => formatDataForTable(filteredThreads), [filteredThreads]);
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -147,7 +58,7 @@ const ThreadTable = ({ threadsWithStatus, isLoading, getColumns }) => {
 				lastPosters,
 				partners
 			]),
-			data: React.useMemo(() => getData(filteredThreads), [filteredThreads]),
+			data: tableData,
 			initialState: {
 				pageSize: 10,
 				sortBy: React.useMemo(
@@ -167,264 +78,153 @@ const ThreadTable = ({ threadsWithStatus, isLoading, getColumns }) => {
 		useExpanded,
 		usePagination
 	);
-	const renderRowSubComponent = React.useCallback(({ row }) => {
-		return (
-			<tr className="thread-table-sub-component-wrapper">
-				<td colSpan={visibleColumns.length}>
-					<ThreadTableSubComponent
-						description={row.original.thread.description}
-						tags={row.original.thread.threadTags}
-					/>
-				</td>
-			</tr>
-		);
-	}, []);
+	const renderRowSubComponent = React.useCallback(
+		({ row }) => {
+			return (
+				<tr className="thread-table-sub-component-wrapper">
+					<td colSpan={visibleColumns.length}>
+						<ThreadTableSubComponent
+							description={row.original.thread.description}
+							tags={row.original.thread.threadTags}
+						/>
+					</td>
+				</tr>
+			);
+		},
+		[visibleColumns.length]
+	);
 
 	return (
-		<Style className="animated fadeIn threads-container">
-			<GenericConfirmationModal
-				isModalOpen={isUntrackThreadModalOpen}
-				setIsModalOpen={setIsUntrackThreadModalOpen}
-				submitForm={submitUntrackThread}
-				submitButtonText="Untrack"
-				closeButtonText="Cancel"
-				isLoading={isUntrackThreadLoading}
-				data={actedThread}
-				headerText="Confirm Thread Untracking"
-				bodyText={
-					<span>
-						Are you sure you want to untrack <strong>{actedThread?.userTitle}</strong>?
-					</span>
-				}
-			/>
+		<div>
 			<Row>
-				<Col>
-					<div>
-						<Row>
-							<Col xs="12" sm="6" xl="5">
-								<TagFilterSelect
-									setFilteredTag={setFilteredTag}
-									tags={tags}
-									filteredTag={filteredTag}
-								/>
-							</Col>
-							<Col xs="12" sm="6" xl="5">
-								<ThreadBulkUpdateControls
-									isArchive={false}
-									isQueue={false}
-									isAllThreads
-									selectedThreadCount={selectedItems.length}
-									executeBulkAction={executeBulkAction}
-									bulkToggleThreadsAreMarkedQueued={
-										bulkToggleThreadsAreMarkedQueued
-									}
-									bulkToggleThreadsAreArchived={bulkToggleThreadsAreArchived}
-									openBulkUntrackThreadsModal={() => {}}
-								/>
-							</Col>
-							<Col
-								xs={{
-									size: 6,
-									offset: 3
+				<Col xs="12" md="4" />
+				<Col xs="12" md="4" />
+				<Col xs="12" md="4">
+					<div className="pagination">
+						<button
+							type="button"
+							onClick={() => gotoPage(0)}
+							disabled={!canPreviousPage}
+						>
+							{'<<'}
+						</button>{' '}
+						<button
+							type="button"
+							onClick={() => previousPage()}
+							disabled={!canPreviousPage}
+						>
+							{'<'}
+						</button>{' '}
+						<button type="button" onClick={() => nextPage()} disabled={!canNextPage}>
+							{'>'}
+						</button>{' '}
+						<button
+							type="button"
+							onClick={() => gotoPage(pageCount - 1)}
+							disabled={!canNextPage}
+						>
+							{'>>'}
+						</button>{' '}
+						<span>
+							Page{' '}
+							<strong>
+								{pageIndex + 1} of {pageOptions.length}
+							</strong>{' '}
+						</span>
+						<span>
+							| Go to page:{' '}
+							<input
+								type="number"
+								defaultValue={pageIndex + 1}
+								onChange={(e) => {
+									const newPage = e.target.value ? Number(e.target.value) - 1 : 0;
+									gotoPage(newPage);
 								}}
-								sm={{
-									size: 4,
-									offset: 4
-								}}
-								xl={{
-									size: 2,
-									offset: 0
-								}}
-							>
-								<ThreadRefreshButton
-									isArchive={false}
-									refreshThreads={refreshThreads}
-								/>
-							</Col>
-						</Row>
-						<Row>
-							<Col>
-								<p className="public-tool-banner">
-									Want to share this view publicly? Check out the{' '}
-									<Link href="/tools/public" to="/tools/public">
-										Public Views tool
-									</Link>
-									.
-								</p>
-							</Col>
-						</Row>
-						<Row>
-							<Col xs="12" md="4" />
-							<Col xs="12" md="4" />
-							<Col xs="12" md="4">
-								<div className="pagination">
-									<button
-										type="button"
-										onClick={() => gotoPage(0)}
-										disabled={!canPreviousPage}
-									>
-										{'<<'}
-									</button>{' '}
-									<button
-										type="button"
-										onClick={() => previousPage()}
-										disabled={!canPreviousPage}
-									>
-										{'<'}
-									</button>{' '}
-									<button
-										type="button"
-										onClick={() => nextPage()}
-										disabled={!canNextPage}
-									>
-										{'>'}
-									</button>{' '}
-									<button
-										type="button"
-										onClick={() => gotoPage(pageCount - 1)}
-										disabled={!canNextPage}
-									>
-										{'>>'}
-									</button>{' '}
-									<span>
-										Page{' '}
-										<strong>
-											{pageIndex + 1} of {pageOptions.length}
-										</strong>{' '}
-									</span>
-									<span>
-										| Go to page:{' '}
-										<input
-											type="number"
-											defaultValue={pageIndex + 1}
-											onChange={(e) => {
-												const newPage = e.target.value
-													? Number(e.target.value) - 1
-													: 0;
-												gotoPage(newPage);
-											}}
-											style={{ width: '100px' }}
-										/>
-									</span>{' '}
-									<select
-										value={pageSize}
-										onChange={(e) => {
-											setPageSize(Number(e.target.value));
-										}}
-									>
-										{[10, 20, 30, 40, 50].map((size) => (
-											<option key={size} value={size}>
-												Show {size}
-											</option>
-										))}
-									</select>
-								</div>
-							</Col>
-						</Row>
-						<Table className="tracker-table" dark striped bordered {...getTableProps()}>
-							<thead>
-								{headerGroups.map((headerGroup) => (
-									<>
-										<tr
-											className="tracker-table-titles"
-											{...headerGroup.getHeaderGroupProps()}
-										>
-											{headerGroup.headers.map((column) => (
-												<th
-													className={
-														column.isSorted
-															? column.isSortedDesc
-																? 'sort-desc'
-																: 'sort-asc'
-															: ''
-													}
-												>
-													<div
-														{...column.getHeaderProps(
-															column.getSortByToggleProps()
-														)}
-													>
-														{column.render('Header')}
-													</div>
-												</th>
-											))}
-										</tr>
-									</>
-								))}
-								{headerGroups.map((headerGroup) => (
-									<>
-										<tr
-											className="tracker-table-filters"
-											{...headerGroup.getHeaderGroupProps()}
-										>
-											{headerGroup.headers.map((column) => (
-												<th>
-													<div>
-														{column.canFilter
-															? column.render('Filter')
-															: null}
-													</div>
-												</th>
-											))}
-										</tr>
-									</>
-								))}
-							</thead>
-							<tbody className="tracker-table-body" {...getTableBodyProps()}>
-								{page.map((row) => {
-									prepareRow(row);
-									return (
-										<React.Fragment {...row.getRowProps()}>
-											<tr {...row.getRowProps()}>
-												{row.cells.map((cell) => {
-													return (
-														<td {...cell.getCellProps()}>
-															{cell.render('Cell')}
-														</td>
-													);
-												})}
-											</tr>
-											{row.isExpanded ? renderRowSubComponent({ row }) : null}
-										</React.Fragment>
-									);
-								})}
-							</tbody>
-						</Table>
-						<CheckboxTable
-							className="-striped"
-							data={getData(filteredThreads)}
-							noDataText={isLoading ? 'Loading...' : 'No Threads Found'}
-							defaultPageSize={userSettings?.threadTablePageSize || 10}
-							onPageSizeChange={updateThreadTablePageSize}
-							columns={getColumns(characters, partners, lastPosters)}
-							tdProps={() =>
-								getTdProps(
-									openUntrackThreadModal,
-									() => {},
-									() => {},
-									() => {}
-								)
-							}
-							defaultSorted={[
-								{
-									id: 'status.lastPostDate',
-									desc: true
-								}
-							]}
-							defaultFilterMethod={defaultFilter}
-							showPaginationTop
-							SubComponent={(row) => (
-								<ThreadTableSubComponent
-									description={row.original.thread.description}
-									tags={row.original.thread.threadTags}
-								/>
-							)}
-							onSelectionChanged={onSelectionChanged}
-						/>
+								style={{ width: '100px' }}
+							/>
+						</span>{' '}
+						<select
+							value={pageSize}
+							onChange={(e) => {
+								setPageSize(Number(e.target.value));
+							}}
+						>
+							{[10, 20, 30, 40, 50].map((size) => (
+								<option key={size} value={size}>
+									Show {size}
+								</option>
+							))}
+						</select>
 					</div>
 				</Col>
 			</Row>
-		</Style>
+			<Table className="tracker-table" dark striped bordered {...getTableProps()}>
+				<thead>
+					{headerGroups.map((headerGroup) => (
+						<>
+							<tr
+								className="tracker-table-titles"
+								{...headerGroup.getHeaderGroupProps()}
+							>
+								{headerGroup.headers.map((column) => (
+									<th
+										className={
+											// eslint-disable-next-line no-nested-ternary
+											column.isSorted
+												? column.isSortedDesc
+													? 'sort-desc'
+													: 'sort-asc'
+												: ''
+										}
+									>
+										<div
+											{...column.getHeaderProps(
+												column.getSortByToggleProps()
+											)}
+										>
+											{column.render('Header')}
+										</div>
+									</th>
+								))}
+							</tr>
+						</>
+					))}
+					{headerGroups.map((headerGroup) => (
+						<>
+							<tr
+								className="tracker-table-filters"
+								{...headerGroup.getHeaderGroupProps()}
+							>
+								{headerGroup.headers.map((column) => (
+									<th>
+										<div>
+											{column.canFilter ? column.render('Filter') : null}
+										</div>
+									</th>
+								))}
+							</tr>
+						</>
+					))}
+				</thead>
+				<tbody className="tracker-table-body" {...getTableBodyProps()}>
+					{page.map((row) => {
+						prepareRow(row);
+						return (
+							<React.Fragment {...row.getRowProps()}>
+								<tr {...row.getRowProps()}>
+									{row.cells.map((cell) => {
+										return (
+											<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+										);
+									})}
+								</tr>
+								{row.isExpanded ? renderRowSubComponent({ row }) : null}
+							</React.Fragment>
+						);
+					})}
+				</tbody>
+			</Table>
+		</div>
 	);
 };
 ThreadTable.propTypes = propTypes;

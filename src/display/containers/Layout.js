@@ -30,7 +30,7 @@ import {
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
 import { CharactersContext, ActiveThreadsContext } from '~/infrastructure/hooks/contexts';
-import ThreadTable from '../views/threads/components/ThreadTable';
+import ThreadTableWrapper from '../views/threads/components/ThreadTableWrapper';
 import filters from '~/infrastructure/constants/filters';
 // #endregion imports
 
