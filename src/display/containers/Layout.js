@@ -42,7 +42,7 @@ const Layout = () => {
 		threadsStatus: activeThreadsStatus,
 		isThreadsLoading: isActiveThreadsLoading,
 		isThreadsStatusLoading: isActiveThreadsStatusLoading,
-		refetch
+		refreshThreads
 	} = useActiveThreadsQuery();
 	const {
 		data: characters,
@@ -84,7 +84,7 @@ const Layout = () => {
 									activeThreadsStatus,
 									isActiveThreadsLoading,
 									isActiveThreadsStatusLoading,
-									refetch
+									refreshThreads
 								}}
 							>
 								<Container fluid>

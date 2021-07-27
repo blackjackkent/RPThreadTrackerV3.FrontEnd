@@ -13,12 +13,13 @@ const propTypes = {
 	getColumns: PropTypes.func.isRequired
 };
 const ActiveThreads = ({ filter, getColumns }) => {
-	const { filteredThreads, isThreadsLoading } = useFilteredActiveThreads(filter);
+	const { filteredThreads, isThreadsLoading, refreshThreads } = useFilteredActiveThreads(filter);
 	return (
 		<ThreadTableWrapper
 			threadsWithStatus={filteredThreads}
 			isLoading={isThreadsLoading}
 			getColumns={getColumns}
+			refreshThreads={refreshThreads}
 		/>
 	);
 };
@@ -41,12 +42,13 @@ export const QueuedThreads = () => {
 };
 
 export const ArchivedThreads = () => {
-	const { filteredThreads, isThreadsLoading } = useArchivedThreads();
+	const { filteredThreads, isThreadsLoading, refreshThreads } = useArchivedThreads();
 	return (
 		<ThreadTableWrapper
 			threadsWithStatus={filteredThreads}
 			isLoading={isThreadsLoading}
 			getColumns={getArchiveColumns}
+			refreshThreads={refreshThreads}
 		/>
 	);
 };

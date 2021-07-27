@@ -15,7 +15,7 @@ const propTypes = {
 	getColumns: PropTypes.func.isRequired
 };
 
-const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns }) => {
+const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshThreads }) => {
 	const { data: userSettings } = useUserSettingsQuery();
 
 	const [filteredThreads, setFilteredThreads] = useState([]);
@@ -44,8 +44,6 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns }) => {
 		}
 		setFilteredThreads(threads);
 	}, [threadsWithStatus, filteredTag]);
-
-	const refreshThreads = () => {};
 
 	return (
 		<Style className="animated fadeIn threads-container">

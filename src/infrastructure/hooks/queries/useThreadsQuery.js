@@ -17,7 +17,7 @@ export function useThreadsQuery(isArchived = false) {
 			return Promise.resolve(res.data);
 		});
 	});
-	const { data: threadData, isLoading: isThreadsLoading } = threadsQuery;
+	const { data: threadData, isLoading: isThreadsLoading, refetch } = threadsQuery;
 	useEffect(() => {
 		if (!threadData?.threads?.length) {
 			return;
@@ -33,11 +33,16 @@ export function useThreadsQuery(isArchived = false) {
 			fetchThreadsStatusChunk(chunk);
 		});
 	}, [threadData, fetchThreadsStatusChunk, resetThreadsStatus]);
+	const queryClient = useQueryClient();
+	const refreshThreads = () => {
+		queryClient.resetQueries([queryKeys.THREADS, { isArchived }]);
+	};
 	return {
 		threadData,
 		threadsStatus,
 		isThreadsLoading,
 		isThreadsStatusLoading,
+		refreshThreads,
 		...threadsQuery
 	};
 }

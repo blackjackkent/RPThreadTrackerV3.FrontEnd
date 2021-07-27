@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useQueryClient } from 'react-query';
 import filters from '~/infrastructure/constants/filters';
+import queryKeys from '~/infrastructure/constants/queryKeys';
 import { useActiveThreadsContext } from '../contexts';
 import { useArchivedThreadsQuery } from '../queries';
 
@@ -42,10 +44,11 @@ export const useFilteredActiveThreads = (filter) => {
 	const {
 		activeThreads: threads,
 		activeThreadsStatus: threadsStatus,
-		isThreadsLoading
+		isThreadsLoading,
+		refreshThreads
 	} = useActiveThreadsContext();
 	const filteredThreads = useFilteredThreads(threads, threadsStatus, filter);
-	return { filteredThreads, isThreadsLoading };
+	return { filteredThreads, isThreadsLoading, refreshThreads };
 };
 
 export const useArchivedThreads = () => {
@@ -53,8 +56,13 @@ export const useArchivedThreads = () => {
 		threadData,
 		threadsStatus,
 		isThreadsLoading,
-		isThreadsStatusLoading
+		isThreadsStatusLoading,
+		refreshThreads
 	} = useArchivedThreadsQuery();
 	const filteredThreads = useFilteredThreads(threadData, threadsStatus);
-	return { filteredThreads, isThreadsLoading: isThreadsLoading || isThreadsStatusLoading };
+	return {
+		filteredThreads,
+		isThreadsLoading: isThreadsLoading || isThreadsStatusLoading,
+		refreshThreads
+	};
 };

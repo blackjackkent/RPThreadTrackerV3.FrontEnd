@@ -7,14 +7,14 @@ export default () => {
 		activeThreadsStatus,
 		isActiveThreadsLoading,
 		isActiveThreadsStatusLoading,
-		refetch
+		refreshThreads
 	} = useContext(ActiveThreadsContext);
 	return {
 		activeThreads,
 		activeThreadsStatus,
 		isActiveThreadsLoading,
 		isActiveThreadsStatusLoading,
-		refetch,
+		refreshThreads,
 		isThreadsLoading: isActiveThreadsLoading || isActiveThreadsStatusLoading
 	};
 };
