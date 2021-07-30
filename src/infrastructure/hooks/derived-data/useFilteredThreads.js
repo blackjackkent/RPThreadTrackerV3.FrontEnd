@@ -26,7 +26,7 @@ function useFilteredThreads(threads, threadsStatus, filter = null) {
 			}
 			return result;
 		}, []);
-		if (filterFunc === filters.THEIR_TURN || filterFunc === filters.QUEUED) {
+		if (filterFunc !== filters.THEIR_TURN && filterFunc !== filters.QUEUED) {
 			results = results.concat(
 				threadData
 					.filter((t) => !t.postId)

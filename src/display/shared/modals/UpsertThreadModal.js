@@ -3,39 +3,38 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
+import { toast } from 'react-toastify';
 import TooltipForm from '~/display/forms/TooltipForm';
 import UpsertThreadForm from '~/display/forms/upsert-thread/UpsertThreadForm';
 import Modal from '~/display/shared/styled/Modal';
 import { sortCharacters } from '~/utility';
 import { useFormReducer } from '~/infrastructure/hooks';
 import LoadingIndicator from '../loading/LoadingIndicator';
+import { useCreateThreadMutation, useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
 // #endregion imports
 
 const propTypes = {
-	threadToEdit: PropTypes.shape({
-		threadId: PropTypes.string,
-		threadTags: PropTypes.arrayOf(PropTypes.shape({}))
-	}),
 	isModalOpen: PropTypes.bool.isRequired,
 	setIsModalOpen: PropTypes.func.isRequired,
-	submitForm: PropTypes.func.isRequired,
-	isLoading: PropTypes.bool.isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({}))
+	characters: PropTypes.arrayOf(PropTypes.shape({})),
+	actedThread: PropTypes.shape({})
 };
 
 const UpsertThreadModal = (props) => {
 	const [thread, onInputChange, setFormData] = useFormReducer();
-	const { isLoading, threadToEdit, characters, isModalOpen, setIsModalOpen, submitForm } = props;
+	const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
+	const { updateThread, isLoading: isUpdateThreadLoading } = useUpdateThreadMutation();
+	const isLoading = isCreateThreadLoading || isUpdateThreadLoading;
+	const { actedThread, characters, isModalOpen, setIsModalOpen } = props;
 	useEffect(() => {
-		if (!threadToEdit) {
+		if (!actedThread) {
 			return;
 		}
-		setFormData(threadToEdit);
-	}, [setFormData, threadToEdit]);
+		setFormData(actedThread);
+	}, [setFormData, actedThread]);
 	const activeCharacters = [].concat(
 		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
 	);
-
 	const handleTagAdded = (tagValue) => {
 		let currentTags = thread.threadTags;
 		if (!currentTags) {
@@ -72,6 +71,18 @@ const UpsertThreadModal = (props) => {
 			return [];
 		}
 		return thread.threadTags.map((t) => t.tagText);
+	};
+
+	const submitForm = () => {
+		const upsertFn = thread.threadId ? updateThread : createThread;
+		upsertFn(thread)
+			.then(() => {
+				setIsModalOpen(false);
+				toast.success('Thread updated!');
+			})
+			.catch(() => {
+				toast.error(`There was an error updating this thread.`);
+			});
 	};
 
 	return (
@@ -119,7 +130,7 @@ const UpsertThreadModal = (props) => {
 
 UpsertThreadModal.propTypes = propTypes;
 UpsertThreadModal.defaultProps = {
-	threadToEdit: {},
-	characters: []
+	characters: [],
+	actedThread: {}
 };
 export default UpsertThreadModal;

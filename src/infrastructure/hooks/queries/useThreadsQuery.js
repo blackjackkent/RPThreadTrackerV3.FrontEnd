@@ -1,5 +1,4 @@
 import { useQuery, useQueryClient } from 'react-query';
-import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import { useEffect } from 'react';
 import queryKeys from '~/infrastructure/constants/queryKeys';

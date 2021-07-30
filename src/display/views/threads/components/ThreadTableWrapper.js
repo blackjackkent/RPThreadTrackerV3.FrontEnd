@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import Style from '../_styles';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
-import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
 import useThreadFilterData from '~/infrastructure/hooks/derived-data/useThreadFilterData';
-import useUntrackThreadModal from '~/infrastructure/hooks/modals/useUntrackThreadModal';
 import ThreadTable from './ThreadTable';
 import ThreadTableControls from './ThreadTableControls';
+import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
+import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
 
 const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isLoading: PropTypes.bool.isRequired,
-	getColumns: PropTypes.func.isRequired
+	getColumns: PropTypes.func.isRequired,
+	refreshThreads: PropTypes.func.isRequired
 };
 
 const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshThreads }) => {
@@ -23,14 +24,10 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 	const [filteredTag, setFilteredTag] = useState(undefined);
 	const [actedThread, setActedThread] = useState(null);
 
-	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
+	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
+	const [isUpsertThreadModalOpen, setIsUpsertThreadModalOpen] = useState(false);
 
-	const {
-		isUntrackThreadLoading,
-		isUntrackThreadModalOpen,
-		setIsUntrackThreadModalOpen,
-		submitUntrackThread
-	} = useUntrackThreadModal();
+	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
 
 	useEffect(() => {
 		let threads = [].concat(threadsWithStatus);
@@ -45,22 +42,28 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 		setFilteredThreads(threads);
 	}, [threadsWithStatus, filteredTag]);
 
+	const onUntrackThreadClick = (thread) => {
+		setActedThread(thread);
+		setIsUntrackThreadModalOpen(true);
+	};
+
+	const onEditThreadClick = (thread) => {
+		setActedThread(thread);
+		setIsUpsertThreadModalOpen(true);
+	};
+
 	return (
 		<Style className="animated fadeIn threads-container">
-			<GenericConfirmationModal
+			<UntrackThreadModal
+				actedThread={actedThread}
 				isModalOpen={isUntrackThreadModalOpen}
 				setIsModalOpen={setIsUntrackThreadModalOpen}
-				submitForm={submitUntrackThread}
-				submitButtonText="Untrack"
-				closeButtonText="Cancel"
-				isLoading={isUntrackThreadLoading}
-				data={actedThread}
-				headerText="Confirm Thread Untracking"
-				bodyText={
-					<span>
-						Are you sure you want to untrack <strong>{actedThread?.userTitle}</strong>?
-					</span>
-				}
+			/>
+			<UpsertThreadModal
+				actedThread={actedThread}
+				characters={characters}
+				isModalOpen={isUpsertThreadModalOpen}
+				setIsModalOpen={setIsUpsertThreadModalOpen}
 			/>
 			<Row>
 				<Col>
@@ -78,6 +81,8 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 						lastPosters={lastPosters}
 						partners={partners}
 						filteredThreads={filteredThreads}
+						onUntrackThreadClick={onUntrackThreadClick}
+						onEditThreadClick={onEditThreadClick}
 					/>
 				</Col>
 			</Row>

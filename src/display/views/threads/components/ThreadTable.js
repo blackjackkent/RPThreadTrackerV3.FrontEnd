@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, Table } from 'reactstrap';
 import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
 import ThreadTableSubComponent from './ThreadTableSubComponent';
+import columns from '~/infrastructure/constants/columns';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -10,7 +11,9 @@ const propTypes = {
 	lastPosters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isLoading: PropTypes.bool.isRequired,
-	getColumns: PropTypes.func.isRequired
+	getColumns: PropTypes.func.isRequired,
+	onUntrackThreadClick: PropTypes.func.isRequired,
+	onEditThreadClick: PropTypes.func.isRequired
 };
 
 function formatDataForTable(filteredThreads) {
@@ -31,9 +34,32 @@ const ThreadTable = ({
 	lastPosters,
 	getColumns,
 	filteredThreads,
-	isLoading
+	isLoading,
+	onUntrackThreadClick,
+	onEditThreadClick
 }) => {
 	const tableData = React.useMemo(() => formatDataForTable(filteredThreads), [filteredThreads]);
+	const getCellProps = (cell) => ({
+		onClick: () => {
+			const { column, row } = cell;
+			if (cell.column.id === columns.DELETE_BUTTON.key) {
+				onUntrackThreadClick(row.original.thread);
+				return;
+			}
+			if (column.id === columns.EDIT_BUTTON.key) {
+				onEditThreadClick(row.original.thread);
+				return;
+			}
+			if (column.id === columns.ARCHIVE_BUTTON.key) {
+				onArchiveTrigger(row.original.thread);
+				return;
+			}
+			if (column.id === columns.QUEUE_BUTTON.key) {
+				onQueueTrigger(row.original.thread);
+				return;
+			}
+		}
+	});
 	const {
 		getTableProps,
 		getTableBodyProps,
@@ -161,49 +187,36 @@ const ThreadTable = ({
 			<Table className="tracker-table" dark striped bordered {...getTableProps()}>
 				<thead>
 					{headerGroups.map((headerGroup) => (
-						<>
-							<tr
-								className="tracker-table-titles"
-								{...headerGroup.getHeaderGroupProps()}
-							>
-								{headerGroup.headers.map((column) => (
-									<th
-										className={
-											// eslint-disable-next-line no-nested-ternary
-											column.isSorted
-												? column.isSortedDesc
-													? 'sort-desc'
-													: 'sort-asc'
-												: ''
-										}
-									>
-										<div
-											{...column.getHeaderProps(
-												column.getSortByToggleProps()
-											)}
-										>
-											{column.render('Header')}
-										</div>
-									</th>
-								))}
-							</tr>
-						</>
+						<tr className="tracker-table-titles" {...headerGroup.getHeaderGroupProps()}>
+							{headerGroup.headers.map((column) => (
+								<th
+									className={
+										// eslint-disable-next-line no-nested-ternary
+										column.isSorted
+											? column.isSortedDesc
+												? 'sort-desc'
+												: 'sort-asc'
+											: ''
+									}
+								>
+									<div {...column.getHeaderProps(column.getSortByToggleProps())}>
+										{column.render('Header')}
+									</div>
+								</th>
+							))}
+						</tr>
 					))}
 					{headerGroups.map((headerGroup) => (
-						<>
-							<tr
-								className="tracker-table-filters"
-								{...headerGroup.getHeaderGroupProps()}
-							>
-								{headerGroup.headers.map((column) => (
-									<th>
-										<div>
-											{column.canFilter ? column.render('Filter') : null}
-										</div>
-									</th>
-								))}
-							</tr>
-						</>
+						<tr
+							className="tracker-table-filters"
+							{...headerGroup.getHeaderGroupProps()}
+						>
+							{headerGroup.headers.map((column) => (
+								<th>
+									<div>{column.canFilter ? column.render('Filter') : null}</div>
+								</th>
+							))}
+						</tr>
 					))}
 				</thead>
 				<tbody className="tracker-table-body" {...getTableBodyProps()}>
@@ -214,7 +227,9 @@ const ThreadTable = ({
 								<tr {...row.getRowProps()}>
 									{row.cells.map((cell) => {
 										return (
-											<td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+											<td {...cell.getCellProps([getCellProps(cell)])}>
+												{cell.render('Cell')}
+											</td>
 										);
 									})}
 								</tr>
