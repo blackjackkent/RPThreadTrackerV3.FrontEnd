@@ -78,10 +78,12 @@ const UpsertThreadModal = (props) => {
 		upsertFn(thread)
 			.then(() => {
 				setIsModalOpen(false);
-				toast.success('Thread updated!');
+				toast.success(thread.threadId ? 'Thread updated!' : 'Thread created!');
 			})
 			.catch(() => {
-				toast.error(`There was an error updating this thread.`);
+				toast.error(
+					`There was an error ${thread.threadId ? 'updating' : 'creating'} this thread.`
+				);
 			});
 	};
 

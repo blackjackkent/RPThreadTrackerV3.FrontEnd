@@ -3,7 +3,6 @@ import { Nav } from 'reactstrap';
 import { toast } from 'react-toastify';
 import { useCacheValue } from '~/infrastructure/hooks';
 import {
-	useCreateThreadMutation,
 	useUpdateUserSettingsMutation,
 	useCreateCharacterMutation
 } from '~/infrastructure/hooks/mutations';
@@ -32,7 +31,6 @@ const HeaderContainer = () => {
 	const { unreadNewsCount, userSettings, setUnreadNewsCount } = useNewsQuery();
 	const { data: user } = useUserProfileQuery();
 	const { updateUserSettings } = useUpdateUserSettingsMutation();
-	const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
 	const { createCharacter, isLoading: isCreateCharacterLoading } = useCreateCharacterMutation();
 
 	useEffect(() => {
@@ -67,25 +65,12 @@ const HeaderContainer = () => {
 			});
 	};
 
-	const submitCreateThread = (thread) => {
-		createThread(thread)
-			.then(() => {
-				setIsUpsertThreadModalOpen(false);
-				toast.success('Thread created!');
-			})
-			.catch(() => {
-				toast.error(`There was an error tracking this thread.`);
-			});
-	};
-
 	return (
 		<Style className="app-header navbar">
 			<UpsertThreadModal
+				characters={characters}
 				isModalOpen={isUpsertThreadModalOpen}
 				setIsModalOpen={setIsUpsertThreadModalOpen}
-				submitForm={submitCreateThread}
-				isLoading={isCreateThreadLoading}
-				characters={characters}
 			/>
 			<UpsertCharacterModal
 				isModalOpen={isUpsertCharacterModalOpen}
