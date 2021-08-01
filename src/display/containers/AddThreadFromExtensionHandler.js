@@ -1,12 +1,9 @@
 // #region imports
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, CardBody } from 'reactstrap';
-
-import { toast } from 'react-toastify';
 import Card from '../shared/styled/Card';
 import LoadingIndicator from '../shared/loading/LoadingIndicator';
 import UpsertThreadModal from '../shared/modals/UpsertThreadModal';
-
 import { getThreadDataFromExtensionQuery } from '../../utility';
 import { useCharactersQuery } from '~/infrastructure/hooks/queries';
 import { useCreateThreadMutation } from '~/infrastructure/hooks/mutations';
@@ -20,27 +17,13 @@ const AddThreadFromExtensionHandler = () => {
 		isLoading: isCharactersLoading,
 		isError: isCharactersFetchError
 	} = useCharactersQuery();
-	const {
-		createThread,
-		isLoading: isCreateThreadLoading,
-		isSuccess: isFormSubmitSuccess
-	} = useCreateThreadMutation();
+	const { isSuccess: isFormSubmitSuccess } = useCreateThreadMutation();
 	useEffect(() => {
 		if (characters) {
 			setThreadData(getThreadDataFromExtensionQuery(characters));
 			setIsUpsertThreadModalOpen(true);
 		}
 	}, [characters]);
-
-	const submitCreateThread = (thread) => {
-		createThread(thread)
-			.then(() => {
-				setIsUpsertThreadModalOpen(false);
-			})
-			.catch(() => {
-				toast.error(`There was an error tracking this thread.`);
-			});
-	};
 
 	const renderLoadingIndicator = () => {
 		return (
@@ -62,12 +45,10 @@ const AddThreadFromExtensionHandler = () => {
 		return (
 			<div className="app flex-row align-items-center" data-spec="layout-app">
 				<UpsertThreadModal
+					actedThread={threadData}
+					characters={characters}
 					isModalOpen={isUpsertThreadModalOpen}
 					setIsModalOpen={setIsUpsertThreadModalOpen}
-					submitForm={submitCreateThread}
-					isLoading={isCreateThreadLoading}
-					characters={characters}
-					threadToEdit={threadData}
 				/>
 				{message && (
 					<Container data-spec="extension-handler-success-message">
