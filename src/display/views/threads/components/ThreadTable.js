@@ -13,7 +13,8 @@ const propTypes = {
 	isLoading: PropTypes.bool.isRequired,
 	getColumns: PropTypes.func.isRequired,
 	onUntrackThreadClick: PropTypes.func.isRequired,
-	onEditThreadClick: PropTypes.func.isRequired
+	onEditThreadClick: PropTypes.func.isRequired,
+	onArchiveThreadClick: PropTypes.func.isRequired
 };
 
 function formatDataForTable(filteredThreads) {
@@ -36,6 +37,7 @@ const ThreadTable = ({
 	filteredThreads,
 	isLoading,
 	onUntrackThreadClick,
+	onArchiveThreadClick,
 	onEditThreadClick
 }) => {
 	const tableData = React.useMemo(() => formatDataForTable(filteredThreads), [filteredThreads]);
@@ -51,7 +53,7 @@ const ThreadTable = ({
 				return;
 			}
 			if (column.id === columns.ARCHIVE_BUTTON.key) {
-				onArchiveTrigger(row.original.thread);
+				onArchiveThreadClick(row.original.thread);
 				return;
 			}
 			if (column.id === columns.QUEUE_BUTTON.key) {
@@ -121,7 +123,7 @@ const ThreadTable = ({
 	);
 
 	return (
-		<div>
+		<div className="table-wrapper">
 			<Row>
 				<Col xs="12" md="4" />
 				<Col xs="12" md="4" />

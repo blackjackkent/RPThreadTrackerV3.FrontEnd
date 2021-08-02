@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import colors from '../../../infrastructure/constants/colors';
 
 export default styled.div`
+	.table-wrapper {
+		overflow-x: auto;
+	}
 	.thread-bulk-update-controls,
 	.tag-filter-select,
 	.thread-refresh-button,

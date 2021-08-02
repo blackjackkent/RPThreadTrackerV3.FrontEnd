@@ -8,6 +8,7 @@ import ThreadTable from './ThreadTable';
 import ThreadTableControls from './ThreadTableControls';
 import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
 import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
+import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
 
 const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -26,6 +27,7 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 
 	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
 	const [isUpsertThreadModalOpen, setIsUpsertThreadModalOpen] = useState(false);
+	const [isArchiveThreadModalOpen, setIsArchiveThreadModalOpen] = useState(false);
 
 	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
 
@@ -52,6 +54,10 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 		setIsUpsertThreadModalOpen(true);
 	};
 
+	const onArchiveThreadClick = (thread) => {
+		setActedThread(thread);
+		setIsArchiveThreadModalOpen(true);
+	};
 	return (
 		<Style className="animated fadeIn threads-container">
 			<UntrackThreadModal
@@ -64,6 +70,11 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 				characters={characters}
 				isModalOpen={isUpsertThreadModalOpen}
 				setIsModalOpen={setIsUpsertThreadModalOpen}
+			/>
+			<ArchiveThreadModal
+				actedThread={actedThread}
+				isModalOpen={isArchiveThreadModalOpen}
+				setIsModalOpen={setIsArchiveThreadModalOpen}
 			/>
 			<Row>
 				<Col>
@@ -83,6 +94,7 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 						filteredThreads={filteredThreads}
 						onUntrackThreadClick={onUntrackThreadClick}
 						onEditThreadClick={onEditThreadClick}
+						onArchiveThreadClick={onArchiveThreadClick}
 					/>
 				</Col>
 			</Row>

@@ -8,8 +8,5 @@ export default (title) => ({
 		<div className="icon-column text-danger">
 			<FontAwesomeIcon title={title} icon={['fas', 'trash-alt']} />
 		</div>
-	),
-	sortable: false,
-	resizable: false,
-	filterable: false
+	)
 });

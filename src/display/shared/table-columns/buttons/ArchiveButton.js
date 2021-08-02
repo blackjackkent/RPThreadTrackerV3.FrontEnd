@@ -1,18 +1,15 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 
 export default (isArchivePage) => ({
 	id: columns.ARCHIVE_BUTTON.key,
 	Cell: () => (
-		<span>
-			<i
+		<div className="icon-column">
+			<FontAwesomeIcon
 				title={isArchivePage ? 'Unarchive Thread' : 'Archive Thread'}
-				className={isArchivePage ? 'fas fa-unlock' : 'fas fa-lock'}
+				icon={['fas', isArchivePage ? 'unlock' : 'lock']}
 			/>
-		</span>
-	),
-	width: 30,
-	sortable: false,
-	resizable: false,
-	filterable: false
+		</div>
+	)
 });
