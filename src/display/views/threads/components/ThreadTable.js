@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Table } from 'reactstrap';
 import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
@@ -40,7 +40,9 @@ const ThreadTable = ({
 	onUntrackThreadClick,
 	onArchiveThreadClick,
 	onEditThreadClick,
-	onQueueThreadClick
+	onQueueThreadClick,
+	threadTablePageSize,
+	onThreadTablePageSizeChange
 }) => {
 	const tableData = React.useMemo(() => formatDataForTable(filteredThreads), [filteredThreads]);
 	const getCellProps = (cell) => ({
@@ -60,7 +62,6 @@ const ThreadTable = ({
 			}
 			if (column.id === columns.QUEUE_BUTTON.key) {
 				onQueueThreadClick(row.original.thread);
-				return;
 			}
 		}
 	});
@@ -108,6 +109,9 @@ const ThreadTable = ({
 		useExpanded,
 		usePagination
 	);
+	useEffect(() => {
+		setPageSize(threadTablePageSize);
+	}, [threadTablePageSize, setPageSize]);
 	const renderRowSubComponent = React.useCallback(
 		({ row }) => {
 			return (
@@ -177,9 +181,10 @@ const ThreadTable = ({
 							value={pageSize}
 							onChange={(e) => {
 								setPageSize(Number(e.target.value));
+								onThreadTablePageSizeChange(Number(e.target.value));
 							}}
 						>
-							{[10, 20, 30, 40, 50].map((size) => (
+							{[5, 10, 20, 25, 50, 100].map((size) => (
 								<option key={size} value={size}>
 									Show {size}
 								</option>

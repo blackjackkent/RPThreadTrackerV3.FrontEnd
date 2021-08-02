@@ -10,6 +10,7 @@ import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
 import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
 import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
 import QueueThreadModal from '~/display/shared/modals/QueueThreadModal';
+import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
 
 const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -20,7 +21,7 @@ const propTypes = {
 
 const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshThreads }) => {
 	const { data: userSettings } = useUserSettingsQuery();
-
+	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	const [selectedItems, setSelectedItems] = useState([]);
 	const [filteredTag, setFilteredTag] = useState(undefined);
@@ -66,6 +67,13 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 		setIsQueueThreadModalOpen(true);
 	};
 
+	const onThreadTablePageSizeChange = (pageSize) => {
+		updateUserSettings({
+			...userSettings,
+			threadTablePageSize: pageSize
+		});
+	};
+
 	return (
 		<Style className="animated fadeIn threads-container">
 			<UntrackThreadModal
@@ -109,6 +117,8 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 						onEditThreadClick={onEditThreadClick}
 						onArchiveThreadClick={onArchiveThreadClick}
 						onQueueThreadClick={onQueueThreadClick}
+						threadTablePageSize={userSettings?.threadTablePageSize}
+						onThreadTablePageSizeChange={onThreadTablePageSizeChange}
 					/>
 				</Col>
 			</Row>

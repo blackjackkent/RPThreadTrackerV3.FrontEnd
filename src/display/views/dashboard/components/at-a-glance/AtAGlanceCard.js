@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CardHeader, Input, CardBody, CardGroup } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../../shared/styled/Card';
 import SwitchLabel from '../../../../shared/styled/SwitchLabel';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
@@ -8,7 +9,6 @@ import filters from '~/infrastructure/constants/filters';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
 import { useActiveThreadsContext } from '~/infrastructure/hooks/contexts';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const AtAGlanceCard = () => {
 	const [
