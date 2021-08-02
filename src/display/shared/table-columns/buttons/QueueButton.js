@@ -1,18 +1,15 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 
 export default (isQueuePage) => ({
 	id: columns.QUEUE_BUTTON.key,
 	Cell: () => (
-		<span>
-			<i
+		<div className="icon-column">
+			<FontAwesomeIcon
 				title={isQueuePage ? 'Unmark Thread Queued' : 'Mark Thread Queued'}
-				className="fas fa-clock"
+				icon={['fas', 'clock']}
 			/>
-		</span>
-	),
-	width: 30,
-	sortable: false,
-	resizable: false,
-	filterable: false
+		</div>
+	)
 });

@@ -9,6 +9,7 @@ import ThreadTableControls from './ThreadTableControls';
 import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
 import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
 import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
+import QueueThreadModal from '~/display/shared/modals/QueueThreadModal';
 
 const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -28,6 +29,7 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
 	const [isUpsertThreadModalOpen, setIsUpsertThreadModalOpen] = useState(false);
 	const [isArchiveThreadModalOpen, setIsArchiveThreadModalOpen] = useState(false);
+	const [isQueueThreadModalOpen, setIsQueueThreadModalOpen] = useState(false);
 
 	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
 
@@ -58,6 +60,12 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 		setActedThread(thread);
 		setIsArchiveThreadModalOpen(true);
 	};
+
+	const onQueueThreadClick = (thread) => {
+		setActedThread(thread);
+		setIsQueueThreadModalOpen(true);
+	};
+
 	return (
 		<Style className="animated fadeIn threads-container">
 			<UntrackThreadModal
@@ -75,6 +83,11 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 				actedThread={actedThread}
 				isModalOpen={isArchiveThreadModalOpen}
 				setIsModalOpen={setIsArchiveThreadModalOpen}
+			/>
+			<QueueThreadModal
+				actedThread={actedThread}
+				isModalOpen={isQueueThreadModalOpen}
+				setIsModalOpen={setIsQueueThreadModalOpen}
 			/>
 			<Row>
 				<Col>
@@ -95,6 +108,7 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 						onUntrackThreadClick={onUntrackThreadClick}
 						onEditThreadClick={onEditThreadClick}
 						onArchiveThreadClick={onArchiveThreadClick}
+						onQueueThreadClick={onQueueThreadClick}
 					/>
 				</Col>
 			</Row>

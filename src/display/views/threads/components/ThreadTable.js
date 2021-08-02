@@ -14,7 +14,8 @@ const propTypes = {
 	getColumns: PropTypes.func.isRequired,
 	onUntrackThreadClick: PropTypes.func.isRequired,
 	onEditThreadClick: PropTypes.func.isRequired,
-	onArchiveThreadClick: PropTypes.func.isRequired
+	onArchiveThreadClick: PropTypes.func.isRequired,
+	onQueueThreadClick: PropTypes.func.isRequired
 };
 
 function formatDataForTable(filteredThreads) {
@@ -38,7 +39,8 @@ const ThreadTable = ({
 	isLoading,
 	onUntrackThreadClick,
 	onArchiveThreadClick,
-	onEditThreadClick
+	onEditThreadClick,
+	onQueueThreadClick
 }) => {
 	const tableData = React.useMemo(() => formatDataForTable(filteredThreads), [filteredThreads]);
 	const getCellProps = (cell) => ({
@@ -57,7 +59,7 @@ const ThreadTable = ({
 				return;
 			}
 			if (column.id === columns.QUEUE_BUTTON.key) {
-				onQueueTrigger(row.original.thread);
+				onQueueThreadClick(row.original.thread);
 				return;
 			}
 		}
