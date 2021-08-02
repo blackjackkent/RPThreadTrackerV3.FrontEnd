@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '~/display/shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';
 import NoThreadsMessage from './NoThreadsMessage';
@@ -10,13 +11,10 @@ import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import filters from '~/infrastructure/constants/filters';
 import { useRecentActivity, useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
-import { useActiveThreadsContext, useCharactersContext } from '~/infrastructure/hooks/contexts';
-import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import {
-	useUntrackThreadMutation,
-	useUpdateThreadMutation
-} from '~/infrastructure/hooks/mutations';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useCharactersContext } from '~/infrastructure/hooks/contexts';
+import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
+import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
+import QueueThreadModal from '~/display/shared/modals/QueueThreadModal';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
@@ -33,70 +31,45 @@ const renderBlockMessage = (characters, allThreads) => {
 };
 
 const RecentActivityCard = () => {
-	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
-	const [selectedThread, setSelectedThread] = useState(null);
 	const { characters } = useCharactersContext();
 	const { filteredThreads: allThreads, isThreadsLoading } = useFilteredActiveThreads(filters.ALL);
 	const recentActivityThreads = useRecentActivity();
-	const { untrackThread, isLoading: isUntrackThreadLoading } = useUntrackThreadMutation();
-	const { updateThread } = useUpdateThreadMutation();
-	const submitUntrackThread = () => {
-		untrackThread(selectedThread)
-			.then(() => {
-				setIsUntrackThreadModalOpen(false);
-				toast.success('Thread untracked!');
-			})
-			.catch(() => {
-				toast.error(`There was an error untracking this thread.`);
-			});
-	};
-	const submitArchiveThread = (thread) => {
-		const updated = {
-			...thread,
-			isArchived: !thread.isArchived
-		};
-		updateThread(updated)
-			.then(() => {
-				toast.success('Thread archived!');
-			})
-			.catch(() => {
-				toast.error(`There was an error archiving this thread.`);
-			});
-	};
-	const markThreadQueued = (thread) => {
-		const updated = {
-			...thread,
-			dateMarkedQueued: new Date(Date.now())
-		};
-		updateThread(updated)
-			.then(() => {
-				toast.success('Thread marked as queued!');
-			})
-			.catch(() => {
-				toast.error(`There was an error marking this thread as queued.`);
-			});
-	};
-	const openUntrackThreadModal = (thread) => {
-		setSelectedThread(thread);
+
+	const [actedThread, setActedThread] = useState(null);
+	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);
+	const [isArchiveThreadModalOpen, setIsArchiveThreadModalOpen] = useState(false);
+	const [isQueueThreadModalOpen, setIsQueueThreadModalOpen] = useState(false);
+
+	const onUntrackThreadClick = (thread) => {
+		setActedThread(thread);
 		setIsUntrackThreadModalOpen(true);
+	};
+
+	const onArchiveThreadClick = (thread) => {
+		setActedThread(thread);
+		setIsArchiveThreadModalOpen(true);
+	};
+
+	const onQueueThreadClick = (thread) => {
+		setActedThread(thread);
+		setIsQueueThreadModalOpen(true);
 	};
 	return (
 		<Card className="recent-activity-card">
-			<GenericConfirmationModal
+			<UntrackThreadModal
+				actedThread={actedThread}
 				isModalOpen={isUntrackThreadModalOpen}
 				setIsModalOpen={setIsUntrackThreadModalOpen}
-				submitForm={submitUntrackThread}
-				submitButtonText="Untrack"
-				closeButtonText="Cancel"
-				isLoading={isUntrackThreadLoading}
-				data={selectedThread}
-				headerText="Confirm Thread Untracking"
-				bodyText={
-					<span>
-						Are you sure you want to untrack{' '}
-						<strong>{selectedThread?.userTitle}</strong>?
-					</span>
-				}
+			/>
+			<ArchiveThreadModal
+				actedThread={actedThread}
+				isModalOpen={isArchiveThreadModalOpen}
+				setIsModalOpen={setIsArchiveThreadModalOpen}
+			/>
+			<QueueThreadModal
+				actedThread={actedThread}
+				isModalOpen={isQueueThreadModalOpen}
+				setIsModalOpen={setIsQueueThreadModalOpen}
 			/>
 			<CardHeader>
 				<FontAwesomeIcon icon={['fas', 'bolt']} /> Recent Activity
@@ -121,9 +94,9 @@ const RecentActivityCard = () => {
 							data-spec="recent-activity-card-row"
 							threadData={threadData}
 							key={threadData.thread.threadId}
-							archiveThread={submitArchiveThread}
-							openUntrackThreadModal={openUntrackThreadModal}
-							markThreadQueued={markThreadQueued}
+							onArchiveThreadClick={onArchiveThreadClick}
+							onQueueThreadClick={onQueueThreadClick}
+							onUntrackThreadClick={onUntrackThreadClick}
 						/>
 					))}
 				{!isThreadsLoading &&
