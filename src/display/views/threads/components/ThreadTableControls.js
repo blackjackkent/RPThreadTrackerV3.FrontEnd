@@ -7,7 +7,7 @@ import TagFilterSelect from './TagFilterSelect';
 import ThreadRefreshButton from './ThreadRefreshButton';
 
 const propTypes = {
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	filteredTag: PropTypes.string.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
 	selectedItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

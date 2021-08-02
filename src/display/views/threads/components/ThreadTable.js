@@ -7,8 +7,8 @@ import columns from '~/infrastructure/constants/columns';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	partners: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	lastPosters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	partners: PropTypes.arrayOf(PropTypes.string).isRequired,
+	lastPosters: PropTypes.arrayOf(PropTypes.string).isRequired,
 	filteredThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	getColumns: PropTypes.func.isRequired,
@@ -197,22 +197,29 @@ const ThreadTable = ({
 				<thead>
 					{headerGroups.map((headerGroup) => (
 						<tr className="tracker-table-titles" {...headerGroup.getHeaderGroupProps()}>
-							{headerGroup.headers.map((column) => (
-								<th
-									className={
-										// eslint-disable-next-line no-nested-ternary
-										column.isSorted
-											? column.isSortedDesc
-												? 'sort-desc'
-												: 'sort-asc'
-											: ''
-									}
-								>
-									<div {...column.getHeaderProps(column.getSortByToggleProps())}>
-										{column.render('Header')}
-									</div>
-								</th>
-							))}
+							{headerGroup.headers.map((column) => {
+								return (
+									<th
+										key={column.id}
+										className={
+											// eslint-disable-next-line no-nested-ternary
+											column.isSorted
+												? column.isSortedDesc
+													? 'sort-desc'
+													: 'sort-asc'
+												: ''
+										}
+									>
+										<div
+											{...column.getHeaderProps(
+												column.getSortByToggleProps()
+											)}
+										>
+											{column.render('Header')}
+										</div>
+									</th>
+								);
+							})}
 						</tr>
 					))}
 					{headerGroups.map((headerGroup) => (
@@ -221,7 +228,7 @@ const ThreadTable = ({
 							{...headerGroup.getHeaderGroupProps()}
 						>
 							{headerGroup.headers.map((column) => (
-								<th>
+								<th key={column.id}>
 									<div>{column.canFilter ? column.render('Filter') : null}</div>
 								</th>
 							))}
@@ -232,7 +239,7 @@ const ThreadTable = ({
 					{page.map((row) => {
 						prepareRow(row);
 						return (
-							<React.Fragment {...row.getRowProps()}>
+							<React.Fragment key={row.id}>
 								<tr {...row.getRowProps()}>
 									{row.cells.map((cell) => {
 										return (
