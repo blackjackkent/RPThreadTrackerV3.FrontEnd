@@ -15,7 +15,9 @@ const propTypes = {
 	onUntrackThreadClick: PropTypes.func.isRequired,
 	onEditThreadClick: PropTypes.func.isRequired,
 	onArchiveThreadClick: PropTypes.func.isRequired,
-	onQueueThreadClick: PropTypes.func.isRequired
+	onQueueThreadClick: PropTypes.func.isRequired,
+	threadTablePageSize: PropTypes.number.isRequired,
+	onThreadTablePageSizeChange: PropTypes.func.isRequired
 };
 
 function formatDataForTable(filteredThreads) {
@@ -130,69 +132,65 @@ const ThreadTable = ({
 
 	return (
 		<div className="table-wrapper">
-			<Row>
-				<Col xs="12" md="4" />
-				<Col xs="12" md="4" />
-				<Col xs="12" md="4">
-					<div className="pagination">
-						<button
-							type="button"
-							onClick={() => gotoPage(0)}
-							disabled={!canPreviousPage}
-						>
-							{'<<'}
-						</button>{' '}
-						<button
-							type="button"
-							onClick={() => previousPage()}
-							disabled={!canPreviousPage}
-						>
-							{'<'}
-						</button>{' '}
-						<button type="button" onClick={() => nextPage()} disabled={!canNextPage}>
-							{'>'}
-						</button>{' '}
-						<button
-							type="button"
-							onClick={() => gotoPage(pageCount - 1)}
-							disabled={!canNextPage}
-						>
-							{'>>'}
-						</button>{' '}
-						<span>
-							Page{' '}
-							<strong>
-								{pageIndex + 1} of {pageOptions.length}
-							</strong>{' '}
-						</span>
-						<span>
-							| Go to page:{' '}
-							<input
-								type="number"
-								defaultValue={pageIndex + 1}
-								onChange={(e) => {
-									const newPage = e.target.value ? Number(e.target.value) - 1 : 0;
-									gotoPage(newPage);
-								}}
-								style={{ width: '100px' }}
-							/>
-						</span>{' '}
-						<select
-							value={pageSize}
+			<div className="pagination-controls">
+				<div className="pagination-back">
+					<button type="button" onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+						{'<<'}
+					</button>{' '}
+					<button
+						type="button"
+						onClick={() => previousPage()}
+						disabled={!canPreviousPage}
+					>
+						{'<'}
+					</button>{' '}
+				</div>
+				<div className="pagination-data">
+					<span className="pagination-page-info">
+						Page{' '}
+						<strong>
+							{pageIndex + 1} of {pageOptions.length}
+						</strong>{' '}
+					</span>
+					<span>
+						| Go to page:{' '}
+						<input
+							type="number"
+							defaultValue={pageIndex + 1}
 							onChange={(e) => {
-								setPageSize(Number(e.target.value));
-								onThreadTablePageSizeChange(Number(e.target.value));
+								const newPage = e.target.value ? Number(e.target.value) - 1 : 0;
+								gotoPage(newPage);
 							}}
-						>
-							{[5, 10, 20, 25, 50, 100].map((size) => (
-								<option key={size} value={size}>
-									Show {size}
-								</option>
-							))}
-						</select>
-					</div>
-				</Col>
-			</Row>
+							style={{ width: '100px' }}
+						/>
+					</span>{' '}
+					<select
+						value={pageSize}
+						onChange={(e) => {
+							setPageSize(Number(e.target.value));
+							onThreadTablePageSizeChange(Number(e.target.value));
+						}}
+					>
+						{[5, 10, 20, 25, 50, 100].map((size) => (
+							<option key={size} value={size}>
+								Show {size}
+							</option>
+						))}
+					</select>
+				</div>
+				<div className="pagination-forward">
+					<button type="button" onClick={() => nextPage()} disabled={!canNextPage}>
+						{'>'}
+					</button>{' '}
+					<button
+						type="button"
+						onClick={() => gotoPage(pageCount - 1)}
+						disabled={!canNextPage}
+					>
+						{'>>'}
+					</button>{' '}
+				</div>
+			</div>
 			<Table className="tracker-table" dark striped bordered {...getTableProps()}>
 				<thead>
 					{headerGroups.map((headerGroup) => (

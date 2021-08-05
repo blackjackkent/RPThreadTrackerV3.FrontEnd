@@ -5,6 +5,61 @@ export default styled.div`
 	.table-wrapper {
 		overflow-x: auto;
 	}
+	.pagination-controls {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-webkit-box-align: stretch;
+		-ms-flex-align: stretch;
+		align-items: center;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		padding: 5px;
+		box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+		border-top: 2px solid rgba(0, 0, 0, 0.1);
+		color: ${colors.GRAY_100};
+		margin: 10px;
+		input,
+		select {
+			border: 1px solid rgba(0, 0, 0, 0.1);
+			background: #fff;
+			padding: 5px 7px;
+			font-size: inherit;
+			border-radius: 3px;
+			font-weight: normal;
+			outline-width: 0;
+			height: 70%;
+		}
+		button {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			width: 100px;
+			border: 0;
+			border-radius: 3px;
+			padding: 6px;
+			font-size: 1em;
+			color: ${colors.WHITE};
+			background: ${colors.BASE_BLUE};
+			transition: all 0.1s ease;
+			cursor: pointer;
+			outline-width: 0;
+		}
+		button[disabled] {
+			opacity: 0.5;
+			cursor: default;
+		}
+		button:not([disabled]):hover {
+			background: rgba(0, 0, 0, 0.3);
+			color: #fff;
+		}
+		.pagination-data {
+			line-height: 30px;
+		}
+	}
 	.thread-bulk-update-controls,
 	.tag-filter-select,
 	.thread-refresh-button,
@@ -56,6 +111,10 @@ export default styled.div`
 			background: ${colors.GRAY_850};
 		}
 
+		.tracker-table-body tr td {
+			padding: 7px 5px;
+		}
+
 		.icon-column {
 			text-align: center;
 			width: 15px;
@@ -87,6 +146,10 @@ export default styled.div`
 	}
 
 	.light-theme & {
+		.pagination-controls {
+			color: ${colors.GRAY_800};
+			box-shadow: 0 0 15px 0 rgb(0 0 0 / 10%);
+		}
 		.tracker-table {
 			color: ${colors.GRAY_800};
 			.tracker-table-titles > th {
