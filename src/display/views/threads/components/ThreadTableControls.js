@@ -11,7 +11,10 @@ const propTypes = {
 	filteredTag: PropTypes.string.isRequired,
 	setFilteredTag: PropTypes.func.isRequired,
 	selectedItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	refreshThreads: PropTypes.func.isRequired
+	refreshThreads: PropTypes.func.isRequired,
+	isQueuedView: PropTypes.bool.isRequired,
+	isArchivedView: PropTypes.bool.isRequired,
+	isAllThreadsView: PropTypes.bool.isRequired
 };
 
 const ThreadTableControls = ({
@@ -19,7 +22,10 @@ const ThreadTableControls = ({
 	filteredTag,
 	setFilteredTag,
 	selectedItems,
-	refreshThreads
+	refreshThreads,
+	isQueuedView,
+	isArchivedView,
+	isAllThreadsView
 }) => {
 	return (
 		<>
@@ -33,14 +39,15 @@ const ThreadTableControls = ({
 				</Col>
 				<Col xs="12" sm="6" xl="5">
 					<ThreadBulkUpdateControls
-						isArchive={false}
-						isQueue={false}
-						isAllThreads
+						isArchive={isArchivedView}
+						isQueue={isQueuedView}
+						isAllThreads={isAllThreadsView}
 						selectedThreadCount={selectedItems.length}
 						executeBulkAction={() => {}}
 						bulkToggleThreadsAreMarkedQueued={() => {}}
 						bulkToggleThreadsAreArchived={() => {}}
 						openBulkUntrackThreadsModal={() => {}}
+						selectedItems={selectedItems}
 					/>
 				</Col>
 				<Col
@@ -57,7 +64,10 @@ const ThreadTableControls = ({
 						offset: 0
 					}}
 				>
-					<ThreadRefreshButton isArchive={false} refreshThreads={refreshThreads} />
+					<ThreadRefreshButton
+						isArchive={isArchivedView}
+						refreshThreads={refreshThreads}
+					/>
 				</Col>
 			</Row>
 			<Row>

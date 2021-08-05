@@ -16,10 +16,25 @@ const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	getColumns: PropTypes.func.isRequired,
-	refreshThreads: PropTypes.func.isRequired
+	refreshThreads: PropTypes.func.isRequired,
+	isQueuedView: PropTypes.bool,
+	isArchivedView: PropTypes.bool,
+	isAllThreadsView: PropTypes.bool
 };
-
-const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshThreads }) => {
+const defaultProps = {
+	isQueuedView: false,
+	isArchivedView: false,
+	isAllThreadsView: false
+};
+const ThreadTableWrapper = ({
+	threadsWithStatus,
+	isLoading,
+	getColumns,
+	refreshThreads,
+	isQueuedView,
+	isArchivedView,
+	isAllThreadsView
+}) => {
 	const { data: userSettings } = useUserSettingsQuery();
 	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	const [filteredThreads, setFilteredThreads] = useState([]);
@@ -74,6 +89,10 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 		});
 	};
 
+	const onSelectedThreadsChange = (selectedThreads) => {
+		setSelectedItems(selectedThreads);
+	};
+
 	return (
 		<Style className="animated fadeIn threads-container">
 			<UntrackThreadModal
@@ -105,6 +124,9 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 						refreshThreads={refreshThreads}
 						selectedItems={selectedItems}
 						setFilteredTag={setFilteredTag}
+						isQueuedView={isQueuedView}
+						isArchivedView={isArchivedView}
+						isAllThreadsView={isAllThreadsView}
 					/>
 					<ThreadTable
 						characters={characters}
@@ -119,6 +141,7 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 						onQueueThreadClick={onQueueThreadClick}
 						threadTablePageSize={userSettings?.threadTablePageSize}
 						onThreadTablePageSizeChange={onThreadTablePageSizeChange}
+						onSelectedThreadsChange={onSelectedThreadsChange}
 					/>
 				</Col>
 			</Row>
@@ -126,4 +149,5 @@ const ThreadTableWrapper = ({ threadsWithStatus, isLoading, getColumns, refreshT
 	);
 };
 ThreadTableWrapper.propTypes = propTypes;
+ThreadTableWrapper.defaultProps = defaultProps;
 export default ThreadTableWrapper;

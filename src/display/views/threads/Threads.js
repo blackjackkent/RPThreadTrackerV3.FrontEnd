@@ -10,9 +10,15 @@ import ThreadTableWrapper from './components/ThreadTableWrapper';
 
 const propTypes = {
 	filter: PropTypes.func.isRequired,
-	getColumns: PropTypes.func.isRequired
+	getColumns: PropTypes.func.isRequired,
+	isQueuedView: PropTypes.bool,
+	isAllThreadsView: PropTypes.bool
 };
-const ActiveThreads = ({ filter, getColumns }) => {
+const defaultProps = {
+	isQueuedView: false,
+	isAllThreadsView: false
+};
+const ActiveThreads = ({ filter, getColumns, isQueuedView, isAllThreadsView }) => {
 	const { filteredThreads, isThreadsLoading, refreshThreads } = useFilteredActiveThreads(filter);
 	return (
 		<ThreadTableWrapper
@@ -20,13 +26,18 @@ const ActiveThreads = ({ filter, getColumns }) => {
 			isLoading={isThreadsLoading}
 			getColumns={getColumns}
 			refreshThreads={refreshThreads}
+			isQueuedView={isQueuedView}
+			isAllThreadsView={isAllThreadsView}
 		/>
 	);
 };
+ActiveThreads.defaultProps = defaultProps;
 ActiveThreads.propTypes = propTypes;
 
 export const AllThreads = () => {
-	return <ActiveThreads filter={filters.ALL} getColumns={getAllThreadsColumns} />;
+	return (
+		<ActiveThreads filter={filters.ALL} getColumns={getAllThreadsColumns} isAllThreadsView />
+	);
 };
 
 export const MyTurnThreads = () => {
@@ -38,7 +49,7 @@ export const TheirTurnThreads = () => {
 };
 
 export const QueuedThreads = () => {
-	return <ActiveThreads filter={filters.QUEUED} getColumns={getQueueColumns} />;
+	return <ActiveThreads filter={filters.QUEUED} getColumns={getQueueColumns} isQueuedView />;
 };
 
 export const ArchivedThreads = () => {
@@ -49,6 +60,7 @@ export const ArchivedThreads = () => {
 			isLoading={isThreadsLoading}
 			getColumns={getArchiveColumns}
 			refreshThreads={refreshThreads}
+			isArchivedView
 		/>
 	);
 };

@@ -1,9 +1,17 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, Table } from 'reactstrap';
-import { useExpanded, useFilters, usePagination, useSortBy, useTable } from 'react-table';
+import {
+	useExpanded,
+	useFilters,
+	usePagination,
+	useRowSelect,
+	useSortBy,
+	useTable
+} from 'react-table';
 import ThreadTableSubComponent from './ThreadTableSubComponent';
 import columns from '~/infrastructure/constants/columns';
+import IndeterminateCheckbox from './ThreadTableCheckbox';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -17,7 +25,8 @@ const propTypes = {
 	onArchiveThreadClick: PropTypes.func.isRequired,
 	onQueueThreadClick: PropTypes.func.isRequired,
 	threadTablePageSize: PropTypes.number.isRequired,
-	onThreadTablePageSizeChange: PropTypes.func.isRequired
+	onThreadTablePageSizeChange: PropTypes.func.isRequired,
+	onSelectedThreadsChange: PropTypes.func.isRequired
 };
 
 function formatDataForTable(filteredThreads) {
@@ -44,7 +53,8 @@ const ThreadTable = ({
 	onEditThreadClick,
 	onQueueThreadClick,
 	threadTablePageSize,
-	onThreadTablePageSizeChange
+	onThreadTablePageSizeChange,
+	onSelectedThreadsChange
 }) => {
 	const tableData = React.useMemo(() => formatDataForTable(filteredThreads), [filteredThreads]);
 	const getCellProps = (cell) => ({
@@ -81,7 +91,8 @@ const ThreadTable = ({
 		nextPage,
 		previousPage,
 		setPageSize,
-		state: { pageIndex, pageSize },
+		state: { pageIndex, pageSize, selectedRowIds },
+		selectedFlatRows,
 		visibleColumns
 	} = useTable(
 		{
@@ -109,11 +120,35 @@ const ThreadTable = ({
 		useFilters,
 		useSortBy,
 		useExpanded,
-		usePagination
+		usePagination,
+		useRowSelect,
+		(hooks) => {
+			hooks.visibleColumns.push((cols) => [
+				{
+					id: 'selection',
+					/* eslint-disable react/prop-types */
+					Header: ({ getToggleAllPageRowsSelectedProps }) => (
+						<div className="icon-column">
+							<IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
+						</div>
+					),
+					Cell: ({ row: checkboxRow }) => (
+						<div className="icon-column">
+							<IndeterminateCheckbox {...checkboxRow.getToggleRowSelectedProps()} />
+						</div>
+					)
+					/* eslint-enable react/prop-types */
+				},
+				...cols
+			]);
+		}
 	);
 	useEffect(() => {
 		setPageSize(threadTablePageSize);
 	}, [threadTablePageSize, setPageSize]);
+	useEffect(() => {
+		onSelectedThreadsChange(selectedFlatRows);
+	}, [onSelectedThreadsChange, selectedFlatRows]);
 	const renderRowSubComponent = React.useCallback(
 		({ row }) => {
 			return (
