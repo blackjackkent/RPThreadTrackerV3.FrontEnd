@@ -8,13 +8,16 @@ import ThreadRefreshButton from './ThreadRefreshButton';
 
 const propTypes = {
 	tags: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	filteredTag: PropTypes.string.isRequired,
+	filteredTag: PropTypes.string,
 	setFilteredTag: PropTypes.func.isRequired,
 	selectedItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	refreshThreads: PropTypes.func.isRequired,
 	isQueuedView: PropTypes.bool.isRequired,
 	isArchivedView: PropTypes.bool.isRequired,
 	isAllThreadsView: PropTypes.bool.isRequired
+};
+const defaultProps = {
+	filteredTag: null
 };
 
 const ThreadTableControls = ({
@@ -43,10 +46,6 @@ const ThreadTableControls = ({
 						isQueue={isQueuedView}
 						isAllThreads={isAllThreadsView}
 						selectedThreadCount={selectedItems.length}
-						executeBulkAction={() => {}}
-						bulkToggleThreadsAreMarkedQueued={() => {}}
-						bulkToggleThreadsAreArchived={() => {}}
-						openBulkUntrackThreadsModal={() => {}}
 						selectedItems={selectedItems}
 					/>
 				</Col>
@@ -85,4 +84,5 @@ const ThreadTableControls = ({
 	);
 };
 ThreadTableControls.propTypes = propTypes;
+ThreadTableControls.defaultProps = defaultProps;
 export default ThreadTableControls;
