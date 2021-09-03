@@ -16,8 +16,21 @@ function useUpdateThreadMutation() {
 			}
 		}
 	);
+	const bulkUpdateThreadsMutation = useMutation(
+		(threads) => {
+			return Promise.allSettled(
+				threads.map((t) => axios.put(`${API_BASE_URL}api/thread/${t.threadId}`, t))
+			);
+		},
+		{
+			onSettled: () => {
+				queryClient.invalidateQueries([queryKeys.THREADS]);
+			}
+		}
+	);
 	return {
 		updateThread: updateThreadMutation.mutateAsync,
+		bulkUpdateThreads: bulkUpdateThreadsMutation.mutateAsync,
 		...updateThreadMutation
 	};
 }

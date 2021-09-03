@@ -34,10 +34,6 @@ function useUntrackThreadMutation() {
 			}
 		}
 	);
-	const bulkUntrackThreads = (threads) => {
-		const requests = threads.map((t) => untrackThreadMutation.mutateAsync(t));
-		return Promise.allSettled(requests);
-	};
 	return {
 		untrackThread: untrackThreadMutation.mutateAsync,
 		bulkUntrackThreads: bulkUntrackThreadMutation.mutateAsync,

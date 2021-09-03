@@ -1,49 +1,57 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { Form, Button, InputGroup, Input } from 'reactstrap';
 import CleanSelect from '../../../shared/styled/CleanSelect';
 import BulkUntrackThreadsModal from '~/display/shared/modals/BulkUntrackThreadsModal';
+import { useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
 
 const propTypes = {
 	isArchive: PropTypes.bool.isRequired,
 	isQueue: PropTypes.bool.isRequired,
 	isAllThreads: PropTypes.bool.isRequired,
 	selectedThreadCount: PropTypes.number.isRequired,
-	selectedItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	executeBulkAction: PropTypes.func.isRequired,
-	bulkToggleThreadsAreMarkedQueued: PropTypes.func.isRequired,
-	bulkToggleThreadsAreArchived: PropTypes.func.isRequired
+	selectedItems: PropTypes.arrayOf(PropTypes.shape({})).isRequired
 };
 
 const ThreadBulkUpdateControls = (props) => {
-	const {
-		isArchive,
-		isQueue,
-		isAllThreads,
-		selectedThreadCount,
-		selectedItems,
-		executeBulkAction,
-		bulkToggleThreadsAreArchived,
-		bulkToggleThreadsAreMarkedQueued
-	} = props;
+	const { isArchive, isQueue, isAllThreads, selectedThreadCount, selectedItems } = props;
 	const [action, setAction] = useState('');
-	const [isBulkUntrackThreadsModalOpen, setIsBulkUntrackThreadsModalOpen] = useState(false);
-	const [threadObjects, setThreadObjects] = useState([]);
+
+	const [selectedThreadObjects, setSelectedThreadObjects] = useState([]);
 	useEffect(() => {
-		setThreadObjects(selectedItems.map((t) => t.original.thread));
+		setSelectedThreadObjects(selectedItems.map((t) => t.original.thread));
 	}, [selectedItems]);
 
-	const submitBulkAction = (e) => {
-		e.preventDefault();
-		if (action === 'toggle-queued') {
-			executeBulkAction(bulkToggleThreadsAreMarkedQueued);
-		}
-		if (action === 'toggle-archived') {
-			executeBulkAction(bulkToggleThreadsAreArchived);
-		}
-		if (action === 'untrack') {
-			setIsBulkUntrackThreadsModalOpen(true);
-		}
+	const [isBulkUntrackThreadsModalOpen, setIsBulkUntrackThreadsModalOpen] = useState(false);
+
+	const { bulkUpdateThreads } = useUpdateThreadMutation();
+	const submitUpdateThreads = (actedThreads) => {
+		bulkUpdateThreads(actedThreads)
+			.then(() => {
+				toast.success(`${actedThreads.length} threads updated!`);
+			})
+			.catch(() => {
+				toast.error(`There was an error updating one or more of the selected threads.`);
+			});
+	};
+
+	const bulkToggleThreadsAreMarkedQueued = () => {
+		const updatedThreads = selectedThreadObjects.map((t) => ({
+			...t,
+			dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now()),
+			isArchived: false
+		}));
+		bulkUpdateThreads(updatedThreads);
+	};
+
+	const bulkToggleThreadsAreArchived = () => {
+		const updatedThreads = selectedThreadObjects.map((t) => ({
+			...t,
+			isArchived: !t.isArchived,
+			dateMarkedQueued: null
+		}));
+		submitUpdateThreads(updatedThreads);
 	};
 
 	const handleInputChange = (event) => {
@@ -51,10 +59,24 @@ const ThreadBulkUpdateControls = (props) => {
 		const { value } = target;
 		setAction(value);
 	};
+
+	const submitBulkAction = (e) => {
+		e.preventDefault();
+		if (action === 'toggle-queued') {
+			bulkToggleThreadsAreMarkedQueued();
+		}
+		if (action === 'toggle-archived') {
+			bulkToggleThreadsAreArchived();
+		}
+		if (action === 'untrack') {
+			setIsBulkUntrackThreadsModalOpen(true);
+		}
+	};
+
 	return (
 		<div className="thread-bulk-update-controls">
 			<BulkUntrackThreadsModal
-				actedThreads={threadObjects}
+				actedThreads={selectedThreadObjects}
 				isModalOpen={isBulkUntrackThreadsModalOpen}
 				setIsModalOpen={setIsBulkUntrackThreadsModalOpen}
 			/>
