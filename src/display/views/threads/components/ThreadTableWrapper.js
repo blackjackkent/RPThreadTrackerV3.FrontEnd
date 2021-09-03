@@ -112,6 +112,7 @@ const ThreadTableWrapper = ({
 				setIsModalOpen={setIsArchiveThreadModalOpen}
 			/>
 			<QueueThreadModal
+				isQueueing={!isQueuedView}
 				actedThread={actedThread}
 				isModalOpen={isQueueThreadModalOpen}
 				setIsModalOpen={setIsQueueThreadModalOpen}
