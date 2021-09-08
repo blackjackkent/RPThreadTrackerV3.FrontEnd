@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 export default () => ({
 	Header: 'Status',
-	accessor: 'isOnHiatus',
-	Cell: (row) => (
-		<span className={row.value ? 'text-muted' : ''}>{row.value ? 'On Hiatus' : 'Active'}</span>
+	accessor: (row) => row.isOnHiatus,
+	Cell: ({ value }) => (
+		<span className={value ? 'text-muted' : ''}>{value ? 'On Hiatus' : 'Active'}</span>
 	)
 });

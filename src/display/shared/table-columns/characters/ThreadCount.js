@@ -1,12 +1,16 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 export default (threadCounts) => ({
 	id: 'threadCount',
 	Header: 'Thread Count',
-	accessor: (row) => threadCounts[row.characterId],
-	Cell: (row) => (
-		<span className={row.original.isOnHiatus ? 'text-muted' : ''}>
-			{row.value ? row.value : 0}
+	accessor: (row) => ({
+		threadCount: threadCounts[row.characterId],
+		isOnHiatus: row.isOnHiatus
+	}),
+	Cell: ({ value }) => (
+		<span className={value.isOnHiatus ? 'text-muted' : ''}>
+			{value.threadCount ? value.threadCount : 0}
 		</span>
 	),
 	width: 150

@@ -1,11 +1,15 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 
 export default () => ({
 	Header: 'Character Name',
-	accessor: 'characterName',
-	Cell: (row) => (
-		<span className={row.original.isOnHiatus ? 'text-muted' : ''}>
-			{row.value ? row.value : 'Unnamed Character'}
+	accessor: (row) => ({
+		characterName: row.characterName,
+		isOnHiatus: row.isOnHiatus
+	}),
+	Cell: ({ value }) => (
+		<span className={value.isOnHiatus ? 'text-muted' : ''}>
+			{value.characterName ? value.characterName : 'Unnamed Character'}
 		</span>
 	)
 });

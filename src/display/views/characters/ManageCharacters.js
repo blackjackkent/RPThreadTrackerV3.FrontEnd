@@ -106,12 +106,11 @@ const ManageCharacters = () => {
 						}
 					/>
 					<CurrentCharacterTable
-						data-spec="manage-characters-current-character-table"
 						characters={characters}
-						openUpsertCharacterModal={openUpsertCharacterModal}
-						toggleCharacterIsOnHiatus={toggleCharacterIsOnHiatus}
-						openUntrackCharacterModal={openUntrackCharacterModal}
-						isLoadingIconVisible={isCharactersLoading}
+						isLoading={isCharactersLoading}
+						onUntrackCharacterClick={openUntrackCharacterModal}
+						onEditCharacterClick={openUpsertCharacterModal}
+						onToggleHiatusClick={toggleCharacterIsOnHiatus}
 						threadCounts={threadCounts}
 					/>
 				</Col>

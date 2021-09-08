@@ -1,10 +1,14 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import platforms from '../../../../infrastructure/constants/platforms';
 
 export default () => ({
 	Header: 'Platform',
-	accessor: 'platformId',
-	Cell: (row) => (
-		<span className={row.original.isOnHiatus ? 'text-muted' : ''}>{platforms[row.value]}</span>
+	accessor: (row) => ({
+		platformId: row.platformId,
+		isOnHiatus: row.isOnHiatus
+	}),
+	Cell: ({ value }) => (
+		<span className={value.isOnHiatus ? 'text-muted' : ''}>{platforms[value.platformId]}</span>
 	)
 });
