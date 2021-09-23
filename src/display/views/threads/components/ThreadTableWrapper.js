@@ -39,7 +39,7 @@ const ThreadTableWrapper = ({
 	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	const [filteredThreads, setFilteredThreads] = useState([]);
 	const [selectedItems, setSelectedItems] = useState([]);
-	const [filteredTag, setFilteredTag] = useState(undefined);
+	const [filteredTag, setFilteredTag] = useState('');
 	const [actedThread, setActedThread] = useState(null);
 
 	const [isUntrackThreadModalOpen, setIsUntrackThreadModalOpen] = useState(false);

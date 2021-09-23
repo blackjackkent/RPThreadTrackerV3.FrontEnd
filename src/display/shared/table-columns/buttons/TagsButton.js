@@ -4,7 +4,6 @@ import columns from '~/infrastructure/constants/columns';
 
 export default () => ({
 	id: columns.EXPANDER.key,
-	expander: true,
 	/* eslint-disable react/jsx-props-no-spreading, react/prop-types */
 	Cell: ({ row }) => (
 		<div {...row.getToggleRowExpandedProps()} className="icon-column">

@@ -6,5 +6,8 @@ export default () => ({
 	accessor: (row) => row.isOnHiatus,
 	Cell: ({ value }) => (
 		<span className={value ? 'text-muted' : ''}>{value ? 'On Hiatus' : 'Active'}</span>
-	)
+	),
+	sortType: (rowA, rowB) => {
+		return rowA.original.isOnHiatus - rowB.original.isOnHiatus;
+	}
 });

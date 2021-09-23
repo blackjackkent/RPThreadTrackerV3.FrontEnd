@@ -6,15 +6,21 @@ import columns from '~/infrastructure/constants/columns';
 import getColumns from './_columns';
 
 const propTypes = {
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})),
 	threadCounts: PropTypes.shape({}).isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	onUntrackCharacterClick: PropTypes.func.isRequired,
 	onToggleHiatusClick: PropTypes.func.isRequired,
 	onEditCharacterClick: PropTypes.func.isRequired
 };
+const defaultProps = {
+	characters: []
+};
 
 function formatDataForTable(characters) {
+	if (!characters) {
+		return [];
+	}
 	const data = characters?.map((item) => {
 		// eslint-disable-next-line no-underscore-dangle
 		const _id = item.characterId;
@@ -77,8 +83,8 @@ const CurrentCharacterTable = ({
 				sortBy: React.useMemo(
 					() => [
 						{
-							id: 'characterName',
-							desc: true
+							id: 'Status',
+							desc: false
 						}
 					],
 					[]
@@ -178,18 +184,6 @@ const CurrentCharacterTable = ({
 							})}
 						</tr>
 					))}
-					{headerGroups.map((headerGroup) => (
-						<tr
-							className="tracker-table-filters"
-							{...headerGroup.getHeaderGroupProps()}
-						>
-							{headerGroup.headers.map((column) => (
-								<th key={column.id}>
-									<div>{column.canFilter ? column.render('Filter') : null}</div>
-								</th>
-							))}
-						</tr>
-					))}
 				</thead>
 				<tbody className="tracker-table-body" {...getTableBodyProps()}>
 					{page.map((row) => {
@@ -214,4 +208,5 @@ const CurrentCharacterTable = ({
 	);
 };
 CurrentCharacterTable.propTypes = propTypes;
+CurrentCharacterTable.defaultProps = defaultProps;
 export default CurrentCharacterTable;

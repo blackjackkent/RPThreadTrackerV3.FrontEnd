@@ -16,7 +16,7 @@ export function useThreadsQuery(isArchived = false) {
 			return Promise.resolve(res.data);
 		});
 	});
-	const { data: threadData, isLoading: isThreadsLoading, refetch } = threadsQuery;
+	const { data: threadData, isLoading: isThreadsLoading } = threadsQuery;
 	useEffect(() => {
 		if (!threadData?.threads?.length) {
 			return;

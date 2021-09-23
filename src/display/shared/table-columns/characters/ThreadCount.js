@@ -12,6 +12,5 @@ export default (threadCounts) => ({
 		<span className={value.isOnHiatus ? 'text-muted' : ''}>
 			{value.threadCount ? value.threadCount : 0}
 		</span>
-	),
-	width: 150
+	)
 });
