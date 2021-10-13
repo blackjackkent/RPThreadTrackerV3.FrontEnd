@@ -12,5 +12,10 @@ export default (threadCounts) => ({
 		<span className={value.isOnHiatus ? 'text-muted' : ''}>
 			{value.threadCount ? value.threadCount : 0}
 		</span>
-	)
+	),
+	sortType: (rowA, rowB) => {
+		const a = threadCounts[rowA.original.characterId] ?? 0;
+		const b = threadCounts[rowB.original.characterId] ?? 0;
+		return a - b;
+	}
 });
