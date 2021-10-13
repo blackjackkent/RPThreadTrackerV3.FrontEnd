@@ -9,11 +9,10 @@ import LoginForm from './components/LoginForm';
 function Login() {
 	const [state, onInputChange] = useFormReducer();
 	const { submitLogin, reset, isLoading, isError, isSuccess, error } = useLoginMutation();
-	const onSubmit = () => {
+	const onSubmit = async () => {
 		reset();
 		submitLogin({ username: state.username, password: state.password });
 	};
-
 	if (isSuccess) {
 		return (
 			<div>

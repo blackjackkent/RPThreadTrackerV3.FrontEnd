@@ -2,7 +2,7 @@
 import React from 'react';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
-import { screen, waitFor } from '@testing-library/react';
+import { screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Login from '../Login';
 import { render } from '~/testhelpers/helpers.integration';
@@ -10,12 +10,12 @@ import cache from '~/infrastructure/cache';
 // #endregion imports
 
 jest.mock('~/utility', () => ({}));
-jest.mock('~/infrastructure/cache', () => ({
-	set: jest.fn()
-}));
 jest.mock('react-router-dom', () => ({
 	...jest.requireActual('react-router-dom'), // import and retain the original functionalities
 	Redirect: (data) => `Redirect to ${data.to}`
+}));
+jest.mock('~/infrastructure/cache', () => ({
+	set: jest.fn()
 }));
 const server = setupServer(
 	rest.post(`${API_BASE_URL}api/auth/token`, (req, res, ctx) => {
@@ -34,8 +34,9 @@ const server = setupServer(
 	})
 );
 beforeAll(() => server.listen());
-afterEach(() => {
+beforeEach(() => {
 	server.resetHandlers();
+	jest.clearAllMocks();
 });
 afterAll(() => {
 	server.close();
@@ -48,66 +49,36 @@ describe('rendering', () => {
 			const usernameInput = screen.getByLabelText('Username');
 			userEvent.type(usernameInput, 'aa');
 			userEvent.tab();
-			await waitFor(() => {
-				expect(
-					screen.getByText('Your username must be more than 3 characters.')
-				).toBeInTheDocument();
-			});
+			const errorMessage = await screen.findByText(
+				'Your username must be more than 3 characters.'
+			);
 			userEvent.clear(usernameInput);
 			userEvent.type(usernameInput, 'aaa');
-			await waitFor(() => {
-				expect(
-					screen.queryByText('Your username must be more than 3 characters.')
-				).not.toBeInTheDocument();
-			});
+			await waitForElementToBeRemoved(errorMessage);
 		});
 		it('should render error message when username is empty', async () => {
 			render(<Login />);
 			const usernameInput = screen.getByLabelText('Username');
 			userEvent.type(usernameInput, '');
 			userEvent.tab();
-			await waitFor(() => {
-				expect(screen.getByText('You must enter a username.')).toBeInTheDocument();
-			});
+			const errorMessage = await screen.findByText('You must enter a username.');
 			userEvent.clear(usernameInput);
 			userEvent.type(usernameInput, 'aaa');
-			await waitFor(() => {
-				expect(screen.queryByText('You must enter a username.')).not.toBeInTheDocument();
-			});
+			await waitForElementToBeRemoved(errorMessage);
 		});
 		it('should render error message when password is empty', async () => {
 			render(<Login />);
 			const passwordInput = screen.getByLabelText('Password');
 			userEvent.type(passwordInput, '');
 			userEvent.tab();
-			await waitFor(() => {
-				expect(screen.getByText('You must enter a password.')).toBeInTheDocument();
-			});
+			const errorMessage = await screen.findByText('You must enter a password.');
 			userEvent.clear(passwordInput);
 			userEvent.type(passwordInput, 'aaa');
-			await waitFor(() => {
-				expect(screen.queryByText('You must enter a password.')).not.toBeInTheDocument();
-			});
+			await waitForElementToBeRemoved(errorMessage);
 		});
 	});
-	describe('loading', () => {
-		it.only('should render loading indicator when request is in progress', async () => {
-			render(<Login />);
-			const loadingIndicator = screen.queryByRole('progressbar');
-			expect(loadingIndicator).toBeNull();
-			const usernameInput = screen.getByLabelText('Username');
-			const passwordInput = screen.getByLabelText('Password');
-			const submitInput = screen.getByRole('button', { name: 'Login' });
-			userEvent.type(usernameInput, 'testUsername');
-			userEvent.type(passwordInput, 'testPassword');
-			userEvent.click(submitInput);
-			await waitFor(() => {
-				expect(screen.getByRole('progressbar')).toBeInTheDocument();
-			});
-		});
-	});
-	describe('success', () => {
-		it.only('should init navigation when request is successful', async () => {
+	describe('submission', () => {
+		it('should init navigation when request is successful', async () => {
 			render(<Login />);
 			const usernameInput = screen.getByLabelText('Username');
 			const passwordInput = screen.getByLabelText('Password');
@@ -115,16 +86,14 @@ describe('rendering', () => {
 			userEvent.type(usernameInput, 'testUsername');
 			userEvent.type(passwordInput, 'testPassword');
 			userEvent.click(submitInput);
-			await waitFor(() => {
-				expect(screen.getByText('Redirect to /dashboard')).toBeInTheDocument();
-				expect(cache.set).toBeCalledTimes(2);
-				expect(cache.set).toBeCalledWith('accessToken', 'test-token');
-				expect(cache.set).toBeCalledWith('refreshToken', 'test-refresh-token');
-			});
+			const loadingBar = await screen.findByRole('progressbar');
+			await waitForElementToBeRemoved(loadingBar);
+			await screen.findByText('Redirect to /dashboard');
+			expect(cache.set).toBeCalledTimes(2);
+			expect(cache.set).toBeCalledWith('accessToken', 'test-token');
+			expect(cache.set).toBeCalledWith('refreshToken', 'test-refresh-token');
 		});
-	});
-	describe('error', () => {
-		it.only('should hide loading indicator and render error message when request fails', async () => {
+		it('should hide loading indicator and render error message when request fails', async () => {
 			server.use(
 				rest.post(`${API_BASE_URL}api/auth/token`, (req, res, ctx) => {
 					return res(ctx.status(400), ctx.json('Invalid username or password.'));
@@ -137,11 +106,9 @@ describe('rendering', () => {
 			userEvent.type(usernameInput, 'testUsername');
 			userEvent.type(passwordInput, 'testPassword');
 			userEvent.click(submitInput);
-			await waitFor(() => {
-				const loadingIndicator = screen.queryByRole('progressbar');
-				expect(loadingIndicator).toBeNull();
-				expect(screen.getByText('Invalid username or password.')).toBeInTheDocument();
-			});
+			const loadingBar = await screen.findByRole('progressbar');
+			await waitForElementToBeRemoved(loadingBar);
+			await screen.findByText('Invalid username or password.');
 		});
 	});
 });

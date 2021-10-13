@@ -7,9 +7,9 @@ function useLoginMutation() {
 	const queryClient = useQueryClient();
 	const loginMutation = useMutation(
 		(request) => {
-			return axios
-				.post(`${API_BASE_URL}api/auth/token`, request)
-				.then((res) => Promise.resolve(res.data));
+			return axios.post(`${API_BASE_URL}api/auth/token`, request).then((res) => {
+				return Promise.resolve(res.data);
+			});
 		},
 		{
 			onSuccess: (data) => {
@@ -21,7 +21,7 @@ function useLoginMutation() {
 		}
 	);
 	return {
-		submitLogin: loginMutation.mutateAsync,
+		submitLogin: loginMutation.mutate,
 		...loginMutation
 	};
 }

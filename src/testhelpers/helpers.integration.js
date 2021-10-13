@@ -1,16 +1,23 @@
 import React from 'react';
-import { QueryClient, QueryClientProvider, setLogger } from 'react-query';
+import { QueryClient, QueryClientProvider } from 'react-query';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { render } from '@testing-library/react';
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
 
 const renderWrapper = (children) => {
-	setLogger({
-		log: () => {},
-		warn: () => {},
-		error: () => {}
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				retry: 0,
+				retryDelay: 1
+			},
+			mutations: {
+				retry: 0,
+				retryDelay: 1
+			}
+		}
 	});
-	const queryClient = new QueryClient();
 	const history = createMemoryHistory();
 	const wrapper = (
 		<Router initialEntries={['/']} history={history}>
@@ -20,4 +27,5 @@ const renderWrapper = (children) => {
 	return { element: render(wrapper), history };
 };
 
+// eslint-disable-next-line import/prefer-default-export
 export { renderWrapper as render };

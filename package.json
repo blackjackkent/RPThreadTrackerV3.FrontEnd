@@ -35,10 +35,12 @@
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-import-resolver-webpack": "^0.13.0",
 		"eslint-plugin-import": "^2.22.1",
+		"eslint-plugin-jest-dom": "^3.9.2",
 		"eslint-plugin-jsx-a11y": "^6.4.1",
 		"eslint-plugin-prettier": "^3.3.1",
 		"eslint-plugin-react": "^7.21.5",
 		"eslint-plugin-react-hooks": "^1.7.0",
+		"eslint-plugin-testing-library": "^4.12.4",
 		"eslint-watch": "^7.0.0",
 		"file-loader": "^2.0.0",
 		"html-loader": "^0.5.5",
@@ -49,7 +51,7 @@
 		"jest-when": "^2.3.1",
 		"mini-css-extract-plugin": "^0.4.5",
 		"mkdirp": "^0.5.1",
-		"msw": "^0.25.0",
+		"msw": "^0.35.0",
 		"node-sass": "^4.14.1",
 		"prettier": "^2.0.2",
 		"redux-saga-test-plan": "^3.7.0",
@@ -90,7 +92,7 @@
 		"react-ga": "^2.5.6",
 		"react-moment": "^0.8.4",
 		"react-multivalue-text-input": "^0.6.2",
-		"react-query": "^3.12.0",
+		"react-query": "^3.26.0",
 		"react-redux": "^5.1.1",
 		"react-redux-toastr": "^7.4.3",
 		"react-router-dom": "^5.2.0",
@@ -122,7 +124,7 @@
 		"test": "jest",
 		"test:watch": "jest --watch --coverage",
 		"test:coverage": "jest --coverage",
-		"test:ci": "npm run lint && jest --config=\"./config/tests/jest.config.json\"",
+		"test:ci": "npm run lint && npm run test",
 		"diffquery": "git diff --stat development...react-query-migration ':(exclude)*package-lock.json'"
 	},
 	"engines": {
@@ -139,30 +141,6 @@
 		},
 		"setupFilesAfterEnv": [
 			"<rootDir>/config/tests/setup.js"
-		],
-		"testPathIgnorePatterns": [
-			"/node_modules/",
-			"/e2e/"
-		],
-		"coveragePathIgnorePatterns": [
-			"/node_modules/",
-			"/config/",
-			"/src/index",
-			"/src/infrastructure/reducers/index",
-			"/src/infrastructure/getStore",
-			"/src/infrastructure/icons",
-			"/src/infrastructure/initSagas",
-			"/src/infrastructure/network",
-			"/src/utility/getQuery",
-			"/src/utility/history",
-			"/src/testhelpers/",
-			"/e2e/"
-		],
-		"testURL": "http://localhost/",
-		"coverageReporters": [
-			"json",
-			"html",
-			"text"
 		]
 	},
 	"browserslist": [
