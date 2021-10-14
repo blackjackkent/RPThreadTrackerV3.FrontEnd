@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 import TabContent from '../../shared/styled/TabContent';
 import StaticTabNav from '../../shared/static/StaticTabNav';
 import StaticDropdownNav from '../../shared/static/StaticDropdownNav';
 import Style from './_styles';
-import {
-	getIsLoadingIconVisible,
-	getIsManageTagsLoadingIconVisible
-} from '../../../infrastructure/selectors';
 import ManagePublicViewsPane from './components/ManagePublicViewsPane';
 import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import ExportThreadsPane from './components/ExportThreadsPane';

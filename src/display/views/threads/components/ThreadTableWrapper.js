@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import Style from '../_styles';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
-import useThreadFilterData from '~/infrastructure/hooks/derived-data/useThreadFilterData';
 import ThreadTable from './ThreadTable';
 import ThreadTableControls from './ThreadTableControls';
 import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
@@ -11,6 +10,12 @@ import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
 import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
 import QueueThreadModal from '~/display/shared/modals/QueueThreadModal';
 import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
+import {
+	useThreadListCharacters,
+	useThreadListLastPosters,
+	useThreadListPartners,
+	useThreadListTags
+} from '~/infrastructure/hooks/derived-data';
 
 const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -47,7 +52,10 @@ const ThreadTableWrapper = ({
 	const [isArchiveThreadModalOpen, setIsArchiveThreadModalOpen] = useState(false);
 	const [isQueueThreadModalOpen, setIsQueueThreadModalOpen] = useState(false);
 
-	const { tags, characters, partners, lastPosters } = useThreadFilterData(threadsWithStatus);
+	const tags = useThreadListTags(threadsWithStatus);
+	const characters = useThreadListCharacters(threadsWithStatus);
+	const partners = useThreadListPartners(threadsWithStatus);
+	const lastPosters = useThreadListLastPosters(threadsWithStatus);
 
 	useEffect(() => {
 		let threads = [].concat(threadsWithStatus);

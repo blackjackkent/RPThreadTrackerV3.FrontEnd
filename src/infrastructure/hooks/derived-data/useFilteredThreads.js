@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useQueryClient } from 'react-query';
 import filters from '~/infrastructure/constants/filters';
-import queryKeys from '~/infrastructure/constants/queryKeys';
 import { useActiveThreadsContext } from '../contexts';
 import { useArchivedThreadsQuery } from '../queries';
 
