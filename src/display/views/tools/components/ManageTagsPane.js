@@ -1,19 +1,32 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, CardHeader, CardBody, Label } from 'reactstrap';
 import Autosuggest from 'react-autosuggest';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../shared/styled/Card';
 import LoadingIndicator from '../../../shared/loading/LoadingIndicator';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+	useArchivedThreads,
+	useFilteredActiveThreads,
+	useThreadListTags
+} from '~/infrastructure/hooks/derived-data';
+import filters from '~/infrastructure/constants/filters';
 
 const propTypes = {
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
 	isLoadingIconVisible: PropTypes.bool.isRequired,
 	openBulkUpdateTagModal: PropTypes.func.isRequired,
 	openBulkDeleteTagModal: PropTypes.func.isRequired
 };
 
 const ManageTagsPane = (props) => {
+	const { filteredThreads: allActiveThreads } = useFilteredActiveThreads(filters.ALL);
+	const { filteredThreads: allArchivedThreads } = useArchivedThreads();
+	const allThreads = useMemo(() => allActiveThreads.concat(allArchivedThreads), [
+		allActiveThreads,
+		allArchivedThreads
+	]);
+	const tags = useThreadListTags(allThreads);
+	const tagTextValues = useMemo(() => tags.map((t) => t.tagText), [tags]);
 	const [autosuggestValue, setAutosuggestValue] = useState('');
 	const [selectedValue, setSelectedValue] = useState(null);
 	const [updatedValue, setUpdatedValue] = useState('');
@@ -27,14 +40,13 @@ const ManageTagsPane = (props) => {
 	};
 
 	const onSuggestionsFetchRequested = ({ value }) => {
-		const { tags } = props;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
 		let filteredSuggestions = [];
 		if (inputLength === 0) {
-			filteredSuggestions = tags.sort();
+			filteredSuggestions = tagTextValues.sort();
 		} else {
-			filteredSuggestions = tags
+			filteredSuggestions = tagTextValues
 				.filter((tag) => tag.toLowerCase().includes(inputValue))
 				.sort();
 		}
