@@ -42,7 +42,6 @@ const defaultProps = {
 const Tools = ({
 	publicViews,
 	isLoadingIconVisible,
-	isManageTagsLoadingIconVisible,
 	openUpsertPublicViewModal,
 	openDeletePublicViewModal,
 	openBulkUpdateTagModal,
@@ -112,7 +111,6 @@ const Tools = ({
 						<BrowserExtensionsPane />
 						<ManageTagsPane
 							tags={tags}
-							isLoadingIconVisible={isManageTagsLoadingIconVisible}
 							openBulkUpdateTagModal={openBulkUpdateTagModal}
 							openBulkDeleteTagModal={openBulkDeleteTagModal}
 						/>

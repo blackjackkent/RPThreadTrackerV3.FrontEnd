@@ -11,27 +11,34 @@ import {
 	useThreadListTags
 } from '~/infrastructure/hooks/derived-data';
 import filters from '~/infrastructure/constants/filters';
+import BulkUpdateTagModal from '~/display/shared/modals/BulkUpdateTagModal';
 
 const propTypes = {
-	isLoadingIconVisible: PropTypes.bool.isRequired,
 	openBulkUpdateTagModal: PropTypes.func.isRequired,
 	openBulkDeleteTagModal: PropTypes.func.isRequired
 };
 
-const ManageTagsPane = (props) => {
-	const { filteredThreads: allActiveThreads } = useFilteredActiveThreads(filters.ALL);
-	const { filteredThreads: allArchivedThreads } = useArchivedThreads();
+const ManageTagsPane = () => {
+	const {
+		filteredThreads: allActiveThreads,
+		isThreadsLoading: isActiveThreadsLoading
+	} = useFilteredActiveThreads(filters.ALL);
+	const {
+		filteredThreads: allArchivedThreads,
+		isThreadsLoading: isArchivedThreadsLoading
+	} = useArchivedThreads();
 	const allThreads = useMemo(() => allActiveThreads.concat(allArchivedThreads), [
 		allActiveThreads,
 		allArchivedThreads
 	]);
+	const isLoading = isActiveThreadsLoading || isArchivedThreadsLoading;
 	const tags = useThreadListTags(allThreads);
 	const tagTextValues = useMemo(() => tags.map((t) => t.tagText), [tags]);
 	const [autosuggestValue, setAutosuggestValue] = useState('');
+	const [suggestions, setSuggestions] = useState([]);
 	const [selectedValue, setSelectedValue] = useState(null);
 	const [updatedValue, setUpdatedValue] = useState('');
-	const [suggestions, setSuggestions] = useState([]);
-	const { isLoadingIconVisible } = props;
+	const [isBulkUpdateTagModalOpen, setIsBulkUpdateTagModalOpen] = useState(false);
 
 	const autosuggestItem = (suggestion) => <div>{suggestion}</div>;
 	const getSuggestionValue = (suggestion) => suggestion;
@@ -62,6 +69,7 @@ const ManageTagsPane = (props) => {
 	};
 
 	const onNewTagValueChange = (event) => {
+		console.log(event.target.value);
 		setUpdatedValue(event.target.value);
 	};
 
@@ -69,9 +77,7 @@ const ManageTagsPane = (props) => {
 		setSelectedValue(null);
 	};
 
-	const bulkUpdateTag = () => {
-		const { openBulkUpdateTagModal } = props;
-		openBulkUpdateTagModal(selectedValue, updatedValue);
+	const onBulkUpdateTagComplete = () => {
 		setSelectedValue(null);
 		setAutosuggestValue('');
 		setUpdatedValue('');
@@ -93,6 +99,13 @@ const ManageTagsPane = (props) => {
 	};
 	return (
 		<TabPane tabId="tags" className="manage-tags-pane">
+			<BulkUpdateTagModal
+				currentTag={selectedValue}
+				replacementTag={updatedValue}
+				isModalOpen={isBulkUpdateTagModalOpen}
+				setIsModalOpen={setIsBulkUpdateTagModalOpen}
+				onComplete={onBulkUpdateTagComplete}
+			/>
 			<Card>
 				<CardHeader>
 					<FontAwesomeIcon icon={['fas', 'eye']} /> Manage Tags
@@ -107,8 +120,8 @@ const ManageTagsPane = (props) => {
 							</p>
 						</Col>
 					</Row>
-					{isLoadingIconVisible && <LoadingIndicator />}
-					{!isLoadingIconVisible && !selectedValue && (
+					{isLoading && <LoadingIndicator />}
+					{!isLoading && !selectedValue && (
 						<Row className="form-group" data-spec="manage-tags-autosuggest-section">
 							<Col>
 								<Autosuggest
@@ -126,7 +139,7 @@ const ManageTagsPane = (props) => {
 							</Col>
 						</Row>
 					)}
-					{!isLoadingIconVisible && selectedValue && (
+					{!isLoading && selectedValue && (
 						<div data-spec="manage-tags-form-section">
 							<Row>
 								<Col>
@@ -158,7 +171,7 @@ const ManageTagsPane = (props) => {
 										/>
 										<Button
 											color="primary"
-											onClick={bulkUpdateTag}
+											onClick={setIsBulkUpdateTagModalOpen}
 											disabled={!updatedValue}
 											data-spec="manage-tags-update-button"
 										>
