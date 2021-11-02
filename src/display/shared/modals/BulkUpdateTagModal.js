@@ -40,7 +40,7 @@ const BulkUpdateTagModal = ({
 			submitButtonText="Update"
 			closeButtonText="Cancel"
 			isLoading={isLoading}
-			headerText="Confirm Thread Untracking"
+			headerText="Confirm Tag Bulk Update"
 			bodyText={
 				<span>
 					Are you sure you want to update the tag <strong>{currentTag}</strong> to{' '}

@@ -1,5 +1,4 @@
 import React, { useMemo, useState } from 'react';
-import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, CardHeader, CardBody, Label } from 'reactstrap';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,11 +11,7 @@ import {
 } from '~/infrastructure/hooks/derived-data';
 import filters from '~/infrastructure/constants/filters';
 import BulkUpdateTagModal from '~/display/shared/modals/BulkUpdateTagModal';
-
-const propTypes = {
-	openBulkUpdateTagModal: PropTypes.func.isRequired,
-	openBulkDeleteTagModal: PropTypes.func.isRequired
-};
+import BulkDeleteTagModal from '~/display/shared/modals/BulkDeleteTagModal';
 
 const ManageTagsPane = () => {
 	const {
@@ -39,6 +34,7 @@ const ManageTagsPane = () => {
 	const [selectedValue, setSelectedValue] = useState(null);
 	const [updatedValue, setUpdatedValue] = useState('');
 	const [isBulkUpdateTagModalOpen, setIsBulkUpdateTagModalOpen] = useState(false);
+	const [isBulkDeleteTagModalOpen, setIsBulkDeleteTagModalOpen] = useState(false);
 
 	const autosuggestItem = (suggestion) => <div>{suggestion}</div>;
 	const getSuggestionValue = (suggestion) => suggestion;
@@ -69,7 +65,6 @@ const ManageTagsPane = () => {
 	};
 
 	const onNewTagValueChange = (event) => {
-		console.log(event.target.value);
 		setUpdatedValue(event.target.value);
 	};
 
@@ -77,15 +72,7 @@ const ManageTagsPane = () => {
 		setSelectedValue(null);
 	};
 
-	const onBulkUpdateTagComplete = () => {
-		setSelectedValue(null);
-		setAutosuggestValue('');
-		setUpdatedValue('');
-	};
-
-	const bulkDeleteTag = () => {
-		const { openBulkDeleteTagModal } = props;
-		openBulkDeleteTagModal(selectedValue);
+	const onOperationComplete = () => {
 		setSelectedValue(null);
 		setAutosuggestValue('');
 		setUpdatedValue('');
@@ -104,7 +91,13 @@ const ManageTagsPane = () => {
 				replacementTag={updatedValue}
 				isModalOpen={isBulkUpdateTagModalOpen}
 				setIsModalOpen={setIsBulkUpdateTagModalOpen}
-				onComplete={onBulkUpdateTagComplete}
+				onComplete={onOperationComplete}
+			/>
+			<BulkDeleteTagModal
+				tag={selectedValue}
+				isModalOpen={isBulkDeleteTagModalOpen}
+				setIsModalOpen={setIsBulkDeleteTagModalOpen}
+				onComplete={onOperationComplete}
 			/>
 			<Card>
 				<CardHeader>
@@ -171,7 +164,7 @@ const ManageTagsPane = () => {
 										/>
 										<Button
 											color="primary"
-											onClick={setIsBulkUpdateTagModalOpen}
+											onClick={() => setIsBulkUpdateTagModalOpen(true)}
 											disabled={!updatedValue}
 											data-spec="manage-tags-update-button"
 										>
@@ -186,7 +179,7 @@ const ManageTagsPane = () => {
 									<form className="d-flex justify-content-center form-inline">
 										<Button
 											color="danger"
-											onClick={bulkDeleteTag}
+											onClick={() => setIsBulkDeleteTagModalOpen(true)}
 											data-spec="manage-tags-delete-button"
 										>
 											<FontAwesomeIcon icon={['fas', 'trash-alt']} /> Bulk
@@ -201,7 +194,7 @@ const ManageTagsPane = () => {
 										<button
 											type="button"
 											className="back-button"
-											onClick={clearSelectedTag}
+											onClick={onOperationComplete}
 											data-spec="manage-tags-back-button"
 										>
 											<FontAwesomeIcon icon={['fas', 'arrow-left']} /> Select
@@ -217,5 +210,4 @@ const ManageTagsPane = () => {
 		</TabPane>
 	);
 };
-ManageTagsPane.propTypes = propTypes;
 export default ManageTagsPane;

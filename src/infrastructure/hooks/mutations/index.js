@@ -17,6 +17,7 @@ export { default as useUpdateThreadMutation } from './threads/useUpdateThreadMut
 export { default as useUntrackThreadMutation } from './threads/useUntrackThreadMutation';
 export { default as useThreadsStatusMutation } from './threads/useThreadsStatusMutation';
 export { default as useUpdateTagMutation } from './threads/useUpdateTagMutation';
+export { default as useDeleteTagMutation } from './threads/useDeleteTagMutation';
 
 // Characters
 export { default as useCreateCharacterMutation } from './characters/useCreateCharacterMutation';

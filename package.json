@@ -112,7 +112,7 @@
 		"webpack-dev-server": "^3.11.0"
 	},
 	"scripts": {
-		"start": "webpack-dev-server --history-api-fallback --config webpack.dev.js",
+		"start": "set NODE_OPTIONS=--openssl-legacy-provider && webpack-dev-server --history-api-fallback --config webpack.dev.js",
 		"start:docker": "npm run start --host 0.0.0.0",
 		"build": "npm run clean && webpack --config webpack.prod.js",
 		"build:staging": "npm run clean && webpack --config webpack.staging.js",
