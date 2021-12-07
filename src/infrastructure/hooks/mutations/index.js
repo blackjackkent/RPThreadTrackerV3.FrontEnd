@@ -13,6 +13,7 @@ export { default as useUpdateAccountInfoMutation } from './user/useUpdateAccount
 
 // Threads
 export { default as useCreateThreadMutation } from './threads/useCreateThreadMutation';
+export { default as useGenerateExportedThreadsDocumentMutation } from './threads/useGenerateExportedThreadsDocumentMutation';
 export { default as useUpdateThreadMutation } from './threads/useUpdateThreadMutation';
 export { default as useUntrackThreadMutation } from './threads/useUntrackThreadMutation';
 export { default as useThreadsStatusMutation } from './threads/useThreadsStatusMutation';

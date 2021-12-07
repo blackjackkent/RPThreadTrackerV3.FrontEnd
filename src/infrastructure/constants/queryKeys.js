@@ -4,5 +4,6 @@ export default {
 	USER_SETTINGS: 'user-settings',
 	THREADS: 'threads',
 	THREADS_STATUS: 'threads-status',
-	NEWS: 'news'
+	NEWS: 'news',
+	EXPORT: 'export'
 };

@@ -135,7 +135,7 @@ const Layout = () => {
 											name="Tools"
 											component={Tools}
 										/>
-										<Redirect from="/tools" to="/tools/tags" />
+										<Redirect from="/tools" to="/tools/export" />
 
 										<Route
 											path="/settings/:tabId"

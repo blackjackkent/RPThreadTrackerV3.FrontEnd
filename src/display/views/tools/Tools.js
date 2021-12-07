@@ -10,6 +10,7 @@ import BrowserExtensionsPane from './components/BrowserExtensionsPane';
 import ExportThreadsPane from './components/ExportThreadsPane';
 import ManageTagsPane from './components/ManageTagsPane';
 import tabs from '../../../infrastructure/constants/tabs';
+import { useGenerateExportedThreadsDocumentMutation } from '~/infrastructure/hooks/mutations';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -50,6 +51,8 @@ const Tools = ({
 	match,
 	tags
 }) => {
+	const { generateDocument } = useGenerateExportedThreadsDocumentMutation();
+
 	// componentDidMount() {
 	// 	const {
 	// 		tags,
@@ -76,10 +79,7 @@ const Tools = ({
 	// }
 
 	const onExportRequest = (includeHiatused, includeArchive) => {
-		// exportThreads({
-		// 	includeHiatused,
-		// 	includeArchive
-		// });
+		generateDocument({ includeHiatused, includeArchive });
 	};
 
 	const options = Object.values(tabs.TOOLS);
@@ -100,7 +100,8 @@ const Tools = ({
 				</Col>
 				<Col xs="12" lg="9">
 					<TabContent activeTab={match.params.tabId}>
-						{/* <ExportThreadsPane onExportRequest={onExportRequest} />
+						<ExportThreadsPane onExportRequest={onExportRequest} />
+						{/*
 						<ManagePublicViewsPane
 							openUpsertPublicViewModal={openUpsertPublicViewModal}
 							openDeletePublicViewModal={openDeletePublicViewModal}
