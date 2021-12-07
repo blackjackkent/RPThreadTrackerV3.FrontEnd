@@ -53,31 +53,6 @@ const Tools = ({
 }) => {
 	const { generateDocument } = useGenerateExportedThreadsDocumentMutation();
 
-	// componentDidMount() {
-	// 	const {
-	// 		tags,
-	// 		publicViews,
-	// 		characters,
-	// 		username,
-	// 		fetchTags,
-	// 		fetchPublicViews,
-	// 		fetchCharacters,
-	// 		fetchUser
-	// 	} = this.props;
-	// 	if (!tags || !tags.length) {
-	// 		fetchTags();
-	// 	}
-	// 	if (!publicViews || !publicViews.length) {
-	// 		fetchPublicViews();
-	// 	}
-	// 	if (!characters || !characters.length) {
-	// 		fetchCharacters();
-	// 	}
-	// 	if (!username) {
-	// 		fetchUser();
-	// 	}
-	// }
-
 	const onExportRequest = (includeHiatused, includeArchive) => {
 		generateDocument({ includeHiatused, includeArchive });
 	};
