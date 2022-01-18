@@ -50,6 +50,7 @@ const PublicViewsTable = ({
 		gotoPage,
 		nextPage,
 		previousPage,
+		setPageSize,
 		state: { pageIndex, pageSize }
 	} = useTable(
 		{
@@ -106,7 +107,12 @@ const PublicViewsTable = ({
 							style={{ width: '100px' }}
 						/>
 					</span>{' '}
-					<select value={pageSize}>
+					<select
+						value={pageSize}
+						onChange={(e) => {
+							setPageSize(Number(e.target.value));
+						}}
+					>
 						{[5, 10, 20, 25, 50, 100].map((size) => (
 							<option key={size} value={size}>
 								Show {size}

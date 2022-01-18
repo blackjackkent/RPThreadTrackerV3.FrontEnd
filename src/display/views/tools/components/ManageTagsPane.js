@@ -12,23 +12,10 @@ import {
 import filters from '~/infrastructure/constants/filters';
 import BulkUpdateTagModal from '~/display/shared/modals/BulkUpdateTagModal';
 import BulkDeleteTagModal from '~/display/shared/modals/BulkDeleteTagModal';
+import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
 
 const ManageTagsPane = () => {
-	const {
-		filteredThreads: allActiveThreads,
-		isThreadsLoading: isActiveThreadsLoading
-	} = useFilteredActiveThreads(filters.ALL);
-	const {
-		filteredThreads: allArchivedThreads,
-		isThreadsLoading: isArchivedThreadsLoading
-	} = useArchivedThreads();
-	const allThreads = useMemo(() => allActiveThreads.concat(allArchivedThreads), [
-		allActiveThreads,
-		allArchivedThreads
-	]);
-	const isLoading = isActiveThreadsLoading || isArchivedThreadsLoading;
-	const tags = useThreadListTags(allThreads);
-	const tagTextValues = useMemo(() => tags.map((t) => t.tagText), [tags]);
+	const { tagTextValues, isLoading } = useAllTags();
 	const [autosuggestValue, setAutosuggestValue] = useState('');
 	const [suggestions, setSuggestions] = useState([]);
 	const [selectedValue, setSelectedValue] = useState(null);

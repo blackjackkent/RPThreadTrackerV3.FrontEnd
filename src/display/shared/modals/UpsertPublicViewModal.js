@@ -5,135 +5,89 @@ import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import { toast } from 'react-toastify';
 import TooltipForm from '~/display/forms/TooltipForm';
-import UpsertThreadForm from '~/display/forms/upsert-thread/UpsertThreadForm';
 import Modal from '~/display/shared/styled/Modal';
 import { sortCharacters } from '~/utility';
 import { useFormReducer } from '~/infrastructure/hooks';
 import LoadingIndicator from '../loading/LoadingIndicator';
-import { useCreateThreadMutation, useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
+import UpsertPublicViewForm from '~/display/forms/upsert-public-view/UpsertPublicViewForm';
 // #endregion imports
 
 const propTypes = {
 	isModalOpen: PropTypes.bool.isRequired,
 	setIsModalOpen: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})),
-	actedThread: PropTypes.shape({})
+	tags: PropTypes.arrayOf(PropTypes.string),
+	columns: PropTypes.shape({}).isRequired,
+	actedView: PropTypes.shape({})
 };
 
 const UpsertPublicViewModal = (props) => {
-	// const [thread, onInputChange, setFormData] = useFormReducer();
+	const [publicView, onInputChange, setFormData] = useFormReducer();
 	// const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
 	// const { updateThread, isLoading: isUpdateThreadLoading } = useUpdateThreadMutation();
+	const createPublicView = () => {};
+	const updatePublicView = () => {};
 	// const isLoading = isCreateThreadLoading || isUpdateThreadLoading;
-	// const { actedView, isModalOpen, setIsModalOpen } = props;
-	// useEffect(() => {
-	// 	if (!actedThread) {
-	// 		return;
-	// 	}
-	// 	setFormData(actedThread);
-	// }, [setFormData, actedThread]);
-	// const activeCharacters = [].concat(
-	// 	characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
-	// );
-	// const handleTagAdded = (tagValue) => {
-	// 	let currentTags = thread.threadTags;
-	// 	if (!currentTags) {
-	// 		currentTags = [];
-	// 	}
-	// 	if (currentTags.find((t) => t.tagText === tagValue)) {
-	// 		return;
-	// 	}
-	// 	const newTags = currentTags.concat({ tagText: tagValue });
-	// 	onInputChange({
-	// 		target: {
-	// 			name: 'threadTags',
-	// 			value: newTags
-	// 		}
-	// 	});
-	// };
+	const isLoading = false;
+	const { actedView, characters, tags, columns, isModalOpen, setIsModalOpen } = props;
+	useEffect(() => {
+		if (!actedView) {
+			return;
+		}
+		setFormData(actedView);
+	}, [setFormData, actedView]);
+	const activeCharacters = [].concat(
+		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
+	);
 
-	// const handleTagRemoved = (tagValue) => {
-	// 	let currentTags = thread.threadTags;
-	// 	if (!currentTags) {
-	// 		currentTags = [];
-	// 	}
-	// 	const newTags = currentTags.filter((tag) => tag.tagText !== tagValue);
-	// 	onInputChange({
-	// 		target: {
-	// 			name: 'threadTags',
-	// 			value: newTags
-	// 		}
-	// 	});
-	// };
-
-	// const getTagValues = () => {
-	// 	if (!thread || !thread.threadTags) {
-	// 		return [];
-	// 	}
-	// 	return thread.threadTags.map((t) => t.tagText);
-	// };
-
-	// const submitForm = () => {
-	// 	const upsertFn = thread.threadId ? updateThread : createThread;
-	// 	upsertFn(thread)
-	// 		.then(() => {
-	// 			setIsModalOpen(false);
-	// 			toast.success(thread.threadId ? 'Thread updated!' : 'Thread created!');
-	// 		})
-	// 		.catch(() => {
-	// 			toast.error(
-	// 				`There was an error ${thread.threadId ? 'updating' : 'creating'} this thread.`
-	// 			);
-	// 		});
-	// };
+	const submitForm = () => {
+		const upsertFn = publicView.id ? updatePublicView : createPublicView;
+		upsertFn(publicView)
+			.then(() => {
+				setIsModalOpen(false);
+				toast.success(publicView.id ? 'View updated!' : 'View created!');
+			})
+			.catch(() => {
+				toast.error(
+					`There was an error ${publicView.id ? 'updating' : 'creating'} this view.`
+				);
+			});
+	};
 
 	return (
-		<div />
-		// <Modal
-		// 	data-spec="upsert-thread-modal"
-		// 	isOpen={isModalOpen}
-		// 	toggle={() => setIsModalOpen(!isModalOpen)}
-		// 	backdrop
-		// >
-		// 	<AvForm data-spec="upsert-thread-modal-form" onValidSubmit={() => submitForm(thread)}>
-		// 		<ModalHeader
-		// 			data-spec="upsert-thread-modal-header"
-		// 			toggle={() => setIsModalOpen(!isModalOpen)}
-		// 		>
-		// 			{thread && thread.threadId ? 'Edit Thread' : 'Add New Thread'}
-		// 		</ModalHeader>
-		// 		<ModalBody>
-		// 			<TooltipForm
-		// 				Renderable={UpsertThreadForm}
-		// 				thread={thread}
-		// 				onInputChange={onInputChange}
-		// 				characters={activeCharacters}
-		// 				handleTagAdded={handleTagAdded}
-		// 				handleTagRemoved={handleTagRemoved}
-		// 				tagValues={getTagValues()}
-		// 			/>
-		// 		</ModalBody>
-		// 		<ModalFooter>
-		// 			{isLoading && <LoadingIndicator />}
-		// 			<Button color="primary">
-		// 				{thread.threadId ? 'Edit Thread' : 'Add Thread'}
-		// 			</Button>{' '}
-		// 			<Button
-		// 				data-spec="upsert-thread-modal-close-button"
-		// 				color="secondary"
-		// 				onClick={() => setIsModalOpen(!isModalOpen)}
-		// 			>
-		// 				Cancel
-		// 			</Button>
-		// 		</ModalFooter>
-		// 	</AvForm>
-		// </Modal>
+		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
+			<AvForm onValidSubmit={() => submitForm(publicView)}>
+				<ModalHeader toggle={() => setIsModalOpen(!isModalOpen)}>
+					{publicView && publicView.id ? 'Edit Public View' : 'Add New Public View'}
+				</ModalHeader>
+				<ModalBody>
+					<TooltipForm
+						Renderable={UpsertPublicViewForm}
+						publicView={publicView}
+						onInputChange={onInputChange}
+						characters={activeCharacters}
+						tags={tags}
+						columns={columns}
+					/>
+				</ModalBody>
+				<ModalFooter>
+					{isLoading && <LoadingIndicator />}
+					<Button color="primary">
+						{publicView.id ? 'Edit Public View' : 'Add Public View'}
+					</Button>{' '}
+					<Button color="secondary" onClick={() => setIsModalOpen(!isModalOpen)}>
+						Cancel
+					</Button>
+				</ModalFooter>
+			</AvForm>
+		</Modal>
 	);
 };
 
 UpsertPublicViewModal.propTypes = propTypes;
 UpsertPublicViewModal.defaultProps = {
 	characters: [],
-	actedThread: {}
+	tags: [],
+	actedView: {}
 };
 export default UpsertPublicViewModal;

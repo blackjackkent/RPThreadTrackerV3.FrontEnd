@@ -7,7 +7,7 @@ import validator from './_validator';
 import formData from './_formData';
 
 const propTypes = {
-	viewToEdit: PropTypes.shape({
+	publicView: PropTypes.shape({
 		id: PropTypes.string,
 		name: PropTypes.string,
 		slug: PropTypes.string,
@@ -25,7 +25,7 @@ const propTypes = {
 	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	handleInputChange: PropTypes.func.isRequired,
+	onInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		slug: PropTypes.bool,
 		columns: PropTypes.bool,
@@ -39,8 +39,8 @@ const propTypes = {
 
 const UpsertPublicViewForm = (props) => {
 	const {
-		viewToEdit,
-		handleInputChange,
+		publicView,
+		onInputChange,
 		tooltipDisplayData,
 		showTooltip,
 		hideTooltip,
@@ -67,7 +67,7 @@ const UpsertPublicViewForm = (props) => {
 	));
 	return (
 		<div>
-			<AvField type="hidden" name="viewId" value={viewToEdit.id} />
+			<AvField type="hidden" name="viewId" value={publicView.id} />
 			<Row>
 				{' '}
 				{/* view name */}
@@ -77,8 +77,8 @@ const UpsertPublicViewForm = (props) => {
 						placeholder="View Name"
 						label="View Name"
 						type="text"
-						value={viewToEdit.name}
-						onChange={handleInputChange}
+						value={publicView.name}
+						onChange={onInputChange}
 						validate={validator.name}
 						helpMessage={formData.name.helpMessage}
 						data-spec="view-name-field"
@@ -106,8 +106,8 @@ const UpsertPublicViewForm = (props) => {
 							placeholder="URL Slug"
 							label="URL Slug"
 							type="text"
-							value={viewToEdit.slug}
-							onChange={handleInputChange}
+							value={publicView.slug}
+							onChange={onInputChange}
 							validate={validator.slug}
 							helpMessage={formData.slug.helpMessage}
 							onFocus={showTooltip}
@@ -137,8 +137,8 @@ const UpsertPublicViewForm = (props) => {
 							name="columns"
 							label="View Columns"
 							type="select"
-							value={viewToEdit.columns}
-							onChange={handleInputChange}
+							value={publicView.columns}
+							onChange={onInputChange}
 							validate={validator.columns}
 							helpMessage={formData.columns.helpMessage}
 							multiple
@@ -157,8 +157,8 @@ const UpsertPublicViewForm = (props) => {
 						name="sortKey"
 						label="Sort By"
 						type="select"
-						value={viewToEdit.sortKey}
-						onChange={handleInputChange}
+						value={publicView.sortKey}
+						onChange={onInputChange}
 						validate={validator.sortKey}
 						data-spec="sort-key-field"
 					>
@@ -172,8 +172,8 @@ const UpsertPublicViewForm = (props) => {
 						name="sortDescending"
 						label="Sort Order"
 						type="select"
-						value={viewToEdit.sortDescending}
-						onChange={handleInputChange}
+						value={publicView.sortDescending}
+						onChange={onInputChange}
 						data-spec="sort-descending-field"
 					>
 						<option value={false}>Ascending</option>
@@ -192,11 +192,9 @@ const UpsertPublicViewForm = (props) => {
 							<label htmlFor="includeMyTurn">
 								<input
 									name="includeMyTurn"
-									onChange={handleInputChange}
+									onChange={onInputChange}
 									type="checkbox"
-									checked={
-										viewToEdit.turnFilter && viewToEdit.turnFilter.includeMyTurn
-									}
+									checked={publicView?.turnFilter?.includeMyTurn ?? false}
 									data-spec="include-my-turn-field"
 								/>
 								Include My Turn Threads
@@ -206,12 +204,9 @@ const UpsertPublicViewForm = (props) => {
 							<label htmlFor="includeTheirTurn">
 								<input
 									name="includeTheirTurn"
-									onChange={handleInputChange}
+									onChange={onInputChange}
 									type="checkbox"
-									checked={
-										viewToEdit.turnFilter &&
-										viewToEdit.turnFilter.includeTheirTurn
-									}
+									checked={publicView?.turnFilter?.includeTheirTurn ?? false}
 									data-spec="include-their-turn-field"
 								/>
 								Include Partner&apos;s Turn Threads
@@ -224,10 +219,8 @@ const UpsertPublicViewForm = (props) => {
 								<input
 									name="includeQueued"
 									type="checkbox"
-									onChange={handleInputChange}
-									checked={
-										viewToEdit.turnFilter && viewToEdit.turnFilter.includeQueued
-									}
+									onChange={onInputChange}
+									checked={publicView?.turnFilter?.includeQueued ?? false}
 									data-spec="include-queued-field"
 								/>
 								Include Queued Threads
@@ -238,11 +231,8 @@ const UpsertPublicViewForm = (props) => {
 								<input
 									name="includeArchived"
 									type="checkbox"
-									onChange={handleInputChange}
-									checked={
-										viewToEdit.turnFilter &&
-										viewToEdit.turnFilter.includeArchived
-									}
+									onChange={onInputChange}
+									checked={publicView?.turnFilter?.includeArchived ?? false}
 									data-spec="include-archived-field"
 								/>
 								Include Archived Threads
@@ -271,8 +261,8 @@ const UpsertPublicViewForm = (props) => {
 							name="characterIds"
 							label="Characters"
 							type="select"
-							value={viewToEdit.characterIds}
-							onChange={handleInputChange}
+							value={publicView.characterIds}
+							onChange={onInputChange}
 							validate={validator.characterIds}
 							helpMessage={formData.characterIds.helpMessage}
 							multiple
@@ -305,8 +295,8 @@ const UpsertPublicViewForm = (props) => {
 							name="tags"
 							label="Tags"
 							type="select"
-							value={viewToEdit.tags}
-							onChange={handleInputChange}
+							value={publicView.tags}
+							onChange={onInputChange}
 							helpMessage={formData.tags.helpMessage}
 							multiple
 							onFocus={showTooltip}

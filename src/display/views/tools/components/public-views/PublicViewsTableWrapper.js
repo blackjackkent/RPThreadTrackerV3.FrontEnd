@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
 import Style from '~/display/shared/styled/TrackerTable';
 import PublicViewsTable from './PublicViewsTable';
-import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import { useCharactersQuery, useUserProfileQuery } from '~/infrastructure/hooks/queries';
 import DeletePublicViewModal from '~/display/shared/modals/DeletePublicViewModal';
 import UpsertPublicViewModal from '~/display/shared/modals/UpsertPublicViewModal';
 import getColumns from './_columns';
+import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
+import columns from '~/infrastructure/constants/columns';
 
 const propTypes = {
 	publicViews: PropTypes.arrayOf(PropTypes.shape({})),
@@ -18,6 +20,8 @@ const defaultProps = {
 const PublicViewsTableWrapper = ({ publicViews, isLoading }) => {
 	const [actedView, setActedView] = useState(null);
 	const { data: user } = useUserProfileQuery();
+	const { tagTextValues: tags } = useAllTags();
+	const { data: characters } = useCharactersQuery();
 
 	const [isDeletePublicViewModalOpen, setIsDeletePublicViewModalOpen] = useState(false);
 	const [isUpsertPublicViewModalOpen, setIsUpsertPublicViewModalOpen] = useState(false);
@@ -43,6 +47,9 @@ const PublicViewsTableWrapper = ({ publicViews, isLoading }) => {
 				actedView={actedView}
 				isModalOpen={isUpsertPublicViewModalOpen}
 				setIsModalOpen={setIsUpsertPublicViewModalOpen}
+				tags={tags}
+				characters={characters}
+				columns={columns}
 			/>
 			<Row>
 				<Col>
