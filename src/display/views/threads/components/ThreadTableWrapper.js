@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import Style from '../_styles';
+import Style from '../../../shared/styled/TrackerTable';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import ThreadTable from './ThreadTable';
 import ThreadTableControls from './ThreadTableControls';

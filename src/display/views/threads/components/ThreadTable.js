@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, Table } from 'reactstrap';
+import { Table } from 'reactstrap';
 import {
 	useExpanded,
 	useFilters,
@@ -91,7 +91,7 @@ const ThreadTable = ({
 		nextPage,
 		previousPage,
 		setPageSize,
-		state: { pageIndex, pageSize, selectedRowIds },
+		state: { pageIndex, pageSize },
 		selectedFlatRows,
 		visibleColumns
 	} = useTable(

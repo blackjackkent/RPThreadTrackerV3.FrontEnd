@@ -1,29 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PublicViewsTable from './public-views/PublicViewsTable';
 import Card from '../../../shared/styled/Card';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
 
-const propTypes = {
-	username: PropTypes.string,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	openUpsertPublicViewModal: PropTypes.func.isRequired,
-	openDeletePublicViewModal: PropTypes.func.isRequired
-};
-const defaultProps = {
-	username: ''
-};
-
-const ManagePublicViewsPane = (props) => {
-	const {
-		publicViews,
-		openUpsertPublicViewModal,
-		openDeletePublicViewModal,
-		isLoadingIconVisible,
-		username
-	} = props;
+const ManagePublicViewsPane = () => {
+	const { data: user } = useUserProfileQuery();
 	return (
 		<TabPane tabId="public">
 			<Card>
@@ -34,13 +18,13 @@ const ManagePublicViewsPane = (props) => {
 					<Row>
 						<Col className="text-center">
 							<p>
-								<Button
+								{/* <Button
 									color="primary"
 									data-spec="create-public-view-button"
 									onClick={() => openUpsertPublicViewModal({})}
 								>
 									Create New Public View
-								</Button>
+								</Button> */}
 							</p>
 						</Col>
 					</Row>
@@ -56,13 +40,19 @@ const ManagePublicViewsPane = (props) => {
 			</Card>
 			<Row>
 				<Col>
-					<PublicViewsTable
+					<PublicViewsTableWrapper
+						publicViews={publicViews}
+						isLoading={isPublicViewsLoading}
+						getColumns={getColumns}
+						username={user?.userName}
+					/>
+					{/* <PublicViewsTable
 						publicViews={publicViews}
 						openUpsertPublicViewModal={openUpsertPublicViewModal}
 						openDeletePublicViewModal={openDeletePublicViewModal}
 						isLoadingIconVisible={isLoadingIconVisible}
 						username={username}
-					/>
+					/> */}
 				</Col>
 			</Row>
 		</TabPane>
