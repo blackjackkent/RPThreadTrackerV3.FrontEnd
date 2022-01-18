@@ -4,10 +4,11 @@ import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PublicViewsTable from './public-views/PublicViewsTable';
 import Card from '../../../shared/styled/Card';
-import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import usePublicViewsQuery from '~/infrastructure/hooks/queries/usePublicViewsQuery';
+import PublicViewsTableWrapper from './public-views/PublicViewsTableWrapper';
 
 const ManagePublicViewsPane = () => {
-	const { data: user } = useUserProfileQuery();
+	const { data: publicViews, isLoading: isPublicViewsLoading } = usePublicViewsQuery();
 	return (
 		<TabPane tabId="public">
 			<Card>
@@ -43,21 +44,10 @@ const ManagePublicViewsPane = () => {
 					<PublicViewsTableWrapper
 						publicViews={publicViews}
 						isLoading={isPublicViewsLoading}
-						getColumns={getColumns}
-						username={user?.userName}
 					/>
-					{/* <PublicViewsTable
-						publicViews={publicViews}
-						openUpsertPublicViewModal={openUpsertPublicViewModal}
-						openDeletePublicViewModal={openDeletePublicViewModal}
-						isLoadingIconVisible={isLoadingIconVisible}
-						username={username}
-					/> */}
 				</Col>
 			</Row>
 		</TabPane>
 	);
 };
-ManagePublicViewsPane.propTypes = propTypes;
-ManagePublicViewsPane.defaultProps = defaultProps;
 export default ManagePublicViewsPane;

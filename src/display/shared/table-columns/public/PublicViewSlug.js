@@ -10,8 +10,7 @@ export default (username) => ({
 			target="_blank"
 			rel="noopener noreferrer"
 		>
-			{row.value}
-			<FontAwesomeIcon icon={['fas', 'external-link-alt']} />
+			{row.value} <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 		</a>
 	)
 });

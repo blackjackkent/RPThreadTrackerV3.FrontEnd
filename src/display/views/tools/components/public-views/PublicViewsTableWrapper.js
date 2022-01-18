@@ -4,13 +4,18 @@ import { Row, Col } from 'reactstrap';
 import Style from '~/display/shared/styled/TrackerTable';
 import PublicViewsTable from './PublicViewsTable';
 import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import DeletePublicViewModal from '~/display/shared/modals/DeletePublicViewModal';
+import UpsertPublicViewModal from '~/display/shared/modals/UpsertPublicViewModal';
+import getColumns from './_columns';
 
 const propTypes = {
-	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isLoading: PropTypes.bool.isRequired,
-	getColumns: PropTypes.func.isRequired
+	publicViews: PropTypes.arrayOf(PropTypes.shape({})),
+	isLoading: PropTypes.bool.isRequired
 };
-const PublicViewsTableWrapper = ({ publicViews, isLoading, getColumns }) => {
+const defaultProps = {
+	publicViews: []
+};
+const PublicViewsTableWrapper = ({ publicViews, isLoading }) => {
 	const [actedView, setActedView] = useState(null);
 	const { data: user } = useUserProfileQuery();
 
@@ -55,4 +60,5 @@ const PublicViewsTableWrapper = ({ publicViews, isLoading, getColumns }) => {
 	);
 };
 PublicViewsTableWrapper.propTypes = propTypes;
+PublicViewsTableWrapper.defaultProps = defaultProps;
 export default PublicViewsTableWrapper;

@@ -15,12 +15,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../shared/styled/Card';
 import SwitchLabel from '../../../shared/styled/SwitchLabel';
+import { useGenerateExportedThreadsDocumentMutation } from '~/infrastructure/hooks/mutations';
 
-const propTypes = {
-	onExportRequest: PropTypes.func.isRequired
-};
+const ExportThreadsPane = () => {
+	const { generateDocument } = useGenerateExportedThreadsDocumentMutation();
 
-const ExportThreadsPane = ({ onExportRequest }) => {
+	const onExportRequest = (includeHiatused, includeArchive) => {
+		generateDocument({ includeHiatused, includeArchive });
+	};
 	const [includeHiatused, setIncludeHiatused] = useState(false);
 	const [includeArchived, setIncludeArchived] = useState(false);
 
@@ -125,5 +127,4 @@ const ExportThreadsPane = ({ onExportRequest }) => {
 		</TabPane>
 	);
 };
-ExportThreadsPane.propTypes = propTypes;
 export default ExportThreadsPane;

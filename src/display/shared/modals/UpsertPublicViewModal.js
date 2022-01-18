@@ -1,120 +1,139 @@
-import React from 'react';
+// #region imports
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import UpsertPublicViewForm from '../../forms/upsert-public-view/UpsertPublicViewForm';
-import TooltipForm from '../../forms/TooltipForm';
-import { getValuesFromMultiSelect } from '../../../utility';
-import Modal from '../styled/Modal';
+import { toast } from 'react-toastify';
+import TooltipForm from '~/display/forms/TooltipForm';
+import UpsertThreadForm from '~/display/forms/upsert-thread/UpsertThreadForm';
+import Modal from '~/display/shared/styled/Modal';
+import { sortCharacters } from '~/utility';
+import { useFormReducer } from '~/infrastructure/hooks';
+import LoadingIndicator from '../loading/LoadingIndicator';
+import { useCreateThreadMutation, useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
+// #endregion imports
 
 const propTypes = {
-	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
-	submitUpsertPublicView: PropTypes.func.isRequired,
-	closeUpsertPublicViewModal: PropTypes.func.isRequired,
-	viewToEdit: PropTypes.shape({
-		id: PropTypes.string
-	}).isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	columns: PropTypes.shape({}).isRequired
+	isModalOpen: PropTypes.bool.isRequired,
+	setIsModalOpen: PropTypes.func.isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})),
+	actedThread: PropTypes.shape({})
 };
 
-class UpsertCharacterModal extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.state = {
-			viewToEdit: props.viewToEdit
-		};
-	}
+const UpsertPublicViewModal = (props) => {
+	// const [thread, onInputChange, setFormData] = useFormReducer();
+	// const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
+	// const { updateThread, isLoading: isUpdateThreadLoading } = useUpdateThreadMutation();
+	// const isLoading = isCreateThreadLoading || isUpdateThreadLoading;
+	// const { actedView, isModalOpen, setIsModalOpen } = props;
+	// useEffect(() => {
+	// 	if (!actedThread) {
+	// 		return;
+	// 	}
+	// 	setFormData(actedThread);
+	// }, [setFormData, actedThread]);
+	// const activeCharacters = [].concat(
+	// 	characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
+	// );
+	// const handleTagAdded = (tagValue) => {
+	// 	let currentTags = thread.threadTags;
+	// 	if (!currentTags) {
+	// 		currentTags = [];
+	// 	}
+	// 	if (currentTags.find((t) => t.tagText === tagValue)) {
+	// 		return;
+	// 	}
+	// 	const newTags = currentTags.concat({ tagText: tagValue });
+	// 	onInputChange({
+	// 		target: {
+	// 			name: 'threadTags',
+	// 			value: newTags
+	// 		}
+	// 	});
+	// };
 
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			viewToEdit: nextProps.viewToEdit
-		});
-	}
+	// const handleTagRemoved = (tagValue) => {
+	// 	let currentTags = thread.threadTags;
+	// 	if (!currentTags) {
+	// 		currentTags = [];
+	// 	}
+	// 	const newTags = currentTags.filter((tag) => tag.tagText !== tagValue);
+	// 	onInputChange({
+	// 		target: {
+	// 			name: 'threadTags',
+	// 			value: newTags
+	// 		}
+	// 	});
+	// };
 
-	handleInputChange(event) {
-		const { target } = event;
-		let value = target.type === 'checkbox' ? target.checked : target.value;
-		if (target.type === 'select-multiple') {
-			value = getValuesFromMultiSelect(target);
-		}
-		const { name } = target;
-		if (target.type === 'checkbox') {
-			const { viewToEdit } = this.state;
-			let { turnFilter } = viewToEdit;
-			if (!turnFilter) {
-				turnFilter = {};
-			}
-			turnFilter[name] = value;
-			this.setState((prevState) => ({
-				viewToEdit: Object.assign({}, prevState.viewToEdit, {
-					turnFilter
-				})
-			}));
-			return;
-		}
-		this.setState((prevState) => ({
-			viewToEdit: Object.assign({}, prevState.viewToEdit, {
-				[name]: value
-			})
-		}));
-	}
+	// const getTagValues = () => {
+	// 	if (!thread || !thread.threadTags) {
+	// 		return [];
+	// 	}
+	// 	return thread.threadTags.map((t) => t.tagText);
+	// };
 
-	render() {
-		const {
-			isUpsertPublicViewModalOpen,
-			submitUpsertPublicView,
-			closeUpsertPublicViewModal,
-			viewToEdit,
-			characters,
-			tags,
-			columns
-		} = this.props;
-		const { viewToEdit: requestData } = this.state;
-		return (
-			<Modal
-				data-spec="upsert-public-view-modal"
-				isOpen={isUpsertPublicViewModalOpen}
-				toggle={closeUpsertPublicViewModal}
-				backdrop
-			>
-				<AvForm
-					data-spec="upsert-public-view-modal-form"
-					onValidSubmit={() => submitUpsertPublicView(requestData)}
-				>
-					<ModalHeader
-						data-spec="upsert-public-view-modal-header"
-						toggle={closeUpsertPublicViewModal}
-					>
-						{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}
-					</ModalHeader>
-					<ModalBody>
-						<TooltipForm
-							Renderable={UpsertPublicViewForm}
-							viewToEdit={viewToEdit}
-							characters={characters}
-							tags={tags}
-							columns={columns}
-							handleInputChange={this.handleInputChange}
-						/>
-					</ModalBody>
-					<ModalFooter>
-						<Button color="primary">Submit Public View</Button>{' '}
-						<Button
-							data-spec="upsert-public-view-modal-close-button"
-							color="secondary"
-							onClick={closeUpsertPublicViewModal}
-						>
-							Cancel
-						</Button>
-					</ModalFooter>
-				</AvForm>
-			</Modal>
-		);
-	}
-}
+	// const submitForm = () => {
+	// 	const upsertFn = thread.threadId ? updateThread : createThread;
+	// 	upsertFn(thread)
+	// 		.then(() => {
+	// 			setIsModalOpen(false);
+	// 			toast.success(thread.threadId ? 'Thread updated!' : 'Thread created!');
+	// 		})
+	// 		.catch(() => {
+	// 			toast.error(
+	// 				`There was an error ${thread.threadId ? 'updating' : 'creating'} this thread.`
+	// 			);
+	// 		});
+	// };
 
-UpsertCharacterModal.propTypes = propTypes;
-export default UpsertCharacterModal;
+	return (
+		<div />
+		// <Modal
+		// 	data-spec="upsert-thread-modal"
+		// 	isOpen={isModalOpen}
+		// 	toggle={() => setIsModalOpen(!isModalOpen)}
+		// 	backdrop
+		// >
+		// 	<AvForm data-spec="upsert-thread-modal-form" onValidSubmit={() => submitForm(thread)}>
+		// 		<ModalHeader
+		// 			data-spec="upsert-thread-modal-header"
+		// 			toggle={() => setIsModalOpen(!isModalOpen)}
+		// 		>
+		// 			{thread && thread.threadId ? 'Edit Thread' : 'Add New Thread'}
+		// 		</ModalHeader>
+		// 		<ModalBody>
+		// 			<TooltipForm
+		// 				Renderable={UpsertThreadForm}
+		// 				thread={thread}
+		// 				onInputChange={onInputChange}
+		// 				characters={activeCharacters}
+		// 				handleTagAdded={handleTagAdded}
+		// 				handleTagRemoved={handleTagRemoved}
+		// 				tagValues={getTagValues()}
+		// 			/>
+		// 		</ModalBody>
+		// 		<ModalFooter>
+		// 			{isLoading && <LoadingIndicator />}
+		// 			<Button color="primary">
+		// 				{thread.threadId ? 'Edit Thread' : 'Add Thread'}
+		// 			</Button>{' '}
+		// 			<Button
+		// 				data-spec="upsert-thread-modal-close-button"
+		// 				color="secondary"
+		// 				onClick={() => setIsModalOpen(!isModalOpen)}
+		// 			>
+		// 				Cancel
+		// 			</Button>
+		// 		</ModalFooter>
+		// 	</AvForm>
+		// </Modal>
+	);
+};
+
+UpsertPublicViewModal.propTypes = propTypes;
+UpsertPublicViewModal.defaultProps = {
+	characters: [],
+	actedThread: {}
+};
+export default UpsertPublicViewModal;

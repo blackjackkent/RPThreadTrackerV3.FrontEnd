@@ -1,16 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Table } from 'reactstrap';
-import { useSortBy, useTable } from 'react-table';
+import { usePagination, useSortBy, useTable } from 'react-table';
 import columns from '~/infrastructure/constants/columns';
 
 const propTypes = {
-	username: PropTypes.string.isRequired,
-	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+	username: PropTypes.string,
+	publicViews: PropTypes.arrayOf(PropTypes.shape({})),
 	isLoading: PropTypes.bool.isRequired,
 	getColumns: PropTypes.func.isRequired,
 	onDeletePublicViewClick: PropTypes.func.isRequired,
 	onEditPublicViewClick: PropTypes.func.isRequired
+};
+const defaultProps = {
+	username: '',
+	publicViews: []
 };
 
 const PublicViewsTable = ({
@@ -64,7 +68,8 @@ const PublicViewsTable = ({
 			},
 			disableSortRemove: true
 		},
-		useSortBy
+		useSortBy,
+		usePagination
 	);
 
 	return (
@@ -187,4 +192,5 @@ const PublicViewsTable = ({
 	);
 };
 PublicViewsTable.propTypes = propTypes;
+PublicViewsTable.defaultProps = defaultProps;
 export default PublicViewsTable;
