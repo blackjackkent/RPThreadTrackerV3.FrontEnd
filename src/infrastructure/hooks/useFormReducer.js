@@ -7,10 +7,12 @@ const reducer = (state, action) => {
 	if (action.type === 'set') {
 		return action.data;
 	}
-	return {
+	const newState = {
 		...state,
 		[action.name]: action.data
 	};
+	console.log(newState);
+	return newState;
 };
 const useFormReducer = (defaultState = {}) => {
 	const [formData, dispatch] = useReducer(reducer, defaultState);

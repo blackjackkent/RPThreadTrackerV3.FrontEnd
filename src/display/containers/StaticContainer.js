@@ -2,7 +2,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
-import ReduxToastr from 'react-redux-toastr';
 import Login from '../views/login/Login';
 import ForgotPassword from '../views/forgot-password/ForgotPassword';
 import Register from '../views/register/Register';

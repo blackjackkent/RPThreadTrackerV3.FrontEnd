@@ -65,6 +65,48 @@ const UpsertPublicViewForm = (props) => {
 			{t}
 		</option>
 	));
+
+	const handleMultiSelectChange = (e, value, parseAsInt = false) => {
+		const result = [];
+		const select = e.target;
+		if (select && select.options) {
+			const { options } = select;
+			let opt;
+
+			for (let i = 0; i < options.length; i++) {
+				opt = options[i];
+				if (opt.selected) {
+					let data = opt.value || opt.text;
+					if (parseAsInt) {
+						data = parseInt(data, 10);
+					}
+					result.push(data);
+				}
+			}
+		}
+		onInputChange({ target: { name: e.target.name, value: result } });
+	};
+
+	const handleCharacterSelectChange = (e) => {
+		handleMultiSelectChange(e, e.target.value, true);
+	};
+
+	const handleTurnFilterCheckboxChange = (e) => {
+		const { name, checked } = e.target;
+		let { turnFilter } = publicView;
+		if (!turnFilter) {
+			turnFilter = {};
+		}
+		turnFilter[name] = checked;
+		onInputChange({ target: { name: 'turnFilter', value: turnFilter } });
+	};
+
+	const handleSortDirectionChange = (e) => {
+		onInputChange({
+			target: { ...e.target, name: e.target.name, value: e.target.value === 'true' }
+		});
+	};
+
 	return (
 		<div>
 			<AvField type="hidden" name="viewId" value={publicView.id} />
@@ -138,7 +180,7 @@ const UpsertPublicViewForm = (props) => {
 							label="View Columns"
 							type="select"
 							value={publicView.columns}
-							onChange={onInputChange}
+							onChange={handleMultiSelectChange}
 							validate={validator.columns}
 							helpMessage={formData.columns.helpMessage}
 							multiple
@@ -173,7 +215,7 @@ const UpsertPublicViewForm = (props) => {
 						label="Sort Order"
 						type="select"
 						value={publicView.sortDescending}
-						onChange={onInputChange}
+						onChange={handleSortDirectionChange}
 						data-spec="sort-descending-field"
 					>
 						<option value={false}>Ascending</option>
@@ -192,11 +234,11 @@ const UpsertPublicViewForm = (props) => {
 							<label htmlFor="includeMyTurn">
 								<input
 									name="includeMyTurn"
-									onChange={onInputChange}
+									onChange={handleTurnFilterCheckboxChange}
 									type="checkbox"
 									checked={publicView?.turnFilter?.includeMyTurn ?? false}
 									data-spec="include-my-turn-field"
-								/>
+								/>{' '}
 								Include My Turn Threads
 							</label>
 						</Col>
@@ -204,11 +246,11 @@ const UpsertPublicViewForm = (props) => {
 							<label htmlFor="includeTheirTurn">
 								<input
 									name="includeTheirTurn"
-									onChange={onInputChange}
+									onChange={handleTurnFilterCheckboxChange}
 									type="checkbox"
 									checked={publicView?.turnFilter?.includeTheirTurn ?? false}
 									data-spec="include-their-turn-field"
-								/>
+								/>{' '}
 								Include Partner&apos;s Turn Threads
 							</label>
 						</Col>
@@ -219,10 +261,10 @@ const UpsertPublicViewForm = (props) => {
 								<input
 									name="includeQueued"
 									type="checkbox"
-									onChange={onInputChange}
+									onChange={handleTurnFilterCheckboxChange}
 									checked={publicView?.turnFilter?.includeQueued ?? false}
 									data-spec="include-queued-field"
-								/>
+								/>{' '}
 								Include Queued Threads
 							</label>
 						</Col>
@@ -231,10 +273,10 @@ const UpsertPublicViewForm = (props) => {
 								<input
 									name="includeArchived"
 									type="checkbox"
-									onChange={onInputChange}
+									onChange={handleTurnFilterCheckboxChange}
 									checked={publicView?.turnFilter?.includeArchived ?? false}
 									data-spec="include-archived-field"
-								/>
+								/>{' '}
 								Include Archived Threads
 							</label>
 						</Col>
@@ -262,7 +304,7 @@ const UpsertPublicViewForm = (props) => {
 							label="Characters"
 							type="select"
 							value={publicView.characterIds}
-							onChange={onInputChange}
+							onChange={handleCharacterSelectChange}
 							validate={validator.characterIds}
 							helpMessage={formData.characterIds.helpMessage}
 							multiple
@@ -296,7 +338,7 @@ const UpsertPublicViewForm = (props) => {
 							label="Tags"
 							type="select"
 							value={publicView.tags}
-							onChange={onInputChange}
+							onChange={handleMultiSelectChange}
 							helpMessage={formData.tags.helpMessage}
 							multiple
 							onFocus={showTooltip}

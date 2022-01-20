@@ -10,6 +10,8 @@ import { sortCharacters } from '~/utility';
 import { useFormReducer } from '~/infrastructure/hooks';
 import LoadingIndicator from '../loading/LoadingIndicator';
 import UpsertPublicViewForm from '~/display/forms/upsert-public-view/UpsertPublicViewForm';
+import useUpdatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useUpdatePublicViewMutation';
+import useCreatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useCreatePublicViewMutation';
 // #endregion imports
 
 const propTypes = {
@@ -23,12 +25,15 @@ const propTypes = {
 
 const UpsertPublicViewModal = (props) => {
 	const [publicView, onInputChange, setFormData] = useFormReducer();
-	// const { createThread, isLoading: isCreateThreadLoading } = useCreateThreadMutation();
-	// const { updateThread, isLoading: isUpdateThreadLoading } = useUpdateThreadMutation();
-	const createPublicView = () => {};
-	const updatePublicView = () => {};
-	// const isLoading = isCreateThreadLoading || isUpdateThreadLoading;
-	const isLoading = false;
+	const {
+		createPublicView,
+		isLoading: isCreatePublicViewLoading
+	} = useCreatePublicViewMutation();
+	const {
+		updatePublicView,
+		isLoading: isUpdatePublicViewLoading
+	} = useUpdatePublicViewMutation();
+	const isLoading = isCreatePublicViewLoading || isUpdatePublicViewLoading;
 	const { actedView, characters, tags, columns, isModalOpen, setIsModalOpen } = props;
 	useEffect(() => {
 		if (!actedView) {
