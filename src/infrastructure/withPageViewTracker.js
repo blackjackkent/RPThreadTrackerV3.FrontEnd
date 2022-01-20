@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GoogleAnalytics from 'react-ga';
 
@@ -18,26 +18,14 @@ const withPageViewTracker = (WrappedComponent, options = {}) => {
 		GoogleAnalytics.pageview(page);
 	};
 
-	const HOC = class extends PureComponent {
-		componentDidMount() {
-			const { location } = this.props;
-			const page = location.pathname;
-			trackPage(page);
-		}
+	const HOC = (props) => {
+		const { location } = props;
+		const currentPage = location.pathname;
+		useEffect(() => {
+			trackPage(currentPage);
+		}, [currentPage]);
 
-		componentWillReceiveProps(nextProps) {
-			const { location } = this.props;
-			const currentPage = location.pathname;
-			const nextPage = nextProps.location.pathname;
-
-			if (currentPage !== nextPage) {
-				trackPage(nextPage);
-			}
-		}
-
-		render() {
-			return <WrappedComponent {...this.props} />;
-		}
+		return <WrappedComponent {...props} />;
 	};
 	HOC.propTypes = propTypes;
 	return HOC;

@@ -21,7 +21,6 @@ const PublicViewsTable = ({
 	username,
 	getColumns,
 	publicViews,
-	isLoading,
 	onDeletePublicViewClick,
 	onEditPublicViewClick
 }) => {

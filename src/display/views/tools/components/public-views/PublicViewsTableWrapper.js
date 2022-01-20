@@ -11,7 +11,7 @@ const propTypes = {
 	setActedView: PropTypes.func.isRequired,
 	setIsUpsertPublicViewModalOpen: PropTypes.func.isRequired,
 	setIsDeletePublicViewModalOpen: PropTypes.func.isRequired,
-	user: PropTypes.shape({})
+	user: PropTypes.shape({ userName: PropTypes.string })
 };
 const defaultProps = {
 	publicViews: [],
@@ -45,7 +45,7 @@ const PublicViewsTableWrapper = ({
 						publicViews={publicViews}
 						onDeletePublicViewClick={onDeletePublicViewClick}
 						onEditPublicViewClick={onEditPublicViewClick}
-						username={user?.username}
+						username={user?.userName}
 					/>
 				</Col>
 			</Row>
