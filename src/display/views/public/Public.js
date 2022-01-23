@@ -8,7 +8,8 @@ import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
 import * as selectors from '../../../infrastructure/selectors';
-import Style from './_styles';
+import PublicStyle from './_styles';
+import ThreadTableStyles from '~/display/shared/styled/TrackerTable';
 import {
 	legacyPublicSlugs,
 	buildLegacyView
@@ -41,28 +42,30 @@ const Public = ({ slug, username }) => {
 		filter
 	);
 	return (
-		<Style className="animated fadeIn">
-			<PublicHeader
-				title={viewData?.view?.name}
-				slug={slug}
-				isLoadingIconVisible={isLoading}
-			/>
-			<PublicThreadFilterSelect
-				setPublicThreadFilter={setFilter}
-				publicThreadFilter={filter}
-			/>
-			<Row>
-				<Col>
-					<ThreadTable
-						columns={getColumns(viewData?.view?.columns)}
-						threads={filteredThreads}
-						view={viewData?.view}
-						isLoadingIconVisible={isLoading}
-					/>
-				</Col>
-			</Row>
-			<Footer />
-		</Style>
+		<PublicStyle>
+			<ThreadTableStyles className="animated fadeIn threads-container">
+				<PublicHeader
+					title={viewData?.view?.name}
+					slug={slug}
+					isLoadingIconVisible={isLoading}
+				/>
+				<PublicThreadFilterSelect
+					setPublicThreadFilter={setFilter}
+					publicThreadFilter={filter}
+				/>
+				<Row>
+					<Col>
+						<ThreadTable
+							columns={getColumns(viewData?.view?.columns)}
+							threads={filteredThreads}
+							view={viewData?.view}
+							isLoadingIconVisible={isLoading}
+						/>
+					</Col>
+				</Row>
+				<Footer />
+			</ThreadTableStyles>
+		</PublicStyle>
 	);
 };
 
