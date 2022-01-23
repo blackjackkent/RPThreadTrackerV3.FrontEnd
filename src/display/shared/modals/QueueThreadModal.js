@@ -6,7 +6,7 @@ import { useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
 
 const propTypes = {
 	actedThread: PropTypes.shape({
-		dateMarkedQueued: PropTypes.string.isRequired,
+		dateMarkedQueued: PropTypes.string,
 		userTitle: PropTypes.string.isRequired
 	}),
 	isQueueing: PropTypes.bool,

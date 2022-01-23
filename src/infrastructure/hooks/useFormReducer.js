@@ -11,7 +11,6 @@ const reducer = (state, action) => {
 		...state,
 		[action.name]: action.data
 	};
-	console.log(newState);
 	return newState;
 };
 const useFormReducer = (defaultState = {}) => {
