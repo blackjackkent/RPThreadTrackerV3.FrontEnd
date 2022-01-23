@@ -33,12 +33,6 @@ const getFilterForView = (threadFilter) => {
 function usePublicFilteredThreads(threads, threadsStatus, view, publicUiFilter = null) {
 	const [filteredStatuses, setFilteredStatuses] = useState([]);
 	const filteredThreads = useFilteredThreads(threads, filteredStatuses);
-	console.log({
-		threads,
-		threadsStatus,
-		filteredStatuses,
-		filteredThreads
-	});
 	useEffect(() => {
 		if (!shouldProcessThreads(threads, threadsStatus)) {
 			return;

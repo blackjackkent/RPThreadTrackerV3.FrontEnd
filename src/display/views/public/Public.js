@@ -72,8 +72,3 @@ const Public = ({ slug, username }) => {
 Public.propTypes = propTypes;
 Public.defaultProps = defaultProps;
 export default Public;
-// export default connect(mapStateToProps, {
-// 	fetchPublicThreads: actions.fetchPublicThreads,
-// 	fetchLegacyPublicThreads: actions.fetchLegacyPublicThreads,
-// 	setPublicThreadFilter: actions.setPublicThreadFilter
-// })(Public);

@@ -2,6 +2,7 @@ import { useQuery, useQueryClient } from 'react-query';
 import axios from 'axios';
 import { useEffect } from 'react';
 import queryKeys from '~/infrastructure/constants/queryKeys';
+import { legacyPublicSlugs, buildLegacyView } from '~/infrastructure/constants/legacyPublicValues';
 import { useThreadsStatusMutation } from '../mutations';
 
 function usePublicViewThreadsQuery(slug, username, queryString) {
@@ -12,6 +13,13 @@ function usePublicViewThreadsQuery(slug, username, queryString) {
 		isLoading: isThreadsStatusLoading
 	} = useThreadsStatusMutation();
 	const threadsQuery = useQuery([queryKeys.PUBLIC_VIEW_THREADS, slug], () => {
+		console.log({ slug, username, queryString });
+		if (legacyPublicSlugs.includes(slug) && !username) {
+			const legacyView = buildLegacyView(queryString, slug);
+			return axios.post(`${API_BASE_URL}api/publicthread`, legacyView).then((res) => {
+				return Promise.resolve(res.data);
+			});
+		}
 		return axios.get(`${API_BASE_URL}api/publicthread/${username}/${slug}`).then((res) => {
 			return Promise.resolve(res.data);
 		});
