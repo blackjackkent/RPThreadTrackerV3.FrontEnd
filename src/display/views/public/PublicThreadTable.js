@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable, { usePagination, useSortBy, useTable } from 'react-table';
+import { usePagination, useSortBy, useTable } from 'react-table';
 import { Table } from 'reactstrap';
 
 const propTypes = {
@@ -17,18 +17,6 @@ const defaultProps = {
 	view: {}
 };
 
-function getData(threads) {
-	const data = threads.map((item) => {
-		// eslint-disable-next-line no-underscore-dangle
-		const _id = item.thread.threadId;
-		return {
-			_id,
-			...item
-		};
-	});
-	return data;
-}
-
 function formatDataForTable(threads) {
 	const data = threads?.map((item) => {
 		// eslint-disable-next-line no-underscore-dangle
@@ -41,7 +29,7 @@ function formatDataForTable(threads) {
 	return data;
 }
 
-const PublicThreadTable = ({ threads, columns, view, isLoadingIconVisible }) => {
+const PublicThreadTable = ({ threads, columns, view }) => {
 	const tableData = React.useMemo(() => formatDataForTable(threads), [threads]);
 	const {
 		getTableProps,

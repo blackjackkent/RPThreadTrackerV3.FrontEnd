@@ -1,5 +1,5 @@
 // #region imports
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 // #endregion imports
 
@@ -13,20 +13,12 @@ const TooltipForm = (props) => {
 
 	const showTooltip = (e) => {
 		const { name } = e.target;
-		setDisplayTooltip(
-			Object.assign({}, displayTooltip, {
-				[name]: true
-			})
-		);
+		setDisplayTooltip({ ...displayTooltip, [name]: true });
 	};
 
 	const hideTooltip = (e) => {
 		const { name } = e.target;
-		setDisplayTooltip(
-			Object.assign({}, displayTooltip, {
-				[name]: false
-			})
-		);
+		setDisplayTooltip({ ...displayTooltip, [name]: false });
 	};
 	return (
 		<Renderable

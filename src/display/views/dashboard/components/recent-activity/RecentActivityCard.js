@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
-import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '~/display/shared/styled/Card';
 import RecentActivityRow from './RecentActivityRow';

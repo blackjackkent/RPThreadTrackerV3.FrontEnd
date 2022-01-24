@@ -47,7 +47,6 @@ const ThreadTable = ({
 	lastPosters,
 	getColumns,
 	filteredThreads,
-	isLoading,
 	onUntrackThreadClick,
 	onArchiveThreadClick,
 	onEditThreadClick,

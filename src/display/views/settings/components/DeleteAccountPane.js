@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { TabPane, Button, CardHeader, CardBody } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../shared/styled/Card';
 import { useDeleteAccountMutation } from '~/infrastructure/hooks/mutations';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const DeleteAccountPane = () => {
 	const history = useHistory();
@@ -20,7 +20,7 @@ const DeleteAccountPane = () => {
 			.then(() => {
 				history.push('/logout');
 			})
-			.catch((e) => {
+			.catch(() => {
 				toast.error(`There was a problem deleting your account.`);
 			});
 	};

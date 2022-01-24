@@ -13,7 +13,6 @@ function usePublicViewThreadsQuery(slug, username, queryString) {
 		isLoading: isThreadsStatusLoading
 	} = useThreadsStatusMutation();
 	const threadsQuery = useQuery([queryKeys.PUBLIC_VIEW_THREADS, slug], () => {
-		console.log({ slug, username, queryString });
 		if (legacyPublicSlugs.includes(slug) && !username) {
 			const legacyView = buildLegacyView(queryString, slug);
 			return axios.post(`${API_BASE_URL}api/publicthread`, legacyView).then((res) => {

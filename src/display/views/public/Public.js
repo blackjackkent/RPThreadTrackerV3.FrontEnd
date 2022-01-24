@@ -1,22 +1,14 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import * as actions from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
-import * as selectors from '../../../infrastructure/selectors';
 import PublicStyle from './_styles';
 import ThreadTableStyles from '~/display/shared/styled/TrackerTable';
-import {
-	legacyPublicSlugs,
-	buildLegacyView
-} from '../../../infrastructure/constants/legacyPublicValues';
 import { getQuery } from '../../../utility';
 import Footer from '~/display/shared/footer/Footer';
-import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
 import publicThreadFilterKeys from '~/infrastructure/constants/publicThreadFilterKeys';
 import usePublicViewThreadsQuery from '~/infrastructure/hooks/queries/usePublicViewThreadsQuery';
 import usePublicFilteredThreads from '~/infrastructure/hooks/derived-data/usePublicFilteredThreads';

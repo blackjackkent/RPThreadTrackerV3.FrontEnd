@@ -7,12 +7,11 @@ import HeaderContainer from '../shared/header/HeaderContainer';
 import Sidebar from '../shared/sidebar/Sidebar';
 import BreadcrumbWrapper from '../shared/breadcrumb/BreadcrumbWrapper';
 import AsideContainer from '../shared/aside/AsideContainer';
-import ModalContainer from '../shared/modals/ModalContainer';
 import LoadingIndicator from '../shared/loading/LoadingIndicator';
 import Footer from '../shared/footer/Footer';
 
 import Dashboard from '../views/dashboard/Dashboard';
-import Threads, {
+import {
 	AllThreads,
 	ArchivedThreads,
 	MyTurnThreads,
@@ -30,8 +29,6 @@ import {
 	useUserSettingsQuery
 } from '~/infrastructure/hooks/queries';
 import { CharactersContext, ActiveThreadsContext } from '~/infrastructure/hooks/contexts';
-import ThreadTableWrapper from '../views/threads/components/ThreadTableWrapper';
-import filters from '~/infrastructure/constants/filters';
 // #endregion imports
 
 const Layout = () => {

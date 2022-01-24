@@ -1,15 +1,9 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import { TabPane, Col, Row, Button, CardHeader, CardBody, Label } from 'reactstrap';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../shared/styled/Card';
 import LoadingIndicator from '../../../shared/loading/LoadingIndicator';
-import {
-	useArchivedThreads,
-	useFilteredActiveThreads,
-	useThreadListTags
-} from '~/infrastructure/hooks/derived-data';
-import filters from '~/infrastructure/constants/filters';
 import BulkUpdateTagModal from '~/display/shared/modals/BulkUpdateTagModal';
 import BulkDeleteTagModal from '~/display/shared/modals/BulkDeleteTagModal';
 import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
@@ -53,10 +47,6 @@ const ManageTagsPane = () => {
 
 	const onNewTagValueChange = (event) => {
 		setUpdatedValue(event.target.value);
-	};
-
-	const clearSelectedTag = () => {
-		setSelectedValue(null);
 	};
 
 	const onOperationComplete = () => {

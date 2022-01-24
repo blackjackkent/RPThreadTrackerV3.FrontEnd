@@ -2,18 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu } from 'reactstrap';
-import HeaderDropdownItem from './HeaderDropdownItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
 const propTypes = {
 	isHeaderAddMenuDropdownVisible: PropTypes.bool.isRequired,
 	setIsHeaderAddMenuDropdownVisible: PropTypes.func.isRequired,
-	isUpsertCharacterModalOpen: PropTypes.bool.isRequired,
 	setIsUpsertCharacterModalOpen: PropTypes.func.isRequired,
-	isUpsertThreadModalOpen: PropTypes.bool.isRequired,
-	setIsUpsertThreadModalOpen: PropTypes.func.isRequired,
-	user: PropTypes.shape({})
+	setIsUpsertThreadModalOpen: PropTypes.func.isRequired
 };
 
 const HeaderAddMenuDropdown = (props) => {

@@ -35,7 +35,6 @@ function formatDataForTable(characters) {
 const CurrentCharacterTable = ({
 	characters,
 	threadCounts,
-	isLoading,
 	onUntrackCharacterClick,
 	onToggleHiatusClick,
 	onEditCharacterClick

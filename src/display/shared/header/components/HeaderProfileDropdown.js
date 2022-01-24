@@ -3,8 +3,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { NavItem, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import HeaderDropdownItem from './HeaderDropdownItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import HeaderDropdownItem from './HeaderDropdownItem';
 // #endregion imports
 
 const propTypes = {

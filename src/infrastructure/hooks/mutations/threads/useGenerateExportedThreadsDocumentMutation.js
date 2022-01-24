@@ -1,6 +1,5 @@
-import { useMutation, useQueryClient } from 'react-query';
+import { useMutation } from 'react-query';
 import axios from 'axios';
-import queryKeys from '~/infrastructure/constants/queryKeys';
 
 function saveAsBlob(response, filename, contentType) {
 	try {

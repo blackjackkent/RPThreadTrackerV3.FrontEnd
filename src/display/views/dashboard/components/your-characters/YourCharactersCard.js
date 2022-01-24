@@ -1,7 +1,7 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CardHeader, CardBody } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '~/display/shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
 import NoCharactersMessage from '../shared/NoCharactersMessage';
@@ -9,7 +9,6 @@ import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 import { useCharacterThreadCounts } from '~/infrastructure/hooks/derived-data';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const renderBlockMessage = (characters, activeCharacters) => {
 	if (characters.length > 0 && activeCharacters.length === 0) {

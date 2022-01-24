@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import { toast } from 'react-toastify';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../shared/styled/Card';
 import TooltipForm from '../../../forms/TooltipForm';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
 import { useFormReducer } from '~/infrastructure/hooks';
 import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ChangePasswordPane = () => {
 	const [formData, onInputChange] = useFormReducer();

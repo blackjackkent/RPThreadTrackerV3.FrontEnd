@@ -1,7 +1,5 @@
 import { useMutation } from 'react-query';
 import axios from 'axios';
-import cache from '~/infrastructure/cache';
-import cacheKeys from '~/infrastructure/constants/cacheKeys';
 
 function useRegisterMutation() {
 	const registerMutation = useMutation((request) => {

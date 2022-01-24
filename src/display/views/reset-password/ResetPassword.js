@@ -1,11 +1,8 @@
-import React, { Component, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import { AvForm } from 'availity-reactstrap-validation';
 import { CardBody, Button, Row, Col } from 'reactstrap';
 import { toast } from 'react-toastify';
-import * as actions from '../../../infrastructure/actions';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
 import LoadingIndicator from '../../shared/loading/LoadingIndicator';
