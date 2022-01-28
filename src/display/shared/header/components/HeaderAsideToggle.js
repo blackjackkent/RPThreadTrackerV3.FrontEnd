@@ -15,10 +15,10 @@ const HeaderAsideToggle = (props) => {
 
 	return (
 		<NavItem>
-			<NavLink data-spec="header-aside-toggle-link" href="#" onClick={toggleNewsAside}>
+			<NavLink href="#" onClick={toggleNewsAside}>
 				<FontAwesomeIcon icon={['fas', 'bell']} />
 				{unreadNewsCount > 0 && (
-					<Badge data-spec="header-aside-toggle-unread-badge" pill color="danger">
+					<Badge pill color="danger">
 						{unreadNewsCount}
 					</Badge>
 				)}

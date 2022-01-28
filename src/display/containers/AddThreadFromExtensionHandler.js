@@ -28,7 +28,6 @@ const AddThreadFromExtensionHandler = () => {
 	const renderLoadingIndicator = () => {
 		return (
 			<LoadingIndicator
-				data-spec="extension-handler-loader"
 				style={{
 					width: 50,
 					height: 50,
@@ -43,7 +42,7 @@ const AddThreadFromExtensionHandler = () => {
 
 	const renderLayout = (message = '') => {
 		return (
-			<div className="app flex-row align-items-center" data-spec="layout-app">
+			<div className="app flex-row align-items-center">
 				<UpsertThreadModal
 					actedThread={threadData}
 					characters={characters}
@@ -51,7 +50,7 @@ const AddThreadFromExtensionHandler = () => {
 					setIsModalOpen={setIsUpsertThreadModalOpen}
 				/>
 				{message && (
-					<Container data-spec="extension-handler-success-message">
+					<Container>
 						<Row className="justify-content-center">
 							<Col md="6">
 								<Card className="login-box p-4">

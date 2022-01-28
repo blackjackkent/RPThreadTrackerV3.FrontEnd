@@ -55,15 +55,12 @@ const Register = () => {
 						}}
 					/>
 				)}
-				<AvForm
-					data-spec="registration-form-container"
-					onValidSubmit={handleRegistrationSubmit}
-				>
+				<AvForm onValidSubmit={handleRegistrationSubmit}>
 					<h1>Register</h1>
 					<p className="text-muted">Create your RPThreadTracker account</p>
 					{isUserRegistrationError && (
 						<div className="has-danger">
-							<p data-spec="register-server-error" className="form-control-feedback">
+							<p className="form-control-feedback">
 								{registrationError?.response?.data?.map((e) => (
 									<span key={e}>
 										{e}

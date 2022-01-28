@@ -112,7 +112,6 @@ const ExportThreadsPane = () => {
 					<Row>
 						<Col className="text-right">
 							<Button
-								data-spec="export-threads-form-submit-button"
 								type="submit"
 								color="primary"
 								onClick={() => onExportRequest(includeHiatused, includeArchived)}

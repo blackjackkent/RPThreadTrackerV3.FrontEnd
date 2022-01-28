@@ -36,27 +36,14 @@ const GenericConfirmationModal = (props) => {
 	} = props;
 	return (
 		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
-			<ModalHeader
-				toggle={() => setIsModalOpen(!isModalOpen)}
-				data-spec="generic-confirmation-modal-header"
-			>
-				{headerText}
-			</ModalHeader>
+			<ModalHeader toggle={() => setIsModalOpen(!isModalOpen)}>{headerText}</ModalHeader>
 			<ModalBody>{bodyText}</ModalBody>
 			<ModalFooter>
 				{isLoading && <LoadingIndicator />}
-				<Button
-					color="primary"
-					data-spec="generic-confirmation-ok-button"
-					onClick={() => submitForm(data)}
-				>
+				<Button color="primary" onClick={() => submitForm(data)}>
 					{submitButtonText}
 				</Button>{' '}
-				<Button
-					color="secondary"
-					data-spec="generic-confirmation-cancel-button"
-					onClick={() => setIsModalOpen(false)}
-				>
+				<Button color="secondary" onClick={() => setIsModalOpen(false)}>
 					{closeButtonText}
 				</Button>
 			</ModalFooter>

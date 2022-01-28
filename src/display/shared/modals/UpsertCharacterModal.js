@@ -32,20 +32,9 @@ const UpsertCharacterModal = (props) => {
 		onInputChange({ target: { name: 'platformId', value: 1 } });
 	}, [characterToEdit, onInputChange, setFormData]);
 	return (
-		<Modal
-			data-spec="upsert-character-modal"
-			isOpen={isModalOpen}
-			toggle={() => setIsModalOpen(!isModalOpen)}
-			backdrop
-		>
-			<AvForm
-				data-spec="upsert-character-modal-form"
-				onValidSubmit={() => submitForm(character)}
-			>
-				<ModalHeader
-					data-spec="upsert-character-modal-header"
-					toggle={() => setIsModalOpen(!isModalOpen)}
-				>
+		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
+			<AvForm onValidSubmit={() => submitForm(character)}>
+				<ModalHeader toggle={() => setIsModalOpen(!isModalOpen)}>
 					{character.characterId ? 'Edit Character' : 'Add Character'}
 				</ModalHeader>
 				<ModalBody>
@@ -58,11 +47,7 @@ const UpsertCharacterModal = (props) => {
 				<ModalFooter>
 					{isLoading && <LoadingIndicator />}
 					<Button color="primary">Submit Character</Button>{' '}
-					<Button
-						data-spec="upsert-character-modal-close-button"
-						color="secondary"
-						onClick={() => setIsModalOpen(!isModalOpen)}
-					>
+					<Button color="secondary" onClick={() => setIsModalOpen(!isModalOpen)}>
 						Cancel
 					</Button>
 				</ModalFooter>

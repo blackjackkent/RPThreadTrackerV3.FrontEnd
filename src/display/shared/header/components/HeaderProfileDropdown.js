@@ -28,17 +28,12 @@ const HeaderProfileDropdown = (props) => {
 		<NavItem>
 			<Dropdown
 				isOpen={isHeaderProfileDropdownVisible}
-				data-spec="header-dropdown"
 				toggle={() => setIsHeaderProfileDropdownVisible(!isHeaderProfileDropdownVisible)}
 			>
 				<DropdownToggle className="nav-link dropdown-toggle">
 					<FontAwesomeIcon icon={['fas', 'user']} />
 				</DropdownToggle>
-				<DropdownMenu
-					data-spec="header-dropdown-menu"
-					right
-					className={isHeaderProfileDropdownVisible ? 'show' : ''}
-				>
+				<DropdownMenu right className={isHeaderProfileDropdownVisible ? 'show' : ''}>
 					<DropdownItem>
 						<span className="text-center">
 							Logged in as:
@@ -47,25 +42,12 @@ const HeaderProfileDropdown = (props) => {
 						</span>
 					</DropdownItem>
 					<HeaderDropdownItem
-						data-spec="header-dropdown-account-settings-link"
 						onClick={() => navigate('/settings')}
 						label="Account Settings"
 					/>
-					<HeaderDropdownItem
-						data-spec="header-dropdown-tools-link"
-						onClick={() => navigate('/tools')}
-						label="Tracker Tools"
-					/>
-					<HeaderDropdownItem
-						data-spec="header-dropdown-help-link"
-						onClick={() => navigate('/help')}
-						label="Help"
-					/>
-					<HeaderDropdownItem
-						data-spec="header-dropdown-logout-link"
-						onClick={() => navigate('/logout')}
-						label="Logout"
-					/>
+					<HeaderDropdownItem onClick={() => navigate('/tools')} label="Tracker Tools" />
+					<HeaderDropdownItem onClick={() => navigate('/help')} label="Help" />
+					<HeaderDropdownItem onClick={() => navigate('/logout')} label="Logout" />
 				</DropdownMenu>
 			</Dropdown>
 		</NavItem>

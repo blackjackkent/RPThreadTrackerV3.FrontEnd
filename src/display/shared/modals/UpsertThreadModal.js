@@ -88,17 +88,9 @@ const UpsertThreadModal = (props) => {
 	};
 
 	return (
-		<Modal
-			data-spec="upsert-thread-modal"
-			isOpen={isModalOpen}
-			toggle={() => setIsModalOpen(!isModalOpen)}
-			backdrop
-		>
-			<AvForm data-spec="upsert-thread-modal-form" onValidSubmit={() => submitForm(thread)}>
-				<ModalHeader
-					data-spec="upsert-thread-modal-header"
-					toggle={() => setIsModalOpen(!isModalOpen)}
-				>
+		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
+			<AvForm onValidSubmit={() => submitForm(thread)}>
+				<ModalHeader toggle={() => setIsModalOpen(!isModalOpen)}>
 					{thread && thread.threadId ? 'Edit Thread' : 'Add New Thread'}
 				</ModalHeader>
 				<ModalBody>
@@ -117,11 +109,7 @@ const UpsertThreadModal = (props) => {
 					<Button color="primary">
 						{thread.threadId ? 'Edit Thread' : 'Add Thread'}
 					</Button>{' '}
-					<Button
-						data-spec="upsert-thread-modal-close-button"
-						color="secondary"
-						onClick={() => setIsModalOpen(!isModalOpen)}
-					>
+					<Button color="secondary" onClick={() => setIsModalOpen(!isModalOpen)}>
 						Cancel
 					</Button>
 				</ModalFooter>

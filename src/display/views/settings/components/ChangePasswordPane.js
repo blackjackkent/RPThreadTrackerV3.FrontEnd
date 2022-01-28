@@ -32,10 +32,7 @@ const ChangePasswordPane = () => {
 					<FontAwesomeIcon icon={['fas', 'key']} /> Change Password
 				</CardHeader>
 				<CardBody className="card-body">
-					<AvForm
-						data-spec="change-password-form-container"
-						onValidSubmit={() => submitChangePasswordForm(formData)}
-					>
+					<AvForm onValidSubmit={() => submitChangePasswordForm(formData)}>
 						<TooltipForm
 							Renderable={ChangePasswordForm}
 							handleInputChange={onInputChange}

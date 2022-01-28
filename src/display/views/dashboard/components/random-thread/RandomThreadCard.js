@@ -18,20 +18,15 @@ const RandomThreadCard = () => {
 		setRandomThread(validThreads[Math.floor(Math.random() * validThreads.length)]);
 	};
 	return (
-		<Card className="random-thread-generator-card" data-spec="random-thread-generator-card">
-			<CardHeader data-spec="random-thread-generator-header">
+		<Card className="random-thread-generator-card">
+			<CardHeader>
 				<FontAwesomeIcon icon={['fas', 'random']} /> Random Thread Generator
 			</CardHeader>
 			<CardBody className="card-body">
-				<button
-					type="button"
-					className="btn btn-primary"
-					onClick={selectRandomThread}
-					data-spec="random-thread-generator-button"
-				>
+				<button type="button" className="btn btn-primary" onClick={selectRandomThread}>
 					Generate
 				</button>
-				<RandomThreadDisplay data-spec="random-thread-display" threadData={randomThread} />
+				<RandomThreadDisplay threadData={randomThread} />
 			</CardBody>
 		</Card>
 	);

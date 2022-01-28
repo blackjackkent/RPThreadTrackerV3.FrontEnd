@@ -11,7 +11,7 @@ const StaticDropdownNav = (props) => {
 	const history = useHistory();
 	const { activeTab, options } = props;
 	const optionElements = options.map((o) => (
-		<option value={o.href} key={o.href} data-spec="static-dropdown-nav-option">
+		<option value={o.href} key={o.href}>
 			{o.name}
 		</option>
 	));
@@ -22,7 +22,6 @@ const StaticDropdownNav = (props) => {
 				className="clean-select"
 				onChange={(e) => history.push(e.target.value)}
 				value={activeTab}
-				data-spec="static-dropdown-nav-select"
 			>
 				{optionElements}
 			</select>

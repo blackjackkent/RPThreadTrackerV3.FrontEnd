@@ -25,16 +25,12 @@ const Settings = (props) => {
 		<div className="animated fadeIn static-container settings-container">
 			<Row>
 				<Col className="d-lg-none text-center">
-					<StaticDropdownNav
-						data-spec="settings-static-dropdown-nav"
-						activeTab={match.url}
-						options={options}
-					/>
+					<StaticDropdownNav activeTab={match.url} options={options} />
 				</Col>
 			</Row>
 			<Row>
 				<Col className="d-none d-lg-block" md={3}>
-					<StaticTabNav data-spec="settings-static-tab-nav" options={options} />
+					<StaticTabNav options={options} />
 				</Col>
 				<Col xs="12" lg="9">
 					<TabContent activeTab={match.params.tabId}>

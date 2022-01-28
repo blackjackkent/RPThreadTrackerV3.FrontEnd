@@ -12,11 +12,7 @@ const ThreadRefreshButton = (props) => {
 	const { refreshThreads, isArchive } = props;
 	return (
 		<div className="thread-refresh-button">
-			<Button
-				color="primary"
-				onClick={() => refreshThreads(isArchive)}
-				data-spec="thread-refresh-button-submit"
-			>
+			<Button color="primary" onClick={() => refreshThreads(isArchive)}>
 				Refresh <FontAwesomeIcon icon={['fas', 'sync-alt']} />
 			</Button>
 		</div>

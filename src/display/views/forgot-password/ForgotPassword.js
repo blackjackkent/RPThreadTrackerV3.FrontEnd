@@ -36,10 +36,7 @@ const ForgotPassword = () => {
 						}}
 					/>
 				)}
-				<AvForm
-					data-spec="forgot-password-form-container"
-					onValidSubmit={() => submitForgotPassword(formData)}
-				>
+				<AvForm onValidSubmit={() => submitForgotPassword(formData)}>
 					<h1>Forgot your password?</h1>
 					<p className="text-muted">
 						Enter your email address below and we will email you a link to reset your

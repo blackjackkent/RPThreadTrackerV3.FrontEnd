@@ -92,10 +92,9 @@ const ManageTagsPane = () => {
 					</Row>
 					{isLoading && <LoadingIndicator />}
 					{!isLoading && !selectedValue && (
-						<Row className="form-group" data-spec="manage-tags-autosuggest-section">
+						<Row className="form-group">
 							<Col>
 								<Autosuggest
-									data-spec="manage-tags-autosuggest"
 									name="autosuggest"
 									suggestions={suggestions}
 									onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -110,7 +109,7 @@ const ManageTagsPane = () => {
 						</Row>
 					)}
 					{!isLoading && selectedValue && (
-						<div data-spec="manage-tags-form-section">
+						<div>
 							<Row>
 								<Col>
 									<p className="text-center">
@@ -122,7 +121,6 @@ const ManageTagsPane = () => {
 							<Row className="choice-row">
 								<Col>
 									<form
-										data-spec="manage-tags-action-form"
 										onSubmit={(e) => {
 											e.preventDefault();
 										}}
@@ -132,7 +130,6 @@ const ManageTagsPane = () => {
 										<input
 											name="updatedValue"
 											placeholder="New tag"
-											data-spec="updated-value-field"
 											id="manage-tags-updated-value-input"
 											type="text"
 											className="form-control"
@@ -143,7 +140,6 @@ const ManageTagsPane = () => {
 											color="primary"
 											onClick={() => setIsBulkUpdateTagModalOpen(true)}
 											disabled={!updatedValue}
-											data-spec="manage-tags-update-button"
 										>
 											<FontAwesomeIcon icon={['fas', 'edit']} /> Bulk Edit
 											This Tag
@@ -157,7 +153,6 @@ const ManageTagsPane = () => {
 										<Button
 											color="danger"
 											onClick={() => setIsBulkDeleteTagModalOpen(true)}
-											data-spec="manage-tags-delete-button"
 										>
 											<FontAwesomeIcon icon={['fas', 'trash-alt']} /> Bulk
 											Delete This Tag
@@ -172,7 +167,6 @@ const ManageTagsPane = () => {
 											type="button"
 											className="back-button"
 											onClick={onOperationComplete}
-											data-spec="manage-tags-back-button"
 										>
 											<FontAwesomeIcon icon={['fas', 'arrow-left']} /> Select
 											a different tag

@@ -51,7 +51,6 @@ const Layout = () => {
 	const renderLoadingIndicator = () => {
 		return (
 			<LoadingIndicator
-				data-spec="layout-loader"
 				style={{
 					width: 50,
 					height: 50,
@@ -66,7 +65,7 @@ const Layout = () => {
 
 	const renderLayout = () => {
 		return (
-			<div className="app" data-spec="layout-app">
+			<div className="app">
 				<CharactersContext.Provider
 					value={{ characters, isCharactersLoading, isCharactersFetchError }}
 				>

@@ -31,11 +31,7 @@ const AsideNewsRow = (props) => {
 				<small className="mr-3">
 					<Moment format="MMMM D, YYYY">{item.postDate}</Moment>
 				</small>
-				<Badge
-					data-spec="news-item-badge"
-					color="danger"
-					className={item.isUnread ? 'float-right' : 'd-none'}
-				>
+				<Badge color="danger" className={item.isUnread ? 'float-right' : 'd-none'}>
 					{' '}
 					New
 				</Badge>

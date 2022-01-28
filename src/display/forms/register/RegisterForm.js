@@ -18,7 +18,7 @@ const RegisterForm = (props) => {
 	const { handleInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	return (
 		<div>
-			<div data-spec="username-field">
+			<div>
 				<AvField
 					name="username"
 					placeholder="Username"
@@ -27,7 +27,7 @@ const RegisterForm = (props) => {
 					validate={validator.username}
 				/>
 			</div>
-			<div data-spec="email-field">
+			<div>
 				<AvField
 					name="email"
 					placeholder="Email"
@@ -36,7 +36,7 @@ const RegisterForm = (props) => {
 					validate={validator.email}
 				/>
 			</div>
-			<div data-spec="password-field">
+			<div>
 				<Tooltip
 					visible={tooltipDisplayData.password}
 					overlay={formData.password.tooltip}
@@ -47,7 +47,6 @@ const RegisterForm = (props) => {
 						offset: [0, 10]
 					}}
 					placement="top"
-					data-spec="password-tooltip"
 				>
 					<AvField
 						name="password"
@@ -60,14 +59,13 @@ const RegisterForm = (props) => {
 					/>
 				</Tooltip>
 			</div>
-			<div data-spec="confirm-password-field">
+			<div>
 				<AvField
 					name="confirmPassword"
 					placeholder="Confirm Password"
 					type="password"
 					onChange={handleInputChange}
 					validate={validator.confirmPassword}
-					data-spec="confirm-password-field"
 				/>
 			</div>
 		</div>

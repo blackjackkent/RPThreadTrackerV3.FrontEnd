@@ -55,13 +55,9 @@ const AtAGlanceCard = () => {
 					<span className="switch-handle" />
 				</SwitchLabel>
 			</CardHeader>
-			<CardBody
-				data-spec="at-a-glance-card-body"
-				className={isDashboardThreadDistributionVisible ? 'card-body' : 'd-none'}
-			>
+			<CardBody className={isDashboardThreadDistributionVisible ? 'card-body' : 'd-none'}>
 				<CardGroup>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-active-widget"
 						icon="icon-list"
 						header={activeThreads.length}
 						href="/threads/all"
@@ -69,7 +65,6 @@ const AtAGlanceCard = () => {
 						Active Threads
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-my-turn-widget"
 						icon="icon-pencil"
 						header={myTurnThreads.length}
 						isLoadingIconVisible={isThreadsLoading}
@@ -78,7 +73,6 @@ const AtAGlanceCard = () => {
 						Your Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-their-turn-widget"
 						icon="icon-check"
 						header={theirTurnThreads.length}
 						isLoadingIconVisible={isThreadsLoading}
@@ -87,7 +81,6 @@ const AtAGlanceCard = () => {
 						Their Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-queued-widget"
 						icon="icon-calendar"
 						header={queuedThreads.length}
 						isLoadingIconVisible={isThreadsLoading}

@@ -13,7 +13,7 @@ const ForgotPasswordForm = (props) => {
 	const { handleInputChange } = props;
 	return (
 		<div>
-			<div data-spec="email-field">
+			<div>
 				<AvField
 					name="Email"
 					placeholder="Email"

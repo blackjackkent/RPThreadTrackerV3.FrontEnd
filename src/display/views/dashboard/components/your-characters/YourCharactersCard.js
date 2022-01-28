@@ -51,7 +51,6 @@ const YourCharactersCard = () => {
 							character={character}
 							key={character.characterId}
 							threadCount={characterThreadCounts[character.characterId]}
-							data-spec="your-characters-card-row"
 						/>
 					))}
 				{!isCharactersLoading &&

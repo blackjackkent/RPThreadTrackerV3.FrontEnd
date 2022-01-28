@@ -45,20 +45,12 @@ const ResetPassword = () => {
 						}}
 					/>
 				)}
-				<AvForm
-					data-spec="reset-password-form-container"
-					onValidSubmit={submitResetPassword}
-				>
+				<AvForm onValidSubmit={submitResetPassword}>
 					<h1>Reset Password</h1>
 					<p className="text-muted">Enter your new password below.</p>
 					{isSubmitResetPasswordError && (
 						<div className="has-danger">
-							<p
-								data-spec="reset-password-server-error"
-								className="form-control-feedback"
-							>
-								{resetPasswordError.message}
-							</p>
+							<p className="form-control-feedback">{resetPasswordError.message}</p>
 						</div>
 					)}
 					<TooltipForm Renderable={ResetPasswordForm} handleInputChange={onInputChange} />

@@ -13,7 +13,6 @@ const Footer = () => {
 				type="button"
 				onKeyPress={() => setUseLightTheme(!useLightTheme)}
 				onClick={() => setUseLightTheme(!useLightTheme)}
-				data-spec="footer-theme-toggle-button"
 			>
 				{useLightTheme ? 'dark theme' : 'light theme'}
 			</button>{' '}

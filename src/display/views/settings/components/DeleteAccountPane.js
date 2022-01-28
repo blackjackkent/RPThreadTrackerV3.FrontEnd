@@ -51,12 +51,7 @@ const DeleteAccountPane = () => {
 					<FontAwesomeIcon icon={['fas', 'trash-alt']} /> Delete Account
 				</CardHeader>
 				<CardBody className="card-body text-center">
-					<Button
-						data-spec="delete-account-button"
-						type="submit"
-						color="danger"
-						onClick={openDeleteAccountModal}
-					>
+					<Button type="submit" color="danger" onClick={openDeleteAccountModal}>
 						Delete Account
 					</Button>
 				</CardBody>

@@ -24,22 +24,22 @@ const RandomThreadDisplay = (props) => {
 	const { threadData } = props;
 	if (!threadData?.thread) {
 		return (
-			<div className="random-thread-result" data-spec="random-thread-result">
+			<div className="random-thread-result">
 				<p>Pick a random thread to respond to!</p>
 			</div>
 		);
 	}
 	return (
-		<div className="random-thread-result" data-spec="random-thread-result">
+		<div className="random-thread-result">
 			{threadData.status && (
 				<div>
-					<p data-spec="random-thread-title">
+					<p>
 						<a href={threadData.status.lastPostUrl}>
 							{threadData.thread.userTitle}{' '}
 							<FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 						</a>
 					</p>
-					<div className="small" data-spec="random-thread-subtitle">
+					<div className="small">
 						Last Post by{' '}
 						<a href={threadData.status.lastPostUrl}>
 							{threadData.status.lastPosterUrlIdentifier}
@@ -49,10 +49,8 @@ const RandomThreadDisplay = (props) => {
 			)}
 			{!threadData.status && (
 				<div>
-					<p data-spec="random-thread-title">{threadData.thread.userTitle}</p>
-					<div className="small" data-spec="random-thread-subtitle">
-						Awaiting Starter
-					</div>
+					<p>{threadData.thread.userTitle}</p>
+					<div className="small">Awaiting Starter</div>
 				</div>
 			)}
 		</div>

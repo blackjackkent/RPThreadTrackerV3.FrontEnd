@@ -44,7 +44,6 @@ const ManagePublicViewsPane = () => {
 							<p>
 								<Button
 									color="primary"
-									data-spec="create-public-view-button"
 									onClick={() => setIsUpsertPublicViewModalOpen(true)}
 								>
 									Create New Public View

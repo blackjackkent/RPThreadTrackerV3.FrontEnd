@@ -123,7 +123,6 @@ const UpsertPublicViewForm = (props) => {
 						onChange={onInputChange}
 						validate={validator.name}
 						helpMessage={formData.name.helpMessage}
-						data-spec="view-name-field"
 					/>
 				</Col>
 			</Row>
@@ -141,7 +140,6 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-slug-tooltip"
 					>
 						<AvField
 							name="slug"
@@ -154,7 +152,6 @@ const UpsertPublicViewForm = (props) => {
 							helpMessage={formData.slug.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-slug-field"
 						/>
 					</Tooltip>
 				</Col>
@@ -173,7 +170,6 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-columns-tooltip"
 					>
 						<AvField
 							name="columns"
@@ -186,7 +182,6 @@ const UpsertPublicViewForm = (props) => {
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-columns-field"
 						>
 							{columnOptions}
 						</AvField>
@@ -202,7 +197,6 @@ const UpsertPublicViewForm = (props) => {
 						value={publicView.sortKey}
 						onChange={onInputChange}
 						validate={validator.sortKey}
-						data-spec="sort-key-field"
 					>
 						<option value="">Select Column</option>
 						{columnOptions}
@@ -216,7 +210,6 @@ const UpsertPublicViewForm = (props) => {
 						type="select"
 						value={publicView.sortDescending}
 						onChange={handleSortDirectionChange}
-						data-spec="sort-descending-field"
 					>
 						<option value={false}>Ascending</option>
 						<option
@@ -237,7 +230,6 @@ const UpsertPublicViewForm = (props) => {
 									onChange={handleTurnFilterCheckboxChange}
 									type="checkbox"
 									checked={publicView?.turnFilter?.includeMyTurn ?? false}
-									data-spec="include-my-turn-field"
 								/>{' '}
 								Include My Turn Threads
 							</label>
@@ -249,7 +241,6 @@ const UpsertPublicViewForm = (props) => {
 									onChange={handleTurnFilterCheckboxChange}
 									type="checkbox"
 									checked={publicView?.turnFilter?.includeTheirTurn ?? false}
-									data-spec="include-their-turn-field"
 								/>{' '}
 								Include Partner&apos;s Turn Threads
 							</label>
@@ -263,7 +254,6 @@ const UpsertPublicViewForm = (props) => {
 									type="checkbox"
 									onChange={handleTurnFilterCheckboxChange}
 									checked={publicView?.turnFilter?.includeQueued ?? false}
-									data-spec="include-queued-field"
 								/>{' '}
 								Include Queued Threads
 							</label>
@@ -275,7 +265,6 @@ const UpsertPublicViewForm = (props) => {
 									type="checkbox"
 									onChange={handleTurnFilterCheckboxChange}
 									checked={publicView?.turnFilter?.includeArchived ?? false}
-									data-spec="include-archived-field"
 								/>{' '}
 								Include Archived Threads
 							</label>
@@ -297,7 +286,6 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-characters-tooltip"
 					>
 						<AvField
 							name="characterIds"
@@ -310,7 +298,6 @@ const UpsertPublicViewForm = (props) => {
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-characters-field"
 						>
 							{characterOptions}
 						</AvField>
@@ -331,7 +318,6 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-tags-tooltip"
 					>
 						<AvField
 							name="tags"
@@ -343,7 +329,6 @@ const UpsertPublicViewForm = (props) => {
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-tags-field"
 						>
 							{tagOptions}
 						</AvField>

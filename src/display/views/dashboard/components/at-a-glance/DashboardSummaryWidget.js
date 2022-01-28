@@ -27,7 +27,6 @@ const DashboardSummaryWidget = (props) => {
 				<div className="text-right mb-2">
 					{isLoadingIconVisible && (
 						<LoadingIndicator
-							data-spec="dashboard-summary-widget-loading"
 							className="inverse dashboard-summary-widget-loading-icon"
 							style={{
 								width: 25,
@@ -37,20 +36,10 @@ const DashboardSummaryWidget = (props) => {
 					)}
 				</div>
 				<div className="h1 float-right text-right mb-2">
-					<i
-						data-spec="dashboard-summary-widget-icon"
-						className={`${icon} d-sm-none d-md-block`}
-					/>
+					<i className={`${icon} d-sm-none d-md-block`} />
 				</div>
-				<div className="h4 mb-0" data-spec="dashboard-summary-widget-header">
-					{header}
-				</div>
-				<small
-					data-spec="dashboard-summary-widget-body"
-					className=" text-uppercase font-weight-bold"
-				>
-					{children}
-				</small>
+				<div className="h4 mb-0">{header}</div>
+				<small className=" text-uppercase font-weight-bold">{children}</small>
 				<Progress className="progress-xs mt-3 mb-0" value="100" />
 			</CardBody>
 		</Card>

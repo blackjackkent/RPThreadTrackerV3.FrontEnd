@@ -54,7 +54,6 @@ const UpsertThreadForm = (props) => {
 						value={thread.characterId}
 						onChange={onInputChange}
 						validate={validator.characterId}
-						data-spec="character-select-field"
 					>
 						<option value="">Select Character</option>
 						{options}
@@ -74,7 +73,6 @@ const UpsertThreadForm = (props) => {
 						onChange={onInputChange}
 						validate={validator.userTitle}
 						helpMessage={formData.userTitle.helpMessage}
-						data-spec="user-title-field"
 					/>
 				</Col>
 			</Row>
@@ -91,7 +89,6 @@ const UpsertThreadForm = (props) => {
 						validate={validator.postId}
 						value={thread.postId}
 						helpMessage={formData.postId.helpMessage}
-						data-spec="post-id-field"
 					/>
 				</Col>
 			</Row>
@@ -109,7 +106,6 @@ const UpsertThreadForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="partner-url-identifier-tooltip"
 					>
 						<AvField
 							name="partnerUrlIdentifier"
@@ -122,7 +118,6 @@ const UpsertThreadForm = (props) => {
 							helpMessage={formData.partnerUrlIdentifier.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="partner-url-identifier-field"
 						/>
 					</Tooltip>
 				</Col>
@@ -140,7 +135,6 @@ const UpsertThreadForm = (props) => {
 							onChange={onInputChange}
 							maxLength="250"
 							defaultValue={thread.description}
-							data-spec="description-field"
 						/>
 					</div>
 				</Col>
@@ -159,7 +153,6 @@ const UpsertThreadForm = (props) => {
 							placeholder="Thread Tags"
 							className="form-control"
 							labelClassName="form-control-label"
-							data-spec="tags-field"
 						/>
 						<small className="form-text">{formData.threadTags.helpMessage}</small>
 					</FormGroup>

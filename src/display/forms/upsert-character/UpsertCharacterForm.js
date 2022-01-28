@@ -38,7 +38,6 @@ const UpsertCharacterForm = (props) => {
 						value={character.characterName}
 						onChange={onInputChange}
 						validate={validator.characterName}
-						data-spec="character-name-field"
 					/>
 				</Col>
 			</Row>
@@ -54,7 +53,6 @@ const UpsertCharacterForm = (props) => {
 						id="character-platform"
 						onChange={onInputChange}
 						value={character.platformId}
-						data-spec="platform-id-field"
 					>
 						<option value={1}>Tumblr</option>
 					</Input>
@@ -74,7 +72,6 @@ const UpsertCharacterForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="url-identifier-tooltip"
 					>
 						<AvField
 							name="urlIdentifier"
@@ -87,7 +84,6 @@ const UpsertCharacterForm = (props) => {
 							helpMessage={formData.urlIdentifier.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="url-identifier-field"
 						/>
 					</Tooltip>
 				</Col>

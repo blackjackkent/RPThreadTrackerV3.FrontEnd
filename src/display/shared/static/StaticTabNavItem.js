@@ -12,7 +12,7 @@ const StaticTabNavItem = (props) => {
 	const { href, title } = props;
 	return (
 		<NavItem>
-			<NavLink to={href} activeClassName="active" data-spec="static-tab-nav-item-navlink">
+			<NavLink to={href} activeClassName="active">
 				{title}
 			</NavLink>
 		</NavItem>

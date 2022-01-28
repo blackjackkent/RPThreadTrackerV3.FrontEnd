@@ -80,11 +80,10 @@ const ThreadBulkUpdateControls = (props) => {
 				isModalOpen={isBulkUntrackThreadsModalOpen}
 				setIsModalOpen={setIsBulkUntrackThreadsModalOpen}
 			/>
-			<Form onSubmit={submitBulkAction} data-spec="thread-bulk-update-controls-form">
+			<Form onSubmit={submitBulkAction}>
 				<CleanSelect>
 					<InputGroup>
 						<Input
-							data-spec="thread-bulk-update-controls-select"
 							type="select"
 							name="tag"
 							id="tag"
@@ -105,11 +104,7 @@ const ThreadBulkUpdateControls = (props) => {
 							</option>
 							<option value="untrack">Untrack Selected Threads</option>
 						</Input>
-						<Button
-							data-spec="thread-bulk-update-controls-submit-button"
-							color="primary"
-							disabled={selectedThreadCount === 0}
-						>
+						<Button color="primary" disabled={selectedThreadCount === 0}>
 							Submit
 						</Button>
 					</InputGroup>

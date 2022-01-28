@@ -90,7 +90,6 @@ const RecentActivityCard = () => {
 					recentActivityThreads &&
 					recentActivityThreads?.map((threadData) => (
 						<RecentActivityRow
-							data-spec="recent-activity-card-row"
 							threadData={threadData}
 							key={threadData.thread.threadId}
 							onArchiveThreadClick={onArchiveThreadClick}

@@ -36,10 +36,7 @@ const UpdateAccountInfoPane = () => {
 					<FontAwesomeIcon icon={['fas', 'user']} /> Change Username/Email
 				</CardHeader>
 				<CardBody className="card-body">
-					<AvForm
-						data-spec="account-info-form-container"
-						onValidSubmit={() => submitUpdateAccountInfo(formData)}
-					>
+					<AvForm onValidSubmit={() => submitUpdateAccountInfo(formData)}>
 						<UpdateAccountInfoForm handleInputChange={onInputChange} user={formData} />
 						<Row>
 							<Col className="text-right">

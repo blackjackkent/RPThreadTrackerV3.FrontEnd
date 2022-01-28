@@ -26,7 +26,6 @@ const HeaderLogoBlock = (props) => {
 		>
 			<NavbarToggler
 				className="d-lg-none"
-				data-spec="header-logo-block-mobile-toggler"
 				onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
 			>
 				&#9776;
@@ -36,7 +35,6 @@ const HeaderLogoBlock = (props) => {
 			</Link>
 			<NavbarToggler
 				className="d-md-down-none"
-				data-spec="header-logo-block-sidebar-toggler"
 				onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 			>
 				&#9776;

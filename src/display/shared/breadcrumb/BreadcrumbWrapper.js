@@ -15,7 +15,7 @@ const BreadcrumbWrapper = (props) => {
 	return (
 		<Style className="breadcrumb-wrapper">
 			{isLoading && (
-				<div data-spec="header-loading-indicator" className="float-right">
+				<div className="float-right">
 					<LoadingIndicator className="invert" />
 				</div>
 			)}

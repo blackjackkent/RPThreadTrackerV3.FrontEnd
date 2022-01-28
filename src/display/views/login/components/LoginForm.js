@@ -29,18 +29,16 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						}}
 					/>
 				)}
-				<AvForm data-spec="login-form-container" onValidSubmit={onSubmit}>
+				<AvForm onValidSubmit={onSubmit}>
 					<h1>Login</h1>
 					<p className="text-muted">Sign in to RPThreadTracker</p>
 					{errorMessage && (
 						<div className="has-danger">
-							<p data-spec="login-server-error" className="form-control-feedback">
-								{errorMessage}
-							</p>
+							<p className="form-control-feedback">{errorMessage}</p>
 						</div>
 					)}
 					<div>
-						<div data-spec="username-field">
+						<div>
 							<Label for="username">Username</Label>
 							<AvField
 								name="username"
@@ -50,7 +48,7 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 								validate={validator.username}
 							/>
 						</div>
-						<div data-spec="password-field">
+						<div>
 							<Label for="password">Password</Label>
 							<AvField
 								name="password"
