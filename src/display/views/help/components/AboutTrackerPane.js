@@ -50,18 +50,11 @@ const AboutTrackerPane = () => (
 							<li>Abby S.</li>
 							<li>Alex D.</li>
 							<li>Alex Stahl</li>
-							<li>Beth Halverson</li>
 							<li>Cassandra Clark</li>
-							<li>containsmultitvdes</li>
-							<li>Ezra Wilson</li>
-							<li>hazeljv</li>
-							<li>Isabella R.</li>
-							<li>Maddie</li>
-							<li>Morgan Looney</li>
-							<li>peepingtoad</li>
-							<li>Rave</li>
-							<li>Shelbi Van Horn</li>
 							<li>The Colony Roleplay</li>
+							<li>Ezra Wilson</li>
+							<li>Isabella R.</li>
+							<li>Rave</li>
 							<li>Windress</li>
 						</ul>
 					</Col>
@@ -70,12 +63,10 @@ const AboutTrackerPane = () => (
 							<strong>Megabyte Tier ($10 a month)</strong>
 						</p>
 						<ul>
-							<li>Dray</li>
+							<li>Aeryn</li>
 							<li>girl-next-door-writes</li>
 							<li>insolitus-academy</li>
-							<li>Jess</li>
 							<li>Melissa</li>
-							<li>Rico</li>
 							<li>tabbyrp</li>
 							<li>tyrantofthefirmament</li>
 						</ul>
