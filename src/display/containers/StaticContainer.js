@@ -6,7 +6,6 @@ import Login from '../views/login/Login';
 import ForgotPassword from '../views/forgot-password/ForgotPassword';
 import Register from '../views/register/Register';
 import ResetPassword from '../views/reset-password/ResetPassword';
-import withPageViewTracker from '../../infrastructure/withPageViewTracker';
 // #endregion imports
 
 const StaticContainer = () => (
@@ -35,4 +34,4 @@ const StaticContainer = () => (
 		</Container>
 	</div>
 );
-export default withPageViewTracker(StaticContainer);
+export default StaticContainer;

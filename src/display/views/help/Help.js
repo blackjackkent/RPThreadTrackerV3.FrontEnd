@@ -20,10 +20,6 @@ const propTypes = {
 	}).isRequired
 };
 
-function mapStateToProps() {
-	return {};
-}
-
 const Help = (props) => {
 	const { match } = props;
 	const options = Object.values(tabs.HELP);
@@ -52,4 +48,4 @@ const Help = (props) => {
 };
 
 Help.propTypes = propTypes;
-export default connect(mapStateToProps)(Help);
+export default Help;
