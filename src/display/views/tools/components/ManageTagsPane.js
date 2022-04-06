@@ -1,23 +1,21 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import { TabPane, Col, Row, Button, CardHeader, CardBody, Label } from 'reactstrap';
 import Autosuggest from 'react-autosuggest';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../shared/styled/Card';
 import LoadingIndicator from '../../../shared/loading/LoadingIndicator';
+import BulkUpdateTagModal from '~/display/shared/modals/BulkUpdateTagModal';
+import BulkDeleteTagModal from '~/display/shared/modals/BulkDeleteTagModal';
+import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
 
-const propTypes = {
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	openBulkUpdateTagModal: PropTypes.func.isRequired,
-	openBulkDeleteTagModal: PropTypes.func.isRequired
-};
-
-const ManageTagsPane = (props) => {
+const ManageTagsPane = () => {
+	const { tagTextValues, isLoading } = useAllTags();
 	const [autosuggestValue, setAutosuggestValue] = useState('');
+	const [suggestions, setSuggestions] = useState([]);
 	const [selectedValue, setSelectedValue] = useState(null);
 	const [updatedValue, setUpdatedValue] = useState('');
-	const [suggestions, setSuggestions] = useState([]);
-	const { isLoadingIconVisible } = props;
+	const [isBulkUpdateTagModalOpen, setIsBulkUpdateTagModalOpen] = useState(false);
+	const [isBulkDeleteTagModalOpen, setIsBulkDeleteTagModalOpen] = useState(false);
 
 	const autosuggestItem = (suggestion) => <div>{suggestion}</div>;
 	const getSuggestionValue = (suggestion) => suggestion;
@@ -26,14 +24,13 @@ const ManageTagsPane = (props) => {
 	};
 
 	const onSuggestionsFetchRequested = ({ value }) => {
-		const { tags } = props;
 		const inputValue = value.trim().toLowerCase();
 		const inputLength = inputValue.length;
 		let filteredSuggestions = [];
 		if (inputLength === 0) {
-			filteredSuggestions = tags.sort();
+			filteredSuggestions = tagTextValues.sort();
 		} else {
-			filteredSuggestions = tags
+			filteredSuggestions = tagTextValues
 				.filter((tag) => tag.toLowerCase().includes(inputValue))
 				.sort();
 		}
@@ -52,21 +49,7 @@ const ManageTagsPane = (props) => {
 		setUpdatedValue(event.target.value);
 	};
 
-	const clearSelectedTag = () => {
-		setSelectedValue(null);
-	};
-
-	const bulkUpdateTag = () => {
-		const { openBulkUpdateTagModal } = props;
-		openBulkUpdateTagModal(selectedValue, updatedValue);
-		setSelectedValue(null);
-		setAutosuggestValue('');
-		setUpdatedValue('');
-	};
-
-	const bulkDeleteTag = () => {
-		const { openBulkDeleteTagModal } = props;
-		openBulkDeleteTagModal(selectedValue);
+	const onOperationComplete = () => {
 		setSelectedValue(null);
 		setAutosuggestValue('');
 		setUpdatedValue('');
@@ -80,9 +63,22 @@ const ManageTagsPane = (props) => {
 	};
 	return (
 		<TabPane tabId="tags" className="manage-tags-pane">
+			<BulkUpdateTagModal
+				currentTag={selectedValue}
+				replacementTag={updatedValue}
+				isModalOpen={isBulkUpdateTagModalOpen}
+				setIsModalOpen={setIsBulkUpdateTagModalOpen}
+				onComplete={onOperationComplete}
+			/>
+			<BulkDeleteTagModal
+				tag={selectedValue}
+				isModalOpen={isBulkDeleteTagModalOpen}
+				setIsModalOpen={setIsBulkDeleteTagModalOpen}
+				onComplete={onOperationComplete}
+			/>
 			<Card>
 				<CardHeader>
-					<i className="fas fa-eye" /> Manage Tags
+					<FontAwesomeIcon icon={['fas', 'eye']} /> Manage Tags
 				</CardHeader>
 				<CardBody className="card-body">
 					<Row>
@@ -94,12 +90,11 @@ const ManageTagsPane = (props) => {
 							</p>
 						</Col>
 					</Row>
-					{isLoadingIconVisible && <LoadingIndicator />}
-					{!isLoadingIconVisible && !selectedValue && (
-						<Row className="form-group" data-spec="manage-tags-autosuggest-section">
+					{isLoading && <LoadingIndicator />}
+					{!isLoading && !selectedValue && (
+						<Row className="form-group">
 							<Col>
 								<Autosuggest
-									data-spec="manage-tags-autosuggest"
 									name="autosuggest"
 									suggestions={suggestions}
 									onSuggestionsFetchRequested={onSuggestionsFetchRequested}
@@ -113,8 +108,8 @@ const ManageTagsPane = (props) => {
 							</Col>
 						</Row>
 					)}
-					{!isLoadingIconVisible && selectedValue && (
-						<div data-spec="manage-tags-form-section">
+					{!isLoading && selectedValue && (
+						<div>
 							<Row>
 								<Col>
 									<p className="text-center">
@@ -126,7 +121,6 @@ const ManageTagsPane = (props) => {
 							<Row className="choice-row">
 								<Col>
 									<form
-										data-spec="manage-tags-action-form"
 										onSubmit={(e) => {
 											e.preventDefault();
 										}}
@@ -136,7 +130,6 @@ const ManageTagsPane = (props) => {
 										<input
 											name="updatedValue"
 											placeholder="New tag"
-											data-spec="updated-value-field"
 											id="manage-tags-updated-value-input"
 											type="text"
 											className="form-control"
@@ -145,11 +138,11 @@ const ManageTagsPane = (props) => {
 										/>
 										<Button
 											color="primary"
-											onClick={bulkUpdateTag}
+											onClick={() => setIsBulkUpdateTagModalOpen(true)}
 											disabled={!updatedValue}
-											data-spec="manage-tags-update-button"
 										>
-											<i className="fas fa-edit" /> Bulk Edit This Tag
+											<FontAwesomeIcon icon={['fas', 'edit']} /> Bulk Edit
+											This Tag
 										</Button>
 									</form>
 								</Col>
@@ -159,10 +152,10 @@ const ManageTagsPane = (props) => {
 									<form className="d-flex justify-content-center form-inline">
 										<Button
 											color="danger"
-											onClick={bulkDeleteTag}
-											data-spec="manage-tags-delete-button"
+											onClick={() => setIsBulkDeleteTagModalOpen(true)}
 										>
-											<i className="fas fa-trash-alt" /> Bulk Delete This Tag
+											<FontAwesomeIcon icon={['fas', 'trash-alt']} /> Bulk
+											Delete This Tag
 										</Button>{' '}
 									</form>
 								</Col>
@@ -173,11 +166,10 @@ const ManageTagsPane = (props) => {
 										<button
 											type="button"
 											className="back-button"
-											onClick={clearSelectedTag}
-											data-spec="manage-tags-back-button"
+											onClick={onOperationComplete}
 										>
-											<i className="fas fa-arrow-left" /> Select a different
-											tag
+											<FontAwesomeIcon icon={['fas', 'arrow-left']} /> Select
+											a different tag
 										</button>
 									</p>
 								</Col>
@@ -189,5 +181,4 @@ const ManageTagsPane = (props) => {
 		</TabPane>
 	);
 };
-ManageTagsPane.propTypes = propTypes;
 export default ManageTagsPane;

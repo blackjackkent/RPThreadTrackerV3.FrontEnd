@@ -1,4 +1,5 @@
 import { debounce } from 'lodash';
+import { AvValidator } from 'availity-reactstrap-validation';
 import { isValidSlug } from '../../../infrastructure/api';
 
 export default {
@@ -17,11 +18,11 @@ export default {
 			value: /^[A-z\d-]+$/,
 			errorMessage: 'Slugs can only contain letters, numbers, and dashes.'
 		},
-		required: {
-			value: true,
-			errorMessage: 'You must enter a slug for your public view.'
-		},
 		async: debounce((value, ctx, input, cb) => {
+			if (AvValidator.required(value) !== true) {
+				cb('You must enter a slug for your public view.');
+				return;
+			}
 			const slug = value;
 			const { viewId } = ctx;
 			isValidSlug(slug, viewId)

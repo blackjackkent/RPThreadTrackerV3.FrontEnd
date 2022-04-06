@@ -6,12 +6,17 @@ import { NavbarToggler } from 'reactstrap';
 // #endregion imports
 
 const propTypes = {
-	mobileSidebarToggle: PropTypes.func.isRequired,
-	sidebarToggle: PropTypes.func.isRequired
+	isMobileSidebarOpen: PropTypes.bool.isRequired,
+	setIsMobileSidebarOpen: PropTypes.func.isRequired,
+	isSidebarOpen: PropTypes.bool,
+	setIsSidebarOpen: PropTypes.func.isRequired
+};
+const defaultProps = {
+	isSidebarOpen: true
 };
 
 const HeaderLogoBlock = (props) => {
-	const { mobileSidebarToggle, sidebarToggle } = props;
+	const { isMobileSidebarOpen, setIsMobileSidebarOpen, isSidebarOpen, setIsSidebarOpen } = props;
 
 	return (
 		<div
@@ -21,8 +26,7 @@ const HeaderLogoBlock = (props) => {
 		>
 			<NavbarToggler
 				className="d-lg-none"
-				data-spec="header-logo-block-mobile-toggler"
-				onClick={mobileSidebarToggle}
+				onClick={() => setIsMobileSidebarOpen(!isMobileSidebarOpen)}
 			>
 				&#9776;
 			</NavbarToggler>
@@ -31,8 +35,7 @@ const HeaderLogoBlock = (props) => {
 			</Link>
 			<NavbarToggler
 				className="d-md-down-none"
-				data-spec="header-logo-block-sidebar-toggler"
-				onClick={sidebarToggle}
+				onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 			>
 				&#9776;
 			</NavbarToggler>
@@ -40,4 +43,5 @@ const HeaderLogoBlock = (props) => {
 	);
 };
 HeaderLogoBlock.propTypes = propTypes;
+HeaderLogoBlock.defaultProps = defaultProps;
 export default HeaderLogoBlock;

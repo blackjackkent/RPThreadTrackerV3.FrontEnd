@@ -24,16 +24,14 @@ const AsideNewsRow = (props) => {
 				}`}
 			>
 				<div>
-					<a href={item.postUrl}>{item.postTitle}</a>
+					<a href={item.postUrl} target="_blank" rel="noopener noreferrer">
+						{item.postTitle}
+					</a>
 				</div>
 				<small className="mr-3">
 					<Moment format="MMMM D, YYYY">{item.postDate}</Moment>
 				</small>
-				<Badge
-					data-spec="news-item-badge"
-					color="danger"
-					className={item.isUnread ? 'float-right' : 'd-none'}
-				>
+				<Badge color="danger" className={item.isUnread ? 'float-right' : 'd-none'}>
 					{' '}
 					New
 				</Badge>

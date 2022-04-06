@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { TabPane, CardHeader, CardBody, Col, Row } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
@@ -6,7 +7,7 @@ const AboutTrackerPane = () => (
 	<TabPane tabId="about">
 		<Card>
 			<CardHeader>
-				<i className="fas fa-info-circle" /> About RPThreadTracker
+				<FontAwesomeIcon icon={['fas', 'info-circle']} /> About RPThreadTracker
 			</CardHeader>
 			<CardBody className="card-body">
 				<p>
@@ -37,7 +38,8 @@ const AboutTrackerPane = () => (
 							rel="noopener noreferrer"
 							target="_blank"
 						>
-							Become a patron today! <i className="fas fa-external-link-alt" />
+							Become a patron today!{' '}
+							<FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 						</a>
 					</em>
 				</p>

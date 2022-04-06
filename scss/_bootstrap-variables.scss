@@ -24,8 +24,31 @@ $yellow: #ffc107 !default;
 $green: #4dbd74;
 $teal: #20c997 !default;
 $cyan: #63c2de;
-$colors: ( blue: $blue, indigo: $indigo, purple: $purple, pink: $pink, red: $red, orange: $orange, yellow: $yellow, green: $green, teal: $teal, cyan: $cyan, white: $white, gray: $gray-600, gray-dark: $gray-800);
-$theme-colors: ( primary: $blue, secondary: $gray-300, success: $green, info: $cyan, warning: $yellow, danger: $red, light: $gray-100, dark: $gray-800);
+$colors: (
+	blue: $blue,
+	indigo: $indigo,
+	purple: $purple,
+	pink: $pink,
+	red: $red,
+	orange: $orange,
+	yellow: $yellow,
+	green: $green,
+	teal: $teal,
+	cyan: $cyan,
+	white: $white,
+	gray: $gray-600,
+	gray-dark: $gray-800
+);
+$theme-colors: (
+	primary: $blue,
+	secondary: $gray-300,
+	success: $green,
+	info: $cyan,
+	warning: $yellow,
+	danger: $red,
+	light: $gray-100,
+	dark: $gray-800
+);
 // Options
 //
 // Quickly modify global styling by enabling or disabling optional features.
@@ -35,7 +58,3 @@ $enable-rounded: false;
 //
 // Font, line-height, and color for body text, headings, and more.
 $font-size-base: 0.875rem;
-// Dropdowns
-$dropdown-padding-y: 0;
-$dropdown-border-color: $gray-200;
-$dropdown-divider-bg: $gray-100;

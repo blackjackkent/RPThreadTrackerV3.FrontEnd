@@ -2,7 +2,7 @@ import axios from 'axios';
 import promise from 'promise';
 import cache from './cache';
 import cacheKeys from './constants/cacheKeys';
-import { SUBMIT_USER_LOGOUT, SET_MAINTENANCE_MODE_ON } from './actions';
+import { navigation } from '~/utility/history';
 
 const whitelist = ['api/auth', `${TUMBLR_CLIENT_BASE_URL}`];
 let refreshSubscribers = [];
@@ -20,7 +20,7 @@ function onTokenRefreshed(token) {
 }
 function refreshAccessToken(error) {
 	return axios
-		.post(`${API_BASE_URL}/api/auth/refresh`, {
+		.post(`${API_BASE_URL}api/auth/refresh`, {
 			RefreshToken: cache.get(cacheKeys.REFRESH_TOKEN)
 		})
 		.then(({ data }) => {
@@ -71,22 +71,18 @@ function handleUnauthorizedRequest(error, originalRequest) {
 }
 
 export default {
-	setupInterceptors: (store) => {
+	setupInterceptors: () => {
 		axios.interceptors.request.use(setAuthHeader, (error) => promise.reject(error));
 		axios.interceptors.response.use(
 			(response) => response,
 			(error) => {
 				const { config } = error;
 				if (error.response.status === 498) {
-					store.dispatch({
-						type: SUBMIT_USER_LOGOUT
-					});
-					return Promise.reject(error);
+					navigation.navigateTo('/logout');
+					return Promise.resolve(error);
 				}
 				if (error.response.status === 503) {
-					store.dispatch({
-						type: SET_MAINTENANCE_MODE_ON
-					});
+					navigation.navigateTo('/maintenance');
 					return Promise.reject(error);
 				}
 				if (error.response.status === 401 && !isPathInWhitelist(error.config.url)) {

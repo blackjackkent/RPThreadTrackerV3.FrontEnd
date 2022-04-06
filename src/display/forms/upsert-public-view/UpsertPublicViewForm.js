@@ -7,7 +7,7 @@ import validator from './_validator';
 import formData from './_formData';
 
 const propTypes = {
-	viewToEdit: PropTypes.shape({
+	publicView: PropTypes.shape({
 		id: PropTypes.string,
 		name: PropTypes.string,
 		slug: PropTypes.string,
@@ -25,7 +25,7 @@ const propTypes = {
 	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	handleInputChange: PropTypes.func.isRequired,
+	onInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		slug: PropTypes.bool,
 		columns: PropTypes.bool,
@@ -39,8 +39,8 @@ const propTypes = {
 
 const UpsertPublicViewForm = (props) => {
 	const {
-		viewToEdit,
-		handleInputChange,
+		publicView,
+		onInputChange,
 		tooltipDisplayData,
 		showTooltip,
 		hideTooltip,
@@ -65,9 +65,51 @@ const UpsertPublicViewForm = (props) => {
 			{t}
 		</option>
 	));
+
+	const handleMultiSelectChange = (e, value, parseAsInt = false) => {
+		const result = [];
+		const select = e.target;
+		if (select && select.options) {
+			const { options } = select;
+			let opt;
+
+			for (let i = 0; i < options.length; i++) {
+				opt = options[i];
+				if (opt.selected) {
+					let data = opt.value || opt.text;
+					if (parseAsInt) {
+						data = parseInt(data, 10);
+					}
+					result.push(data);
+				}
+			}
+		}
+		onInputChange({ target: { name: e.target.name, value: result } });
+	};
+
+	const handleCharacterSelectChange = (e) => {
+		handleMultiSelectChange(e, e.target.value, true);
+	};
+
+	const handleTurnFilterCheckboxChange = (e) => {
+		const { name, checked } = e.target;
+		let { turnFilter } = publicView;
+		if (!turnFilter) {
+			turnFilter = {};
+		}
+		turnFilter[name] = checked;
+		onInputChange({ target: { name: 'turnFilter', value: turnFilter } });
+	};
+
+	const handleSortDirectionChange = (e) => {
+		onInputChange({
+			target: { ...e.target, name: e.target.name, value: e.target.value === 'true' }
+		});
+	};
+
 	return (
 		<div>
-			<AvField type="hidden" name="viewId" value={viewToEdit.id} />
+			<AvField type="hidden" name="viewId" value={publicView.id} />
 			<Row>
 				{' '}
 				{/* view name */}
@@ -77,11 +119,10 @@ const UpsertPublicViewForm = (props) => {
 						placeholder="View Name"
 						label="View Name"
 						type="text"
-						value={viewToEdit.name}
-						onChange={handleInputChange}
+						value={publicView.name}
+						onChange={onInputChange}
 						validate={validator.name}
 						helpMessage={formData.name.helpMessage}
-						data-spec="view-name-field"
 					/>
 				</Col>
 			</Row>
@@ -99,20 +140,18 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-slug-tooltip"
 					>
 						<AvField
 							name="slug"
 							placeholder="URL Slug"
 							label="URL Slug"
 							type="text"
-							value={viewToEdit.slug}
-							onChange={handleInputChange}
+							value={publicView.slug}
+							onChange={onInputChange}
 							validate={validator.slug}
 							helpMessage={formData.slug.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-slug-field"
 						/>
 					</Tooltip>
 				</Col>
@@ -131,20 +170,18 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-columns-tooltip"
 					>
 						<AvField
 							name="columns"
 							label="View Columns"
 							type="select"
-							value={viewToEdit.columns}
-							onChange={handleInputChange}
+							value={publicView.columns}
+							onChange={handleMultiSelectChange}
 							validate={validator.columns}
 							helpMessage={formData.columns.helpMessage}
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-columns-field"
 						>
 							{columnOptions}
 						</AvField>
@@ -157,10 +194,9 @@ const UpsertPublicViewForm = (props) => {
 						name="sortKey"
 						label="Sort By"
 						type="select"
-						value={viewToEdit.sortKey}
-						onChange={handleInputChange}
+						value={publicView.sortKey}
+						onChange={onInputChange}
 						validate={validator.sortKey}
-						data-spec="sort-key-field"
 					>
 						<option value="">Select Column</option>
 						{columnOptions}
@@ -172,9 +208,8 @@ const UpsertPublicViewForm = (props) => {
 						name="sortDescending"
 						label="Sort Order"
 						type="select"
-						value={viewToEdit.sortDescending}
-						onChange={handleInputChange}
-						data-spec="sort-descending-field"
+						value={publicView.sortDescending}
+						onChange={handleSortDirectionChange}
 					>
 						<option value={false}>Ascending</option>
 						<option
@@ -192,13 +227,10 @@ const UpsertPublicViewForm = (props) => {
 							<label htmlFor="includeMyTurn">
 								<input
 									name="includeMyTurn"
-									onChange={handleInputChange}
+									onChange={handleTurnFilterCheckboxChange}
 									type="checkbox"
-									checked={
-										viewToEdit.turnFilter && viewToEdit.turnFilter.includeMyTurn
-									}
-									data-spec="include-my-turn-field"
-								/>
+									checked={publicView?.turnFilter?.includeMyTurn ?? false}
+								/>{' '}
 								Include My Turn Threads
 							</label>
 						</Col>
@@ -206,14 +238,10 @@ const UpsertPublicViewForm = (props) => {
 							<label htmlFor="includeTheirTurn">
 								<input
 									name="includeTheirTurn"
-									onChange={handleInputChange}
+									onChange={handleTurnFilterCheckboxChange}
 									type="checkbox"
-									checked={
-										viewToEdit.turnFilter &&
-										viewToEdit.turnFilter.includeTheirTurn
-									}
-									data-spec="include-their-turn-field"
-								/>
+									checked={publicView?.turnFilter?.includeTheirTurn ?? false}
+								/>{' '}
 								Include Partner&apos;s Turn Threads
 							</label>
 						</Col>
@@ -224,12 +252,9 @@ const UpsertPublicViewForm = (props) => {
 								<input
 									name="includeQueued"
 									type="checkbox"
-									onChange={handleInputChange}
-									checked={
-										viewToEdit.turnFilter && viewToEdit.turnFilter.includeQueued
-									}
-									data-spec="include-queued-field"
-								/>
+									onChange={handleTurnFilterCheckboxChange}
+									checked={publicView?.turnFilter?.includeQueued ?? false}
+								/>{' '}
 								Include Queued Threads
 							</label>
 						</Col>
@@ -238,13 +263,9 @@ const UpsertPublicViewForm = (props) => {
 								<input
 									name="includeArchived"
 									type="checkbox"
-									onChange={handleInputChange}
-									checked={
-										viewToEdit.turnFilter &&
-										viewToEdit.turnFilter.includeArchived
-									}
-									data-spec="include-archived-field"
-								/>
+									onChange={handleTurnFilterCheckboxChange}
+									checked={publicView?.turnFilter?.includeArchived ?? false}
+								/>{' '}
 								Include Archived Threads
 							</label>
 						</Col>
@@ -265,20 +286,18 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-characters-tooltip"
 					>
 						<AvField
 							name="characterIds"
 							label="Characters"
 							type="select"
-							value={viewToEdit.characterIds}
-							onChange={handleInputChange}
+							value={publicView.characterIds}
+							onChange={handleCharacterSelectChange}
 							validate={validator.characterIds}
 							helpMessage={formData.characterIds.helpMessage}
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-characters-field"
 						>
 							{characterOptions}
 						</AvField>
@@ -299,19 +318,17 @@ const UpsertPublicViewForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="view-tags-tooltip"
 					>
 						<AvField
 							name="tags"
 							label="Tags"
 							type="select"
-							value={viewToEdit.tags}
-							onChange={handleInputChange}
+							value={publicView.tags}
+							onChange={handleMultiSelectChange}
 							helpMessage={formData.tags.helpMessage}
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="view-tags-field"
 						>
 							{tagOptions}
 						</AvField>

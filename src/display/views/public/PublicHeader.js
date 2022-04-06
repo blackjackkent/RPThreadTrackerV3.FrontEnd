@@ -28,7 +28,7 @@ const PublicHeader = (props) => {
 			</Col>
 			<Col className="text-right">
 				{isLoadingIconVisible && (
-					<div data-spec="header-loading-indicator" className="float-right">
+					<div className="float-right">
 						<LoadingIndicator className="invert" />
 					</div>
 				)}

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CardBody, Progress } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 import Card from '../../../../shared/styled/Card';
-import { navigation } from '~/utility/history';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 
 const propTypes = {
@@ -18,15 +18,15 @@ const defaultProps = {
 };
 
 const DashboardSummaryWidget = (props) => {
-	const { header, icon, children, isLoadingIconVisible, href, ...attributes } = props;
+	const { header, icon, children, isLoadingIconVisible, href } = props;
+	const history = useHistory();
 
 	return (
-		<Card {...attributes} onClick={() => navigation.navigateTo(href)}>
+		<Card onClick={() => history.push(href)}>
 			<CardBody className="card-body dashboard-summary-widget-card-body">
 				<div className="text-right mb-2">
 					{isLoadingIconVisible && (
 						<LoadingIndicator
-							data-spec="dashboard-summary-widget-loading"
 							className="inverse dashboard-summary-widget-loading-icon"
 							style={{
 								width: 25,
@@ -36,20 +36,10 @@ const DashboardSummaryWidget = (props) => {
 					)}
 				</div>
 				<div className="h1 float-right text-right mb-2">
-					<i
-						data-spec="dashboard-summary-widget-icon"
-						className={`${icon} d-sm-none d-md-block`}
-					/>
+					<i className={`${icon} d-sm-none d-md-block`} />
 				</div>
-				<div className="h4 mb-0" data-spec="dashboard-summary-widget-header">
-					{header}
-				</div>
-				<small
-					data-spec="dashboard-summary-widget-body"
-					className=" text-uppercase font-weight-bold"
-				>
-					{children}
-				</small>
+				<div className="h4 mb-0">{header}</div>
+				<small className=" text-uppercase font-weight-bold">{children}</small>
 				<Progress className="progress-xs mt-3 mb-0" value="100" />
 			</CardBody>
 		</Card>

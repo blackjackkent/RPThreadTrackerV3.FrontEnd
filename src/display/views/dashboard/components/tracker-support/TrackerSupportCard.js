@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { CardHeader, CardBody, Row, Col } from 'reactstrap';
 import Card from '../../../../shared/styled/Card';
@@ -5,7 +6,7 @@ import Card from '../../../../shared/styled/Card';
 const TrackerSupportCard = () => (
 	<Card className="patreon-card">
 		<CardHeader>
-			<i className="fas fa-dollar-sign" /> Support Tracker Development
+			<FontAwesomeIcon icon={['fas', 'dollar-sign']} /> Support Tracker Development
 		</CardHeader>
 		<CardBody className="card-body">
 			<p>RPThreadTracker is always free, but user support helps keep it running!</p>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import AboutTrackerPane from './components/AboutTrackerPane';
 import SupportGuidesPane from './components/SupportGuidesPane';
 import ContactPane from './components/ContactPane';
@@ -20,10 +19,6 @@ const propTypes = {
 	}).isRequired
 };
 
-function mapStateToProps() {
-	return {};
-}
-
 const Help = (props) => {
 	const { match } = props;
 	const options = Object.values(tabs.HELP);
@@ -31,16 +26,12 @@ const Help = (props) => {
 		<div className="animated fadeIn static-container help-container">
 			<Row>
 				<Col className="d-lg-none text-center">
-					<StaticDropdownNav
-						data-spec="help-static-dropdown-nav"
-						activeTab={match.url}
-						options={options}
-					/>
+					<StaticDropdownNav activeTab={match.url} options={options} />
 				</Col>
 			</Row>
 			<Row>
 				<Col className="d-none d-lg-block" md={3}>
-					<StaticTabNav data-spec="help-static-tab-nav" options={options} />
+					<StaticTabNav options={options} />
 				</Col>
 				<Col xs="12" lg="9">
 					<TabContent activeTab={match.params.tabId}>
@@ -56,4 +47,4 @@ const Help = (props) => {
 };
 
 Help.propTypes = propTypes;
-export default connect(mapStateToProps)(Help);
+export default Help;

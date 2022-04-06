@@ -18,7 +18,7 @@ const ResetPasswordForm = (props) => {
 	const { handleInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	return (
 		<div>
-			<div data-spec="new-password-field">
+			<div>
 				<Tooltip
 					visible={tooltipDisplayData.newPassword}
 					overlay={formData.newPassword.tooltip}
@@ -29,7 +29,6 @@ const ResetPasswordForm = (props) => {
 						offset: [0, 10]
 					}}
 					placement="top"
-					data-spec="newPassword-tooltip"
 				>
 					<AvField
 						name="newPassword"
@@ -42,7 +41,7 @@ const ResetPasswordForm = (props) => {
 					/>
 				</Tooltip>
 			</div>
-			<div data-spec="confirm-new-password-field">
+			<div>
 				<AvField
 					name="confirmNewPassword"
 					placeholder="Confirm Password"

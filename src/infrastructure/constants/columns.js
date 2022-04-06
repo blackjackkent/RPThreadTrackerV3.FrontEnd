@@ -1,4 +1,7 @@
 export default {
+	EXPANDER: {
+		key: 'expander'
+	},
 	ARCHIVE_BUTTON: {
 		key: 'archiveButton'
 	},
@@ -19,7 +22,7 @@ export default {
 		name: 'Thread Title'
 	},
 	CHARACTER: {
-		key: 'thread.character.urlIdentifier',
+		key: 'thread.character',
 		name: 'Character'
 	},
 	LAST_POSTER: {

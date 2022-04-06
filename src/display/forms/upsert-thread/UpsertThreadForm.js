@@ -9,8 +9,8 @@ import validator from './_validator';
 import formData from './_formData';
 
 const propTypes = {
-	threadToEdit: PropTypes.shape({
-		characterId: PropTypes.number,
+	thread: PropTypes.shape({
+		characterId: PropTypes.string,
 		userTitle: PropTypes.string,
 		postId: PropTypes.string,
 		partnerUrlIdentifier: PropTypes.string,
@@ -19,8 +19,7 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
-	selectCharacter: PropTypes.func.isRequired,
-	handleInputChange: PropTypes.func.isRequired,
+	onInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		partnerUrlIdentifier: PropTypes.bool
 	}).isRequired,
@@ -31,12 +30,11 @@ const propTypes = {
 
 const UpsertThreadForm = (props) => {
 	const {
-		threadToEdit,
+		thread,
 		characters,
 		showTooltip,
 		hideTooltip,
-		selectCharacter,
-		handleInputChange,
+		onInputChange,
 		tooltipDisplayData,
 		handleTagAdded,
 		handleTagRemoved,
@@ -53,10 +51,9 @@ const UpsertThreadForm = (props) => {
 						name="characterId"
 						label="Character"
 						type="select"
-						value={threadToEdit.characterId}
-						onChange={selectCharacter}
+						value={thread.characterId}
+						onChange={onInputChange}
 						validate={validator.characterId}
-						data-spec="character-select-field"
 					>
 						<option value="">Select Character</option>
 						{options}
@@ -72,11 +69,10 @@ const UpsertThreadForm = (props) => {
 						placeholder="Thread Title"
 						label="Thread Title"
 						type="text"
-						value={threadToEdit.userTitle}
-						onChange={handleInputChange}
+						value={thread.userTitle}
+						onChange={onInputChange}
 						validate={validator.userTitle}
 						helpMessage={formData.userTitle.helpMessage}
-						data-spec="user-title-field"
 					/>
 				</Col>
 			</Row>
@@ -89,11 +85,10 @@ const UpsertThreadForm = (props) => {
 						placeholder="Post ID"
 						label="Post ID"
 						type="text"
-						onChange={handleInputChange}
+						onChange={onInputChange}
 						validate={validator.postId}
-						value={threadToEdit.postId}
+						value={thread.postId}
 						helpMessage={formData.postId.helpMessage}
-						data-spec="post-id-field"
 					/>
 				</Col>
 			</Row>
@@ -111,20 +106,18 @@ const UpsertThreadForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="partner-url-identifier-tooltip"
 					>
 						<AvField
 							name="partnerUrlIdentifier"
 							placeholder="Partner Url Identifier"
 							label="Partner URL Identifier (Optional)"
 							type="text"
-							onChange={handleInputChange}
+							onChange={onInputChange}
 							validate={validator.partnerUrlIdentifier}
-							value={threadToEdit.partnerUrlIdentifier}
+							value={thread.partnerUrlIdentifier}
 							helpMessage={formData.partnerUrlIdentifier.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="partner-url-identifier-field"
 						/>
 					</Tooltip>
 				</Col>
@@ -139,10 +132,9 @@ const UpsertThreadForm = (props) => {
 							name="description"
 							id="description"
 							rows="3"
-							onChange={handleInputChange}
+							onChange={onInputChange}
 							maxLength="250"
-							defaultValue={threadToEdit.description}
-							data-spec="description-field"
+							defaultValue={thread.description}
 						/>
 					</div>
 				</Col>
@@ -161,7 +153,6 @@ const UpsertThreadForm = (props) => {
 							placeholder="Thread Tags"
 							className="form-control"
 							labelClassName="form-control-label"
-							data-spec="tags-field"
 						/>
 						<small className="form-text">{formData.threadTags.helpMessage}</small>
 					</FormGroup>

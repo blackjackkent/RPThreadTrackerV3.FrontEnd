@@ -1,42 +1,50 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
-import PublicViewsTable from './public-views/PublicViewsTable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import columns from '~/infrastructure/constants/columns';
 import Card from '../../../shared/styled/Card';
+import usePublicViewsQuery from '~/infrastructure/hooks/queries/usePublicViewsQuery';
+import PublicViewsTableWrapper from './public-views/PublicViewsTableWrapper';
+import { useCharactersQuery, useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
+import DeletePublicViewModal from '~/display/shared/modals/DeletePublicViewModal';
+import UpsertPublicViewModal from '~/display/shared/modals/UpsertPublicViewModal';
 
-const propTypes = {
-	username: PropTypes.string,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	publicViews: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	openUpsertPublicViewModal: PropTypes.func.isRequired,
-	openDeletePublicViewModal: PropTypes.func.isRequired
-};
-const defaultProps = {
-	username: ''
-};
+const ManagePublicViewsPane = () => {
+	const { data: publicViews, isLoading: isPublicViewsLoading } = usePublicViewsQuery();
+	const [actedView, setActedView] = useState(null);
+	const { data: user } = useUserProfileQuery();
+	const { tagTextValues: tags } = useAllTags();
+	const { data: characters } = useCharactersQuery();
 
-const ManagePublicViewsPane = (props) => {
-	const {
-		publicViews,
-		openUpsertPublicViewModal,
-		openDeletePublicViewModal,
-		isLoadingIconVisible,
-		username
-	} = props;
+	const [isDeletePublicViewModalOpen, setIsDeletePublicViewModalOpen] = useState(false);
+	const [isUpsertPublicViewModalOpen, setIsUpsertPublicViewModalOpen] = useState(false);
 	return (
 		<TabPane tabId="public">
 			<Card>
 				<CardHeader>
-					<i className="fas fa-eye" /> Manage Public Views
+					<FontAwesomeIcon icon={['fas', 'eye']} /> Manage Public Views
 				</CardHeader>
 				<CardBody className="card-body">
+					<DeletePublicViewModal
+						actedView={actedView}
+						isModalOpen={isDeletePublicViewModalOpen}
+						setIsModalOpen={setIsDeletePublicViewModalOpen}
+					/>
+					<UpsertPublicViewModal
+						actedView={actedView}
+						isModalOpen={isUpsertPublicViewModalOpen}
+						setIsModalOpen={setIsUpsertPublicViewModalOpen}
+						tags={tags}
+						characters={characters}
+						columns={columns}
+					/>
 					<Row>
 						<Col className="text-center">
 							<p>
 								<Button
 									color="primary"
-									data-spec="create-public-view-button"
-									onClick={() => openUpsertPublicViewModal({})}
+									onClick={() => setIsUpsertPublicViewModalOpen(true)}
 								>
 									Create New Public View
 								</Button>
@@ -55,18 +63,17 @@ const ManagePublicViewsPane = (props) => {
 			</Card>
 			<Row>
 				<Col>
-					<PublicViewsTable
+					<PublicViewsTableWrapper
 						publicViews={publicViews}
-						openUpsertPublicViewModal={openUpsertPublicViewModal}
-						openDeletePublicViewModal={openDeletePublicViewModal}
-						isLoadingIconVisible={isLoadingIconVisible}
-						username={username}
+						isLoading={isPublicViewsLoading}
+						setActedView={setActedView}
+						setIsUpsertPublicViewModalOpen={setIsUpsertPublicViewModalOpen}
+						setIsDeletePublicViewModalOpen={setIsDeletePublicViewModalOpen}
+						user={user}
 					/>
 				</Col>
 			</Row>
 		</TabPane>
 	);
 };
-ManagePublicViewsPane.propTypes = propTypes;
-ManagePublicViewsPane.defaultProps = defaultProps;
 export default ManagePublicViewsPane;

@@ -17,7 +17,7 @@ const defaultProps = {
 const LoadingIndicator = (props) => {
 	const { style, className } = props;
 	return (
-		<div className="lds-css ng-scope" style={style}>
+		<div className="lds-css ng-scope" role="progressbar" aria-busy="true" style={style}>
 			<Style
 				className={`lds-spinner ${className}`}
 				style={{

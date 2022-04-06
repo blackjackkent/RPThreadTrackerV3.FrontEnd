@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import Card from '../../../shared/styled/Card';
@@ -6,7 +7,7 @@ const SupportGuidesPane = () => (
 	<TabPane tabId="guides">
 		<Card>
 			<CardHeader>
-				<i className="fas fa-play-circle" /> Support Guides
+				<FontAwesomeIcon icon={['fas', 'play-circle']} /> Support Guides
 			</CardHeader>
 			<CardBody className="card-body">
 				<p>
@@ -16,7 +17,7 @@ const SupportGuidesPane = () => (
 						target="_blank"
 						rel="noopener noreferrer"
 					>
-						Video <i className="fas fa-external-link-alt" />
+						Video <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 					</a>
 				</p>
 				<p>
@@ -26,7 +27,7 @@ const SupportGuidesPane = () => (
 						rel="noopener noreferrer"
 						href="http://tblrthreadtracker.tumblr.com/post/178908061196/guide-to-managing-public-views-in-rpthreadtracker"
 					>
-						Text Guide <i className="fas fa-external-link-alt" />
+						Text Guide <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 					</a>
 				</p>
 				<p>
@@ -36,7 +37,7 @@ const SupportGuidesPane = () => (
 						rel="noopener noreferrer"
 						href="http://tblrthreadtracker.tumblr.com/post/179393749936/how-to-mark-tumblr-threads-as-queued-on"
 					>
-						Text Guide <i className="fas fa-external-link-alt" />
+						Text Guide <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 					</a>
 				</p>
 			</CardBody>

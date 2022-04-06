@@ -13,27 +13,21 @@ const propTypes = {
 	}).isRequired
 };
 
-class BreadcrumbsItem extends React.Component {
-	findRouteName(url) {
-		return routes[url];
+const BreadcrumbsItem = (props) => {
+	const { match } = props;
+	const routeName = routes[match.url];
+	if (routeName) {
+		return match.isExact ? (
+			<BreadcrumbItem active>{routeName}</BreadcrumbItem>
+		) : (
+			<BreadcrumbItem>
+				<Link href={match.url} to={match.url}>
+					{routeName}
+				</Link>
+			</BreadcrumbItem>
+		);
 	}
-
-	render() {
-		const { match } = this.props;
-		const routeName = this.findRouteName(match.url);
-		if (routeName) {
-			return match.isExact ? (
-				<BreadcrumbItem active>{routeName}</BreadcrumbItem>
-			) : (
-				<BreadcrumbItem>
-					<Link href={match.url} to={match.url}>
-						{routeName}
-					</Link>
-				</BreadcrumbItem>
-			);
-		}
-		return null;
-	}
-}
+	return null;
+};
 BreadcrumbsItem.propTypes = propTypes;
 export default BreadcrumbsItem;

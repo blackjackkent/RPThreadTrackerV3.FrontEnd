@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`object structure should have expected values 1`] = `
-Object {
-  "1": "Tumblr",
-}
-`;
