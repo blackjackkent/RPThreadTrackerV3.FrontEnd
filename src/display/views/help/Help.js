@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 import AboutTrackerPane from './components/AboutTrackerPane';
 import SupportGuidesPane from './components/SupportGuidesPane';
 import ContactPane from './components/ContactPane';
