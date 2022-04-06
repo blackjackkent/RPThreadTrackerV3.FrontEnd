@@ -4,8 +4,6 @@ import React from 'react';
 import columns from '../../../../infrastructure/constants/columns';
 import LastPosterFilter from '../../table-filters/LastPosterFilter';
 
-const stopPropagation = (e) => e.stopPropagation();
-
 export default (lastPosters, includeFilter) => ({
 	Header: columns.LAST_POSTER.name,
 	accessor: columns.LAST_POSTER.key,
