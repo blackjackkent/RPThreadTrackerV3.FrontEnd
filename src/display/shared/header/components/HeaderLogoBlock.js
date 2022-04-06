@@ -26,9 +26,6 @@ const HeaderLogoBlock = (props) => {
 			>
 				&#9776;
 			</NavbarToggler>
-			<Link href="/" className="d-none d-sm-inline-block navbar-brand" to="/">
-				RPTHREADTRACKER
-			</Link>
 			<NavbarToggler
 				className="d-md-down-none"
 				data-spec="header-logo-block-sidebar-toggler"
@@ -36,6 +33,9 @@ const HeaderLogoBlock = (props) => {
 			>
 				&#9776;
 			</NavbarToggler>
+			<Link href="/" className="d-none d-sm-inline-block navbar-brand" to="/">
+				RPTHREADTRACKER
+			</Link>
 		</div>
 	);
 };
