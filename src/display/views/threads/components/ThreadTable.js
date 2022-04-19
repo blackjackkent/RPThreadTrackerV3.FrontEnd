@@ -272,7 +272,10 @@ const ThreadTable = ({
 						prepareRow(row);
 						return (
 							<React.Fragment key={row.id}>
-								<tr {...row.getRowProps()}>
+								<tr
+									{...row.getRowProps()}
+									className={row.isSelected ? 'is-selected' : ''}
+								>
 									{row.cells.map((cell) => {
 										return (
 											<td {...cell.getCellProps([getCellProps(cell)])}>
