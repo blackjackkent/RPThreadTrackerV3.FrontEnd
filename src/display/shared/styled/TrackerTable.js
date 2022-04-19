@@ -111,6 +111,13 @@ export default styled.div`
 			background: ${colors.GRAY_850};
 		}
 
+		.tracker-table-body tr.is-selected {
+			background: ${colors.BASE_BLUE_OPACITY(0.5)};
+			a {
+				color: ${colors.LIGHT_BLUE};
+			}
+		}
+
 		.tracker-table-body tr td {
 			padding: 7px 5px;
 		}
@@ -180,6 +187,12 @@ export default styled.div`
 				background: ${colors.GRAY_100};
 			}
 
+			.tracker-table-body tr.is-selected {
+				background: ${colors.LIGHT_BLUE};
+				a {
+					color: ${colors.DARK_BLUE};
+				}
+			}
 			.thread-table-sub-component-wrapper > td {
 				padding: 0;
 				.thread-table-sub-component {
