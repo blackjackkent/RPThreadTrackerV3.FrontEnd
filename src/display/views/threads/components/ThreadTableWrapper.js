@@ -148,7 +148,7 @@ const ThreadTableWrapper = ({
 						onEditThreadClick={onEditThreadClick}
 						onArchiveThreadClick={onArchiveThreadClick}
 						onQueueThreadClick={onQueueThreadClick}
-						threadTablePageSize={userSettings?.threadTablePageSize}
+						threadTablePageSize={userSettings?.threadTablePageSize || 10}
 						onThreadTablePageSizeChange={onThreadTablePageSizeChange}
 						onSelectedThreadsChange={onSelectedThreadsChange}
 					/>
