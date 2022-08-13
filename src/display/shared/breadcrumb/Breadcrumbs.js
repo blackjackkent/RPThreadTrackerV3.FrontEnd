@@ -12,32 +12,26 @@ const propTypes = {
 	}).isRequired
 };
 
-class Breadcrumbs extends React.Component {
-	getPaths(pathname) {
+const Breadcrumbs = (props) => {
+	const {
+		location: { pathname }
+	} = props;
+	const getPaths = (path) => {
 		const paths = ['/'];
-		if (pathname === '/') {
+		if (path === '/') {
 			return paths;
 		}
-		pathname.split('/').reduce((prev, curr) => {
+		path.split('/').reduce((prev, curr) => {
 			const currPath = `${prev}/${curr}`;
 			paths.push(currPath);
 			return currPath;
 		});
 		return paths;
-	}
-
-	render() {
-		const {
-			location: { pathname }
-		} = this.props;
-		const paths = this.getPaths(pathname);
-		// eslint-disable-next-line react/no-array-index-key
-		const items = paths.map((path) => (
-			<Route key={path} path={path} component={BreadcrumbsItem} />
-		));
-		return <Breadcrumb>{items}</Breadcrumb>;
-	}
-}
+	};
+	const paths = getPaths(pathname);
+	const items = paths.map((path) => <Route key={path} path={path} component={BreadcrumbsItem} />);
+	return <Breadcrumb>{items}</Breadcrumb>;
+};
 
 Breadcrumbs.propTypes = propTypes;
 export default Breadcrumbs;

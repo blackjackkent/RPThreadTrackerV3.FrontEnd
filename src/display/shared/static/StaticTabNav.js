@@ -9,19 +9,9 @@ const propTypes = {
 const StaticTabNav = (props) => {
 	const { options } = props;
 	const optionElements = options.map((o) => (
-		<StaticTabNavItem
-			href={o.href}
-			title={o.name}
-			key={o.href}
-			data-spec="static-tab-nav-option"
-		/>
+		<StaticTabNavItem href={o.href} title={o.name} key={o.href} />
 	));
-	return (
-		<Nav className="flex-column static-tab-nav" data-spec="static-tab-nav">
-			{optionElements}
-		</Nav>
-	);
+	return <Nav className="flex-column static-tab-nav">{optionElements}</Nav>;
 };
 StaticTabNav.propTypes = propTypes;
-
 export default StaticTabNav;

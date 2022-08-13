@@ -15,13 +15,13 @@ const propTypes = {
 			postId: PropTypes.string
 		})
 	}).isRequired,
-	archiveThread: PropTypes.func.isRequired,
-	openUntrackThreadModal: PropTypes.func.isRequired,
-	markThreadQueued: PropTypes.func.isRequired
+	onUntrackThreadClick: PropTypes.func.isRequired,
+	onArchiveThreadClick: PropTypes.func.isRequired,
+	onQueueThreadClick: PropTypes.func.isRequired
 };
 
 const RecentActivityRow = (props) => {
-	const { threadData, archiveThread, openUntrackThreadModal, markThreadQueued } = props;
+	const { threadData, onUntrackThreadClick, onArchiveThreadClick, onQueueThreadClick } = props;
 	return (
 		<Row>
 			<Col xs="12" sm="6">
@@ -62,27 +62,15 @@ const RecentActivityRow = (props) => {
 					)}
 				</div>
 				<div className="small">
-					<button
-						type="button"
-						onClick={() => openUntrackThreadModal(threadData.thread)}
-						data-spec="recent-activity-row-untrack-button"
-					>
+					<button type="button" onClick={() => onUntrackThreadClick(threadData.thread)}>
 						Untrack
 					</button>{' '}
 					&bull;{' '}
-					<button
-						type="button"
-						onClick={() => archiveThread(threadData.thread)}
-						data-spec="recent-activity-row-archive-button"
-					>
+					<button type="button" onClick={() => onArchiveThreadClick(threadData.thread)}>
 						Archive
 					</button>{' '}
 					&bull;{' '}
-					<button
-						type="button"
-						onClick={() => markThreadQueued(threadData.thread)}
-						data-spec="recent-activity-row-queue-button"
-					>
+					<button type="button" onClick={() => onQueueThreadClick(threadData.thread)}>
 						Mark Queued
 					</button>
 				</div>

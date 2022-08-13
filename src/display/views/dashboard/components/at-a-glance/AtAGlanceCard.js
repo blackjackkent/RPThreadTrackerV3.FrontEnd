@@ -1,57 +1,63 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import { CardHeader, Input, CardBody, CardGroup } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '../../../../shared/styled/Card';
 import SwitchLabel from '../../../../shared/styled/SwitchLabel';
 import DashboardSummaryWidget from './DashboardSummaryWidget';
+import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
+import filters from '~/infrastructure/constants/filters';
+import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
+import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations';
+import { useActiveThreadsContext } from '~/infrastructure/hooks/contexts';
 
-const propTypes = {
-	showDashboardThreadDistribution: PropTypes.bool.isRequired,
-	showDashboardThreadDistributionToggle: PropTypes.func.isRequired,
-	myTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	theirTurnThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	activeThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	queuedThreads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired
-};
+const AtAGlanceCard = () => {
+	const [
+		isDashboardThreadDistributionVisible,
+		setIsDashboardThreadDistributionVisible
+	] = useState(false);
+	const { data: userSettings } = useUserSettingsQuery();
+	const { updateUserSettings } = useUpdateUserSettingsMutation();
+	useEffect(() => {
+		if (userSettings) {
+			setIsDashboardThreadDistributionVisible(userSettings.showDashboardThreadDistribution);
+		}
+	}, [userSettings]);
+	const toggleDashboardThreadDistribution = () => {
+		const newValue = !isDashboardThreadDistributionVisible;
+		setIsDashboardThreadDistributionVisible(newValue);
+		updateUserSettings({
+			...userSettings,
+			showDashboardThreadDistribution: newValue
+		});
+	};
 
-const AtAGlanceCard = (props) => {
-	const {
-		showDashboardThreadDistribution,
-		showDashboardThreadDistributionToggle,
-		myTurnThreads,
-		theirTurnThreads,
-		activeThreads,
-		queuedThreads,
-		isLoadingIconVisible
-	} = props;
+	const { filteredThreads: activeThreads } = useFilteredActiveThreads(filters.ALL);
+	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);
+	const { filteredThreads: theirTurnThreads } = useFilteredActiveThreads(filters.THEIR_TURN);
+	const { filteredThreads: queuedThreads } = useFilteredActiveThreads(filters.QUEUED);
+	const { isThreadsLoading } = useActiveThreadsContext();
 	return (
 		<Card className="at-a-glance-card">
-			<CardHeader data-spec="at-a-glance-card-header">
-				<i className="fas fa-search" data-spec="at-a-glance-card-icon" /> At a Glance
+			<CardHeader>
+				<FontAwesomeIcon icon={['fas', 'search']} /> At a Glance
 				<SwitchLabel
 					htmlFor="at-a-glance-switch"
 					className="switch switch-sm switch-text switch-info float-right mb-0"
 				>
 					<Input
-						data-spec="at-a-glance-card-toggle"
 						type="checkbox"
 						className="switch-input"
 						id="at-a-glance-switch"
-						checked={showDashboardThreadDistribution}
-						onChange={showDashboardThreadDistributionToggle}
+						checked={isDashboardThreadDistributionVisible}
+						onChange={toggleDashboardThreadDistribution}
 					/>
 					<span className="switch-label" data-on="On" data-off="Off" />
 					<span className="switch-handle" />
 				</SwitchLabel>
 			</CardHeader>
-			<CardBody
-				data-spec="at-a-glance-card-body"
-				className={showDashboardThreadDistribution ? 'card-body' : 'd-none'}
-			>
+			<CardBody className={isDashboardThreadDistributionVisible ? 'card-body' : 'd-none'}>
 				<CardGroup>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-active-widget"
 						icon="icon-list"
 						header={activeThreads.length}
 						href="/threads/all"
@@ -59,28 +65,25 @@ const AtAGlanceCard = (props) => {
 						Active Threads
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-my-turn-widget"
 						icon="icon-pencil"
 						header={myTurnThreads.length}
-						isLoadingIconVisible={isLoadingIconVisible}
+						isLoadingIconVisible={isThreadsLoading}
 						href="/threads/your-turn"
 					>
 						Your Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-their-turn-widget"
 						icon="icon-check"
 						header={theirTurnThreads.length}
-						isLoadingIconVisible={isLoadingIconVisible}
+						isLoadingIconVisible={isThreadsLoading}
 						href="/threads/their-turn"
 					>
 						Their Turn
 					</DashboardSummaryWidget>
 					<DashboardSummaryWidget
-						data-spec="at-a-glance-queued-widget"
 						icon="icon-calendar"
 						header={queuedThreads.length}
-						isLoadingIconVisible={isLoadingIconVisible}
+						isLoadingIconVisible={isThreadsLoading}
 						href="/threads/queued"
 					>
 						Queued
@@ -91,5 +94,4 @@ const AtAGlanceCard = (props) => {
 	);
 };
 
-AtAGlanceCard.propTypes = propTypes;
 export default AtAGlanceCard;

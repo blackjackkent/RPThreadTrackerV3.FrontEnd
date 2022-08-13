@@ -1,57 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { CardHeader, CardBody } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '~/display/shared/styled/Card';
 import YourCharactersCardRow from './YourCharactersCardRow';
-import NoCharactersMessage from '../NoCharactersMessage';
-import NoActiveCharactersMessage from '../NoActiveCharactersMessage';
+import NoCharactersMessage from '../shared/NoCharactersMessage';
+import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
+import { useCharactersContext } from '~/infrastructure/hooks/contexts';
+import { useCharacterThreadCounts } from '~/infrastructure/hooks/derived-data';
 
-const propTypes = {
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	characterThreadCounts: PropTypes.shape({}).isRequired,
-	loadingInProgress: PropTypes.bool.isRequired
-};
-
-const getBlockContent = (loadingInProgress, characters, characterThreadCounts) => {
-	if (loadingInProgress) {
-		return (
-			<LoadingIndicator
-				style={{
-					width: 50,
-					height: 50,
-					position: 'absolute',
-					top: '50%',
-					left: '50%',
-					transform: 'translate(-50%, -50%)'
-				}}
-			/>
-		);
-	}
-	if (characters.length === 0) {
-		return <NoCharactersMessage />;
-	}
-	const activeCharacters = characters.filter((c) => !c.isOnHiatus);
+const renderBlockMessage = (characters, activeCharacters) => {
 	if (characters.length > 0 && activeCharacters.length === 0) {
 		return <NoActiveCharactersMessage />;
 	}
-	return activeCharacters.map((character) => (
-		<YourCharactersCardRow
-			character={character}
-			key={character.characterId}
-			threadCount={characterThreadCounts[character.characterId]}
-			data-spec="your-characters-card-row"
-		/>
-	));
+	return <NoCharactersMessage />;
 };
 
-const YourCharactersCard = (props) => {
-	const { characters, characterThreadCounts, loadingInProgress } = props;
+const YourCharactersCard = () => {
+	const { characters, isCharactersLoading } = useCharactersContext();
+	const characterThreadCounts = useCharacterThreadCounts();
+	const activeCharacters = characters?.filter((c) => !c.isOnHiatus);
 	return (
 		<Card className="your-characters-card">
 			<CardHeader>
-				<i className="fas fa-users" /> Your Characters
+				<FontAwesomeIcon icon={['fas', 'users']} /> Your Characters
 				<div className="float-right">
 					<Link href="/manage-characters" to="/manage-characters">
 						Manage Characters
@@ -59,12 +32,32 @@ const YourCharactersCard = (props) => {
 				</div>
 			</CardHeader>
 			<CardBody className="card-body">
-				{getBlockContent(loadingInProgress, characters, characterThreadCounts)}
+				{isCharactersLoading && (
+					<LoadingIndicator
+						style={{
+							width: 50,
+							height: 50,
+							position: 'absolute',
+							top: '50%',
+							left: '50%',
+							transform: 'translate(-50%, -50%)'
+						}}
+					/>
+				)}
+				{!isCharactersLoading &&
+					activeCharacters &&
+					activeCharacters.map((character) => (
+						<YourCharactersCardRow
+							character={character}
+							key={character.characterId}
+							threadCount={characterThreadCounts[character.characterId]}
+						/>
+					))}
+				{!isCharactersLoading &&
+					!activeCharacters &&
+					renderBlockMessage(characters, characterThreadCounts)}
 			</CardBody>
 		</Card>
 	);
 };
-
-YourCharactersCard.propTypes = propTypes;
-
 export default YourCharactersCard;

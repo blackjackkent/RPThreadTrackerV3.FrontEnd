@@ -40,7 +40,7 @@ export function buildLegacyView(queryData, slug) {
 	if (slug === 'archived' || slug === 'allthreads') {
 		turnFilter.includeArchived = true;
 	}
-	return {
+	const result = {
 		name: 'Untitled',
 		slug: 'legacy',
 		columns: [
@@ -56,4 +56,5 @@ export function buildLegacyView(queryData, slug) {
 		sortKey: getSortKey(queryData.currentOrderBy),
 		turnFilter
 	};
+	return result;
 }

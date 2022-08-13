@@ -1,34 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import * as actions from '../../../infrastructure/actions';
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
-import * as selectors from '../../../infrastructure/selectors';
-import FooterContainer from '../../shared/footer/FooterContainer';
-import Style from './_styles';
-import {
-	legacyPublicSlugs,
-	buildLegacyView
-} from '../../../infrastructure/constants/legacyPublicValues';
+import PublicStyle from './_styles';
+import ThreadTableStyles from '~/display/shared/styled/TrackerTable';
 import { getQuery } from '../../../utility';
+import Footer from '~/display/shared/footer/Footer';
+import publicThreadFilterKeys from '~/infrastructure/constants/publicThreadFilterKeys';
+import usePublicViewThreadsQuery from '~/infrastructure/hooks/queries/usePublicViewThreadsQuery';
+import usePublicFilteredThreads from '~/infrastructure/hooks/derived-data/usePublicFilteredThreads';
 
 const propTypes = {
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	threads: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	fetchLegacyPublicThreads: PropTypes.func.isRequired,
 	slug: PropTypes.string,
-	username: PropTypes.string,
-	view: PropTypes.shape({
-		name: PropTypes.string,
-		columns: PropTypes.arrayOf(PropTypes.number)
-	}).isRequired,
-	fetchPublicThreads: PropTypes.func.isRequired,
-	setPublicThreadFilter: PropTypes.func.isRequired,
-	publicThreadFilter: PropTypes.string.isRequired
+	username: PropTypes.string
 };
 
 const defaultProps = {
@@ -36,74 +23,44 @@ const defaultProps = {
 	username: ''
 };
 
-function mapStateToProps(state) {
-	const publicThreads = selectors.getPublicThreads(state);
-	const isLoadingIconVisible = selectors.getIsLoadingIconVisible(state);
-	return {
-		view: state.publicThreads.view,
-		threads: publicThreads,
-		isLoadingIconVisible,
-		publicThreadFilter: state.publicThreadFilter
-	};
-}
-
-class Public extends Component {
-	componentDidMount() {
-		const { slug, username, fetchPublicThreads } = this.props;
-		if (legacyPublicSlugs.includes(slug) && !username) {
-			this.fetchLegacyView(slug);
-			return;
-		}
-		fetchPublicThreads(slug, username);
-	}
-
-	fetchLegacyView(slug) {
-		const query = getQuery();
-		const { fetchLegacyPublicThreads } = this.props;
-		const view = buildLegacyView(query, slug);
-		fetchLegacyPublicThreads(view);
-	}
-
-	render() {
-		const {
-			view,
-			threads,
-			slug,
-			isLoadingIconVisible,
-			setPublicThreadFilter,
-			publicThreadFilter
-		} = this.props;
-		return (
-			<Style className="animated fadeIn">
+const Public = ({ slug, username }) => {
+	const queryString = getQuery();
+	const [filter, setFilter] = useState(publicThreadFilterKeys.ALL);
+	const { viewData, isLoading } = usePublicViewThreadsQuery(slug, username, queryString);
+	const filteredThreads = usePublicFilteredThreads(
+		viewData.threads,
+		viewData.threadsStatus,
+		viewData.view,
+		filter
+	);
+	return (
+		<PublicStyle>
+			<ThreadTableStyles className="animated fadeIn threads-container">
 				<PublicHeader
-					title={view.name}
+					title={viewData?.view?.name}
 					slug={slug}
-					isLoadingIconVisible={isLoadingIconVisible}
+					isLoadingIconVisible={isLoading}
 				/>
 				<PublicThreadFilterSelect
-					setPublicThreadFilter={setPublicThreadFilter}
-					publicThreadFilter={publicThreadFilter}
+					setPublicThreadFilter={setFilter}
+					publicThreadFilter={filter}
 				/>
 				<Row>
 					<Col>
 						<ThreadTable
-							columns={getColumns(view.columns)}
-							threads={threads}
-							view={view}
-							isLoadingIconVisible={isLoadingIconVisible}
+							columns={getColumns(viewData?.view?.columns)}
+							threads={filteredThreads}
+							view={viewData?.view}
+							isLoadingIconVisible={isLoading}
 						/>
 					</Col>
 				</Row>
-				<FooterContainer />
-			</Style>
-		);
-	}
-}
+				<Footer />
+			</ThreadTableStyles>
+		</PublicStyle>
+	);
+};
 
 Public.propTypes = propTypes;
 Public.defaultProps = defaultProps;
-export default connect(mapStateToProps, {
-	fetchPublicThreads: actions.fetchPublicThreads,
-	fetchLegacyPublicThreads: actions.fetchLegacyPublicThreads,
-	setPublicThreadFilter: actions.setPublicThreadFilter
-})(Public);
+export default Public;

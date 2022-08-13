@@ -2,6 +2,7 @@ const merge = require('webpack-merge');
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const UnusedWebpackPlugin = require('unused-webpack-plugin');
 const common = require('./webpack.common.js');
 const config = require('./config/config.dev.json');
 
@@ -44,6 +45,14 @@ module.exports = merge(common, {
 		}),
 		extractCSS,
 		extractSCSS,
-		new webpack.HotModuleReplacementPlugin()
+		new webpack.HotModuleReplacementPlugin(),
+		new UnusedWebpackPlugin({
+			// Source directories
+			directories: [path.join(__dirname, 'src')],
+			// Exclude patterns
+			exclude: ['*.spec.js*', 'testhelpers/*'],
+			// Root directory (optional)
+			root: __dirname
+		})
 	]
 });

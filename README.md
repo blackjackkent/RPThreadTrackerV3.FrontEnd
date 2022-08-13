@@ -1,4 +1,5 @@
 # RPThreadTrackerV3.FrontEnd
+
 > Front-end client code for RPThreadTracker V3.
 >
 > If you are looking for the C# web service API, please see [http://www.github.com/blackjackkent/RPThreadTrackerV3.BackEnd](http://www.github.com/blackjackkent/RPThreadTrackerV3.BackEnd).
@@ -9,8 +10,7 @@
 [![codecov](https://codecov.io/gh/blackjackkent/RPThreadTrackerV3.FrontEnd/branch/development/graph/badge.svg)](https://codecov.io/gh/blackjackkent/RPThreadTrackerV3.FrontEnd)
 [![Discord](https://img.shields.io/discord/375365160057176064?color=7389D8&label=Discord&logo=discord)](https://discord.gg/k4gDad5)
 
-
-This is a React/Redux Javascript application which makes up the client-side portion of RPThreadTracker V3, a web application for members of the Tumblr collaborative writing community.
+This is a React Javascript application which makes up the client-side portion of RPThreadTracker V3, a web application for members of the Tumblr collaborative writing community.
 
 ## Running the Application Locally
 
@@ -28,21 +28,7 @@ Once running, the application will be available at `http://localhost:8080`.
 
 ## Running Unit Tests
 
-The application uses [Jest](https://jestjs.io/) and associated libraries for unit testing across all parts of the application. Any changes to the code should be appropriately unit tested to maintain code coverage. Test files should be placed in a `__tests__` folder adjacent to the file under test, with the naming convention `fileUnderTest.spec.js`.
-
-You can run all unit tests and view code coverage for the entire application at any time with the command
-
-```
-npm run test:ci
-OR
-yarn test:ci
-```
-You can also test individual files with the command 
-```
-npm run test src/path/to/my/__tests__/fileUnderTest.spec.js
-OR
-yarn test src/path/to/my/__tests__/fileUnderTest.spec.js
-```
+Unit tests for this codebase are currently in the process of being refactored; updates to follow.
 
 ## External Dependencies
 

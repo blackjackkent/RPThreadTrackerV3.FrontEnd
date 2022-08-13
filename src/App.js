@@ -1,83 +1,36 @@
-import React from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import React, { useEffect } from 'react';
+import { Router } from 'react-router-dom';
 import 'simple-line-icons/css/simple-line-icons.css';
-import 'react-redux-toastr/src/styles/index.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import 'rc-tooltip/assets/bootstrap.css';
+import { ToastContainer } from 'react-toastify';
 
 import '../scss/style.scss';
 import history from './utility/history';
-import * as actions from './infrastructure/actions';
-import Layout from './display/containers/Layout';
-import LandingContainer from './display/containers/LandingContainer';
-import StaticContainer from './display/containers/StaticContainer';
-import Maintenance from './display/containers/Maintenance';
-import PublicContainer from './display/containers/PublicContainer';
-import AddThreadFromExtensionHandler from './display/containers/AddThreadFromExtensionHandler';
+import { useCacheValue } from './infrastructure/hooks';
+import cacheKeys from './infrastructure/constants/cacheKeys';
+import Routes from './Routes';
+import { LightThemeContext } from './infrastructure/hooks/contexts';
 
-const propTypes = {
-	isMaintenanceMode: PropTypes.bool.isRequired,
-	useLightTheme: PropTypes.bool.isRequired,
-	loadSiteTheme: PropTypes.func.isRequired
-};
+const App = () => {
+	const [useLightTheme, setUseLightTheme] = useCacheValue(cacheKeys.USE_LIGHT_THEME);
 
-function mapStateToProps(state) {
-	const { ui } = state;
-	return {
-		useLightTheme: ui.useLightTheme,
-		isMaintenanceMode: ui.isMaintenanceMode
-	};
-}
-
-class App extends React.Component {
-	componentDidMount() {
-		const { loadSiteTheme, useLightTheme } = this.props;
-		loadSiteTheme();
-		this.loadBodyClasses(useLightTheme);
-	}
-
-	componentWillReceiveProps(nextProps) {
-		const { useLightTheme } = nextProps;
-		this.loadBodyClasses(useLightTheme);
-	}
-
-	loadBodyClasses(useLightTheme) {
+	useEffect(() => {
 		document.body.classList.toggle('light-theme', useLightTheme);
-	}
+	}, [useLightTheme]);
 
-	render() {
-		const { isMaintenanceMode } = this.props;
-		if (isMaintenanceMode) {
-			return (
-				<Router history={history}>
-					<Route path="*" name="Maintenance" component={Maintenance} />
-				</Router>
-			);
-		}
-		return (
+	return (
+		<LightThemeContext.Provider
+			value={{
+				useLightTheme,
+				setUseLightTheme
+			}}
+		>
+			<ToastContainer />
 			<Router history={history}>
-				<Switch>
-					<Route path="/maintenance" name="Maintenance" component={Maintenance} />
-					{['/login', '/forgotpassword', '/resetpassword', '/register'].map((path) => (
-						<Route key={path} path={path} component={StaticContainer} />
-					))}
-					{['/public/:username/:slug', '/public/:slug'].map((path) => (
-						<Route key={path} path={path} component={PublicContainer} />
-					))}
-					<Route
-						path="/add-thread"
-						name="AddThreadFromExtensionHandler"
-						component={AddThreadFromExtensionHandler}
-					/>
-					<Route path="/landing" name="Landing" component={LandingContainer} />
-					<Route component={Layout} />
-				</Switch>
+				<Routes />
 			</Router>
-		);
-	}
-}
-App.propTypes = propTypes;
-export default connect(mapStateToProps, {
-	loadSiteTheme: actions.loadSiteTheme
-})(App);
+		</LightThemeContext.Provider>
+	);
+};
+export default App;

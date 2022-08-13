@@ -1,26 +1,23 @@
 // #region imports
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Aside from './Aside';
-import { markUnreadNews } from '../../../infrastructure/selectors';
+import AsideNewsRow from './AsideNewsRow';
+import Style from './_styles';
+import { useNewsQuery } from '~/infrastructure/hooks/queries';
 // #endregion imports
 
-const propTypes = {
-	news: PropTypes.arrayOf(PropTypes.shape({})).isRequired
+const AsideContainer = () => {
+	const { markedNews } = useNewsQuery();
+	const items = markedNews.map((item) => <AsideNewsRow item={item} key={item.postId} />);
+	return (
+		<Style className="aside-menu">
+			<div className="callout m-0 py-2 text-center text-uppercase">
+				<small>
+					<b>RPThreadTracker News</b>
+				</small>
+			</div>
+			<hr className="mx-3 my-0" />
+			{markedNews.length ? items : ''}
+		</Style>
+	);
 };
-
-function mapStateToProps(state) {
-	const labeledNewsItems = markUnreadNews(state);
-	return {
-		news: labeledNewsItems
-	};
-}
-
-const AsideContainer = (props) => {
-	const { news } = props;
-	return <Aside news={news} />;
-};
-
-AsideContainer.propTypes = propTypes;
-export default connect(mapStateToProps)(AsideContainer);
+export default AsideContainer;

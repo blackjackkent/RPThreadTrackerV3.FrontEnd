@@ -1,120 +1,98 @@
-import React from 'react';
+// #region imports
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
-import UpsertPublicViewForm from '../../forms/upsert-public-view/UpsertPublicViewForm';
-import TooltipForm from '../../forms/TooltipForm';
-import { getValuesFromMultiSelect } from '../../../utility';
-import Modal from '../styled/Modal';
+import { toast } from 'react-toastify';
+import TooltipForm from '~/display/forms/TooltipForm';
+import Modal from '~/display/shared/styled/Modal';
+import { sortCharacters } from '~/utility';
+import { useFormReducer } from '~/infrastructure/hooks';
+import LoadingIndicator from '../loading/LoadingIndicator';
+import UpsertPublicViewForm from '~/display/forms/upsert-public-view/UpsertPublicViewForm';
+import useUpdatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useUpdatePublicViewMutation';
+import useCreatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useCreatePublicViewMutation';
+// #endregion imports
 
 const propTypes = {
-	isUpsertPublicViewModalOpen: PropTypes.bool.isRequired,
-	submitUpsertPublicView: PropTypes.func.isRequired,
-	closeUpsertPublicViewModal: PropTypes.func.isRequired,
-	viewToEdit: PropTypes.shape({
-		id: PropTypes.string
-	}).isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	columns: PropTypes.shape({}).isRequired
+	isModalOpen: PropTypes.bool.isRequired,
+	setIsModalOpen: PropTypes.func.isRequired,
+	characters: PropTypes.arrayOf(PropTypes.shape({})),
+	tags: PropTypes.arrayOf(PropTypes.string),
+	columns: PropTypes.shape({}).isRequired,
+	actedView: PropTypes.shape({})
 };
 
-class UpsertCharacterModal extends React.Component {
-	constructor(props) {
-		super(props);
-		this.handleInputChange = this.handleInputChange.bind(this);
-		this.state = {
-			viewToEdit: props.viewToEdit
-		};
-	}
-
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			viewToEdit: nextProps.viewToEdit
-		});
-	}
-
-	handleInputChange(event) {
-		const { target } = event;
-		let value = target.type === 'checkbox' ? target.checked : target.value;
-		if (target.type === 'select-multiple') {
-			value = getValuesFromMultiSelect(target);
-		}
-		const { name } = target;
-		if (target.type === 'checkbox') {
-			const { viewToEdit } = this.state;
-			let { turnFilter } = viewToEdit;
-			if (!turnFilter) {
-				turnFilter = {};
-			}
-			turnFilter[name] = value;
-			this.setState((prevState) => ({
-				viewToEdit: Object.assign({}, prevState.viewToEdit, {
-					turnFilter
-				})
-			}));
+const UpsertPublicViewModal = (props) => {
+	const [publicView, onInputChange, setFormData] = useFormReducer();
+	const {
+		createPublicView,
+		isLoading: isCreatePublicViewLoading
+	} = useCreatePublicViewMutation();
+	const {
+		updatePublicView,
+		isLoading: isUpdatePublicViewLoading
+	} = useUpdatePublicViewMutation();
+	const isLoading = isCreatePublicViewLoading || isUpdatePublicViewLoading;
+	const { actedView, characters, tags, columns, isModalOpen, setIsModalOpen } = props;
+	useEffect(() => {
+		if (!actedView) {
 			return;
 		}
-		this.setState((prevState) => ({
-			viewToEdit: Object.assign({}, prevState.viewToEdit, {
-				[name]: value
+		setFormData(actedView);
+	}, [setFormData, actedView]);
+	const activeCharacters = [].concat(
+		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
+	);
+
+	const submitForm = () => {
+		const upsertFn = publicView.id ? updatePublicView : createPublicView;
+		upsertFn(publicView)
+			.then(() => {
+				setIsModalOpen(false);
+				toast.success(publicView.id ? 'View updated!' : 'View created!');
 			})
-		}));
-	}
+			.catch(() => {
+				toast.error(
+					`There was an error ${publicView.id ? 'updating' : 'creating'} this view.`
+				);
+			});
+	};
 
-	render() {
-		const {
-			isUpsertPublicViewModalOpen,
-			submitUpsertPublicView,
-			closeUpsertPublicViewModal,
-			viewToEdit,
-			characters,
-			tags,
-			columns
-		} = this.props;
-		const { viewToEdit: requestData } = this.state;
-		return (
-			<Modal
-				data-spec="upsert-public-view-modal"
-				isOpen={isUpsertPublicViewModalOpen}
-				toggle={closeUpsertPublicViewModal}
-				backdrop
-			>
-				<AvForm
-					data-spec="upsert-public-view-modal-form"
-					onValidSubmit={() => submitUpsertPublicView(requestData)}
-				>
-					<ModalHeader
-						data-spec="upsert-public-view-modal-header"
-						toggle={closeUpsertPublicViewModal}
-					>
-						{viewToEdit.id ? 'Edit Public View' : 'Add Public View'}
-					</ModalHeader>
-					<ModalBody>
-						<TooltipForm
-							Renderable={UpsertPublicViewForm}
-							viewToEdit={viewToEdit}
-							characters={characters}
-							tags={tags}
-							columns={columns}
-							handleInputChange={this.handleInputChange}
-						/>
-					</ModalBody>
-					<ModalFooter>
-						<Button color="primary">Submit Public View</Button>{' '}
-						<Button
-							data-spec="upsert-public-view-modal-close-button"
-							color="secondary"
-							onClick={closeUpsertPublicViewModal}
-						>
-							Cancel
-						</Button>
-					</ModalFooter>
-				</AvForm>
-			</Modal>
-		);
-	}
-}
+	return (
+		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
+			<AvForm onValidSubmit={() => submitForm(publicView)}>
+				<ModalHeader toggle={() => setIsModalOpen(!isModalOpen)}>
+					{publicView && publicView.id ? 'Edit Public View' : 'Add New Public View'}
+				</ModalHeader>
+				<ModalBody>
+					<TooltipForm
+						Renderable={UpsertPublicViewForm}
+						publicView={publicView}
+						onInputChange={onInputChange}
+						characters={activeCharacters}
+						tags={tags}
+						columns={columns}
+					/>
+				</ModalBody>
+				<ModalFooter>
+					{isLoading && <LoadingIndicator />}
+					<Button color="primary">
+						{publicView.id ? 'Edit Public View' : 'Add Public View'}
+					</Button>{' '}
+					<Button color="secondary" onClick={() => setIsModalOpen(!isModalOpen)}>
+						Cancel
+					</Button>
+				</ModalFooter>
+			</AvForm>
+		</Modal>
+	);
+};
 
-UpsertCharacterModal.propTypes = propTypes;
-export default UpsertCharacterModal;
+UpsertPublicViewModal.propTypes = propTypes;
+UpsertPublicViewModal.defaultProps = {
+	characters: [],
+	tags: [],
+	actedView: {}
+};
+export default UpsertPublicViewModal;

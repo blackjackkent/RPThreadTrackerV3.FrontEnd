@@ -9,12 +9,12 @@ import formData from './_formData';
 // #endregion imports
 
 const propTypes = {
-	characterToEdit: PropTypes.shape({
+	character: PropTypes.shape({
 		characterName: PropTypes.string,
 		platformId: PropTypes.number,
 		urlIdentifier: PropTypes.string
 	}).isRequired,
-	handleInputChange: PropTypes.func.isRequired,
+	onInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		urlIdentifier: PropTypes.bool
 	}).isRequired,
@@ -23,13 +23,7 @@ const propTypes = {
 };
 
 const UpsertCharacterForm = (props) => {
-	const {
-		characterToEdit,
-		handleInputChange,
-		tooltipDisplayData,
-		showTooltip,
-		hideTooltip
-	} = props;
+	const { character, onInputChange, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	return (
 		<div>
 			<Row>
@@ -41,10 +35,9 @@ const UpsertCharacterForm = (props) => {
 						placeholder="Character Name"
 						label="Character Name"
 						type="text"
-						value={characterToEdit.characterName}
-						onChange={handleInputChange}
+						value={character.characterName}
+						onChange={onInputChange}
 						validate={validator.characterName}
-						data-spec="character-name-field"
 					/>
 				</Col>
 			</Row>
@@ -56,10 +49,10 @@ const UpsertCharacterForm = (props) => {
 					<Input
 						disabled
 						type="select"
-						name="character-platform"
+						name="characterPlatform"
 						id="character-platform"
-						value={characterToEdit.platformId}
-						data-spec="platform-id-field"
+						onChange={onInputChange}
+						value={character.platformId}
 					>
 						<option value={1}>Tumblr</option>
 					</Input>
@@ -79,20 +72,18 @@ const UpsertCharacterForm = (props) => {
 							offset: [0, 30]
 						}}
 						placement="top"
-						data-spec="url-identifier-tooltip"
 					>
 						<AvField
 							name="urlIdentifier"
 							placeholder="Character URL Identifier"
 							label="Character URL Identifier"
 							type="text"
-							value={characterToEdit.urlIdentifier}
-							onChange={handleInputChange}
+							value={character.urlIdentifier}
+							onChange={onInputChange}
 							validate={validator.urlIdentifier}
 							helpMessage={formData.urlIdentifier.helpMessage}
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
-							data-spec="url-identifier-field"
 						/>
 					</Tooltip>
 				</Col>

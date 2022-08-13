@@ -1,167 +1,66 @@
-import React, { Component } from 'react';
-import { Row, Col } from 'reactstrap';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Style from './_styles';
-import { getIsLoadingIconVisible } from '../../../infrastructure/selectors';
-import * as actions from '../../../infrastructure/actions';
+import filters from '~/infrastructure/constants/filters';
+import getDefaultColumns from './components/_columns';
+import getAllThreadsColumns from './components/_allThreadsColumns';
+import getArchiveColumns from './components/_archiveColumns';
+import getQueueColumns from './components/_queueColumns';
+import { useArchivedThreads, useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
+import ThreadTableWrapper from './components/ThreadTableWrapper';
 
 const propTypes = {
-	Renderable: PropTypes.func.isRequired,
-	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-	setFilteredTag: PropTypes.func.isRequired,
-	bulkUpdateThreads: PropTypes.func.isRequired,
-	fetchCharacters: PropTypes.func.isRequired,
-	fetchActiveThreads: PropTypes.func.isRequired,
-	fetchArchivedThreads: PropTypes.func.isRequired,
-	upsertThread: PropTypes.func.isRequired,
-	openBulkUntrackThreadsModal: PropTypes.func.isRequired,
-	openUpsertThreadModal: PropTypes.func.isRequired,
-	openUntrackThreadModal: PropTypes.func.isRequired,
-	threadFilter: PropTypes.shape({}).isRequired,
-	isLoadingIconVisible: PropTypes.bool.isRequired,
-	updateUserSettings: PropTypes.func.isRequired,
-	userSettings: PropTypes.shape({
-		threadTablePageSize: PropTypes.number
-	}).isRequired
+	filter: PropTypes.func.isRequired,
+	getColumns: PropTypes.func.isRequired,
+	isQueuedView: PropTypes.bool,
+	isAllThreadsView: PropTypes.bool
+};
+const defaultProps = {
+	isQueuedView: false,
+	isAllThreadsView: false
+};
+const ActiveThreads = ({ filter, getColumns, isQueuedView, isAllThreadsView }) => {
+	const { filteredThreads, isThreadsLoading, refreshThreads } = useFilteredActiveThreads(filter);
+	return (
+		<ThreadTableWrapper
+			threadsWithStatus={filteredThreads}
+			isLoading={isThreadsLoading}
+			getColumns={getColumns}
+			refreshThreads={refreshThreads}
+			isQueuedView={isQueuedView}
+			isAllThreadsView={isAllThreadsView}
+		/>
+	);
+};
+ActiveThreads.defaultProps = defaultProps;
+ActiveThreads.propTypes = propTypes;
+
+export const AllThreads = () => {
+	return (
+		<ActiveThreads filter={filters.ALL} getColumns={getAllThreadsColumns} isAllThreadsView />
+	);
 };
 
-function mapStateToProps(state) {
-	const { threadFilter, characters, userSettings } = state;
-	const isLoadingIconVisible = getIsLoadingIconVisible(state);
-	return {
-		threadFilter,
-		characters,
-		userSettings,
-		isLoadingIconVisible
-	};
-}
+export const MyTurnThreads = () => {
+	return <ActiveThreads filter={filters.MY_TURN} getColumns={getDefaultColumns} />;
+};
 
-class Threads extends Component {
-	constructor(props) {
-		super(props);
+export const TheirTurnThreads = () => {
+	return <ActiveThreads filter={filters.THEIR_TURN} getColumns={getDefaultColumns} />;
+};
 
-		this.bulkToggleThreadsAreArchived = this.bulkToggleThreadsAreArchived.bind(this);
-		this.bulkToggleThreadsAreMarkedQueued = this.bulkToggleThreadsAreMarkedQueued.bind(this);
-		this.toggleThreadIsArchived = this.toggleThreadIsArchived.bind(this);
-		this.toggleThreadIsMarkedQueued = this.toggleThreadIsMarkedQueued.bind(this);
-		this.refreshThreads = this.refreshThreads.bind(this);
-		this.updateThreadTablePageSize = this.updateThreadTablePageSize.bind(this);
-	}
+export const QueuedThreads = () => {
+	return <ActiveThreads filter={filters.QUEUED} getColumns={getQueueColumns} isQueuedView />;
+};
 
-	componentDidMount() {
-		const { characters, fetchCharacters } = this.props;
-		if (!characters || !characters.length) {
-			fetchCharacters();
-		}
-	}
-
-	toggleThreadIsArchived(thread) {
-		const { upsertThread } = this.props;
-		const updatedThread = {
-			...thread,
-			isArchived: !thread.isArchived,
-			dateMarkedQueued: null
-		};
-		upsertThread(updatedThread);
-	}
-
-	toggleThreadIsMarkedQueued(thread) {
-		const { upsertThread } = this.props;
-		const updatedThread = {
-			...thread,
-			dateMarkedQueued: thread.dateMarkedQueued ? null : new Date(Date.now()),
-			isArchived: false
-		};
-		upsertThread(updatedThread);
-	}
-
-	bulkToggleThreadsAreMarkedQueued(threads) {
-		const { bulkUpdateThreads } = this.props;
-		const updatedThreads = threads.map((t) => ({
-			...t,
-			dateMarkedQueued: t.dateMarkedQueued ? null : new Date(Date.now()),
-			isArchived: false
-		}));
-		bulkUpdateThreads(updatedThreads);
-	}
-
-	bulkToggleThreadsAreArchived(threads) {
-		const { bulkUpdateThreads } = this.props;
-		const updatedThreads = threads.map((t) => ({
-			...t,
-			isArchived: !t.isArchived,
-			dateMarkedQueued: null
-		}));
-		bulkUpdateThreads(updatedThreads);
-	}
-
-	refreshThreads(isArchivePage) {
-		const { fetchActiveThreads, fetchArchivedThreads } = this.props;
-		if (!isArchivePage) {
-			fetchActiveThreads();
-		} else {
-			fetchArchivedThreads();
-		}
-	}
-
-	updateThreadTablePageSize(size) {
-		const { userSettings, updateUserSettings } = this.props;
-		updateUserSettings({
-			...userSettings,
-			threadTablePageSize: size
-		});
-	}
-
-	render() {
-		const {
-			characters,
-			Renderable,
-			threadFilter,
-			isLoadingIconVisible,
-			userSettings,
-			openBulkUntrackThreadsModal,
-			openUntrackThreadModal,
-			openUpsertThreadModal,
-			setFilteredTag
-		} = this.props;
-		return (
-			<Style className="animated fadeIn threads-container">
-				<Row>
-					<Col>
-						<Renderable
-							bulkToggleThreadsAreArchived={this.bulkToggleThreadsAreArchived}
-							bulkToggleThreadsAreMarkedQueued={this.bulkToggleThreadsAreMarkedQueued}
-							openBulkUntrackThreadsModal={openBulkUntrackThreadsModal}
-							characters={characters}
-							openUntrackThreadModal={openUntrackThreadModal}
-							openEditThreadModal={openUpsertThreadModal}
-							setFilteredTag={setFilteredTag}
-							threadFilter={threadFilter}
-							toggleThreadIsArchived={this.toggleThreadIsArchived}
-							toggleThreadIsMarkedQueued={this.toggleThreadIsMarkedQueued}
-							isLoadingIconVisible={isLoadingIconVisible}
-							refreshThreads={this.refreshThreads}
-							threadTablePageSize={userSettings.threadTablePageSize}
-							updateThreadTablePageSize={this.updateThreadTablePageSize}
-						/>
-					</Col>
-				</Row>
-			</Style>
-		);
-	}
-}
-
-Threads.propTypes = propTypes;
-export default connect(mapStateToProps, {
-	setFilteredTag: actions.setFilteredTag,
-	bulkUpdateThreads: actions.bulkUpdateThreads,
-	fetchCharacters: actions.fetchCharacters,
-	fetchActiveThreads: actions.fetchActiveThreads,
-	fetchArchivedThreads: actions.fetchArchivedThreads,
-	upsertThread: actions.upsertThread,
-	openBulkUntrackThreadsModal: actions.openBulkUntrackThreadsModal,
-	openUpsertThreadModal: actions.openUpsertThreadModal,
-	openUntrackThreadModal: actions.openUntrackThreadModal,
-	updateUserSettings: actions.updateUserSettings
-})(Threads);
+export const ArchivedThreads = () => {
+	const { filteredThreads, isThreadsLoading, refreshThreads } = useArchivedThreads();
+	return (
+		<ThreadTableWrapper
+			threadsWithStatus={filteredThreads}
+			isLoading={isThreadsLoading}
+			getColumns={getArchiveColumns}
+			refreshThreads={refreshThreads}
+			isArchivedView
+		/>
+	);
+};

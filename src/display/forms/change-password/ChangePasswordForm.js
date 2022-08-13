@@ -27,7 +27,6 @@ const ChangePasswordForm = (props) => {
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
-						data-spec="current-password-field"
 						name="currentPassword"
 						placeholder="Current Password"
 						type="password"
@@ -51,10 +50,8 @@ const ChangePasswordForm = (props) => {
 							offset: [0, 10]
 						}}
 						placement="top"
-						data-spec="newPassword-tooltip"
 					>
 						<AvField
-							data-spec="new-password-field"
 							name="newPassword"
 							placeholder="Password"
 							type="password"
@@ -72,7 +69,6 @@ const ChangePasswordForm = (props) => {
 				</Col>
 				<Col xs="12" lg="9">
 					<AvField
-						data-spec="confirm-new-password-field"
 						name="confirmNewPassword"
 						placeholder="Confirm New Password"
 						type="password"
