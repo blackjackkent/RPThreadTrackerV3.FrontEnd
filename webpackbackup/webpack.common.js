@@ -39,7 +39,13 @@ module.exports = {
 				test: /\.(scss)$/,
 				use: ['css-hot-loader'].concat([
 					'style-loader',
-					{ loader: 'css-loader', options: { sourceMap: true, importLoaders: 1, alias: { '../img': '../public/img' } } },
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: true,
+							importLoaders: 1
+						}
+					},
 					{ loader: 'sass-loader', options: { sourceMap: true } }
 				])
 			},
@@ -60,7 +66,8 @@ module.exports = {
 				options: {
 					name: './fonts/[name].[hash].[ext]'
 				}
-			}]
+			}
+		]
 	},
 	plugins: [
 		new webpack.NamedModulesPlugin(),
