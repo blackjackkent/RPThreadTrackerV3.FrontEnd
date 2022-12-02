@@ -49,13 +49,8 @@ export const useFilteredActiveThreads = (filter) => {
 };
 
 export const useArchivedThreads = () => {
-	const {
-		threadData,
-		threadsStatus,
-		isThreadsLoading,
-		isThreadsStatusLoading,
-		refreshThreads
-	} = useArchivedThreadsQuery();
+	const { threadData, threadsStatus, isThreadsLoading, isThreadsStatusLoading, refreshThreads } =
+		useArchivedThreadsQuery();
 	const filteredThreads = useFilteredThreads(threadData?.threads, threadsStatus);
 	return {
 		filteredThreads,

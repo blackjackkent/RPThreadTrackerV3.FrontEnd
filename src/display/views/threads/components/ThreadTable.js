@@ -95,12 +95,10 @@ const ThreadTable = ({
 		visibleColumns
 	} = useTable(
 		{
-			columns: React.useMemo(() => getColumns(characters, partners, lastPosters), [
-				characters,
-				getColumns,
-				lastPosters,
-				partners
-			]),
+			columns: React.useMemo(
+				() => getColumns(characters, partners, lastPosters),
+				[characters, getColumns, lastPosters, partners]
+			),
 			data: tableData,
 			initialState: {
 				pageSize: 10,

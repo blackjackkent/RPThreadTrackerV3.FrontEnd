@@ -9,10 +9,8 @@ import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmatio
 
 const DeleteAccountPane = () => {
 	const history = useHistory();
-	const [
-		isDeleteAccountConfirmationModalOpen,
-		setIsDeleteAccountConfirmationModalOpen
-	] = useState(false);
+	const [isDeleteAccountConfirmationModalOpen, setIsDeleteAccountConfirmationModalOpen] =
+		useState(false);
 	const { deleteAccount, isLoading: isDeleteAccountLoading } = useDeleteAccountMutation();
 
 	const submitDeleteAccount = () => {

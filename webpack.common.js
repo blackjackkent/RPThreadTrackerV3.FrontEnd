@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 const config = require('./config/config.dev.json');
 
@@ -11,14 +12,14 @@ module.exports = {
 	output: {
 		path: BUILD_DIR,
 		publicPath: '/',
-		filename: '[name].[hash].bundle.js',
-		chunkFilename: '[name].[hash].bundle.js'
+		filename: '[name].[fullhash].bundle.js',
+		chunkFilename: '[name].[chunkhash].bundle.js'
 	},
-	devServer: {
-		static: {
-			directory: path.join(__dirname, 'build')
-		},
-		port: 8080
+	optimization: {
+		moduleIds: 'named',
+		splitChunks: {
+			chunks: 'all'
+		}
 	},
 	module: {
 		// exclude node_modules
@@ -52,19 +53,15 @@ module.exports = {
 		extensions: ['*', '.js']
 	},
 	plugins: [
-		new webpack.DefinePlugin({
-			API_BASE_URL: JSON.stringify(config.API_BASE_URL),
-			TUMBLR_CLIENT_BASE_URL: JSON.stringify(config.TUMBLR_CLIENT_BASE_URL)
-		}),
 		new HtmlWebpackPlugin({
 			inject: true,
 			template: './public/index.html'
 		}),
-		new MiniCssExtractPlugin({
-			// Options similar to the same options in webpackOptions.output
-			// both options are optional
-			filename: '[name].[contenthash].css',
-			chunkFilename: '[id].css'
+		new CopyWebpackPlugin({
+			patterns: [
+				{ from: './public/img', to: 'img' },
+				{ from: './web.config', to: 'web.config' }
+			]
 		})
 	]
 };

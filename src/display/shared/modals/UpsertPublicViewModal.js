@@ -25,14 +25,10 @@ const propTypes = {
 
 const UpsertPublicViewModal = (props) => {
 	const [publicView, onInputChange, setFormData] = useFormReducer();
-	const {
-		createPublicView,
-		isLoading: isCreatePublicViewLoading
-	} = useCreatePublicViewMutation();
-	const {
-		updatePublicView,
-		isLoading: isUpdatePublicViewLoading
-	} = useUpdatePublicViewMutation();
+	const { createPublicView, isLoading: isCreatePublicViewLoading } =
+		useCreatePublicViewMutation();
+	const { updatePublicView, isLoading: isUpdatePublicViewLoading } =
+		useUpdatePublicViewMutation();
 	const isLoading = isCreatePublicViewLoading || isUpdatePublicViewLoading;
 	const { actedView, characters, tags, columns, isModalOpen, setIsModalOpen } = props;
 	useEffect(() => {

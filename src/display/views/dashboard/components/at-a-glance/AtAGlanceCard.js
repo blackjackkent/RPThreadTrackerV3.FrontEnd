@@ -11,10 +11,8 @@ import { useUpdateUserSettingsMutation } from '~/infrastructure/hooks/mutations'
 import { useActiveThreadsContext } from '~/infrastructure/hooks/contexts';
 
 const AtAGlanceCard = () => {
-	const [
-		isDashboardThreadDistributionVisible,
-		setIsDashboardThreadDistributionVisible
-	] = useState(false);
+	const [isDashboardThreadDistributionVisible, setIsDashboardThreadDistributionVisible] =
+		useState(false);
 	const { data: userSettings } = useUserSettingsQuery();
 	const { updateUserSettings } = useUpdateUserSettingsMutation();
 	useEffect(() => {

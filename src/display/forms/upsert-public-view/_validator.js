@@ -1,4 +1,4 @@
-import { debounce } from 'lodash';
+import debounce from 'lodash/debounce';
 import { AvValidator } from 'availity-reactstrap-validation';
 import { isValidSlug } from '../../../infrastructure/api';
 

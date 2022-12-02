@@ -18,10 +18,8 @@ import UpsertCharacterModal from '~/display/shared/modals/UpsertCharacterModal';
 const ManageCharacters = () => {
 	const { characters, isCharactersLoading } = useCharactersContext();
 	const threadCounts = useCharacterThreadCounts();
-	const {
-		untrackCharacter,
-		isLoading: isUntrackCharacterLoading
-	} = useUntrackCharacterMutation();
+	const { untrackCharacter, isLoading: isUntrackCharacterLoading } =
+		useUntrackCharacterMutation();
 	const { createCharacter, isLoading: isCreateCharacterLoading } = useCreateCharacterMutation();
 	const { updateCharacter, isLoading: isUpdateCharacterLoading } = useUpdateCharacterMutation();
 	const [isUntrackCharacterModalOpen, setIsUntrackCharacterModalOpen] = useState(false);
