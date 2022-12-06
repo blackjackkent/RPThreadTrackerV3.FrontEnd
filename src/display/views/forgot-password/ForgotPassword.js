@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import { AvForm } from 'availity-reactstrap-validation';
 import { CardBody, Button, Row, Col } from 'reactstrap';
 import { toast } from 'react-toastify';
+import { useFormReducer } from '~/infrastructure/hooks';
+import { useForgotPasswordMutation } from '~/infrastructure/hooks/mutations';
 import Card from '../../shared/styled/Card';
 import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 import ForgotPasswordForm from '../../forms/forgot-password/ForgotPasswordForm';
-import { useFormReducer } from '~/infrastructure/hooks';
-import { useForgotPasswordMutation } from '~/infrastructure/hooks/mutations';
 
 const ForgotPassword = () => {
 	const [formData, onInputChange] = useFormReducer();

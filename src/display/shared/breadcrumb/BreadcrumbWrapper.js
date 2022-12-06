@@ -2,10 +2,10 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { useIsFetching } from 'react-query';
+import { useIsMutating } from '~/infrastructure/hooks/mutations';
 import Breadcrumbs from './Breadcrumbs';
 import LoadingIndicator from '../loading/LoadingIndicator';
 import Style from './_styles';
-import { useIsMutating } from '~/infrastructure/hooks/mutations';
 // #endregion imports
 
 const BreadcrumbWrapper = (props) => {

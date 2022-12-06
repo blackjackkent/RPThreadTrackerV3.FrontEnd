@@ -3,11 +3,11 @@ import { TabPane, Row, Button, Col, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Card from '../../../shared/styled/Card';
-import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
 import { useFormReducer } from '~/infrastructure/hooks';
 import { useUpdateAccountInfoMutation } from '~/infrastructure/hooks/mutations';
 import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import Card from '../../../shared/styled/Card';
+import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
 
 const UpdateAccountInfoPane = () => {
 	const [formData, onInputChange, setFormData] = useFormReducer();

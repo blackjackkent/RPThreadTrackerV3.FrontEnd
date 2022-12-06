@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { Form, Button, InputGroup, Input } from 'reactstrap';
-import CleanSelect from '../../../shared/styled/CleanSelect';
 import BulkUntrackThreadsModal from '~/display/shared/modals/BulkUntrackThreadsModal';
 import { useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
+import CleanSelect from '../../../shared/styled/CleanSelect';
 
 const propTypes = {
 	isArchive: PropTypes.bool.isRequired,

@@ -6,7 +6,7 @@ import { useFormReducer } from '~/infrastructure/hooks';
 import LoginForm from './components/LoginForm';
 // #endregion imports
 
-function Login() {
+const Login = () => {
 	const [state, onInputChange] = useFormReducer();
 	const { submitLogin, reset, isLoading, isError, isSuccess, error } = useLoginMutation();
 	const onSubmit = async () => {
@@ -29,5 +29,5 @@ function Login() {
 			onSubmit={onSubmit}
 		/>
 	);
-}
+};
 export default Login;

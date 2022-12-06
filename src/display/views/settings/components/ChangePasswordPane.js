@@ -3,11 +3,11 @@ import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
+import { useFormReducer } from '~/infrastructure/hooks';
 import Card from '../../../shared/styled/Card';
 import TooltipForm from '../../../forms/TooltipForm';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
-import { useFormReducer } from '~/infrastructure/hooks';
-import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
 
 const ChangePasswordPane = () => {
 	const [formData, onInputChange] = useFormReducer();

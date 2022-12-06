@@ -1,7 +1,7 @@
 import React from 'react';
 
 // eslint-disable-next-line react/prop-types
-function TextStringFilter({ column: { filterValue, setFilter } }) {
+const TextStringFilter = ({ column: { filterValue, setFilter } }) => {
 	return (
 		<input
 			value={filterValue || ''}
@@ -11,5 +11,5 @@ function TextStringFilter({ column: { filterValue, setFilter } }) {
 			placeholder="Filter"
 		/>
 	);
-}
+};
 export default TextStringFilter;

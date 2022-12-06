@@ -2,12 +2,12 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { CardBody, Button, Row, Col } from 'reactstrap';
 import { AvForm } from 'availity-reactstrap-validation';
+import { useLoginMutation, useRegisterMutation } from '~/infrastructure/hooks/mutations';
+import { useFormReducer } from '~/infrastructure/hooks';
 import RegisterForm from '../../forms/register/RegisterForm';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
 import LoadingIndicator from '../../shared/loading/LoadingIndicator';
-import { useLoginMutation, useRegisterMutation } from '~/infrastructure/hooks/mutations';
-import { useFormReducer } from '~/infrastructure/hooks';
 
 const Register = () => {
 	const [formData, onInputChange] = useFormReducer();

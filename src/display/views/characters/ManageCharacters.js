@@ -2,8 +2,6 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import { toast } from 'react-toastify';
-import CurrentCharacterTable from './components/CurrentCharacterTable';
-import Style from './_styles';
 import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 import { useCharacterThreadCounts } from '~/infrastructure/hooks/derived-data';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
@@ -13,6 +11,8 @@ import {
 	useUpdateCharacterMutation
 } from '~/infrastructure/hooks/mutations';
 import UpsertCharacterModal from '~/display/shared/modals/UpsertCharacterModal';
+import Style from './_styles';
+import CurrentCharacterTable from './components/CurrentCharacterTable';
 // #endregion imports
 
 const ManageCharacters = () => {

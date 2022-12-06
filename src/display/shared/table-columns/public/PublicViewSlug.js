@@ -4,13 +4,14 @@ import React from 'react';
 export default (username) => ({
 	Header: 'View Slug',
 	accessor: 'slug',
-	Cell: (row) => (
+	// eslint-disable-next-line react/prop-types
+	Cell: ({ value }) => (
 		<a
-			href={`/public/${encodeURIComponent(username)}/${row.value}`}
+			href={`/public/${encodeURIComponent(username)}/${value}`}
 			target="_blank"
 			rel="noopener noreferrer"
 		>
-			{row.value} <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
+			{value} <FontAwesomeIcon icon={['fas', 'external-link-alt']} />
 		</a>
 	)
 });

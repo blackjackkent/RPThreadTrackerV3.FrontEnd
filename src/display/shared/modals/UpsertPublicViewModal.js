@@ -8,10 +8,10 @@ import TooltipForm from '~/display/forms/TooltipForm';
 import Modal from '~/display/shared/styled/Modal';
 import { sortCharacters } from '~/utility';
 import { useFormReducer } from '~/infrastructure/hooks';
-import LoadingIndicator from '../loading/LoadingIndicator';
 import UpsertPublicViewForm from '~/display/forms/upsert-public-view/UpsertPublicViewForm';
 import useUpdatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useUpdatePublicViewMutation';
 import useCreatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useCreatePublicViewMutation';
+import LoadingIndicator from '../loading/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {

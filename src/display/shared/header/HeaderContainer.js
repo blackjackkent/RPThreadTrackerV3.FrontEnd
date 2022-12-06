@@ -8,6 +8,7 @@ import {
 } from '~/infrastructure/hooks/mutations';
 import cacheKeys from '~/infrastructure/constants/cacheKeys';
 import { useNewsQuery, useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 import {
 	HeaderLogoBlock,
 	HeaderAsideToggle,
@@ -17,7 +18,6 @@ import {
 import Style from './_styles';
 import UpsertThreadModal from '../modals/UpsertThreadModal';
 import UpsertCharacterModal from '../modals/UpsertCharacterModal';
-import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 
 const HeaderContainer = () => {
 	const [isSidebarOpen, setIsSidebarOpen] = useCacheValue(cacheKeys.IS_SIDEBAR_OPEN);

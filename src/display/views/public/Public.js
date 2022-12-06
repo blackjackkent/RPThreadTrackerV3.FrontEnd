@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
+import ThreadTableStyles from '~/display/shared/styled/TrackerTable';
+import Footer from '~/display/shared/footer/Footer';
+import publicThreadFilterKeys from '~/infrastructure/constants/publicThreadFilterKeys';
+import usePublicViewThreadsQuery from '~/infrastructure/hooks/queries/usePublicViewThreadsQuery';
+import usePublicFilteredThreads from '~/infrastructure/hooks/derived-data/usePublicFilteredThreads';
 import ThreadTable from './PublicThreadTable';
 import PublicHeader from './PublicHeader';
 import PublicThreadFilterSelect from './PublicThreadFilterSelect';
 import getColumns from './_columns';
 import PublicStyle from './_styles';
-import ThreadTableStyles from '~/display/shared/styled/TrackerTable';
 import { getQuery } from '../../../utility';
-import Footer from '~/display/shared/footer/Footer';
-import publicThreadFilterKeys from '~/infrastructure/constants/publicThreadFilterKeys';
-import usePublicViewThreadsQuery from '~/infrastructure/hooks/queries/usePublicViewThreadsQuery';
-import usePublicFilteredThreads from '~/infrastructure/hooks/derived-data/usePublicFilteredThreads';
 
 const propTypes = {
 	slug: PropTypes.string,

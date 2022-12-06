@@ -1,8 +1,8 @@
 import axios from 'axios';
 import promise from 'promise';
+import { navigation } from '~/utility/history';
 import cache from './cache';
 import cacheKeys from './constants/cacheKeys';
-import { navigation } from '~/utility/history';
 
 const whitelist = ['api/auth', `${TUMBLR_CLIENT_BASE_URL}`];
 let refreshSubscribers = [];

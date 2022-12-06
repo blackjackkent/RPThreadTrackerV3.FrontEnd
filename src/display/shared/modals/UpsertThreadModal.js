@@ -9,8 +9,8 @@ import UpsertThreadForm from '~/display/forms/upsert-thread/UpsertThreadForm';
 import Modal from '~/display/shared/styled/Modal';
 import { sortCharacters } from '~/utility';
 import { useFormReducer } from '~/infrastructure/hooks';
-import LoadingIndicator from '../loading/LoadingIndicator';
 import { useCreateThreadMutation, useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
+import LoadingIndicator from '../loading/LoadingIndicator';
 // #endregion imports
 
 const propTypes = {

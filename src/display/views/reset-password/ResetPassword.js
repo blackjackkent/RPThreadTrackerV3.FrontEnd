@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { AvForm } from 'availity-reactstrap-validation';
 import { CardBody, Button, Row, Col } from 'reactstrap';
 import { toast } from 'react-toastify';
+import { useResetPasswordMutation } from '~/infrastructure/hooks/mutations';
+import { useFormReducer } from '~/infrastructure/hooks';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
 import LoadingIndicator from '../../shared/loading/LoadingIndicator';
 import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
 import { getQuery } from '../../../utility';
-import { useFormReducer } from '~/infrastructure/hooks';
-import { useResetPasswordMutation } from '~/infrastructure/hooks/mutations';
 
 const ResetPassword = () => {
 	const [formData, onInputChange, setFormData] = useFormReducer();

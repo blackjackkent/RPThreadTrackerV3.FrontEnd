@@ -117,7 +117,7 @@
 		"test:watch": "jest --watch --coverage --passWithNoTests",
 		"test:coverage": "jest --coverage --passWithNoTests",
 		"test:ci": "npm run lint && npm run test",
-		"profile": "rimraf reports/ && mkdir reports && webpack --profile --json > reports/stats.json --config webpack.staging.js"
+		"profile": "rimraf reports/ && mkdir reports && webpack --profile --json > reports/stats.json --config webpack.prod.js"
 	},
 	"engines": {
 		"node": ">= 8.9.1",

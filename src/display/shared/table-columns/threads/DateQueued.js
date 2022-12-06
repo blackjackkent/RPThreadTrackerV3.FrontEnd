@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
 import { DateTime } from 'luxon';
 import columns from '../../../../infrastructure/constants/columns';
 

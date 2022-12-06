@@ -3,9 +3,9 @@ import { TabPane, Button, CardHeader, CardBody } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Card from '../../../shared/styled/Card';
 import { useDeleteAccountMutation } from '~/infrastructure/hooks/mutations';
 import GenericConfirmationModal from '~/display/shared/modals/GenericConfirmationModal';
+import Card from '../../../shared/styled/Card';
 
 const DeleteAccountPane = () => {
 	const history = useHistory();

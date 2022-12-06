@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import GenericConfirmationModal from './GenericConfirmationModal';
 import { useUntrackThreadMutation } from '~/infrastructure/hooks/mutations';
+import GenericConfirmationModal from './GenericConfirmationModal';
 
 const propTypes = {
 	actedThreads: PropTypes.arrayOf(PropTypes.shape({ userTitle: PropTypes.string.isRequired })),

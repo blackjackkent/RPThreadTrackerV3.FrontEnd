@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Card from '../../../../shared/styled/Card';
-import RandomThreadDisplay from './RandomThreadDisplay';
 import { useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
 import filters from '~/infrastructure/constants/filters';
+import Card from '../../../../shared/styled/Card';
+import RandomThreadDisplay from './RandomThreadDisplay';
 
 const RandomThreadCard = () => {
 	const { filteredThreads: myTurnThreads } = useFilteredActiveThreads(filters.MY_TURN);

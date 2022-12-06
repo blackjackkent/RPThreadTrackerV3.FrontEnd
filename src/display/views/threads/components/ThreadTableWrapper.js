@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import Style from '../../../shared/styled/TrackerTable';
 import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
-import ThreadTable from './ThreadTable';
-import ThreadTableControls from './ThreadTableControls';
 import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
 import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
 import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
@@ -16,6 +13,9 @@ import {
 	useThreadListPartners,
 	useThreadListTags
 } from '~/infrastructure/hooks/derived-data';
+import ThreadTableControls from './ThreadTableControls';
+import ThreadTable from './ThreadTable';
+import Style from '../../../shared/styled/TrackerTable';
 
 const propTypes = {
 	threadsWithStatus: PropTypes.arrayOf(PropTypes.shape({})).isRequired,

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Row, Col, CardBody, Button, Label } from 'reactstrap';
 import { AvForm, AvField } from 'availity-reactstrap-validation';
-import validator from '../_loginFormValidator';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import Card from '~/display/shared/styled/Card';
+import validator from '../_loginFormValidator';
 
 const propTypes = {
 	isLoading: PropTypes.bool.isRequired,
