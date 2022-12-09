@@ -19,9 +19,8 @@ const ValidatedTextInput = ({
 }) => {
 	return (
 		<input
-			onChange={onChange}
 			className={`form-control ${errors[inputName] ? 'is-invalid' : ''}`}
-			{...register(inputName, validator[inputName])}
+			{...register(inputName, { ...validator[inputName], onChange })}
 			{...props}
 		/>
 	);
