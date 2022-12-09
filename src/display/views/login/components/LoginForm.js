@@ -2,9 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Row, Col, CardBody, Button, Label } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import Card from '~/display/shared/styled/Card';
+import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
+import ValidatedTextInput from '~/display/forms/validated-form/ValidatedTextInput';
+import ValidatedErrorMessage from '~/display/forms/validated-form/ValidatedErrorMessage';
 import validator from '../_loginFormValidator';
 
 const propTypes = {
@@ -15,6 +17,7 @@ const propTypes = {
 };
 
 const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
+	const { register, onFormSubmit, errors } = useValidatedForm(onSubmit);
 	return (
 		<Card className="login-box p-4">
 			<CardBody className="card-body">
@@ -29,7 +32,8 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						}}
 					/>
 				)}
-				<AvForm onValidSubmit={onSubmit}>
+
+				<form onSubmit={onFormSubmit(onSubmit)}>
 					<h1>Login</h1>
 					<p className="text-muted">Sign in to RPThreadTracker</p>
 					{errorMessage && (
@@ -38,25 +42,29 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						</div>
 					)}
 					<div>
-						<div>
+						<div className="form-group">
 							<Label for="username">Username</Label>
-							<AvField
-								name="username"
+							<ValidatedTextInput
+								register={register}
+								validator={validator}
+								inputName="username"
+								errors={errors}
+								onChange={onInputChange}
 								placeholder="Username"
-								type="text"
-								onChange={onInputChange}
-								validate={validator.username}
 							/>
+							<ValidatedErrorMessage error={errors.username} />
 						</div>
-						<div>
+						<div className="form-group">
 							<Label for="password">Password</Label>
-							<AvField
-								name="password"
-								placeholder="Password"
-								type="password"
+							<ValidatedTextInput
+								register={register}
+								validator={validator}
+								inputName="password"
 								onChange={onInputChange}
-								validate={validator.password}
+								errors={errors}
+								placeholder="Password"
 							/>
+							<ValidatedErrorMessage error={errors.password} />
 						</div>
 					</div>
 					<Row>
@@ -75,7 +83,7 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 							</Link>
 						</Col>
 					</Row>
-				</AvForm>
+				</form>
 			</CardBody>
 		</Card>
 	);
