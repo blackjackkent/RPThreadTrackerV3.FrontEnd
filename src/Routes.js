@@ -1,7 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import '../scss/style.scss';
 import { usePageViewTracker } from '~/infrastructure/hooks';
 
 const Layout = lazy(() => import('./display/containers/Layout'));

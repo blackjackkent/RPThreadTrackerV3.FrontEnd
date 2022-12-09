@@ -2,6 +2,7 @@ const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const common = require('./webpack.common');
 const config = require('./config/config.prod.json');
 
@@ -25,6 +26,6 @@ module.exports = merge(common, {
 		splitChunks: {
 			chunks: 'all'
 		},
-		minimize: true
+		minimizer: [`...`, new CssMinimizerPlugin()]
 	}
 });
