@@ -5,9 +5,8 @@ import { Row, Col, CardBody, Button, Label } from 'reactstrap';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import Card from '~/display/shared/styled/Card';
 import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
-import ValidatedErrorMessage from '~/display/forms/validated-form/ValidatedErrorMessage';
-import validator from '../_loginFormValidator';
 import ValidatedTextInput from '~/display/forms/validated-form/ValidatedTextInput';
+import validator from '../_loginFormValidator';
 
 const propTypes = {
 	isLoading: PropTypes.bool.isRequired,
@@ -16,7 +15,7 @@ const propTypes = {
 };
 
 const LoginForm = ({ isLoading, errorMessage, onSubmit }) => {
-	const { onFormSubmit, errors, inputProps } = useValidatedForm(onSubmit);
+	const { onFormSubmit, inputProps } = useValidatedForm(onSubmit, validator);
 	return (
 		<Card className="login-box p-4">
 			<CardBody className="card-body">
@@ -45,21 +44,17 @@ const LoginForm = ({ isLoading, errorMessage, onSubmit }) => {
 							<Label for="username">Username</Label>
 							<ValidatedTextInput
 								{...inputProps}
-								validator={validator}
 								name="username"
 								placeholder="Username"
 							/>
-							<ValidatedErrorMessage error={errors.username} />
 						</div>
 						<div className="form-group">
 							<Label for="password">Password</Label>
 							<ValidatedTextInput
 								{...inputProps}
-								validator={validator}
 								name="password"
 								placeholder="Password"
 							/>
-							<ValidatedErrorMessage error={errors.password} />
 						</div>
 					</div>
 					<Row>

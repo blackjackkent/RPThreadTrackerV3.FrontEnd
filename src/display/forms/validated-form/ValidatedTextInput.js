@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ValidatedErrorMessage from './ValidatedErrorMessage';
 
 const propTypes = {
 	register: PropTypes.func.isRequired,
@@ -18,11 +19,14 @@ const ValidatedTextInput = ({
 	...props
 }) => {
 	return (
-		<input
-			className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
-			{...register(name, { ...validator[name], onChange })}
-			{...props}
-		/>
+		<div>
+			<input
+				className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
+				{...register(name, { ...validator[name], onChange })}
+				{...props}
+			/>
+			<ValidatedErrorMessage error={errors[name]} />
+		</div>
 	);
 };
 ValidatedTextInput.propTypes = propTypes;

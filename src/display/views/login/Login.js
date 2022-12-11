@@ -8,9 +8,8 @@ import LoginForm from './components/LoginForm';
 const Login = () => {
 	const { submitLogin, reset, isLoading, isError, isSuccess, error } = useLoginMutation();
 	const onSubmit = async (data) => {
-		console.log(data);
 		reset();
-		// submitLogin({ username: data.username, password: data.password });
+		submitLogin({ username: data.username, password: data.password });
 	};
 	if (isSuccess) {
 		return (
