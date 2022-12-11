@@ -21,7 +21,7 @@ const RegisterForm = (props) => {
 	const { onSubmit, tooltipDisplayData, showTooltip, hideTooltip } = props;
 	const { onFormSubmit, inputProps } = useValidatedForm(onSubmit, validator);
 	return (
-		<form onSubmit={onFormSubmit(onSubmit)}>
+		<form onSubmit={onFormSubmit}>
 			<div>
 				<div className="form-group">
 					<ValidatedTextInput name="username" placeholder="Username" {...inputProps} />

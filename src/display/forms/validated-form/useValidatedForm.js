@@ -10,7 +10,7 @@ const useValidatedForm = (onSubmit, validator) => {
 		e.preventDefault();
 		onSubmit(data);
 	};
-	const onFormSubmit = () => handleSubmit(submitHandler);
+	const onFormSubmit = handleSubmit(submitHandler);
 	return { onFormSubmit, errors, inputProps: { register, errors, validator } };
 };
 export default useValidatedForm;

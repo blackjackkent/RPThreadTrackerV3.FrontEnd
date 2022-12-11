@@ -31,7 +31,7 @@ const LoginForm = ({ isLoading, errorMessage, onSubmit }) => {
 					/>
 				)}
 
-				<form onSubmit={onFormSubmit(onSubmit)}>
+				<form onSubmit={onFormSubmit}>
 					<h1>Login</h1>
 					<p className="text-muted">Sign in to RPThreadTracker</p>
 					{errorMessage && (
