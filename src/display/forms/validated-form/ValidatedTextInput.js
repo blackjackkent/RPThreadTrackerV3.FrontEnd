@@ -21,6 +21,7 @@ const ValidatedTextInput = ({
 	return (
 		<div>
 			<input
+				type="text"
 				className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
 				{...register(name, { ...validator[name], onChange })}
 				{...props}

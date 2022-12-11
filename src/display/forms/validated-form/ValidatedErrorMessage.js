@@ -5,6 +5,7 @@ const propTypes = {
 	error: PropTypes.shape({})
 };
 const ValidatedErrorMessage = ({ error = {} }) => {
+	console.log(error);
 	if (!error?.message) {
 		return null;
 	}
