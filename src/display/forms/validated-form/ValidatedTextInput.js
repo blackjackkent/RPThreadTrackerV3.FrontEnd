@@ -6,21 +6,21 @@ const propTypes = {
 	validator: PropTypes.shape({}).isRequired,
 	errors: PropTypes.shape({}).isRequired,
 	onChange: PropTypes.func,
-	inputName: PropTypes.string.isRequired
+	name: PropTypes.string.isRequired
 };
 
 const ValidatedTextInput = ({
 	register,
 	validator,
 	errors,
-	inputName,
+	name,
 	onChange = () => {},
 	...props
 }) => {
 	return (
 		<input
-			className={`form-control ${errors[inputName] ? 'is-invalid' : ''}`}
-			{...register(inputName, { ...validator[inputName], onChange })}
+			className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
+			{...register(name, { ...validator[name], onChange })}
 			{...props}
 		/>
 	);

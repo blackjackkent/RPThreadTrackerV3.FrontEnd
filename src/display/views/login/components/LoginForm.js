@@ -5,19 +5,18 @@ import { Row, Col, CardBody, Button, Label } from 'reactstrap';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import Card from '~/display/shared/styled/Card';
 import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
-import ValidatedTextInput from '~/display/forms/validated-form/ValidatedTextInput';
 import ValidatedErrorMessage from '~/display/forms/validated-form/ValidatedErrorMessage';
 import validator from '../_loginFormValidator';
+import ValidatedTextInput from '~/display/forms/validated-form/ValidatedTextInput';
 
 const propTypes = {
 	isLoading: PropTypes.bool.isRequired,
 	errorMessage: PropTypes.string.isRequired,
-	onInputChange: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired
 };
 
-const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
-	const { register, onFormSubmit, errors } = useValidatedForm(onSubmit);
+const LoginForm = ({ isLoading, errorMessage, onSubmit }) => {
+	const { onFormSubmit, errors, inputProps } = useValidatedForm(onSubmit);
 	return (
 		<Card className="login-box p-4">
 			<CardBody className="card-body">
@@ -45,11 +44,9 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						<div className="form-group">
 							<Label for="username">Username</Label>
 							<ValidatedTextInput
-								register={register}
+								{...inputProps}
 								validator={validator}
-								inputName="username"
-								errors={errors}
-								onChange={onInputChange}
+								name="username"
 								placeholder="Username"
 							/>
 							<ValidatedErrorMessage error={errors.username} />
@@ -57,11 +54,9 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						<div className="form-group">
 							<Label for="password">Password</Label>
 							<ValidatedTextInput
-								register={register}
+								{...inputProps}
 								validator={validator}
-								inputName="password"
-								onChange={onInputChange}
-								errors={errors}
+								name="password"
 								placeholder="Password"
 							/>
 							<ValidatedErrorMessage error={errors.password} />

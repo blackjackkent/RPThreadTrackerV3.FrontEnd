@@ -16,7 +16,6 @@ const reducer = (state, action) => {
 const useFormReducer = (defaultState = {}) => {
 	const [formData, dispatch] = useReducer(reducer, defaultState);
 	const onInputChange = useCallback((e) => {
-		console.log('INPUT CHANGE');
 		const action = {
 			type: 'input',
 			name: e.target.name,
