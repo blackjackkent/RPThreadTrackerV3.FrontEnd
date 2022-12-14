@@ -2,7 +2,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useLoginMutation } from '~/infrastructure/hooks/mutations';
-import LoginForm from './components/LoginForm';
+import LoginForm from '../../forms/login/LoginForm';
 // #endregion imports
 
 const Login = () => {

@@ -6,7 +6,7 @@ import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import Card from '~/display/shared/styled/Card';
 import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
 import ValidatedTextInput from '~/display/forms/validated-form/ValidatedTextInput';
-import validator from '../_loginFormValidator';
+import validator from './_validator';
 
 const propTypes = {
 	isLoading: PropTypes.bool.isRequired,
