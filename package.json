@@ -67,6 +67,7 @@
 		"@fortawesome/free-regular-svg-icons": "^5.15.3",
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"@fortawesome/react-fontawesome": "^0.1.14",
+		"@hookform/resolvers": "^2.9.10",
 		"availity-reactstrap-validation": "npm:availity-reactstrap-validation-safe@^2.6.1",
 		"axios": "^0.18.0",
 		"babel-polyfill": "^6.26.0",
@@ -105,7 +106,8 @@
 		"reselect": "^4.0.0",
 		"simple-line-icons": "^2.4.1",
 		"styled-components": "^4.1.2",
-		"uuid": "^8.3.2"
+		"uuid": "^8.3.2",
+		"yup": "^0.32.11"
 	},
 	"scripts": {
 		"start": "webpack serve --config webpack.dev.js",
