@@ -1,10 +1,7 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { AvForm } from 'availity-reactstrap-validation';
-import { CardBody, Button, Row, Col } from 'reactstrap';
+import React from 'react';
+import { CardBody } from 'reactstrap';
 import { toast } from 'react-toastify';
 import { useResetPasswordMutation } from '~/infrastructure/hooks/mutations';
-import { useFormReducer } from '~/infrastructure/hooks';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
 import LoadingIndicator from '../../shared/loading/LoadingIndicator';
@@ -12,22 +9,21 @@ import ResetPasswordForm from '../../forms/reset-password/ResetPasswordForm';
 import { getQuery } from '../../../utility';
 
 const ResetPassword = () => {
-	const [formData, onInputChange, setFormData] = useFormReducer();
 	const {
 		resetPassword,
 		isLoading: isSubmitResetPasswordLoading,
 		isError: isSubmitResetPasswordError,
 		error: resetPasswordError
 	} = useResetPasswordMutation();
-	useEffect(() => {
-		setFormData({
-			email: getQuery().email,
-			code: getQuery().code
-		});
-	}, [setFormData]);
 
-	const submitResetPassword = () => {
-		resetPassword(formData).then(() => {
+	const submitResetPassword = (formData) => {
+		const queryData = getQuery();
+		const submissionData = {
+			...formData,
+			email: queryData.email,
+			code: queryData.code
+		};
+		resetPassword(submissionData).then(() => {
 			toast.success('Success. You can now log in with your updated password');
 		});
 	};
@@ -45,30 +41,14 @@ const ResetPassword = () => {
 						}}
 					/>
 				)}
-				<AvForm onValidSubmit={submitResetPassword}>
-					<h1>Reset Password</h1>
-					<p className="text-muted">Enter your new password below.</p>
-					{isSubmitResetPasswordError && (
-						<div className="has-danger">
-							<p className="form-control-feedback">{resetPasswordError.message}</p>
-						</div>
-					)}
-					<TooltipForm Renderable={ResetPasswordForm} handleInputChange={onInputChange} />
-					<Row>
-						<Col xs="6">
-							<Button color="primary" className="px-4">
-								Request
-							</Button>
-						</Col>
-						<Col xs="6" className="text-right text-muted">
-							<span className="pull-right">
-								<Link href="/login" to="/login">
-									Back to Login
-								</Link>
-							</span>
-						</Col>
-					</Row>
-				</AvForm>
+				<h1>Reset Password</h1>
+				<p className="text-muted">Enter your new password below.</p>
+				{isSubmitResetPasswordError && (
+					<div className="has-danger">
+						<p className="form-control-feedback">{resetPasswordError.message}</p>
+					</div>
+				)}
+				<TooltipForm Renderable={ResetPasswordForm} onSubmit={submitResetPassword} />
 			</CardBody>
 		</Card>
 	);
