@@ -5,7 +5,9 @@ const useValidatedForm = (onSubmit, validator) => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors }
+		formState: { errors },
+		setValue,
+		reset
 	} = useForm({
 		resolver: yupResolver(validator)
 	});
@@ -14,6 +16,6 @@ const useValidatedForm = (onSubmit, validator) => {
 		onSubmit(data);
 	};
 	const onFormSubmit = handleSubmit(submitHandler);
-	return { onFormSubmit, errors, inputProps: { register, errors } };
+	return { onFormSubmit, errors, inputProps: { register, errors }, setValue, reset };
 };
 export default useValidatedForm;

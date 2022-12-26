@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
-import { AvForm } from 'availity-reactstrap-validation';
-import { useFormReducer } from '~/infrastructure/hooks';
+import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
 import UpsertCharacterForm from '../../forms/upsert-character/UpsertCharacterForm';
+import validator from '../../forms/upsert-character/_validator';
 import TooltipForm from '../../forms/TooltipForm';
 import Modal from '../styled/Modal';
 import LoadingIndicator from '../loading/LoadingIndicator';
@@ -14,35 +14,32 @@ const propTypes = {
 	submitForm: PropTypes.func.isRequired,
 	isLoading: PropTypes.bool.isRequired,
 	characterToEdit: PropTypes.shape({
-		characterId: PropTypes.string
+		characterId: PropTypes.number
 	})
 };
-const defaultProps = {
-	characterToEdit: {}
-};
 
-const UpsertCharacterModal = (props) => {
-	const [character, onInputChange, setFormData] = useFormReducer();
-	const { isLoading, characterToEdit, isModalOpen, setIsModalOpen, submitForm } = props;
+const UpsertCharacterModal = ({
+	isLoading,
+	characterToEdit,
+	isModalOpen,
+	setIsModalOpen,
+	submitForm
+}) => {
+	const { onFormSubmit, inputProps, setValue, reset } = useValidatedForm(submitForm, validator);
 	useEffect(() => {
-		if (!characterToEdit) {
-			return;
-		}
-		setFormData(characterToEdit);
-		onInputChange({ target: { name: 'platformId', value: 1 } });
-	}, [characterToEdit, onInputChange, setFormData]);
+		setValue('platformId', 1, { shouldDirty: false });
+	}, [setValue]);
+	useEffect(() => {
+		reset(characterToEdit);
+	}, [characterToEdit, reset]);
 	return (
 		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
-			<AvForm onValidSubmit={() => submitForm(character)}>
+			<form onSubmit={onFormSubmit}>
 				<ModalHeader toggle={() => setIsModalOpen(!isModalOpen)}>
-					{character.characterId ? 'Edit Character' : 'Add Character'}
+					{characterToEdit?.characterId ? 'Edit Character' : 'Add Character'}
 				</ModalHeader>
 				<ModalBody>
-					<TooltipForm
-						Renderable={UpsertCharacterForm}
-						character={character}
-						onInputChange={onInputChange}
-					/>
+					<TooltipForm Renderable={UpsertCharacterForm} inputProps={inputProps} />
 				</ModalBody>
 				<ModalFooter>
 					{isLoading && <LoadingIndicator />}
@@ -51,11 +48,10 @@ const UpsertCharacterModal = (props) => {
 						Cancel
 					</Button>
 				</ModalFooter>
-			</AvForm>
+			</form>
 		</Modal>
 	);
 };
 
 UpsertCharacterModal.propTypes = propTypes;
-UpsertCharacterModal.defaultProps = defaultProps;
 export default UpsertCharacterModal;

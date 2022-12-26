@@ -6,10 +6,18 @@ const propTypes = {
 	register: PropTypes.func.isRequired,
 	errors: PropTypes.shape({}).isRequired,
 	onChange: PropTypes.func,
-	name: PropTypes.string.isRequired
+	name: PropTypes.string.isRequired,
+	helpMessage: PropTypes.element
 };
 
-const ValidatedTextInput = ({ register, errors, name, onChange = () => {}, ...props }) => {
+const ValidatedTextInput = ({
+	register,
+	errors,
+	name,
+	onChange = () => {},
+	helpMessage = '',
+	...props
+}) => {
 	return (
 		<div>
 			<input
@@ -19,6 +27,7 @@ const ValidatedTextInput = ({ register, errors, name, onChange = () => {}, ...pr
 				{...props}
 			/>
 			<ValidatedErrorMessage error={errors[name]} />
+			{helpMessage && <small className="form-text text-muted">{helpMessage}</small>}
 		</div>
 	);
 };
