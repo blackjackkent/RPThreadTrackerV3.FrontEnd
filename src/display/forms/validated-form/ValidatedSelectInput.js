@@ -1,49 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as debounceFn from 'lodash/debounce';
 import ValidatedErrorMessage from './ValidatedErrorMessage';
 
 const propTypes = {
 	register: PropTypes.func.isRequired,
 	errors: PropTypes.shape({}).isRequired,
 	onChange: PropTypes.func,
+	dataTransform: PropTypes.func,
 	name: PropTypes.string.isRequired,
 	trigger: PropTypes.func.isRequired,
-	debounce: PropTypes.bool,
-	helpMessage: PropTypes.element
+	helpMessage: PropTypes.element,
+	children: PropTypes.arrayOf(PropTypes.element)
 };
 
-const ValidatedTextInput = ({
+const ValidatedSelectInput = ({
 	register,
 	errors,
 	trigger,
 	name,
-	debounce = false,
 	onChange = () => {},
+	dataTransform = (data) => data,
 	helpMessage = '',
+	children,
 	...props
 }) => {
-	const getHandleChangeFn = () => {
-		if (debounce) {
-			return debounceFn(async () => {
-				await trigger('email');
-				onChange();
-			});
-		}
-		return onChange;
-	};
 	return (
 		<div>
-			<input
-				type="text"
+			<select
 				className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
-				{...register(name, { onChange: getHandleChangeFn() })}
+				{...register(name, { onChange, setValueAs: dataTransform })}
 				{...props}
-			/>
+			>
+				{children}
+			</select>
 			<ValidatedErrorMessage error={errors[name]} />
 			{helpMessage && <small className="form-text text-muted">{helpMessage}</small>}
 		</div>
 	);
 };
-ValidatedTextInput.propTypes = propTypes;
-export default ValidatedTextInput;
+ValidatedSelectInput.propTypes = propTypes;
+export default ValidatedSelectInput;

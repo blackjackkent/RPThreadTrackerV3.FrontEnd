@@ -1,31 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row } from 'reactstrap';
-import { AvField } from 'availity-reactstrap-validation';
+import { Col, FormGroup, Label, Row } from 'reactstrap';
 import Tooltip from 'rc-tooltip';
-import validator from './_validator';
 import formData from './_formData';
+import ValidatedTextInput from '../validated-form/ValidatedTextInput';
+import ValidatedSelectInput from '../validated-form/ValidatedSelectInput';
+import ValidatedHiddenInput from '../validated-form/ValidatedHiddenInput';
 
 const propTypes = {
-	publicView: PropTypes.shape({
-		id: PropTypes.string,
-		name: PropTypes.string,
-		slug: PropTypes.string,
-		columns: PropTypes.arrayOf(PropTypes.string),
-		sortKey: PropTypes.string,
-		sortDescending: PropTypes.bool,
-		turnFilter: PropTypes.shape({
-			includeMyTurn: PropTypes.bool,
-			includeTheirTurn: PropTypes.bool,
-			includeQueued: PropTypes.bool,
-			includeArchived: PropTypes.bool
-		}),
-		characterIds: PropTypes.arrayOf(PropTypes.number),
-		tags: PropTypes.arrayOf(PropTypes.string)
-	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-	onInputChange: PropTypes.func.isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		slug: PropTypes.bool,
 		columns: PropTypes.bool,
@@ -34,20 +18,13 @@ const propTypes = {
 	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
-	columns: PropTypes.shape({}).isRequired
+	columns: PropTypes.shape({}).isRequired,
+	inputProps: PropTypes.shape({}).isRequired
 };
 
 const UpsertPublicViewForm = (props) => {
-	const {
-		publicView,
-		onInputChange,
-		tooltipDisplayData,
-		showTooltip,
-		hideTooltip,
-		characters,
-		tags,
-		columns
-	} = props;
+	const { tooltipDisplayData, inputProps, showTooltip, hideTooltip, characters, tags, columns } =
+		props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
 		.filter((i) => columns[i].name)
 		.map((i) => (
@@ -55,172 +32,158 @@ const UpsertPublicViewForm = (props) => {
 				{columns[i].name}
 			</option>
 		));
-	const characterOptions = characters.map((c) => (
-		<option value={c.characterId} key={c.characterId}>
-			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
-		</option>
-	));
-	const tagOptions = tags.map((t) => (
-		<option value={t} key={t}>
-			{t}
-		</option>
-	));
+	// const characterOptions = characters.map((c) => (
+	// 	<option value={c.characterId} key={c.characterId}>
+	// 		{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
+	// 	</option>
+	// ));
+	// const tagOptions = tags.map((t) => (
+	// 	<option value={t} key={t}>
+	// 		{t}
+	// 	</option>
+	// ));
 
-	const handleMultiSelectChange = (e, value, parseAsInt = false) => {
-		const result = [];
-		const select = e.target;
-		if (select && select.options) {
-			const { options } = select;
-			let opt;
+	// const handleMultiSelectChange = (e, value, parseAsInt = false) => {
+	// 	const result = [];
+	// 	const select = e.target;
+	// 	if (select && select.options) {
+	// 		const { options } = select;
+	// 		let opt;
 
-			for (let i = 0; i < options.length; i++) {
-				opt = options[i];
-				if (opt.selected) {
-					let data = opt.value || opt.text;
-					if (parseAsInt) {
-						data = parseInt(data, 10);
-					}
-					result.push(data);
-				}
-			}
-		}
-		onInputChange({ target: { name: e.target.name, value: result } });
-	};
+	// 		for (let i = 0; i < options.length; i++) {
+	// 			opt = options[i];
+	// 			if (opt.selected) {
+	// 				let data = opt.value || opt.text;
+	// 				if (parseAsInt) {
+	// 					data = parseInt(data, 10);
+	// 				}
+	// 				result.push(data);
+	// 			}
+	// 		}
+	// 	}
+	// 	onInputChange({ target: { name: e.target.name, value: result } });
+	// };
 
-	const handleCharacterSelectChange = (e) => {
-		handleMultiSelectChange(e, e.target.value, true);
-	};
+	// const handleCharacterSelectChange = (e) => {
+	// 	handleMultiSelectChange(e, e.target.value, true);
+	// };
 
-	const handleTurnFilterCheckboxChange = (e) => {
-		const { name, checked } = e.target;
-		let { turnFilter } = publicView;
-		if (!turnFilter) {
-			turnFilter = {};
-		}
-		turnFilter[name] = checked;
-		onInputChange({ target: { name: 'turnFilter', value: turnFilter } });
-	};
+	// const handleTurnFilterCheckboxChange = (e) => {
+	// 	const { name, checked } = e.target;
+	// 	let { turnFilter } = publicView;
+	// 	if (!turnFilter) {
+	// 		turnFilter = {};
+	// 	}
+	// 	turnFilter[name] = checked;
+	// 	onInputChange({ target: { name: 'turnFilter', value: turnFilter } });
+	// };
 
-	const handleSortDirectionChange = (e) => {
-		onInputChange({
-			target: { ...e.target, name: e.target.name, value: e.target.value === 'true' }
-		});
+	const handleSortDirectionChange = (val) => {
+		return val === 'true';
 	};
 
 	return (
 		<div>
-			<AvField type="hidden" name="viewId" value={publicView.id} />
+			<ValidatedHiddenInput type="hidden" name="id" {...inputProps} />
 			<Row>
-				{' '}
-				{/* view name */}
 				<Col>
-					<AvField
-						name="name"
-						placeholder="View Name"
-						label="View Name"
-						type="text"
-						value={publicView.name}
-						onChange={onInputChange}
-						validate={validator.name}
-						helpMessage={formData.name.helpMessage}
-					/>
-				</Col>
-			</Row>
-			<Row>
-				{' '}
-				{/* view slug */}
-				<Col>
-					<Tooltip
-						visible={tooltipDisplayData.slug}
-						overlay={formData.slug.tooltip}
-						overlayStyle={{
-							width: 300
-						}}
-						align={{
-							offset: [0, 30]
-						}}
-						placement="top"
-					>
-						<AvField
-							name="slug"
-							placeholder="URL Slug"
-							label="URL Slug"
-							type="text"
-							value={publicView.slug}
-							onChange={onInputChange}
-							validate={validator.slug}
-							helpMessage={formData.slug.helpMessage}
-							onFocus={showTooltip}
-							onBlur={hideTooltip}
+					<FormGroup>
+						<Label for="name">View Name</Label>
+						<ValidatedTextInput
+							name="name"
+							placeholder="View Name"
+							helpMessage={formData.name.helpMessage}
+							{...inputProps}
 						/>
-					</Tooltip>
+					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
-				{' '}
-				{/* view columns */}
 				<Col>
-					<Tooltip
-						visible={tooltipDisplayData.columns}
-						overlay={formData.columns.tooltip}
-						overlayStyle={{
-							width: 300
-						}}
-						align={{
-							offset: [0, 30]
-						}}
-						placement="top"
-					>
-						<AvField
-							name="columns"
-							label="View Columns"
-							type="select"
-							value={publicView.columns}
-							onChange={handleMultiSelectChange}
-							validate={validator.columns}
-							helpMessage={formData.columns.helpMessage}
-							multiple
-							onFocus={showTooltip}
-							onBlur={hideTooltip}
+					<FormGroup>
+						<Label for="slug">URL Slug</Label>
+						<Tooltip
+							visible={tooltipDisplayData.slug}
+							overlay={formData.slug.tooltip}
+							overlayStyle={{
+								width: 300
+							}}
+							align={{
+								offset: [0, 30]
+							}}
+							placement="top"
 						>
-							{columnOptions}
-						</AvField>
-					</Tooltip>
+							<ValidatedTextInput
+								name="slug"
+								placeholder="URL Slug"
+								helpMessage={formData.slug.helpMessage}
+								{...inputProps}
+								onFocus={showTooltip}
+								onBlur={hideTooltip}
+							/>
+						</Tooltip>
+					</FormGroup>
+				</Col>
+			</Row>
+			<Row>
+				<Col>
+					<FormGroup>
+						<Label for="columns">View Columns</Label>
+						<Tooltip
+							visible={tooltipDisplayData.columns}
+							overlay={formData.columns.tooltip}
+							overlayStyle={{
+								width: 300
+							}}
+							align={{
+								offset: [0, 30]
+							}}
+							placement="top"
+						>
+							<ValidatedSelectInput
+								name="columns"
+								helpMessage={formData.columns.helpMessage}
+								{...inputProps}
+								onFocus={showTooltip}
+								onBlur={hideTooltip}
+								multiple
+							>
+								{columnOptions}
+							</ValidatedSelectInput>
+						</Tooltip>
+					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
 				<Col xs="6">
-					<AvField
-						name="sortKey"
-						label="Sort By"
-						type="select"
-						value={publicView.sortKey}
-						onChange={onInputChange}
-						validate={validator.sortKey}
-					>
-						<option value="">Select Column</option>
-						{columnOptions}
-					</AvField>
+					<FormGroup>
+						<Label for="sortKey">Sort By</Label>
+						<ValidatedSelectInput name="sortKey" {...inputProps}>
+							<option value="">Select Column</option>
+							{columnOptions}
+						</ValidatedSelectInput>
+					</FormGroup>
 				</Col>
 
 				<Col xs="6">
-					<AvField
-						name="sortDescending"
-						label="Sort Order"
-						type="select"
-						value={publicView.sortDescending}
-						onChange={handleSortDirectionChange}
-					>
-						<option value={false}>Ascending</option>
-						<option
-							value={true} // eslint-disable-line react/jsx-boolean-value
+					<FormGroup>
+						<Label for="sortDescending">Sort Order</Label>
+						<ValidatedSelectInput
+							name="sortDescending"
+							{...inputProps}
+							dataTransform={handleSortDirectionChange}
 						>
-							Descending
-						</option>
-					</AvField>
+							<option value={false}>Ascending</option>
+							<option
+								value={true} // eslint-disable-line react/jsx-boolean-value
+							>
+								Descending
+							</option>
+						</ValidatedSelectInput>
+					</FormGroup>
 				</Col>
 			</Row>
-			<Row className="public-view-form-turn-section">
+			{/* <Row className="public-view-form-turn-section">
 				<div className="container">
 					<Row>
 						<Col xs="6">
@@ -273,8 +236,6 @@ const UpsertPublicViewForm = (props) => {
 				</div>
 			</Row>
 			<Row>
-				{' '}
-				{/* view characters */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.characterIds}
@@ -305,8 +266,6 @@ const UpsertPublicViewForm = (props) => {
 				</Col>
 			</Row>
 			<Row>
-				{' '}
-				{/* view tags */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.tags}
@@ -334,7 +293,8 @@ const UpsertPublicViewForm = (props) => {
 						</AvField>
 					</Tooltip>
 				</Col>
-			</Row>
+			</Row>{' '}
+			*/}
 		</div>
 	);
 };
