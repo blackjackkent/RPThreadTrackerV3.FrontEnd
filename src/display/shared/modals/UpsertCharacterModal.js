@@ -25,13 +25,14 @@ const UpsertCharacterModal = ({
 	setIsModalOpen,
 	submitForm
 }) => {
-	const { onFormSubmit, inputProps, setValue, reset } = useValidatedForm(submitForm, validator);
+	const { onFormSubmit, inputProps, setValue } = useValidatedForm(
+		submitForm,
+		validator,
+		characterToEdit
+	);
 	useEffect(() => {
 		setValue('platformId', 1, { shouldDirty: false });
 	}, [setValue]);
-	useEffect(() => {
-		reset(characterToEdit);
-	}, [characterToEdit, reset]);
 	return (
 		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
 			<form onSubmit={onFormSubmit}>
