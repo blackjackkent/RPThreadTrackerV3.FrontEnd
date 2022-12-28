@@ -6,6 +6,7 @@ import formData from './_formData';
 import ValidatedTextInput from '../validated-form/ValidatedTextInput';
 import ValidatedSelectInput from '../validated-form/ValidatedSelectInput';
 import ValidatedHiddenInput from '../validated-form/ValidatedHiddenInput';
+import ValidatedCheckboxInput from '../validated-form/ValidatedCheckboxInput';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -32,16 +33,16 @@ const UpsertPublicViewForm = (props) => {
 				{columns[i].name}
 			</option>
 		));
-	// const characterOptions = characters.map((c) => (
-	// 	<option value={c.characterId} key={c.characterId}>
-	// 		{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
-	// 	</option>
-	// ));
-	// const tagOptions = tags.map((t) => (
-	// 	<option value={t} key={t}>
-	// 		{t}
-	// 	</option>
-	// ));
+	const characterOptions = characters.map((c) => (
+		<option value={c.characterId} key={c.characterId}>
+			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
+		</option>
+	));
+	const tagOptions = tags.map((t) => (
+		<option value={t} key={t}>
+			{t}
+		</option>
+	));
 
 	// const handleMultiSelectChange = (e, value, parseAsInt = false) => {
 	// 	const result = [];
@@ -51,7 +52,7 @@ const UpsertPublicViewForm = (props) => {
 	// 		let opt;
 
 	// 		for (let i = 0; i < options.length; i++) {
-	// 			opt = options[i];
+	// 			opt = options[i];`
 	// 			if (opt.selected) {
 	// 				let data = opt.value || opt.text;
 	// 				if (parseAsInt) {
@@ -64,10 +65,6 @@ const UpsertPublicViewForm = (props) => {
 	// 	onInputChange({ target: { name: e.target.name, value: result } });
 	// };
 
-	// const handleCharacterSelectChange = (e) => {
-	// 	handleMultiSelectChange(e, e.target.value, true);
-	// };
-
 	// const handleTurnFilterCheckboxChange = (e) => {
 	// 	const { name, checked } = e.target;
 	// 	let { turnFilter } = publicView;
@@ -77,10 +74,6 @@ const UpsertPublicViewForm = (props) => {
 	// 	turnFilter[name] = checked;
 	// 	onInputChange({ target: { name: 'turnFilter', value: turnFilter } });
 	// };
-
-	const handleSortDirectionChange = (val) => {
-		return val === 'true';
-	};
 
 	return (
 		<div>
@@ -168,11 +161,7 @@ const UpsertPublicViewForm = (props) => {
 				<Col xs="6">
 					<FormGroup>
 						<Label for="sortDescending">Sort Order</Label>
-						<ValidatedSelectInput
-							name="sortDescending"
-							{...inputProps}
-							dataTransform={handleSortDirectionChange}
-						>
+						<ValidatedSelectInput name="sortDescending" {...inputProps}>
 							<option value={false}>Ascending</option>
 							<option
 								value={true} // eslint-disable-line react/jsx-boolean-value
@@ -183,27 +172,23 @@ const UpsertPublicViewForm = (props) => {
 					</FormGroup>
 				</Col>
 			</Row>
-			{/* <Row className="public-view-form-turn-section">
+			<Row className="public-view-form-turn-section">
 				<div className="container">
 					<Row>
 						<Col xs="6">
 							<label htmlFor="includeMyTurn">
-								<input
-									name="includeMyTurn"
-									onChange={handleTurnFilterCheckboxChange}
-									type="checkbox"
-									checked={publicView?.turnFilter?.includeMyTurn ?? false}
+								<ValidatedCheckboxInput
+									name="turnFilter.includeMyTurn"
+									{...inputProps}
 								/>{' '}
 								Include My Turn Threads
 							</label>
 						</Col>
 						<Col xs="6">
 							<label htmlFor="includeTheirTurn">
-								<input
-									name="includeTheirTurn"
-									onChange={handleTurnFilterCheckboxChange}
-									type="checkbox"
-									checked={publicView?.turnFilter?.includeTheirTurn ?? false}
+								<ValidatedCheckboxInput
+									name="turnFilter.includeTheirTurn"
+									{...inputProps}
 								/>{' '}
 								Include Partner&apos;s Turn Threads
 							</label>
@@ -212,22 +197,18 @@ const UpsertPublicViewForm = (props) => {
 					<Row>
 						<Col xs="6">
 							<label htmlFor="includeQueued">
-								<input
-									name="includeQueued"
-									type="checkbox"
-									onChange={handleTurnFilterCheckboxChange}
-									checked={publicView?.turnFilter?.includeQueued ?? false}
+								<ValidatedCheckboxInput
+									name="turnFilter.includeQueued"
+									{...inputProps}
 								/>{' '}
 								Include Queued Threads
 							</label>
 						</Col>
 						<Col xs="6">
 							<label htmlFor="includeArchived">
-								<input
-									name="includeArchived"
-									type="checkbox"
-									onChange={handleTurnFilterCheckboxChange}
-									checked={publicView?.turnFilter?.includeArchived ?? false}
+								<ValidatedCheckboxInput
+									name="turnFilter.includeArchived"
+									{...inputProps}
 								/>{' '}
 								Include Archived Threads
 							</label>
@@ -235,38 +216,39 @@ const UpsertPublicViewForm = (props) => {
 					</Row>
 				</div>
 			</Row>
+
 			<Row>
 				<Col>
-					<Tooltip
-						visible={tooltipDisplayData.characterIds}
-						overlay={formData.characterIds.tooltip}
-						overlayStyle={{
-							width: 300
-						}}
-						align={{
-							offset: [0, 30]
-						}}
-						placement="top"
-					>
-						<AvField
-							name="characterIds"
-							label="Characters"
-							type="select"
-							value={publicView.characterIds}
-							onChange={handleCharacterSelectChange}
-							validate={validator.characterIds}
-							helpMessage={formData.characterIds.helpMessage}
-							multiple
-							onFocus={showTooltip}
-							onBlur={hideTooltip}
+					<FormGroup>
+						<Label for="characterIds">Characters</Label>
+						<Tooltip
+							visible={tooltipDisplayData.characterIds}
+							overlay={formData.characterIds.tooltip}
+							overlayStyle={{
+								width: 300
+							}}
+							align={{
+								offset: [0, 30]
+							}}
+							placement="top"
 						>
-							{characterOptions}
-						</AvField>
-					</Tooltip>
+							<ValidatedSelectInput
+								name="characterIds"
+								{...inputProps}
+								helpMessage={formData.characterIds.helpMessage}
+								multiple
+								onFocus={showTooltip}
+								onBlur={hideTooltip}
+							>
+								{characterOptions}
+							</ValidatedSelectInput>
+						</Tooltip>
+					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
 				<Col>
+					<Label for="tags">Tags</Label>
 					<Tooltip
 						visible={tooltipDisplayData.tags}
 						overlay={formData.tags.tooltip}
@@ -278,23 +260,19 @@ const UpsertPublicViewForm = (props) => {
 						}}
 						placement="top"
 					>
-						<AvField
+						<ValidatedSelectInput
 							name="tags"
-							label="Tags"
-							type="select"
-							value={publicView.tags}
-							onChange={handleMultiSelectChange}
+							{...inputProps}
 							helpMessage={formData.tags.helpMessage}
 							multiple
 							onFocus={showTooltip}
 							onBlur={hideTooltip}
 						>
 							{tagOptions}
-						</AvField>
+						</ValidatedSelectInput>
 					</Tooltip>
 				</Col>
-			</Row>{' '}
-			*/}
+			</Row>
 		</div>
 	);
 };

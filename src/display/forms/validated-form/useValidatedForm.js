@@ -2,15 +2,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useEffect } from 'react';
 
-const useValidatedForm = (onSubmit, validator, defaultData) => {
-	const {
-		register,
-		handleSubmit,
-		formState: { errors },
-		setValue,
-		reset,
-		trigger
-	} = useForm({
+const useValidatedForm = (onSubmit, validator, defaultData = {}) => {
+	const { register, handleSubmit, formState, setValue, reset, trigger } = useForm({
 		resolver: yupResolver(validator)
 	});
 	useEffect(() => {
@@ -21,6 +14,13 @@ const useValidatedForm = (onSubmit, validator, defaultData) => {
 		onSubmit(data);
 	};
 	const onFormSubmit = handleSubmit(submitHandler);
-	return { onFormSubmit, errors, inputProps: { register, errors, trigger }, setValue };
+	return {
+		onFormSubmit,
+		errors: formState.errors,
+		isProcessingValidation:
+			formState.isValidating || formState.isLoading || formState.isSubmitting,
+		inputProps: { register, errors: formState.errors, trigger },
+		setValue
+	};
 };
 export default useValidatedForm;

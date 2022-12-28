@@ -6,7 +6,7 @@ const propTypes = {
 	register: PropTypes.func.isRequired,
 	errors: PropTypes.shape({}).isRequired,
 	onChange: PropTypes.func,
-	dataTransform: PropTypes.func,
+	multiple: PropTypes.bool,
 	name: PropTypes.string.isRequired,
 	trigger: PropTypes.func.isRequired,
 	helpMessage: PropTypes.element,
@@ -19,8 +19,8 @@ const ValidatedSelectInput = ({
 	trigger,
 	name,
 	onChange = () => {},
-	dataTransform = (data) => data,
 	helpMessage = '',
+	multiple = false,
 	children,
 	...props
 }) => {
@@ -28,7 +28,10 @@ const ValidatedSelectInput = ({
 		<div>
 			<select
 				className={`form-control ${errors[name] ? 'is-invalid' : ''}`}
-				{...register(name, { onChange, setValueAs: dataTransform })}
+				{...register(name, {
+					onChange
+				})}
+				multiple={multiple}
 				{...props}
 			>
 				{children}

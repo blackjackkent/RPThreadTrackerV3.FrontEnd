@@ -26,7 +26,7 @@ const ValidatedTextInput = ({
 	const getHandleChangeFn = () => {
 		if (debounce) {
 			return debounceFn(async () => {
-				await trigger('email');
+				await trigger(name);
 				onChange();
 			});
 		}
