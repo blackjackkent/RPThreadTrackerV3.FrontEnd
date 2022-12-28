@@ -11,7 +11,6 @@ import useUpdatePublicViewMutation from '~/infrastructure/hooks/mutations/public
 import useCreatePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useCreatePublicViewMutation';
 import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
 import validator from '~/display/forms/upsert-public-view/_validator';
-import transformFormData from '~/display/forms/upsert-public-view/_transforms';
 import LoadingIndicator from '../loading/LoadingIndicator';
 // #endregion imports
 
@@ -34,20 +33,19 @@ const UpsertPublicViewModal = (props) => {
 	const isLoading = isCreatePublicViewLoading || isUpdatePublicViewLoading;
 	const { actedView, characters, tags, columns, isModalOpen, setIsModalOpen } = props;
 	const activeCharacters = [].concat(
-		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
+		characters?.sort(sortCharacters).filter((c) => !c.isOnHiatus)
 	);
 
 	const submitForm = (formData) => {
-		const transformedData = transformFormData(formData);
-		const upsertFn = transformedData.id ? updatePublicView : createPublicView;
-		upsertFn(transformedData)
+		const upsertFn = formData.id ? updatePublicView : createPublicView;
+		upsertFn(formData)
 			.then(() => {
 				setIsModalOpen(false);
-				toast.success(transformedData.id ? 'View updated!' : 'View created!');
+				toast.success(formData.id ? 'View updated!' : 'View created!');
 			})
 			.catch(() => {
 				toast.error(
-					`There was an error ${transformedData.id ? 'updating' : 'creating'} this view.`
+					`There was an error ${formData.id ? 'updating' : 'creating'} this view.`
 				);
 			});
 	};
@@ -71,6 +69,7 @@ const UpsertPublicViewModal = (props) => {
 						characters={activeCharacters}
 						tags={tags}
 						columns={columns}
+						actedView={actedView}
 					/>
 				</ModalBody>
 				<ModalFooter>

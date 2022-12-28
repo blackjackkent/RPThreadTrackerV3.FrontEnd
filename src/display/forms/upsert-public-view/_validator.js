@@ -30,6 +30,7 @@ const validator = yup.object().shape({
 		.array()
 		.of(yup.string())
 		.min(1, 'You must select columns for your public thread table.'),
-	sortKey: yup.string().required('You must select a column to sort the table by.')
+	sortKey: yup.string().required('You must select a column to sort the table by.'),
+	sortDescending: yup.bool().required('You must select a default sort direction for your table.')
 });
 export default validator;

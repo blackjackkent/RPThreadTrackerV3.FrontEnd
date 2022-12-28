@@ -5,6 +5,7 @@ import { Col, FormGroup, Label, Input } from 'reactstrap';
 import Tooltip from 'rc-tooltip';
 import formData from './_formData';
 import ValidatedTextInput from '../validated-form/ValidatedTextInput';
+import ValidatedHiddenInput from '../validated-form/ValidatedHiddenInput';
 // #endregion imports
 
 const propTypes = {
@@ -13,13 +14,20 @@ const propTypes = {
 		urlIdentifier: PropTypes.bool
 	}).isRequired,
 	showTooltip: PropTypes.func.isRequired,
-	hideTooltip: PropTypes.func.isRequired
+	hideTooltip: PropTypes.func.isRequired,
+	characterToEdit: PropTypes.shape({})
 };
 
-const UpsertCharacterForm = (props) => {
-	const { inputProps, tooltipDisplayData, showTooltip, hideTooltip } = props;
+const UpsertCharacterForm = ({
+	inputProps,
+	tooltipDisplayData,
+	showTooltip,
+	hideTooltip,
+	characterToEdit = {}
+}) => {
 	return (
 		<div>
+			{characterToEdit.id && <ValidatedHiddenInput name="id" {...inputProps} />}
 			<FormGroup row>
 				{' '}
 				{/* character name */}

@@ -20,64 +20,39 @@ const propTypes = {
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
 	columns: PropTypes.shape({}).isRequired,
-	inputProps: PropTypes.shape({}).isRequired
+	inputProps: PropTypes.shape({}).isRequired,
+	actedView: PropTypes.shape({})
 };
 
 const UpsertPublicViewForm = (props) => {
-	const { tooltipDisplayData, inputProps, showTooltip, hideTooltip, characters, tags, columns } =
-		props;
+	const {
+		tooltipDisplayData,
+		inputProps,
+		showTooltip,
+		hideTooltip,
+		characters,
+		tags,
+		columns,
+		actedView = {}
+	} = props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
 		.filter((i) => columns[i].name)
-		.map((i) => (
-			<option value={columns[i].key} key={columns[i].key}>
-				{columns[i].name}
-			</option>
-		));
-	const characterOptions = characters.map((c) => (
-		<option value={c.characterId} key={c.characterId}>
-			{c.urlIdentifier} ({c.characterName ? c.characterName : 'Unnamed Character'})
-		</option>
-	));
-	const tagOptions = tags.map((t) => (
-		<option value={t} key={t}>
-			{t}
-		</option>
-	));
-
-	// const handleMultiSelectChange = (e, value, parseAsInt = false) => {
-	// 	const result = [];
-	// 	const select = e.target;
-	// 	if (select && select.options) {
-	// 		const { options } = select;
-	// 		let opt;
-
-	// 		for (let i = 0; i < options.length; i++) {
-	// 			opt = options[i];`
-	// 			if (opt.selected) {
-	// 				let data = opt.value || opt.text;
-	// 				if (parseAsInt) {
-	// 					data = parseInt(data, 10);
-	// 				}
-	// 				result.push(data);
-	// 			}
-	// 		}
-	// 	}
-	// 	onInputChange({ target: { name: e.target.name, value: result } });
-	// };
-
-	// const handleTurnFilterCheckboxChange = (e) => {
-	// 	const { name, checked } = e.target;
-	// 	let { turnFilter } = publicView;
-	// 	if (!turnFilter) {
-	// 		turnFilter = {};
-	// 	}
-	// 	turnFilter[name] = checked;
-	// 	onInputChange({ target: { name: 'turnFilter', value: turnFilter } });
-	// };
+		.map((i) => ({
+			value: columns[i].key,
+			label: columns[i].name
+		}));
+	const characterOptions = characters.map((c) => ({
+		value: c.characterId,
+		label: `${c.urlIdentifier} (${c.characterName ? c.characterName : 'Unnamed Character'})`
+	}));
+	const tagOptions = tags.map((t) => ({
+		value: t,
+		label: t
+	}));
 
 	return (
 		<div>
-			<ValidatedHiddenInput type="hidden" name="id" {...inputProps} />
+			<ValidatedHiddenInput name="id" {...inputProps} />
 			<Row>
 				<Col>
 					<FormGroup>
@@ -122,28 +97,15 @@ const UpsertPublicViewForm = (props) => {
 				<Col>
 					<FormGroup>
 						<Label for="columns">View Columns</Label>
-						<Tooltip
-							visible={tooltipDisplayData.columns}
-							overlay={formData.columns.tooltip}
-							overlayStyle={{
-								width: 300
-							}}
-							align={{
-								offset: [0, 30]
-							}}
-							placement="top"
-						>
-							<ValidatedSelectInput
-								name="columns"
-								helpMessage={formData.columns.helpMessage}
-								{...inputProps}
-								onFocus={showTooltip}
-								onBlur={hideTooltip}
-								multiple
-							>
-								{columnOptions}
-							</ValidatedSelectInput>
-						</Tooltip>
+						<ValidatedSelectInput
+							name="columns"
+							{...inputProps}
+							helpMessage={formData.columns.helpMessage}
+							multiple
+							onFocus={showTooltip}
+							onBlur={hideTooltip}
+							options={columnOptions}
+						/>
 					</FormGroup>
 				</Col>
 			</Row>
@@ -151,24 +113,28 @@ const UpsertPublicViewForm = (props) => {
 				<Col xs="6">
 					<FormGroup>
 						<Label for="sortKey">Sort By</Label>
-						<ValidatedSelectInput name="sortKey" {...inputProps}>
-							<option value="">Select Column</option>
-							{columnOptions}
-						</ValidatedSelectInput>
+						<ValidatedSelectInput
+							name="sortKey"
+							{...inputProps}
+							options={[{ value: '', label: 'Select Column' }, ...columnOptions]}
+						/>
 					</FormGroup>
 				</Col>
 
 				<Col xs="6">
 					<FormGroup>
 						<Label for="sortDescending">Sort Order</Label>
-						<ValidatedSelectInput name="sortDescending" {...inputProps}>
-							<option value={false}>Ascending</option>
-							<option
-								value={true} // eslint-disable-line react/jsx-boolean-value
-							>
-								Descending
-							</option>
-						</ValidatedSelectInput>
+						<ValidatedSelectInput
+							name="sortDescending"
+							{...inputProps}
+							options={[
+								{ value: false, label: 'Ascending' },
+								{
+									value: true,
+									label: 'Descending'
+								}
+							]}
+						/>
 					</FormGroup>
 				</Col>
 			</Row>
@@ -221,56 +187,30 @@ const UpsertPublicViewForm = (props) => {
 				<Col>
 					<FormGroup>
 						<Label for="characterIds">Characters</Label>
-						<Tooltip
-							visible={tooltipDisplayData.characterIds}
-							overlay={formData.characterIds.tooltip}
-							overlayStyle={{
-								width: 300
-							}}
-							align={{
-								offset: [0, 30]
-							}}
-							placement="top"
-						>
-							<ValidatedSelectInput
-								name="characterIds"
-								{...inputProps}
-								helpMessage={formData.characterIds.helpMessage}
-								multiple
-								onFocus={showTooltip}
-								onBlur={hideTooltip}
-							>
-								{characterOptions}
-							</ValidatedSelectInput>
-						</Tooltip>
+						<ValidatedSelectInput
+							name="characterIds"
+							{...inputProps}
+							helpMessage={formData.characterIds.helpMessage}
+							multiple
+							onFocus={showTooltip}
+							onBlur={hideTooltip}
+							options={characterOptions}
+						/>
 					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
 				<Col>
 					<Label for="tags">Tags</Label>
-					<Tooltip
-						visible={tooltipDisplayData.tags}
-						overlay={formData.tags.tooltip}
-						overlayStyle={{
-							width: 300
-						}}
-						align={{
-							offset: [0, 30]
-						}}
-						placement="top"
-					>
-						<ValidatedSelectInput
-							name="tags"
-							{...inputProps}
-							helpMessage={formData.tags.helpMessage}
-							multiple
-							onFocus={showTooltip}
-							onBlur={hideTooltip}
-						>
-							{tagOptions}
-						</ValidatedSelectInput>
-					</Tooltip>
+					<ValidatedSelectInput
+						name="tags"
+						{...inputProps}
+						helpMessage={formData.tags.helpMessage}
+						multiple
+						onFocus={showTooltip}
+						onBlur={hideTooltip}
+						options={tagOptions}
+					/>
 				</Col>
 			</Row>
 		</div>
