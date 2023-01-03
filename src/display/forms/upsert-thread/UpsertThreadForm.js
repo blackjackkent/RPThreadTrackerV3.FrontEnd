@@ -5,12 +5,16 @@ import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
 import MultipleValueTextInput from 'react-multivalue-text-input';
 import CharacterSelectItem from '../../shared/CharacterSelectItem';
-import validator from './_validator';
 import formData from './_formData';
+import ValidatedHiddenInput from '../validated-form/ValidatedHiddenInput';
+import ValidatedSelectInput from '../validated-form/ValidatedSelectInput';
+import ValidatedTextInput from '../validated-form/ValidatedTextInput';
+import ValidatedTextAreaInput from '../validated-form/ValidatedTextAreaInput';
 
 const propTypes = {
-	thread: PropTypes.shape({
-		characterId: PropTypes.string,
+	actedThread: PropTypes.shape({
+		id: PropTypes.string,
+		characterId: PropTypes.number,
 		userTitle: PropTypes.string,
 		postId: PropTypes.string,
 		partnerUrlIdentifier: PropTypes.string,
@@ -19,7 +23,7 @@ const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	showTooltip: PropTypes.func.isRequired,
 	hideTooltip: PropTypes.func.isRequired,
-	onInputChange: PropTypes.func.isRequired,
+	inputProps: PropTypes.shape({}).isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		partnerUrlIdentifier: PropTypes.bool
 	}).isRequired,
@@ -29,72 +33,57 @@ const propTypes = {
 };
 
 const UpsertThreadForm = (props) => {
-	const {
-		thread,
-		characters,
-		showTooltip,
-		hideTooltip,
-		onInputChange,
-		tooltipDisplayData,
-		handleTagAdded,
-		handleTagRemoved,
-		tagValues
-	} = props;
-	const options = characters.map((c) => (
-		<CharacterSelectItem key={c.characterId} character={c} />
-	));
+	const { inputProps, actedThread, characters, showTooltip, hideTooltip, tooltipDisplayData } =
+		props;
+	const characterOptions = characters.map((c) => ({
+		value: c.characterId,
+		label: `${c.urlIdentifier} ${c.characterName ? `(${c.characterName})` : ''}`
+	}));
 	return (
 		<div>
+			{actedThread?.id && <ValidatedHiddenInput name="id" {...inputProps} />}
 			<Row>
 				<Col>
-					<AvField
-						name="characterId"
-						label="Character"
-						type="select"
-						value={thread.characterId}
-						onChange={onInputChange}
-						validate={validator.characterId}
-					>
-						<option value="">Select Character</option>
-						{options}
-					</AvField>
+					<FormGroup>
+						<Label for="characterId">Character</Label>
+						<ValidatedSelectInput
+							name="characterId"
+							{...inputProps}
+							options={[
+								{ value: '', label: 'Select Character' },
+								...characterOptions
+							]}
+						/>
+					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
-				{' '}
-				{/* thread title */}
 				<Col>
-					<AvField
-						name="userTitle"
-						placeholder="Thread Title"
-						label="Thread Title"
-						type="text"
-						value={thread.userTitle}
-						onChange={onInputChange}
-						validate={validator.userTitle}
-						helpMessage={formData.userTitle.helpMessage}
-					/>
+					<FormGroup>
+						<Label for="userTitle">Thread Title</Label>
+						<ValidatedTextInput
+							name="userTitle"
+							placeholder="Thread Title"
+							helpMessage={formData.userTitle.helpMessage}
+							{...inputProps}
+						/>
+					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
-				{' '}
-				{/* thread post ID */}
 				<Col>
-					<AvField
-						name="postId"
-						placeholder="Post ID"
-						label="Post ID"
-						type="text"
-						onChange={onInputChange}
-						validate={validator.postId}
-						value={thread.postId}
-						helpMessage={formData.postId.helpMessage}
-					/>
+					<FormGroup>
+						<Label for="postId">Post ID</Label>
+						<ValidatedTextInput
+							name="postId"
+							placeholder="Post ID"
+							helpMessage={formData.postId.helpMessage}
+							{...inputProps}
+						/>
+					</FormGroup>
 				</Col>
 			</Row>
 			<Row>
-				{' '}
-				{/* partner url identifier */}
 				<Col>
 					<Tooltip
 						visible={tooltipDisplayData.partnerUrlIdentifier}
@@ -107,40 +96,36 @@ const UpsertThreadForm = (props) => {
 						}}
 						placement="top"
 					>
-						<AvField
-							name="partnerUrlIdentifier"
-							placeholder="Partner Url Identifier"
-							label="Partner URL Identifier (Optional)"
-							type="text"
-							onChange={onInputChange}
-							validate={validator.partnerUrlIdentifier}
-							value={thread.partnerUrlIdentifier}
-							helpMessage={formData.partnerUrlIdentifier.helpMessage}
-							onFocus={showTooltip}
-							onBlur={hideTooltip}
-						/>
+						<FormGroup>
+							<Label for="partnerUrlIdentifier">
+								Partner URL Identifier (Optional)
+							</Label>
+							<ValidatedTextInput
+								name="partnerUrlIdentifier"
+								placeholder="Partner Url Identifier"
+								helpMessage={formData.partnerUrlIdentifier.helpMessage}
+								onFocus={showTooltip}
+								onBlur={hideTooltip}
+								{...inputProps}
+							/>
+						</FormGroup>
 					</Tooltip>
 				</Col>
 			</Row>
-			{/* description */}
 			<Row>
 				<Col>
 					<div className="form-group">
 						<Label htmlFor="description">Thread Description (Optional)</Label>
-						<Input
-							type="textarea"
+						<ValidatedTextAreaInput
 							name="description"
-							id="description"
 							rows="3"
-							onChange={onInputChange}
 							maxLength="250"
-							defaultValue={thread.description}
+							{...inputProps}
 						/>
 					</div>
 				</Col>
 			</Row>
-			{/* tags */}
-			<Row>
+			{/* <Row>
 				<Col>
 					<FormGroup>
 						<MultipleValueTextInput
@@ -157,7 +142,7 @@ const UpsertThreadForm = (props) => {
 						<small className="form-text">{formData.threadTags.helpMessage}</small>
 					</FormGroup>
 				</Col>
-			</Row>
+			</Row> */}
 		</div>
 	);
 };

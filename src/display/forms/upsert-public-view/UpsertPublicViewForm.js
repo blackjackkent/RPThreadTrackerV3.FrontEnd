@@ -25,16 +25,8 @@ const propTypes = {
 };
 
 const UpsertPublicViewForm = (props) => {
-	const {
-		tooltipDisplayData,
-		inputProps,
-		showTooltip,
-		hideTooltip,
-		characters,
-		tags,
-		columns,
-		actedView = {}
-	} = props;
+	const { tooltipDisplayData, inputProps, showTooltip, hideTooltip, characters, tags, columns } =
+		props;
 	const columnOptions = Object.getOwnPropertyNames(columns)
 		.filter((i) => columns[i].name)
 		.map((i) => ({

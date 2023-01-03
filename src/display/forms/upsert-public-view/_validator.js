@@ -1,6 +1,5 @@
-import debounce from 'lodash/debounce';
-import { isValidSlug } from '../../../infrastructure/api';
 import * as yup from 'yup';
+import { isValidSlug } from '../../../infrastructure/api';
 
 const validator = yup.object().shape({
 	name: yup
