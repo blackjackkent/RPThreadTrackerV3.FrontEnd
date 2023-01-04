@@ -24,16 +24,6 @@ const ValidatedTextAreaInput = ({
 	helpMessage = '',
 	...props
 }) => {
-	console.log({
-		register,
-		errors,
-		trigger,
-		name,
-		debounce,
-		onChange,
-		helpMessage,
-		...props
-	});
 	const getHandleChangeFn = () => {
 		if (debounce) {
 			return debounceFn(async () => {

@@ -30,9 +30,9 @@ export default {
 		)
 	},
 	userTitle: {
-		helpMessage: 'This can be anything you like!'
+		helpMessage: <span>This can be anything you like!</span>
 	},
 	threadTags: {
-		helpMessage: 'Enter a comma-separated list of tags. (optional)'
+		helpMessage: <span>Enter a comma-separated list of tags. (optional)</span>
 	}
 };

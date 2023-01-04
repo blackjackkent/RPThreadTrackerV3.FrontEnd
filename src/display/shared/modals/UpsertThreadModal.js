@@ -19,7 +19,7 @@ const propTypes = {
 	setIsModalOpen: PropTypes.func.isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})),
 	actedThread: PropTypes.shape({
-		threadId: PropTypes.number.isRequired,
+		threadId: PropTypes.number,
 		threadTags: PropTypes.arrayOf(PropTypes.shape({}))
 	})
 };
@@ -31,36 +31,6 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 	const activeCharacters = [].concat(
 		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
 	);
-	const handleTagAdded = (tagValue) => {
-		let currentTags = thread.threadTags;
-		if (!currentTags) {
-			currentTags = [];
-		}
-		if (currentTags.find((t) => t.tagText === tagValue)) {
-			return;
-		}
-		const newTags = currentTags.concat({ tagText: tagValue });
-		onInputChange({
-			target: {
-				name: 'threadTags',
-				value: newTags
-			}
-		});
-	};
-
-	const handleTagRemoved = (tagValue) => {
-		let currentTags = thread.threadTags;
-		if (!currentTags) {
-			currentTags = [];
-		}
-		const newTags = currentTags.filter((tag) => tag.tagText !== tagValue);
-		onInputChange({
-			target: {
-				name: 'threadTags',
-				value: newTags
-			}
-		});
-	};
 
 	const getTagValues = () => {
 		if (!actedThread?.threadTags) {
@@ -71,17 +41,17 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 
 	const submitForm = (formData) => {
 		console.log(formData);
-		const upsertFn = formData.threadId ? updateThread : createThread;
-		upsertFn(formData)
-			.then(() => {
-				setIsModalOpen(false);
-				toast.success(formData.threadId ? 'Thread updated!' : 'Thread created!');
-			})
-			.catch(() => {
-				toast.error(
-					`There was an error ${formData.threadId ? 'updating' : 'creating'} this thread.`
-				);
-			});
+		// const upsertFn = formData.threadId ? updateThread : createThread;
+		// upsertFn(formData)
+		// 	.then(() => {
+		// 		setIsModalOpen(false);
+		// 		toast.success(formData.threadId ? 'Thread updated!' : 'Thread created!');
+		// 	})
+		// 	.catch(() => {
+		// 		toast.error(
+		// 			`There was an error ${formData.threadId ? 'updating' : 'creating'} this thread.`
+		// 		);
+		// 	});
 	};
 	const { onFormSubmit, inputProps } = useValidatedForm(submitForm, validator, actedThread);
 	return (
@@ -96,8 +66,6 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 						actedThread={actedThread}
 						inputProps={inputProps}
 						characters={activeCharacters}
-						handleTagAdded={handleTagAdded}
-						handleTagRemoved={handleTagRemoved}
 						tagValues={getTagValues()}
 					/>
 				</ModalBody>

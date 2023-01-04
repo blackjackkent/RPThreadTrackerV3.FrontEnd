@@ -32,7 +32,6 @@ const ValidatedSelectInput = ({
 				<Controller
 					name={name}
 					control={control}
-					rules={{ required: true }}
 					render={({ field: { onChange, value, ref } }) => {
 						return (
 							<Select
