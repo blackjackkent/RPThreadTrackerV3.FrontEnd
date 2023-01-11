@@ -1,78 +1,76 @@
--
-  version: '1.0.{build}'
+- version: '1.0.{build}'
   image: ubuntu
   environment:
-    nodejs_version: "10"
+      nodejs_version: '18'
   branches:
-    only:
-    - development
+      only:
+          - development
   init:
-    - sh: git config --global core.autocrlf input
-    - sh: git config --global core.eol lf 
+      - sh: git config --global core.autocrlf input
+      - sh: git config --global core.eol lf
   cache:
-    - '~/.npm'  
+      - '~/.npm'
   install:
-    # Get the latest stable version of Node.js or io.js
-    - sh: nvm install $nodejs_version
-    # install modules
-    - npm ci
+      # Get the latest stable version of Node.js or io.js
+      - sh: nvm install $nodejs_version
+      # install modules
+      - npm ci
   test_script:
-    # Output useful info for debugging.
-    - node --version
-    - npm -v
-    # run tests
-    - npm run test:ci
+      # Output useful info for debugging.
+      - node --version
+      - npm -v
+      # run tests
+      - npm run test:ci
   build_script:
-    - npm run build:staging
+      - npm run build:staging
   artifacts:
-    - path: build\
-      name: app
+      - path: build\
+        name: app
   deploy:
-    - provider: Environment
-      name: RPThreadTrackerV3-FrontEnd-Staging
+      - provider: Environment
+        name: RPThreadTrackerV3-FrontEnd-Staging
   on_success:
-    - bash <(curl -s https://codecov.io/bash)
-    - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
-    - ps: ./send.ps1 success $env:WEBHOOK_URL
+      - bash <(curl -s https://codecov.io/bash)
+      - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+      - ps: ./send.ps1 success $env:WEBHOOK_URL
   on_failure:
-    - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
-    - ps: ./send.ps1 failure $env:WEBHOOK_URL
--
-  version: '1.0.{build}'
+      - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+      - ps: ./send.ps1 failure $env:WEBHOOK_URL
+- version: '1.0.{build}'
   image: ubuntu
   environment:
-    nodejs_version: "10"
+      nodejs_version: '10'
   branches:
-    only:
-    - production
+      only:
+          - production
   init:
-    - sh: git config --global core.autocrlf input
-    - sh: git config --global core.eol lf 
+      - sh: git config --global core.autocrlf input
+      - sh: git config --global core.eol lf
   cache:
-    - '~/.npm'  
+      - '~/.npm'
   install:
-    # Get the latest stable version of Node.js or io.js
-    - sh: nvm install $nodejs_version
-    # install modules
-    - npm ci
+      # Get the latest stable version of Node.js or io.js
+      - sh: nvm install $nodejs_version
+      # install modules
+      - npm ci
   test_script:
-    # Output useful info for debugging.
-    - node --version
-    - npm -v
-    # run tests
-    - npm run test:ci
+      # Output useful info for debugging.
+      - node --version
+      - npm -v
+      # run tests
+      - npm run test:ci
   build_script:
-    - npm run build
+      - npm run build
   artifacts:
-    - path: build\
-      name: app
+      - path: build\
+        name: app
   deploy:
-    - provider: Environment
-      name: RPThreadTrackerV3-FrontEnd-Prod
+      - provider: Environment
+        name: RPThreadTrackerV3-FrontEnd-Prod
   on_success:
-    - bash <(curl -s https://codecov.io/bash)
-    - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
-    - ps: ./send.ps1 success $env:WEBHOOK_URL
+      - bash <(curl -s https://codecov.io/bash)
+      - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+      - ps: ./send.ps1 success $env:WEBHOOK_URL
   on_failure:
-    - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
-    - ps: ./send.ps1 failure $env:WEBHOOK_URL
+      - ps: Invoke-RestMethod https://raw.githubusercontent.com/blackjackkent/appveyor-discord-webhook/master/send.ps1 -o send.ps1
+      - ps: ./send.ps1 failure $env:WEBHOOK_URL
