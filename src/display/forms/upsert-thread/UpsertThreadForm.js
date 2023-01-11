@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
-import { AvField } from 'availity-reactstrap-validation';
 import Tooltip from 'rc-tooltip';
-import MultipleValueTextInput from 'react-multivalue-text-input';
-import CharacterSelectItem from '../../shared/CharacterSelectItem';
 import formData from './_formData';
 import ValidatedHiddenInput from '../validated-form/ValidatedHiddenInput';
 import ValidatedSelectInput from '../validated-form/ValidatedSelectInput';

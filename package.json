@@ -68,7 +68,6 @@
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"@fortawesome/react-fontawesome": "^0.1.14",
 		"@hookform/resolvers": "^2.9.10",
-		"availity-reactstrap-validation": "npm:availity-reactstrap-validation-safe@^2.6.1",
 		"axios": "^0.18.0",
 		"babel-polyfill": "^6.26.0",
 		"bootstrap": "^4.1.3",
