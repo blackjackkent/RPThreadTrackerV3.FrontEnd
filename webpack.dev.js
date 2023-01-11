@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const path = require('path');

@@ -1,5 +1,5 @@
 // #region imports
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { toast } from 'react-toastify';
@@ -7,7 +7,6 @@ import TooltipForm from '~/display/forms/TooltipForm';
 import UpsertThreadForm from '~/display/forms/upsert-thread/UpsertThreadForm';
 import Modal from '~/display/shared/styled/Modal';
 import { sortCharacters } from '~/utility';
-import { useFormReducer } from '~/infrastructure/hooks';
 import { useCreateThreadMutation, useUpdateThreadMutation } from '~/infrastructure/hooks/mutations';
 import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
 import LoadingIndicator from '../loading/LoadingIndicator';
