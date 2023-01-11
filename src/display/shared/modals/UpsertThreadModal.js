@@ -40,18 +40,21 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 	};
 
 	const submitForm = (formData) => {
-		console.log(formData);
-		// const upsertFn = formData.threadId ? updateThread : createThread;
-		// upsertFn(formData)
-		// 	.then(() => {
-		// 		setIsModalOpen(false);
-		// 		toast.success(formData.threadId ? 'Thread updated!' : 'Thread created!');
-		// 	})
-		// 	.catch(() => {
-		// 		toast.error(
-		// 			`There was an error ${formData.threadId ? 'updating' : 'creating'} this thread.`
-		// 		);
-		// 	});
+		const upsertFn = formData.threadId ? updateThread : createThread;
+		const submitData = {
+			...formData,
+			threadTags: formData.threadTags.map((t) => ({ tagText: t }))
+		};
+		upsertFn(submitData)
+			.then(() => {
+				setIsModalOpen(false);
+				toast.success(formData.threadId ? 'Thread updated!' : 'Thread created!');
+			})
+			.catch(() => {
+				toast.error(
+					`There was an error ${formData.threadId ? 'updating' : 'creating'} this thread.`
+				);
+			});
 	};
 	const { onFormSubmit, inputProps } = useValidatedForm(submitForm, validator, actedThread);
 	return (

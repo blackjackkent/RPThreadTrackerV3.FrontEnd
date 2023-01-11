@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import * as debounceFn from 'lodash/debounce';
-import { Input } from 'reactstrap';
 import ValidatedErrorMessage from './ValidatedErrorMessage';
 
 const propTypes = {
