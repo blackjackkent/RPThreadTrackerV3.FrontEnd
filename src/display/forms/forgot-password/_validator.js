@@ -1,12 +1,6 @@
-export default {
-	email: {
-		email: {
-			value: true,
-			errorMessage: 'Please enter a valid email.'
-		},
-		required: {
-			value: true,
-			errorMessage: 'You must enter an email.'
-		}
-	}
-};
+import * as yup from 'yup';
+
+const validator = yup.object().shape({
+	email: yup.string().required('You must enter an email.').email('Please enter a valid email.')
+});
+export default validator;

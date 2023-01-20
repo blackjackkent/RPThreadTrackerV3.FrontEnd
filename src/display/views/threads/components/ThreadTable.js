@@ -9,9 +9,9 @@ import {
 	useSortBy,
 	useTable
 } from 'react-table';
-import ThreadTableSubComponent from './ThreadTableSubComponent';
 import columns from '~/infrastructure/constants/columns';
-import IndeterminateCheckbox from './ThreadTableCheckbox';
+import { RowSelectorCheckbox } from '~/display/shared/table-columns';
+import ThreadTableSubComponent from './ThreadTableSubComponent';
 
 const propTypes = {
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -95,12 +95,10 @@ const ThreadTable = ({
 		visibleColumns
 	} = useTable(
 		{
-			columns: React.useMemo(() => getColumns(characters, partners, lastPosters), [
-				characters,
-				getColumns,
-				lastPosters,
-				partners
-			]),
+			columns: React.useMemo(
+				() => getColumns(characters, partners, lastPosters),
+				[characters, getColumns, lastPosters, partners]
+			),
 			data: tableData,
 			initialState: {
 				pageSize: 10,
@@ -122,24 +120,7 @@ const ThreadTable = ({
 		usePagination,
 		useRowSelect,
 		(hooks) => {
-			hooks.visibleColumns.push((cols) => [
-				{
-					id: 'selection',
-					/* eslint-disable react/prop-types */
-					Header: ({ getToggleAllPageRowsSelectedProps }) => (
-						<div className="icon-column">
-							<IndeterminateCheckbox {...getToggleAllPageRowsSelectedProps()} />
-						</div>
-					),
-					Cell: ({ row: checkboxRow }) => (
-						<div className="icon-column">
-							<IndeterminateCheckbox {...checkboxRow.getToggleRowSelectedProps()} />
-						</div>
-					)
-					/* eslint-enable react/prop-types */
-				},
-				...cols
-			]);
+			hooks.visibleColumns.push((cols) => [RowSelectorCheckbox(), ...cols]);
 		}
 	);
 	useEffect(() => {

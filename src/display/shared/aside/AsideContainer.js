@@ -1,8 +1,8 @@
 // #region imports
 import React from 'react';
+import { useNewsQuery } from '~/infrastructure/hooks/queries';
 import AsideNewsRow from './AsideNewsRow';
 import Style from './_styles';
-import { useNewsQuery } from '~/infrastructure/hooks/queries';
 // #endregion imports
 
 const AsideContainer = () => {

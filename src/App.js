@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Router } from 'react-router-dom';
 import 'simple-line-icons/css/simple-line-icons.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,13 +19,16 @@ const App = () => {
 		document.body.classList.toggle('light-theme', useLightTheme);
 	}, [useLightTheme]);
 
+	const themeContextData = useMemo(
+		() => ({
+			useLightTheme,
+			setUseLightTheme
+		}),
+		[useLightTheme, setUseLightTheme]
+	);
+
 	return (
-		<LightThemeContext.Provider
-			value={{
-				useLightTheme,
-				setUseLightTheme
-			}}
-		>
+		<LightThemeContext.Provider value={themeContextData}>
 			<ToastContainer />
 			<Router history={history}>
 				<Routes />

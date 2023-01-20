@@ -1,26 +1,11 @@
-export default {
-	username: {
-		minLength: {
-			value: 3,
-			errorMessage: 'Your username must be more than 3 characters.'
-		},
-		maxLength: {
-			value: 256,
-			errorMessage: 'Your username is too long.'
-		},
-		required: {
-			value: true,
-			errorMessage: 'You must enter a username.'
-		}
-	},
-	email: {
-		email: {
-			value: true,
-			errorMessage: 'Please enter a valid email'
-		},
-		required: {
-			value: true,
-			errorMessage: 'You must enter an email.'
-		}
-	}
-};
+import * as yup from 'yup';
+
+const validator = yup.object().shape({
+	userName: yup
+		.string()
+		.required('You must enter a username.')
+		.min(3, 'Your username must be more than 3 characters.')
+		.max(256, 'Your username is too long.'),
+	email: yup.string().email('Please enter a valid email.').required('You must enter an email.')
+});
+export default validator;

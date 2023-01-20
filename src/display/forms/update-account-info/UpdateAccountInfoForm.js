@@ -1,13 +1,14 @@
 // #region imports
 import React from 'react';
 import PropTypes from 'prop-types';
-import { AvField } from 'availity-reactstrap-validation';
-import { FormGroup, Col, Label } from 'reactstrap';
+import { FormGroup, Col, Label, Row, Button } from 'reactstrap';
 import validator from './_validator';
+import useValidatedForm from '../validated-form/useValidatedForm';
+import ValidatedTextInput from '../validated-form/ValidatedTextInput';
 // #endregion imports
 
 const propTypes = {
-	handleInputChange: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func.isRequired,
 	user: PropTypes.shape({
 		userName: PropTypes.string,
 		email: PropTypes.string
@@ -15,41 +16,46 @@ const propTypes = {
 };
 
 const UpdateAccountInfoForm = (props) => {
-	const { handleInputChange, user } = props;
+	const { onSubmit, user } = props;
+	const { onFormSubmit, inputProps } = useValidatedForm(onSubmit, validator, user);
 	return (
 		<div>
-			<FormGroup row>
-				<Col xs="12" lg="3">
-					<Label htmlFor="username">Username:</Label>
-				</Col>
-				<Col xs="12" lg="9">
-					<AvField
-						name="username"
-						placeholder="Username"
-						type="text"
-						value={user.userName}
-						onChange={handleInputChange}
-						validate={validator.username}
-					/>
-				</Col>
-			</FormGroup>
-			<FormGroup row>
-				<Col xs="12" lg="3">
-					<Label htmlFor="email">Email:</Label>
-				</Col>
-				<Col xs="12" lg="9">
-					<AvField
-						name="email"
-						placeholder="Email"
-						type="email"
-						title="Update Email option coming soon!"
-						value={user.email}
-						onChange={handleInputChange}
-						validate={validator.email}
-						disabled
-					/>
-				</Col>
-			</FormGroup>
+			<form onSubmit={onFormSubmit}>
+				<FormGroup row>
+					<Col xs="12" lg="3">
+						<Label htmlFor="userName">Username:</Label>
+					</Col>
+					<Col xs="12" lg="9">
+						<ValidatedTextInput
+							name="userName"
+							placeholder="Username"
+							{...inputProps}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Col xs="12" lg="3">
+						<Label htmlFor="email">Email:</Label>
+					</Col>
+					<Col xs="12" lg="9">
+						<ValidatedTextInput
+							name="email"
+							placeholder="Email"
+							type="email"
+							title="Update Email option coming soon!"
+							{...inputProps}
+							disabled
+						/>
+					</Col>
+				</FormGroup>
+				<Row>
+					<Col className="text-right">
+						<Button type="submit" color="primary">
+							Submit
+						</Button>
+					</Col>
+				</Row>
+			</form>
 		</div>
 	);
 };

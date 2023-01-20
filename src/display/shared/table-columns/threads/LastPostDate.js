@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import Moment from 'react-moment';
+import { DateTime } from 'luxon';
 import columns from '../../../../infrastructure/constants/columns';
 
 export default () => ({
@@ -11,7 +11,7 @@ export default () => ({
 			return <span>Awaiting Starter</span>;
 		}
 		return row.original.status.lastPostDate ? (
-			<Moment format="MMMM D, YYYY h:mmA">{row.original.status.lastPostDate}</Moment>
+			DateTime.fromISO(row.original.status.lastPostDate).toFormat('ff')
 		) : (
 			<span>Post Not Found</span>
 		);

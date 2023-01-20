@@ -8,11 +8,10 @@ export default (threadCounts) => ({
 		threadCount: threadCounts[row.characterId],
 		isOnHiatus: row.isOnHiatus
 	}),
-	Cell: ({ value }) => (
-		<span className={value.isOnHiatus ? 'text-muted' : ''}>
-			{value.threadCount ? value.threadCount : 0}
-		</span>
-	),
+	Cell: ({ value }) => {
+		const content = value.isOnHiatus ? '-' : value.threadCount;
+		return <span className={value.isOnHiatus ? 'text-muted' : ''}>{content}</span>;
+	},
 	sortType: (rowA, rowB) => {
 		const a = threadCounts[rowA.original.characterId] ?? 0;
 		const b = threadCounts[rowB.original.characterId] ?? 0;

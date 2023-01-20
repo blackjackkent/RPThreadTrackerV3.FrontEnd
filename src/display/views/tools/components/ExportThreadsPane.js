@@ -12,9 +12,9 @@ import {
 	CardBody
 } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useGenerateExportedThreadsDocumentMutation } from '~/infrastructure/hooks/mutations';
 import Card from '../../../shared/styled/Card';
 import SwitchLabel from '../../../shared/styled/SwitchLabel';
-import { useGenerateExportedThreadsDocumentMutation } from '~/infrastructure/hooks/mutations';
 
 const ExportThreadsPane = () => {
 	const { generateDocument } = useGenerateExportedThreadsDocumentMutation();

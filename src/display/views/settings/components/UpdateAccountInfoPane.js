@@ -1,22 +1,16 @@
-import React, { useEffect } from 'react';
-import { TabPane, Row, Button, Col, CardHeader, CardBody } from 'reactstrap';
-import { AvForm } from 'availity-reactstrap-validation';
+import React from 'react';
+import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Card from '../../../shared/styled/Card';
-import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
-import { useFormReducer } from '~/infrastructure/hooks';
 import { useUpdateAccountInfoMutation } from '~/infrastructure/hooks/mutations';
 import { useUserProfileQuery } from '~/infrastructure/hooks/queries';
+import Card from '../../../shared/styled/Card';
+import UpdateAccountInfoForm from '../../../forms/update-account-info/UpdateAccountInfoForm';
 
 const UpdateAccountInfoPane = () => {
-	const [formData, onInputChange, setFormData] = useFormReducer();
 	const { updateAccountInfo } = useUpdateAccountInfoMutation();
 	const { data: user } = useUserProfileQuery();
-	useEffect(() => {
-		setFormData(user);
-	}, [user, setFormData]);
-	const submitUpdateAccountInfo = () => {
+	const submitUpdateAccountInfo = (formData) => {
 		updateAccountInfo(formData)
 			.then(() => {
 				toast.success('Your account information was successfully updated.');
@@ -36,16 +30,7 @@ const UpdateAccountInfoPane = () => {
 					<FontAwesomeIcon icon={['fas', 'user']} /> Change Username/Email
 				</CardHeader>
 				<CardBody className="card-body">
-					<AvForm onValidSubmit={() => submitUpdateAccountInfo(formData)}>
-						<UpdateAccountInfoForm handleInputChange={onInputChange} user={formData} />
-						<Row>
-							<Col className="text-right">
-								<Button type="submit" color="primary">
-									Submit
-								</Button>
-							</Col>
-						</Row>
-					</AvForm>
+					<UpdateAccountInfoForm onSubmit={submitUpdateAccountInfo} user={user} />
 				</CardBody>
 			</Card>
 		</TabPane>

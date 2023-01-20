@@ -1,8 +1,10 @@
-const merge = require('webpack-merge');
+/* eslint-disable import/no-extraneous-dependencies */
+const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const common = require('./webpack.common.js');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const common = require('./webpack.common');
 const config = require('./config/config.prod.json');
 
 const extractCSS = new MiniCssExtractPlugin({ filename: '[name].fonts.css' });
@@ -12,19 +14,6 @@ process.traceDeprecation = true;
 module.exports = merge(common, {
 	mode: 'production',
 	devtool: 'source-map',
-	module: {
-		rules: [
-			{
-				test: /\.css$/,
-				use: [
-					{
-						loader: MiniCssExtractPlugin.loader
-					},
-					'css-loader'
-				]
-			}
-		]
-	},
 	plugins: [
 		new webpack.DefinePlugin({
 			API_BASE_URL: JSON.stringify(config.API_BASE_URL),
@@ -38,6 +27,6 @@ module.exports = merge(common, {
 		splitChunks: {
 			chunks: 'all'
 		},
-		minimize: true
+		minimizer: [`...`, new CssMinimizerPlugin()]
 	}
 });

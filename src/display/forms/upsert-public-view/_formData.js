@@ -25,10 +25,7 @@ export default {
 		)
 	},
 	columns: {
-		helpMessage: (
-			<span>Which columns should be displayed to visitors in this public view.</span>
-		),
-		tooltip: <span>Ctrl-click or shift-click to select multiple columns.</span>
+		helpMessage: <span>Which columns should be displayed to visitors in this public view.</span>
 	},
 	characterIds: {
 		helpMessage: (
@@ -36,8 +33,7 @@ export default {
 				The characters whose threads should be displayed to visitors in this public view.
 				(Leave unselected to display threads for all characters.)
 			</span>
-		),
-		tooltip: <span>Ctrl-click or shift-click to select multiple characters.</span>
+		)
 	},
 	tags: {
 		helpMessage: (
@@ -45,7 +41,6 @@ export default {
 				The public view will only include threads with these tags. (Leave unselected to
 				display threads with all tags.)
 			</span>
-		),
-		tooltip: <span>Ctrl-click or shift-click to select multiple tags.</span>
+		)
 	}
 };

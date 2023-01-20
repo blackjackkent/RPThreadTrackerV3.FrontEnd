@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import Moment from 'react-moment';
+import { DateTime } from 'luxon';
 
 const propTypes = {
 	threadData: PropTypes.shape({
@@ -54,9 +54,7 @@ const RecentActivityRow = (props) => {
 			</Col>
 			<Col sm="6" xs="12" className="text-right">
 				<div>
-					{threadData.status && (
-						<Moment format="MMMM D, YYYY h:mm">{threadData.status.lastPostDate}</Moment>
-					)}
+					{DateTime.fromISO(threadData.status?.lastPostDate).toFormat('ff')}
 					{!threadData.status && !threadData.thread.postId && (
 						<span>Awaiting Starter</span>
 					)}

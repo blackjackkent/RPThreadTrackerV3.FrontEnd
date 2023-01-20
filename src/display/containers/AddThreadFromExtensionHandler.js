@@ -1,12 +1,12 @@
 // #region imports
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, CardBody } from 'reactstrap';
+import { useCharactersQuery } from '~/infrastructure/hooks/queries';
+import { useCreateThreadMutation } from '~/infrastructure/hooks/mutations';
 import Card from '../shared/styled/Card';
 import LoadingIndicator from '../shared/loading/LoadingIndicator';
 import UpsertThreadModal from '../shared/modals/UpsertThreadModal';
 import { getThreadDataFromExtensionQuery } from '../../utility';
-import { useCharactersQuery } from '~/infrastructure/hooks/queries';
-import { useCreateThreadMutation } from '~/infrastructure/hooks/mutations';
 // #endregion imports
 
 const AddThreadFromExtensionHandler = () => {

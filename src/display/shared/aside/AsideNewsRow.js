@@ -2,7 +2,7 @@
 import React from 'react';
 import { Badge } from 'reactstrap';
 import PropTypes from 'prop-types';
-import Moment from 'react-moment';
+import { DateTime } from 'luxon';
 // #endregion imports
 
 const propTypes = {
@@ -16,6 +16,7 @@ const propTypes = {
 
 const AsideNewsRow = (props) => {
 	const { item } = props;
+	const date = DateTime.fromISO(item.postDate).toFormat('DDD');
 	return (
 		<div>
 			<div
@@ -28,9 +29,7 @@ const AsideNewsRow = (props) => {
 						{item.postTitle}
 					</a>
 				</div>
-				<small className="mr-3">
-					<Moment format="MMMM D, YYYY">{item.postDate}</Moment>
-				</small>
+				<small className="mr-3">{date}</small>
 				<Badge color="danger" className={item.isUnread ? 'float-right' : 'd-none'}>
 					{' '}
 					New

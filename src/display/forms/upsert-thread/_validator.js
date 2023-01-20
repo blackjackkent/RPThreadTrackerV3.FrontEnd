@@ -1,30 +1,12 @@
-export default {
-	userTitle: {
-		maxLength: {
-			value: 256,
-			errorMessage: 'Your thread title is too long.'
-		},
-		required: {
-			value: true,
-			errorMessage: 'You must enter a title for your thread.'
-		}
-	},
-	characterId: {
-		required: {
-			value: true,
-			errorMessage: 'You must select a character for your thread.'
-		}
-	},
-	postId: {
-		number: {
-			value: true,
-			errorMessage: 'Post IDs can only contain numbers.'
-		}
-	},
-	partnerUrlIdentifier: {
-		maxLength: {
-			value: 256,
-			errorMessage: "Your partner's URL identifier is too long."
-		}
-	}
-};
+import * as yup from 'yup';
+
+const validator = yup.object().shape({
+	userTitle: yup
+		.string()
+		.required('You must enter a title for your thread.')
+		.max(256, 'Your thread title is too long.'),
+	characterId: yup.number().required('You must select a character for your thread.'),
+	postId: yup.string().matches(/^(?:\d+)?$/, 'Post IDs can only contain numbers.'),
+	partnerUrlIdentifier: yup.string().max(256, "Your partner's URL identifier is too long.")
+});
+export default validator;

@@ -37,7 +37,15 @@
 				"prop": "ignore"
 			}
 		],
-		"require-yield": "off"
+		"require-yield": "off",
+		"react/function-component-definition": [
+			"error",
+			{
+				"namedComponents": "arrow-function",
+				"unnamedComponents": "arrow-function"
+			}
+		],
+		"react/require-default-props": "off"
 	},
 	"settings": {
 		"import/resolver": {

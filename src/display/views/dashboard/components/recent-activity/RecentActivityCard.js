@@ -2,11 +2,6 @@ import React, { useState } from 'react';
 import { CardHeader, CardBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Card from '~/display/shared/styled/Card';
-import RecentActivityRow from './RecentActivityRow';
-import NoThreadsMessage from './NoThreadsMessage';
-import NoRecentActivityMessage from './NoRecentActivityMessage';
-import NoCharactersMessage from '../shared/NoCharactersMessage';
-import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import filters from '~/infrastructure/constants/filters';
 import { useRecentActivity, useFilteredActiveThreads } from '~/infrastructure/hooks/derived-data';
@@ -14,6 +9,11 @@ import { useCharactersContext } from '~/infrastructure/hooks/contexts';
 import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
 import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
 import QueueThreadModal from '~/display/shared/modals/QueueThreadModal';
+import NoActiveCharactersMessage from '../shared/NoActiveCharactersMessage';
+import NoRecentActivityMessage from './NoRecentActivityMessage';
+import NoThreadsMessage from './NoThreadsMessage';
+import RecentActivityRow from './RecentActivityRow';
+import NoCharactersMessage from '../shared/NoCharactersMessage';
 
 const renderBlockMessage = (characters, allThreads) => {
 	if (characters?.length === 0) {
