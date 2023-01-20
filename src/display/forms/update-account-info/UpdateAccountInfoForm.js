@@ -1,5 +1,5 @@
 // #region imports
-import React, { useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { FormGroup, Col, Label, Row, Button } from 'reactstrap';
 import validator from './_validator';

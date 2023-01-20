@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Row, FormGroup, Label } from 'reactstrap';
 import Tooltip from 'rc-tooltip';
 import formData from './_formData';
 import ValidatedHiddenInput from '../validated-form/ValidatedHiddenInput';

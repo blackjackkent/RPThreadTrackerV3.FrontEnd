@@ -1,7 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import * as debounceFn from 'lodash/debounce';
-import ValidatedErrorMessage from './ValidatedErrorMessage';
 
 const propTypes = {
 	register: PropTypes.func.isRequired,
