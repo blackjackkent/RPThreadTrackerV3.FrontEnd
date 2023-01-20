@@ -16,7 +16,7 @@ const Routes = () => {
 	usePageViewTracker();
 
 	return (
-		<Suspense fallback={<div>Loading...</div>}>
+		<Suspense fallback="">
 			<Switch>
 				<Route path="/maintenance" name="Maintenance" component={Maintenance} />
 				<Route path="/logout" name="Logout" component={Logout} />
