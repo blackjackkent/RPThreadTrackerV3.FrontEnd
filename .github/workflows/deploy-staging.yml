@@ -1,6 +1,6 @@
 # This workflow will deploy the application to staging when the development branch is updated.
 
-name: Deploy
+name: Deploy Staging
 
 on:
     push:
@@ -38,7 +38,6 @@ jobs:
         name: Discord Notification
         runs-on: ubuntu-latest
         needs: # make sure the notification is sent AFTER the jobs you want included have completed
-            - deploy-documentation
             - deploy-package
         if: ${{ always() }} # You always want to be notified: success, failure, or cancelled
         steps:
