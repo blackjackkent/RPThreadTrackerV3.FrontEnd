@@ -52,6 +52,7 @@ const LoginForm = ({ isLoading, errorMessage, onSubmit }) => {
 							<Label for="password">Password</Label>
 							<ValidatedTextInput
 								{...inputProps}
+								type="password"
 								name="password"
 								placeholder="Password"
 							/>
