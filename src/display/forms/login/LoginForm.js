@@ -2,19 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Row, Col, CardBody, Button, Label } from 'reactstrap';
-import { AvForm, AvField } from 'availity-reactstrap-validation';
-import validator from '../_loginFormValidator';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
 import Card from '~/display/shared/styled/Card';
+import useValidatedForm from '~/display/forms/validated-form/useValidatedForm';
+import ValidatedTextInput from '~/display/forms/validated-form/ValidatedTextInput';
+import validator from './_validator';
 
 const propTypes = {
 	isLoading: PropTypes.bool.isRequired,
 	errorMessage: PropTypes.string.isRequired,
-	onInputChange: PropTypes.func.isRequired,
 	onSubmit: PropTypes.func.isRequired
 };
 
-const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
+const LoginForm = ({ isLoading, errorMessage, onSubmit }) => {
+	const { onFormSubmit, inputProps } = useValidatedForm(onSubmit, validator);
 	return (
 		<Card className="login-box p-4">
 			<CardBody className="card-body">
@@ -29,7 +30,8 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						}}
 					/>
 				)}
-				<AvForm onValidSubmit={onSubmit}>
+
+				<form onSubmit={onFormSubmit}>
 					<h1>Login</h1>
 					<p className="text-muted">Sign in to RPThreadTracker</p>
 					{errorMessage && (
@@ -38,24 +40,20 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 						</div>
 					)}
 					<div>
-						<div>
+						<div className="form-group">
 							<Label for="username">Username</Label>
-							<AvField
+							<ValidatedTextInput
+								{...inputProps}
 								name="username"
 								placeholder="Username"
-								type="text"
-								onChange={onInputChange}
-								validate={validator.username}
 							/>
 						</div>
-						<div>
+						<div className="form-group">
 							<Label for="password">Password</Label>
-							<AvField
+							<ValidatedTextInput
+								{...inputProps}
 								name="password"
 								placeholder="Password"
-								type="password"
-								onChange={onInputChange}
-								validate={validator.password}
 							/>
 						</div>
 					</div>
@@ -75,7 +73,7 @@ const LoginForm = ({ isLoading, errorMessage, onInputChange, onSubmit }) => {
 							</Link>
 						</Col>
 					</Row>
-				</AvForm>
+				</form>
 			</CardBody>
 		</Card>
 	);

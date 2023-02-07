@@ -4,6 +4,7 @@ export { default as EditButton } from './buttons/EditButton';
 export { default as QueueButton } from './buttons/QueueButton';
 export { default as TagsButton } from './buttons/TagsButton';
 export { default as ToggleHiatusButton } from './buttons/ToggleHiatusButton';
+export { default as RowSelectorCheckbox } from './buttons/RowSelectorCheckbox';
 
 export { default as ThreadTitle } from './threads/ThreadTitle';
 export { default as Character } from './threads/Character';

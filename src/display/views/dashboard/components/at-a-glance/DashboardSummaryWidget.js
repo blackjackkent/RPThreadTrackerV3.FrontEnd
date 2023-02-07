@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CardBody, Progress } from 'reactstrap';
 import { useHistory } from 'react-router-dom';
-import Card from '../../../../shared/styled/Card';
 import LoadingIndicator from '~/display/shared/loading/LoadingIndicator';
+import Card from '../../../../shared/styled/Card';
 
 const propTypes = {
 	header: PropTypes.number.isRequired,

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import GenericConfirmationModal from './GenericConfirmationModal';
 import useDeletePublicViewMutation from '~/infrastructure/hooks/mutations/public-views/useDeletePublicViewMutation';
+import GenericConfirmationModal from './GenericConfirmationModal';
 
 const propTypes = {
 	actedView: PropTypes.shape({ name: PropTypes.string.isRequired }),

@@ -1,16 +1,13 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import { CardBody, Button, Row, Col } from 'reactstrap';
-import { AvForm } from 'availity-reactstrap-validation';
+import { Redirect } from 'react-router-dom';
+import { CardBody } from 'reactstrap';
+import { useLoginMutation, useRegisterMutation } from '~/infrastructure/hooks/mutations';
 import RegisterForm from '../../forms/register/RegisterForm';
 import TooltipForm from '../../forms/TooltipForm';
 import Card from '../../shared/styled/Card';
 import LoadingIndicator from '../../shared/loading/LoadingIndicator';
-import { useLoginMutation, useRegisterMutation } from '~/infrastructure/hooks/mutations';
-import { useFormReducer } from '~/infrastructure/hooks';
 
 const Register = () => {
-	const [formData, onInputChange] = useFormReducer();
 	const {
 		submitUserRegistration,
 		reset,
@@ -25,10 +22,10 @@ const Register = () => {
 		isSuccess: isLoginSuccess
 	} = useLoginMutation();
 
-	const handleRegistrationSubmit = () => {
+	const handleRegistrationSubmit = (formData) => {
 		reset();
 		submitUserRegistration(formData).then(() => {
-			submitLogin({ username: formData.username, password: formData.password }).then();
+			submitLogin({ username: formData.username, password: formData.password });
 		});
 	};
 
@@ -55,36 +52,21 @@ const Register = () => {
 						}}
 					/>
 				)}
-				<AvForm onValidSubmit={handleRegistrationSubmit}>
-					<h1>Register</h1>
-					<p className="text-muted">Create your RPThreadTracker account</p>
-					{isUserRegistrationError && (
-						<div className="has-danger">
-							<p className="form-control-feedback">
-								{registrationError?.response?.data?.map((e) => (
-									<span key={e}>
-										{e}
-										<br />
-									</span>
-								))}
-							</p>
-						</div>
-					)}
-					<TooltipForm Renderable={RegisterForm} handleInputChange={onInputChange} />
-					<Row>
-						<Col xs="6">
-							<Button color="primary" className="px-4">
-								Create Account
-							</Button>
-						</Col>
-						<Col xs="6" className="text-right text-muted">
-							Already have an account?{' '}
-							<Link href="/login" to="/login">
-								Login
-							</Link>
-						</Col>
-					</Row>
-				</AvForm>
+				<h1>Register</h1>
+				<p className="text-muted">Create your RPThreadTracker account</p>
+				{isUserRegistrationError && (
+					<div className="has-danger">
+						<p className="form-control-feedback">
+							{registrationError?.response?.data?.map((e) => (
+								<span key={e}>
+									{e}
+									<br />
+								</span>
+							))}
+						</p>
+					</div>
+				)}
+				<TooltipForm Renderable={RegisterForm} onSubmit={handleRegistrationSubmit} />
 			</CardBody>
 		</Card>
 	);

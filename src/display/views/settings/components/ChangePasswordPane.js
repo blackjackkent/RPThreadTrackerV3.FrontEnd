@@ -1,18 +1,15 @@
 import React from 'react';
-import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
-import { AvForm } from 'availity-reactstrap-validation';
+import { TabPane, CardHeader, CardBody } from 'reactstrap';
 import { toast } from 'react-toastify';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
 import Card from '../../../shared/styled/Card';
 import TooltipForm from '../../../forms/TooltipForm';
 import ChangePasswordForm from '../../../forms/change-password/ChangePasswordForm';
-import { useFormReducer } from '~/infrastructure/hooks';
-import { useChangePasswordMutation } from '~/infrastructure/hooks/mutations';
 
 const ChangePasswordPane = () => {
-	const [formData, onInputChange] = useFormReducer();
 	const { changePassword } = useChangePasswordMutation();
-	const submitChangePasswordForm = () => {
+	const submitChangePasswordForm = (formData) => {
 		changePassword(formData)
 			.then(() => {
 				toast.success('Success. You can now log in with your updated password');
@@ -32,19 +29,10 @@ const ChangePasswordPane = () => {
 					<FontAwesomeIcon icon={['fas', 'key']} /> Change Password
 				</CardHeader>
 				<CardBody className="card-body">
-					<AvForm onValidSubmit={() => submitChangePasswordForm(formData)}>
-						<TooltipForm
-							Renderable={ChangePasswordForm}
-							handleInputChange={onInputChange}
-						/>
-						<Row>
-							<Col className="text-right">
-								<Button type="submit" color="primary">
-									Submit
-								</Button>
-							</Col>
-						</Row>
-					</AvForm>
+					<TooltipForm
+						Renderable={ChangePasswordForm}
+						onSubmit={submitChangePasswordForm}
+					/>
 				</CardBody>
 			</Card>
 		</TabPane>

@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { TabPane, Col, Row, Button, CardHeader, CardBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import columns from '~/infrastructure/constants/columns';
-import Card from '../../../shared/styled/Card';
 import usePublicViewsQuery from '~/infrastructure/hooks/queries/usePublicViewsQuery';
-import PublicViewsTableWrapper from './public-views/PublicViewsTableWrapper';
 import { useCharactersQuery, useUserProfileQuery } from '~/infrastructure/hooks/queries';
 import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
 import DeletePublicViewModal from '~/display/shared/modals/DeletePublicViewModal';
 import UpsertPublicViewModal from '~/display/shared/modals/UpsertPublicViewModal';
+import PublicViewsTableWrapper from './public-views/PublicViewsTableWrapper';
+import Card from '../../../shared/styled/Card';
 
 const ManagePublicViewsPane = () => {
 	const { data: publicViews, isLoading: isPublicViewsLoading } = usePublicViewsQuery();

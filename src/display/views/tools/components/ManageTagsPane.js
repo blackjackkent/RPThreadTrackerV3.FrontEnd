@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { TabPane, Col, Row, Button, CardHeader, CardBody, Label } from 'reactstrap';
 import Autosuggest from 'react-autosuggest';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Card from '../../../shared/styled/Card';
-import LoadingIndicator from '../../../shared/loading/LoadingIndicator';
 import BulkUpdateTagModal from '~/display/shared/modals/BulkUpdateTagModal';
 import BulkDeleteTagModal from '~/display/shared/modals/BulkDeleteTagModal';
 import useAllTags from '~/infrastructure/hooks/derived-data/useAllTags';
+import LoadingIndicator from '../../../shared/loading/LoadingIndicator';
+import Card from '../../../shared/styled/Card';
 
 const ManageTagsPane = () => {
 	const { tagTextValues, isLoading } = useAllTags();
