@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col } from 'reactstrap';
-import { useUserSettingsQuery } from '~/infrastructure/hooks/queries';
+import { useCharactersQuery, useUserSettingsQuery } from '~/infrastructure/hooks/queries';
 import UntrackThreadModal from '~/display/shared/modals/UntrackThreadModal';
 import UpsertThreadModal from '~/display/shared/modals/UpsertThreadModal';
 import ArchiveThreadModal from '~/display/shared/modals/ArchiveThreadModal';
@@ -53,7 +53,8 @@ const ThreadTableWrapper = ({
 	const [isQueueThreadModalOpen, setIsQueueThreadModalOpen] = useState(false);
 
 	const tags = useThreadListTags(threadsWithStatus);
-	const characters = useThreadListCharacters(threadsWithStatus);
+	const threadListCharacters = useThreadListCharacters(threadsWithStatus);
+	const { data: allCharacters } = useCharactersQuery();
 	const partners = useThreadListPartners(threadsWithStatus);
 	const lastPosters = useThreadListLastPosters(threadsWithStatus);
 
@@ -110,7 +111,7 @@ const ThreadTableWrapper = ({
 			/>
 			<UpsertThreadModal
 				actedThread={actedThread}
-				characters={characters}
+				characters={allCharacters}
 				isModalOpen={isUpsertThreadModalOpen}
 				setIsModalOpen={setIsUpsertThreadModalOpen}
 			/>
@@ -138,7 +139,7 @@ const ThreadTableWrapper = ({
 						isAllThreadsView={isAllThreadsView}
 					/>
 					<ThreadTable
-						characters={characters}
+						characters={threadListCharacters}
 						getColumns={getColumns}
 						isLoading={isLoading}
 						lastPosters={lastPosters}
