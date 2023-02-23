@@ -1,5 +1,5 @@
 // #region imports
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { toast } from 'react-toastify';
