@@ -10,6 +10,10 @@ const propTypes = {
 	errors: PropTypes.shape({}).isRequired,
 	name: PropTypes.string.isRequired,
 	helpMessage: PropTypes.element,
+	transform: PropTypes.shape({
+		input: PropTypes.func.isRequired,
+		output: PropTypes.func.isRequired
+	}).isRequired,
 	values: PropTypes.arrayOf(PropTypes.string),
 	control: PropTypes.shape({}).isRequired
 };
@@ -19,6 +23,7 @@ const ValidatedMultiValueTextInput = ({
 	trigger,
 	errors,
 	control,
+	transform,
 	name,
 	helpMessage = <span />,
 	...props
@@ -29,12 +34,17 @@ const ValidatedMultiValueTextInput = ({
 				name={name}
 				control={control}
 				render={({ field: { onChange, value } }) => {
+					if (value === undefined) {
+						return null;
+					}
 					return (
 						<MultipleValueTextInput
-							values={value}
+							values={transform.input(value)}
 							name={name}
-							onItemAdded={(_, newValues) => onChange(newValues)}
-							onItemDeleted={(_, newValues) => onChange(newValues)}
+							onItemAdded={(_, newValues) => {
+								onChange(transform.output(newValues));
+							}}
+							onItemDeleted={(_, newValues) => onChange(transform.output(newValues))}
 							shouldAddOnBlur
 							{...props}
 						/>

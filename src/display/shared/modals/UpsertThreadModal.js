@@ -34,8 +34,7 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 	const submitForm = (formData) => {
 		const upsertFn = formData.threadId ? updateThread : createThread;
 		const submitData = {
-			...formData,
-			threadTags: formData.threadTags.map((t) => ({ tagText: t }))
+			...formData
 		};
 		upsertFn(submitData)
 			.then(() => {
@@ -58,7 +57,7 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 				<ModalBody>
 					<TooltipForm
 						Renderable={UpsertThreadForm}
-						thread={defaultThreadData}
+						thread={actedThread}
 						inputProps={inputProps}
 						characters={activeCharacters}
 					/>

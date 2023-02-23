@@ -17,7 +17,7 @@ const propTypes = {
 		postId: PropTypes.string,
 		partnerUrlIdentifier: PropTypes.string,
 		description: PropTypes.string,
-		threadTags: PropTypes.arrayOf(PropTypes.string)
+		threadTags: PropTypes.arrayOf(PropTypes.shape({}))
 	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	showTooltip: PropTypes.func.isRequired,
@@ -133,6 +133,13 @@ const UpsertThreadForm = ({
 							{...inputProps}
 							label="Thread Tags (Optional)"
 							name="threadTags"
+							transform={{
+								input: (data) => data?.map((t) => t.tagText),
+								output: (data) =>
+									data?.map((t) => ({
+										tagText: t
+									}))
+							}}
 							placeholder="Thread Tags"
 							className="form-control"
 							labelClassName="form-control-label"
