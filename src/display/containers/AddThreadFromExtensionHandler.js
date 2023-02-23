@@ -44,6 +44,7 @@ const AddThreadFromExtensionHandler = () => {
 		return (
 			<div className="app flex-row align-items-center">
 				<UpsertThreadModal
+					key={threadData?.id}
 					actedThread={threadData}
 					characters={characters}
 					isModalOpen={isUpsertThreadModalOpen}

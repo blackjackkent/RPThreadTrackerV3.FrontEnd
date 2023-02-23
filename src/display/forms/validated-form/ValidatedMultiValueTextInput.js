@@ -21,16 +21,24 @@ const ValidatedMultiValueTextInput = ({
 	control,
 	name,
 	helpMessage = <span />,
-	values,
 	...props
 }) => {
+	console.log({
+		register,
+		trigger,
+		errors,
+		control,
+		name,
+		helpMessage,
+		...props
+	});
 	return (
 		<div>
 			<Controller
 				name={name}
 				control={control}
-				defaultValue={values}
 				render={({ field: { onChange, value } }) => {
+					console.log(value);
 					return (
 						<MultipleValueTextInput
 							values={value}

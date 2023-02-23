@@ -10,13 +10,14 @@ import ValidatedTextAreaInput from '../validated-form/ValidatedTextAreaInput';
 import ValidatedMultiValueTextInput from '../validated-form/ValidatedMultiValueTextInput';
 
 const propTypes = {
-	actedThread: PropTypes.shape({
+	thread: PropTypes.shape({
 		id: PropTypes.string,
 		characterId: PropTypes.number,
 		userTitle: PropTypes.string,
 		postId: PropTypes.string,
 		partnerUrlIdentifier: PropTypes.string,
-		description: PropTypes.string
+		description: PropTypes.string,
+		threadTags: PropTypes.arrayOf(PropTypes.string)
 	}).isRequired,
 	characters: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 	showTooltip: PropTypes.func.isRequired,
@@ -24,18 +25,16 @@ const propTypes = {
 	inputProps: PropTypes.shape({}).isRequired,
 	tooltipDisplayData: PropTypes.shape({
 		partnerUrlIdentifier: PropTypes.bool
-	}).isRequired,
-	tagValues: PropTypes.arrayOf(PropTypes.string).isRequired
+	}).isRequired
 };
 
 const UpsertThreadForm = ({
 	inputProps,
-	actedThread,
+	thread,
 	characters,
 	showTooltip,
 	hideTooltip,
-	tooltipDisplayData,
-	tagValues
+	tooltipDisplayData
 }) => {
 	const characterOptions = characters.map((c) => ({
 		value: c.characterId,
@@ -43,7 +42,7 @@ const UpsertThreadForm = ({
 	}));
 	return (
 		<div>
-			{actedThread?.id && <ValidatedHiddenInput name="id" {...inputProps} />}
+			{thread?.id && <ValidatedHiddenInput name="id" {...inputProps} />}
 			<Row>
 				<Col>
 					<FormGroup>
@@ -132,7 +131,6 @@ const UpsertThreadForm = ({
 					<FormGroup>
 						<ValidatedMultiValueTextInput
 							{...inputProps}
-							values={tagValues}
 							label="Thread Tags (Optional)"
 							name="threadTags"
 							placeholder="Thread Tags"

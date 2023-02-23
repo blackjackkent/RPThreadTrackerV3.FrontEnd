@@ -105,22 +105,26 @@ const ThreadTableWrapper = ({
 	return (
 		<Style className="animated fadeIn threads-container">
 			<UntrackThreadModal
+				key={actedThread?.id}
 				actedThread={actedThread}
 				isModalOpen={isUntrackThreadModalOpen}
 				setIsModalOpen={setIsUntrackThreadModalOpen}
 			/>
 			<UpsertThreadModal
+				key={actedThread?.id}
 				actedThread={actedThread}
 				characters={allCharacters}
 				isModalOpen={isUpsertThreadModalOpen}
 				setIsModalOpen={setIsUpsertThreadModalOpen}
 			/>
 			<ArchiveThreadModal
+				key={actedThread?.id}
 				actedThread={actedThread}
 				isModalOpen={isArchiveThreadModalOpen}
 				setIsModalOpen={setIsArchiveThreadModalOpen}
 			/>
 			<QueueThreadModal
+				key={actedThread?.id}
 				isQueueing={!isQueuedView}
 				actedThread={actedThread}
 				isModalOpen={isQueueThreadModalOpen}
