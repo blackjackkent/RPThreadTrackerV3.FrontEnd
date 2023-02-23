@@ -1,5 +1,5 @@
 // #region imports
-import React, { useMemo } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { ModalHeader, ModalBody, ModalFooter, Button } from 'reactstrap';
 import { toast } from 'react-toastify';
@@ -31,23 +31,6 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 		characters.sort(sortCharacters).filter((c) => !c.isOnHiatus)
 	);
 
-	const getTagValues = () => {
-		if (!actedThread?.threadTags) {
-			return [];
-		}
-		return actedThread.threadTags.map((t) => t.tagText);
-	};
-
-	const formDefaultData = useMemo(() => {
-		if (!actedThread) {
-			return {};
-		}
-		return {
-			...actedThread,
-			threadTags: getTagValues()
-		};
-	}, [actedThread, isModalOpen, getTagValues]);
-
 	const submitForm = (formData) => {
 		const upsertFn = formData.threadId ? updateThread : createThread;
 		const submitData = {
@@ -65,7 +48,7 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 				);
 			});
 	};
-	const { onFormSubmit, inputProps } = useValidatedForm(submitForm, validator, formDefaultData);
+	const { onFormSubmit, inputProps } = useValidatedForm(submitForm, validator, actedThread);
 	return (
 		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
 			<form onSubmit={onFormSubmit}>
@@ -75,7 +58,7 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 				<ModalBody>
 					<TooltipForm
 						Renderable={UpsertThreadForm}
-						thread={formDefaultData}
+						thread={defaultThreadData}
 						inputProps={inputProps}
 						characters={activeCharacters}
 					/>

@@ -68,14 +68,12 @@ const HeaderContainer = () => {
 	return (
 		<Style className="app-header navbar">
 			<UpsertThreadModal
-				key=""
 				actedThread={{}}
 				characters={characters}
 				isModalOpen={isUpsertThreadModalOpen}
 				setIsModalOpen={setIsUpsertThreadModalOpen}
 			/>
 			<UpsertCharacterModal
-				key=""
 				isModalOpen={isUpsertCharacterModalOpen}
 				setIsModalOpen={setIsUpsertCharacterModalOpen}
 				submitForm={submitCreateCharacter}
