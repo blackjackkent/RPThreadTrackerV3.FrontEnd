@@ -23,22 +23,12 @@ const ValidatedMultiValueTextInput = ({
 	helpMessage = <span />,
 	...props
 }) => {
-	console.log({
-		register,
-		trigger,
-		errors,
-		control,
-		name,
-		helpMessage,
-		...props
-	});
 	return (
 		<div>
 			<Controller
 				name={name}
 				control={control}
 				render={({ field: { onChange, value } }) => {
-					console.log(value);
 					return (
 						<MultipleValueTextInput
 							values={value}

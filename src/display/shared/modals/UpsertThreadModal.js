@@ -46,7 +46,7 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 			...actedThread,
 			threadTags: getTagValues()
 		};
-	}, [actedThread, isModalOpen]);
+	}, [actedThread, isModalOpen, getTagValues]);
 
 	const submitForm = (formData) => {
 		const upsertFn = formData.threadId ? updateThread : createThread;
