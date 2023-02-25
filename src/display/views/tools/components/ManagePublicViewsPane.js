@@ -32,6 +32,7 @@ const ManagePublicViewsPane = () => {
 						setIsModalOpen={setIsDeletePublicViewModalOpen}
 					/>
 					<UpsertPublicViewModal
+						key={`upsert-public-view-${actedView?.id}`}
 						actedView={actedView}
 						isModalOpen={isUpsertPublicViewModalOpen}
 						setIsModalOpen={setIsUpsertPublicViewModalOpen}
