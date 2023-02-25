@@ -74,6 +74,7 @@ const HeaderContainer = () => {
 				setIsModalOpen={setIsUpsertThreadModalOpen}
 			/>
 			<UpsertCharacterModal
+				actedCharacter={{}}
 				isModalOpen={isUpsertCharacterModalOpen}
 				setIsModalOpen={setIsUpsertCharacterModalOpen}
 				submitForm={submitCreateCharacter}

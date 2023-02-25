@@ -76,6 +76,7 @@ const ManageCharacters = () => {
 			<Row>
 				<Col>
 					<UpsertCharacterModal
+						key={`upsert-thread-${selectedCharacter?.characterId}`}
 						isModalOpen={isUpsertCharacterModalOpen}
 						setIsModalOpen={setIsUpsertCharacterModalOpen}
 						characterToEdit={selectedCharacter}

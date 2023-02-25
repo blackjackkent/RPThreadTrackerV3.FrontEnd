@@ -47,11 +47,7 @@ const UpsertThreadModal = ({ actedThread, characters, isModalOpen, setIsModalOpe
 				);
 			});
 	};
-	const { onFormSubmit, inputProps, getValues } = useValidatedForm(
-		submitForm,
-		validator,
-		actedThread
-	);
+	const { onFormSubmit, inputProps } = useValidatedForm(submitForm, validator, actedThread);
 	return (
 		<Modal isOpen={isModalOpen} toggle={() => setIsModalOpen(!isModalOpen)} backdrop>
 			<form onSubmit={onFormSubmit}>
