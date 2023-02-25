@@ -101,7 +101,6 @@ const ThreadTableWrapper = ({
 	const onSelectedThreadsChange = (selectedThreads) => {
 		setSelectedItems(selectedThreads);
 	};
-
 	return (
 		<Style className="animated fadeIn threads-container">
 			<UntrackThreadModal

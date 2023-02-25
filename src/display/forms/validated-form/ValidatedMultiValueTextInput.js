@@ -14,6 +14,7 @@ const propTypes = {
 		input: PropTypes.func.isRequired,
 		output: PropTypes.func.isRequired
 	}).isRequired,
+	threadId: PropTypes.string,
 	values: PropTypes.arrayOf(PropTypes.string),
 	control: PropTypes.shape({}).isRequired
 };
@@ -25,6 +26,7 @@ const ValidatedMultiValueTextInput = ({
 	control,
 	transform,
 	name,
+	threadId = null,
 	helpMessage = <span />,
 	...props
 }) => {
@@ -34,7 +36,7 @@ const ValidatedMultiValueTextInput = ({
 				name={name}
 				control={control}
 				render={({ field: { onChange, value } }) => {
-					if (value === undefined) {
+					if (value === undefined && threadId) {
 						return null;
 					}
 					return (

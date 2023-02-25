@@ -140,6 +140,7 @@ const UpsertThreadForm = ({
 										tagText: t
 									}))
 							}}
+							threadId={thread?.id}
 							placeholder="Thread Tags"
 							className="form-control"
 							labelClassName="form-control-label"
