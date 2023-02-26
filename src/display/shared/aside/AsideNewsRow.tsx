@@ -1,20 +1,18 @@
 // #region imports
-import React from 'react';
 import { Badge } from 'reactstrap';
-import PropTypes from 'prop-types';
 import { DateTime } from 'luxon';
 // #endregion imports
 
-const propTypes = {
-	item: PropTypes.shape({
-		isUnread: PropTypes.bool,
-		postUrl: PropTypes.string,
-		postTitle: PropTypes.string,
-		postDate: PropTypes.string
-	}).isRequired
+type AsideNewsRowProps = {
+	item: {
+		isUnread: boolean;
+		postUrl: string;
+		postTitle: string;
+		postDate: string;
+	};
 };
 
-const AsideNewsRow = (props) => {
+const AsideNewsRow = (props: AsideNewsRowProps) => {
 	const { item } = props;
 	const date = DateTime.fromISO(item.postDate).toFormat('DDD');
 	return (
@@ -40,5 +38,4 @@ const AsideNewsRow = (props) => {
 	);
 };
 
-AsideNewsRow.propTypes = propTypes;
 export default AsideNewsRow;

@@ -35,7 +35,7 @@ module.exports = merge(common, {
 			// Source directories
 			directories: [path.join(__dirname, 'src')],
 			// Exclude patterns
-			exclude: ['*.spec.js*', 'testhelpers/*'],
+			exclude: ['*.spec.js*', '*.spec.ts*', 'testhelpers/*'],
 			// Root directory (optional)
 			root: __dirname
 		})

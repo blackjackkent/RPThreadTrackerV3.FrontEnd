@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -28,6 +29,11 @@ module.exports = {
 				use: ['babel-loader']
 			},
 			{
+				test: /\.(ts|tsx)?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/
+			},
+			{
 				test: /\.(scss|css)$/,
 				use: [
 					MiniCssExtractPlugin.loader,
@@ -46,7 +52,7 @@ module.exports = {
 		alias: {
 			'~': path.resolve(__dirname, 'src')
 		},
-		extensions: ['*', '.js']
+		extensions: ['.tsx', '.ts', '.js']
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
