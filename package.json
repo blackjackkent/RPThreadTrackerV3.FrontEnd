@@ -137,7 +137,8 @@
 			"^~/(.*)": "<rootDir>/src/$1"
 		},
 		"globals": {
-			"API_BASE_URL": "http://baseurl/"
+			"API_BASE_URL": "http://baseurl/",
+			"TUMBLR_CLIENT_BASE_URL": "http://baseclienturl/"
 		},
 		"setupFilesAfterEnv": [
 			"<rootDir>/config/tests/setup.js"

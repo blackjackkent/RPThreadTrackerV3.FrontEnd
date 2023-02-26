@@ -9,7 +9,7 @@ const AsideContainer = () => {
 	const { markedNews } = useNewsQuery();
 	const items = markedNews.map((item) => <AsideNewsRow item={item} key={item.postId} />);
 	return (
-		<Style className="aside-menu">
+		<Style className="aside-menu" role="complementary">
 			<div className="callout m-0 py-2 text-center text-uppercase">
 				<small>
 					<b>RPThreadTracker News</b>

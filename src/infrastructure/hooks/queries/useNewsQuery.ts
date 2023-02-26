@@ -3,16 +3,16 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import queryKeys from '~/infrastructure/constants/queryKeys';
 import useUserSettingsQuery from './useUserSettingsQuery';
+import NewsItem from '~/types/news/NewsItem';
 
+declare const TUMBLR_CLIENT_BASE_URL: String;
 function useNewsQuery() {
-	const [markedNews, setMarkedNews] = useState([]);
+	const [markedNews, setMarkedNews] = useState<NewsItem[]>([]);
 	const [unreadNewsCount, setUnreadNewsCount] = useState(0);
-	const userSettingsQuery = useUserSettingsQuery();
 	const { data: userSettings } = useUserSettingsQuery();
-	const { data: news } = useQuery(queryKeys.NEWS, () => {
-		return axios
-			.get(`${TUMBLR_CLIENT_BASE_URL}api/news`)
-			.then((res) => Promise.resolve(res.data));
+	const { data: news } = useQuery<NewsItem[]>(queryKeys.NEWS, async () => {
+		const res = await axios.get<NewsItem[]>(`${TUMBLR_CLIENT_BASE_URL}api/news`);
+		return await Promise.resolve(res.data);
 	});
 
 	useEffect(() => {
@@ -20,7 +20,7 @@ function useNewsQuery() {
 			return;
 		}
 		const lastNewsReadDate = new Date(userSettings.lastNewsReadDate);
-		const marked = news.map((n) => ({
+		const marked = news.map<NewsItem>((n) => ({
 			...n,
 			isUnread: !lastNewsReadDate || new Date(n.postDate) > lastNewsReadDate
 		}));
@@ -30,7 +30,7 @@ function useNewsQuery() {
 	}, [news, userSettings]);
 
 	return {
-		userSettings: userSettingsQuery.data,
+		userSettings,
 		markedNews,
 		unreadNewsCount,
 		setUnreadNewsCount

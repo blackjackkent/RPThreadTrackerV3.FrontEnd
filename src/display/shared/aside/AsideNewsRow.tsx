@@ -1,19 +1,14 @@
 // #region imports
 import { Badge } from 'reactstrap';
 import { DateTime } from 'luxon';
+import NewsItem from '~/types/news/NewsItem';
 // #endregion imports
 
 type AsideNewsRowProps = {
-	item: {
-		isUnread: boolean;
-		postUrl: string;
-		postTitle: string;
-		postDate: string;
-	};
+	item: NewsItem;
 };
 
-const AsideNewsRow = (props: AsideNewsRowProps) => {
-	const { item } = props;
+const AsideNewsRow = ({ item }: AsideNewsRowProps) => {
 	const date = DateTime.fromISO(item.postDate).toFormat('DDD');
 	return (
 		<div>
