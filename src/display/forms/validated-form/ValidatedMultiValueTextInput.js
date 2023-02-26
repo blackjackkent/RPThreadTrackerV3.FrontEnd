@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Controller } from 'react-hook-form';
-import MultipleValueTextInput from 'react-multivalue-text-input/build/components/MultipleValueTextInput';
+import MultipleValueTextInput from 'react-multivalue-text-input';
 import ValidatedErrorMessage from './ValidatedErrorMessage';
 
 const propTypes = {
