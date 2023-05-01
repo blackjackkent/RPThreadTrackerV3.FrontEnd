@@ -68,12 +68,14 @@ const HeaderContainer = () => {
 	return (
 		<Style className="app-header navbar">
 			<UpsertThreadModal
+				key={`upsert-thread-modal-open-${isUpsertThreadModalOpen}`}
 				actedThread={{}}
 				characters={characters}
 				isModalOpen={isUpsertThreadModalOpen}
 				setIsModalOpen={setIsUpsertThreadModalOpen}
 			/>
 			<UpsertCharacterModal
+				key={`upsert-character-modal-open-${isUpsertCharacterModalOpen}`}
 				actedCharacter={{}}
 				isModalOpen={isUpsertCharacterModalOpen}
 				setIsModalOpen={setIsUpsertCharacterModalOpen}
